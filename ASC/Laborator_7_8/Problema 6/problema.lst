@@ -1,0 +1,64 @@
+     1                                  ;Dandu-se un sir de cuvinte sa se obtina sirul (de octeti) cifrelor in baza zece ale fiecarui cuvant din acest sir.
+     2                                  
+     3                                  bits 32 
+     4                                  global start   
+     5                                  extern exit,printf              
+     6                                  import exit msvcrt.dll    
+     7                                  import printf msvcrt.dll
+     8                                  segment data use32 class=data
+     9 00000000 39302A51F411                sir dw 12345, 20778, 4596 
+    10                                      len equ ($-sir)/2
+    11 00000006 00                          handle db 0
+    12 00000007 FF<rept>                    cifre times len*8 db -1
+    13 0000001F 25782000                    format db "%x ",0
+    14                                  segment code use32 class=code
+    15                                      start:
+    16 00000000 BE[00000000]                    mov esi,sir
+    17 00000005 BF[07000000]                    mov edi,cifre
+    18 0000000A B903000000                      mov ecx,len
+    19 0000000F E366                            jecxz final
+    20                                          cuvant:
+    21 00000011 51                                  push ecx
+    22                                              
+    23 00000012 66BA0000                            mov dx,0
+    24 00000016 66AD                                lodsw ;ax=primul cuvant
+    25 00000018 83EE02                              sub esi,2
+    26 0000001B B900000000                          mov ecx,0 ; numar in ecx cate cifre are numarul
+    27 00000020 66BB0A00                            mov bx,10
+    28                                              numarare:
+    29 00000024 66F7F3                                  div bx ;impart la 10
+    30 00000027 41                                      inc ecx 
+    31 00000028 66BA0000                                mov dx,0 ;dx il fac 0 pentru a putea trece la urmatoarea impartire
+    32 0000002C 6683F800                                cmp ax,0 ;fac operatia cat timp cat!=0
+    33 00000030 75F2                                    jnz numarare
+    34 00000032 FD                                  std ;parcurgere de la dreapta spre stanga
+    35 00000033 66BA0000                            mov dx,0
+    36 00000037 66AD                                lodsw ;ax=primul cuvant
+    37 00000039 49                                  dec ecx
+    38 0000003A 01CF                                add edi,ecx 
+    39                                              construire:
+    40 0000003C 66BB0A00                                mov bx,10
+    41 00000040 66F7F3                                  div bx
+    42 00000043 6689C3                                  mov bx,ax
+    43 00000046 6689D0                                  mov ax,dx
+    44 00000049 AA                                      stosb ;incarc octetul al in sirul cifre
+    45 0000004A 66BA0000                                mov dx,0
+    46 0000004E 6689D8                                  mov ax,bx
+    47 00000051 6683F800                                cmp ax,0
+    48 00000055 75E5                                    jnz construire
+    49 00000057 FC                                  cld    
+    50 00000058 41                                  inc ecx
+    51 00000059 01CF                                add edi,ecx 
+    52 0000005B 47                                  inc edi ;trec la urmatoarea pozitie
+    53 0000005C 83C604                              add esi,4 ;habar n-am de ce trebuie sa fac asta.....
+    54 0000005F 60                                  pusha 
+    55 00000060 68[07000000]                        push dword cifre 
+    56 00000065 68[1F000000]                        push dword format
+    57 0000006A FF15[00000000]                      call [printf]
+    58 00000070 83C408                              add esp,8
+    59 00000073 61                                  popa
+    60 00000074 59                                  pop ecx
+    61 00000075 E29A                            loop cuvant
+    62                                          final:
+    63 00000077 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    64 00000079 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

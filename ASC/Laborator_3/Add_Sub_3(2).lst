@@ -1,0 +1,53 @@
+     1                                  ;(b+b+d)-(c+a)  a - byte, b - word, c - double word, d - qword 
+     2                                  ;CONVERSIE CU SEMN
+     3                                  
+     4                                  bits 32 ; assembling for the 32 bits architecture
+     5                                  
+     6                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     7                                  global start        
+     8                                  
+     9                                  ; declare external functions needed by our program
+    10                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+    11                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    12                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    13                                  
+    14                                  ; our data is declared here (the variables needed by our program)
+    15                                  segment data use32 class=data
+    16                                      ; ...
+    17                                      ;a resb 1
+    18                                      ;b resw 1
+    19                                      ;c resd 1
+    20                                      ;d resq 1
+    21                                      ; ...
+    22 00000000 04                          a db 4
+    23 00000001 0500                        b dw 5
+    24 00000003 0600                        c dw 6
+    25 00000005 0700000000000000            d dq 7
+    26                                  
+    27                                  
+    28                                  ; our code starts here
+    29                                  segment code use32 class=code
+    30                                      start:
+    31                                          ; ...
+    32 00000000 66A1[01000000]                  mov ax,word[b] ;ax = b
+    33 00000006 6689C3                          mov bx,ax ;bx = ax = b
+    34 00000009 6601D8                          add ax,bx ;ax = ax + bx = b+b
+    35 0000000C 98                              cwde ; ax -> eax = b+b (dword)
+    36 0000000D 99                              cdq ;eax -> edx:eax = b+b (qword)
+    37 0000000E 0305[05000000]                  add eax,dword[d] 
+    38 00000014 1315[09000000]                  adc edx,dword[d+4] ;edx:eax = b+b+d
+    39                                          
+    40 0000001A 89C3                            mov ebx,eax ;ebx = eax
+    41 0000001C 89D1                            mov ecx,edx ;ecx = edx -> ecx:ebx = b+b+d
+    42                                          
+    43 0000001E A0[00000000]                    mov al,byte[a] ;al = a 
+    44 00000023 6698                            cbw ;al -> ax = a (word)
+    45 00000025 98                              cwde ;ax -> eax = a (dword)
+    46 00000026 0305[03000000]                  add eax,dword[c] ;eax = eax+c = a+c
+    47 0000002C 99                              cdq ;eax -> edx:eax = a+c
+    48                                          
+    49 0000002D 01D8                            add eax,ebx 
+    50 0000002F 11CA                            adc edx,ecx ;edx:eax = (b+b+d)-(a+c)
+    51                                          ; exit(0)
+    52 00000031 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    53 00000033 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

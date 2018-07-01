@@ -1,0 +1,72 @@
+     1                                  ;Se dau doua siruri de caractere S1 si S2. Sa se construiasca sirul D ce contine toate elementele din S1 care nu apar in S2. 
+     2                                  ;NEREZOLVATA!!!
+     3                                  
+     4                                  bits 32 ; assembling for the 32 bits architecture
+     5                                  
+     6                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     7                                  global start        
+     8                                  
+     9                                  ; declare external functions needed by our program
+    10                                  extern exit,printf               ; tell nasm that exit exists even if we won't be defining it
+    11                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    12                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    13                                  import printf msvcrt.dll
+    14                                  ; our data is declared here (the variables needed by our program)
+    15                                  segment data use32 class=data
+    16                                      ; ...
+    17 00000000 2B34326138345835            s1 db '+', '4', '2', 'a', '8', '4', 'X', '5'
+    18                                      len1 equ $-s1
+    19 00000008 613435                      s2 db 'a', '4', '5'
+    20                                      len2 equ $-s2
+    21 0000000B 00<rept>                    d times len1 db 0
+    22 00000013 FF                          handle db -1
+    23 00000014 25632000                    format db "%c ",0
+    24                                  segment code use32 class=code
+    25                                      start:
+    26 00000000 BE00000000                      mov esi,0
+    27 00000005 B908000000                      mov ecx, len1
+    28 0000000A E357                            jecxz final
+    29 0000000C BB00000000                      mov ebx,0
+    30                                          element:
+    31 00000011 51                                  push ecx
+    32 00000012 B903000000                          mov ecx, len2
+    33 00000017 E33B                                jecxz tot
+    34 00000019 8A86[00000000]                      mov al,[s1+esi]
+    35 0000001F BF[08000000]                        mov edi,s2
+    36                                              cautare:
+    37 00000024 AE                                     scasb
+    38 00000025 740B                                   jz gasit
+    39 00000027 E2FB                                loop cautare
+    40                                              
+    41 00000029 89DF                                mov edi,ebx
+    42 0000002B 43                                  inc ebx
+    43 0000002C 8887[0B000000]                      mov [d+edi],al
+    44                                              gasit:
+    45 00000032 46                                      inc esi
+    46 00000033 59                                      pop ecx
+    47 00000034 E2DB                            loop element
+    48                                          
+    49                                         
+    50 00000036 BE[0B000000]                    mov esi,d
+    51 0000003B 89D9                            mov ecx,ebx
+    52                                          afisare:
+    53 0000003D AC                                  lodsb 
+    54 0000003E 6698                                cbw 
+    55 00000040 98                                  cwde
+    56 00000041 60                                  pusha
+    57 00000042 50                                  push eax
+    58 00000043 68[14000000]                        push dword format
+    59 00000048 FF15[00000000]                      call [printf]
+    60 0000004E 83C408                              add esp,4*2
+    61 00000051 61                                  popa
+    62 00000052 E2E9                            loop afisare  
+    63                                              tot:
+    64 00000054 B908000000                          mov ecx, len1
+    65 00000059 BE[00000000]                        mov esi,s1
+    66 0000005E E303                                jecxz final
+    67                                              repeta:
+    68 00000060 A4                                     movsb
+    69 00000061 E2FD                                loop repeta
+    70                                          final:
+    71 00000063 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    72 00000065 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

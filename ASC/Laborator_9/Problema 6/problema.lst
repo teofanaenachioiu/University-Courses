@@ -1,0 +1,121 @@
+     1                                  ;Se da un fisier text. Sa se citeasca continutul fisierului, sa se determine cifra cu cea mai mare frecventa si sa se afiseze acea cifra impreuna cu frecventa acesteia. 
+     2                                  ;Numele fisierului text este definit in segmentul de date
+     3                                  
+     4                                  bits 32 
+     5                                  global start    
+     6                                  extern exit,fread,fopen,fclose,printf               
+     7                                  import exit msvcrt.dll    
+     8                                  import fread msvcrt.dll
+     9                                  import fopen msvcrt.dll
+    10                                  import fclose msvcrt.dll
+    11                                  import printf msvcrt.dll
+    12                                  segment data use32 class=data
+    13 00000000 696E7075742E747874-         nume_fisire db "input.txt",0
+    13 00000009 00                 
+    14 0000000A 7200                        mod_acces db "r",0
+    15 0000000C FFFFFFFF                    descriptor dd -1
+    16                                      len equ 100
+    17 00000010 00<rept>                    buffer times len db 0
+    18 00000074 00                          nr_caractere db 0
+    19 00000075 303132333435363738-         cifre db "0123456789"
+    19 0000007E 39                 
+    20 0000007F FF                          handle db -1
+    21 00000080 00<rept>                    frecventa times 10 db 0
+    22 0000008A 436966726120637520-         format db "Cifra cu cea mai mare frecventa: %d. Frecventa: %d",0
+    22 00000093 636561206D6169206D-
+    22 0000009C 617265206672656376-
+    22 000000A5 656E74613A2025642E-
+    22 000000AE 204672656376656E74-
+    22 000000B7 613A20256400       
+    23                                  segment code use32 class=code
+    24                                      start:
+    25                                          ;deschid fisierul
+    26 00000000 68[0A000000]                    push dword mod_acces
+    27 00000005 68[00000000]                    push dword nume_fisire
+    28 0000000A FF15[00000000]                  call [fopen]
+    29 00000010 83C408                          add esp,8
+    30                                          ;erori
+    31 00000013 83F800                          cmp eax,0
+    32 00000016 0F84B5000000                    je final
+    33                                          
+    34 0000001C A3[0C000000]                    mov [descriptor],eax
+    35                                          ;citesc textul
+    36                                          bucla:
+    37                                              ;citesc maxim 100 de caractere
+    38 00000021 FF35[0C000000]                      push dword [descriptor]
+    39 00000027 6A64                                push dword len
+    40 00000029 6A01                                push dword 1
+    41 0000002B 68[10000000]                        push dword buffer
+    42 00000030 FF15[00000000]                      call [fread]
+    43 00000036 83C410                              add esp, 4*4
+    44                                              ;salvez numarul de caractere citite
+    45 00000039 A3[74000000]                        mov [nr_caractere],eax
+    46                                              
+    47                                              
+    48 0000003E 8B0D[74000000]                      mov ecx,[nr_caractere]
+    49 00000044 E348                                jecxz iesi
+    50                                              ;caut fiecare caracter din buffer in sirul cu cifre
+    51 00000046 BE00000000                          mov esi,0
+    52                                              repeta:
+    53 0000004B 51                                      push ecx
+    54 0000004C BF00000000                              mov edi,0
+    55 00000051 8A9E[10000000]                          mov bl,byte[buffer+esi]
+    56 00000057 B90A000000                              mov ecx,10
+    57                                                      ;caut caracterul curent in sirul cu cifre 
+    58                                                      caut:
+    59 0000005C 3A9F[75000000]                                  cmp bl,byte[cifre+edi]
+    60 00000062 7405                                            je gasit
+    61 00000064 47                                              inc edi
+    62 00000065 E2F5                                        loop caut
+    63 00000067 EB06                                    jmp gata    
+    64                                                  gasit:
+    65 00000069 FE87[80000000]                              inc byte[frecventa+edi] ;am gasit o cifra
+    66                                                  gata:
+    67 0000006F 59                                          pop ecx
+    68 00000070 46                                          inc esi ;trec la urmatorul caracter din buffer
+    69 00000071 E2D8                                loop repeta
+    70                                              ;zerorizez spatul rezervat pentru buffer pentru a pregati urmatoarea citire    
+    71 00000073 BF[10000000]                        mov edi,buffer
+    72 00000078 B964000000                          mov ecx,len
+    73 0000007D E30F                                jecxz iesi
+    74 0000007F B000                                mov al,0
+    75                                              
+    76                                              zerorizare:
+    77 00000081 AA                                      stosb
+    78 00000082 E2FD                                loop zerorizare
+    79                                              ;verific daca mai am de facut citiri
+    80 00000084 A1[74000000]                        mov eax,[nr_caractere]
+    81 00000089 83F800                              cmp eax,0
+    82 0000008C 7593                            jne bucla
+    83                                          ;caut cifra cu cea mai mare frecventa (stocat in sirul frecventa)
+    84                                          iesi:
+    85 0000008E B90A000000                      mov ecx,10 ;lungimea sirului de cifre
+    86 00000093 B000                            mov al,0 ;presupunem ca al=max
+    87 00000095 BF00000000                      mov edi,0 ;incepem de la 0
+    88 0000009A BE00000000                      mov esi,0
+    89                                          max:
+    90 0000009F 8A97[80000000]                      mov dl,byte[frecventa+edi] 
+    91 000000A5 38D0                                cmp al,dl ;compar cifra curenta cu maximul
+    92 000000A7 7D04                                jge next
+    93 000000A9 88D0                                mov al,dl ;actualizez maximul
+    94 000000AB 89FE                                mov esi,edi
+    95                                              next:
+    96 000000AD 47                                      inc edi
+    97 000000AE E2EF                            loop max
+    98                                          
+    99                                          afisare:
+   100 000000B0 6698                                cbw
+   101 000000B2 98                                  cwde
+   102 000000B3 50                                  push eax
+   103 000000B4 56                                  push esi
+   104 000000B5 68[8A000000]                        push dword format
+   105 000000BA FF15[00000000]                      call [printf]
+   106 000000C0 83C408                              add esp,8
+   107                                          
+   108 000000C3 68[00000000]                    push dword nume_fisire
+   109 000000C8 FF15[00000000]                  call [fclose]
+   110 000000CE 83C404                          add esp,4
+   111                                          
+   112                                          final:
+   113 000000D1 6A00                            push    dword 0     
+   114 000000D3 FF15[00000000]                  call    [exit]     

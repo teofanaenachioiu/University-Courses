@@ -1,0 +1,62 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  extern exit,fopen,fclose,fread,printf
+     4                                  import exit msvcrt.dll
+     5                                  import fopen msvcrt.dll
+     6                                  import fclose msvcrt.dll
+     7                                  import fread msvcrt.dll
+     8                                  import printf msvcrt.dll
+     9                                  segment data use32 class=data 
+    10 00000000 616E612E74787400            nume_fisir db "ana.txt",0
+    11 00000008 7200                        mod_acces db "r",0
+    12 0000000A FFFFFFFF                    descriptor dd -1
+    13                                      len equ 100
+    14 0000000E 00<rept>                    text times len db 0
+    15 00000072 256300                      format db "%c",0
+    16                                  segment code use32 class=code
+    17                                      start:
+    18                                          ;deschid fisierul
+    19 00000000 68[08000000]                    push dword mod_acces
+    20 00000005 68[00000000]                    push dword nume_fisir
+    21 0000000A FF15[00000000]                  call [fopen]
+    22 00000010 83C408                          add esp,8
+    23                                          
+    24                                          ;erori
+    25 00000013 83F800                          cmp eax, 0
+    26 00000016 744B                            je final
+    27 00000018 A3[0A000000]                    mov [descriptor],eax
+    28                                          
+    29                                          ;citesc din fisier
+    30 0000001D FF35[0A000000]                  push dword [descriptor]
+    31 00000023 6A64                            push dword len
+    32 00000025 6A01                            push dword 1
+    33 00000027 68[0E000000]                    push dword text
+    34 0000002C FF15[00000000]                  call [fread]
+    35 00000032 83C410                          add esp,4*4
+    36                                          
+    37                                          ;afisez pe ecran textul
+    38 00000035 BE[0E000000]                    mov esi,text
+    39 0000003A AC                              lodsb
+    40                                          afisare:
+    41 0000003B 6698                                cbw
+    42 0000003D 98                                  cwde
+    43                                              
+    44 0000003E 60                                  pusha
+    45 0000003F 50                                  push eax
+    46 00000040 68[72000000]                        push dword format
+    47 00000045 FF15[00000000]                      call [printf]
+    48 0000004B 83C408                              add esp,4*2
+    49                                             
+    50 0000004E 61                                  popa
+    51 0000004F AC                                  lodsb
+    52 00000050 3C00                                cmp al,0
+    53 00000052 75E7                                jne afisare
+    54                                          
+    55                                          ;inchid fisierul
+    56 00000054 FF35[0A000000]                  push dword[descriptor]
+    57 0000005A FF15[00000000]                  call [fclose]
+    58 00000060 83C404                          add esp,4
+    59                                          
+    60                                          final:
+    61 00000063 6A00                            push dword 0
+    62 00000065 FF15[00000000]                  call [exit]

@@ -1,0 +1,36 @@
+     1                                  ;  programul calculeaza factorialul unui numar si afiseaza in consola rezultatul
+     2                                  ;  procedura factorial este definita in fisierul factorial.asm
+     3                                  bits  32
+     4                                  global  start
+     5                                  import  printf msvcrt.dll
+     6                                  import  exit msvcrt.dll
+     7                                  extern  printf, exit
+     8                                  ;  codul definit in factorial.asm va fi copiat aici
+     9                                  %include  "factorial.asm"
+     1                              <1> %ifndef  _FACTORIAL_ASM_ ; continuam daca _FACTORIAL_ASM_ este nedefinit
+     2                              <1> %define  _FACTORIAL_ASM_ ; si ne asiguram ca devine definit
+     3                              <1> ;  astfel %include permite doar o singura includere
+     4                              <1> ;definire  procedura
+     5                              <1> factorial:   ; int _stdcall factorial(int n)
+     6 00000000 B801000000          <1> 	mov eax, 1
+     7 00000005 8B4C2404            <1> 	mov ecx, [esp + 4]
+     8                              <1> 	;  mov ecx, [esp + 4] scoate de pe stiva parametrul procedurii
+     9                              <1> 	; pentru explicatii a se vedea  lab11_procedura.asm
+    10                              <1> 	repet: 
+    11 00000009 F7E1                <1> 		mul ecx
+    12 0000000B E2FC                <1> 	loop repet ; atentie, cazul ecx  = 0 nu e tratat!
+    13 0000000D C20400              <1> 	ret 4
+    14                              <1> %endif
+    10                                  segment  data use32 class=data
+    11 00000010 666163746F7269616C-     	format_string db  "factorial=%d", 10, 13, 0
+    11 00000019 3D25640A0D00       
+    12                                  segment  code use32 class=code
+    13                                  start:
+    14 00000000 6A05                    	push dword 5
+    15 00000002 E8(00000000)            	call factorial
+    16 00000007 50                      	push eax
+    17 00000008 68[10000000]            	push format_string
+    18 0000000D FF15[00000000]          	call [printf]
+    19 00000013 83C408                  	add esp, 2*4
+    20 00000016 6A00                    	push 0
+    21 00000018 FF15[00000000]          	call [exit]

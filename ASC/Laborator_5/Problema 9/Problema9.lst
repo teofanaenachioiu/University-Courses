@@ -1,0 +1,53 @@
+     1                                  ;Sa se citeasca de la tastatura doua numere a si b (in baza 10) si sa se calculeze: (a+b) / (a-b). Catul impartirii se va salva in memorie in variabila "rezultat" (definita in segmentul de date). Valorile se conside
+     2                                  
+     3                                  bits 32 ; assembling for the 32 bits architecture
+     4                                  
+     5                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     6                                  global start        
+     7                                  
+     8                                  ; declare external functions needed by our program
+     9                                  extern exit, printf,scanf              ; tell nasm that exit exists even if we won't be defining it
+    10                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    11                                  import printf msvcrt.dll ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    12                                  import scanf msvcrt.dll
+    13                                  ; our data is declared here (the variables needed by our program)
+    14                                  segment data use32 class=data
+    15 00000000 00000000                    a dd 0; ...
+    16 00000004 00000000                    b dd 0
+    17 00000008 613D00                      mesaj1 db "a=",0
+    18 0000000B 623D00                      mesaj2 db "b=",0
+    19 0000000E 256400                      format db "%d",0
+    20 00000011 <res 00000004>              rezultat resd 1
+    21                                  ; our code starts here
+    22                                  segment code use32 class=code
+    23                                      start:
+    24                                          ; ...
+    25 00000000 68[08000000]                    push dword mesaj1
+    26 00000005 FF15[00000000]                  call [printf]
+    27 0000000B 83C404                          add esp, 4*1
+    28                                          
+    29 0000000E 68[00000000]                    push dword a      
+    30 00000013 68[0E000000]                    push dword format
+    31 00000018 FF15[00000000]                  call [scanf]       
+    32 0000001E 83C408                          add esp, 4 * 2 
+    33                                          
+    34 00000021 68[0B000000]                    push dword mesaj2
+    35 00000026 FF15[00000000]                  call [printf]
+    36 0000002C 83C404                          add esp, 4*1
+    37                                          
+    38 0000002F 68[04000000]                    push dword b      
+    39 00000034 68[0E000000]                    push dword format
+    40 00000039 FF15[00000000]                  call [scanf]       
+    41 0000003F 83C408                          add esp, 4 * 2 
+    42                                          
+    43 00000042 A1[00000000]                    mov eax,[a] ;eax = a
+    44 00000047 0305[04000000]                  add eax,[b] ;eax = a+b
+    45 0000004D 99                              cdq ;edx:eax = a+b
+    46 0000004E 8B1D[00000000]                  mov ebx,[a]
+    47 00000054 2B1D[04000000]                  sub ebx,[b] ;ebx = a-b 
+    48 0000005A F7FB                            idiv ebx ;eax = (a+b)/(a-b)
+    49 0000005C 891D[11000000]                  mov [rezultat], ebx
+    50                                          
+    51                                         
+    52 00000062 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    53 00000064 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

@@ -1,0 +1,47 @@
+     1                                  ;Se da un numar natural a (a: dword, definit in segmentul de date). Sa se citeasca un numar natural b si sa se calculeze: a + a\b. Sa se afiseze rezultatul operatiei. Valorile vor fi afisate in format decimal (baza 
+     2                                  
+     3                                  bits 32 ; assembling for the 32 bits architecture
+     4                                  
+     5                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     6                                  global start        
+     7                                  
+     8                                  ; declare external functions needed by our program
+     9                                  extern exit,scanf,printf               ; tell nasm that exit exists even if we won't be defining it
+    10                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    11                                  import printf msvcrt.dll
+    12                                  import scanf msvcrt.dll
+    13                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    14                                  
+    15                                  ; our data is declared here (the variables needed by our program)
+    16                                  segment data use32 class=data
+    17                                      ; ...
+    18 00000000 F5000000                    a dd 0f5h
+    19 00000004 00000000                    b times 1 dd 0
+    20 00000008 256400                      format db "%d",0
+    21 0000000B 4461746920756E206E-         mesaj db "Dati un numar: ",0
+    21 00000014 756D61723A2000     
+    22 0000001B 52657A756C7461743A-         final db "Rezultat: %d",0
+    22 00000024 20256400           
+    23                                  ; our code starts here
+    24                                  segment code use32 class=code
+    25                                      start:
+    26                                          ; ...
+    27 00000000 68[04000000]                    push dword b
+    28 00000005 68[08000000]                    push dword format
+    29 0000000A FF15[00000000]                  call [scanf]
+    30 00000010 83C408                          add esp, 4*2
+    31                                          
+    32 00000013 BA00000000                      mov edx,0
+    33 00000018 A1[00000000]                    mov eax,[a]
+    34 0000001D F73D[04000000]                  idiv dword[b]
+    35                                          
+    36 00000023 0305[00000000]                  add eax,dword[a]
+    37 00000029 83D200                          adc edx,0
+    38                                          
+    39 0000002C 50                              push eax
+    40 0000002D 68[1B000000]                    push final
+    41 00000032 FF15[00000000]                  call [printf]
+    42 00000038 83C408                          add esp,4*2
+    43                                          ; exit(0)
+    44 0000003B 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    45 0000003D FF15[00000000]                  call    [exit]       ; call exit to terminate the program

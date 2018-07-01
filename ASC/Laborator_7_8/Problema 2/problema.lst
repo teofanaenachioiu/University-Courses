@@ -1,0 +1,82 @@
+     1                                  ;Se da un sir de dublucuvinte. Sa se ordoneze descrescator sirul cuvintelor inferioare ale acestor dublucuvinte. Cuvintele superioare raman neschimbate.
+     2                                  ;NEREZOLVATA!!! Sortari!
+     3                                  
+     4                                  
+     5                                  bits 32 ; assembling for the 32 bits architecture
+     6                                  
+     7                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     8                                  global start        
+     9                                  
+    10                                  ; declare external functions needed by our program
+    11                                  extern exit,printf               ; tell nasm that exit exists even if we won't be defining it
+    12                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    13                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    14                                  import printf msvcrt.dll
+    15                                  ; our data is declared here (the variables needed by our program)
+    16                                  segment data use32 class=data
+    17 00000000 78563412CDAB561244-         sir dd 12345678h, 1256ABCDh, 12AB4344h
+    17 00000009 43AB12             
+    18                                      len equ ($-sir)/4
+    19 0000000C FF                          handleee db -1
+    20 0000000D 25582000                    format db "%X ",0
+    21                                  segment code use32 class=code
+    22                                      start:
+    23 00000000 B903000000                      mov ecx,len
+    24 00000005 E36E                            jecxz final
+    25 00000007 49                              dec ecx
+    26 00000008 E34D                            jecxz afisare
+    27 0000000A BE[00000000]                    mov esi,sir
+    28 0000000F BB04000000                      mov ebx,4
+    29                                          sortare:
+    30 00000014 51                                  push ecx
+    31 00000015 BF[00000000]                        mov edi,sir
+    32 0000001A 01DF                                add edi,ebx
+    33                                              
+    34                                              bucla:
+    35 0000001C 66A7                                    cmpsw
+    36 0000001E 7326                                    jae next
+    37 00000020 83EE02                                  sub esi,2
+    38 00000023 83EF02                                  sub edi,2
+    39                                                  swap:
+    40 00000026 66AD                                        lodsw
+    41 00000028 6689C2                                      mov dx,ax
+    42 0000002B 83EE02                                      sub esi,2
+    43                                                      
+    44 0000002E 87F7                                        xchg esi,edi
+    45                                                      
+    46 00000030 66AD                                        lodsw
+    47 00000032 83EE02                                      sub esi,2
+    48                                                      
+    49 00000035 66AB                                        stosw
+    50 00000037 83EF02                                      sub edi,2
+    51                                                      
+    52 0000003A 87F7                                        xchg esi,edi
+    53 0000003C 6689D0                                      mov ax,dx
+    54 0000003F 66AB                                        stosw
+    55 00000041 83C702                                  add edi,2
+    56 00000044 EB06                                    jmp iesi
+    57                                                  next:
+    58 00000046 83C702                                      add edi,2
+    59 00000049 83EE02                                      sub esi,2
+    60                                                  iesi:
+    61 0000004C E2CE                                loop bucla
+    62 0000004E 59                                  pop ecx
+    63 0000004F 83C304                              add ebx,4
+    64 00000052 83C604                              add esi,4
+    65 00000055 E2BD                            loop sortare
+    66                                          
+    67                                          afisare:
+    68 00000057 B903000000                          mov ecx,len
+    69 0000005C BE[00000000]                        mov esi,sir
+    70                                              loop_afisare:
+    71 00000061 AD                                      lodsd 
+    72 00000062 60                                      pusha
+    73 00000063 50                                      push eax
+    74 00000064 68[0D000000]                            push dword format
+    75 00000069 FF15[00000000]                          call [printf]
+    76 0000006F 83C408                                  add esp, 4*2
+    77 00000072 61                                      popa
+    78 00000073 E2EC                                loop loop_afisare
+    79                                          final:
+    80 00000075 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    81 00000077 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

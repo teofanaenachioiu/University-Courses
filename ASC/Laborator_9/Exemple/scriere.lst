@@ -1,0 +1,42 @@
+     1                                  bits 32 
+     2                                  global start 
+     3                                  extern exit,fopen,fclose,fprintf            
+     4                                  import exit msvcrt.dll   
+     5                                  import fopen msvcrt.dll
+     6                                  import fclose msvcrt.dll
+     7                                  import fprintf msvcrt.dll
+     8                                  segment data use32 class=data
+     9 00000000 616E612E74787400            nume_fisier db "ana.txt",0
+    10 00000008 7700                        mod_acces db "w",0
+    11 0000000A FFFFFFFF                    descriptor dd -1
+    12 0000000E 25732000                    format db "%s ",0
+    13 00000012 416E6120617265206D-         text db "Ana are mere. ", 0 
+    13 0000001B 6572652E2000       
+    14                                  segment code use32 class=code
+    15                                      start:
+    16                                          ;deschide/creaza fisier
+    17 00000000 68[08000000]                    push dword mod_acces
+    18 00000005 68[00000000]                    push dword nume_fisier
+    19 0000000A FF15[00000000]                  call [fopen]
+    20 00000010 83C408                          add esp,8
+    21                                          
+    22                                          ;se iau in calcul eventualele erori
+    23 00000013 83F800                          cmp eax,0
+    24 00000016 742D                            je final
+    25 00000018 A3[0A000000]                    mov [descriptor],eax
+    26                                          
+    27                                          ;scrierea in fisier
+    28 0000001D 68[12000000]                    push dword text
+    29 00000022 68[0E000000]                    push dword format
+    30 00000027 FF35[0A000000]                  push dword [descriptor]
+    31 0000002D FF15[00000000]                  call [fprintf]
+    32 00000033 83C40C                          add esp,4*3
+    33                                          
+    34                                          ;inchide fisier
+    35 00000036 FF35[0A000000]                  push dword [descriptor]
+    36 0000003C FF15[00000000]                  call [fclose]
+    37 00000042 83C404                          add esp,4
+    38                                          
+    39                                          final:
+    40 00000045 6A00                            push dword 0     
+    41 00000047 FF15[00000000]                  call [exit] 

@@ -1,0 +1,77 @@
+     1                                  ;Se dau doua siruri de octeti S1 si S2 de aceeasi lungime. Sa se construiasca sirul D astfel: fiecare element de pe pozitiile pare din D este suma elementelor de pe pozitiile corespunzatoare din S1 si S2, iar fiecar
+     2                                  
+     3                                  
+     4                                  bits 32 ; assembling for the 32 bits architecture
+     5                                  
+     6                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     7                                  global start        
+     8                                  
+     9                                  ; declare external functions needed by our program
+    10                                  extern exit,printf               ; tell nasm that exit exists even if we won't be defining it
+    11                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    12                                  import printf msvcrt.dll                           ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    13                                  
+    14                                  ; our data is declared here (the variables needed by our program)
+    15                                  segment data use32 class=data
+    16 00000000 01020304                    s1 db 1, 2, 3, 4
+    17 00000004 05060708                    s2 db  5, 6, 7, 8
+    18                                      l equ $-s2
+    19 00000008 00<rept>                    dest times l db 0
+    20 0000000C 536972756C20657374-         mesaj db "Sirul este: ",0
+    20 00000015 653A2000           
+    21 00000019 25642000                    format db "%d ",0 
+    22                                  segment code use32 class=code
+    23                                      start:
+    24 00000000 B904000000                      mov ecx, l ;Retinem lungimea sirului in ECX 
+    25 00000005 BE00000000                      mov esi, 0 ;Retinem in ESI pozitia curenta (initial 0)
+    26                                          
+    27 0000000A E349                            jecxz Sfarsit ;Verificam ECX != 0, pentru a nu intra in bucla infinita
+    28                                          
+    29 0000000C 60                              pushad ;punem toti registrii pe stiva
+    30                                          
+    31 0000000D 68[0C000000]                    push mesaj 
+    32 00000012 FF15[00000000]                  call[printf] ;Apelam functia printf care va afisa mesajul
+    33 00000018 83C404                          add esp,4*1 ;Eliberam stiva
+    34                                          
+    35 0000001B 61                              popad ;extragem toti registrii de pe stiva
+    36                                          
+    37                                          Repeta:
+    38 0000001C 8A86[00000000]                      mov al,[s1+esi] ;al = s1 [esi]
+    39 00000022 8A9E[04000000]                      mov bl,[s2+esi] ;bl = s2 [esi]
+    40                                              
+    41 00000028 F7C601000000                        test esi,1 ; esi AND 1 => 1(ESI impar), 0 (ESI par)
+    42                                              
+    43 0000002E 7506                                jnz impar ;ZF=0 se sare la eticheta impar
+    44 00000030 7400                                jz par ;ZF=1 se sare la eticheta par
+    45                                              
+    46                                              par: 
+    47 00000032 00D8                                    add al,bl ;al = al + bl
+    48 00000034 EB02                                    jmp iesire ;elementul de adaugat(al) in sirul destinatie e calculat si se sare la ultimul pas - adaugarea in sir
+    49                                              
+    50                                              impar:
+    51 00000036 28D8                                    sub al,bl ;al = al - bl
+    52                                                  
+    53                                              iesire:
+    54 00000038 8886[08000000]                          mov [dest+esi],al ;dest[esi] = al
+    55 0000003E 46                                      inc esi ;esi = esi+1 (pregatim poziti pentru urmatorul element)
+    56                                                  
+    57                                                  ;cmp esi,l ;verificam daca esi<=l
+    58                                                  ;jg Sfarsit ;in caz afirmativ se sare la finaul programului
+    59                                                  
+    60                                              afisare:    
+    61 0000003F 6698                                    cbw ;al -> ax
+    62 00000041 98                                      cwde ;ax -> eax
+    63                                                  
+    64 00000042 60                                      pushad ;punem toti registrii pe stiva
+    65                                                  
+    66 00000043 50                                      push dword eax
+    67 00000044 68[19000000]                            push dword format
+    68 00000049 FF15[00000000]                          call [printf] ;Apelam functia printf care va afisa elementul
+    69 0000004F 83C408                                  add esp, 4*2 ;Eliberam stiva  
+    70                                                  
+    71 00000052 61                                      popad ;extragem toti registrii de pe stiva
+    72 00000053 E2C7                            loop Repeta
+    73                                          
+    74                                          Sfarsit:
+    75 00000055 6A00                            push dword 0      ; push the parameter for exit onto the stack
+    76 00000057 FF15[00000000]                  call [exit]       ; call exit to terminate the program

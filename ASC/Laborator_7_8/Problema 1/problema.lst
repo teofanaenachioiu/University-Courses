@@ -1,0 +1,97 @@
+     1                                  bits 32
+     2                                  global start 
+     3                                  extern exit
+     4                                  import exit msvcrt.dll
+     5                                  segment data use32 class=data
+     6 00000000 6167687479                  s1 db 'aghty'
+     7 00000005 626C6D70797A                s2 db 'blmpyz'
+     8                                      len1 equ s2-s1
+     9                                      len2 equ $-s2
+    10 0000000B FF<rept>                    s3 times len1+len2 db -1
+    11 00000016 05                          nr1 db len1
+    12 00000017 06                          nr2 db len2
+    13 00000018 00000000                    nr3 dd 0
+    14                                  segment code use32 class=code 
+    15                                      memo:
+    16 00000000 81EE[00000000]                  sub esi,s1
+    17 00000006 81EF[05000000]                  sub edi,s2
+    18 0000000C 01F7                            add edi,esi
+    19 0000000E 4F                              dec edi
+    20 0000000F 81C7[0B000000]                  add edi,s3
+    21 00000015 C3                              ret
+    22                                          
+    23                                      start:
+    24 00000016 BE[00000000]                    mov esi,s1
+    25 0000001B BF[05000000]                    mov edi,s2
+    26 00000020 FC                              cld
+    27                                          interclasare:
+    28 00000021 A6                                  cmpsb
+    29 00000022 771A                                ja sir2
+    30                                              sir1:
+    31 00000024 4F                                      dec edi
+    32 00000025 89F3                                    mov ebx,esi
+    33 00000027 89FA                                    mov edx,edi
+    34                                                  
+    35 00000029 E8D2FFFFFF                              call memo
+    36                                                  
+    37 0000002E 89DE                                    mov esi, ebx
+    38 00000030 4E                                      dec esi
+    39                                                  
+    40 00000031 A4                                      movsb
+    41                                                  
+    42 00000032 89DE                                    mov esi,ebx
+    43 00000034 89D7                                    mov edi,edx
+    44 00000036 FE0D[16000000]                          dec byte[nr1]
+    45 0000003C EB18                                    jmp mai_departe
+    46                                              sir2:
+    47                                                   
+    48 0000003E 4E                                      dec esi
+    49 0000003F 89F3                                    mov ebx,esi
+    50 00000041 89FA                                    mov edx,edi
+    51                                                  
+    52 00000043 E8B8FFFFFF                              call memo
+    53                                                  
+    54 00000048 89D6                                    mov esi, edx
+    55 0000004A 4E                                      dec esi
+    56                                                  
+    57 0000004B A4                                      movsb
+    58                                                  
+    59 0000004C 89DE                                    mov esi,ebx
+    60 0000004E 89D7                                    mov edi,edx
+    61 00000050 FE0D[17000000]                          dec byte[nr2]
+    62                                              mai_departe:
+    63 00000056 FF05[18000000]                      inc dword[nr3]
+    64 0000005C 803D[16000000]00                    cmp byte[nr1],0
+    65 00000063 7E0B                                jle completeaza_sir2
+    66 00000065 803D[17000000]00                    cmp byte[nr2],0
+    67 0000006C 7E25                                jle completeaza_sir1
+    68 0000006E EBB1                                jmp interclasare
+    69                                              
+    70                                          completeaza_sir2:
+    71 00000070 BE[05000000]                        mov esi,s2
+    72 00000075 B800000000                          mov eax,0
+    73 0000007A A0[17000000]                        mov al,[nr2]
+    74 0000007F 83C606                              add esi,len2
+    75                                              ;dec esi
+    76 00000082 29C6                                sub esi,eax
+    77                                              
+    78 00000084 BF[0B000000]                        mov edi,s3
+    79 00000089 033D[18000000]                      add edi,dword[nr3]
+    80 0000008F 89C1                                mov ecx,eax
+    81 00000091 F3A4                                rep movsb
+    82                                              
+    83                                          completeaza_sir1:
+    84 00000093 BE[00000000]                        mov esi,s1
+    85 00000098 B800000000                          mov eax,0
+    86 0000009D A0[16000000]                        mov al,[nr1]
+    87 000000A2 83C605                              add esi,len1
+    88                                              ;dec esi
+    89 000000A5 29C6                                sub esi,eax
+    90                                              
+    91 000000A7 BF[0B000000]                        mov edi,s3
+    92 000000AC 033D[18000000]                      add edi,dword[nr3]
+    93 000000B2 89C1                                mov ecx,eax
+    94 000000B4 F3A4                                rep movsb
+    95                                              
+    96 000000B6 6A00                            push dword 0
+    97 000000B8 FF15[00000000]                  call [exit]

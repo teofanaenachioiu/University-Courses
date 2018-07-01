@@ -1,0 +1,76 @@
+     1                                  ; Codul de mai jos va deschide un fisier numit "input.txt" din directorul curent si va citi intregul text din acel fisier, in etape, cate 100 de caractere intr-o etapa.
+     2                                  ; Deoarece un fisier text poate fi foarte lung, nu este intotdeauna posibil sa citim fisierul intr-o singura etapa pentru ca nu putem defini un sir de caractere suficient de lung pentru intregul text din fisier. De 
+     3                                  ; Programul va folosi functia fopen pentru deschiderea fisierului, functia fread pentru citirea din fisier si functia fclose pentru inchiderea fisierului creat.
+     4                                  ; Deoarece in apelul functiei fopen programul foloseste modul de acces "r", daca un fisier numele dat nu exista in directorul curent,  apelul functiei fopen nu va reusi (eroare). Detalii despre modurile de acces sun
+     5                                  
+     6                                  bits 32
+     7                                  global start
+     8                                  extern exit,fopen,fclose,fread,printf
+     9                                  import exit msvcrt.dll
+    10                                  import fopen msvcrt.dll
+    11                                  import fclose msvcrt.dll
+    12                                  import fread msvcrt.dll
+    13                                  import printf msvcrt.dll
+    14                                  segment data use32 class=data 
+    15 00000000 696E7075742E747874-         nume_fisir db "input.txt",0
+    15 00000009 00                 
+    16 0000000A 7200                        mod_acces db "r",0
+    17 0000000C FFFFFFFF                    descriptor dd -1
+    18                                      len equ 100
+    19 00000010 00<rept>                    buffer times len db 0
+    20 00000074 00000000                    numar_caractere dd 0
+    21 00000078 00<rept>                    text times 500 db 0
+    22 0000026C 25643A20257300              format db "%d: %s",0
+    23                                  segment code use32 class=code
+    24                                      start:
+    25                                          ;deschid fisierul
+    26 00000000 68[0A000000]                    push dword mod_acces
+    27 00000005 68[00000000]                    push dword nume_fisir
+    28 0000000A FF15[00000000]                  call [fopen]
+    29 00000010 83C408                          add esp,8
+    30                                          
+    31                                          ;erori
+    32 00000013 83F800                          cmp eax, 0
+    33 00000016 746F                            je final
+    34 00000018 A3[0C000000]                    mov [descriptor],eax
+    35                                          
+    36 0000001D BF[78000000]                    mov edi,text
+    37 00000022 BB00000000                      mov ebx,0
+    38                                          ;citesc din fisier
+    39                                          bucla:
+    40 00000027 FF35[0C000000]                      push dword [descriptor]
+    41 0000002D 6A64                                push dword len
+    42 0000002F 6A01                                push dword 1
+    43 00000031 68[10000000]                        push dword buffer
+    44 00000036 FF15[00000000]                      call [fread]
+    45 0000003C 83C410                              add esp,4*4
+    46                                                          
+    47 0000003F 83F800                              cmp eax,0
+    48 00000042 741B                                je afisare
+    49                                              
+    50 00000044 A3[74000000]                        mov [numar_caractere],eax
+    51 00000049 031D[74000000]                      add ebx, [numar_caractere]
+    52 0000004F BE[10000000]                        mov esi,buffer
+    53                                              
+    54 00000054 8B0D[74000000]                      mov ecx,[numar_caractere]
+    55                                              repeta:
+    56 0000005A A4                                      movsb
+    57 0000005B E2FD                                loop repeta
+    58                                              
+    59 0000005D EBC8                                jmp bucla
+    60                                          ;afisez textul pe ecran
+    61                                          afisare:
+    62 0000005F 68[78000000]                        push dword text
+    63 00000064 FF35[74000000]                      push dword [numar_caractere]
+    64 0000006A 68[6C020000]                        push dword format
+    65 0000006F FF15[00000000]                      call [printf]
+    66 00000075 83C40C                              add esp,4*3
+    67                                             
+    68                                          ;inchid fisierul
+    69 00000078 FF35[0C000000]                  push dword[descriptor]
+    70 0000007E FF15[00000000]                  call [fclose]
+    71 00000084 83C404                          add esp,4
+    72                                          
+    73                                          final:
+    74 00000087 6A00                            push dword 0
+    75 00000089 FF15[00000000]                  call [exit]

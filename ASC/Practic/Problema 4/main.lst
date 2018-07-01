@@ -1,0 +1,112 @@
+     1                                  ;:A string of doubleword is given. Build a string of bite in the following way:
+     2                                  ;take the most significant byte of the least significant word of each doubleword and if it is strictly negative than put it into the string. After that write your string of bites on the screen in base 2.
+     3                                  ;Ex: sir dd 12345678h,1234abcdh,FF00FE33h
+     4                                  ;your string should look like: AB,FE
+     5                                  ;You should print on the screen: 1010 1011 1111 1110(no space needed beetwen the number)
+     6                                  
+     7                                  bits 32 
+     8                                  global start        
+     9                                  
+    10                                  extern exit,fprintf,fopen,fclose
+    11                                  import exit msvcrt.dll   
+    12                                  import fprintf msvcrt.dll
+    13                                  import fopen msvcrt.dll
+    14                                  import fclose msvcrt.dll   
+    15                                  segment data use32 class=data
+    16 00000000 78563412CDAB341233-         sir dd 12345678h,1234abcdh,0FF00FE33h
+    16 00000009 FE00FF             
+    17                                      len equ ($-sir)/4
+    18 0000000C FF<rept>                    dest times len db -1
+    19 0000000F 6F75747075742E7478-         nume_fisier db "output.txt",0
+    19 00000018 7400               
+    20 0000001A 7700                        mod_acces db "w",0
+    21 0000001C FFFFFFFF                    descriptor dd -1
+    22 00000020 02                          doi db 2
+    23 00000021 FD<rept>                    bit times len*8 db -3
+    24 00000039 257800                      format db "%x",0
+    25 0000003C 0000                        nr dw 0
+    26                                  
+    27                                  segment code use32 class=code
+    28                                      conversie:
+    29 00000000 B908000000                      mov ecx,8
+    30                                          
+    31                                          .repeta:
+    32 00000005 B400                                mov ah,0
+    33 00000007 F635[20000000]                      div byte[doi]
+    34 0000000D 88C3                                mov bl,al
+    35 0000000F 88E0                                mov al,ah
+    36 00000011 AA                                  stosb
+    37 00000012 88D8                                mov al,bl
+    38 00000014 E2EF                            loop .repeta
+    39 00000016 C3                              ret
+    40                                      start:
+    41 00000017 68[1A000000]                    push dword mod_acces
+    42 0000001C 68[0F000000]                    push dword nume_fisier
+    43 00000021 FF15[00000000]                  call [fopen]
+    44 00000027 83C408                          add esp,8
+    45                                          
+    46 0000002A 83F800                          cmp eax,0
+    47 0000002D 0F8492000000                    je final
+    48                                          
+    49 00000033 A3[1C000000]                    mov [descriptor],eax
+    50                                          
+    51 00000038 B903000000                      mov ecx,len
+    52 0000003D E377                            jecxz inchide
+    53                                          
+    54 0000003F BE[00000000]                    mov esi,sir
+    55 00000044 BF[0C000000]                    mov edi,dest
+    56                                          bucla:
+    57 00000049 AD                                  lodsd
+    58 0000004A 80FC00                              cmp ah,0
+    59 0000004D 7D0A                                jge next
+    60 0000004F 88E0                                mov al,ah
+    61 00000051 66FF05[3C000000]                    inc word[nr]
+    62 00000058 AA                                  stosb
+    63                                              next:
+    64 00000059 E2EE                            loop bucla
+    65                                          
+    66 0000005B BE[0C000000]                    mov esi,dest
+    67 00000060 BF[21000000]                    mov edi,bit
+    68 00000065 83C707                          add edi,7
+    69 00000068 668B0D[3C000000]                mov cx,word[nr]
+    70                                          baza:
+    71 0000006F AC                                  lodsb
+    72                                              
+    73 00000070 FD                                  std
+    74 00000071 60                                  pusha
+    75 00000072 E889FFFFFF                          call conversie
+    76 00000077 61                                  popa
+    77 00000078 83C708                              add edi,8
+    78 0000007B FC                                  cld
+    79 0000007C E2F1                            loop baza
+    80                                          
+    81 0000007E 66A1[3C000000]                  mov ax,word[nr]
+    82 00000084 66B90800                        mov cx,8
+    83 00000088 66F7E1                          mul cx
+    84 0000008B 6652                            push dx
+    85 0000008D 6650                            push ax
+    86 0000008F 58                              pop eax
+    87                                          
+    88 00000090 89C1                            mov ecx,eax
+    89 00000092 BE[21000000]                    mov esi,bit
+    90                                          
+    91                                          afis:
+    92 00000097 B800000000                          mov eax,0
+    93 0000009C AC                                  lodsb
+    94 0000009D 51                                  push ecx
+    95 0000009E 50                                  push eax
+    96 0000009F 68[39000000]                        push dword format
+    97 000000A4 FF35[1C000000]                      push dword [descriptor]
+    98 000000AA FF15[00000000]                      call [fprintf]
+    99 000000B0 83C40C                              add esp,4*3
+   100 000000B3 59                                  pop ecx
+   101 000000B4 E2E1                            loop afis
+   102                                          
+   103                                          inchide:
+   104 000000B6 FF35[1C000000]                  push dword [descriptor]
+   105 000000BC FF15[00000000]                  call [fclose]
+   106 000000C2 83C404                          add esp,4
+   107                                          
+   108                                          final:
+   109 000000C5 6A00                            push    dword 0     
+   110 000000C7 FF15[00000000]                  call    [exit]     

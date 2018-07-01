@@ -1,0 +1,55 @@
+     1                                  ;Dandu-se 4 octeti, sa se obtina in AX suma numerelor intregi reprezentate de bitii 4-6 ai celor 4 octeti.
+     2                                  
+     3                                  bits 32 ; assembling for the 32 bits architecture
+     4                                  
+     5                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     6                                  global start        
+     7                                  
+     8                                  ; declare external functions needed by our program
+     9                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+    10                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    11                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    12                                  
+    13                                  ; our data is declared here (the variables needed by our program)
+    14                                  segment data use32 class=data
+    15                                      ; ...
+    16 00000000 56                          a db 056h
+    17 00000001 F1                          b db 0f1h
+    18 00000002 A7                          c db 0a7h
+    19 00000003 3B                          d db 03bh
+    20                                  ; our code starts here
+    21                                  segment code use32 class=code
+    22                                      start:
+    23                                          ; ...
+    24 00000000 66B80000                        mov ax,0
+    25                                          
+    26 00000004 66BB0000                        mov bx,0 ;punem 0 in bx, apoi valoarea data in bl
+    27 00000008 8A1D[00000000]                  mov bl,byte[a]
+    28 0000000E C0C304                          rol bl,4
+    29 00000011 80E307                          and bl,07h
+    30                                          
+    31 00000014 6601D8                          add ax,bx
+    32                                          
+    33 00000017 66BB0000                        mov bx,0 ;punem 0 in bx, apoi valoarea data in bl
+    34 0000001B 8A1D[01000000]                  mov bl,byte[b]
+    35 00000021 C0C304                          rol bl,4
+    36 00000024 80E307                          and bl,07h
+    37                                          
+    38 00000027 6601D8                          add ax,bx
+    39                                          
+    40 0000002A 66BB0000                        mov bx,0 ;punem 0 in bx, apoi valoarea data in bl
+    41 0000002E 8A1D[02000000]                  mov bl,byte[c]
+    42 00000034 C0C304                          rol bl,4
+    43 00000037 80E307                          and bl,07h
+    44                                          
+    45 0000003A 6601D8                          add ax,bx
+    46                                          
+    47 0000003D 66BB0000                        mov bx,0 ;punem 0 in bx, apoi valoarea data in bl
+    48 00000041 8A1D[03000000]                  mov bl,byte[d]
+    49 00000047 C0C304                          rol bl,4
+    50 0000004A 80E307                          and bl,07h
+    51                                          
+    52 0000004D 6601D8                          add ax,bx
+    53                                          ; exit(0)
+    54 00000050 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    55 00000052 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

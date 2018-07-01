@@ -1,0 +1,85 @@
+     1                                  ;Se da un fisier text. Sa se citeasca continutul fisierului, sa se contorizeze numarul de vocale si sa se afiseze aceasta valoare. 
+     2                                  ;Numele fisierului text este definit in segmentul de date.
+     3                                  
+     4                                  bits 32
+     5                                  global start    
+     6                                  extern exit,fopen,fclose,fread  ,printf          
+     7                                  import exit msvcrt.dll 
+     8                                  import fopen msvcrt.dll
+     9                                  import fclose msvcrt.dll
+    10                                  import fread msvcrt.dll 
+    11                                  import printf msvcrt.dll 
+    12                                  segment data use32 class=data
+    13 00000000 696E7075742E747874-         nume_fisier db "input.txt",0
+    13 00000009 00                 
+    14 0000000A 7200                        mod_acces db "r",0
+    15 0000000C FFFFFFFF                    descriptor dd -1
+    16                                      len equ 100
+    17 00000010 00<rept>                    buffer times len db 0
+    18 00000074 00000000                    nr_car_citite dd 0
+    19 00000078 4145494F556165696F-         vocale db "AEIOUaeiou",0
+    19 00000081 7500               
+    20 00000083 256400                      format db "%d",0
+    21                                  segment code use32 class=code
+    22                                      start:
+    23 00000000 68[0A000000]                    push dword mod_acces
+    24 00000005 68[00000000]                    push dword nume_fisier
+    25 0000000A FF15[00000000]                  call [fopen]
+    26 00000010 83C408                          add esp,4*2
+    27                                          
+    28 00000013 83F800                          cmp eax,0
+    29 00000016 746E                            je final
+    30                                          
+    31 00000018 A3[0C000000]                    mov [descriptor],eax
+    32                                          
+    33                                          bucla:
+    34                                              
+    35 0000001D FF35[0C000000]                      push dword [descriptor]
+    36 00000023 6A64                                push dword len
+    37 00000025 6A01                                push dword 1
+    38 00000027 68[10000000]                        push dword buffer
+    39 0000002C FF15[00000000]                      call [fread]
+    40 00000032 83C410                              add esp, 4*4
+    41                                              
+    42 00000035 83F800                              cmp eax, 0        
+    43 00000038 742E                                je cleanup
+    44                                  
+    45 0000003A A3[74000000]                        mov [nr_car_citite], eax        ; salvam numarul de caractere citie
+    46                                              
+    47 0000003F BE[10000000]                        mov esi,buffer
+    48 00000044 BB00000000                          mov ebx,0
+    49                                              
+    50 00000049 8B0D[74000000]                      mov ecx,[nr_car_citite]
+    51                                              ;numaram vocalele din buffer
+    52                                              repeta:
+    53 0000004F AC                                      lodsb
+    54 00000050 51                                      push ecx
+    55 00000051 BF[78000000]                            mov edi,vocale
+    56 00000056 B90A000000                              mov ecx,10
+    57                                                      caut:
+    58 0000005B AE                                              scasb
+    59 0000005C 7404                                            je gasit
+    60 0000005E E2FB                                        loop caut
+    61 00000060 EB01                                    jmp gata
+    62                                                  gasit:
+    63 00000062 43                                          inc ebx
+    64                                                  gata:
+    65 00000063 59                                          pop ecx
+    66 00000064 E2E9                                loop repeta
+    67                                                 
+    68 00000066 EBB5                                jmp bucla
+    69                                              
+    70                                          cleanup:
+    71                                         
+    72 00000068 53                              push ebx
+    73 00000069 68[83000000]                    push dword format
+    74 0000006E FF15[00000000]                  call [printf]
+    75 00000074 83C408                          add esp,8
+    76                                          
+    77 00000077 FF35[0C000000]                  push dword [descriptor]
+    78 0000007D FF15[00000000]                  call [fclose]
+    79 00000083 83C404                          add esp,4
+    80                                          
+    81                                          final:
+    82 00000086 6A00                            push    dword 0    
+    83 00000088 FF15[00000000]                  call    [exit]     

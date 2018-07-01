@@ -1,0 +1,32 @@
+     1                                  bits 32 
+     2                                  global start 
+     3                                  extern exit,fopen,fclose            
+     4                                  import exit msvcrt.dll   
+     5                                  import fopen msvcrt.dll
+     6                                  import fclose msvcrt.dll
+     7                                  segment data use32 class=data
+     8 00000000 696E7075742E747874-         nume_fisier db "input.txt",0
+     8 00000009 00                 
+     9 0000000A 7700                        mod_acces db "w",0
+    10 0000000C FFFFFFFF                    descriptor dd -1
+    11                                  segment code use32 class=code
+    12                                      start:
+    13                                          ;deschide/creaza fisier
+    14 00000000 68[0A000000]                    push dword mod_acces
+    15 00000005 68[00000000]                    push dword nume_fisier
+    16 0000000A FF15[00000000]                  call [fopen]
+    17 00000010 83C408                          add esp,8
+    18                                          
+    19                                          ;se iau in calcul eventualele erori
+    20 00000013 83F800                          cmp eax,0
+    21 00000016 7414                            je final
+    22 00000018 A3[0C000000]                    mov [descriptor],eax
+    23                                          
+    24                                          ;inchide fisier
+    25 0000001D FF35[0C000000]                  push dword [descriptor]
+    26 00000023 FF15[00000000]                  call [fclose]
+    27 00000029 83C404                          add esp,4
+    28                                          
+    29                                          final:
+    30 0000002C 6A00                            push dword 0     
+    31 0000002E FF15[00000000]                  call [exit]      

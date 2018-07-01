@@ -1,0 +1,66 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit,printf               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                  import printf msvcrt.dll                          ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13 00000000 01030507                    s1 db 1, 3, 5, 7
+    14 00000004 02060904                    s2 db 2, 6, 9, 4
+    15                                      len equ $-s2
+    16 00000008 00<rept>                    d times len*2 db 0
+    17 00000010 FF                          handle db -1
+    18 00000011 25642000                    format db "%d ",0
+    19                                  ; our code starts here
+    20                                  segment code use32 class=code
+    21                                      start:
+    22 00000000 BE00000000                      mov esi,0
+    23 00000005 B908000000                      mov ecx,len*2
+    24 0000000A BF00000000                      mov edi,0
+    25                                          
+    26 0000000F E351                            jecxz final
+    27                                          
+    28                                          merge:
+    29 00000011 8A86[00000000]                      mov al,[s1+esi]
+    30 00000017 8A9F[04000000]                      mov bl,[s2+edi]
+    31 0000001D 38D8                                cmp al,bl
+    32 0000001F 7C0F                                jl el1
+    33                                              el2:
+    34 00000021 889C3E[08000000]                       mov [d+esi+edi],bl
+    35 00000028 83FF04                                 cmp edi,len
+    36 0000002B 7D03                                   jge el1
+    37 0000002D 47                                     inc edi
+    38 0000002E EB0F                                   jmp next
+    39                                              el1:
+    40 00000030 88843E[08000000]                        mov [d+esi+edi],al
+    41 00000037 83FE04                                  cmp esi,len
+    42 0000003A 7DE5                                    jge el2
+    43 0000003C 46                                      inc esi
+    44 0000003D EB00                                    jmp next
+    45                                              next:
+    46 0000003F E2D0                            loop merge
+    47                                          
+    48 00000041 BE[08000000]                    mov esi,d
+    49 00000046 B908000000                      mov ecx,len*2
+    50                                          afisare:
+    51 0000004B AC                                  lodsb
+    52 0000004C 6698                                cbw
+    53 0000004E 98                                  cwde
+    54                                              
+    55 0000004F 60                                  pusha 
+    56                                              
+    57 00000050 50                                  push eax
+    58 00000051 68[11000000]                        push format
+    59 00000056 FF15[00000000]                      call [printf]
+    60 0000005C 83C408                              add esp,4*2
+    61 0000005F 61                                  popa
+    62 00000060 E2E9                            loop afisare
+    63                                          final:
+    64                                              
+    65 00000062 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    66 00000064 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

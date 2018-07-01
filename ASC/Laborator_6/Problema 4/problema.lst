@@ -1,0 +1,54 @@
+     1                                  ;Se da un sir de octeti S de lungime l. Sa se construiasca sirul D de lungime l-1 astfel incat elementele din D sa reprezinte diferenta dintre fiecare 2 elemente consecutive din S. 
+     2                                  
+     3                                  bits 32 ; assembling for the 32 bits architecture
+     4                                  
+     5                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     6                                  global start        
+     7                                  
+     8                                  ; declare external functions needed by our program
+     9                                  extern exit,printf               ; tell nasm that exit exists even if we won't be defining it
+    10                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    11                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    12                                  import printf msvcrt.dll
+    13                                  ; our data is declared here (the variables needed by our program)
+    14                                  segment data use32 class=data
+    15                                      ; ...
+    16 00000000 010204060A1411              s db 1, 2, 4, 6, 10, 20, 17
+    17                                      len equ $-s
+    18 00000007 00<rept>                    d times len-1 db 0
+    19 0000000D FF                          handle db -1
+    20 0000000E 25642000                    format db "%d ",0
+    21                                  ; our code starts here
+    22                                  segment code use32 class=code
+    23                                      start:
+    24 00000000 B907000000                      mov ecx,len
+    25 00000005 E33D                            jecxz final
+    26                                          
+    27 00000007 BF[07000000]                    mov edi,d
+    28 0000000C BE00000000                      mov esi,0
+    29                                          repeta:
+    30 00000011 8A86[01000000]                      mov al,[s+esi+1]
+    31 00000017 8A9E[00000000]                      mov bl,[s+esi]
+    32 0000001D 28D8                                sub al,bl
+    33 0000001F AA                                  stosb
+    34 00000020 46                                  inc esi
+    35 00000021 E2EE                            loop repeta
+    36                                          
+    37 00000023 BE[07000000]                    mov esi,d
+    38 00000028 B906000000                      mov ecx,len-1
+    39                                          afisare:
+    40 0000002D AC                                  lodsb
+    41 0000002E 6698                                cbw
+    42 00000030 98                                  cwde
+    43                                              
+    44 00000031 60                                  pusha 
+    45                                              
+    46 00000032 50                                  push eax
+    47 00000033 68[0E000000]                        push format
+    48 00000038 FF15[00000000]                      call [printf]
+    49 0000003E 83C408                              add esp,4*2
+    50 00000041 61                                  popa
+    51 00000042 E2E9                            loop afisare
+    52                                          final:
+    53 00000044 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    54 00000046 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

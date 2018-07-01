@@ -1,0 +1,78 @@
+     1                                  ;A string of doublewords is given. Display on the screen in base 16 the values if the strictly negative lower words multiple of 16 from the string of give doublewords.
+     2                                  
+     3                                  bits 32 
+     4                                  global start        
+     5                                  extern exit,fopen,fclose,fprintf              
+     6                                  import exit msvcrt.dll   
+     7                                  import fopen msvcrt.dll
+     8                                  import fclose msvcrt.dll
+     9                                  import fprintf msvcrt.dll
+    10                                  segment data use32 class=data
+    11 00000000 6F75747075742E7478-         nume_fisier db "output.txt",0
+    11 00000009 7400               
+    12 0000000B 7700                        mod_acces db "w",0
+    13 0000000D FFFFFFFF                    descriptor dd -1
+    14 00000011 309E63A578563412            sir dd 0a5639e30h,12345678h
+    15                                      len equ ($-sir)/4
+    16 00000019 FFFF<rept>                  dest times len dw -1
+    17 0000001D 00000000                    len_dest dd 0
+    18 00000021 1000                        impartitor dw 16
+    19 00000023 25782000                    format db "%x ",0
+    20                                  segment code use32 class=code
+    21                                      start:
+    22 00000000 68[0B000000]                    push dword mod_acces
+    23 00000005 68[00000000]                    push dword nume_fisier
+    24 0000000A FF15[00000000]                  call [fopen]
+    25 00000010 83C408                          add esp,8
+    26                                          
+    27 00000013 83F800                          cmp eax, 0
+    28 00000016 0F8482000000                    je final
+    29                                          
+    30 0000001C A3[0D000000]                    mov [descriptor],eax
+    31                                          
+    32 00000021 B902000000                      mov ecx,len
+    33 00000026 E376                            jecxz final
+    34                                          
+    35 00000028 BE[11000000]                    mov esi,sir
+    36 0000002D BF[19000000]                    mov edi,dest
+    37 00000032 C705[1D000000]0000-             mov dword[len_dest],0
+    37 0000003A 0000               
+    38                                          
+    39                                          bucla:
+    40 0000003C AD                                  lodsd
+    41 0000003D 6683F800                            cmp ax,0
+    42 00000041 7D1F                                jge mai_departe
+    43                                              
+    44 00000043 6689C3                              mov bx,ax
+    45 00000046 66BA0000                            mov dx,0
+    46 0000004A 66F73D[21000000]                    idiv word[impartitor]
+    47 00000051 6683FA00                            cmp dx,0
+    48 00000055 750B                                jne mai_departe
+    49 00000057 6689D8                              mov ax,bx
+    50 0000005A 66AB                                stosw
+    51 0000005C FF05[1D000000]                      inc dword[len_dest]
+    52                                              mai_departe:
+    53 00000062 E2D8                            loop bucla
+    54                                          
+    55                                          ;afisare
+    56 00000064 8B0D[1D000000]                  mov ecx,dword[len_dest]
+    57 0000006A BE[19000000]                    mov esi,dest
+    58                                          repeta:
+    59 0000006F B800000000                          mov eax,0
+    60 00000074 66AD                                lodsw
+    61 00000076 51                                  push ecx
+    62 00000077 50                                  push eax
+    63 00000078 68[23000000]                        push dword format
+    64 0000007D FF35[0D000000]                      push dword [descriptor]
+    65 00000083 FF15[00000000]                      call [fprintf]
+    66 00000089 83C40C                              add esp,12
+    67 0000008C 59                                  pop ecx
+    68 0000008D E2E0                            loop repeta
+    69                                          
+    70 0000008F FF35[0D000000]                  push dword [descriptor]
+    71 00000095 FF15[00000000]                  call [fclose]
+    72 0000009B 83C404                          add esp,4
+    73                                          
+    74                                          final:
+    75 0000009E 6A00                            push    dword 0     
+    76 000000A0 FF15[00000000]                  call    [exit]     

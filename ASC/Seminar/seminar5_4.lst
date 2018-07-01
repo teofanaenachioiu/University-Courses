@@ -1,0 +1,46 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      ; ...
+    14 00000000 617364313132647333-         s db 'asd112ds32as266df4d5s'
+    14 00000009 326173323636646634-
+    14 00000012 643573             
+    15 00000015 303132333435363738-         t db '0123456789'
+    15 0000001E 39                 
+    16                                      len_s equ t-s
+    17                                      len_t equ 10
+    18 0000001F 00                          contor db 0
+    19                                  ; our code starts here
+    20                                  segment code use32 class=code
+    21                                      start:
+    22                                          ; ...
+    23 00000000 B915000000                      mov ecx,len_s
+    24 00000005 E329                            jecxz final
+    25 00000007 BE[00000000]                    mov esi,s
+    26                                          repeta:
+    27 0000000C BF[15000000]                        mov edi,t
+    28 00000011 51                                  push ecx
+    29 00000012 B90A000000                          mov ecx, len_t
+    30 00000017 F2AE                                repnz scasb
+    31 00000019 81EF[15000000]                      sub edi,t
+    32 0000001F 3887[00000000]                      cmp byte[s+edi],al
+    33 00000025 7506                                jne mai_departe
+    34 00000027 FE05[1F000000]                      inc byte[contor]
+    35                                              mai_departe:
+    36                                              
+    37 0000002D 59                                  pop ecx
+    38 0000002E E2DC                            loop repeta
+    39                                          
+    40                                          final:
+    41                                          ; exit(0)
+    42 00000030 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    43 00000032 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

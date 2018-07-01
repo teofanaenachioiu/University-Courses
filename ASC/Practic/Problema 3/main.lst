@@ -1,0 +1,84 @@
+     1                                  ;Se da un sir de N cuvinte. Sa se tipareasca in baza 16 catul si restul impartirii fara semn A/B, unde A este maximul valorilor octetilor inferiori ai sirului de cuvinte date, iar B este minimul valorilor octetilor 
+     2                                  ;sir_cuv dw 21520,-6,"xy",0f5b2h,-129
+     3                                  ;Daca A=194 si B=10, la iesire se va afisa pe ecran catul = 13h si restul = 04h
+     4                                  
+     5                                  bits 32 
+     6                                  global start        
+     7 00000000 1054FAFF7879B2F57F-         sir_cuv dw 21520,-6,"xy",0f5b2h,-129
+     7 00000009 FF                 
+     8                                      len equ ($-sir_cuv)/2
+     9 0000000A 00                          max db 0
+    10 0000000B FF                          min db 0ffh
+    11 0000000C 6F75747075742E7478-         nume_fisier db "output.txt",0
+    11 00000015 7400               
+    12 00000017 7700                        mod_acces db "w",0
+    13 00000019 FFFFFFFF                    descriptor dd -1
+    14 0000001D 636174756C3D257820-         format db "catul=%x restul=%x",0
+    14 00000026 72657374756C3D2578-
+    14 0000002F 00                 
+    15                                  extern exit,fprintf,fopen,fclose
+    16                                  import exit msvcrt.dll   
+    17                                  import fprintf msvcrt.dll
+    18                                  import fopen msvcrt.dll
+    19                                  import fclose msvcrt.dll
+    20                                  segment data use32 class=data
+    21                                      
+    22                                  segment code use32 class=code
+    23                                      start:
+    24 00000000 68[17000000]                    push dword mod_acces
+    25 00000005 68[0C000000]                    push dword nume_fisier
+    26 0000000A FF15[00000000]                  call [fopen]
+    27 00000010 83C408                          add esp,8
+    28                                          
+    29 00000013 83F800                          cmp eax,0
+    30 00000016 7479                            je final
+    31                                          
+    32 00000018 A3[19000000]                    mov [descriptor],eax
+    33                                          
+    34 0000001D B905000000                      mov ecx,len
+    35 00000022 E35E                            jecxz inchide
+    36                                          
+    37 00000024 BE[00000000]                    mov esi,sir_cuv
+    38                                          bucla:
+    39 00000029 66AD                                lodsw
+    40 0000002B 3A05[0A000000]                      cmp al,byte[max]
+    41 00000031 7605                                jbe next
+    42 00000033 A2[0A000000]                        mov [max],al
+    43                                              
+    44                                              next:
+    45 00000038 3A25[0B000000]                      cmp ah,byte[min]
+    46 0000003E 7306                                jae mai_departe
+    47 00000040 8825[0B000000]                      mov [min],ah
+    48                                             
+    49                                              mai_departe:
+    50 00000046 E2E1                            loop bucla
+    51                                          
+    52 00000048 B800000000                      mov eax,0
+    53 0000004D A0[0A000000]                    mov al,byte[max]
+    54 00000052 8A0D[0B000000]                  mov cl,byte[min]
+    55 00000058 F6F1                            div cl
+    56                                          
+    57 0000005A 88C3                            mov bl,al
+    58 0000005C 88E7                            mov bh,ah
+    59                                          
+    60 0000005E B800000000                      mov eax,0
+    61 00000063 88D8                            mov al,bl
+    62 00000065 BA00000000                      mov edx,0
+    63 0000006A 88FA                            mov dl,bh
+    64                                          
+    65 0000006C 52                              push edx
+    66 0000006D 50                              push eax
+    67 0000006E 68[1D000000]                    push dword format
+    68 00000073 FF35[19000000]                  push dword [descriptor]
+    69 00000079 FF15[00000000]                  call [fprintf]
+    70 0000007F 83C410                          add esp,16
+    71                                          
+    72                                          
+    73                                          inchide:
+    74 00000082 FF35[19000000]                  push dword [descriptor]
+    75 00000088 FF15[00000000]                  call [fclose]
+    76 0000008E 83C404                          add esp,4
+    77                                          
+    78                                          final:
+    79 00000091 6A00                            push    dword 0     
+    80 00000093 FF15[00000000]                  call    [exit]     

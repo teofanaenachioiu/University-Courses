@@ -1,0 +1,46 @@
+     1                                  ;Sa se citeasca de la tastatura un numar in baza 16 si sa se afiseze valoarea acelui numar in baza 10.
+     2                                  ;Exemplu: Se citeste: 1D; se afiseaza: 29
+     3                                  bits 32 ; assembling for the 32 bits architecture
+     4                                  
+     5                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     6                                  global start        
+     7                                  
+     8                                  ; declare external functions needed by our program
+     9                                  extern exit,printf,scanf               ; tell nasm that exit exists even if we won't be defining it
+    10                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    11                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    12                                  import printf msvcrt.dll
+    13                                  import scanf msvcrt.dll
+    14                                  ; our data is declared here (the variables needed by our program)
+    15                                  segment data use32 class=data
+    16                                      ; ...
+    17 00000000 00000000                    n times 1 dd 0
+    18 00000004 257800                      format db "%x",0
+    19 00000007 4461746920756E206E-         mesaj1 db "Dati un numar in baza 16: ",0
+    19 00000010 756D617220696E2062-
+    19 00000019 617A612031363A2000 
+    20 00000022 56616C6F6172656120-         mesaj2 db "Valoarea numarului in baza 10: %d",0
+    20 0000002B 6E756D6172756C7569-
+    20 00000034 20696E2062617A6120-
+    20 0000003D 31303A20256400     
+    21                                  ; our code starts here
+    22                                  segment code use32 class=code
+    23                                      start:
+    24                                          ; ...
+    25 00000000 68[07000000]                    push mesaj1
+    26 00000005 FF15[00000000]                  call [printf]
+    27 0000000B 83C404                          add esp,4
+    28                                          
+    29 0000000E 68[00000000]                    push dword n
+    30 00000013 68[04000000]                    push format
+    31 00000018 FF15[00000000]                  call [scanf]
+    32 0000001E 83C408                          add esp, 4*2
+    33                                          
+    34 00000021 FF35[00000000]                  push dword [n]
+    35 00000027 68[22000000]                    push mesaj2
+    36 0000002C FF15[00000000]                  call [printf]
+    37 00000032 83C406                          add esp,6
+    38                                          
+    39                                          ; exit(0)
+    40 00000035 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    41 00000037 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

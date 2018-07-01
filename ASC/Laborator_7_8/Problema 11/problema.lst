@@ -1,0 +1,37 @@
+     1                                  ;Se da un sir de dublucuvinte. Sa se obtina sirul format din octetii superiori ai cuvintelor inferioare din elementele sirului de dublucuvinte, care sunt multiplii de 10.
+     2                                  
+     3                                  bits 32
+     4                                  global start        
+     5                                  extern exit              
+     6                                  import exit msvcrt.dll
+     7                                  segment data use32 class=data
+     8 00000000 785634124D3C2B1A76-         s dd 12345678h, 1A2B3C4Dh, 0FE98DC76h
+     8 00000009 DC98FE             
+     9 0000000C FD                          handle db -3
+    10                                      len equ ($-s)/4
+    11 0000000D FF<rept>                    d times len db -1
+    12                                      
+    13                                  segment code use32 class=code
+    14                                      start:
+    15 00000000 B903000000                      mov ecx,len
+    16 00000005 E321                            jecxz final
+    17 00000007 BE[00000000]                    mov esi,s
+    18 0000000C BF[0D000000]                    mov edi,d
+    19 00000011 B30A                            mov bl,10
+    20                                          repeta:
+    21 00000013 AD                                  lodsd ;extrag eax
+    22                                              verifica:
+    23 00000014 88E2                                    mov dl,ah
+    24 00000016 66B80000                                mov ax,0
+    25 0000001A 88D0                                    mov al,dl
+    26 0000001C F6F3                                    div bl
+    27 0000001E 80FC00                                  cmp ah,0
+    28 00000021 7503                                    jnz sari
+    29                                              construire:
+    30 00000023 88D0                                    mov al,dl
+    31 00000025 AA                                      stosb
+    32                                              sari:
+    33 00000026 E2EB                            loop repeta  
+    34                                          final:
+    35 00000028 6A00                            push    dword 0     
+    36 0000002A FF15[00000000]                  call    [exit]      

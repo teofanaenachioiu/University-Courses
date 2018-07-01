@@ -1,0 +1,16 @@
+     1                                  %ifndef _NUMARARE_ASM_
+     2                                  %define _NUMARARE_ASM_
+     3                                  extern numar
+     4                                  numarare:
+     5 00000000 8B16[0000]                  mov dx,word[numar]
+     6 00000004 A1[0200]                    mov ax,word[numar+2]
+     7 00000007 66BB00000000                mov ebx,0
+     8                                      repeta:
+     9                                          div 10
+     9          ******************       error: invalid combination of opcode and operands
+    10 0000000D 6643                            inc ebx
+    11 0000000F 6683F800                        cmp eax,0
+    12 00000013 75F8                            jne repeta
+    13                                      
+    14                                      
+    15                                  %endif

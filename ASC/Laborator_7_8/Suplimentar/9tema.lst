@@ -1,0 +1,56 @@
+     1                                  
+     2                                  bits 32 ; assembling for the 32 bits architecture
+     3                                  
+     4                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     5                                  global start        
+     6                                  
+     7                                  ; declare external functions needed by our program
+     8                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     9                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    10                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    11                                  
+    12                                  ; our data is declared here (the variables needed by our program)
+    13                                  segment data use32 class=data
+    14                                      ; ...
+    15 00000000 6263646566676861            sir db "bcdefgha"
+    16                                      len equ $-sir
+    17 00000008 00                          var db 0
+    18                                      
+    19                                  ; our code starts here
+    20                                  segment code use32 class=code
+    21                                      start:
+    22                                          ; ...
+    23 00000000 28DB                        sub BL,BL
+    24 00000002 021D[07000000]              Add BL,[sir+len-1]
+    25 00000008 001D[08000000]              Add [var],BL
+    26 0000000E 29C9                        sub Ecx,ECx
+    27 00000010 81C1[07000000]              add ECX,sir+len-1
+    28                                      
+    29                                      aici:
+    30                                          
+    31 00000016 28D2                            Sub DL,DL ;dl=0
+    32 00000018 0211                            Add DL,[ecx] ;dl=[ecx]=un caracter, incepand cu ultimul
+    33 0000001A 2811                            Sub [ecx],DL ;[ecx]=0
+    34                                          
+    35 0000001C 83E901                          Sub ECX,1 ;pozitia anterioara
+    36 0000001F 28C0                            Sub AL,AL ;al=0
+    37 00000021 0201                            Add AL,[ecx] ;al=[ecx]=un caracter, incepand cu penultimul
+    38                                          
+    39 00000023 83C101                          Add ECx,1 ;pozitia urmatoara
+    40 00000026 0001                            Add [ECX],AL ;pun pe pozitia umatoare elementul curent
+    41                                          
+    42 00000028 83E901                          Sub ECX,1 ;pregatesc pentru umatoarea prelucrare
+    43 0000002B 81F9[00000000]                  cmp ECX,sir
+    44 00000031 75E3                        jne aici
+    45                                      
+    46 00000033 28C0                        Sub AL,AL
+    47 00000035 0205[00000000]              Add AL,[sir]
+    48 0000003B 2805[00000000]              Sub[sir],AL
+    49 00000041 28C0                        Sub Al,Al
+    50 00000043 0205[08000000]              Add AL,[var]
+    51 00000049 0005[00000000]              Add [sir],AL
+    52                                      
+    53                                      
+    54                                      ; exit(0)
+    55 0000004F 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    56 00000051 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

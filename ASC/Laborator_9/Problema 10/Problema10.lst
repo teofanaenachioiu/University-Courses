@@ -1,0 +1,91 @@
+     1                                  ;Sa se citeasca de la tastatura un nume de fisier si un text. Sa se creeze un fisier cu numele dat in directorul curent si sa se scrie textul in acel fisier. 
+     2                                  ;Observatii: Numele de fisier este de maxim 30 de caractere. Textul este de maxim 120 de caractere.
+     3                                  
+     4                                  bits 32 
+     5                                  global start        
+     6                                  
+     7                                  extern exit,scanf,printf,fprintf,fopen,fclose      
+     8                                  import exit msvcrt.dll   
+     9                                  import scanf msvcrt.dll
+    10                                  import printf msvcrt.dll
+    11                                  import fprintf msvcrt.dll
+    12                                  import fopen msvcrt.dll  
+    13                                  import fclose msvcrt.dll
+    14                                  segment data use32 class=data
+    15 00000000 00<rept>                    numeFisier times 30 db 0
+    16 0000001E 7700                        mod_acces db "w", 0 
+    17 00000020 00<rept>                    text times 120 db 0
+    18 00000098 257300                      format db "%s",0
+    19 0000009B 256300                      format_citire db "%c",0
+    20 0000009E 00                          caracter db 0
+    21 0000009F FFFFFFFF                    descriptor_fis dd -1
+    22 000000A3 4E756D652066697369-         mesaj db "Nume fisier: ",0
+    22 000000AC 65723A2000         
+    23 000000B1 546578743A2000              mesaj1 db "Text: ",0
+    24                                  segment code use32 class=code
+    25                                      start:
+    26                                          ;Nume fisier:
+    27 00000000 68[A3000000]                    push dword mesaj
+    28 00000005 FF15[00000000]                  call [printf]
+    29 0000000B 83C404                          add esp,4
+    30                                          ;citesc numele fisierului
+    31 0000000E 68[00000000]                    push dword numeFisier
+    32 00000013 68[98000000]                    push dword format
+    33 00000018 FF15[00000000]                  call [scanf]
+    34 0000001E 83C408                          add esp, 4*2
+    35                                          ;creez/deschid fisierul
+    36 00000021 68[1E000000]                    push dword mod_acces     
+    37 00000026 68[00000000]                    push dword numeFisier
+    38 0000002B FF15[00000000]                  call [fopen]
+    39 00000031 83C408                          add esp, 4*2   
+    40                                          
+    41 00000034 A3[9F000000]                    mov [descriptor_fis], eax
+    42                                          ;eventuale erori
+    43 00000039 83F800                          cmp eax, 0
+    44 0000003C 0F8481000000                    je final
+    45                                         
+    46                                          ;Text:
+    47 00000042 68[B1000000]                    push dword mesaj1
+    48 00000047 FF15[00000000]                  call [printf]
+    49 0000004D 83C404                          add esp,4
+    50                                          ;Citesc textul
+    51 00000050 B000                            mov al,0
+    52 00000052 BF[20000000]                    mov edi,text
+    53                                          ;citesc enter-ul
+    54 00000057 68[9E000000]                    push dword caracter
+    55 0000005C 68[9B000000]                    push dword format_citire
+    56 00000061 FF15[00000000]                  call [scanf]
+    57 00000067 83C408                          add esp, 4*2
+    58                                          
+    59                                          citire:
+    60                                              
+    61 0000006A 68[9E000000]                        push dword caracter
+    62 0000006F 68[9B000000]                        push dword format_citire
+    63 00000074 FF15[00000000]                      call [scanf]
+    64 0000007A 83C408                              add esp, 4*2
+    65                                              
+    66 0000007D A0[9E000000]                        mov al,byte[caracter]
+    67 00000082 AA                                  stosb
+    68 00000083 83F80A                              cmp eax,10
+    69                                              
+    70 00000086 75E2                                jne citire
+    71                                              
+    72                                          ;Printez pe ecran textul
+    73 00000088 68[20000000]                    push dword text
+    74 0000008D 68[98000000]                    push dword format
+    75 00000092 FF15[00000000]                  call [printf]
+    76 00000098 83C408                          add esp, 4*2
+    77                                          ;Pun textul in fisier
+    78 0000009B 68[20000000]                    push dword text
+    79 000000A0 68[98000000]                    push dword format
+    80 000000A5 FF35[9F000000]                  push dword [descriptor_fis]
+    81 000000AB FF15[00000000]                  call [fprintf]
+    82 000000B1 83C40C                          add esp, 4*3
+    83                                          ;Inchid fisierul
+    84 000000B4 FF35[9F000000]                  push dword [descriptor_fis]
+    85 000000BA FF15[00000000]                  call [fclose]
+    86 000000C0 83C404                          add esp, 4
+    87                                         
+    88                                          final:
+    89 000000C3 6A00                            push    dword 0    
+    90 000000C5 FF15[00000000]                  call    [exit]     

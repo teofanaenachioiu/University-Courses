@@ -1,0 +1,79 @@
+     1                                  ;Se dau un nume de fisier si un text (definite in segmentul de date). Textul contine litere mici, litere mari, cifre si caractere speciale. Sa se transforme toate literele mici din textul dat in litere mari. Sa se c
+     2                                  
+     3                                  bits 32
+     4                                  global start     
+     5                                  extern exit,fopen,fclose,fwrite              
+     6                                  import exit msvcrt.dll  
+     7                                  import fopen msvcrt.dll
+     8                                  import fclose msvcrt.dll
+     9                                  import fwrite msvcrt.dll
+    10                                  segment data use32 class=data
+    11 00000000 6F75747075742E7478-         nume_fisier db "output.txt",0
+    11 00000009 7400               
+    12 0000000B 7700                        mod_acces db "w",0
+    13 0000000D FFFFFFFF                    descriptor dd -1
+    14 00000011 536120736520747261-         text db "Sa se transforme toate literele mici din textul dat in litere mari. :0",0
+    14 0000001A 6E73666F726D652074-
+    14 00000023 6F617465206C697465-
+    14 0000002C 72656C65206D696369-
+    14 00000035 2064696E2074657874-
+    14 0000003E 756C2064617420696E-
+    14 00000047 206C6974657265206D-
+    14 00000050 6172692E203A3000   
+    15                                      len equ $-text
+    16                                      ;aux times len db -1
+    17                                  segment code use32 class=code
+    18                                      start:
+    19                                          ;deschid fisierul
+    20 00000000 68[0B000000]                    push dword mod_acces
+    21 00000005 68[00000000]                    push dword nume_fisier
+    22 0000000A FF15[00000000]                  call [fopen]
+    23 00000010 83C408                          add esp,8
+    24                                          
+    25                                          ;erori
+    26 00000013 83F800                          cmp eax,0
+    27 00000016 744D                            je final
+    28                                          
+    29 00000018 A3[0D000000]                    mov [descriptor],eax
+    30                                          
+    31                                          ;prelucram textul
+    32 0000001D B947000000                      mov ecx,len
+    33 00000022 E341                            jecxz final
+    34                                          
+    35 00000024 BE[11000000]                    mov esi,text
+    36                                          ;mov edi,aux
+    37                                          
+    38 00000029 B361                            mov bl,'a'
+    39 0000002B B27A                            mov dl,'z'
+    40                                          construct:
+    41 0000002D AC                                  lodsb
+    42 0000002E 38D8                                cmp al,bl
+    43 00000030 7C06                                jl pune
+    44                                              
+    45 00000032 38D0                                cmp al,dl
+    46 00000034 7F02                                jg pune
+    47                                              
+    48 00000036 2C20                                sub al,32
+    49                                              
+    50                                              pune:
+    51 00000038 89F7                                    mov edi,esi
+    52 0000003A 4F                                      dec edi
+    53 0000003B AA                                      stosb
+    54 0000003C E2EF                            loop construct
+    55                                          
+    56                                          ;pun textul in fisier
+    57 0000003E FF35[0D000000]                  push dword [descriptor]
+    58 00000044 6A47                            push dword len
+    59 00000046 6A01                            push dword 1
+    60 00000048 68[11000000]                    push dword text
+    61 0000004D FF15[00000000]                  call [fwrite]
+    62 00000053 83C410                          add esp,16
+    63                                          
+    64                                          ;inchid fisier
+    65 00000056 FF35[0D000000]                  push dword [descriptor]
+    66 0000005C FF15[00000000]                  call [fclose]
+    67 00000062 83C404                          add esp,4
+    68                                          
+    69                                          final:
+    70 00000065 6A00                            push    dword 0      
+    71 00000067 FF15[00000000]                  call    [exit]       

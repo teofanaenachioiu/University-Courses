@@ -1,0 +1,14 @@
+     1                                  %ifndef  _FACTORIAL_ASM_ ; continuam daca _FACTORIAL_ASM_ este nedefinit
+     2                                  %define  _FACTORIAL_ASM_ ; si ne asiguram ca devine definit
+     3                                  ;  astfel %include permite doar o singura includere
+     4                                  ;definire  procedura
+     5                                  factorial:   ; int _stdcall factorial(int n)
+     6 00000000 66B801000000            	mov eax, 1
+     7 00000006 66678B4C2404            	mov ecx, [esp + 4]
+     8                                  	;  mov ecx, [esp + 4] scoate de pe stiva parametrul procedurii
+     9                                  	; pentru explicatii a se vedea  lab11_procedura.asm
+    10                                  	repet: 
+    11 0000000C 66F7E1                  		mul ecx
+    12 0000000F E2FB                    	loop repet ; atentie, cazul ecx  = 0 nu e tratat!
+    13 00000011 C20400                  	ret 4
+    14                                  %endif

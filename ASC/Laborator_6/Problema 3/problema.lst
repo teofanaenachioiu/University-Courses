@@ -1,0 +1,64 @@
+     1                                  ;Se da un sir de octeti S. Sa se construiasca sirul D astfel: sa se puna mai intai elementele de pe pozitiile pare din S iar apoi elementele de pe pozitiile impare din S. 
+     2                                  
+     3                                  bits 32 ; assembling for the 32 bits architecture
+     4                                  
+     5                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     6                                  global start        
+     7                                  
+     8                                  ; declare external functions needed by our program
+     9                                  extern exit,printf               ; tell nasm that exit exists even if we won't be defining it
+    10                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    11                                  import printf msvcrt.dll                          ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    12                                  
+    13                                  ; our data is declared here (the variables needed by our program)
+    14                                  segment data use32 class=data
+    15                                      ; ...
+    16 00000000 0102030405060708            s db 1, 2, 3, 4, 5, 6, 7, 8
+    17                                      len equ $-s
+    18 00000008 00<rept>                    d times len db 0
+    19 00000010 FF                          handle db -1
+    20 00000011 256420                      format db "%d "
+    21                                  ; our code starts here
+    22                                  segment code use32 class=code
+    23                                      start:
+    24                                      
+    25                                          ;punem in d numerele de pe pozitii pare
+    26 00000000 BE[00000000]                    mov esi,s
+    27 00000005 BF[08000000]                    mov edi,d
+    28 0000000A B904000000                      mov ecx,(len+1)//2
+    29 0000000F E334                            jecxz final
+    30                                          
+    31                                          repeta:
+    32 00000011 A4                                  movsb
+    33 00000012 46                                  inc esi
+    34 00000013 E2FC                            loop repeta
+    35                                      
+    36                                          ;punem in d numerele de pe pozitii impare
+    37 00000015 BE[00000000]                    mov esi,s
+    38 0000001A 46                              inc esi
+    39 0000001B B904000000                      mov ecx,(len+1)//2
+    40                                          
+    41                                          repeta1:
+    42 00000020 A4                                  movsb
+    43 00000021 46                                  inc esi
+    44 00000022 E2FC                            loop repeta1
+    45                                          
+    46                                          ;afisare
+    47 00000024 BE[08000000]                    mov esi,d  
+    48 00000029 B908000000                      mov ecx,len
+    49                                          afisare:    
+    50 0000002E AC                                  lodsb
+    51 0000002F 6698                                cbw
+    52 00000031 98                                  cwde
+    53 00000032 60                                  pusha
+    54 00000033 50                                  push eax
+    55 00000034 68[11000000]                        push format
+    56 00000039 FF15[00000000]                      call [printf]          
+    57 0000003F 83C408                              add esp, 4*2
+    58 00000042 61                                  popa
+    59 00000043 E2E9                            loop afisare
+    60                                          
+    61                                          final:
+    62                                          ; exit(0)
+    63 00000045 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    64 00000047 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

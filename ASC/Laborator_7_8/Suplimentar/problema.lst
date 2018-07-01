@@ -1,0 +1,34 @@
+     1                                  ;Se da un sir de caractere. Sa se mute caracterul aflat la cea mai mare adresa inaintea caracterului aflat la cea mai mica adresa, folosind doar instructiunile cmp, jump-uri si instructiuni aritmetice simple (add,su
+     2                                  ;a db 'bcdefgha' => 'abcdefgh'
+     3                                  
+     4                                  bits 32 
+     5                                  global start        
+     6                                  extern exit              
+     7                                  import exit msvcrt.dll    
+     8                                  segment data use32 class=data
+     9 00000000 6263646566676861            a db 'bcdefgha'
+    10                                      len equ $-a
+    11                                  segment code use32 class=code
+    12                                      start:
+    13 00000000 19C9                            sbb ecx,ecx
+    14 00000002 83C108                          add ecx,len
+    15 00000005 E31C                            jecxz final
+    16                                          
+    17 00000007 19C0                            sbb eax,eax
+    18 00000009 0205[07000000]                  add al,byte[a+len-1]
+    19                                          
+    20 0000000F 19F6                            sbb esi,esi
+    21 00000011 81C6[00000000]                  add esi,a
+    22 00000017 83C608                          add esi,len
+    23                                          
+    24 0000001A 19FF                            sbb edi,edi
+    25 0000001C 01F7                            add edi,esi
+    26                                          
+    27 0000001E 83EE01                          sub esi,1
+    28                                          
+    29                                          repeta:
+    30                                              
+    31 00000021 E2FE                            loop repeta
+    32                                          final:
+    33 00000023 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    34 00000025 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

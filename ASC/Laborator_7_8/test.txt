@@ -1,0 +1,22 @@
+a. Se dau doua siruri de cuvinte a si b. Sa se obtina sirul c astfel: 
+- concatenati sirul octetilor low din primul sir cu sirul octetilor high din al doilea sir. 
+- sirul c se va ordona crescator
+- numerele din siruri se vor interpreta cu semn
+- afisati sirul c (numere in baza 16)
+
+	Exemplu: 
+
+		a dw 1234h,5678h,90h
+
+		b dw 4h,0abcdh,10h,1122h
+
+		c resb 7
+
+	Reprezentarea in memorie:
+
+		a -> | 34h| 12h| 78h| 56h| 90h| 00h|
+
+		b -> | 04h| 00h| 0cdh| 0abh| 10h| 00h| 22h| 11h|
+
+	Dupa concatenare sirul c va fi: 34h,78h,90h,00h,0abh,00h,11h. 
+	Apoi se face ordonarea octetilor.

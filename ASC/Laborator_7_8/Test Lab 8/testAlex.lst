@@ -1,0 +1,109 @@
+     1                                  ;a. Se dau doua siruri de cuvinte a si b. Sa se obtina sirul c astfel: 
+     2                                  ;- concatenati sirul octetilor low din primul sir cu sirul octetilor high din al doilea sir. 
+     3                                  ;- sirul c se va ordona crescator
+     4                                  ;- numerele din siruri se vor interpreta cu semn
+     5                                  ;- afisati sirul c (numere in baza 16)
+     6                                  
+     7                                  	;Exemplu: 
+     8                                  
+     9                                  		;a dw 1234h,5678h,90h
+    10                                  
+    11                                  		;b dw 4h,0abcdh,10h,1122h
+    12                                  
+    13                                  		;c resb 7
+    14                                  
+    15                                  	;Reprezentarea in memorie:
+    16                                  
+    17                                  		;a -> | 34h| 12h| 78h| 56h| 90h| 00h|
+    18                                  
+    19                                  		;b -> | 04h| 00h| 0cdh| 0abh| 10h| 00h| 22h| 11h|
+    20                                  
+    21                                  	;Dupa concatenare sirul c va fi: 34h,78h,90h,00h,0abh,00h,11h. 
+    22                                  	;Apoi se face ordonarea octetilor.
+    23                                  	
+    24                                  bits 32
+    25                                  
+    26                                  global start
+    27                                  
+    28                                  extern exit, printf
+    29                                  import exit msvcrt.dll
+    30                                  import printf msvcrt.dll
+    31                                  
+    32                                  segment data use32 class=data
+    33 00000000 341278569000                a dw 1234h,5678h,90h
+    34 00000006 0400CDAB10002211            b dw 4h,0abcdh,10h,1122h
+    35 0000000E FF<rept>                    c times ($-a)/2 db 0xff
+    36                                      len_c equ $-c
+    37                                      len_a equ (b-a)/2
+    38                                      len_b equ (c-b)/2
+    39 00000015 25642C2000                  format db "%d, ", 0
+    40                                  
+    41                                  segment code use32 class=code
+    42                                  	start:  
+    43 00000000 B903000000                      mov ecx, len_a
+    44 00000005 BE[00000000]                    mov esi, a
+    45 0000000A BF[0E000000]                    mov edi, c
+    46 0000000F 83F900                          cmp ecx, 0
+    47 00000012 7505                            jne bucla
+    48 00000014 E986000000                      jmp final
+    49                                          bucla:
+    50 00000019 66AD                                lodsw
+    51 0000001B AA                                  stosb
+    52 0000001C E2FB                            loop bucla
+    53 0000001E B904000000                      mov ecx, len_b
+    54 00000023 BE[06000000]                    mov esi, b
+    55 00000028 83F900                          cmp ecx, 0
+    56 0000002B 7502                            jne bucla_2
+    57 0000002D EB70                            jmp final
+    58                                          bucla_2:
+    59 0000002F 66AD                                lodsw
+    60 00000031 88E0                                mov al, ah
+    61 00000033 AA                                  stosb
+    62 00000034 E2F9                            loop bucla_2
+    63                                          
+    64                                          ;sortarea
+    65 00000036 B907000000                      mov ecx, len_c
+    66 0000003B BE00000000                      mov esi, 0
+    67 00000040 83F900                          cmp ecx, 0
+    68 00000043 7502                            jne main_sort
+    69 00000045 EB58                            jmp final
+    70                                          main_sort:
+    71 00000047 51                                  push ecx
+    72 00000048 89F7                                mov edi, esi
+    73 0000004A 47                                  inc edi
+    74                                              bucla_sort:
+    75 0000004B 8A86[0E000000]                          mov al, [c+esi]
+    76 00000051 8AA7[0E000000]                          mov ah, [c+edi]
+    77 00000057 38E0                                    cmp al, ah
+    78 00000059 7F02                                    jg swap
+    79 0000005B EB06                                    jmp final_bucla_sort
+    80                                                  swap:
+    81 0000005D 88C3                                        mov bl, al
+    82 0000005F 88E0                                        mov al, ah
+    83 00000061 88DC                                        mov ah, bl
+    84                                                  final_bucla_sort:
+    85 00000063 8886[0E000000]                          mov [c+esi], al
+    86 00000069 88A7[0E000000]                          mov [c+edi], ah
+    87 0000006F 47                                      inc edi
+    88 00000070 E2D9                                loop bucla_sort
+    89 00000072 59                                  pop ecx
+    90 00000073 46                                  inc esi
+    91 00000074 E2D1                            loop main_sort
+    92                                          
+    93 00000076 B907000000                      mov ecx, len_c
+    94 0000007B BE00000000                      mov esi, 0
+    95                                          bucla_print:
+    96 00000080 60                                  pushad
+    97 00000081 B800000000                          mov eax, 0
+    98 00000086 8A86[0E000000]                      mov al, [c+esi]
+    99 0000008C 50                                  push eax
+   100 0000008D 68[15000000]                        push dword format
+   101 00000092 FF15[00000000]                      call [printf]
+   102 00000098 83C408                              add esp, 8
+   103 0000009B 61                                  popad
+   104 0000009C 46                                  inc esi
+   105 0000009D E2E1                            loop bucla_print
+   106                                          
+   107                                          final:
+   108 0000009F 6A00                    	push dword 0
+   109 000000A1 FF15[00000000]          	call [exit]

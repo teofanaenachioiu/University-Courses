@@ -1,0 +1,65 @@
+     1                                  ;Se dau doua siruri de octeti S1 si S2. Sa se construiasca sirul D prin concatenarea elementelor din sirul S1 1uate de la stanga spre dreapta si a elementelor din sirul S2 luate de la dreapta spre stanga. 
+     2                                  
+     3                                  bits 32 ; assembling for the 32 bits architecture
+     4                                  
+     5                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     6                                  global start        
+     7                                  
+     8                                  ; declare external functions needed by our program
+     9                                  extern exit,printf         ; tell nasm that exit exists even if we won't be defining it
+    10                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    11                                  import printf msvcrt.dll  ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    12                                  
+    13                                  ; our data is declared here (the variables needed by our program)
+    14                                  segment data use32 class=data
+    15 00000000 01020304                    s1 db 1, 2, 3, 4
+    16                                      len1 equ $-s1
+    17 00000004 050607                      s2 db 5, 6, 7
+    18                                      len2 equ $-s2
+    19 00000007 00<rept>                    d times len1+len2 db 0
+    20 0000000E FF                          handle db -1
+    21 0000000F 256420                      format db "%d "
+    22                                  ; our code starts here
+    23                                  segment code use32 class=code
+    24                                      start:
+    25                                      
+    26                                          ;punem in d sirul s1
+    27 00000000 BE[00000000]                    mov esi, s1
+    28 00000005 BF[07000000]                    mov edi, d
+    29 0000000A FC                              cld ;de la stanga la dreapta
+    30 0000000B B904000000                      mov ecx,len1
+    31 00000010 E303                            jecxz sir2
+    32                                          repeta:
+    33 00000012 A4                                  movsb 
+    34 00000013 E2FD                            loop repeta
+    35                                          sir2:
+    36                                          ;punem in d sirul s2
+    37 00000015 BE[06000000]                    mov esi, s2+len2-1
+    38 0000001A FD                              std ;de la drapta la stanga
+    39 0000001B B903000000                      mov ecx,len2
+    40 00000020 E328                            jecxz final
+    41                                          repeta1:
+    42 00000022 A4                                  movsb 
+    43 00000023 83C702                              add edi,2
+    44 00000026 E2FA                            loop repeta1
+    45                                          
+    46                                          ;afisarea sirului
+    47 00000028 FC                              cld ;de la stanga la dreapta    
+    48 00000029 BE[07000000]                    mov esi,d  
+    49 0000002E B907000000                      mov ecx,len1+len2
+    50                                          afisare:    
+    51 00000033 AC                                  lodsb
+    52 00000034 6698                                cbw
+    53 00000036 98                                  cwde
+    54 00000037 60                                  pusha
+    55 00000038 50                                  push eax
+    56 00000039 68[0F000000]                        push format
+    57 0000003E FF15[00000000]                      call [printf]          
+    58 00000044 83C408                              add esp, 4*2
+    59 00000047 61                                  popa
+    60 00000048 E2E9                            loop afisare
+    61                                          ; exit(0)
+    62                                          final:
+    63 0000004A 90                              nop
+    64 0000004B 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    65 0000004D FF15[00000000]                  call    [exit]       ; call exit to terminate the program

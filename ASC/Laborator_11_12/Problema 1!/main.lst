@@ -1,0 +1,20 @@
+     1                                  ;Se da un numar a reprezentat pe 32 biti fara semn. Se cere sa se afiseze reprezentarea in baza 16 a lui a, precum si rezultatul permutarilor circulare ale cifrelor sale.
+     2                                  
+     3                                  bits 32 
+     4                                  
+     5                                  global start      
+     6                                  
+     7                                  extern exit, reprezentare              
+     8                                  import exit msvcrt.dll   
+     9                                  
+    10                                  segment data use32 public data
+    11 00000000 39300000                    a dd 12345
+    12                                      len equ $-a
+    13                                  segment code use32 public code
+    14                                      start:
+    15 00000000 B904000000                      mov ecx,len
+    16 00000005 A1[00000000]                    mov eax,dword[a]
+    17 0000000A E8(00000000)                    call reprezentare
+    18                                            
+    19 0000000F 6A00                            push    dword 0     
+    20 00000011 FF15[00000000]                  call    [exit]   

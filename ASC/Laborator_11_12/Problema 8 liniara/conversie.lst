@@ -1,0 +1,45 @@
+     1                                  %ifndef _conversie_asm_
+     2                                  %define _conversie_asm_
+     3                                  conversie:
+     4 00000000 B37F                        mov bl,127
+     5 00000002 28CB                        sub bl,cl
+     6 00000004 6651                        push ecx
+     7 00000006 66B908000000                mov ecx,8
+     8 0000000C BA0000                      mov dx,0
+     9                                      biti:
+    10 0000000F B000                            mov al,0
+    11 00000011 D0C3                            rol bl,1
+    12 00000013 1400                            adc al,0
+    13                                          
+    14 00000015 6651                            push ecx
+    15                                          putere:
+    16                                              mul byte[doi]
+    16          ******************       error: symbol `doi' undefined
+    17 00000017 E2FE                            loop putere
+    18 00000019 01C2                            add dx,ax
+    19 0000001B 6659                            pop ecx
+    20                                          
+    21 0000001D E2F0                        loop biti
+    22                                     
+    23 0000001F 66B800000000                mov eax,0
+    24 00000025 89D0                        mov ax,dx
+    25                                      
+    26                                      mov edi,numar
+    26          ******************       error: symbol `numar' undefined
+    27 00000027 6683C703                    add edi,3
+    28 0000002B FC                          cld
+    29                                      impartiri:
+    30                                          div byte [opt]
+    30          ******************       error: symbol `opt' undefined
+    31 0000002C 88C2                            mov dl,al
+    32 0000002E 88E0                            mov al,ah
+    33 00000030 AA                              stosb
+    34 00000031 88D0                            mov al,dl
+    35 00000033 B400                            mov ah,0
+    36 00000035 3C00                            cmp al,0
+    37 00000037 75F3                            jne impartiri
+    38                                      iesi:
+    39 00000039 6659                        pop ecx
+    40                                      
+    41 0000003B C3                          ret
+    42                                  %endif

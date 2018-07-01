@@ -1,0 +1,42 @@
+     1                                  bits 32
+     2                                   
+     3                                  global concatenare
+     4                                  
+     5                                  extern sFinal 
+     6                                                
+     7                                  segment code use32 public class=code
+     8                                      Concatenare:
+     9 00000000 BF[00000000]                    mov edi, sFinal   ; destinatie = SirFinal
+    10 00000005 89C6                            mov esi, eax        ; sursa = primul sir
+    11                                          
+    12                                      .sir1Loop:
+    13 00000007 AC                              lodsb               ; luam octetul urmator
+    14 00000008 84C0                            test al, al         ; este terminatorul de sir (=0)?
+    15 0000000A 7403                            jz .sir2            ; daca da, trecem la sirul al doilea
+    16 0000000C AA                              stosb               ; (altfel) copiem in destinatie
+    17 0000000D EBF8                            jmp .sir1Loop       ; si continuam pana la nul
+    18                                          
+    19                                      .sir2:
+    20 0000000F 89DE                            mov esi, ebx        ; sursa = sirul al doilea
+    21                                          
+    22                                      .sir2Loop:
+    23 00000011 AC                              lodsb               ; acelasi proces pentru noul sir
+    24 00000012 84C0                            test al, al
+    25 00000014 7403                            jz .sir3
+    26 00000016 AA                              stosb
+    27 00000017 EBF8                            jmp .sir2Loop
+    28                                      
+    29                                      .sir3:
+    30 00000019 89CE                            mov esi, ecx        ; sursa = sirul al treilea
+    31                                          
+    32                                      .sir3Loop:
+    33 0000001B AC                              lodsb               ; acelasi proces pentru noul sir
+    34 0000001C 84C0                            test al, al
+    35 0000001E 7403                            jz .gata
+    36 00000020 AA                              stosb
+    37 00000021 EBF8                            jmp .sir3Loop
+    38                                          
+    39                                      .gata:
+    40 00000023 AA                              stosb               ; adaugam terminatorul de sir din al
+    41 00000024 C3                              ret
+    42                                  

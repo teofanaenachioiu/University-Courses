@@ -1,0 +1,122 @@
+     1                                  ;A string of double words is given. It is required to build and print the string of byte ranks that have the maximum value from each doubleword (considering them unsigned). 
+     2                                  ;Also it is required to obtain and print on the screen the sum of these bytes (considering them this time as being signed). 
+     3                                  
+     4                                  ;Example: dd 1234A678h , 123456789h , 1AC3B47Dh, FEDC9876h  ... the corresponding string of bytes ranks being “3421”
+     5                                  
+     6                                  bits 32
+     7                                  global start   
+     8                                  extern exit,printf,fprintf,fopen,fclose             
+     9                                  import exit msvcrt.dll  
+    10                                  import printf msvcrt.dll 
+    11                                  import fprintf msvcrt.dll 
+    12                                  import fopen msvcrt.dll
+    13                                  import fclose msvcrt.dll
+    14                                  segment data use32 class=data
+    15 00000000 696E7075742E747874-         nume_fisier db "input.txt",0
+    15 00000009 00                 
+    16 0000000A 7700                        mod_acces db "w",0
+    17 0000000C FFFFFFFF                    descriptor dd -1
+    18 00000010 78A63412785634127D-         sir dd 1234A678h , 12345678h , 1AC3B47Dh, 0FEDC9876h
+    18 00000019 B4C31A7698DCFE     
+    19                                      len equ ($-sir)/4
+    20 00000020 00<rept>                    ranks times len db 0
+    21 00000024 0000                        suma dw 0
+    22 00000026 257500                      format_r db "%u",0
+    23 00000029 0A0D53756D61206573-         format_s db 0ah,0dh,"Suma este: %d",0
+    23 00000032 74653A20256400     
+    24 00000039 536972756C20646520-         mesaj db "Sirul de ranguri: ",0
+    24 00000042 72616E677572693A20-
+    24 0000004B 00                 
+    25 0000004C 00                          max db 0
+    26 0000004D 00                          poz db 0
+    27                                  segment code use32 class=code
+    28                                      start:
+    29                                          ;deschid fisier
+    30 00000000 68[0A000000]                    push dword mod_acces
+    31 00000005 68[00000000]                    push dword nume_fisier
+    32 0000000A FF15[00000000]                  call [fopen]
+    33 00000010 83C408                          add esp,8
+    34                                          
+    35                                          
+    36 00000013 83F800                          cmp eax,0
+    37 00000016 0F84CE000000                    je final1
+    38                                          
+    39 0000001C A3[0C000000]                    mov [descriptor],eax
+    40                                          
+    41                                          ;prelucrare sir
+    42 00000021 B904000000                      mov ecx, len
+    43 00000026 E358                            jecxz final
+    44 00000028 BE[10000000]                    mov esi, sir
+    45 0000002D BF[20000000]                    mov edi,ranks
+    46 00000032 66C705[24000000]00-             mov word [suma],0
+    46 0000003A 00                 
+    47 0000003B FC                              cld
+    48                                          repeta:  
+    49                                              
+    50 0000003C AD                                  lodsd
+    51 0000003D B204                                mov dl,4 ;pozitia
+    52 0000003F 8815[4D000000]                      mov byte[poz],dl
+    53 00000045 C605[4C000000]00                    mov byte[max],0
+    54 0000004C 89C3                                mov ebx,eax
+    55                                              octet:
+    56 0000004E 3A05[4C000000]                          cmp al,[max]
+    57 00000054 760B                                    jbe next
+    58                                                  
+    59 00000056 A2[4C000000]                            mov [max],al ;actulaizez maximul
+    60 0000005B 8815[4D000000]                          mov byte[poz],dl ;salvez pozitia
+    61                                                  next:
+    62 00000061 C1C808                                  ror eax,8;urmatorul octet
+    63 00000064 FECA                                    dec dl
+    64 00000066 39C3                                    cmp ebx, eax
+    65 00000068 75E4                                    jne octet
+    66                                                  
+    67 0000006A A0[4D000000]                        mov al,[poz]
+    68 0000006F AA                                  stosb
+    69                                              ;suma
+    70 00000070 A0[4C000000]                        mov al,[max]
+    71 00000075 B400                                mov ah,0
+    72 00000077 660105[24000000]                    add word[suma],ax
+    73                                              
+    74 0000007E E2BC                            loop repeta
+    75                                          
+    76                                          final:
+    77                                          ;mesaj ranguri
+    78 00000080 68[39000000]                    push dword mesaj
+    79 00000085 FF35[0C000000]                  push dword [descriptor]
+    80 0000008B FF15[00000000]                  call [fprintf]
+    81 00000091 83C408                          add esp,8
+    82                                          
+    83                                          
+    84                                          ;afisare ranguri
+    85 00000094 B904000000                      mov ecx,len
+    86 00000099 E34F                            jecxz final1
+    87 0000009B BE[20000000]                    mov esi,ranks
+    88                                          afisare:
+    89 000000A0 51                                  push ecx
+    90 000000A1 B800000000                          mov eax,0
+    91 000000A6 AC                                  lodsb
+    92 000000A7 50                                  push dword eax
+    93 000000A8 68[26000000]                        push dword format_r
+    94 000000AD FF35[0C000000]                      push dword [descriptor]
+    95 000000B3 FF15[00000000]                      call [fprintf]
+    96 000000B9 83C40C                              add esp,12
+    97 000000BC 59                                  pop ecx
+    98 000000BD E2E1                            loop afisare
+    99                                          
+   100                                          ;afisare suma
+   101 000000BF 66A1[24000000]                  mov ax,word[suma]
+   102 000000C5 98                              cwde
+   103 000000C6 50                              push eax
+   104 000000C7 68[29000000]                    push dword format_s
+   105 000000CC FF35[0C000000]                  push dword [descriptor]
+   106 000000D2 FF15[00000000]                  call [fprintf]
+   107 000000D8 83C40C                          add esp,12
+   108                                          
+   109                                          ;inchid fisier
+   110 000000DB FF35[0C000000]                  push dword [descriptor]
+   111 000000E1 FF15[00000000]                  call [fclose]
+   112 000000E7 83C404                          add esp,4
+   113                                          final1:
+   114                                          
+   115 000000EA 6A00                            push dword 0   
+   116 000000EC FF15[00000000]                  call [exit]

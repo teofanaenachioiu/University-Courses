@@ -1,0 +1,82 @@
+     1                                  ;Se da un sir de octeti 'input' si inca doua siruri de dimensiune N fiecare, 'src' si 'dst'. Sa se obtina un nou sir 'output' din sirul 'input' in care se vor inlocui toti octetii cu valoarea src[i] cu dst[i], unde 
+     2                                  
+     3                                  bits 32 ; assembling for the 32 bits architecture
+     4                                  
+     5                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     6                                  global start        
+     7                                  
+     8                                  ; declare external functions needed by our program
+     9                                  extern exit, printf               ; tell nasm that exit exists even if we won't be defining it
+    10                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    11                                  import printf msvcrt.dll     ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    12                                  
+    13                                  ; our data is declared here (the variables needed by our program)
+    14                                  segment data use32 class=data
+    15                                      ; ...
+    16 00000000 020409140107030901          input db 2,4,9,20,1,7,3,9,1
+    17                                      l equ $-input
+    18                                      n equ 3
+    19 00000009 010409                      src db 1,4,9
+    20 0000000C 03060B                      dst db 3,6,11
+    21 0000000F 00<rept>                    output times l db 0
+    22 00000018 536972756C20657374-         mesaj db "Sirul este: ",0
+    22 00000021 653A2000           
+    23 00000025 25642000                    format db "%d ", 0
+    24                                      ; our code starts here
+    25                                  segment code use32 class=code
+    26                                      start:
+    27 00000000 68[18000000]                    push dword mesaj
+    28 00000005 FF15[00000000]                  call [printf]
+    29 0000000B 83C404                          add esp, 4*1
+    30                                  
+    31 0000000E FC                              cld 
+    32 0000000F B903000000                      mov ecx,n  
+    33 00000014 E35E                            jecxz final
+    34                                          ;creare sir
+    35 00000016 BB00000000                      mov ebx,0
+    36                                          bucla:
+    37 0000001B 51                                  push ecx 
+    38 0000001C B909000000                          mov ecx,l 
+    39 00000021 E351                                jecxz final
+    40                                              
+    41 00000023 89DE                                mov esi,ebx
+    42                                              
+    43 00000025 BE[00000000]                        mov esi,input
+    44 0000002A BF[0F000000]                        mov edi,output
+    45                                           
+    46                                              cauta:
+    47 0000002F AC                                      lodsb
+    48 00000030 56                                      push esi
+    49 00000031 89DE                                    mov esi,ebx                
+    50 00000033 3A86[09000000]                          cmp al, [src+esi]
+    51 00000039 7507                                    jne sari_peste
+    52                                                  egali:
+    53 0000003B 8A86[0C000000]                              mov al,[dst+esi]
+    54 00000041 5E                                          pop esi
+    55                                                  sari_peste:
+    56 00000042 AA                                          stosb
+    57 00000043 E2EA                                loop cauta
+    58                                              
+    59 00000045 83C301                              add ebx,1
+    60 00000048 59                                  pop ecx
+    61                                              
+    62 00000049 E2D0                            loop bucla
+    63                                          ;afisare
+    64 0000004B B909000000                      mov ecx,l
+    65 00000050 E322                            jecxz final
+    66 00000052 BE00000000                      mov esi,0
+    67                                          afisare:
+    68 00000057 8A86[0F000000]                      mov al,[output+esi]
+    69 0000005D 46                                  inc esi
+    70 0000005E 6698                                cbw
+    71 00000060 98                                  cwde
+    72 00000061 60                                  pusha
+    73 00000062 50                                  push eax
+    74 00000063 68[25000000]                        push dword format
+    75 00000068 FF15[00000000]                      call [printf]
+    76 0000006E 83C408                              add esp, 4*2
+    77 00000071 61                                  popa
+    78 00000072 E2E3                            loop afisare
+    79                                          final:
+    80 00000074 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    81 00000076 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

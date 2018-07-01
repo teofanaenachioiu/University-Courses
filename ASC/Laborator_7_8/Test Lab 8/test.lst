@@ -1,0 +1,102 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit,printf               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                  import printf msvcrt.dll                          ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      ; ...
+    14 00000000 341278569000                a dw 1234h,5678h,90h
+    15                                      l_a equ ($-a)/2
+    16 00000006 0400CDAB10002211            b dw 4h,0abcdh,10h,1122h
+    17                                      l_b equ ($-b)/2
+    18 0000000E FF<rept>                    c times 7 db 0FFh
+    19 00000015 AA<rept>                    d times 7 db 0AAh
+    20 0000001C 25782000                    format db "%x ",0
+    21                                  ; our code starts here
+    22                                  segment code use32 class=code
+    23                                      start:
+    24                                          ; ...
+    25                                          ;concatenare
+    26 00000000 BE[00000000]                    mov esi,a
+    27 00000005 BF[0E000000]                    mov edi,c
+    28 0000000A B903000000                      mov ecx,l_a
+    29 0000000F E32B                            jecxz sari1
+    30                                          repeta_a:
+    31 00000011 66AD                                lodsw ;ax=a+esi ;esi++
+    32 00000013 AA                                  stosb ;c+edi=al ;edi++
+    33 00000014 E2FB                            loop repeta_a
+    34                                          
+    35 00000016 BE[06000000]                    mov esi,b
+    36 0000001B B904000000                      mov ecx,l_b
+    37 00000020 E31A                            jecxz sari1
+    38                                          repeta_b:
+    39 00000022 66AD                                lodsw ;ax=a+esi ;esi++
+    40 00000024 66C1C008                            rol ax,8
+    41 00000028 AA                                  stosb ;c+edi=al ;edi++ 
+    42 00000029 E2F7                            loop repeta_b
+    43                                          
+    44                                          ;sortare
+    45                                  
+    46 0000002B BE00000000                      mov esi,0
+    47 00000030 BF00000000                      mov edi,0
+    48                                          
+    49 00000035 B907000000                      mov ecx,7
+    50 0000003A E358                            jecxz sari
+    51                                          sari1:
+    52                                          sortare:
+    53 0000003C 8A87[0E000000]                      mov al,[c+edi] ;max=al
+    54 00000042 51                                  push ecx
+    55                                              
+    56 00000043 49                                  dec ecx
+    57 00000044 E319                                jecxz final 
+    58 00000046 89FE                                mov esi,edi
+    59                                              
+    60                                              comparare:
+    61 00000048 46                                      inc esi
+    62 00000049 8A9E[0E000000]                          mov bl,[c+esi]
+    63                                                  
+    64 0000004F 38D8                                    cmp al,bl
+    65 00000051 7F0A                                    jg mai_mare
+    66                                                  
+    67 00000053 8886[0E000000]                          mov byte[c+esi],al
+    68 00000059 88D8                                    mov al,bl
+    69 0000005B 89F7                                    mov edi,esi
+    70                                                  mai_mare:
+    71                                                 
+    72 0000005D E2E9                                loop comparare 
+    73                                              
+    74                                              final:
+    75 0000005F 88C2                                mov dl,al
+    76 00000061 8887[15000000]                      mov [d+edi],al
+    77 00000067 47                                  inc edi
+    78 00000068 59                                  pop ecx
+    79                                              
+    80 00000069 E2D1                            loop sortare
+    81                                          
+    82                                          ;afisare
+    83 0000006B BE00000000                      mov esi,0
+    84 00000070 B907000000                      mov ecx,7
+    85 00000075 E31D                            jecxz sari
+    86                                          afisare:
+    87 00000077 60                                   pushad
+    88 00000078 8A86[15000000]                       mov al,[d+esi]
+    89 0000007E 46                                   inc esi
+    90 0000007F 6698                                 cbw
+    91 00000081 98                                   cwde
+    92 00000082 50                                   push eax 
+    93 00000083 68[1C000000]                         push dword format
+    94 00000088 FF15[00000000]                       call [printf] 
+    95 0000008E 83C408                               add esp,4*2
+    96                                               
+    97 00000091 61                                   popad
+    98 00000092 E2E3                            loop afisare
+    99                                          sari:
+   100                                          ; exit(0)
+   101 00000094 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   102 00000096 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

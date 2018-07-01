@@ -1,0 +1,33 @@
+     1                                  ;Se da un numar natural negativ a (a: dword). 
+     2                                  ;Sa se afiseze valoarea lui in baza 10 si in baza 16, in urmatorul format: "a = <base_10> (baza 10), a = <base_16> (baza 16)"
+     3                                  
+     4                                  bits 32 ; assembling for the 32 bits architecture
+     5                                  
+     6                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     7                                  global start        
+     8                                  
+     9                                  ; declare external functions needed by our program
+    10                                  extern exit,printf               ; tell nasm that exit exists even if we won't be defining it
+    11                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    12                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    13                                  import printf msvcrt.dll
+    14                                  ; our data is declared here (the variables needed by our program)
+    15                                  segment data use32 class=data
+    16                                      ; ...
+    17 00000000 F9FFFFFF                    a dd -7
+    18 00000004 61203D202564202862-         format db "a = %d (baza 10), a = %x (baza 16)"
+    18 0000000D 617A61203130292C20-
+    18 00000016 61203D202578202862-
+    18 0000001F 617A6120313629     
+    19                                  ; our code starts here
+    20                                  segment code use32 class=code
+    21                                      start:
+    22                                          ; ...
+    23 00000000 FF35[00000000]                  push dword [a]
+    24 00000006 FF35[00000000]                  push dword [a]
+    25 0000000C 68[04000000]                    push dword format
+    26 00000011 FF15[00000000]                  call [printf]
+    27 00000017 83C40C                          add esp,4*3
+    28                                          ; exit(0)
+    29 0000001A 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    30 0000001C FF15[00000000]                  call    [exit]       ; call exit to terminate the program

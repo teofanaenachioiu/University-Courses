@@ -1,0 +1,31 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13 00000000 0800                        a dw 8
+    14 00000002 0A00                        b dw 10
+    15 00000004 1100                        c dw 17
+    16 00000006 0200                        d dw 2; ...
+    17                                  
+    18                                  ; our code starts here
+    19                                  segment code use32 class=code
+    20                                      start:
+    21                                          ; ...
+    22 00000000 668B15[06000000]                mov dx,[d] ;dx = d
+    23 00000007 660315[00000000]                add dx,[a] ;dx = dx+a = d+a
+    24 0000000E 668B1D[02000000]                mov bx,[b] ;bx = b
+    25 00000015 668B0D[04000000]                mov cx,[c] ;cx = c
+    26 0000001C 6601CB                          add bx,cx ;bx = bx+cx = b+c
+    27 0000001F 6629D1                          sub cx,dx ;cx = cx-dx = c-(d+a) 
+    28 00000022 6601D9                          add cx,bx ;cx= cx+bx = c-(d+a)+(b+c)
+    29                                          ; exit(0)
+    30 00000025 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    31 00000027 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

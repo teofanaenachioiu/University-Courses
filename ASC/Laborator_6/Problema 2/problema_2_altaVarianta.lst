@@ -1,0 +1,67 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit,printf               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                  import printf msvcrt.dll                           ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13 00000000 01020304                    s1 db 1, 2, 3, 4
+    14 00000004 05060708                    s2 db  5, 6, 7, 8
+    15                                      l equ $-s2
+    16 00000008 00<rept>                    dest times l db 0
+    17 0000000C 536972756C20657374-         mesaj dd "Sirul este: ",0
+    17 00000015 653A2000000000     
+    18 0000001C 25642000                    format db "%d ",0 
+    19                                  segment code use32 class=code
+    20                                      start:
+    21 00000000 B904000000                      mov ecx, l ;Retinem lungimea sirului in ECX 
+    22 00000005 BE00000000                      mov esi, 0 ;Retinem in ESI pozitia curenta (initial 0)
+    23                                          
+    24 0000000A E357                            jecxz Sfarsit ;Verificam ECX != 0, pentru a nu intra in bucla infinita
+    25                                          
+    26 0000000C 68[0C000000]                    push mesaj 
+    27 00000011 FF15[00000000]                  call[printf] ;Apelam functia printf care va afisa mesajul
+    28 00000017 83C404                          add esp,4*1 ;Eliberam stiva
+    29                                          
+    30                                          Repeta:
+    31 0000001A 8A86[00000000]                      mov al,[s1+esi] ;al = s1 [esi]
+    32 00000020 8A9E[04000000]                      mov bl,[s2+esi] ;bl = s2 [esi]
+    33                                              
+    34 00000026 F7C601000000                        test esi,1 ; esi AND 1 => 1(ESI impar), 0 (ESI par)
+    35                                              
+    36 0000002C 7506                                jnz impar ;ZF=0 se sare la eticheta impar
+    37 0000002E 7400                                jz par ;ZF=1 se sare la eticheta par
+    38                                              
+    39                                              par: 
+    40 00000030 00D8                                    add al,bl ;al = al + bl
+    41 00000032 EB02                                    jmp iesire ;elementul de adaugat(al) in sirul destinatie e calculat si se sare la ultimul pas - adaugarea in sir
+    42                                              
+    43                                              impar:
+    44 00000034 28D8                                    sub al,bl ;al = al - bl
+    45                                                  
+    46                                              iesire:
+    47 00000036 8886[08000000]                          mov [dest+esi],al ;dest[esi] = al
+    48 0000003C 46                                      inc esi ;esi = esi+1 (pregatim poziti pentru urmatorul element)
+    49 0000003D E2DB                            loop Repeta        
+    50                                            
+    51 0000003F BF00000000                      mov edi,0
+    52 00000044 B904000000                      mov ecx,l
+    53                                          afisare:
+    54 00000049 8A87[08000000]                      mov al,[dest+edi]
+    55 0000004F 6698                                cbw ;al -> ax
+    56 00000051 98                                  cwde ;ax -> eax
+    57                                              
+    58 00000052 50                                  push dword eax
+    59 00000053 68[1C000000]                        push dword format
+    60 00000058 FF15[00000000]                      call [printf] ;Apelam functia printf care va afisa elementul
+    61 0000005E 83C404                              add esp, 4*1 ;Eliberam stiva   
+    62 00000061 E2E6                            loop afisare
+    63                                          
+    64                                          Sfarsit:
+    65 00000063 6A00                            push dword 0      ; push the parameter for exit onto the stack
+    66 00000065 FF15[00000000]                  call [exit]       ; call exit to terminate the program

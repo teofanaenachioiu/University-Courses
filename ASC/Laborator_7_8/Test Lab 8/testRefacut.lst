@@ -1,0 +1,122 @@
+     1                                  ;a. Se dau doua siruri de cuvinte a si b. Sa se obtina sirul c astfel: 
+     2                                  ;- concatenati sirul octetilor low din primul sir cu sirul octetilor high din al doilea sir. 
+     3                                  ;- sirul c se va ordona crescator
+     4                                  ;- numerele din siruri se vor interpreta cu semn
+     5                                  ;- afisati sirul c (numere in baza 16)
+     6                                  
+     7                                  	;Exemplu: 
+     8                                  
+     9                                  		;a dw 1234h,5678h,90h
+    10                                  
+    11                                  		;b dw 4h,0abcdh,10h,1122h
+    12                                  
+    13                                  		;c resb 7
+    14                                  
+    15                                  	;Reprezentarea in memorie:
+    16                                  
+    17                                  		;a -> | 34h| 12h| 78h| 56h| 90h| 00h|
+    18                                  
+    19                                  		;b -> | 04h| 00h| 0cdh| 0abh| 10h| 00h| 22h| 11h|
+    20                                  
+    21                                  	;Dupa concatenare sirul c va fi: 34h,78h,90h,00h,0abh,00h,11h. 
+    22                                  	;Apoi se face ordonarea octetilor.
+    23                                  	
+    24                                  
+    25                                  bits 32 
+    26                                  global start        
+    27                                  extern exit,printf               
+    28                                  import exit msvcrt.dll 
+    29                                  import printf msvcrt.dll   
+    30                                  segment data use32 class=data
+    31 00000000 341278569000                a dw 1234h,5678h,90h
+    32                                      len_a equ ($-a)/2
+    33 00000006 0400CDAB10002211            b dw 4h,0abcdh,10h,1122h
+    34                                      len_b equ ($-b)/2
+    35                                      len_c equ len_a+len_b
+    36 0000000E FF                          handle1 db -1
+    37 0000000F 00<rept>                    c times len_c db 0
+    38 00000016 FF                          handle2 db -1
+    39 00000017 25782000                    format db "%x ",0
+    40                                  segment code use32 class=code
+    41                                      start:
+    42 00000000 BF[0F000000]                    mov edi,c
+    43                                          
+    44                                          ;incarcarea octetilor low din a
+    45 00000005 BE[00000000]                    mov esi,a
+    46 0000000A B903000000                      mov ecx, len_a
+    47 0000000F E304                            jecxz final1
+    48                                          repeta_low:
+    49 00000011 A4                                  movsb
+    50 00000012 46                                  inc esi
+    51 00000013 E2FC                            loop repeta_low
+    52                                          final1:
+    53                                          
+    54                                          ;incarcarea octetilor high din b
+    55 00000015 BE[06000000]                    mov esi,b
+    56 0000001A B904000000                      mov ecx, len_b
+    57 0000001F E304                            jecxz final2
+    58                                          repeta_high:
+    59 00000021 46                                  inc esi
+    60 00000022 A4                                  movsb
+    61 00000023 E2FC                            loop repeta_high
+    62                                          final2:
+    63                                          
+    64                                          ;sortare
+    65 00000025 B907000000                      mov ecx,len_c
+    66 0000002A 49                              dec ecx
+    67 0000002B E353                            jecxz final
+    68 0000002D BE[0F000000]                    mov esi,c
+    69 00000032 BB01000000                      mov ebx,1
+    70                                          sortare:
+    71 00000037 51                                  push ecx
+    72 00000038 BF[0F000000]                        mov edi,c
+    73 0000003D 01DF                                add edi,ebx
+    74                                              repeta:
+    75 0000003F A6                                      cmpsb
+    76 00000040 7E13                                    jle next
+    77                                                  
+    78 00000042 4F                                      dec edi
+    79 00000043 4E                                      dec esi
+    80                                                  
+    81                                                  swap:
+    82 00000044 AC                                          lodsb
+    83 00000045 88C4                                        mov ah,al
+    84 00000047 4E                                          dec esi
+    85                                                      
+    86 00000048 87F7                                        xchg esi,edi
+    87                                                      
+    88 0000004A AC                                          lodsb
+    89 0000004B 4E                                          dec esi
+    90                                                      
+    91 0000004C AA                                          stosb
+    92 0000004D 4F                                          dec edi
+    93                                                      
+    94 0000004E 88E0                                        mov al,ah
+    95 00000050 87F7                                        xchg esi,edi
+    96 00000052 AA                                          stosb 
+    97 00000053 EB01                                        jmp iesi
+    98                                                  next:
+    99 00000055 4E                                          dec esi
+   100                                                  iesi:
+   101 00000056 E2E7                                loop repeta  
+   102 00000058 46                                  inc esi
+   103 00000059 43                                  inc ebx
+   104 0000005A 59                                  pop ecx  
+   105 0000005B E2DA                            loop sortare
+   106                                          
+   107                                          ;afisare
+   108 0000005D B907000000                      mov ecx, len_c
+   109 00000062 BE[0F000000]                    mov esi, c
+   110                                          bucla_print:
+   111 00000067 B800000000                          mov eax,0
+   112 0000006C AC                                  lodsb
+   113 0000006D 60                                  pushad
+   114 0000006E 50                                  push eax
+   115 0000006F 68[17000000]                        push dword format
+   116 00000074 FF15[00000000]                      call [printf]
+   117 0000007A 83C408                              add esp, 8
+   118 0000007D 61                                  popad
+   119 0000007E E2E7                            loop bucla_print
+   120                                          final:
+   121 00000080 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   122 00000082 FF15[00000000]                  call    [exit]       ; call exit to terminate the program
