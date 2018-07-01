@@ -1,6 +1,0 @@
-﻿  Source.cpp
-d:\algoritmica grafelor\algoritmi\reprezentari_graf\reprezentari_graf\source.cpp(109): warning C4018: '<': signed/unsigned mismatch
-d:\algoritmica grafelor\algoritmi\reprezentari_graf\reprezentari_graf\source.cpp(119): warning C4018: '<': signed/unsigned mismatch
-d:\algoritmica grafelor\algoritmi\reprezentari_graf\reprezentari_graf\source.cpp(128): warning C4018: '<': signed/unsigned mismatch
-d:\algoritmica grafelor\algoritmi\reprezentari_graf\reprezentari_graf\source.cpp(129): warning C4018: '<': signed/unsigned mismatch
-  Reprezentari_graf.vcxproj -> D:\Algoritmica grafelor\Algoritmi\Reprezentari_graf\Debug\Reprezentari_graf.exe

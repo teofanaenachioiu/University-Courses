@@ -1,5 +1,0 @@
-﻿  Source.cpp
-d:\algoritmica grafelor\algoritmi\moore\moore\source.cpp(36): warning C4018: '<': signed/unsigned mismatch
-d:\algoritmica grafelor\algoritmi\moore\moore\source.cpp(46): warning C4018: '<': signed/unsigned mismatch
-d:\algoritmica grafelor\algoritmi\moore\moore\source.cpp(58): warning C4018: '<': signed/unsigned mismatch
-  Moore.vcxproj -> D:\Algoritmica grafelor\Algoritmi\Moore\Debug\Moore.exe
