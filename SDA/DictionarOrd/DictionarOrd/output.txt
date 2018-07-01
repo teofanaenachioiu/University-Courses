@@ -1,0 +1,6 @@
+1 Mihai 220
+2 Maria 250
+5 Alexandru 200
+7 Vlad 180
+8 Paula 250
+9 Casian 300

@@ -1,0 +1,3 @@
+1 Mihai 220
+5 Alexandru 200
+8 Paula 250

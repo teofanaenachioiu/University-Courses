@@ -1,0 +1,36 @@
+[2018-06-09 12:30:34] [info] Start Program:
+Path:"D:\SDA\DictionarOrd\Debug\DictionarOrd.exe"
+Arguments:
+Working directory: "D:\SDA\DictionarOrd\DictionarOrd\"
+Modules: Selected: D:\SDA\DictionarOrd\Debug\DictionarOrd.exe Excluded: 
+Sources: Selected: D:\SDA\DictionarOrd\DictionarOrd Excluded: 
+Log Level: Normal
+Cover Children: 0
+Aggregate by file: 1
+Continue after C++ exception: 0
+Optimized build support: 0
+Export: Binary C:\Users\USER\AppData\Local\Temp\oq5opmbf.olm 
+Input coverage: 
+Unified diff: 
+Excluded line regular expressions: 
+
+[2018-06-09 12:30:36] [info] Module: D:\SDA\DictionarOrd\Debug\DictionarOrd.exe is selected because it matches selected pattern: D:\SDA\DictionarOrd\Debug\DictionarOrd.exe
+[2018-06-09 12:30:36] [warning] d:\sda\dictionarord\dictionarord\dictionar.cpp line 284 does not exist, skipped
+[2018-06-09 12:30:36] [info] Module: C:\Windows\SysWOW64\ntdll.dll is skipped because it matches no selected patterns
+[2018-06-09 12:30:37] [info] Module: C:\Windows\SysWOW64\kernel32.dll is skipped because it matches no selected patterns
+[2018-06-09 12:30:37] [info] Module: C:\Windows\SysWOW64\KernelBase.dll is skipped because it matches no selected patterns
+[2018-06-09 12:30:37] [info] Module: C:\Windows\SysWOW64\msvcp140d.dll is skipped because it matches no selected patterns
+[2018-06-09 12:30:37] [info] Module: C:\Windows\SysWOW64\vcruntime140d.dll is skipped because it matches no selected patterns
+[2018-06-09 12:30:37] [info] Module: C:\Windows\SysWOW64\ucrtbased.dll is skipped because it matches no selected patterns
+[2018-06-09 12:30:37] [info] Module: C:\Windows\SysWOW64\ucrtbased.dll is skipped because it matches no selected patterns
+[2018-06-09 12:30:37] [info] Module: C:\Windows\SysWOW64\ucrtbased.dll is skipped because it matches no selected patterns
+[2018-06-09 12:30:44] [info] Module: C:\Windows\SysWOW64\kernel.appcore.dll is skipped because it matches no selected patterns
+[2018-06-09 12:30:44] [info] Module: C:\Windows\SysWOW64\msvcrt.dll is skipped because it matches no selected patterns
+[2018-06-09 12:30:44] [info] Module: C:\Windows\SysWOW64\rpcrt4.dll is skipped because it matches no selected patterns
+[2018-06-09 12:30:44] [info] Module: C:\Windows\SysWOW64\sspicli.dll is skipped because it matches no selected patterns
+[2018-06-09 12:30:44] [info] Module: C:\Windows\SysWOW64\cryptbase.dll is skipped because it matches no selected patterns
+[2018-06-09 12:30:44] [info] Module: C:\Windows\SysWOW64\bcryptprimitives.dll is skipped because it matches no selected patterns
+[2018-06-09 12:30:44] [info] Module: C:\Windows\SysWOW64\sechost.dll is skipped because it matches no selected patterns
+[2018-06-09 12:30:44] [info] ----------------------------------------------------
+[2018-06-09 12:30:44] [info] Coverage binary generated in file: C:\Users\USER\AppData\Local\Temp\oq5opmbf.olm
+[2018-06-09 12:30:44] [info] ----------------------------------------------------
