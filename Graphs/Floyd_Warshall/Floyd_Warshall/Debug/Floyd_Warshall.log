@@ -1,0 +1,13 @@
+﻿  Source.cpp
+d:\algoritmica grafelor\algoritmi\floyd_warshall\floyd_warshall\source.cpp(33): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\floyd_warshall\floyd_warshall\source.cpp(34): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\floyd_warshall\floyd_warshall\source.cpp(44): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\floyd_warshall\floyd_warshall\source.cpp(45): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\floyd_warshall\floyd_warshall\source.cpp(49): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\floyd_warshall\floyd_warshall\source.cpp(51): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\floyd_warshall\floyd_warshall\source.cpp(56): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\floyd_warshall\floyd_warshall\source.cpp(57): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\floyd_warshall\floyd_warshall\source.cpp(58): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\floyd_warshall\floyd_warshall\source.cpp(62): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\floyd_warshall\floyd_warshall\source.cpp(64): warning C4018: '<': signed/unsigned mismatch
+  Floyd_Warshall.vcxproj -> D:\Algoritmica grafelor\Algoritmi\Floyd_Warshall\Debug\Floyd_Warshall.exe

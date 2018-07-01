@@ -1,0 +1,9 @@
+﻿  Source.cpp
+d:\algoritmica grafelor\algoritmi\warshall\warshall\source.cpp(50): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\warshall\warshall\source.cpp(51): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\warshall\warshall\source.cpp(54): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\warshall\warshall\source.cpp(55): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\warshall\warshall\source.cpp(56): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\warshall\warshall\source.cpp(61): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\warshall\warshall\source.cpp(62): warning C4018: '<': signed/unsigned mismatch
+  Warshall.vcxproj -> D:\Algoritmica grafelor\Algoritmi\Warshall\Debug\Warshall.exe

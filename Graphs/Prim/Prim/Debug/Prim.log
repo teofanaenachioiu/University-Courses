@@ -1,0 +1,6 @@
+﻿  Source.cpp
+d:\algoritmica grafelor\algoritmi\prim\prim\source.cpp(41): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\prim\prim\source.cpp(61): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\prim\prim\source.cpp(65): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\prim\prim\source.cpp(74): warning C4018: '<': signed/unsigned mismatch
+  Prim.vcxproj -> D:\Algoritmica grafelor\Algoritmi\Prim\Debug\Prim.exe

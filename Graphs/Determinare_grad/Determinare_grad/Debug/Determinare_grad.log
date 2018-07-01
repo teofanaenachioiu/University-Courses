@@ -1,0 +1,10 @@
+﻿  Source.cpp
+d:\algoritmica grafelor\algoritmi\determinare_grad\determinare_grad\source.cpp(63): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\determinare_grad\determinare_grad\source.cpp(64): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\determinare_grad\determinare_grad\source.cpp(74): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\determinare_grad\determinare_grad\source.cpp(75): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\determinare_grad\determinare_grad\source.cpp(84): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\determinare_grad\determinare_grad\source.cpp(110): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\determinare_grad\determinare_grad\source.cpp(134): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\determinare_grad\determinare_grad\source.cpp(140): warning C4018: '<': signed/unsigned mismatch
+  Determinare_grad.vcxproj -> D:\Algoritmica grafelor\Algoritmi\Determinare_grad\Debug\Determinare_grad.exe

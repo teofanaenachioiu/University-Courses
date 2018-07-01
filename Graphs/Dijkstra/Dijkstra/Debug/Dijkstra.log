@@ -1,0 +1,6 @@
+﻿  Source.cpp
+d:\algoritmica grafelor\algoritmi\dijkstra\dijkstra\source.cpp(47): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\dijkstra\dijkstra\source.cpp(72): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\dijkstra\dijkstra\source.cpp(78): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\dijkstra\dijkstra\source.cpp(87): warning C4018: '<': signed/unsigned mismatch
+  Dijkstra.vcxproj -> D:\Algoritmica grafelor\Algoritmi\Dijkstra\Debug\Dijkstra.exe

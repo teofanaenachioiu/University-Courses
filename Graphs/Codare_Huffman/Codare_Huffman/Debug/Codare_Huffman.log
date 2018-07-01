@@ -1,0 +1,5 @@
+﻿  Source.cpp
+d:\algoritmica grafelor\algoritmi\codare_huffman\codare_huffman\source.cpp(21): warning C4091: 'typedef ': ignored on left of 'Nod' when no variable is declared
+d:\algoritmica grafelor\algoritmi\codare_huffman\codare_huffman\source.cpp(24): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\codare_huffman\codare_huffman\source.cpp(63): warning C4018: '<': signed/unsigned mismatch
+  Codare_Huffman.vcxproj -> D:\Algoritmica grafelor\Algoritmi\Codare_Huffman\Debug\Codare_Huffman.exe

@@ -1,0 +1,8 @@
+﻿  Source.cpp
+d:\algoritmica grafelor\algoritmi\codare_prufer\codare_prufer\source.cpp(24): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\codare_prufer\codare_prufer\source.cpp(40): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\codare_prufer\codare_prufer\source.cpp(48): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\codare_prufer\codare_prufer\source.cpp(105): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\codare_prufer\codare_prufer\source.cpp(51): warning C4715: 'tatal': not all control paths return a value
+d:\algoritmica grafelor\algoritmi\codare_prufer\codare_prufer\source.cpp(81): warning C4715: 'minim': not all control paths return a value
+  Codare_Prufer.vcxproj -> D:\Algoritmica grafelor\Algoritmi\Codare_Prufer\Debug\Codare_Prufer.exe

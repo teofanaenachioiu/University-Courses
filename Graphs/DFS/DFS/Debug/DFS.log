@@ -1,0 +1,7 @@
+﻿  Source.cpp
+d:\algoritmica grafelor\algoritmi\dfs\dfs\source.cpp(36): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\dfs\dfs\source.cpp(51): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\dfs\dfs\source.cpp(58): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\dfs\dfs\source.cpp(69): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\dfs\dfs\source.cpp(80): warning C4018: '<': signed/unsigned mismatch
+  DFS.vcxproj -> D:\Algoritmica grafelor\Algoritmi\DFS\Debug\DFS.exe
