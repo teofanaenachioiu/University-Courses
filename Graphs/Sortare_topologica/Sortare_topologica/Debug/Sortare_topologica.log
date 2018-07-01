@@ -1,0 +1,5 @@
+﻿  Source.cpp
+d:\algoritmica grafelor\algoritmi\sortare_topologica\sortare_topologica\source.cpp(33): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\sortare_topologica\sortare_topologica\source.cpp(46): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\sortare_topologica\sortare_topologica\source.cpp(51): warning C4018: '<': signed/unsigned mismatch
+  Sortare_topologica.vcxproj -> D:\Algoritmica grafelor\Algoritmi\Sortare_topologica\Debug\Sortare_topologica.exe

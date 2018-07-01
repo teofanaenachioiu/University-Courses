@@ -1,0 +1,5 @@
+﻿  Source.cpp
+d:\algoritmica grafelor\algoritmi\bfs\bfs\source.cpp(37): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\bfs\bfs\source.cpp(49): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\bfs\bfs\source.cpp(63): warning C4018: '<': signed/unsigned mismatch
+  BFS.vcxproj -> D:\Algoritmica grafelor\Algoritmi\BFS\Debug\BFS.exe

@@ -1,0 +1,9 @@
+﻿  Source.cpp
+d:\algoritmica grafelor\algoritmi\kosaraju_sharir\kosaraju_sharir\source.cpp(37): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\kosaraju_sharir\kosaraju_sharir\source.cpp(50): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\kosaraju_sharir\kosaraju_sharir\source.cpp(55): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\kosaraju_sharir\kosaraju_sharir\source.cpp(62): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\kosaraju_sharir\kosaraju_sharir\source.cpp(77): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\kosaraju_sharir\kosaraju_sharir\source.cpp(96): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\kosaraju_sharir\kosaraju_sharir\source.cpp(98): warning C4018: '<': signed/unsigned mismatch
+  Kosaraju_Sharir.vcxproj -> D:\Algoritmica grafelor\Algoritmi\Kosaraju_Sharir\Debug\Kosaraju_Sharir.exe

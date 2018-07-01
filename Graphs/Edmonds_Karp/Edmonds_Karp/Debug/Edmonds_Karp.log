@@ -1,0 +1,3 @@
+﻿  main.cpp
+d:\algoritmica grafelor\algoritmi\edmonds_karp\edmonds_karp\main.cpp(14): warning C4091: 'typedef ': ignored on left of 'arc' when no variable is declared
+  Edmonds_Karp.vcxproj -> D:\Algoritmica grafelor\Algoritmi\Edmonds_Karp\Debug\Edmonds_Karp.exe

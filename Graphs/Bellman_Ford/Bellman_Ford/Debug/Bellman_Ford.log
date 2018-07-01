@@ -1,0 +1,8 @@
+﻿  Source.cpp
+d:\algoritmica grafelor\algoritmi\bellman_ford\bellman_ford\source.cpp(41): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\bellman_ford\bellman_ford\source.cpp(47): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\bellman_ford\bellman_ford\source.cpp(49): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\bellman_ford\bellman_ford\source.cpp(50): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\bellman_ford\bellman_ford\source.cpp(56): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\algoritmi\bellman_ford\bellman_ford\source.cpp(57): warning C4018: '<': signed/unsigned mismatch
+  Bellman_Ford.vcxproj -> D:\Algoritmica grafelor\Algoritmi\Bellman_Ford\Debug\Bellman_Ford.exe
