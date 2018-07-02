@@ -1,0 +1,32 @@
+[2018-03-24 18:59:01] [info] Start Program:
+Path:"D:\OOP\Laboratoare\Laborator 2-3\Magazin_electronice\Debug\Magazin_electronice.exe"
+Arguments:
+Working directory: "D:\OOP\Laboratoare\Laborator 2-3\Magazin_electronice\Magazin_electronice\"
+Modules: Selected: D:\OOP\Laboratoare\Laborator 2-3\Magazin_electronice\Debug\Magazin_electronice.exe Excluded: 
+Sources: Selected: D:\OOP\Laboratoare\Laborator 2-3\Magazin_electronice\Magazin_electronice Excluded: 
+Log Level: Normal
+Cover Children: 0
+Aggregate by file: 1
+Continue after C++ exception: 0
+Optimized build support: 0
+Export: Binary C:\Users\USER\AppData\Local\Temp\eo5r51ri.pnb 
+Input coverage: 
+Unified diff: 
+Excluded line regular expressions: 
+
+[2018-03-24 18:59:01] [info] Module: D:\OOP\Laboratoare\Laborator 2-3\Magazin_electronice\Debug\Magazin_electronice.exe is selected because it matches selected pattern: D:\OOP\Laboratoare\Laborator 2-3\Magazin_electronice\Debug\Magazin_electronice.exe
+[2018-03-24 18:59:01] [info] Module: C:\Windows\SysWOW64\ntdll.dll is skipped because it matches no selected patterns
+[2018-03-24 18:59:01] [info] Module: C:\Windows\SysWOW64\kernel32.dll is skipped because it matches no selected patterns
+[2018-03-24 18:59:01] [info] Module: C:\Windows\SysWOW64\KernelBase.dll is skipped because it matches no selected patterns
+[2018-03-24 18:59:01] [info] Module: C:\Windows\SysWOW64\vcruntime140d.dll is skipped because it matches no selected patterns
+[2018-03-24 18:59:01] [info] Module: C:\Windows\SysWOW64\ucrtbased.dll is skipped because it matches no selected patterns
+[2018-03-24 18:59:01] [info] Module: C:\Windows\SysWOW64\kernel.appcore.dll is skipped because it matches no selected patterns
+[2018-03-24 18:59:01] [info] Module: C:\Windows\SysWOW64\msvcrt.dll is skipped because it matches no selected patterns
+[2018-03-24 18:59:01] [info] Module: C:\Windows\SysWOW64\rpcrt4.dll is skipped because it matches no selected patterns
+[2018-03-24 18:59:01] [info] Module: C:\Windows\SysWOW64\sspicli.dll is skipped because it matches no selected patterns
+[2018-03-24 18:59:01] [info] Module: C:\Windows\SysWOW64\cryptbase.dll is skipped because it matches no selected patterns
+[2018-03-24 18:59:01] [info] Module: C:\Windows\SysWOW64\bcryptprimitives.dll is skipped because it matches no selected patterns
+[2018-03-24 18:59:01] [info] Module: C:\Windows\SysWOW64\sechost.dll is skipped because it matches no selected patterns
+[2018-03-24 18:59:01] [info] ----------------------------------------------------
+[2018-03-24 18:59:01] [info] Coverage binary generated in file: C:\Users\USER\AppData\Local\Temp\eo5r51ri.pnb
+[2018-03-24 18:59:01] [info] ----------------------------------------------------

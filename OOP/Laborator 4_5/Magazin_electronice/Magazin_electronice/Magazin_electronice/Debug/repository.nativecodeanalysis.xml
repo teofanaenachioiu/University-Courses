@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\george\desktop\magazin_electronice\magazin_electronice\</FILEPATH>
+      <FILENAME>repository.c</FILENAME>
+      <LINE>10</LINE>
+      <COLUMN>6</COLUMN>
+    </SFA>
+    <DEFECTCODE>6011</DEFECTCODE>
+    <DESCRIPTION>Dereferencing NULL pointer 'r'. </DESCRIPTION>
+    <FUNCTION>makeRepo</FUNCTION>
+    <DECORATED>makeRepo</DECORATED>
+    <FUNCLINE>6</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\george\desktop\magazin_electronice\magazin_electronice\</FILEPATH>
+        <FILENAME>repository.c</FILENAME>
+        <LINE>9</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'r' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\george\desktop\magazin_electronice\magazin_electronice\</FILEPATH>
+        <FILENAME>repository.c</FILENAME>
+        <LINE>10</LINE>
+        <COLUMN>6</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'r' is dereferenced, but may still be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT>
+</DEFECTS>
