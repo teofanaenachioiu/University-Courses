@@ -1,0 +1,86 @@
+[2018-06-13 13:38:53] [info] Start Program:
+Path:"D:\OOP\Laboratoare\Laborator 10-11\Inchirieri_masini_GUI\x64\Debug\Inchirieri_masini_GUI.exe"
+Arguments:
+Working directory: "D:\OOP\Laboratoare\Laborator 10-11\Inchirieri_masini_GUI\Inchirieri_masini_GUI\"
+Modules: Selected: D:\OOP\Laboratoare\Laborator 10-11\Inchirieri_masini_GUI\x64\Debug\Inchirieri_masini_GUI.exe Excluded: 
+Sources: Selected: D:\OOP\Laboratoare\Laborator 10-11\Inchirieri_masini_GUI\Inchirieri_masini_GUI Excluded: 
+Log Level: Normal
+Cover Children: 0
+Aggregate by file: 1
+Continue after C++ exception: 0
+Optimized build support: 0
+Export: Binary C:\Users\USER\AppData\Local\Temp\pbo2m3wm.e3d 
+Input coverage: 
+Unified diff: 
+Excluded line regular expressions: 
+
+[2018-06-13 13:38:54] [info] Module: D:\OOP\Laboratoare\Laborator 10-11\Inchirieri_masini_GUI\x64\Debug\Inchirieri_masini_GUI.exe is selected because it matches selected pattern: D:\OOP\Laboratoare\Laborator 10-11\Inchirieri_masini_GUI\x64\Debug\Inchirieri_masini_GUI.exe
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\ntdll.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\kernel32.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\KernelBase.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\shell32.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\msvcrt.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\cfgmgr32.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\ucrtbase.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: D:\Qt\5.11.0\msvc2017_64\bin\Qt5Guid.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: D:\Qt\5.11.0\msvc2017_64\bin\Qt5Cored.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\SHCore.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\rpcrt4.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\combase.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\gdi32.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\ws2_32.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\bcryptprimitives.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\gdi32full.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\user32.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\msvcp_win.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\win32u.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\ole32.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\ole32.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\advapi32.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\sechost.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\sechost.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: D:\Qt\5.11.0\msvc2017_64\bin\Qt5Widgetsd.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\windows.storage.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\mpr.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\netapi32.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\shlwapi.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\userenv.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\version.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\profapi.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\kernel.appcore.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\powrprof.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\msvcp140d.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\ucrtbased.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\vcruntime140d.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\winmm.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\uxtheme.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\dwmapi.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\winmmbase.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\winmmbase.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\winmmbase.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\netutils.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\srvcli.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\cryptbase.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\imm32.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: D:\Qt\5.11.0\msvc2017_64\plugins\platforms\qwindowsd.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\oleaut32.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: D:\Qt\5.11.0\msvc2017_64\plugins\styles\qwindowsvistastyled.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:55] [info] Module: C:\Windows\System32\DWrite.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:56] [info] Module: C:\Windows\System32\msctf.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:56] [info] Module: C:\Windows\System32\clbcatq.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:56] [info] Module: C:\Windows\System32\DataExchange.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:56] [info] Module: C:\Windows\System32\dcomp.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:56] [info] Module: C:\Windows\System32\d3d11.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:56] [info] Module: C:\Windows\System32\dxgi.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:56] [info] Module: C:\Windows\System32\twinapi.appcore.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:56] [info] Module: C:\Windows\System32\rmclient.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:56] [info] Module: C:\Windows\System32\bcrypt.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:56] [info] Module: C:\Windows\System32\TextInputFramework.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:56] [info] Module: C:\Windows\System32\CoreMessaging.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:56] [info] Module: C:\Windows\System32\CoreUIComponents.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:56] [info] Module: C:\Windows\System32\ntmarta.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:56] [info] Module: C:\Windows\System32\WinTypes.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:56] [info] Module: C:\Windows\System32\WinTypes.dll is skipped because it matches no selected patterns
+[2018-06-13 13:38:58] [info] ----------------------------------------------------
+[2018-06-13 13:38:58] [info] Coverage binary generated in file: C:\Users\USER\AppData\Local\Temp\pbo2m3wm.e3d
+[2018-06-13 13:38:58] [info] ----------------------------------------------------
