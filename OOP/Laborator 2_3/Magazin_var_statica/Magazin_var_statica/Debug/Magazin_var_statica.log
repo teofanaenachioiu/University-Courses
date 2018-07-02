@@ -1,0 +1,90 @@
+﻿  consola.c
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\consola.c(45): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1272): note: see declaration of 'scanf'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\consola.c(53): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1272): note: see declaration of 'scanf'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\consola.c(61): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1272): note: see declaration of 'scanf'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\consola.c(69): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1272): note: see declaration of 'scanf'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\consola.c(80): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1272): note: see declaration of 'scanf'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\consola.c(85): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1272): note: see declaration of 'scanf'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\consola.c(90): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1272): note: see declaration of 'scanf'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\consola.c(95): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1272): note: see declaration of 'scanf'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\consola.c(100): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1272): note: see declaration of 'scanf'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\consola.c(105): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1272): note: see declaration of 'scanf'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\consola.c(133): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\consola.c(227): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\consola.c(194): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1272): note: see declaration of 'scanf'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\consola.c(217): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1272): note: see declaration of 'scanf'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\consola.c(251): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1272): note: see declaration of 'scanf'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\consola.c(263): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1272): note: see declaration of 'scanf'
+  main.c
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\main.c(21): warning C4013: 'test_validareNrIntreg' undefined; assuming extern returning int
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\main.c(22): warning C4013: 'test_validareNrReal' undefined; assuming extern returning int
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\main.c(23): warning C4013: 'test_validareCuvant' undefined; assuming extern returning int
+  produs.c
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\produs.c(18): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\produs.c(15): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(132): note: see declaration of 'strcpy'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\produs.c(16): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(132): note: see declaration of 'strcpy'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\produs.c(17): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(132): note: see declaration of 'strcpy'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\produs.c(70): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(132): note: see declaration of 'strcpy'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\produs.c(77): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(132): note: see declaration of 'strcpy'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\produs.c(84): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(132): note: see declaration of 'strcpy'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\produs.c(123): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(132): note: see declaration of 'strcpy'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\produs.c(124): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(132): note: see declaration of 'strcpy'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\produs.c(126): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(132): note: see declaration of 'strcpy'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\produs.c(133): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(132): note: see declaration of 'strcpy'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\produs.c(134): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(132): note: see declaration of 'strcpy'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\produs.c(136): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(132): note: see declaration of 'strcpy'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\produs.c(140): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(132): note: see declaration of 'strcpy'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\produs.c(141): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(132): note: see declaration of 'strcpy'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\produs.c(143): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(132): note: see declaration of 'strcpy'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\produs.c(155): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(132): note: see declaration of 'strcpy'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\produs.c(157): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(132): note: see declaration of 'strcpy'
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\produs.c(158): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(132): note: see declaration of 'strcpy'
+  repository.c
+  service.c
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\service.c(71): warning C4101: 'p3': unreferenced local variable
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\service.c(69): warning C4101: 'p1': unreferenced local variable
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\service.c(70): warning C4101: 'p2': unreferenced local variable
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\service.c(99): warning C4101: 'p3': unreferenced local variable
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\service.c(97): warning C4101: 'p1': unreferenced local variable
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\service.c(98): warning C4101: 'p2': unreferenced local variable
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\service.c(138): warning C4013: 'stricmp' undefined; assuming extern returning int
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\service.c(246): warning C4133: 'function': incompatible types - from 'Service *' to 'Repo *'
+  validare.c
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\validare.c(12): warning C4018: '<': signed/unsigned mismatch
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\validare.c(26): warning C4018: '<': signed/unsigned mismatch
+d:\oop\laboratoare\laborator 2-3\magazin_var_statica\magazin_var_statica\validare.c(40): warning C4018: '<': signed/unsigned mismatch
+  vector.c
+  Generating Code...
+  Magazin_var_statica.vcxproj -> D:\OOP\Laboratoare\Laborator 2-3\Magazin_var_statica\Debug\Magazin_var_statica.exe

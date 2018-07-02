@@ -1,0 +1,33 @@
+[2018-03-23 14:07:03] [info] Start Program:
+Path:"D:\OOP\Laboratoare\Laborator 2-3\Magazin_var_statica\Debug\Magazin_var_statica.exe"
+Arguments:
+Working directory: "D:\OOP\Laboratoare\Laborator 2-3\Magazin_var_statica\Magazin_var_statica\"
+Modules: Selected: D:\OOP\Laboratoare\Laborator 2-3\Magazin_var_statica\Debug\Magazin_var_statica.exe Excluded: 
+Sources: Selected: D:\OOP\Laboratoare\Laborator 2-3\Magazin_var_statica\Magazin_var_statica Excluded: 
+Log Level: Normal
+Cover Children: 0
+Aggregate by file: 1
+Continue after C++ exception: 0
+Optimized build support: 0
+Export: Binary C:\Users\USER\AppData\Local\Temp\3jdgd2l0.5mt 
+Input coverage: 
+Unified diff: 
+Excluded line regular expressions: 
+
+[2018-03-23 14:07:03] [info] Module: D:\OOP\Laboratoare\Laborator 2-3\Magazin_var_statica\Debug\Magazin_var_statica.exe is selected because it matches selected pattern: D:\OOP\Laboratoare\Laborator 2-3\Magazin_var_statica\Debug\Magazin_var_statica.exe
+[2018-03-23 14:07:04] [info] Module: C:\Windows\SysWOW64\ntdll.dll is skipped because it matches no selected patterns
+[2018-03-23 14:07:04] [info] Module: C:\Windows\SysWOW64\kernel32.dll is skipped because it matches no selected patterns
+[2018-03-23 14:07:04] [info] Module: C:\Windows\SysWOW64\KernelBase.dll is skipped because it matches no selected patterns
+[2018-03-23 14:07:04] [info] Module: C:\Windows\SysWOW64\vcruntime140d.dll is skipped because it matches no selected patterns
+[2018-03-23 14:07:04] [info] Module: C:\Windows\SysWOW64\ucrtbased.dll is skipped because it matches no selected patterns
+[2018-03-23 14:07:04] [info] Module: C:\Windows\SysWOW64\ucrtbased.dll is skipped because it matches no selected patterns
+[2018-03-23 14:07:11] [info] Module: C:\Windows\SysWOW64\kernel.appcore.dll is skipped because it matches no selected patterns
+[2018-03-23 14:07:11] [info] Module: C:\Windows\SysWOW64\msvcrt.dll is skipped because it matches no selected patterns
+[2018-03-23 14:07:11] [info] Module: C:\Windows\SysWOW64\rpcrt4.dll is skipped because it matches no selected patterns
+[2018-03-23 14:07:11] [info] Module: C:\Windows\SysWOW64\sspicli.dll is skipped because it matches no selected patterns
+[2018-03-23 14:07:11] [info] Module: C:\Windows\SysWOW64\cryptbase.dll is skipped because it matches no selected patterns
+[2018-03-23 14:07:11] [info] Module: C:\Windows\SysWOW64\bcryptprimitives.dll is skipped because it matches no selected patterns
+[2018-03-23 14:07:11] [info] Module: C:\Windows\SysWOW64\sechost.dll is skipped because it matches no selected patterns
+[2018-03-23 14:07:11] [info] ----------------------------------------------------
+[2018-03-23 14:07:11] [info] Coverage binary generated in file: C:\Users\USER\AppData\Local\Temp\3jdgd2l0.5mt
+[2018-03-23 14:07:11] [info] ----------------------------------------------------
