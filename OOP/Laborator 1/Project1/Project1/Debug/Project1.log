@@ -1,0 +1,19 @@
+﻿  Source.c
+d:\oop\laboratoare\laboarator 1\project1\project1\source.c(48): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1272): note: see declaration of 'scanf'
+d:\oop\laboratoare\laboarator 1\project1\project1\source.c(50): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1272): note: see declaration of 'scanf'
+d:\oop\laboratoare\laboarator 1\project1\project1\source.c(53): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1272): note: see declaration of 'scanf'
+d:\oop\laboratoare\laboarator 1\project1\project1\source.c(55): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1272): note: see declaration of 'scanf'
+d:\oop\laboratoare\laboarator 1\project1\project1\source.c(129): warning C4244: 'function': conversion from 'float' to 'int', possible loss of data
+d:\oop\laboratoare\laboarator 1\project1\project1\source.c(184): warning C4244: 'function': conversion from 'float' to 'int', possible loss of data
+d:\oop\laboratoare\laboarator 1\project1\project1\source.c(211): warning C4244: 'function': conversion from 'float' to 'int', possible loss of data
+d:\oop\laboratoare\laboarator 1\project1\project1\source.c(216): warning C4244: 'function': conversion from 'float' to 'int', possible loss of data
+d:\oop\laboratoare\laboarator 1\project1\project1\source.c(218): warning C4244: 'function': conversion from 'float' to 'int', possible loss of data
+d:\oop\laboratoare\laboarator 1\project1\project1\source.c(305): warning C4101: 'I': unreferenced local variable
+d:\oop\laboratoare\laboarator 1\project1\project1\source.c(361): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1272): note: see declaration of 'scanf'
+d:\oop\laboratoare\laboarator 1\project1\project1\source.c(106): warning C4715: 'punctComun': not all control paths return a value
+  Project1.vcxproj -> D:\OOP\Laboratoare\Laboarator 1\Project1\Debug\Project1.exe
