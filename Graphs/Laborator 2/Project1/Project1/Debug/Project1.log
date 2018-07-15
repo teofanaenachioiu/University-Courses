@@ -1,0 +1,16 @@
+﻿  main.c
+d:\algoritmica grafelor\laboratoare\laborator 2\project1\project1\main.c(70): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1195): note: see declaration of 'fscanf'
+d:\algoritmica grafelor\laboratoare\laborator 2\project1\project1\main.c(73): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1195): note: see declaration of 'fscanf'
+d:\algoritmica grafelor\laboratoare\laborator 2\project1\project1\main.c(74): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1195): note: see declaration of 'fscanf'
+d:\algoritmica grafelor\laboratoare\laborator 2\project1\project1\main.c(161): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1272): note: see declaration of 'scanf'
+d:\algoritmica grafelor\laboratoare\laborator 2\project1\project1\main.c(185): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(207): note: see declaration of 'fopen'
+d:\algoritmica grafelor\laboratoare\laborator 2\project1\project1\main.c(194): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1272): note: see declaration of 'scanf'
+d:\algoritmica grafelor\laboratoare\laborator 2\project1\project1\main.c(181): warning C4101: 'i': unreferenced local variable
+d:\algoritmica grafelor\laboratoare\laborator 2\project1\project1\main.c(40): warning C4172: returning address of local variable or temporary: l
+  Project1.vcxproj -> D:\Algoritmica grafelor\Laboratoare\Laborator 2\Project1\Debug\Project1.exe
