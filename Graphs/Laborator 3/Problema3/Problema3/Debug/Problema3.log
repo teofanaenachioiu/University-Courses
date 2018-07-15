@@ -1,0 +1,3 @@
+﻿  main.cpp
+d:\algoritmica grafelor\laboratoare\laborator 3\problema3\problema3\main.cpp(66): warning C4715: 'Bellman_Ford': not all control paths return a value
+  Problema3.vcxproj -> D:\Algoritmica grafelor\Laboratoare\Laborator 3\Problema3\Debug\Problema3.exe
