@@ -1,0 +1,8 @@
+﻿  Problema1.cpp
+d:\algoritmica grafelor\laboratoare\laborator 4\problema1\problema1\problema1.cpp(44): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\laboratoare\laborator 4\problema1\problema1\problema1.cpp(55): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\laboratoare\laborator 4\problema1\problema1\problema1.cpp(115): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\laboratoare\laborator 4\problema1\problema1\problema1.cpp(125): warning C4018: '<': signed/unsigned mismatch
+d:\algoritmica grafelor\laboratoare\laborator 4\problema1\problema1\problema1.cpp(85): warning C4715: 'cel_mai_mic': not all control paths return a value
+d:\algoritmica grafelor\laboratoare\laborator 4\problema1\problema1\problema1.cpp(59): warning C4715: 'find_father': not all control paths return a value
+  Problema1.vcxproj -> D:\Algoritmica grafelor\Laboratoare\Laborator 4\Problema1\Debug\Problema1.exe
