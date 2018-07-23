@@ -1,0 +1,13 @@
+Navickas,Gediminas,190,Fundas
+Niksa,Nikolic,192,Fundas
+Dragustin,Ionut,192,Pivot
+Graham,Paul,200,Extrema
+Dumitrescu,Tudor,191,Extrema
+Popa,Adi,180,Fundas
+Iordache,Andrei,175,Pivot
+Enceanu,Petru,185,Pivot
+Ene,Andrei,1000,Fundas
+Ionescu,Rares,205,Fundas
+Pascariu,Adrian,134,Fundas
+Vide,Marius,142,Extrema
+Pop,Andrei,54,Fundas
