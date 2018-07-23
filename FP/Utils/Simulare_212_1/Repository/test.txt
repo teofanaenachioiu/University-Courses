@@ -1,0 +1,10 @@
+13,Popescu,3
+14,Ionescu,4
+15,Ile,2
+16,Ioan,3
+17,Corduneanu,2
+18,Manole,4
+19,Iordache,5
+20,Popa,2
+21,Moca,4
+22,Toca,1
