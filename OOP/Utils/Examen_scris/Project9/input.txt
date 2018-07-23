@@ -1,0 +1,7 @@
+luni
+marti
+miercuri
+joi
+vineri
+sambata
+duminica
