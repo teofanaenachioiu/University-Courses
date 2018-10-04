@@ -1,0 +1,3 @@
+﻿  main.cpp
+d:\facultate\plf\r1\r1\lista.h(18): warning C4091: 'typedef ': ignored on left of 'Nod' when no variable is declared
+  R1.vcxproj -> D:\Facultate\PLF\R1\Debug\R1.exe
