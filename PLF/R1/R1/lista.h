@@ -37,7 +37,7 @@ Lista creeazaListaVida();
 
 int primElement(Lista l);
 
-Lista sublista(Lista l); //Bun?
+Lista sublista(Lista l); 
 
 Lista adaugaInceput(int elem, Lista l);
 
