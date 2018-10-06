@@ -16,57 +16,52 @@ public class NumarComplex {
         else {
             boolean isNegative = false;
             //cazul in care numarul are si parte imaginara
-            //elimin i-ul de la final
-            nr = nr.substring(0, nr.length() - 1);
 
             String[] parts = nr.split("[-+]");
-            for(String c:parts)System.out.println("|"+c+"|");
-            System.out.println("Lungimea lui parts "+parts.length);
-            if(parts.length==0) img=-1; //cazul -i
-            if (parts.length>0&&parts[0].equals("")) {
+
+            //for(String c:parts)System.out.println("|"+c+"|");
+            //System.out.println("Lungimea lui parts "+parts.length);
+
+            if (parts[0].equals("")) {
                 //Numarul a inceput cu minus => la split parts[0]=""
                 isNegative = true;
             }
             if(parts.length==1){
                 //cazul bi
-                if(isNegative)img=1; //cazul i
-                else {
-                    //cazul a+i si a-i
-                    if(nr.charAt(nr.length()-1)=='-'||nr.charAt(nr.length()-1)=='+') {
-                        real=Integer.parseInt(parts[0]);
-                        if(nr.indexOf('-')>0)img=-1;
-                        else img=1;
-                    }
-                    else img = Integer.parseInt(parts[0]);
+                parts[0] = parts[0].substring(0, nr.length() - 1);
+                if(parts[0].equals("")) {
+                    if (nr.charAt(nr.length() - 1) == '-') img = -1;
+                    else img = 1;
                 }
+                else img=Integer.parseInt(parts[0]);
             }
             if (parts.length == 2) {
                 if (isNegative) {
                     //cazul -bi
-                    if(parts[1].equals("")) img=1;
-                    else img = (-1)*Integer.parseInt(parts[1]);
+                    parts[1] = parts[1].substring(0, parts[1].length() - 1);
+                    if(parts[1].equals(""))img=-1;
+                    else img = -1*Integer.parseInt(parts[1]);
                 }
                 else {
-                    //cazul a+bi
-                    if(nr.charAt(nr.length()-1)=='-'||nr.charAt(nr.length()-1)=='+') {
-                        real=Integer.parseInt(parts[1]);
-                        if(nr.indexOf('-')>0)img=-1;
+                    //cazul a+bi si a-bi
+                    parts[1] = parts[1].substring(0, parts[1].length() - 1);
+                    real = Integer.parseInt(parts[0]);
+                    if(parts[1].equals("")){
+                        if (nr.charAt(nr.length() - 1) == '-') img = -1;
                         else img=1;
                     }
-                    else{
-                        real = Integer.parseInt(parts[0]);
-                        if (parts[1].equals("")) img = 1;
-                        else img = Integer.parseInt(parts[1]);
-                        if (nr.indexOf('-') > 0) img = img * (-1);//cazul a-bi
+                    else img = Integer.parseInt(parts[1]);
                     }
                 }
-            }
             if (parts.length == 3) {
-                //cazul -a+bi
+                //cazul -a+bi si -a-bi
+                parts[2] = parts[2].substring(0, parts[2].length() - 1);
                 real = (-1)*Integer.parseInt(parts[1]);
-                if(parts[2].equals("")) img=1;
+                if(parts[2].equals("")){
+                    if (nr.charAt(nr.length() - 1) == '-') img = -1;
+                    else img=1;
+                }
                 else img = Integer.parseInt(parts[2]);
-                if(nr.indexOf('-')>0)img=img*(-1);//cazul -a-bi
             }
         }
     }
