@@ -30,6 +30,14 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        NumarComplex nrs=new NumarComplex("3i");
+        System.out.println(nrs.toString());
+
+        NumarComplex nrs1=new NumarComplex("25");
+        System.out.println(nrs1.toString());
+
+        NumarComplex nrs2=new NumarComplex("-100-9i");
+        System.out.println(nrs2.toString());
 
         if(validation(args)==true) {
             System.out.println("Parametrii reprezinta o expresie aritmetica.");
@@ -37,6 +45,5 @@ public class Main {
         else {
             System.out.println("Parametrii NU reprezinta o expresie aritmetica.");
         }
-
     }
 }
