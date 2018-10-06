@@ -3,10 +3,6 @@ public class Main {
     private static boolean isComplexNumber(String nr){
         if(nr.charAt(nr.length()-1)!='i') {
             //cazul in care numarul are doar parte reala
-            if (nr.charAt(0)=='-'){
-                //numarul e negativ; elimin semnul din fata
-                nr=nr.substring(1);
-            }
             try {
                 //verific daca numarul e intreg
                 Integer.parseInt(nr);
@@ -19,18 +15,20 @@ public class Main {
             //cazul in care numarul are si parte imaginara
             //elimin i-ul de la final
             nr=nr.substring(0,nr.length()-1);
-            if(nr.charAt(0)=='-'){
-                //daca numarul incepe cu semn, elimin semnul
-                nr=nr.substring(1);
-            }
             //Split dupa - sau +
             String[] parts = nr.split("[-+]");
             try {
-                //cazul "bi"
-                Integer.parseInt(parts[0]);
+                //Numarul a inceput cu minu => la split parts[0]=""
+                if(!parts[0].equals("")) {
+                    Integer.parseInt(parts[0]);
+                }
                 if (parts.length==2) {
-                    //cazul "a+bi"
+                    System.out.println(parts[1]);
                     Integer.parseInt(parts[1]);
+                }
+                if (parts.length==3) {
+                    System.out.println(parts[2]);
+                    Integer.parseInt(parts[2]);
                 }
                 return true;
             } catch (NumberFormatException e) {
@@ -65,15 +63,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        /*NumarComplex nrs=new NumarComplex("3i");
-        System.out.println(nrs.toString());
-
-        NumarComplex nrs1=new NumarComplex("25");
-        System.out.println(nrs1.toString());
-
-        NumarComplex nrs2=new NumarComplex("-100-9i");
-        System.out.println(nrs2.toString());*/
-
         if(validation(args)==true) {
             System.out.println("Parametrii reprezinta o expresie aritmetica.");
         }
