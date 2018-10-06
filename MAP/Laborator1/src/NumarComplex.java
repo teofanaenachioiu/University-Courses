@@ -19,9 +19,6 @@ public class NumarComplex {
 
             String[] parts = nr.split("[-+]");
 
-            //for(String c:parts)System.out.println("|"+c+"|");
-            //System.out.println("Lungimea lui parts "+parts.length);
-
             if (parts[0].equals("")) {
                 //Numarul a inceput cu minus => la split parts[0]=""
                 isNegative = true;
@@ -46,22 +43,19 @@ public class NumarComplex {
                     //cazul a+bi si a-bi
                     parts[1] = parts[1].substring(0, parts[1].length() - 1);
                     real = Integer.parseInt(parts[0]);
-                    if(parts[1].equals("")){
-                        if (nr.charAt(nr.length() - 1) == '-') img = -1;
-                        else img=1;
-                    }
+                    if(parts[1].equals(""))img=1;
                     else img = Integer.parseInt(parts[1]);
+                    if(nr.indexOf('-')>=0) img=img*(-1);
                     }
                 }
             if (parts.length == 3) {
                 //cazul -a+bi si -a-bi
                 parts[2] = parts[2].substring(0, parts[2].length() - 1);
                 real = (-1)*Integer.parseInt(parts[1]);
-                if(parts[2].equals("")){
-                    if (nr.charAt(nr.length() - 1) == '-') img = -1;
-                    else img=1;
-                }
+                if(parts[2].equals("")) img=1;
                 else img = Integer.parseInt(parts[2]);
+                nr=nr.substring(1);
+                if(nr.indexOf('-')>=0) img=img*(-1);
             }
         }
     }
@@ -93,6 +87,20 @@ public class NumarComplex {
     {
         this.setReal(this.real - z.getReal());
         this.setImg(this.img - z.getImg());
+        return this;
+    }
+
+    public NumarComplex mul(NumarComplex z)
+    {
+        this.setReal(this.real*z.getReal()-this.img*z.getImg());
+        this.setImg(this.real*z.getImg()+this.img*z.getReal());
+        return this;
+    }
+
+    public NumarComplex div(NumarComplex z)
+    {
+        this.setReal((this.real*z.getReal()+this.img*z.getImg())/(z.getReal()*z.getReal()+z.getImg()*z.getImg()));
+        this.setImg((z.getReal()*this.img-this.real*z.getImg())/(z.getReal()*z.getReal()+z.getImg()*z.getImg()));
         return this;
     }
 
