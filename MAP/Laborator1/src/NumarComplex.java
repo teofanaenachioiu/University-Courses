@@ -1,5 +1,5 @@
 public class NumarComplex {
-    private int img, real;
+    private double img, real;
 
     public NumarComplex(){
         this.img = 0;
@@ -11,7 +11,7 @@ public class NumarComplex {
         img = 0;
         if(nr.charAt(nr.length()-1)!='i') {
             //cazul in care numarul are doar parte reala
-            real=Integer.parseInt(nr);
+            real=Double.parseDouble(nr);
         }
         else {
             boolean isNegative = false;
@@ -30,49 +30,49 @@ public class NumarComplex {
                     if (nr.charAt(nr.length() - 1) == '-') img = -1;
                     else img = 1;
                 }
-                else img=Integer.parseInt(parts[0]);
+                else img=Double.parseDouble(parts[0]);
             }
             if (parts.length == 2) {
                 if (isNegative) {
                     //cazul -bi
                     parts[1] = parts[1].substring(0, parts[1].length() - 1);
                     if(parts[1].equals(""))img=-1;
-                    else img = -1*Integer.parseInt(parts[1]);
+                    else img = -1*Double.parseDouble(parts[1]);
                 }
                 else {
                     //cazul a+bi si a-bi
                     parts[1] = parts[1].substring(0, parts[1].length() - 1);
-                    real = Integer.parseInt(parts[0]);
+                    real = Double.parseDouble(parts[0]);
                     if(parts[1].equals(""))img=1;
-                    else img = Integer.parseInt(parts[1]);
+                    else img = Double.parseDouble(parts[1]);
                     if(nr.indexOf('-')>=0) img=img*(-1);
                     }
                 }
             if (parts.length == 3) {
                 //cazul -a+bi si -a-bi
                 parts[2] = parts[2].substring(0, parts[2].length() - 1);
-                real = (-1)*Integer.parseInt(parts[1]);
+                real = (-1)*Double.parseDouble(parts[1]);
                 if(parts[2].equals("")) img=1;
-                else img = Integer.parseInt(parts[2]);
+                else img = Double.parseDouble(parts[2]);
                 nr=nr.substring(1);
                 if(nr.indexOf('-')>=0) img=img*(-1);
             }
         }
     }
 
-    public int getImg() {
+    public double getImg() {
         return img;
     }
 
-    public void setImg(int img) {
+    public void setImg(double img) {
         this.img = img;
     }
 
-    public int getReal() {
+    public double getReal() {
         return real;
     }
 
-    public void setReal(int real) {
+    public void setReal(double real) {
         this.real = real;
     }
 
@@ -92,15 +92,17 @@ public class NumarComplex {
 
     public NumarComplex mul(NumarComplex z)
     {
-        this.setReal(this.real*z.getReal()-this.img*z.getImg());
+        double r=this.real*z.getReal()-this.img*z.getImg();
         this.setImg(this.real*z.getImg()+this.img*z.getReal());
+        this.setReal(r);
         return this;
     }
 
     public NumarComplex div(NumarComplex z)
     {
-        this.setReal((this.real*z.getReal()+this.img*z.getImg())/(z.getReal()*z.getReal()+z.getImg()*z.getImg()));
+        double r=(this.real*z.getReal()+this.img*z.getImg())/(z.getReal()*z.getReal()+z.getImg()*z.getImg());
         this.setImg((z.getReal()*this.img-this.real*z.getImg())/(z.getReal()*z.getReal()+z.getImg()*z.getImg()));
+        this.setReal(r);
         return this;
     }
 
