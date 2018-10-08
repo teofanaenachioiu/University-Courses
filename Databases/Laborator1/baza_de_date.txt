@@ -52,7 +52,7 @@ VALUES
 (1034,5,106,'Anisia Nistor','19-07-2000'),
 (1035,5,107,'Demetera Hilhor','21-09-2000')
 
-INSERT INTO Cazari(Cid,Locatie)
+INSERT INTO Cazari(Cid,Locatie, NrLocuri)
 VALUES
 (51,'Cort 1',4),
 (52,'Cort 2',4),
@@ -61,7 +61,7 @@ VALUES
 (55,'Cort 5',4),
 (56,'Cabana',15)
 
-INSERT INTO Grupuri(Gid,Mid,Denumire)
+INSERT INTO Grupe(Gid,Denumire)
 VALUES 
 (101,'Gr. Ernest Bernea'),
 (102,'Gr. Valeriu Gafencu'),
