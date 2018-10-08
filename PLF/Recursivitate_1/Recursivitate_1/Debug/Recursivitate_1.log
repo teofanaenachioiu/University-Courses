@@ -1,0 +1,9 @@
+﻿  lista.cpp
+d:\plf\recursivitate_1\recursivitate_1\lista.h(18): warning C4091: 'typedef ': ignored on left of 'Nod' when no variable is declared
+d:\plf\recursivitate_1\recursivitate_1\lista.cpp(193): warning C4553: '==': operator has no effect; did you intend '='?
+d:\plf\recursivitate_1\recursivitate_1\lista.cpp(57): warning C4715: 'cautaRec': not all control paths return a value
+d:\plf\recursivitate_1\recursivitate_1\lista.cpp(113): warning C4715: 'anterior': not all control paths return a value
+d:\plf\recursivitate_1\recursivitate_1\lista.cpp(130): warning C4715: 'deleteElemRec': not all control paths return a value
+d:\plf\recursivitate_1\recursivitate_1\lista.cpp(188): warning C4715: 'ultim': not all control paths return a value
+d:\plf\recursivitate_1\recursivitate_1\lista.cpp(208): warning C4715: 'addLista': not all control paths return a value
+  Recursivitate_1.vcxproj -> D:\PLF\Recursivitate_1\Debug\Recursivitate_1.exe

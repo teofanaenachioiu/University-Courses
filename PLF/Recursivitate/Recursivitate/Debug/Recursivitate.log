@@ -1,0 +1,4 @@
+﻿  main.cpp
+d:\plf\recursivitate\recursivitate\lista.h(39): warning C4715: 'Lista::cautaRec': not all control paths return a value
+d:\plf\recursivitate\recursivitate\lista.h(51): warning C4715: 'Lista::anterior': not all control paths return a value
+  Recursivitate.vcxproj -> D:\PLF\Recursivitate\Debug\Recursivitate.exe
