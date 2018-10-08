@@ -9,6 +9,12 @@ public class Main {
         return false;
     }
 
+    private static boolean isSameOperator (String op, String o){
+        if (o.equals(op))
+            return true;
+        return false;
+    }
+
     private static boolean validation (String [] args){
 
         if(args.length%2==0) {
@@ -16,21 +22,21 @@ public class Main {
         }
 
         for(int i=0;i<args.length;i++){
-            //System.out.println(args[i]);
             if(i%2==0){
                 try{
                     NumarComplex nr=new NumarComplex(args[i]);
-                    //System.out.println("Numarul complex este: "+nr.toString());
                 }
                 catch(NumberFormatException e){
                     return false;
                 }
             }
             else{
-                if(!isOperator(args[i])) return false;
+                if(i==1) {
+                    if(!isOperator(args[1])) return false;
+                }
+                else if(!isSameOperator(args[i],args[1])) return false;
             }
         }
-
         return true;
     }
 
