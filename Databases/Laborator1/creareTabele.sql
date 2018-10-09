@@ -44,3 +44,29 @@ create table Cereri(
 	Cid int foreign key references Cazari(Cid),
 	CONSTRAINT PK_Cereri primary key(Aid, Cid)
 )
+
+create table Evenimente(
+	Eid int primary key,
+	Denumire varchar(50) not null,
+	Data_ev date not null,
+	Ora time
+)
+
+create table Inscrieri(
+	Eid int foreign key references Evenimente(Eid),
+	Gid int foreign key references Grupe(Gid),
+	CONSTRAINT PK_Inscrieri primary key(Eid, Gid)
+)
+
+create table Voluntari (
+	Vid int primary key,
+	Nume varchar(50) not null,
+	Data_n date
+)
+
+create table Contracte(
+	Eid int foreign key references Evenimente(Eid),
+	Vid int foreign key references Voluntari(Vid),
+	CONSTRAINT PK_Contracte primary key(Eid, Vid)
+)
+
