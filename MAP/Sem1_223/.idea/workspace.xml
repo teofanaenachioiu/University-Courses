@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f73dce70-e743-4e56-999a-417fb8f3c826" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../Laborator2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator2/src/model/Task.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,6 +51,7 @@
     <session id="1404681328">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -245,12 +242,12 @@
       <option name="presentableId" value="Default" />
       <updated>1538550700149</updated>
       <workItem from="1538550703779" duration="4593000" />
-      <workItem from="1539085785436" duration="412000" />
+      <workItem from="1539085785436" duration="506000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5005000" />
+    <option name="totallyTimeSpent" value="5099000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="697" height="735" extended-state="0" />
