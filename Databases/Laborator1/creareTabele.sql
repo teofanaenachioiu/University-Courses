@@ -1,4 +1,7 @@
 create database TabaraDeVara
+go
+use TabaraDeVara
+go
 
 create table Insotitori(
 	Iid int primary key,
