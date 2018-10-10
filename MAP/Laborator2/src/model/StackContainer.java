@@ -12,7 +12,10 @@ public class StackContainer implements Container {
 
     @Override
     public Task remove() {
-        return null;
+        if(stack.isEmpty())
+            return null;
+        Task r=this.stack.remove(stack.size()-1);
+        return r;
     }
 
     @Override
@@ -23,11 +26,11 @@ public class StackContainer implements Container {
 
     @Override
     public int size() {
-        return 0;
+        return this.stack.size();
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return this.stack.isEmpty();
     }
 }
