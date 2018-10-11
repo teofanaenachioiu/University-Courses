@@ -1,13 +1,15 @@
 package model;
 
+import java.util.ArrayList;
+
 public class SortingTask extends Task {
-    private Integer [] arr;
+    private ArrayList<Integer> arr;
     private AbstractSorter sorter;
 
-    public SortingTask(String taskId, String descriere,Integer[] arr) {
+    public SortingTask(String taskId, String descriere, ArrayList<Integer> arr) {
         super(taskId,descriere);
         this.arr = arr;
-        this.sorter=new MergeSort(); // ???
+        this.sorter=new MergeSort();
     }
 
     @Override
