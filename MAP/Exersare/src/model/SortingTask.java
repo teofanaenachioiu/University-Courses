@@ -15,6 +15,7 @@ public class SortingTask extends Task {
     @Override
     public void execute() {
         sorter.sort(arr);
-        for(Integer el:arr) System.out.println(el);
+        for(Integer el:arr) System.out.print(el+" ");
+        System.out.println();
     }
 }

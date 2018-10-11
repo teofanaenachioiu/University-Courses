@@ -6,6 +6,18 @@ import java.util.ArrayList;
 
 public class Main {
 
+    public static void test(){
+        ArrayList<MessageTask> arr=new ArrayList<>();
+        arr.add(new MessageTask("1","Feedback MAP","Ai nota 10","Prof","student",LocalDateTime.now()));
+        arr.add(new MessageTask("2","Feedback BD","Ai nota 7","Prof","student",LocalDateTime.now()));
+        arr.add(new MessageTask("3","Feedback PS","Ai nota 8","Prof","student",LocalDateTime.now()));
+        arr.add(new MessageTask("4","Feedback PLF","Ai nota 9","Prof","student",LocalDateTime.now()));
+        arr.add(new MessageTask("5","Feedback RC","Ai nota 10","Prof","student",LocalDateTime.now()));
+        for (MessageTask t:arr) {
+            System.out.println(t.toString());
+        }
+    }
+
     public static ArrayList<Integer> creareVector(){
         ArrayList<Integer> arr=new ArrayList<Integer>();
         arr.add(5);
@@ -18,10 +30,12 @@ public class Main {
     }
 
     public static void main(String[] args) {
-	    MessageTask message=new MessageTask("1","Feedback de la profa","Esti bun","profa","student", LocalDateTime.now());
-        message.execute();
+        //ex 3
         ArrayList<Integer> arr=creareVector();
         SortingTask sorter=new SortingTask("2","Sortare intregi",arr);
         sorter.execute();
+
+        //ex 4
+        test();
     }
 }

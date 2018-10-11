@@ -55,7 +55,7 @@ public class MessageTask extends Task {
                 "mesaj=" + mesaj + '|' +
                 "from=" + from + '|' +
                 "to=" + to + '|' +
-                "date=" + date.format(DateTimeFormatter.ofPattern("yyyy-MM-DD"));
+                "date=" + date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
     }
 
     @Override
