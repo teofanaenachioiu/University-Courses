@@ -7,7 +7,7 @@ public class SortingTask extends Task {
     public SortingTask(String taskId, String descriere,Integer[] arr) {
         super(taskId,descriere);
         this.arr = arr;
-        this.sorter=new BubbleSort(); // ???
+        this.sorter=new MergeSort(); // ???
     }
 
     @Override

@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
 	    MessageTask message=new MessageTask("1","Feedback de la profa","Esti bun","profa","student", LocalDateTime.now());
         message.execute();
-        Integer[] arr={1,7,5};
+        Integer[] arr={1,7,5,9,0};
         SortingTask sortt=new SortingTask("2","Sortare intregi",arr);
         sortt.execute();
     }
