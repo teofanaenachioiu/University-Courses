@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class StackContainer extends SuperContainer {
 
-    public StackContainer(ArrayList<Task> c) {
-        super(c);
+    public StackContainer() {
+        super();
     }
 
     @Override

@@ -1,5 +1,11 @@
+import model.Container;
 import model.MessageTask;
 import model.SortingTask;
+import model.Strategy;
+import runner.DelayTaskRunner;
+import runner.PrinterTaskRunner;
+import runner.StrategyTaskRunner;
+import runner.TaskRunner;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -29,13 +35,32 @@ public class Main {
         return arr;
     }
 
+
+    public static void testeFIFO_LIFO(Strategy str){
+        StrategyTaskRunner runner=new StrategyTaskRunner(str);
+        runner.addTask(new MessageTask("1","Feedback MAP","Ai nota 10","Prof","student",LocalDateTime.now()));
+        runner.addTask(new MessageTask("2","Feedback BD","Ai nota 7","Prof","student",LocalDateTime.now()));
+        runner.addTask(new MessageTask("3","Feedback PS","Ai nota 8","Prof","student",LocalDateTime.now()));
+        runner.addTask(new MessageTask("4","Feedback PLF","Ai nota 9","Prof","student",LocalDateTime.now()));
+        runner.addTask(new MessageTask("5","Feedback RC","Ai nota 10","Prof","student",LocalDateTime.now()));
+        //runner.executeAll();
+        TaskRunner decorator=new DelayTaskRunner(runner);
+        decorator.executeAll();
+
+    }
+
     public static void main(String[] args) {
         //ex 3
         ArrayList<Integer> arr=creareVector();
         SortingTask sorter=new SortingTask("2","Sortare intregi",arr);
-        sorter.execute();
+        //sorter.execute();
 
         //ex 4
-        test();
+       //test();
+
+        //ex 10
+        testeFIFO_LIFO(Strategy.valueOf(args[0]));
+
+
     }
 }

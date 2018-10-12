@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class QueueContainer extends SuperContainer {
 
-    public QueueContainer(ArrayList<Task> queue) {
-        super(queue);
+    public QueueContainer() {
+        super();
     }
 
     @Override
