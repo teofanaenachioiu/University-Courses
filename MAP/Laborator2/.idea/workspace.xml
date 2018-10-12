@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5cab60f6-1e5b-4b27-8244-225e2ae516e9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Exersare/out/production/Exersare/model/Container.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Exersare/out/production/Exersare/model/QueueContainer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Exersare/out/production/Exersare/model/StackContainer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Exersare/out/production/Exersare/model/SuperContainer.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Exersare/src/factory/Factory.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Exersare/src/factory/TaskContainerFactory.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Exersare/src/model/Container.java" afterDir="false" />
@@ -30,7 +34,7 @@
     <session id="65046588">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="9" />
+          <entry key="project.closed" value="10" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.16" value="1" />
@@ -363,7 +367,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18577000" />
+    <option name="totallyTimeSpent" value="18821000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
