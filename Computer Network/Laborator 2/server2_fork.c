@@ -57,7 +57,7 @@ int main(){
                 else{
                         printf("S-a conectat un client\n");
                         deservire_client(newfd);
-                        return 0;
+                        //return 0;
                 }
 
 
