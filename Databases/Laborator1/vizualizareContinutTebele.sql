@@ -19,3 +19,4 @@ select * from Evenimente
 select * from Contracte
 
 select * from Inscrieri
+

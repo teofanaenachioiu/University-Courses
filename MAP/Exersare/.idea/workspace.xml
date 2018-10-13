@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2f256ae7-205a-45b3-9216-2421be071198" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/runner/AbstractTaskRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/runner/DelayTaskRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/runner/PrinterTaskRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/runner/StrategyTaskRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/runner/TaskRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Exersare/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exersare/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Exersare/model/QueueContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exersare/model/QueueContainer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Exersare/model/StackContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exersare/model/StackContainer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Exersare/model/SuperContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exersare/model/SuperContainer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/factory/TaskContainerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/factory/TaskContainerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/QueueContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/QueueContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/StackContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/StackContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/SuperContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/SuperContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator2/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="2f256ae7-205a-45b3-9216-2421be071198" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,7 +13,7 @@
     <session id="-1251247405">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.75" value="1" />
           <entry key="project.opened" value="2" />
@@ -100,7 +83,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/runner/AbstractTaskRunner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
+            <state relative-caret-position="306">
               <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
             </state>
           </provider>
@@ -206,7 +189,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539347181255" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539347467380" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Laborator2" />
   </component>
   <component name="RunDashboard">
@@ -249,12 +232,12 @@
       <option name="presentableId" value="Default" />
       <updated>1539269231953</updated>
       <workItem from="1539269235645" duration="5475000" />
-      <workItem from="1539340127893" duration="6895000" />
+      <workItem from="1539340127893" duration="7178000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20601000" />
+    <option name="totallyTimeSpent" value="20884000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -269,7 +252,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32405892" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32405892" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -510,7 +493,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/runner/AbstractTaskRunner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
+        <state relative-caret-position="306">
           <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
         </state>
       </provider>

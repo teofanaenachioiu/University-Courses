@@ -2,22 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5cab60f6-1e5b-4b27-8244-225e2ae516e9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Exersare/src/runner/AbstractTaskRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Exersare/src/runner/DelayTaskRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Exersare/src/runner/PrinterTaskRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Exersare/src/runner/StrategyTaskRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Exersare/src/runner/TaskRunner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exersare/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Exersare/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exersare/out/production/Exersare/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Exersare/out/production/Exersare/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exersare/out/production/Exersare/model/QueueContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Exersare/out/production/Exersare/model/QueueContainer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exersare/out/production/Exersare/model/StackContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Exersare/out/production/Exersare/model/StackContainer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exersare/out/production/Exersare/model/SuperContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Exersare/out/production/Exersare/model/SuperContainer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exersare/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Exersare/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exersare/src/factory/TaskContainerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Exersare/src/factory/TaskContainerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exersare/src/model/QueueContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Exersare/src/model/QueueContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exersare/src/model/StackContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Exersare/src/model/StackContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exersare/src/model/SuperContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Exersare/src/model/SuperContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,7 +15,7 @@
     <session id="65046588">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="10" />
+          <entry key="project.closed" value="11" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.16" value="1" />
@@ -383,7 +368,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3289689" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3289689" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />

@@ -3,6 +3,8 @@ go
 use TabaraDeVara
 go
 
+drop database TabaraDeVara
+
 create table Insotitori(
 	Iid int primary key,
 	Nume varchar(30) not null,
@@ -19,7 +21,7 @@ create table Moderatori(
 	Mid int primary key,
 	Nume varchar(50) not null,
 	Telefon varchar(10) not null,
-	Data_n date default 'Set date'
+	Data_n date 
 )
 
 create table Grupe(
