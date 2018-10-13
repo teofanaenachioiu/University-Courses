@@ -45,18 +45,18 @@ VALUES
 (1006,2,106,'Andreea Zvancu','1997-05-15'),
 (1007,2,107,'Stefan Bucur','1998-09-19'),
 (1008,2,101,'Cezar Pica','1997-08-25'),
-(1009,2,102,'Alexandru Miron','1996-03-26'),
-(1010,2,103,'Paula Amariei','1996-10-1'),
+(1009,2,102,'Alexandru Miron','1997-03-26'),
+(1010,2,103,'Paula Amariei','1997-10-1'),
 (1011,2,104,'Casian Rusu','2000-07-20'),
 (1012,2,105,'Codrin Sava','1998-07-21'),
 (1013,3,106,'Adrian Atanasoaie','1997-05-22'),
 (1014,3,107,'Maria Apostol','2001-08-11'),
 (1015,3,101,'Raluca Sofia','2000-07-23'),
 (1016,3,102,'Alisa Ungureanu','1998-12-30'),
-(1017,3,103,'Andrei Bruma','1996-07-21'),
+(1017,3,103,'Andrei Bruma','1997-07-21'),
 (1018,3,104,'Paul Simion','1998-11-7'),
 (1019,3,105,'Denisa Nechita','1997-01-19'),
-(1020,3,106,'Priscila Moldovan','1996-07-20'),
+(1020,3,106,'Priscila Moldovan','1997-07-20'),
 (1021,4,107,'Taisia Mihoc','1998-05-11'),
 (1022,4,101,'Agota Lupescu','1998-03-31'),
 (1023,4,102,'Gabriela Stratu','1999-07-25'),
@@ -69,7 +69,7 @@ VALUES
 (1030,5,102,'Alex Gherman','1999-06-25'),
 (1031,5,103,'Laur Oniciuc','1997-02-16'),
 (1032,5,104,'Matei Sandu','1999-11-13'),
-(1033,5,105,'Emanuel Pricop','1996-02-27'),
+(1033,5,105,'Emanuel Pricop','1997-02-27'),
 (1034,5,106,'Anisia Nistor','2000-07-19'),
 (1035,5,107,'Demetera Hilhor','2000-09-21')
 
@@ -93,7 +93,6 @@ VALUES
 (5,54),
 (5,55)
 
---nu am populat evenimentele
 INSERT INTO Evenimente(Eid, Denumire, Data_ev, Ora)
 VALUES
 (1,'Festivitate deschidere','2018-07-20','18:00:00'),

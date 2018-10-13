@@ -3,8 +3,6 @@ go
 use TabaraDeVara
 go
 
-drop database TabaraDeVara
-
 create table Insotitori(
 	Iid int primary key,
 	Nume varchar(30) not null,
@@ -21,7 +19,7 @@ create table Moderatori(
 	Mid int primary key,
 	Nume varchar(50) not null,
 	Telefon varchar(10) not null,
-	Data_n date 
+	Data_n date
 )
 
 create table Grupe(
@@ -35,13 +33,14 @@ create table Participanti(
 	Aid int foreign key references Asociatii(Aid),
 	Gid int foreign key references Grupe(Gid),
 	Nume varchar(50) not null,
-	Data_n date not null
+	Data_n date not null, 
+	constraint CK_Data check (Data_n>'1997-01-01')
 )
 
 create table Cazari(
 	Cid int primary key,
 	Locatie varchar(20) not null,
-	NrLocuri int 
+	NrLocuri int default 0
 )
 
 create table Cereri(
