@@ -1,5 +1,5 @@
 package runner;
-
+//ex 12.2
 public class DelayTaskRunner extends AbstractTaskRunner {
     public DelayTaskRunner(TaskRunner runner) {
         super(runner);

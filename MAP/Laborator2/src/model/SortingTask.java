@@ -1,7 +1,7 @@
 package model;
 
 import java.util.ArrayList;
-
+//ex 3
 public class SortingTask extends Task {
     private ArrayList<Integer> arr;
     private AbstractSorter sorter;

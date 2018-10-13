@@ -1,7 +1,7 @@
 package model;
 
 import java.util.ArrayList;
-
+//ex 3
 public class MergeSort extends AbstractSorter{
 
     public ArrayList<Integer> mergeSort(ArrayList<Integer> whole) {

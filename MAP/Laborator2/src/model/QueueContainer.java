@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
+//ex 5.2
 public class QueueContainer extends SuperContainer {
 
     public QueueContainer() {

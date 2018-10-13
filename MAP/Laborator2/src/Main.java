@@ -35,32 +35,62 @@ public class Main {
         return arr;
     }
 
-
-    public static void testeFIFO_LIFO(Strategy str){
-        StrategyTaskRunner runner=new StrategyTaskRunner(str);
+    public static void addTaskInRunner(TaskRunner runner){
         runner.addTask(new MessageTask("1","Feedback MAP","Ai nota 10","Prof","student",LocalDateTime.now()));
         runner.addTask(new MessageTask("2","Feedback BD","Ai nota 7","Prof","student",LocalDateTime.now()));
         runner.addTask(new MessageTask("3","Feedback PS","Ai nota 8","Prof","student",LocalDateTime.now()));
         runner.addTask(new MessageTask("4","Feedback PLF","Ai nota 9","Prof","student",LocalDateTime.now()));
         runner.addTask(new MessageTask("5","Feedback RC","Ai nota 10","Prof","student",LocalDateTime.now()));
-        //runner.executeAll();
-        TaskRunner decorator=new DelayTaskRunner(runner);
-        decorator.executeAll();
+    }
 
+    public static void testeRunner1(Strategy str){
+        StrategyTaskRunner runner=new StrategyTaskRunner(str);
+        addTaskInRunner(runner);
+        runner.executeAll();
+    }
+
+    public static void testeRunner2(Strategy str){
+        StrategyTaskRunner runner=new StrategyTaskRunner(str);
+        addTaskInRunner(runner);
+        runner.executeAll();
+        TaskRunner decorator=new PrinterTaskRunner(runner);
+        addTaskInRunner(decorator);
+        decorator.executeAll();
+    }
+
+    public static void testeRunner3(Strategy str){
+        StrategyTaskRunner runner=new StrategyTaskRunner(str);
+        addTaskInRunner(runner);
+        runner.executeAll();
+        TaskRunner decorator=new PrinterTaskRunner(runner);
+        addTaskInRunner(decorator);
+        decorator.executeAll();
+        TaskRunner deco =new DelayTaskRunner(decorator);
+        addTaskInRunner(deco);
+        deco.executeAll();
     }
 
     public static void main(String[] args) {
         //ex 3
+        /*System.out.println("TEST EX 3");
         ArrayList<Integer> arr=creareVector();
         SortingTask sorter=new SortingTask("2","Sortare intregi",arr);
-        //sorter.execute();
+        sorter.execute();*/
 
         //ex 4
-       //test();
+        /*System.out.println("TEST EX 4");
+        test();*/
 
         //ex 10
-        testeFIFO_LIFO(Strategy.valueOf(args[0]));
+        /*System.out.println("TEST EX 4");
+        testeRunner1(Strategy.valueOf(args[0]));*/
 
+        //ex 13
+        /*System.out.println("TEST EX 13");
+        testeRunner2(Strategy.valueOf(args[0]));*/
 
+        //ex 14
+        /*System.out.println("TEST EX 14");
+        testeRunner3(Strategy.valueOf(args[0]));*/
     }
 }

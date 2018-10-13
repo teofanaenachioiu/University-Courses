@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
+//ex 3
 public class BubbleSort extends AbstractSorter {
     @Override
     public  void sort(ArrayList<Integer> arr) {
