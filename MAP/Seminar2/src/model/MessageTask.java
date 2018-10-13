@@ -8,6 +8,7 @@ public class MessageTask extends Task {
     private String from;
     private String to;
     private LocalDateTime date;
+    static DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     public MessageTask(String taskId, String descriere, String mesaj, String from, String to, LocalDateTime date) {
         super(taskId, descriere);
@@ -55,11 +56,11 @@ public class MessageTask extends Task {
                 "mesaj=" + mesaj + '|' +
                 "from=" + from + '|' +
                 "to=" + to + '|' +
-                "date=" + date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+                "date=" + date.format(dateFormat);
     }
 
     @Override
     public void execute() {
-        System.out.println(mesaj+ " "+date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+        System.out.println(mesaj + " " + date.format(dateFormat));
     }
 }

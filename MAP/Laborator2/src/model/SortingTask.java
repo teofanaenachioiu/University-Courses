@@ -1,14 +1,21 @@
 package model;
 
-public class SortingTask {
-    private AbstractSorter a;
+import java.util.ArrayList;
 
-    public SortingTask(AbstractSorter a) {
-        this.a = a;
+public class SortingTask extends Task {
+    private ArrayList<Integer> arr;
+    private AbstractSorter sorter;
+
+    public SortingTask(String taskId, String descriere, ArrayList<Integer> arr) {
+        super(taskId,descriere);
+        this.arr = arr;
+        this.sorter=new MergeSort();
     }
 
-    public void execute (){
-        a.sort();
+    @Override
+    public void execute() {
+        sorter.sort(arr);
+        for(Integer el:arr) System.out.print(el+" ");
+        System.out.println();
     }
-
 }

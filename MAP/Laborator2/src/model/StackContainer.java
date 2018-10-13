@@ -1,36 +1,21 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class StackContainer implements Container {
-    List<Task> stack;
+public class StackContainer extends SuperContainer {
 
     public StackContainer() {
-        this.stack = new ArrayList<>();
+        super();
     }
 
     @Override
     public Task remove() {
-        if(stack.isEmpty())
+        if(this.c.isEmpty())
             return null;
-        Task r=this.stack.remove(stack.size()-1);
-        return r;
+        else {
+            Task t=this.c.remove(this.c.size()-1);
+            return t;
+        }
     }
 
-    @Override
-    public void add(Task task) {
-        stack.add(task);
-        System.out.println("");
-    }
-
-    @Override
-    public int size() {
-        return this.stack.size();
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return this.stack.isEmpty();
-    }
 }
