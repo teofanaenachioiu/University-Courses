@@ -1,4 +1,5 @@
-//Server concurent
+
+//Server concurent cu fork-uri
 
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -10,6 +11,7 @@
 #include <pthread.h>
 
 #define MYPORT 1234
+#define NRT 10
 
 char *strrev(char *str){
     int i = strlen(str) - 1, j = 0;
@@ -24,8 +26,7 @@ char *strrev(char *str){
     return str;
 }
 
-void * deservire3(void * p){
-        int newfd=(int)p;
+void * deservire3(int newfd){
         char sir[200];
         recv(newfd,sir,sizeof(sir),MSG_WAITALL);
         strrev(sir);
@@ -60,8 +61,7 @@ void interclasare(char* str,char *str1, char *str2){
         }
 }
 
-void * deservire4(void *p){
-        int newfd=(int)p;
+void * deservire4(int newfd){
         char sir[200],sir1[100],sir2[100];
         recv(newfd,sir1,sizeof(sir1),MSG_WAITALL);
         recv(newfd,sir2,sizeof(sir2),MSG_WAITALL);
@@ -71,8 +71,7 @@ void * deservire4(void *p){
         return NULL;
 }
 
-void * deservire6(void *p){
-        int newfd=(int)p;
+void * deservire6(int newfd){
         uint16_t poz,i;
         char sir[200],ch;
         recv(newfd,&ch,sizeof(ch),MSG_WAITALL);
@@ -90,8 +89,7 @@ void * deservire6(void *p){
         return NULL;
 }
 
-void * deservire5(void *p){
-        int newfd=(int)p;
+void * deservire5(int newfd){
         uint16_t n,d=1,nrd;
         recv(newfd,&n,sizeof(n),0);
         n=ntohs(n);
@@ -108,8 +106,7 @@ void * deservire5(void *p){
         return NULL;
 }
 
-void * deservire7(void *p){
-        int newfd=(int)p;
+void * deservire7(int newfd){
         uint16_t l,i,poz,ind=0;
         char sir[100],sirnou[100];
 //   recv(fd,sir,sizeof(sir),MSG_WAITALL);//De ce cand primesc prima data sirul nu mergeeeeee?
@@ -128,9 +125,8 @@ void * deservire7(void *p){
         return NULL;
 }
 
-int apare(int e, int elem[100],int n){
-        int i=0;
-//      printf("intra\n");
+int apare(uint16_t e, uint16_t elem[100],uint16_t n){
+        uint16_t i=0;
         while(i<n){
                 if(elem[i]==e) return 1;
                 i++;
@@ -138,12 +134,10 @@ int apare(int e, int elem[100],int n){
         return 0;
 }
 
-void * deservire8(void *p){
-        int newfd=(int)p;
+void * deservire8(int newfd){
         uint16_t n1,n2,i;
         recv(newfd,&n1,sizeof(n1),0);
         n1=ntohs(n1);
-        //printf("%hu\n",n1);
         uint16_t elem1[100];
         for(i=0;i<n1;i++){
                 recv(newfd,&elem1[i],sizeof(elem1[i]),0);
@@ -151,25 +145,22 @@ void * deservire8(void *p){
         }
         recv(newfd,&n2,sizeof(n2),0);
         n2=ntohs(n2);
-        if(min>n2) min=n2;
+
         uint16_t elem2[100],x,nr=0;
         for(i=0;i<n2;i++){
                 recv(newfd,&x,sizeof(x),0);
                 x=ntohs(x);
                 if(apare(x,elem1,n1)==1) {
-                        elem2[nr++]=x;
-//                      printf("%hu apare\n",x);
+                        elem2[nr]=x;nr++;
                 }
         }
 
-//Transmiterea datelor
+        //Transmiterea datelor
         uint16_t n;
-        printf("Nr elem comune %hu\n",nr);
         n=htons(nr);
         send(newfd,&n,sizeof(n),0);
 
         for(i=0;i<nr;i++){
-                printf("%hu\n",elem2[i]);
                 n=htons(elem2[i]);
                 send(newfd,&n,sizeof(n),0);
         }
@@ -180,7 +171,7 @@ void * deservire8(void *p){
 int main(){
         int sockfd,newfd;
         struct sockaddr_in server,client;
-        uint16_t comanda[10];
+        uint16_t comanda[NRT];
 
         sockfd=socket(AF_INET,SOCK_STREAM,0);
         if(sockfd==-1){
@@ -203,20 +194,21 @@ int main(){
         memset(&client,0,sizeof(client));
         while(1){
                 int i=0;
-                pthread_t th[10];
                 newfd=accept(sockfd,(struct sockaddr*)&client,&l);
                 if(newfd==-1)printf("Eroare la accept.\n");
                 else{
                         printf("S-a conectat un client\n");
                         recv(newfd,&comanda[i],sizeof(comanda),0);
                         comanda[i]=ntohs(comanda[i]);
-                        if(comanda[i]==3) pthread_create(&th[i], NULL,&deservire3,(void *)newfd);
-                        if(comanda[i]==4) pthread_create(&th[i], NULL,&deservire4,(void *)newfd);
-                        if(comanda[i]==5) pthread_create(&th[i], NULL,&deservire5,(void *)newfd);
-                        if(comanda[i]==6) pthread_create(&th[i], NULL,&deservire6,(void *)newfd);
-                        if(comanda[i]==7) pthread_create(&th[i], NULL,&deservire7,(void *)newfd);
-                        if(comanda[i]==8) pthread_create(&th[i], NULL,&deservire8,(void *)newfd);
                         i++;
+                        if(fork()==0){
+                                if(comanda[i-1]==3) deservire3(newfd);
+                                if(comanda[i-1]==4) deservire4(newfd);
+                                if(comanda[i-1]==5) deservire5(newfd);
+                                if(comanda[i-1]==6) deservire6(newfd);
+                                if(comanda[i-1]==7) deservire7(newfd);
+                                if(comanda[i-1]==8) deservire8(newfd);
                         }
+                    }
         }
 }
