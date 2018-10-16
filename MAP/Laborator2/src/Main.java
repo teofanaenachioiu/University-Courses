@@ -90,7 +90,7 @@ public class Main {
         testeRunner2(Strategy.valueOf(args[0]));*/
 
         //ex 14
-        /*System.out.println("TEST EX 14");
-        testeRunner3(Strategy.valueOf(args[0]));*/
+        System.out.println("TEST EX 14");
+        testeRunner3(Strategy.valueOf(args[0]));
     }
 }
