@@ -1,0 +1,65 @@
+package teste;
+
+import domain.Student;
+import org.junit.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class StudentTest {
+    private Student s=new Student(9999,"Enachioiu Teofana",223,"teoffa@yahoo.com","Adriana Guran");
+
+    @Test
+    public void getNume() {
+        assertEquals(s.getNume(),"Enachioiu Teofana");
+    }
+
+    @Test
+    public void setNume() {
+        s.setNume("Teona");
+        assertEquals(s.getNume(),"Teona");
+    }
+
+    @Test
+    public void getGrupa() {
+        assertEquals((int)s.getGrupa(),223);
+    }
+
+    @Test
+    public void setGrupa() {
+        s.setGrupa(221);
+        assertEquals((int)s.getGrupa(),221);
+    }
+
+    @Test
+    public void getEmail() {
+        assertEquals(s.getEmail(),"teoffa@yahoo.com");
+    }
+
+    @Test
+    public void setEmail() {
+        s.setEmail("teo@yahoo.com");
+        assertEquals(s.getEmail(),"teo@yahoo.com");
+    }
+
+    @Test
+    public void getIndrumatorLab() {
+        assertEquals(s.getIndrumatorLab(),"Adriana Guran");
+    }
+
+    @Test
+    public void setIndrumatorLab() {
+        s.setIndrumatorLab("Adriana");
+        assertEquals(s.getIndrumatorLab(),"Adriana");
+    }
+
+    @Test
+    public void getID() {
+        assertEquals((int)s.getID(),9999);
+    }
+
+    @Test
+    public void setID() {
+        s.setID(1000);
+        assertEquals((int)s.getID(),1000);
+    }
+}

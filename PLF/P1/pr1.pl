@@ -1,9 +1,13 @@
-apare(_,[]):-fail.
 apare(E,[H|T]):-H=\=E,apare(E,T).
-apare(E,[H|T]):-H=:=E.
+apare(E,[H|_]):-H=:=E.
 
-diferenta([],L2,[]).
-diferenta([H|T],L2,R):-apare(H,L2),diferenta(T,L2,R).
-diferenta([H|T],L2,[H|R]):-not(apare(H,L2)),diferenta(T,L2,R).
+diferenta([],_,[]):-!.
+diferenta([H|T],L,R):-apare(H,L),!,diferenta(T,L,R).
+diferenta([H|T],L,[H|R]):-not(apare(H,L)),diferenta(T,L,R).
 
-ePar()
+ePar(E):-R is mod(E,2),R=:=0.
+
+
+adaugaUnu([],[]):-!.
+adaugaUnu([H|T],[H|R]):-not(ePar(H)),!,adaugaUnu(T,R).
+adaugaUnu([H|T],[H|R]):-adaugaUnu([1|T],R).

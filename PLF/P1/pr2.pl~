@@ -1,0 +1,10 @@
+produsAux([],Pp,Pp):-!.
+produsAux([H|T],Pp,Pf):-Pp1 is Pp*H,produsAux(T,Pp1,Pf).
+
+produs(L,R):-produsAux(L,1,R).
+
+cmmdc(A,B,A):-B =:=0,!.
+cmmdc(A,B,P):- Pp is mod(A,B),cmmdc(B,Pp,P).
+
+cmmmc(A,B,R):-cmmdc(A,B,R2),R is div(A*B,R2).
+
