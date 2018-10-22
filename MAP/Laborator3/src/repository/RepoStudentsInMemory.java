@@ -1,13 +1,14 @@
 package repository;
 
 import domain.Student;
-import exceptions.ValidationException;
+import validator.ValidatorStudent;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RepoStudentsInMemory implements CrudRepository<Integer, Student> {
     private List<Student> repo=new ArrayList<Student>();
+    ValidatorStudent val=new ValidatorStudent();
 
     @Override
     public Student findOne(Integer integer) {
@@ -34,6 +35,7 @@ public class RepoStudentsInMemory implements CrudRepository<Integer, Student> {
         }
         if(findOne(entity.getID())!=null) return entity;
         else {
+            val.validate(entity);
             repo.add(entity);
             return null;
         }
@@ -62,6 +64,7 @@ public class RepoStudentsInMemory implements CrudRepository<Integer, Student> {
         Student s=findOne(entity.getID());
         if(s==null) return entity;
         else {
+            val.validate(s);
             repo.remove(s);
             repo.add(entity);
             return null;

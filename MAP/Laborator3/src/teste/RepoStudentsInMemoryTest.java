@@ -1,19 +1,15 @@
 package teste;
 
 import domain.Student;
-import exceptions.ValidationException;
+import repository.ValidationException;
 import org.junit.jupiter.api.Test;
 import repository.RepoStudentsInMemory;
-import validator.Validator;
 import validator.ValidatorStudent;
-
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RepoStudentsInMemoryTest {
     RepoStudentsInMemory repo=new RepoStudentsInMemory();
-    ValidatorStudent val=new ValidatorStudent();
 
     @Test
     void findOne() throws ValidationException {
@@ -65,10 +61,9 @@ public class RepoStudentsInMemoryTest {
         }
         assertFalse(throwww);
 
-        Student s2=new Student(2278,"An4",222,"ana@yahoo.com","A Guran");
+        Student s2=new Student(2279,"An4",222,"ana@yahoo.com","A Guran");
         throwww=false;
         try {
-            val.validate(s2);
             assertEquals(repo.save(s2),s2);
         } catch (ValidationException e) {
             assertEquals("Nume incorect!",e.getMessage());
@@ -111,11 +106,9 @@ public class RepoStudentsInMemoryTest {
             throwww = true; }
 
         Student s2=new Student(2279,"Ana",222,"ana@yahoo.com","A Guran");
-        val.validate(s2);
         assertEquals(repo.update(s2),s2);
 
         Student s3=new Student(2278,"Oana",222,"ioana@yahoo.com","A Guran");
-        val.validate(s3);
         assertNull(repo.update(s3));
     }
 }

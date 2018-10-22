@@ -1,7 +1,7 @@
 package validator;
 
 import domain.Student;
-import exceptions.ValidationException;
+import repository.ValidationException;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -12,14 +12,14 @@ public class ValidatorStudent implements Validator<Student> {
     private static Pattern usrGrupaPtrn = Pattern.compile("^[1-9]{3}$");
     private static Pattern usrEmailPtrn = Pattern.compile("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$");
 
-    public static void validateName(String name) throws ValidationException {
+    private static void validateName(String name) {
         Matcher mtch = usrNamePtrn.matcher(name);
         if(!mtch.matches()){
             throw new ValidationException("Nume incorect!");
         }
     }
 
-    public static void validateID(Integer id) throws ValidationException {
+    private static void validateID(Integer id){
         String idS=id.toString();
         Matcher mtch = usrIdPtrn.matcher(idS);
         if(!mtch.matches()){
@@ -27,7 +27,7 @@ public class ValidatorStudent implements Validator<Student> {
         }
     }
 
-    public static void validateGrupa(Integer grupa) throws ValidationException {
+    private static void validateGrupa(Integer grupa) {
         String grupaS=grupa.toString();
         Matcher mtch = usrGrupaPtrn.matcher(grupaS);
         if(!mtch.matches()){
@@ -35,7 +35,7 @@ public class ValidatorStudent implements Validator<Student> {
         }
     }
 
-    public static void validateEmail(String email) throws ValidationException {
+    private static void validateEmail(String email)  {
         Matcher mtch = usrEmailPtrn.matcher(email);
         if(!mtch.matches()){
             throw new ValidationException("Email incorect!");
@@ -43,7 +43,7 @@ public class ValidatorStudent implements Validator<Student> {
     }
 
     @Override
-    public void validate(Student entity) throws ValidationException {
+    public void validate(Student entity)  {
         validateName(entity.getNume());
         validateID(entity.getID());
         validateGrupa(entity.getGrupa());

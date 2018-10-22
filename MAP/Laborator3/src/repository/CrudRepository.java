@@ -34,7 +34,7 @@ public interface CrudRepository<ID, E> {
         * if the given entity is null. *
         */
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! exceptions.
-    E save(E entity) throws exceptions.ValidationException;
+    E save(E entity) throws ValidationException;
         /**
          * removes the entity with the specified id
          * @param id

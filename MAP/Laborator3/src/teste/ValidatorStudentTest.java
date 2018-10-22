@@ -1,7 +1,7 @@
 package teste;
 
 import domain.Student;
-import exceptions.ValidationException;
+import repository.ValidationException;
 import org.junit.jupiter.api.Test;
 import validator.ValidatorStudent;
 
