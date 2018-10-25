@@ -1,22 +1,43 @@
 package domain;
 
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.WeekFields;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 public class Tema implements HasID<Integer>{
     private Integer idTema;
     private String descriere;
     private Integer deadline;
     private Integer dataPredare;
-//    private Float nota;
-//    private Float notaCopie;
 
     public Tema(Integer idTema, String descriere, Integer deadline,Integer dataPredare) {
         this.idTema = idTema;
         this.descriere = descriere;
         this.deadline = deadline;
         this.dataPredare = dataPredare;
-        /*this.nota = nota;
-        this.notaCopie=nota;
-        calculeazaNota();*/
+    }
+
+    private Integer getCurrentWeek() {
+        LocalDate date = LocalDate.now();
+        WeekFields weekFields = WeekFields.of(Locale.getDefault());
+        return date.get(weekFields.weekOfWeekBasedYear());
+    }
+
+    private Integer getLabNumber(){
+        Integer saptCurenta=getCurrentWeek();
+        Integer dif=saptCurenta-39;
+        if(dif<1||dif>16) return null;
+        if(saptCurenta.equals(13) || saptCurenta.equals(14))
+            return 12;
+        if(saptCurenta.equals(15)) return dif-1;
+        if(saptCurenta.equals(16)) return dif-2;
+        return dif;
     }
 
     public String getDescriere() {
@@ -32,8 +53,8 @@ public class Tema implements HasID<Integer>{
     }
 
     public void setDeadline(Integer deadline) {
-        this.deadline = deadline;
-        //calculeazaNota();
+        if(deadline>=getLabNumber())
+            this.deadline = deadline;
     }
 
     public Integer getDataPredare() {
@@ -41,28 +62,9 @@ public class Tema implements HasID<Integer>{
     }
 
     public void setDataPredare(Integer dataPredare) {
-        this.dataPredare = dataPredare;
-        //calculeazaNota();
+        if(this.deadline>=dataPredare)
+            this.dataPredare = dataPredare;
     }
-
-//    public Float getNota() {
-//        return this.nota;
-//    }
-//
-//    public void setNota(Float nota) {
-//        this.nota = nota;
-//
-//    }
-//
-//    private void calculeazaNota(){
-//        Integer dif=getDataPredare()-getDeadline();
-//        if(dif<=2) {
-//            this.nota= this.notaCopie - dif * 2.5f;
-//        }
-//        else {
-//            this.nota=1f;
-//        }
-//    }
 
     @Override
     public Integer getID() {

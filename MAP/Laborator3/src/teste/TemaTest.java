@@ -6,39 +6,43 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class TemaTest {
-    Tema t=new Tema(103,"Laborator 3",5,5);
+    Tema t=new Tema(103,"Laborator 10",10,6);
 
     @Test
     void getDescriere() {
-        assertEquals("Laborator 3",t.getDescriere());
+        assertEquals("Laborator 10",t.getDescriere());
     }
 
     @Test
     void setDescriere() {
-        t.setDescriere("Laborator 3-4");
-        assertEquals("Laborator 3-4",t.getDescriere());
+        t.setDescriere("Laborator 6-9");
+        assertEquals("Laborator 6-9",t.getDescriere());
     }
 
     @Test
     void getDeadline() {
-        assertEquals(5,(int)t.getDeadline());
+        assertEquals(10,(int)t.getDeadline());
     }
 
     @Test
     void setDeadline() {
-        t.setDeadline(4);
-        assertEquals(4,(int)t.getDeadline());
+        t.setDeadline(9);
+        assertEquals(9,(int)t.getDeadline());
+        t.setDeadline(3);
+        assertEquals(9,(int)t.getDeadline());
     }
 
     @Test
     void getDataPredare() {
-        assertEquals(5,(int)t.getDataPredare());
+        assertEquals(6,(int)t.getDataPredare());
     }
 
     @Test
     void setDataPredare() {
-        t.setDataPredare(6);
-        assertEquals(6,(int)t.getDataPredare());
+        t.setDataPredare(9);
+        assertEquals(9,(int)t.getDataPredare());
+        t.setDataPredare(12);
+        assertEquals(9,(int)t.getDataPredare());
     }
 
     @Test

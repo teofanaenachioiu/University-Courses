@@ -56,4 +56,13 @@ public class Student implements HasID<Integer> {
     public void setID(Integer integer) {
         this.idStudent=integer;
     }
+
+    @Override
+    public String toString() {
+        return this.idStudent +
+                "/" + this.nume +
+                "/" + this.grupa +
+                "/" + this.email +
+                "/" + this.indrumatorLab;
+    }
 }
