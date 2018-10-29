@@ -12,8 +12,6 @@ succesorAux([H|T],Trans,[H1|LP]):-
 
 succesor(L,Rez):-inversare(L,Li),succesorAux(Li,1,Lp),inversare(Lp,Rez).
 
-listaAux([],[]):-!.
-listaAux([H|T],[Suc|LP]):-is_list(H),!,succesor(H,Suc),listaAux(T,LP).
-listaAux([H|T],[H|LP]):-not(is_list(H)),listaAux(T,LP).
-
-lista(L,LF):-listaAux(L,LF).
+lista([],[]):-!.
+lista([H|T],[Suc|LP]):-is_list(H),!,succesor(H,Suc),lista(T,LP).
+lista([H|T],[H|LP]):-not(is_list(H)),lista(T,LP).
