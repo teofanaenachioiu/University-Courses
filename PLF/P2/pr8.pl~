@@ -8,7 +8,7 @@ inversareAux([],LP,LP):-!.
 inversareAux([H|T],LP,LF):-LP1 = [H|LP],inversareAux(T,LP1,LF).
 
 %inverseaza o lista
-%inversareAux(L:lista, LF:lista)
+%inversare(L:lista, LF:lista)
 %L - lista de inversat
 %LF - lista inversata
 %model de flux (i,o),(i,i)
@@ -29,7 +29,7 @@ succesorAux([H|T],Trans,[H1|LP]):-
     succesorAux(T,Trans1,LP).
 
 %determina succesorul unui numar reprezentat
-%succesorAux(L:lista, Rez:lista)
+%succesor(L:lista, Rez:lista)
 %L - numarul reprezentat sub forma de lista
 %Rez - succesorul numarului
 %model de flux (i,o),(i,i)
