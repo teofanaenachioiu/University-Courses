@@ -1,6 +1,5 @@
 package sem4.repository;
 
-import sem1_2.model.MessageTask;
 import sem4.domain.HasID;
 
 import sem4.domain.validator.Validator;

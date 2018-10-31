@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StudentTest {
-    private Student s=new Student(9999,"Enachioiu Teofana",223,"teoffa@yahoo.com","Adriana Guran");
+    private Student s=new Student("9999","Enachioiu Teofana","223","teoffa@yahoo.com","Adriana Guran");
 
     @Test
     public void getNume() {
@@ -21,13 +21,13 @@ public class StudentTest {
 
     @Test
     public void getGrupa() {
-        assertEquals((int)s.getGrupa(),223);
+        assertEquals(s.getGrupa(),"223");
     }
 
     @Test
     public void setGrupa() {
-        s.setGrupa(221);
-        assertEquals((int)s.getGrupa(),221);
+        s.setGrupa("221");
+        assertEquals(s.getGrupa(),"221");
     }
 
     @Test
@@ -54,12 +54,12 @@ public class StudentTest {
 
     @Test
     public void getID() {
-        assertEquals((int)s.getID(),9999);
+        assertEquals(s.getID(),"9999");
     }
 
     @Test
     public void setID() {
-        s.setID(1000);
-        assertEquals((int)s.getID(),1000);
+        s.setID("1000");
+        assertEquals(s.getID(),"1000");
     }
 }

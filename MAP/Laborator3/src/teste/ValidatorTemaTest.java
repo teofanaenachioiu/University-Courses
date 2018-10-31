@@ -10,10 +10,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ValidatorTemaTest {
     Validator<Tema> val=new ValidatorTema();
-    Tema t1 =new Tema(0,"Laborator 10",10,6);
-    Tema t2 =new Tema(103,"Laborator 10",18,6);
-    Tema t4 =new Tema(103,"Laborator 10",10,12);
-    Tema t5 =new Tema(103,"Laborator 10",10,8);
+    Tema t1 =new Tema("0","Laborator 10","10","6");
+    Tema t2 =new Tema("103","Laborator 10","18","6");
+    Tema t4 =new Tema("103","Laborator 10","10","12");
+    Tema t5 =new Tema("103","Laborator 10","10","8");
     @Test
     void validate() {
         //Date corecte

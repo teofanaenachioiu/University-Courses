@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class TemaTest {
-    Tema t=new Tema(103,"Laborator 10",10,6);
+    Tema t=new Tema("103","Laborator 10","10","6");
 
     @Test
     void getDescriere() {
@@ -26,9 +26,9 @@ class TemaTest {
 
     @Test
     void setDeadline() {
-        t.setDeadline(9);
+        t.setDeadline("9");
         assertEquals(9,(int)t.getDeadline());
-        t.setDeadline(3);
+        t.setDeadline("3");
         assertEquals(9,(int)t.getDeadline());
     }
 
@@ -39,20 +39,20 @@ class TemaTest {
 
     @Test
     void setDataPredare() {
-        t.setDataPredare(9);
+        t.setDataPredare("9");
         assertEquals(9,(int)t.getDataPredare());
-        t.setDataPredare(12);
+        t.setDataPredare("12");
         assertEquals(9,(int)t.getDataPredare());
     }
 
     @Test
     void getID() {
-        assertEquals((float)103,(float)t.getID());
+        assertEquals("103",t.getID());
     }
 
     @Test
     void setID() {
-        t.setID(100);
-        assertEquals((float)100,(float)t.getID());
+        t.setID("100");
+        assertEquals("100",t.getID());
     }
 }

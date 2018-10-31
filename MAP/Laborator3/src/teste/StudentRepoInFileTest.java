@@ -10,9 +10,9 @@ import validator.ValidatorStudent;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StudentRepoInFileTest {
-    private CrudRepository<Integer, Student> repo=new StudentRepoInFile("./src/teste/Studenti.txt", new ValidatorStudent());
-    private Student s1=new Student(9999,"Claudia",223,"clau@yahoo.com","A Guran");
-    private Student s2=new Student(1001,"Elena",223,"ela@yahoo.com","A Guran");
+    private CrudRepository<String, Student> repo=new StudentRepoInFile("./src/teste/Studenti.txt", new ValidatorStudent());
+    private Student s1=new Student("9999","Claudia","223","clau@yahoo.com","A Guran");
+    private Student s2=new Student("1001","Elena","223","ela@yahoo.com","A Guran");
 
     @Test
     void save() {
@@ -22,9 +22,9 @@ class StudentRepoInFileTest {
         catch (IllegalArgumentException e){
             assertEquals("Nu ai dat parametru", e.getMessage());
         }
-        repo.delete(9999);
+        repo.delete("9999");
         assertNull(repo.save(s1));
-        repo.delete(9999);
+        repo.delete("9999");
         assertEquals(s2,repo.save(s2));
 
     }
@@ -37,9 +37,9 @@ class StudentRepoInFileTest {
         catch (IllegalArgumentException e){
             assertEquals("Nu ai dat parametru", e.getMessage());
         }
-        assertNull(repo.findOne(1010));
+        assertNull(repo.findOne("1010"));
         repo.save(s1);
-        assertEquals(s1,repo.findOne(9999));
+        assertEquals(s1,repo.findOne("9999"));
     }
 
     @Test
@@ -58,8 +58,8 @@ class StudentRepoInFileTest {
             assertEquals("Nu ai dat parametru", e.getMessage());
         }
         repo.save(s1);
-        assertNull(repo.delete(5));
-        assertEquals(s1,repo.delete(9999));
+        assertNull(repo.delete("5"));
+        assertEquals(s1,repo.delete("9999"));
     }
 
     @Test
@@ -72,7 +72,7 @@ class StudentRepoInFileTest {
         }
         repo.save(s1);
         assertNull(repo.update(s1));
-        Student s3=new Student(1011,"Elena",223,"ela@yahoo.com","A Guran");
+        Student s3=new Student("1011","Elena","223","ela@yahoo.com","A Guran");
 
         assertEquals(s3,repo.update(s3));
     }

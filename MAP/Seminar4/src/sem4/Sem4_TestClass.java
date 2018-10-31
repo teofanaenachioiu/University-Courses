@@ -12,7 +12,7 @@ public class Sem4_TestClass {
     public static void main(String[] args) {
 
         CrudRepository<String, MessageTask> repo =new InFileMessageTaskRepository(
-                "./data/messages",new MessageTaskValidator());
+                "./src/data/messages",new MessageTaskValidator());
 
         for (MessageTask m:repo.findAll()){
             System.out.println(m);
