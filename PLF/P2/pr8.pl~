@@ -17,7 +17,7 @@ inversare(L,LF):-inversareAux(L,[],LF).
 %se incrementeaza prima cifra a numarului
 %succesorAux(L:lista, Trans: int, LP:lista)
 %L - numarul reprezentat sub forma de lista
-%Trans - transporul rezultat prin adunarea a doua cifre de pe accesi
+%Trans - transporul rezultat prin adunarea a doua cifre de pe acceasi
 % pozitie
 %LP - numarul obtinut prin incrementarea primei cifre a numarului
 %model de flux (i,i,o),(i,i,i)
@@ -28,7 +28,7 @@ succesorAux([H|T],Trans,[H1|LP]):-
     Trans1 is div(H+Trans,10),
     succesorAux(T,Trans1,LP).
 
-%determina succesorul unui numar reprezentat
+%determina succesorul unui numar reprezentat ca lista de cifre
 %succesor(L:lista, Rez:lista)
 %L - numarul reprezentat sub forma de lista
 %Rez - succesorul numarului
