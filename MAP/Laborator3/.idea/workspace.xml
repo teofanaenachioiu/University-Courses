@@ -2,54 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75c5fd75-68f1-4f31-8f0f-3a2b1bbb5d2c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Seminar4/src/sem4/service/MessageTaskService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Seminar4/src/sem5/Area.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Seminar4/src/sem5/Sem5_Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Databases/Laborator/interogari.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../Databases/Laborator/interogari.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/data/Studenti.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/data/Studenti.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/data/Teme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/data/Teme.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/domain/Inregistrare.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/domain/Inregistrare.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/domain/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/domain/Student.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/domain/Tema.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/domain/Tema.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/repository/AbstractRepoInFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/repository/AbstractRepoInFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/repository/RepoInMemory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/repository/RepoInMemory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/repository/StudentRepoInFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/repository/StudentRepoInFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/repository/TemaRepoInFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/repository/TemaRepoInFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/repository/ValidationException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/repository/ValidationException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/service/Consola.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/service/Consola.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/service/Service.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/service/Service.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/teste/RepoInMemoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/teste/RepoInMemoryTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/teste/StudentRepoInFileTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/teste/StudentRepoInFileTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/teste/StudentTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/teste/StudentTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/teste/Studenti.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/teste/Studenti.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/teste/TemaTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/teste/TemaTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/teste/Teme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/teste/Teme.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/teste/ValidatorStudentTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/teste/ValidatorStudentTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/teste/ValidatorTemaTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/teste/ValidatorTemaTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/validator/ValidatorStudent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/validator/ValidatorStudent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/validator/ValidatorTema.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/validator/ValidatorTema.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/Studenti.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Studenti.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/Teme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Teme.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/HasID.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/HasID.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/Inregistrare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/Inregistrare.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/Tema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/Tema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/AbstractRepoInFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/AbstractRepoInFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/RepoInMemory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/RepoInMemory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/StudentRepoInFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/StudentRepoInFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/TemaRepoInFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/TemaRepoInFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/ValidationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/ValidationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/Consola.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/Consola.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/teste/RepoInMemoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/teste/RepoInMemoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/teste/StudentRepoInFileTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/teste/StudentRepoInFileTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/teste/StudentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/teste/StudentTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/teste/Studenti.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/teste/Studenti.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/teste/TemaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/teste/TemaTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/teste/Teme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/teste/Teme.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/teste/ValidatorStudentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/teste/ValidatorStudentTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/teste/ValidatorTemaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/teste/ValidatorTemaTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validator/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/Validator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validator/ValidatorStudent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/ValidatorStudent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validator/ValidatorTema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/ValidatorTema.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Seminar4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Seminar4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Seminar4/out/production/Seminar4/sem4/Sem4_TestClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Seminar4/out/production/Seminar4/sem4/Sem4_TestClass.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Seminar4/src/sem4/Sem4_TestClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Seminar4/src/sem4/Sem4_TestClass.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -80,8 +39,9 @@
     <session id="-131466877">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="14" />
+          <entry key="project.closed" value="15" />
           <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.37" value="1" />
           <entry key="project.open.time.43" value="1" />
           <entry key="project.open.time.44" value="1" />
@@ -94,13 +54,13 @@
           <entry key="project.open.time.59" value="1" />
           <entry key="project.open.time.61" value="1" />
           <entry key="project.open.time.64" value="1" />
-          <entry key="project.opened" value="14" />
+          <entry key="project.opened" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="22" />
-          <entry key="java" value="17595" />
+          <entry key="java" value="17596" />
           <entry key="txt" value="405" />
         </counts>
       </usages-collector>
@@ -123,7 +83,7 @@
       <usages-collector id="statistics.spring.boot.run.usages" />
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="17595" />
+          <entry key="JAVA" value="17596" />
           <entry key="PLAIN_TEXT" value="427" />
         </counts>
       </usages-collector>
@@ -135,10 +95,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/service/Service.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="78" column="9" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
+            <state relative-caret-position="203">
+              <caret line="68" column="35" selection-start-line="68" selection-start-column="35" selection-end-line="68" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#937#938#0" expanded="true" />
+                <element signature="e#976#977#0" expanded="true" />
                 <element signature="e#1975#1976#0" expanded="true" />
                 <element signature="e#2014#2015#0" expanded="true" />
               </folding>
@@ -200,10 +162,10 @@
         <option value="$PROJECT_DIR$/src/teste/ValidatorTemaTest.java" />
         <option value="$PROJECT_DIR$/src/teste/Studenti.txt" />
         <option value="$PROJECT_DIR$/src/domain/Tema.java" />
-        <option value="$PROJECT_DIR$/src/service/Service.java" />
         <option value="$PROJECT_DIR$/src/teste/Teme.txt" />
         <option value="$PROJECT_DIR$/src/teste/ServiceTest.java" />
         <option value="$PROJECT_DIR$/src/data/Teme.txt" />
+        <option value="$PROJECT_DIR$/src/service/Service.java" />
       </list>
     </option>
   </component>
@@ -293,7 +255,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Arquillian JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Seminar4" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
@@ -445,6 +407,7 @@
       <workItem from="1540909339380" duration="9451000" />
       <workItem from="1540965488595" duration="2666000" />
       <workItem from="1540968250821" duration="32000" />
+      <workItem from="1540983537681" duration="1692000" />
     </task>
     <servers />
   </component>
@@ -481,12 +444,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77639000" />
+    <option name="totallyTimeSpent" value="79331000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21633889" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2193646" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -715,9 +679,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="109">
           <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -791,9 +752,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="82" column="45" selection-start-line="82" selection-start-column="45" selection-end-line="82" selection-end-column="45" />
-          <folding>
-            <element signature="e#308#322#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -801,10 +759,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="8" column="49" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
-          <folding>
-            <element signature="e#1025#1026#0" expanded="true" />
-            <element signature="e#1070#1071#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -876,10 +830,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/service/Service.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="78" column="9" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
+        <state relative-caret-position="203">
+          <caret line="68" column="35" selection-start-line="68" selection-start-column="35" selection-end-line="68" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#937#938#0" expanded="true" />
+            <element signature="e#976#977#0" expanded="true" />
             <element signature="e#1975#1976#0" expanded="true" />
             <element signature="e#2014#2015#0" expanded="true" />
           </folding>

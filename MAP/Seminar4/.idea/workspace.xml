@@ -2,82 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3cb8f0fc-68b5-4be7-ab8e-43f1a9ef8406" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/data/Messages" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sem1_2/decorator/AbstractTaskRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sem1_2/decorator/PrinterTaskRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sem1_2/decorator/StrategyTaskRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sem1_2/decorator/TaskRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sem1_2/factory/Factory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sem1_2/factory/TaskContainerFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sem1_2/model/Container.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sem1_2/model/MessageTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sem1_2/model/StackContainer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sem1_2/model/Strategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sem1_2/model/Task.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sem3/MyMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sem3/Sem3Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sem3/Student.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sem4/Sem4_TestClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sem4/domain/HasID.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sem4/domain/MessageTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sem4/domain/Task.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sem4/domain/validator/MessageTaskValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sem4/domain/validator/ValidationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sem4/domain/validator/Validator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sem4/repository/AbstractFileRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sem4/repository/CrudRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sem4/repository/InFileMessageTaskRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sem4/repository/InMemoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sem4/utils/Messages.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sem4/service/MessageTaskService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sem5/Area.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sem5/Sem5_Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Databases/Laborator/interogari.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../Databases/Laborator/interogari.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/data/Studenti.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/data/Studenti.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/data/Teme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/data/Teme.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/domain/Inregistrare.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/domain/Inregistrare.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/domain/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/domain/Student.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/domain/Tema.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/domain/Tema.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/repository/AbstractRepoInFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/repository/AbstractRepoInFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/repository/RepoInMemory.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/repository/RepoInMemory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/repository/StudentRepoInFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/repository/StudentRepoInFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/repository/TemaRepoInFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/repository/TemaRepoInFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/repository/ValidationException.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/repository/ValidationException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/service/Consola.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/service/Consola.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/service/Service.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/service/Service.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/teste/RepoInMemoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/teste/RepoInMemoryTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/teste/StudentRepoInFileTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/teste/StudentRepoInFileTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/teste/StudentTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/teste/StudentTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/teste/Studenti.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/teste/Studenti.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/teste/TemaTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/teste/TemaTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/teste/Teme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/teste/Teme.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/teste/ValidatorStudentTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/teste/ValidatorStudentTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/teste/ValidatorTemaTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/teste/ValidatorTemaTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/validator/ValidatorStudent.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/validator/ValidatorStudent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/validator/ValidatorTema.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/out/production/Laborator3/validator/ValidatorTema.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/src/data/Studenti.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/src/data/Studenti.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/src/data/Teme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/src/data/Teme.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/src/domain/HasID.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/src/domain/HasID.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/src/domain/Inregistrare.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/src/domain/Inregistrare.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/src/domain/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/src/domain/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/src/domain/Tema.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/src/domain/Tema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/src/repository/AbstractRepoInFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/src/repository/AbstractRepoInFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/src/repository/RepoInMemory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/src/repository/RepoInMemory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/src/repository/StudentRepoInFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/src/repository/StudentRepoInFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/src/repository/TemaRepoInFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/src/repository/TemaRepoInFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/src/repository/ValidationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/src/repository/ValidationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/src/service/Consola.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/src/service/Consola.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/src/service/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/src/service/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/src/teste/RepoInMemoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/src/teste/RepoInMemoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/src/teste/StudentRepoInFileTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/src/teste/StudentRepoInFileTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/src/teste/StudentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/src/teste/StudentTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/src/teste/Studenti.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/src/teste/Studenti.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/src/teste/TemaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/src/teste/TemaTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/src/teste/Teme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/src/teste/Teme.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/src/teste/ValidatorStudentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/src/teste/ValidatorStudentTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/src/teste/ValidatorTemaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/src/teste/ValidatorTemaTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/src/validator/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/src/validator/Validator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/src/validator/ValidatorStudent.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/src/validator/ValidatorStudent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator3/src/validator/ValidatorTema.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator3/src/validator/ValidatorTema.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Seminar4/sem4/Sem4_TestClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Seminar4/sem4/Sem4_TestClass.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sem4/Sem4_TestClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sem4/Sem4_TestClass.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -90,35 +21,37 @@
     <session id="-1840810486">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.50" value="1" />
+          <entry key="project.open.time.59" value="1" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="Messages" value="1" />
-          <entry key="java" value="5" />
+          <entry key="Messages" value="2" />
+          <entry key="java" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.spring.boot.mvc.usages" />
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="5" />
+          <entry key="JAVA" value="1562" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="5" />
+          <entry key="java" value="1562" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
       <usages-collector id="statistics.spring.boot.run.usages" />
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="5" />
-          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="JAVA" value="8" />
+          <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -143,8 +76,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sem4/Sem4_TestClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+            <state relative-caret-position="189">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
             </state>
           </provider>
         </entry>
@@ -155,10 +88,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sem4/repository/AbstractFileRepository.java">
+        <entry file="file://$PROJECT_DIR$/src/sem5/Area.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="20" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="153">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sem4/service/MessageTaskService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -167,9 +109,23 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sem5/Sem5_Test.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1003">
+              <caret line="79" column="26" selection-start-line="79" selection-start-column="26" selection-end-line="79" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1738#1739#0" expanded="true" />
+                <element signature="e#1831#1832#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sem4/repository/InFileMessageTaskRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
+            <state relative-caret-position="136">
               <caret line="15" selection-start-line="15" selection-end-line="15" />
             </state>
           </provider>
@@ -182,6 +138,14 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
@@ -189,6 +153,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/sem4/repository/AbstractFileRepository.java" />
+        <option value="$PROJECT_DIR$/src/sem5/Sem5_Test.java" />
+        <option value="$PROJECT_DIR$/src/sem5/Area.java" />
+        <option value="$PROJECT_DIR$/src/sem4/service/MessageTaskService.java" />
         <option value="$PROJECT_DIR$/src/sem4/Sem4_TestClass.java" />
       </list>
     </option>
@@ -211,6 +178,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -241,19 +210,30 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="sem4" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Seminar4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Seminar4" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sem4" type="462c0819:PsiDirectoryNode" />
+              <item name="repository" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Seminar4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Seminar4" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sem5" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540968950645" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540978158336" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Laborator3" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -301,13 +281,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Sem5_Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="sem5.Sem5_Test" />
+      <module name="Seminar4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sem5.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.Sem4_TestClass" />
+      <item itemvalue="Application.Sem5_Test" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Sem4_TestClass" />
+        <item itemvalue="Application.Sem5_Test" />
       </list>
     </recent_temporary>
   </component>
@@ -323,24 +318,24 @@
       <updated>1540366861974</updated>
       <workItem from="1540366866106" duration="600000" />
       <workItem from="1540968297026" duration="657000" />
+      <workItem from="1540972624390" duration="5463000" />
+      <workItem from="1540983493935" duration="33000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1257000" />
+    <option name="totallyTimeSpent" value="6753000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25340393" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26096824" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" weight="0.3289689" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3289689" />
@@ -352,6 +347,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.3289689" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -399,6 +395,16 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/sem4/repository/AbstractFileRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -409,33 +415,52 @@
     <entry file="file://$PROJECT_DIR$/src/sem4/domain/Task.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sem1_2/decorator/TaskRunner.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/data/Messages">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sem4/repository/AbstractFileRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/sem5/Area.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="153">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sem4/service/MessageTaskService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sem5/Sem5_Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1003">
+          <caret line="79" column="26" selection-start-line="79" selection-start-column="26" selection-end-line="79" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1738#1739#0" expanded="true" />
+            <element signature="e#1831#1832#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sem4/repository/InFileMessageTaskRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
+        <state relative-caret-position="136">
           <caret line="15" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sem1_2/decorator/TaskRunner.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sem4/Sem4_TestClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+        <state relative-caret-position="189">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>
