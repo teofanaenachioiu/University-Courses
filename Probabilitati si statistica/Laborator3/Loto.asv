@@ -1,0 +1,39 @@
+function Loto()
+    b = [1,2,3,4,5,6];
+    n=10000;
+    nr =zero()
+    nr1=0;
+    nr2=0;
+    nr3=0;
+    nr4=0;
+    nr5=0;
+    nr6=0;
+    for i=1:n
+       bilete=randsample(1:49,6,false);
+       x=sum(ismember(b,bilete));
+       if(x==1)
+           nr1=nr1+1;
+       end
+       if(x==2)
+           nr2=nr2+1;
+       end
+       if(x==3)
+           nr3=nr3+1;
+       end
+       if(x==4)
+           nr4=nr4+1;
+       end
+       if(x==5)
+           nr5=nr5+1;
+       end
+       if(x==6)
+           nr6=nr6+1;
+       end
+    end
+    fprintf("Prob 1: %4.2f\n",nr1/n);
+    fprintf("Prob 2: %4.2f\n",nr2/n);
+    fprintf("Prob 3: %4.2f\n",nr3/n);
+    fprintf("Prob 4: %4.2f\n",nr4/n);
+    fprintf("Prob 5: %4.2f\n",nr5/n);
+    fprintf("Prob 6: %4.2f\n",nr6/6);
+end

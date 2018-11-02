@@ -1,0 +1,22 @@
+function Patrat()
+    clf
+    hold on
+    axis([0 1 0 1])
+    n=2;
+    nr=0;
+    for i=1:n
+        x=rand();
+        y=rand();
+        plot(x,y,'yx')
+        if x<0.5
+            x=1-x;
+        end
+        if y<0.5
+            y=1-y;
+        end
+        plot(x,y,'rx')
+        
+        d1=pdist([x,y,])
+        
+    end
+end
