@@ -14,7 +14,8 @@ ON G.Gid=P.Gid
 GROUP BY E.Denumire, E.Eid
 ORDER BY E.Eid
 
--- 2. Sa se deternine cate persoane isi sarbatoresc aniversarea in fiecare zi a taberei (19-22 iulie)
+-- 2. Sa se deternine cate persoane isi sarbatoresc aniversarea in fiecare zi a taberei
+-- Tabara se desfasoara in perioada 19-22 iulie
 -- GROUP BY, HAVING
 -- relatie many-to-many
 -- extragere din 3 tabele
@@ -78,7 +79,7 @@ INNER JOIN Asociatii A ON A.Aid=I.Iid
 INNER JOIN Participanti P ON P.Aid=A.Aid
 WHERE DATEDIFF(day, P.Data_n,'2018-07-19')<DATEDIFF(day, '2000-07-19','2018-07-19')
 
--- 6. Sa se determine cati participanti la evenimentul 'Foc de tabara' sunt cazati la 'Colegiu'
+-- 6. Sa se determine cati participanti la evenimentul 'Spectacol' sunt cazati la 'Colegiu'
 -- WHERE, GROUP BY
 -- relatie many-to-many
 -- extragere din mai mult de doua tabele
@@ -95,17 +96,54 @@ WHERE E.Denumire='Spectacol' and C.Locatie='Cabana'
 GROUP BY A.Denumire
 
 -- 7. Sa se determine voluntarul (sau voluntarii) implicati in cele mai multe evenimente
+-- GROUP BY
 -- relatie many-to-many
 -- extragere din mai mult de doua tabele
-SELECT V.Nume
+
+SELECT COUNT(E.Denumire) as 'Numar evenimente', V.Nume
 FROM Evenimente E
 INNER JOIN Contracte C ON C.Eid=E.Eid
 INNER JOIN Voluntari V ON V.Vid=C.Vid
-----
+GROUP BY V.Nume
+HAVING COUNT(E.Denumire)>= ALL(
+	SELECT COUNT(E.Denumire)
+	FROM Evenimente E
+	INNER JOIN Contracte C ON C.Eid=E.Eid
+	INNER JOIN Voluntari V ON V.Vid=C.Vid
+	GROUP BY V.Nume
+)
 
+-- 8. Sa se determine participantii care au <18 ani si care participa la evenimentele care incep dupa ora 20:00
+-- Sa se afiseze si insotitorii acestor participanti.
+-- WHERE, DISTINCT
+-- relatie many-to-many
+-- extragere din mai mult de doua tabele
 
--- 8. Sa se determine cati participanti au <18 si cati au >=18 ani la evenimentele care incep la ora 20:00
+SELECT DISTINCT P.Nume AS 'Nume participant', II.Nume as 'Insotitor'
+FROM Insotitori II
+INNER JOIN Asociatii A ON A.Aid=II.Iid
+INNER JOIN Participanti P ON P.Aid=A.Aid
+FULL JOIN Grupe G ON P.Gid=G.Gid
+FULL JOIN Inscrieri I ON I.Gid=G.Gid
+FULL JOIN Evenimente E ON E.Eid=I.Eid
+WHERE DATEPART(HOUR, E.Ora)>20 and DATEDIFF(day, P.Data_n,'2018-07-19')<DATEDIFF(day, '2000-07-19','2018-07-19')
  
 -- 9. Sa se determine varsta medie din fiecare grupa
+-- GROUP BY
 
--- 10. Sa se afiseze totate grupele care au participat la proiectia de film si la spectacol
+SELECT G.Denumire, AVG(FLOOR(Datediff(day,P.Data_n,getdate())/365)) as 'Media de varsta' 
+FROM Grupe G 
+INNER JOIN Participanti P ON P.Gid=G.Gid
+GROUP BY G.Denumire
+
+
+-- 10. Sa se afiseze toti voluntarii care participa la evenimentele care nu au ora stabilita
+-- WHERE
+-- relatie many-to-many
+-- extragere din 3 tabele
+
+SELECT E.Denumire as 'Eveniment', V.Nume
+FROM Evenimente E
+INNER JOIN Contracte C ON C.Eid=E.Eid
+INNER JOIN Voluntari V ON V.Vid=C.Vid
+WHERE E.Ora IS NULL
