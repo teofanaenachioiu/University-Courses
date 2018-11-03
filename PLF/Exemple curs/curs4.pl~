@@ -26,3 +26,5 @@ toate(L,LP):-findall(P,perechi(L,P),LP).
 submultimi([],[]).
 submultimi([_|T],S):-submultimi(T,S).
 submultimi([H|T],[H|S]):-submultimi(T,S).
+
+toateS(L,LP):-findall(S,submultimi(L,S),LP).
