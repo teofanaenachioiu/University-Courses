@@ -115,7 +115,7 @@ public abstract class AbstractRepoInFile<ID, E extends HasID<ID>> extends  RepoI
      * @throws FileNotFoundException daca nu exista fisierul
      * @throws IOException daca nu se poate lucra cu fisierul dat
      */
-    protected  void writeAll(){
+    public  void writeAll(){
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(this.fileName))) {
             for(E entity:entities.values()) {
                 writeToFile(entity);

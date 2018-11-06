@@ -70,8 +70,8 @@ public class ValidatorStudent implements Validator<Student> {
      */
     @Override
     public void validate(Student entity)  {
-        validateName(entity.getNume());
         validateID(entity.getID());
+        validateName(entity.getNume());
         validateGrupa(entity.getGrupa());
         validateEmail(entity.getEmail());
         validateName(entity.getIndrumatorLab());

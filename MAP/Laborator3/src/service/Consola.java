@@ -111,7 +111,6 @@ public class Consola {
         }
     }
 
-
     private void callAdaugaTema() {
         try {
             System.out.print("ID: ");

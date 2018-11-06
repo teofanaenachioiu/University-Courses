@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="75c5fd75-68f1-4f31-8f0f-3a2b1bbb5d2c" name="Default Changelist" comment="" />
+    <list default="true" id="75c5fd75-68f1-4f31-8f0f-3a2b1bbb5d2c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Design-Patterns/Abstract Factory/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Design-Patterns/Abstract Factory/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Design-Patterns/Builder/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Design-Patterns/Builder/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Design-Patterns/Command/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Design-Patterns/Command/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/data/Studenti.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/data/Studenti.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/data/Teme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/data/Teme.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/repository/AbstractRepoInFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/repository/AbstractRepoInFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/service/Consola.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/service/Consola.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/service/Service.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/service/Service.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/teste/ServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/teste/ServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/Studenti.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Studenti.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/Teme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Teme.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repository/AbstractRepoInFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/AbstractRepoInFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/Consola.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/Consola.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/Service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/teste/ServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/teste/ServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/ValidatorStudent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/ValidatorStudent.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,9 +49,10 @@
     <session id="-131466877">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="16" />
+          <entry key="project.closed" value="17" />
           <entry key="project.open.time.14" value="1" />
-          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.2" value="2" />
+          <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.37" value="1" />
           <entry key="project.open.time.43" value="1" />
           <entry key="project.open.time.44" value="1" />
@@ -47,37 +66,37 @@
           <entry key="project.open.time.61" value="1" />
           <entry key="project.open.time.63" value="1" />
           <entry key="project.open.time.64" value="1" />
-          <entry key="project.opened" value="16" />
+          <entry key="project.opened" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="22" />
-          <entry key="java" value="17596" />
-          <entry key="txt" value="405" />
+          <entry key="java" value="18889" />
+          <entry key="txt" value="406" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="16" />
-          <entry key="java" value="205" />
-          <entry key="txt" value="26" />
+          <entry key="java" value="223" />
+          <entry key="txt" value="32" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="16" />
-          <entry key="JAVA" value="205" />
-          <entry key="PLAIN_TEXT" value="26" />
+          <entry key="JAVA" value="223" />
+          <entry key="PLAIN_TEXT" value="32" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
       <usages-collector id="statistics.spring.boot.run.usages" />
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="17596" />
-          <entry key="PLAIN_TEXT" value="427" />
+          <entry key="JAVA" value="18889" />
+          <entry key="PLAIN_TEXT" value="428" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.spring.boot.mvc.usages" />
@@ -85,18 +104,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/service/Service.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/service/Consola.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="68" column="35" selection-start-line="68" selection-start-column="35" selection-end-line="68" selection-end-column="35" />
+            <state relative-caret-position="106">
+              <caret line="139" column="37" lean-forward="true" selection-start-line="139" selection-start-column="37" selection-end-line="139" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#937#938#0" expanded="true" />
-                <element signature="e#976#977#0" expanded="true" />
-                <element signature="e#1975#1976#0" expanded="true" />
-                <element signature="e#2014#2015#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/validator/ValidatorStudent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/validator/ValidatorTema.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="56" column="43" lean-forward="true" selection-start-line="56" selection-start-column="43" selection-end-line="56" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/data/Studenti.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -135,12 +177,9 @@
         <option value="$PROJECT_DIR$/src/repository/RepoInMemoryTest.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/domain/HasID.java" />
-        <option value="$PROJECT_DIR$/src/repository/AbstractRepoInFile.java" />
         <option value="$PROJECT_DIR$/src/repository/RepoInMemory.java" />
         <option value="$PROJECT_DIR$/src/repository/ValidationException.java" />
         <option value="$PROJECT_DIR$/src/validator/Validator.java" />
-        <option value="$PROJECT_DIR$/src/validator/ValidatorTema.java" />
-        <option value="$PROJECT_DIR$/src/validator/ValidatorStudent.java" />
         <option value="$PROJECT_DIR$/src/teste/StudentTest.java" />
         <option value="$PROJECT_DIR$/src/repository/StudentRepoInFile.java" />
         <option value="$PROJECT_DIR$/src/teste/ValidatorStudentTest.java" />
@@ -148,17 +187,20 @@
         <option value="$PROJECT_DIR$/src/data/Studenti.txt" />
         <option value="$PROJECT_DIR$/src/domain/Student.java" />
         <option value="$PROJECT_DIR$/src/domain/Inregistrare.java" />
-        <option value="$PROJECT_DIR$/src/service/Consola.java" />
         <option value="$PROJECT_DIR$/src/repository/TemaRepoInFile.java" />
         <option value="$PROJECT_DIR$/src/teste/RepoInMemoryTest.java" />
         <option value="$PROJECT_DIR$/src/teste/TemaTest.java" />
         <option value="$PROJECT_DIR$/src/teste/ValidatorTemaTest.java" />
         <option value="$PROJECT_DIR$/src/teste/Studenti.txt" />
         <option value="$PROJECT_DIR$/src/domain/Tema.java" />
-        <option value="$PROJECT_DIR$/src/teste/Teme.txt" />
-        <option value="$PROJECT_DIR$/src/teste/ServiceTest.java" />
         <option value="$PROJECT_DIR$/src/data/Teme.txt" />
+        <option value="$PROJECT_DIR$/src/repository/AbstractRepoInFile.java" />
+        <option value="$PROJECT_DIR$/src/teste/ServiceTest.java" />
+        <option value="$PROJECT_DIR$/src/teste/Teme.txt" />
         <option value="$PROJECT_DIR$/src/service/Service.java" />
+        <option value="$PROJECT_DIR$/src/service/Consola.java" />
+        <option value="$PROJECT_DIR$/src/validator/ValidatorStudent.java" />
+        <option value="$PROJECT_DIR$/src/validator/ValidatorTema.java" />
       </list>
     </option>
   </component>
@@ -181,7 +223,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -234,7 +276,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -243,13 +285,14 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540967742694" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541501491255" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Arquillian JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -280,7 +323,14 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ServiceTest.prelungireDeadLine">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Laborator3" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ServiceTest.actualizareStudent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Laborator3" />
       <extension name="coverage">
@@ -308,22 +358,6 @@
       <option name="PACKAGE_NAME" value="teste" />
       <option name="MAIN_CLASS_NAME" value="teste.ServiceTest" />
       <option name="METHOD_NAME" value="adaugaTema" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ServiceTest.cautaStudent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Laborator3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="teste.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="teste" />
-      <option name="MAIN_CLASS_NAME" value="teste.ServiceTest" />
-      <option name="METHOD_NAME" value="cautaStudent" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -360,19 +394,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.ServiceTest.cautaStudent" />
       <item itemvalue="JUnit.ServiceTest.actualizareStudent" />
       <item itemvalue="JUnit.teste in Laborator3" />
       <item itemvalue="JUnit.ServiceTest.adaugaTema" />
       <item itemvalue="JUnit.ServiceTest.prelungireDeadLine" />
+      <item itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.ServiceTest.prelungireDeadLine" />
-        <item itemvalue="JUnit.ServiceTest.adaugaTema" />
         <item itemvalue="JUnit.teste in Laborator3" />
+        <item itemvalue="JUnit.ServiceTest.adaugaTema" />
         <item itemvalue="JUnit.ServiceTest.actualizareStudent" />
-        <item itemvalue="JUnit.ServiceTest.cautaStudent" />
       </list>
     </recent_temporary>
   </component>
@@ -402,22 +436,12 @@
       <workItem from="1540968250821" duration="32000" />
       <workItem from="1540983537681" duration="1692000" />
       <workItem from="1541353121266" duration="699000" />
+      <workItem from="1541442426343" duration="2162000" />
+      <workItem from="1541498247206" duration="3464000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="teste_in_Laborator3 - 2018.10.30 at 20h 37m 15s.xml">
-      <configuration name="teste in Laborator3" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="teste_in_Laborator3 - 2018.10.30 at 20h 37m 21s.xml">
-      <configuration name="teste in Laborator3" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ServiceTest_adaugaTema - 2018.10.31 at 08h 05m 40s.xml">
-      <configuration name="ServiceTest.adaugaTema" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ServiceTest_prelungireDeadLine - 2018.10.31 at 08h 20m 32s.xml">
-      <configuration name="ServiceTest.prelungireDeadLine" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ServiceTest_prelungireDeadLine - 2018.10.31 at 08h 20m 47s.xml">
       <configuration name="ServiceTest.prelungireDeadLine" configurationId="JUnit" />
     </history-entry>
@@ -436,14 +460,27 @@
     <history-entry file="ServiceTest_prelungireDeadLine - 2018.10.31 at 08h 32m 51s.xml">
       <configuration name="ServiceTest.prelungireDeadLine" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="teste_in_Laborator3 - 2018.11.06 at 12h 21m 47s.xml">
+      <configuration name="teste in Laborator3" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="teste_in_Laborator3 - 2018.11.06 at 12h 21m 58s.xml">
+      <configuration name="teste in Laborator3" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ServiceTest_prelungireDeadLine - 2018.11.06 at 12h 24m 42s.xml">
+      <configuration name="ServiceTest.prelungireDeadLine" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ServiceTest_prelungireDeadLine - 2018.11.06 at 12h 26m 11s.xml">
+      <configuration name="ServiceTest.prelungireDeadLine" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80030000" />
+    <option name="totallyTimeSpent" value="85656000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22239032" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22844176" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -452,7 +489,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.38134205" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.38134205" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -548,13 +585,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_181/src.zip!/java/util/ArrayList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="1256" selection-start-line="1256" selection-end-line="1256" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_181/src.zip!/java/lang/Throwable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="127">
@@ -640,20 +670,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/validator/ValidatorStudent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-389">
-          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/validator/ValidatorTema.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9">
-          <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/teste/StudentTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -668,24 +684,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/repository/AbstractRepoInFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/Student.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="55">
-          <caret line="113" column="37" selection-start-line="113" selection-start-column="37" selection-end-line="113" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -696,47 +698,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#427#428#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/teste/StudentRepoInFileTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="46" column="8" selection-start-line="46" selection-start-column="8" selection-end-line="48" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/repository/CrudRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/Inregistrare.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="15" column="19" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/service/Consola.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="144" column="50" selection-start-line="144" selection-start-column="50" selection-end-line="144" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/repository/TemaRepoInFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="22" column="59" selection-start-line="22" selection-start-column="59" selection-end-line="22" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -762,45 +723,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/Studenti.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/teste/Studenti.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/Tema.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="91" selection-start-line="91" selection-end-line="91" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/teste/Teme.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="32" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/Teme.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/teste/ServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="64" column="64" selection-start-line="64" selection-start-column="64" selection-end-line="64" selection-end-column="64" />
         </state>
       </provider>
     </entry>
@@ -811,17 +737,134 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/teste/StudentRepoInFileTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="59" column="22" selection-start-line="59" selection-start-column="22" selection-end-line="59" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domain/Student.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1581">
+          <caret line="113" column="37" selection-start-line="113" selection-start-column="37" selection-end-line="113" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domain/Inregistrare.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-171">
+          <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/Teme.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="5" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domain/Tema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1309">
+          <caret line="91" selection-start-line="91" selection-end-line="91" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/service/Service.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="68" column="35" selection-start-line="68" selection-start-column="35" selection-end-line="68" selection-end-column="35" />
+        <state relative-caret-position="1721">
+          <caret line="141" lean-forward="true" selection-start-line="141" selection-end-line="141" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#937#938#0" expanded="true" />
-            <element signature="e#976#977#0" expanded="true" />
-            <element signature="e#1975#1976#0" expanded="true" />
-            <element signature="e#2014#2015#0" expanded="true" />
+            <element signature="e#1255#1256#0" expanded="true" />
+            <element signature="e#1294#1295#0" expanded="true" />
+            <element signature="e#2387#2388#0" expanded="true" />
+            <element signature="e#2427#2428#0" expanded="true" />
+            <element signature="e#2474#2475#0" expanded="true" />
+            <element signature="e#2512#2513#0" expanded="true" />
+            <element signature="e#2717#2718#0" expanded="true" />
+            <element signature="e#2756#2757#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/repository/CrudRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="56" column="6" selection-start-line="56" selection-start-column="6" selection-end-line="56" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/teste/ServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="55">
+          <caret line="57" column="53" selection-start-line="57" selection-start-column="53" selection-end-line="57" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_181/src.zip!/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="1256" selection-start-line="1256" selection-end-line="1256" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/teste/Teme.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/repository/TemaRepoInFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#369#370#0" expanded="true" />
+            <element signature="e#411#412#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/repository/AbstractRepoInFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="116" column="7" lean-forward="true" selection-start-line="116" selection-start-column="7" selection-end-line="116" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/Studenti.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/service/Consola.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="139" column="37" lean-forward="true" selection-start-line="139" selection-start-column="37" selection-end-line="139" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/validator/ValidatorStudent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/validator/ValidatorTema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="56" column="43" lean-forward="true" selection-start-line="56" selection-start-column="43" selection-end-line="56" selection-end-column="43" />
         </state>
       </provider>
     </entry>

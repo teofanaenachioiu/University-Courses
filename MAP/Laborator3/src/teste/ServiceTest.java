@@ -63,5 +63,6 @@ class ServiceTest {
         assertNull(serv.prelungireDeadLine("1", "2"));
         assertNull(serv.prelungireDeadLine("1", "1"));
         assertEquals(new Tema("4","Catalog MAP - iteratia 7","14","12"),serv.prelungireDeadLine("4","14"));
+        serv.prelungireDeadLine("4","13");
     }
 }
