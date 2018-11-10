@@ -1,5 +1,6 @@
 package teste;
 
+import domain.Nota;
 import domain.Student;
 import domain.Tema;
 import org.junit.jupiter.api.Test;
@@ -9,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ServiceTest {
 
-    private Service serv=new Service("./src/teste/Studenti.txt","./src/teste/Teme.txt");
+    private Service serv=new Service("./src/teste/Studenti.txt","./src/teste/Teme.txt","./src/teste/Catalog.txt");
 
     @Test
     void adaugaStudent() {
@@ -64,5 +65,14 @@ class ServiceTest {
         assertNull(serv.prelungireDeadLine("1", "1"));
         assertEquals(new Tema("4","Catalog MAP - iteratia 7","14","12"),serv.prelungireDeadLine("4","14"));
         serv.prelungireDeadLine("4","13");
+    }
+
+    @Test
+    void adaugaNota() {
+        //Nota nota=new Nota("1003","4","10","10");
+        assertNull(serv.adaugaNota("1005","4","10","10","Esti bun",false));
+        serv.stergeNota("1005","4");
+        Nota nota=new Nota("1001","4","10","9");
+        assertEquals(nota,serv.adaugaNota("1001","4","10","9","Merge",false));
     }
 }

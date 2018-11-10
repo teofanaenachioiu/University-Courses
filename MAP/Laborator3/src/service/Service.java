@@ -1,12 +1,18 @@
 package service;
 
+import domain.Nota;
 import domain.Student;
 import domain.Tema;
-import repository.CrudRepository;
-import repository.StudentRepoInFile;
-import repository.TemaRepoInFile;
+import javafx.util.Pair;
+import repository.*;
+import validator.ValidatorNota;
 import validator.ValidatorStudent;
 import validator.ValidatorTema;
+
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * Clasa Service
@@ -14,19 +20,23 @@ import validator.ValidatorTema;
 public class Service {
     private String fileNameStd;
     private String fileNameTema;
+    private String fileNameNote;
     private CrudRepository<String, Student> repoS;
     private CrudRepository<String, Tema> repoT;
+    private CrudRepository<Pair<String,String>, Nota> repoN;
 
     /**
      * Constructor Service
      * @param fileNameStd fisierul cu date despre studenti
      * @param fileNameTema fisireul cu date despre teme
      */
-    public Service(String fileNameStd, String fileNameTema) {
+    public Service(String fileNameStd, String fileNameTema, String fileNameNote) {
         this.fileNameStd = fileNameStd;
         this.fileNameTema = fileNameTema;
+        this.fileNameNote=fileNameNote;
         repoS=new StudentRepoInFile(fileNameStd,new ValidatorStudent());
         repoT=new TemaRepoInFile(fileNameTema,new ValidatorTema());
+        repoN=new NotaRepoInFile(fileNameNote, new ValidatorNota());
     }
 
     /**
@@ -138,4 +148,58 @@ public class Service {
         return t;
     }
 
+    public Nota stergeNota(String idS, String idT){
+        return repoN.delete(new Pair(idS,idT));
+
+    }
+
+    private String writeContent(Nota nota,String feedback){
+        String msg;
+        msg="Tema: "+nota.getTemaID()+"\n";
+        msg=msg+"Nota: "+nota.getNotaProf()+"\n";
+        Tema tema=repoT.findOne(nota.getTemaID());
+        msg=msg+"Predata in saptamana: "+tema.getDataPredare()+"\n";
+        msg=msg+"Deadline: "+tema.getDeadline()+"\n";
+        msg=msg+"Feedback: "+feedback;
+        return msg;
+    }
+
+    private void adaugaInFile(Nota nota, String feedback){
+        Student student=cautaStudent(nota.getStudentID());
+
+        String fileName="./src/data/"+student.getNume()+".txt";
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName,true))) {
+            bw.write(writeContent(nota,feedback));
+            bw.newLine();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Nota adaugaNota(String idS, String idT, String data, String notaProf,String feedback, boolean motivat){
+        Nota entity=new Nota(idS,idT,data,notaProf);
+        if(repoT.findOne(idT)==null)return entity;
+        if(repoS.findOne(idS)==null)return entity;
+        if(!motivat) {
+            Float nota=calculeazaNota(data,notaProf,repoT.findOne(idT));
+            entity.setNotaProf(nota.toString());
+        }
+        adaugaInFile(entity,feedback);
+        return repoN.save(entity);
+    }
+
+    private Float calculeazaNota(String data,String notaProf, Tema tema) {
+        Float nota=Float.parseFloat(notaProf);
+        Integer dif = Integer.parseInt(data) - tema.getDeadline();
+        if (dif > 0 && dif <= 2) {
+            return  nota - dif * 2.5f;
+        } else if (dif<=0){
+            return (float) nota;
+        }
+        else{
+            return 1f;
+        }
+    }
 }

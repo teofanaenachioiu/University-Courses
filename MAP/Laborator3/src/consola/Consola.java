@@ -1,8 +1,9 @@
-package service;
+package consola;
 
 import domain.Student;
 import domain.Tema;
 import repository.ValidationException;
+import service.Service;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -10,7 +11,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Consola {
-    private Service serv=new Service("./src/data/Studenti.txt","./src/data/Teme.txt");
+    private Service serv=new Service("./src/data/Studenti.txt","./src/data/Teme.txt","./src/data/Catalog.txt");
     private BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 
     private void meniu(){
@@ -22,6 +23,7 @@ public class Consola {
         System.out.println("5. Vizualizare lista studenti");
         System.out.println("6. Adauga tema");
         System.out.println("7. Prelungire deadline");
+        System.out.println("8. Asignare nota");
         System.out.println("0. Exit");
     }
 
@@ -149,6 +151,30 @@ public class Consola {
         }
     }
 
+    private void callAsignareNota() {
+        try {
+            System.out.print("ID student: ");
+            String idS=br.readLine();
+            System.out.print("ID tema: ");
+            String idT=br.readLine();
+            System.out.print("Nota: ");
+            String nota=br.readLine();
+            System.out.print("Data: ");
+            String data=br.readLine();
+            System.out.print("Feedback: ");
+            String feedback=br.readLine();
+
+            boolean motivat=false;
+            System.out.println("Studentul a lipsit motivat? (y/n)");
+            String ans=br.readLine();
+            if(ans.equals("y")||ans.equals("Y")) motivat=true;
+            if(serv.adaugaNota(idS,idT,data,nota,feedback,motivat)!=null) System.out.println("Nota nu a putut fi adaugata!");
+            else System.out.println("Studentul a fost notat");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void run(){
         while(true){
             meniu();
@@ -192,9 +218,15 @@ public class Consola {
                 callPrelungireDeadline();
                 continue;
             }
+            if(cmd.equals("8")){
+                callAsignareNota();
+                continue;
+            }
             System.out.println("Comanda invalida!");
         }
 
     }
+
+
 
 }
