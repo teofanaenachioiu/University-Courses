@@ -40,7 +40,7 @@ create table Participanti(
 create table Cazari(
 	Cid int primary key,
 	Locatie varchar(20) not null,
-	NrLocuri int default 0
+	NrLocuri int 
 )
 
 create table Cereri(
