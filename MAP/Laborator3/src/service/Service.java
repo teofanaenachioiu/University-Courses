@@ -13,6 +13,7 @@ import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Optional;
 
 /**
  * Clasa Service
@@ -48,8 +49,8 @@ public class Service {
      * @param profLab profesorul coordonator de la laborator (String)
      * @return entitate student
      */
-    public Student adaugaStudent(String id, String nume, String grupa, String email, String profLab){
-        return repoS.save(new Student(id,nume,grupa,email,profLab));
+    public Optional<Student> adaugaStudent(String id, String nume, String grupa, String email, String profLab){
+        return repoS.save(Optional.of(new Student(id,nume,grupa,email,profLab)));
     }
 
     /**
@@ -57,8 +58,8 @@ public class Service {
      * @param id id-ul studentului (String)
      * @return
      */
-    public Student stergeStudent(String id){
-        return repoS.delete(id);
+    public Optional<Student> stergeStudent(String id){
+        return repoS.delete(Optional.of(id));
     }
 
     /**
@@ -72,7 +73,8 @@ public class Service {
      */
     public boolean actualizareStudent(String id, String nume, String grupa, String email, String prof){
         boolean updated=false;
-        Student s= repoS.findOne(id);
+        Student s = repoS.findOne(Optional.of(id)).get();
+
         if(nume.equals(""))
             nume=s.getNume();
         else updated=true;
@@ -89,7 +91,7 @@ public class Service {
             prof=s.getIndrumatorLab();
         else updated=true;
 
-        repoS.update(new Student(id,nume,grupa,email,prof));
+        repoS.update(Optional.of(new Student(id,nume,grupa,email,prof)));
         return updated;
     }
 
@@ -98,8 +100,8 @@ public class Service {
      * @param id String - id-ul studentului
      * @return entitate student / null
      */
-    public Student cautaStudent(String id){
-        return repoS.findOne(id);
+    public Optional<Student> cautaStudent(String id){
+        return repoS.findOne(Optional.of(id));
     }
 
     /**
@@ -118,8 +120,8 @@ public class Service {
      * @param predare - String (saptamana in care a fost data tema)
      * @return entitatea Tema nou creata(id-ul exista deva in service) / null (entitatea a fost adaugata)
      */
-    public Tema adaugaTema(String id, String descriere, String deadline, String predare){
-        return repoT.save(new Tema(id,descriere,deadline,predare));
+    public Optional<Tema> adaugaTema(String id, String descriere, String deadline, String predare){
+        return repoT.save(Optional.of(new Tema(id,descriere,deadline,predare)));
     }
 
     /**
@@ -127,8 +129,8 @@ public class Service {
      * @param id - String (id-ul temei)
      * @return entiatea stearsa(daca id-ul a fost gasit) / null (id-ul nu a fost gasit)
      */
-    public Tema stergeTema(String id){
-        return repoT.delete(id);
+    public Optional<Tema> stergeTema(String id){
+        return repoT.delete(Optional.of(id));
     }
 
     /**
@@ -137,19 +139,22 @@ public class Service {
      * @param data -String (noul deadline)
      * @return entitatea actualizata
      */
-    public Tema prelungireDeadLine(String id, String data){
-        Tema t=repoT.findOne(id);
-        if(t!=null) {
-            Integer dataVeche=t.getDeadline();
-            t.setDeadline(data);
-            repoT.update(new Tema(id,t.getDescriere(),t.getDeadline().toString(),t.getDataPredare().toString()));
-            if(dataVeche.equals(t.getDeadline())) return null;
-        }
+
+    public Optional<Tema> prelungireDeadLine(String id, String data){
+        Optional<Tema> t=repoT.findOne(Optional.of(id));
+
+        t.ifPresent(tt->{
+            Integer dataVeche = tt.getDeadline();
+            tt.setDeadline(data);
+            repoT.update(Optional.of(new Tema(id, tt.getDescriere(), tt.getDeadline().toString(), tt.getDataPredare().toString())));
+        });
+
+        if(t.get().getDeadline().equals(t.get().getDataPredare())) return Optional.empty();
         return t;
     }
 
-    public Nota stergeNota(String idS, String idT){
-        return repoN.delete(new Pair(idS,idT));
+    public Optional<Nota> stergeNota(String idS, String idT){
+        return repoN.delete(Optional.of(new Pair(idS,idT)));
 
     }
 
@@ -157,15 +162,15 @@ public class Service {
         String msg;
         msg="Tema: "+nota.getTemaID()+"\n";
         msg=msg+"Nota: "+nota.getNotaProf()+"\n";
-        Tema tema=repoT.findOne(nota.getTemaID());
+        Tema tema=repoT.findOne(Optional.of(nota.getTemaID())).get();
         msg=msg+"Predata in saptamana: "+tema.getDataPredare()+"\n";
         msg=msg+"Deadline: "+tema.getDeadline()+"\n";
-        msg=msg+"Feedback: "+feedback;
+        msg=msg+"Feedback: "+feedback+"\n";
         return msg;
     }
 
     private void adaugaInFile(Nota nota, String feedback){
-        Student student=cautaStudent(nota.getStudentID());
+        Student student=cautaStudent(nota.getStudentID()).get();
 
         String fileName="./src/data/"+student.getNume()+".txt";
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName,true))) {
@@ -178,16 +183,20 @@ public class Service {
         }
     }
 
-    public Nota adaugaNota(String idS, String idT, String data, String notaProf,String feedback, boolean motivat){
+    public Optional<Nota> adaugaNota(String idS, String idT, String data, String notaProf,String feedback, boolean motivat){
         Nota entity=new Nota(idS,idT,data,notaProf);
-        if(repoT.findOne(idT)==null)return entity;
-        if(repoS.findOne(idS)==null)return entity;
+        if(!repoT.findOne(Optional.of(idT)).isPresent())
+            return Optional.of(entity);
+        if(!repoS.findOne(Optional.of(idS)).isPresent())
+            return Optional.of(entity);
+        if(repoN.findOne(Optional.of(new Pair(idS,idT))).isPresent())
+            return Optional.of(entity);
         if(!motivat) {
-            Float nota=calculeazaNota(data,notaProf,repoT.findOne(idT));
+            Float nota=calculeazaNota(data,notaProf,repoT.findOne(Optional.of(idT)).get());
             entity.setNotaProf(nota.toString());
         }
         adaugaInFile(entity,feedback);
-        return repoN.save(entity);
+        return repoN.save(Optional.of(entity));
     }
 
     private Float calculeazaNota(String data,String notaProf, Tema tema) {

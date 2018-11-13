@@ -1,0 +1,6 @@
+Tema: 4
+Nota: 10.0
+Predata in saptamana: 4
+Deadline: 6
+Feedback: Merge
+

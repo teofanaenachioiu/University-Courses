@@ -1,11 +1,14 @@
 package teste;
 
 import domain.Student;
+import jdk.nashorn.internal.runtime.regexp.joni.constants.OPCode;
 import org.junit.jupiter.api.Test;
 import repository.CrudRepository;
 import repository.StudentRepoInFile;
 import validator.Validator;
 import validator.ValidatorStudent;
+
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,29 +20,29 @@ class StudentRepoInFileTest {
     @Test
     void save() {
         try{
-            repo.save(null);
+            repo.save(Optional.empty());
         }
         catch (IllegalArgumentException e){
             assertEquals("Nu ai dat parametru", e.getMessage());
         }
-        repo.delete("9999");
-        assertNull(repo.save(s1));
-        repo.delete("9999");
-        assertEquals(s2,repo.save(s2));
+        repo.delete(Optional.of("9999"));
+        assertEquals(Optional.empty(),repo.save(Optional.of(s1)));
+        repo.delete(Optional.of("9999"));
+        assertEquals(Optional.of(s2),repo.save(Optional.of(s2)));
 
     }
 
     @Test
     void findOne() {
         try{
-            repo.findOne(null);
+            repo.findOne(Optional.empty());
         }
         catch (IllegalArgumentException e){
             assertEquals("Nu ai dat parametru", e.getMessage());
         }
-        assertNull(repo.findOne("1010"));
-        repo.save(s1);
-        assertEquals(s1,repo.findOne("9999"));
+        assertEquals(Optional.empty(),repo.findOne(Optional.of("1010")));
+        repo.save(Optional.of(s1));
+        assertEquals(Optional.of(s1),repo.findOne(Optional.of("9999")));
     }
 
     @Test
@@ -52,28 +55,28 @@ class StudentRepoInFileTest {
     @Test
     void delete() {
         try{
-            repo.delete(null);
+            repo.delete(Optional.empty());
         }
         catch (IllegalArgumentException e){
             assertEquals("Nu ai dat parametru", e.getMessage());
         }
-        repo.save(s1);
-        assertNull(repo.delete("5"));
-        assertEquals(s1,repo.delete("9999"));
+        repo.save(Optional.of(s1));
+        assertEquals(Optional.empty(),repo.delete(Optional.of("5")));
+        assertEquals(Optional.of(s1),repo.delete(Optional.of("9999")));
     }
 
     @Test
     void update() {
         try{
-            repo.update(null);
+            repo.update(Optional.empty());
         }
         catch (IllegalArgumentException e){
             assertEquals("Nu ai dat parametru", e.getMessage());
         }
-        repo.save(s1);
-        assertNull(repo.update(s1));
+        repo.save(Optional.of(s1));
+        assertEquals(Optional.empty(),repo.update(Optional.of(s1)));
         Student s3=new Student("1011","Elena","223","ela@yahoo.com","A Guran");
 
-        assertEquals(s3,repo.update(s3));
+        assertEquals(Optional.of(s3),repo.update(Optional.of(s3)));
     }
 }

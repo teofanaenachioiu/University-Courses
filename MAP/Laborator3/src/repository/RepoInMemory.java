@@ -1,11 +1,13 @@
 package repository;
 
 import domain.HasID;
+import jdk.nashorn.internal.runtime.regexp.joni.constants.OPCode;
 import repository.CrudRepository;
 import validator.Validator;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * CRUD operations repository
@@ -33,9 +35,9 @@ public class RepoInMemory<ID, E extends HasID<ID>> implements CrudRepository<ID,
      * if id is null.
      */
     @Override
-    public E findOne(ID id) {
-        if(id==null) throw new IllegalArgumentException("Nu ai dat parametru");
-        return entities.get(id);
+    public Optional<E> findOne(Optional<ID> id) {
+        id.orElseThrow(()-> new IllegalArgumentException("Nu ai dat parametru"));
+        return Optional.ofNullable(entities.get(id.get()));
     }
     /**
      *
@@ -57,13 +59,11 @@ public class RepoInMemory<ID, E extends HasID<ID>> implements CrudRepository<ID,
      * if the given entity is null. *
      */
     @Override
-    public E save(E entity) throws ValidationException {
-        if(entity==null) throw new IllegalArgumentException("Nu ai dat parametru");
-        validator.validate(entity);
-        E temp = entities.get(entity.getID());
-        if(temp != null) return entity;
-        entities.put(entity.getID(), entity);
-        return null;
+    public Optional<E> save(Optional<E> entity) throws ValidationException {
+        entity.orElseThrow(()-> new IllegalArgumentException("Nu ai dat parametru"));
+        validator.validate(entity.get());
+        return Optional.ofNullable(entities.put(entity.get().getID(), entity.get()));
+
     }
     /**
      * removes the entity with the specified id
@@ -74,12 +74,10 @@ public class RepoInMemory<ID, E extends HasID<ID>> implements CrudRepository<ID,
      * if the given id is null.
      */
     @Override
-    public E delete(ID id) {
-        if(id==null) throw new IllegalArgumentException("Nu ai dat parametru");
-        E temp=entities.get(id);
-        if(temp==null) return null;
-        entities.remove(id);
-        return temp;
+    public Optional<E> delete(Optional<ID> id) {
+        id.orElseThrow(()-> new IllegalArgumentException("Nu ai dat parametru"));
+        Optional<E> temp = Optional.ofNullable(entities.get(id.get()));
+        return Optional.ofNullable(entities.remove(id.get()));
     }
     /**
      *
@@ -93,14 +91,15 @@ public class RepoInMemory<ID, E extends HasID<ID>> implements CrudRepository<ID,
      * if the entity is not valid.
      */
     @Override
-    public E update(E entity) {
-        if(entity==null)
-            throw new IllegalArgumentException("Nu ai dat parametru");
-        validator.validate(entity);
-        if(entities.get(entity.getID())!=null){
-            entities.put(entity.getID(),entity);
-            return null;
+    public Optional<E> update(Optional<E> entity) {
+        entity.orElseThrow(()-> new IllegalArgumentException("Nu ai dat parametru"));
+        validator.validate(entity.get());
+        Optional<E> tmp=Optional.ofNullable(entities.get(entity.get().getID()));
+        if(tmp.isPresent()) {
+            entities.put(entity.get().getID(),entity.get());
+            return Optional.empty();
         }
-        return entity;
+        else
+            return entity;
     }
 }

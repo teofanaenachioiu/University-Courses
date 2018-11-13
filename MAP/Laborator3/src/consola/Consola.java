@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Optional;
 
 public class Consola {
     private Service serv=new Service("./src/data/Studenti.txt","./src/data/Teme.txt","./src/data/Catalog.txt");
@@ -39,8 +40,13 @@ public class Consola {
             String email=br.readLine();
             System.out.print("Profesor indrumator: ");
             String prof=br.readLine();
-            if(serv.adaugaStudent(id,nume,grupa,email,prof)!=null) System.out.println("Studentul nu a putut fi adaugat");
-            else System.out.println("Studentul a fost adaugat");
+            Optional<Student> optStudent=serv.adaugaStudent(id,nume,grupa,email,prof);
+
+            if(optStudent.isPresent())
+                System.out.println("Studentul nu a putut fi adaugat");
+            else
+                System.out.println("Studentul a fost adaugat");
+
         } catch (IOException e) {
             e.printStackTrace();
         }catch (ValidationException e){
@@ -52,7 +58,8 @@ public class Consola {
         try {
             System.out.print("ID student: ");
             String id=br.readLine();
-            if(serv.stergeStudent(id)==null) System.out.println("Nu exista niciun student cu acest id");
+            if(!serv.stergeStudent(id).isPresent())
+                System.out.println("Nu exista niciun student cu acest id");
             else System.out.println("Studentul a fost sters");
         } catch (IOException e) {
             e.printStackTrace();
@@ -65,8 +72,7 @@ public class Consola {
         try {
             System.out.print("ID student: ");
             String id=br.readLine();
-            Student s=serv.cautaStudent(id);
-            if(s==null) System.out.println("Nu exista niciun student cu acest id");
+            if(!serv.cautaStudent(id).isPresent()) System.out.println("Nu exista niciun student cu acest id");
             else{
                 boolean updated=false;
 
@@ -96,9 +102,8 @@ public class Consola {
         try {
             System.out.print("ID student: ");
             String id=br.readLine();
-            Student s=serv.cautaStudent(id);
-            if(s==null) System.out.println("Nu exista niciun student cu acest numar matricol");
-            else System.out.println("Studentul cautat este "+s);
+            if(!serv.cautaStudent(id).isPresent()) System.out.println("Nu exista niciun student cu acest numar matricol");
+            else System.out.println("Studentul cautat este "+serv.cautaStudent(id).get());
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -108,9 +113,7 @@ public class Consola {
     }
 
     private void callListaStudenti(){
-        for (Student s: serv.listaStudenti() ) {
-            System.out.println(s);
-        }
+        serv.listaStudenti().forEach(System.out::println);
     }
 
     private void callAdaugaTema() {
@@ -123,7 +126,7 @@ public class Consola {
             String deadline = br.readLine();
             System.out.print("Predare: ");
             String predare = br.readLine();
-            if (serv.adaugaTema(id, descriere, deadline, predare) == null)
+            if (!serv.adaugaTema(id, descriere, deadline, predare).isPresent())
                 System.out.println("Tema adaugata");
             else System.out.println("Tema existenta");
         } catch (IOException e) {
@@ -143,7 +146,7 @@ public class Consola {
             String id=br.readLine();
             System.out.print("Deadline nou: ");
             String deadline=br.readLine();
-            if(serv.prelungireDeadLine(id,deadline)==null) System.out.println("Problemee");
+            if(!serv.prelungireDeadLine(id,deadline).isPresent()) System.out.println("Problemee");
             else System.out.println("Deadline actualizat");
 
         } catch (IOException e) {
@@ -168,7 +171,7 @@ public class Consola {
             System.out.println("Studentul a lipsit motivat? (y/n)");
             String ans=br.readLine();
             if(ans.equals("y")||ans.equals("Y")) motivat=true;
-            if(serv.adaugaNota(idS,idT,data,nota,feedback,motivat)!=null) System.out.println("Nota nu a putut fi adaugata!");
+            if(serv.adaugaNota(idS,idT,data,nota,feedback,motivat).isPresent()) System.out.println("Nota nu a putut fi adaugata!");
             else System.out.println("Studentul a fost notat");
         } catch (IOException e) {
             e.printStackTrace();

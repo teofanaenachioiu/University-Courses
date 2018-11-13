@@ -4,6 +4,10 @@ import domain.HasID;
 import validator.Validator;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 /**
  * Repository abstract in fisier
@@ -29,21 +33,18 @@ public abstract class AbstractRepoInFile<ID, E extends HasID<ID>> extends  RepoI
      * @throws FileNotFoundException daca nu exista fisierul
      * @throws IOException daca nu se poate lucra cu fisierul dat
      */
-    private void loadData(){
-        try (BufferedReader br = new BufferedReader(new FileReader(this.fileName))) {
-            String line;
-            while((line=br.readLine())!=null) {
+    private void loadData() {
+        int i=0;
+        try (Stream<String> stream = Files.lines(Paths.get(this.fileName))) {
+            stream.forEach(line -> {
                 E entity = extractEntity(line);
-                super.save(entity);
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+                super.save(Optional.ofNullable(entity));
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-    /**
+        /**
      * Extrage datele de pe o linie din fisier si creeaza entitatea E
      * @param line - String (o linie din fisier)
      * @return entitatea E citita din fisier
@@ -56,10 +57,11 @@ public abstract class AbstractRepoInFile<ID, E extends HasID<ID>> extends  RepoI
      * @return entity (entitatea exista deja) sau null (entitatea a fost salvata)
      */
     @Override
-    public E save(E entity) {
-        if(super.save(entity)==null) {
-            writeToFile(entity);
-            return null;
+    public Optional<E> save(Optional<E> entity) {
+        Optional<E> tmp = super.save(entity);
+        if(!tmp.isPresent()) {
+            writeToFile(entity.get());
+            return Optional.empty();
         }
         return entity;
     }
@@ -70,11 +72,10 @@ public abstract class AbstractRepoInFile<ID, E extends HasID<ID>> extends  RepoI
      * @return temp (entitatea stearsa - poate fi si null)
      */
     @Override
-    public E delete(ID id) {
-        E temp=super.delete(id);
-        if(temp!=null) {
-            writeAll();
-        }
+    public Optional<E> delete(Optional<ID> id) {
+        Optional<E> temp=super.delete(id);
+        // ??
+        if(temp.isPresent())writeAll();
         return temp;
     }
 
@@ -84,13 +85,12 @@ public abstract class AbstractRepoInFile<ID, E extends HasID<ID>> extends  RepoI
      * @return entity (entitatea nu exista) sau null (entitatea a fost actualizata)
      */
     @Override
-    public E update(E entity) {
-        E temp=super.update(entity);
-        if(entities.get(entity.getID())!=null){
+    public Optional<E> update(Optional<E> entity) {
+        Optional<E> temp=super.update(entity);
+        if(!temp.isPresent()){
             writeAll();
-            return null;
         }
-        return entity;
+        return temp;
     }
 
     /**
@@ -117,9 +117,7 @@ public abstract class AbstractRepoInFile<ID, E extends HasID<ID>> extends  RepoI
      */
     public  void writeAll(){
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(this.fileName))) {
-            for(E entity:entities.values()) {
-                writeToFile(entity);
-            }
+            entities.values().forEach(x->writeToFile(x));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

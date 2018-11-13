@@ -1,7 +1,9 @@
 package repository;
 
 
-        /**
+import java.util.Optional;
+
+/**
          * CRUD operations repository interface
          * @param <ID> - type E must have an attribute of type ID
          * @param <E> - type of entities saved in repository
@@ -16,7 +18,7 @@ public interface CrudRepository<ID, E> {
          * @throws IllegalArgumentException
          * if id is null.
          */
-    E findOne(ID id);
+    Optional<E> findOne(Optional<ID> id);
         /**
          *
          * @return all entities
@@ -33,7 +35,7 @@ public interface CrudRepository<ID, E> {
         * @throws IllegalArgumentException
         * if the given entity is null. *
         */
-    E save(E entity) throws ValidationException;
+    Optional<E> save(Optional<E> entity) throws ValidationException;
         /**
          * removes the entity with the specified id
          * @param id
@@ -42,7 +44,7 @@ public interface CrudRepository<ID, E> {
          * @throws IllegalArgumentException
          * if the given id is null.
          */
-    E delete(ID id);
+    Optional<E> delete(Optional<ID> id);
         /**
          *
          * @param entity
@@ -54,5 +56,5 @@ public interface CrudRepository<ID, E> {
          * @throws ValidationException
          * if the entity is not valid.
          */
-    E update(E entity);
+    Optional<E> update(Optional<E> entity);
 }

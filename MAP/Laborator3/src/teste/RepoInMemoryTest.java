@@ -6,6 +6,8 @@ import repository.CrudRepository;
 import repository.RepoInMemory;
 import validator.ValidatorTema;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class RepoInMemoryTest {
@@ -17,38 +19,38 @@ class RepoInMemoryTest {
     @Test
     void save() {
         try{
-            repo.save(null);
+            repo.save(Optional.empty());
         }
         catch (IllegalArgumentException e){
             assertEquals("Nu ai dat parametru", e.getMessage());
         }
-        assertNull(repo.save(t1));
-        assertNull(repo.save(t2));
-        assertNull(repo.save(t3));
-        assertEquals(t1,repo.save(t1));
+        assertEquals(Optional.empty(),repo.save(Optional.ofNullable(t1)));
+        assertEquals(Optional.empty(),repo.save(Optional.ofNullable(t2)));
+        assertEquals(Optional.empty(),repo.save(Optional.ofNullable(t3)));
+        assertEquals(Optional.of(t1),repo.save(Optional.ofNullable(t1)));
     }
 
     @Test
     void findOne() {
         try{
-            repo.findOne(null);
+            repo.findOne(Optional.empty());
         }
         catch (IllegalArgumentException e){
             assertEquals("Nu ai dat parametru", e.getMessage());
         }
-        assertNull(repo.findOne("4"));
-        repo.save(t1);
-        repo.save(t2);
-        repo.save(t3);
-        assertEquals(t1,repo.findOne("1"));
+        assertEquals(Optional.empty(),repo.findOne(Optional.of("4")));
+        repo.save(Optional.ofNullable(t1));
+        repo.save(Optional.ofNullable(t2));
+        repo.save(Optional.ofNullable(t3));
+        assertEquals(Optional.of(t1),repo.findOne(Optional.of("1")));
     }
 
     @Test
     void findAll() {
         int size=0;
-        repo.save(t1);
-        repo.save(t2);
-        repo.save(t3);
+        repo.save(Optional.ofNullable(t1));
+        repo.save(Optional.ofNullable(t2));
+        repo.save(Optional.ofNullable(t3));
         for(Tema t:repo.findAll()) size++;
         assertEquals(3,size);
     }
@@ -56,32 +58,32 @@ class RepoInMemoryTest {
     @Test
     void delete() {
         try{
-            repo.delete(null);
+            repo.delete(Optional.empty());
         }
         catch (IllegalArgumentException e){
             assertEquals("Nu ai dat parametru", e.getMessage());
         }
-        repo.save(t1);
-        repo.save(t2);
-        repo.save(t3);
-        assertNull(repo.delete("5"));
-        assertEquals(t1,repo.delete("1"));
+        repo.save(Optional.ofNullable(t1));
+        repo.save(Optional.ofNullable(t2));
+        repo.save(Optional.ofNullable(t3));
+        assertEquals(Optional.empty(),repo.delete(Optional.of("5")));
+        assertEquals(Optional.of(t1),repo.delete(Optional.of("1")));
     }
 
     @Test
     void update() {
         try{
-            repo.update(null);
+            repo.update(Optional.empty());
         }
         catch (IllegalArgumentException e){
             assertEquals("Nu ai dat parametru", e.getMessage());
         }
-        repo.save(t1);
-        repo.save(t2);
-        repo.save(t3);
+        repo.save(Optional.ofNullable(t1));
+        repo.save(Optional.ofNullable(t2));
+        repo.save(Optional.ofNullable(t3));
         Tema t33=new Tema ("3","Lab 10","10","3");
         Tema t10=new Tema ("10","Lab 10","10","3");
-        assertNull(repo.update(t33));
-        assertEquals(t10,repo.update(t10));
+        assertEquals(Optional.empty(),repo.update(Optional.of(t33)));
+        assertEquals(Optional.of(t10),repo.update(Optional.of(t10)));
     }
 }
