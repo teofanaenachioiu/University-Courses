@@ -2,33 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75c5fd75-68f1-4f31-8f0f-3a2b1bbb5d2c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Design-Patterns/Strategy/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Design-Patterns/Strategy/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/consola/Consola.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/consola/Consola.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/data/Catalog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/data/Catalog.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/data/Teofana.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/repository/AbstractRepoInFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/repository/AbstractRepoInFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/repository/CrudRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/repository/CrudRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/repository/RepoInMemory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/repository/RepoInMemory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/service/Service.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/service/Service.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/teste/NotaRepoInFileTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/teste/NotaRepoInFileTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/teste/RepoInMemoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/teste/RepoInMemoryTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/teste/ServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/teste/ServiceTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/teste/StudentRepoInFileTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/teste/StudentRepoInFileTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/teste/Studenti.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/teste/Studenti.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/consola/Consola.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/consola/Consola.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/Catalog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Catalog.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/Teofana.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/Vlad.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/AbstractRepoInFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/AbstractRepoInFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/CrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/CrudRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/RepoInMemory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/RepoInMemory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/teste/NotaRepoInFileTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/teste/NotaRepoInFileTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/teste/RepoInMemoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/teste/RepoInMemoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/teste/ServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/teste/ServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/teste/StudentRepoInFileTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/teste/StudentRepoInFileTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/teste/Studenti.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/teste/Studenti.txt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -59,7 +33,7 @@
     <session id="-131466877">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="22" />
+          <entry key="project.closed" value="23" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.2" value="2" />
           <entry key="project.open.time.3" value="1" />
@@ -68,6 +42,7 @@
           <entry key="project.open.time.44" value="1" />
           <entry key="project.open.time.48" value="1" />
           <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.50" value="1" />
           <entry key="project.open.time.54" value="1" />
           <entry key="project.open.time.55" value="1" />
           <entry key="project.open.time.56" value="3" />
@@ -78,7 +53,7 @@
           <entry key="project.open.time.64" value="1" />
           <entry key="project.open.time.65" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="22" />
+          <entry key="project.opened" value="23" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -91,16 +66,16 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="23" />
-          <entry key="java" value="334" />
-          <entry key="txt" value="90" />
+          <entry key="java" value="336" />
+          <entry key="txt" value="91" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="23" />
-          <entry key="JAVA" value="334" />
-          <entry key="PLAIN_TEXT" value="90" />
+          <entry key="JAVA" value="336" />
+          <entry key="PLAIN_TEXT" value="91" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -116,16 +91,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/data/Catalog.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/data/Teofana.txt">
           <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/consola/Consola.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="173" column="78" selection-start-line="173" selection-start-column="78" selection-end-line="173" selection-end-column="78" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/data/Studenti.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="11" />
+              <caret column="5" selection-start-column="5" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -134,7 +139,7 @@
         <entry file="file://$PROJECT_DIR$/src/data/Teme.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="4" column="23" lean-forward="true" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="28" />
+              <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -244,6 +249,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -302,7 +308,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -469,6 +474,7 @@
       <workItem from="1541839353730" duration="11313000" />
       <workItem from="1541857092234" duration="17071000" />
       <workItem from="1541932942635" duration="2034000" />
+      <workItem from="1542141607579" duration="124000" />
     </task>
     <servers />
   </component>
@@ -505,13 +511,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117013000" />
+    <option name="totallyTimeSpent" value="117137000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24357034" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2473525" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -701,11 +707,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="44" lean-forward="true" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#466#467#0" expanded="true" />
-            <element signature="e#508#509#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -720,11 +721,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#369#370#0" expanded="true" />
-            <element signature="e#411#412#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -732,11 +728,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
           <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#385#386#0" expanded="true" />
-            <element signature="e#427#428#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -779,9 +770,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
           <caret line="79" column="37" lean-forward="true" selection-start-line="79" selection-start-column="37" selection-end-line="79" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -792,13 +780,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/Teofana.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="12" selection-start-line="12" selection-end-line="24" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/teste/Catalog.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -806,12 +787,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/Claudia.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/Andrei.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/Claudia.txt" />
+    <entry file="file://$PROJECT_DIR$/src/data/Andrei.txt" />
     <entry file="file://$PROJECT_DIR$/src/validator/ValidatorStudent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="223">
@@ -833,18 +810,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="214">
           <caret line="167" column="41" selection-start-line="167" selection-start-column="41" selection-end-line="167" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1946#1947#0" expanded="true" />
-            <element signature="e#1998#1999#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
@@ -852,33 +817,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="34" column="45" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/consola/Consola.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="173" column="78" selection-start-line="173" selection-start-column="78" selection-end-line="173" selection-end-column="78" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/data/Studenti.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="11" />
+          <caret column="5" selection-start-column="5" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/data/Teme.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="4" column="23" lean-forward="true" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="28" />
+          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -892,7 +844,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/consola/Consola.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="173" column="78" selection-start-line="173" selection-start-column="78" selection-end-line="173" selection-end-column="78" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/data/Catalog.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/Teofana.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
