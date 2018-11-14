@@ -1,0 +1,7 @@
+apare([E|_],E):-!.
+apare([_|T],E):-apare(T,E).
+
+egaleA([],_):-!.
+egaleA([H|T],L):-apare(L,H),egaleA(T,L).
+
+egale(L1,L2):-egaleA(L1,L2),egaleA(L2,L1).

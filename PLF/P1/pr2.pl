@@ -1,12 +1,20 @@
-produsAux([],Pp,Pp):-!.
-produsAux([H|T],Pp,Pf):-Pp1 is Pp*H,produsAux(T,Pp1,Pf).
+div(A,A,A):-!.
+div(A,B,D):-A>B,!, A1 is A-B, div(A1,B,D).
+div(A,B,D):-B1 is B-A, div(A,B1,D).
 
-produs(L,R):-produsAux(L,1,R).
+mul(A,B,P):-P is A*B.
 
-cmmdcAux(A,B,A):-B =:=0,!.
-cmmdcAux(A,B,P):- Pp is mod(A,B),cmmdcAux(B,Pp,P).
+cmmmcAux(A,B,M):-div(A,B,D),mul(A,B,P),M is P/D.
 
-cmmmcAux(A,B,R):-cmmdcAux(A,B,R2),R is div(A*B,R2).
+cmmmcA([],M,M):-!.
+cmmmcA([H|T],M,Mf):-cmmmcAux(H,M,M1), cmmmcA(T,M1,Mf).
 
 cmmmc([],1):-!.
-cmmmc([H1|T],Pp):-cmmmcAux(H1,Pp,P),cmmmc(T,P).
+cmmmc([H|T],M):-cmmmcA(T,H,M).
+
+adaug([],_,_,_,[]):-!.
+adaug([H|T],V,Poz,Nr,[H,V|R]):-
+    Poz=Nr,!,Poz1 is Poz+1,Nr1 is Nr*2, adaug(T,V,Poz1,Nr1,R).
+adaug([H|T],V,Poz,Nr,[H|R]):-Poz1 is Poz+1,adaug(T,V,Poz1,Nr,R).
+
+adaugare(L,V,R):-adaug(L,V,1,1,R).

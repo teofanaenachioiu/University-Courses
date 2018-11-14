@@ -10,4 +10,4 @@ ePar(E):-R is mod(E,2),R=:=0.
 
 adaugaUnu([],[]):-!.
 adaugaUnu([H|T],[H|R]):-not(ePar(H)),!,adaugaUnu(T,R).
-adaugaUnu([H|T],[H,1|R]):-adaugaUnu(T,R).
+adaugaUnu([H|T],[H|R]):-adaugaUnu([1|T],R).
