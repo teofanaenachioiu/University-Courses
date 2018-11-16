@@ -104,6 +104,9 @@ public class Service {
         return repoS.findOne(Optional.of(id));
     }
 
+    public Optional<Tema> cautaTema(String id){
+        return repoT.findOne(Optional.of(id));
+    }
     /**
      * Lista de studenti
      * @return iterabil
@@ -199,7 +202,7 @@ public class Service {
         return repoN.save(Optional.of(entity));
     }
 
-    private Float calculeazaNota(String data,String notaProf, Tema tema) {
+    public Float calculeazaNota(String data,String notaProf, Tema tema) {
         Float nota=Float.parseFloat(notaProf);
         Integer dif = Integer.parseInt(data) - tema.getDeadline();
         if (dif > 0 && dif <= 2) {

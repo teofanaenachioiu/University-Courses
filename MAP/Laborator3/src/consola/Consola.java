@@ -154,6 +154,7 @@ public class Consola {
         }
     }
 
+
     private void callAsignareNota() {
         try {
             System.out.print("ID student: ");
@@ -172,7 +173,11 @@ public class Consola {
             String ans=br.readLine();
             if(ans.equals("y")||ans.equals("Y")) motivat=true;
             if(serv.adaugaNota(idS,idT,data,nota,feedback,motivat).isPresent()) System.out.println("Nota nu a putut fi adaugata!");
-            else System.out.println("Studentul a fost notat");
+            else {
+                Tema t=serv.cautaTema(idT).get();
+                System.out.println("Nota maxima "+serv.calculeazaNota(data,"10",t));
+                System.out.println("Studentul a fost notat");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

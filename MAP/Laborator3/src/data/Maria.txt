@@ -4,3 +4,9 @@ Predata in saptamana: 5
 Deadline: 7
 Feedback: E ok
 
+Tema: 3
+Nota: 1.0
+Predata in saptamana: 3
+Deadline: 5
+Feedback: rau
+
