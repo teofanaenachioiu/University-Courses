@@ -6,13 +6,12 @@ import repository.ValidationException;
 import service.Service;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Optional;
 
 public class Consola {
-    private Service serv=new Service("./src/data/Studenti.txt","./src/data/Teme.txt","./src/data/Catalog.txt");
+    private Service serv=new Service("./src/data/Studenti.xml","./src/data/Teme.xml","./src/data/Catalog.xml");
     private BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 
     private void meniu(){

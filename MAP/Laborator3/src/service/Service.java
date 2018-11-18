@@ -35,9 +35,9 @@ public class Service {
         this.fileNameStd = fileNameStd;
         this.fileNameTema = fileNameTema;
         this.fileNameNote=fileNameNote;
-        repoS=new StudentRepoInFile(fileNameStd,new ValidatorStudent());
-        repoT=new TemaRepoInFile(fileNameTema,new ValidatorTema());
-        repoN=new NotaRepoInFile(fileNameNote, new ValidatorNota());
+        repoS=new StudentRepoXML(fileNameStd,new ValidatorStudent());
+        repoT=new TemaRepoXML(fileNameTema,new ValidatorTema());
+        repoN=new NotaRepoXML(fileNameNote, new ValidatorNota());
     }
 
     /**
