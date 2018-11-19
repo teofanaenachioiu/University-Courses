@@ -1,18 +1,6 @@
-Tema: 6
-Nota: 9.0
-Predata in saptamana: 6
-Deadline: 8
-Feedback: Se putea si mai bine
-
-Tema: 5
-Nota: 7.0
+Tema: 4
+Nota: 7.5
 Predata in saptamana: 5
-Deadline: 7
-Feedback: Naspa
-
-Tema: 5
-Nota: 7.0
-Predata in saptamana: 5
-Deadline: 7
-Feedback: E ok
+Deadline: 6
+Feedback: Foarte bine
 

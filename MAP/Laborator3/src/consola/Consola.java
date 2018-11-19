@@ -173,9 +173,15 @@ public class Consola {
             if(ans.equals("y")||ans.equals("Y")) motivat=true;
             if(serv.adaugaNota(idS,idT,data,nota,feedback,motivat).isPresent()) System.out.println("Nota nu a putut fi adaugata!");
             else {
-                Tema t=serv.cautaTema(idT).get();
-                System.out.println("Nota maxima "+serv.calculeazaNota(data,"10",t));
-                System.out.println("Studentul a fost notat");
+                if(motivat){
+                    System.out.println("Nota maxima "+nota);
+                    System.out.println("Studentul a primit nota "+ nota);
+                }
+                else {
+                    Tema t = serv.cautaTema(idT).get();
+                    System.out.println("Nota maxima " + serv.calculeazaNota(data, "10", t));
+                    System.out.println("Studentul a primit nota " + serv.calculeazaNota(data, nota, t));
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
