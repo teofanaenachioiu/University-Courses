@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sem8_FXML.controller.MainMenuController"
+            >
+    <top>
+        <AnchorPane prefHeight="34.0" prefWidth="705.0"
+                    xmlns="http://javafx.com/javafx/8.0.60"
+                    xmlns:fx="http://javafx.com/fxml/1">
+            <children>
+                <ImageView fitHeight="78.0" fitWidth="91.0" layoutX="24.0" layoutY="25.0" pickOnBounds="true"
+                           preserveRatio="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0"
+                           AnchorPane.topAnchor="50.0">
+                    <image>
+                        <Image url="@../images/logo.gif"/>
+                    </image>
+                </ImageView>
+                <Label alignment="CENTER_RIGHT" layoutX="251.0" layoutY="52.0" prefHeight="63.0" prefWidth="632.0"
+                       text="Grades Management System" textFill="#ab2020" textOverrun="CLIP"
+                       AnchorPane.rightAnchor="20.0"
+                       AnchorPane.topAnchor="50.0">
+                    <font>
+                        <Font name="Comic Sans MS" size="38.0"/>
+                    </font>
+                </Label>
+                <MenuBar layoutX="-1.0" layoutY="-1.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="31.0"
+                         prefWidth="569.0"
+                         style="-fx-background-color: #e16b44;"
+                         AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                         AnchorPane.topAnchor="0.0">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="File">
+                            <items>
+                                <MenuItem fx:id="menuItemFileStudents" mnemonicParsing="false"
+                                          onAction="#handleMessageTaskCRUD"
+                                          text="Messages">
+                                    <accelerator>
+                                        <KeyCodeCombination alt="ANY" code="S" control="UP" meta="UP" shift="UP"
+                                                            shortcut="UP"/>
+                                    </accelerator>
+                                </MenuItem>
+                                <MenuItem fx:id="menuItemFileDiscipline" mnemonicParsing="false"
+                                          onAction="#handleGradeCRUD"
+                                          text="Grades"/>
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Search">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Students ..."/>
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Help">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="About"/>
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+            </children>
+        </AnchorPane>
+    </top>
+</BorderPane>

@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="75c5fd75-68f1-4f31-8f0f-3a2b1bbb5d2c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Test/src/sample/MyView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Test/src/sample/myView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/data/Catalog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/data/Catalog.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laborator3/data/Vlad.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator3/data/Vlad.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/Catalog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Catalog.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/Vlad.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Vlad.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Probabilitati si statistica/Laborator4/graficaCerc.m" beforeDir="false" afterPath="$PROJECT_DIR$/../../Probabilitati si statistica/Laborator4/graficaCerc.m" afterDir="false" />
-    </list>
+    <list default="true" id="75c5fd75-68f1-4f31-8f0f-3a2b1bbb5d2c" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +44,7 @@
           <entry key="project.open.time.50" value="2" />
           <entry key="project.open.time.54" value="2" />
           <entry key="project.open.time.55" value="2" />
-          <entry key="project.open.time.56" value="3" />
+          <entry key="project.open.time.56" value="4" />
           <entry key="project.open.time.57" value="2" />
           <entry key="project.open.time.58" value="1" />
           <entry key="project.open.time.59" value="2" />
@@ -63,7 +54,7 @@
           <entry key="project.open.time.65" value="2" />
           <entry key="project.open.time.68" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="30" />
+          <entry key="project.opened" value="31" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -129,8 +120,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/data/Catalog.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
+            <state relative-caret-position="306">
+              <caret line="18" column="8" lean-forward="true" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -271,7 +262,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1386" />
@@ -286,6 +277,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -344,7 +336,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -516,6 +507,7 @@
       <workItem from="1542706718992" duration="3012000" />
       <workItem from="1542780877673" duration="174000" />
       <workItem from="1542783275075" duration="674000" />
+      <workItem from="1542894057947" duration="725000" />
     </task>
     <servers />
   </component>
@@ -552,13 +544,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="130020000" />
+    <option name="totallyTimeSpent" value="130745000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22163388" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2246596" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -931,8 +923,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/data/Catalog.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
+        <state relative-caret-position="306">
+          <caret line="18" column="8" lean-forward="true" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
         </state>
       </provider>
     </entry>

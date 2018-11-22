@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<books>
+    <book bookid="98">
+        <title>Dune3</title>
+        <author>Frank Herbert</author>
+        <price>34.0</price>
+    </book>
+</books>
