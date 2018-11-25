@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<inbox>
+    <tema idTema="1">
+        <descriere>Citire din linaia de comanda</descriere>
+        <deadline>2</deadline>
+        <dataPredare>1</dataPredare>
+    </tema>
+    <tema idTema="2">
+        <descriere>Sabloane</descriere>
+        <deadline>3</deadline>
+        <dataPredare>2</dataPredare>
+    </tema>
+    <tema idTema="3">
+        <descriere>Catalog MAP - crud</descriere>
+        <deadline>4</deadline>
+        <dataPredare>3</dataPredare>
+    </tema>
+    <tema idTema="4">
+        <descriere>Catalog MAP - service+consola</descriere>
+        <deadline>6</deadline>
+        <dataPredare>5</dataPredare>
+    </tema>
+    <tema idTema="5">
+        <descriere>Catalog MAP - Repo in fisier</descriere>
+        <deadline>7</deadline>
+        <dataPredare>6</dataPredare>
+    </tema>
+    <tema idTema="6">
+        <descriere>Catalog MAP - Repo XML</descriere>
+        <deadline>8</deadline>
+        <dataPredare>7</dataPredare>
+    </tema>
+</inbox>

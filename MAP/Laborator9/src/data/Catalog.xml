@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<inbox>
+    <nota idStudent="1003" idTema="5">
+        <dataCurenta>8</dataCurenta>
+        <notaProf>10.0</notaProf>
+    </nota>
+    <nota idStudent="1002" idTema="4">
+        <dataCurenta>7</dataCurenta>
+        <notaProf>7.5</notaProf>
+    </nota>
+    <nota idStudent="1003" idTema="6">
+        <dataCurenta>8</dataCurenta>
+        <notaProf>9.0</notaProf>
+    </nota>
+    <nota idStudent="1001" idTema="4">
+        <dataCurenta>7</dataCurenta>
+        <notaProf>7.5</notaProf>
+    </nota>
+</inbox>
