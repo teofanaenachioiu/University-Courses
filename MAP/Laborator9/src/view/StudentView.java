@@ -1,8 +1,6 @@
 package view;
 
 import domain.Student;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,8 +9,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 
@@ -21,8 +17,6 @@ import java.util.*;
 
 import static javafx.scene.paint.Color.*;
 
-
-
 public class StudentView   {
 
     private StudentController controller;
@@ -30,28 +24,29 @@ public class StudentView   {
     private BorderPane borderPane;
     TableView<Student> tableView=new TableView<>();
 
-    public StudentView(StudentController controller) {
-        this.controller = controller;
-        initView();
-    }
-
     TextField textFieldId=new TextField();
     TextField textFieldNume=new TextField();
     TextField textFieldGrupa=new TextField();
     TextField textFieldEmail=new TextField();
     TextField textFieldProf=new TextField();
 
-    Button buttonAdd=new Button("Add");
-    Button buttonUpdate=new Button("Update");
-    Button buttonDelete=new Button("Delete");
-    Button buttonClear= new Button("Clear All");
-
+    private Button buttonAdd=new Button("Add");
+    private Button buttonUpdate=new Button("Update");
+    private Button buttonDelete=new Button("Delete");
+    private Button buttonClear= new Button("Clear All");
 
     TextField textInput=new TextField();
     Label filterLabel=new Label("Give input");
     Button buttonApply= new Button("Apply");
 
     AutoCompleteTextField autoCompleteTextField;
+
+    ComboBox comboBox = new ComboBox();
+
+    public StudentView(StudentController controller) {
+        this.controller = controller;
+        initView();
+    }
 
     private void initView() {
         borderPane=new BorderPane();
@@ -71,7 +66,6 @@ public class StudentView   {
         borderPane.setBottom(a);
 
         Image img = new Image(new File("./src/resources/image1.jpg").toURI().toString());
-
 
         BackgroundSize bSize = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false);
         borderPane.setBackground(new Background(new BackgroundImage(img,
@@ -98,7 +92,7 @@ public class StudentView   {
         return topAnchorPane;
     }
 
-    public AnchorPane initCenter(){
+    private AnchorPane initCenter(){
         AnchorPane centerAnchorPane=new AnchorPane();
         GridPane gridPane=createGridPane();
         //anchor the gridpane
@@ -128,41 +122,38 @@ public class StudentView   {
         return centerAnchorPane;
     }
 
-
-    public AnchorPane initLeft(){
+    private AnchorPane initLeft(){
         AnchorPane leftAnchorPane=new AnchorPane();
-        //Search area
-
-
-        Image img = new Image(new File("./src/resources/search1.png").toURI().toString());
-        Button buttonImage=new Button();
-        ImageView imageView=new ImageView(img);
-
-        imageView.setFitWidth(10);
-        imageView.setFitHeight(10);
-
-        buttonImage.setGraphic(imageView);
-
-
-
-        SortedSet<String> studentList=new TreeSet<String>(controller.listaNumeStudenti());
-        autoCompleteTextField=new AutoCompleteTextField(studentList);
-
-        HBox hb=new HBox(3,buttonImage,autoCompleteTextField);
-
-        buttonImage.setOnAction(controller::handleSearchButton);
-        autoCompleteTextField.setOnKeyPressed(controller::handleSearchField);
 
         tableView=createStudentTable();
+        HBox hb=createSearchArea();
+
         leftAnchorPane.getChildren().add(tableView);
         AnchorPane.setLeftAnchor(tableView,20d);
-       // AnchorPane.setTopAnchor(tableView,30d);
-
 
         leftAnchorPane.getChildren().add(hb);
         AnchorPane.setLeftAnchor(hb,20d);
         AnchorPane.setBottomAnchor(hb,20d);
+
         return  leftAnchorPane;
+    }
+
+    private HBox createSearchArea(){
+        Button buttonImage=new Button();
+
+        Image img = new Image(new File("./src/resources/search1.png").toURI().toString());
+        ImageView imageView=new ImageView(img);
+        imageView.setFitWidth(10);
+        imageView.setFitHeight(10);
+
+        buttonImage.setGraphic(imageView);
+        buttonImage.setOnAction(controller::handleSearchButton);
+
+        SortedSet<String> studentList=new TreeSet<>(controller.listaNumeStudenti());
+        autoCompleteTextField=new AutoCompleteTextField(studentList);
+        autoCompleteTextField.setOnKeyPressed(controller::handleSearchField);
+
+        return new HBox(3,buttonImage,autoCompleteTextField);
     }
 
     private GridPane createGridPane() {
@@ -188,7 +179,6 @@ public class StudentView   {
         gridPaneMessageDetails.add(textFieldGrupa,1,2);
         gridPaneMessageDetails.add(textFieldEmail, 1,3);
         gridPaneMessageDetails.add(textFieldProf,1,4);
-
 
         textFieldId.setStyle("-fx-opacity: 0.7");
         textFieldNume.setStyle("-fx-opacity: 0.7");
@@ -217,103 +207,45 @@ public class StudentView   {
         filterLabel.setFont(new Font(12));
         filterLabel.setTextFill(WHITE);
         filterLabel.setStyle("-fx-font-weight: bold");
-        textInput.setPromptText("Type here");
-        HBox hb=new HBox(5, filterLabel,textInput,buttonApply);
         filterLabel.setVisible(false);
+
+        textInput.setPromptText("Type here");
         textInput.setVisible(false);
+        textInput.setOpacity(0.7d);
+        textInput.setOnKeyPressed(controller::handleComboBoxKey);
+
         buttonApply.setVisible(false);
-        return hb;
+        buttonApply.setOnAction(controller::handleApplyButton);
+
+        return new HBox(5, filterLabel,textInput,buttonApply);
     }
 
-    public HBox createFilterArea(){
-        // create a combo box
-
+    private HBox createFilterArea(){
         Label filter=new Label("Filter by");
         filter.setFont(new Font(12));
         filter.setTextFill(WHITE);
         filter.setStyle("-fx-font-weight: bold");
 
-        //Button buttonApply= new Button("Apply");
-
-
-        ComboBox comboBox = new ComboBox();
         comboBox.getItems().addAll(
                 "(no filter)",
                 "by teacher",
                 "by group"
         );
-
         comboBox.setPrefWidth(165d);
         comboBox.setValue("(no filter)");
 
-        textInput.setOpacity(0.7d);
+        comboBox.setOnAction(controller::handleComboBox);
 
-        comboBox.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                if(comboBox.getValue().toString().equals("(no filter)")) {
-                    tableView.setItems(controller.getModel());
-                    filterLabel.setVisible(false);
-                    textInput.setVisible(false);
-                    buttonApply.setVisible(false);
-                    textInput.setText("");
-                }
-                if(comboBox.getValue().toString().equals("by teacher")|| comboBox.getValue().toString().equals("by group")) {
-                    filterLabel.setVisible(true);
-                    textInput.setVisible(true);
-                    buttonApply.setVisible(true);
-                    textInput.setText("");
-                }
-
-            }
-        });
-
-        textInput.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if(event.getCode().equals(KeyCode.ENTER)){
-                    if(comboBox.getValue().toString().equals("by teacher")) {
-                        tableView.setItems(controller.getFilterTeacher(textInput.getText()));
-                        textInput.setText("");
-                    }
-                    if(comboBox.getValue().toString().equals("by group")) {
-                        tableView.setItems(controller.getFilterGroup(textInput.getText()));
-                        textInput.setText("");
-                    }
-                }
-            }
-        });
-
-        buttonApply.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                if(comboBox.getValue().toString().equals("by teacher")) {
-                    tableView.setItems(controller.getFilterTeacher(textInput.getText()));
-                    textInput.setText("");
-                }
-                if(comboBox.getValue().toString().equals("by group")) {
-                    tableView.setItems(controller.getFilterGroup(textInput.getText()));
-                    textInput.setText("");
-                }
-            }
-        });
-
-        HBox hb=new HBox(3, filter,comboBox);
-        return hb;
+        return new HBox(3, filter,comboBox);
     }
 
-    public HBox createButtons(){
-
-        HBox hb=new HBox(5, buttonAdd,buttonUpdate, buttonDelete,buttonClear);
-
-      //  HBox hbb=new HBox(10, button);
+    private HBox createButtons(){
         buttonAdd.setOnAction(controller::handleAddStudent);
         buttonUpdate.setOnAction(controller::handleUpdateStudentButton);
         buttonDelete.setOnAction(controller::handleDeleteStudentButton);
         buttonClear.setOnAction(controller::handleClearStudentButton);
 
-        return hb;
-
+        return new HBox(5, buttonAdd,buttonUpdate, buttonDelete,buttonClear);
     }
 
     private TableView<Student> createStudentTable() {
@@ -334,49 +266,16 @@ public class StudentView   {
         tableView.setEditable(true);
 
         numeColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        numeColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Student, String>>() {
-            @Override
-            public void handle(TableColumn.CellEditEvent<Student, String> event) {
-                Student student=tableView.getSelectionModel().getSelectedItem();
-                student.setNume(event.getNewValue());
-                textFieldNume.setText(student.getNume());
-                controller.handleUpdateStudent(student);
-            }
-        });
+        numeColumn.setOnEditCommit(controller::handleEditColumnNume);
 
         grupaColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        grupaColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Student, String>>() {
-            @Override
-            public void handle(TableColumn.CellEditEvent<Student, String> event) {
-                Student student=tableView.getSelectionModel().getSelectedItem();
-                student.setGrupa(event.getNewValue());
-                textFieldGrupa.setText(student.getGrupa());
-                controller.handleUpdateStudent(student);
-            }
-        });
+        grupaColumn.setOnEditCommit(controller::handleEditColumnGrupa);
 
         emailColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        emailColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Student, String>>() {
-            @Override
-            public void handle(TableColumn.CellEditEvent<Student, String> event) {
-                Student student=tableView.getSelectionModel().getSelectedItem();
-                student.setEmail(event.getNewValue());
-                textFieldEmail.setText(student.getEmail());
-                controller.handleUpdateStudent(student);
-            }
-        });
+        emailColumn.setOnEditCommit(controller::handleEditColumnEmail);
 
         profColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        profColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Student, String>>() {
-            @Override
-            public void handle(TableColumn.CellEditEvent<Student, String> event) {
-                Student student=tableView.getSelectionModel().getSelectedItem();
-                student.setIndrumatorLab(event.getNewValue());
-                textFieldProf.setText(student.getIndrumatorLab());
-                controller.handleUpdateStudent(student);
-            }
-        });
-
+        profColumn.setOnEditCommit(controller::handleEditColumnProf);
 
         //bind data
         tableView.setItems(controller.getModel());
@@ -386,11 +285,8 @@ public class StudentView   {
                 (observable, oldValue, newValue) ->{
                     controller.showStudentDetails(newValue);
                     });
-        //tableView.getSelectionModel().selectFirst();
-
         return tableView;
     }
-
 
     public BorderPane getView(){ return borderPane;}
 
@@ -401,7 +297,4 @@ public class StudentView   {
         l.setStyle("-fx-font-weight: bold");
         return l;
     }
-
-
-
 }

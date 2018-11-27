@@ -49,16 +49,13 @@ import javafx.scene.text.TextFlow;
  * listView.itemsProperty().bind(filteredEntries);
  * </code>
  * </pre>
- *
- * @author Caleb Brinkman
- * @author Fabian Ochmann
  */
 public class AutoCompleteTextField extends TextField {
 
     /**
      * The existing autocomplete entries.
      */
-    private final SortedSet<String> entries;
+    private SortedSet<String> entries;
 
     /**
      * The set of filtered entries:<br>
@@ -97,7 +94,7 @@ public class AutoCompleteTextField extends TextField {
      * Reference Guide</i> for available CSS Propeties.
      */
     private String textOccurenceStyle = "-fx-font-weight: bold; "
-            + "-fx-fill: red;";
+            + "-fx-fill: black;";
 
     /**
      * The maximum Number of entries displayed in the popup.<br>
@@ -165,7 +162,6 @@ public class AutoCompleteTextField extends TextField {
                 entriesPopup.hide();
             }
         });
-
     }
 
     /**
@@ -173,6 +169,10 @@ public class AutoCompleteTextField extends TextField {
      *
      * @return The existing autocomplete entries.
      */
+    public void setEntries(SortedSet<String> entries){
+        this.entries=entries;
+    }
+
     public SortedSet<String> getEntries() {
         return entries;
     }

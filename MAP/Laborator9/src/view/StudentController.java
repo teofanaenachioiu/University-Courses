@@ -4,7 +4,9 @@ import domain.Student;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import repository.ValidationException;
@@ -13,9 +15,7 @@ import utils.ChangeEventType;
 import utils.Observer;
 import utils.StudentChangeEvent;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -38,6 +38,7 @@ public class StudentController implements Observer<StudentChangeEvent> {
     public void update(StudentChangeEvent studentChangeEvent) {
         model.setAll(StreamSupport.stream(service.listaStudenti().spliterator(),false)
                 .collect(Collectors.toList()));
+        view.autoCompleteTextField.setEntries(new TreeSet<String>(listaNumeStudenti()));
     }
 
     public StudentView getView() {
@@ -78,8 +79,7 @@ public class StudentController implements Observer<StudentChangeEvent> {
     public ObservableList<Student> getFilterGroup(String cond) {
         List<Student> listFilter= StreamSupport.stream(service.byGroupe(cond).spliterator(), false)
                 .collect(Collectors.toList());
-        ObservableList<Student> modelFilter= FXCollections.observableArrayList(listFilter);
-        return modelFilter;
+        return FXCollections.observableArrayList(listFilter);
     }
 
     public void showStudentDetails(Student value) {
@@ -118,7 +118,7 @@ public class StudentController implements Observer<StudentChangeEvent> {
         message.showAndWait();
     }
 
-    static void showErrorMessage(String text){
+    private static void showErrorMessage(String text){
         Alert message=new Alert(Alert.AlertType.ERROR);
         message.setTitle("Eroare");
         message.setContentText(text);
@@ -197,5 +197,75 @@ public class StudentController implements Observer<StudentChangeEvent> {
             showStudentDetails(student);
             view.autoCompleteTextField.setText("");
         }
+    }
+
+    public void handleComboBox(Event event) {
+        if(view.comboBox.getValue().toString().equals("(no filter)")) {
+            view.tableView.setItems(getModel());
+            view.filterLabel.setVisible(false);
+            view.textInput.setVisible(false);
+            view.buttonApply.setVisible(false);
+            view.textInput.setText("");
+        }
+        if(view.comboBox.getValue().toString().equals("by teacher")|| view.comboBox.getValue().toString().equals("by group")) {
+            view.filterLabel.setVisible(true);
+            view.textInput.setVisible(true);
+            view.buttonApply.setVisible(true);
+            view.textInput.setText("");
+        }
+    }
+
+    public void handleComboBoxKey(KeyEvent keyEvent) {
+        if(keyEvent.getCode().equals(KeyCode.ENTER)){
+            if(view.comboBox.getValue().toString().equals("by teacher")) {
+                view.tableView.setItems(getFilterTeacher(view.textInput.getText()));
+                view.textInput.setText("");
+            }
+            if(view.comboBox.getValue().toString().equals("by group")) {
+                view.tableView.setItems(getFilterGroup(view.textInput.getText()));
+                view.textInput.setText("");
+            }
+        }
+    }
+
+    public void handleApplyButton(ActionEvent actionEvent) {
+        if(view.comboBox.getValue().toString().equals("by teacher")) {
+            view.tableView.setItems(getFilterTeacher(view.textInput.getText()));
+            view.textInput.setText("");
+        }
+        if(view.comboBox.getValue().toString().equals("by group")) {
+            view.tableView.setItems(getFilterGroup(view.textInput.getText()));
+            view.textInput.setText("");
+        }
+    }
+
+    public void handleEditColumnNume(TableColumn.CellEditEvent<Student, String> studentStringCellEditEvent) {
+        Student student=view.tableView.getSelectionModel().getSelectedItem();
+        student.setNume(studentStringCellEditEvent.getNewValue());
+        view.textFieldNume.setText(student.getNume());
+
+        handleUpdateStudent(student);
+    }
+
+    public void handleEditColumnGrupa(TableColumn.CellEditEvent<Student, String> studentStringCellEditEvent) {
+        Student student=view.tableView.getSelectionModel().getSelectedItem();
+        student.setGrupa(studentStringCellEditEvent.getNewValue());
+        view.textFieldGrupa.setText(student.getGrupa());
+
+        handleUpdateStudent(student);
+    }
+
+    public void handleEditColumnEmail(TableColumn.CellEditEvent<Student, String> studentStringCellEditEvent) {
+        Student student=view.tableView.getSelectionModel().getSelectedItem();
+        student.setEmail(studentStringCellEditEvent.getNewValue());
+        view.textFieldEmail.setText(student.getEmail());
+        handleUpdateStudent(student);
+    }
+
+    public void handleEditColumnProf(TableColumn.CellEditEvent<Student, String> studentStringCellEditEvent) {
+        Student student=view.tableView.getSelectionModel().getSelectedItem();
+        student.setIndrumatorLab(studentStringCellEditEvent.getNewValue());
+        view.textFieldProf.setText(student.getIndrumatorLab());
+        handleUpdateStudent(student);
     }
 }

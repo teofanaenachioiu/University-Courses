@@ -26,7 +26,6 @@ public class Main extends Application {
         StudentView view=new StudentView(ctrl);
         ctrl.setView(view);
 
-
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image(new File("./src/resources/teacher.png").toURI().toString()));
         primaryStage.setTitle("Student Management System");

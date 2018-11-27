@@ -100,11 +100,6 @@ public class Service implements Observable<StudentChangeEvent> {
         return updated;
     }
 
-    /**
-     * Cauta un student in service
-     * @param id String - id-ul studentului
-     * @return entitate student / null
-     */
 
     public TreeMap<String,String> studentList(){
         TreeMap<String, String> tree=new TreeMap();
@@ -113,6 +108,11 @@ public class Service implements Observable<StudentChangeEvent> {
         return tree;
     }
 
+    /**
+     * Cauta un student in service
+     * @param id String - id-ul studentului
+     * @return entitate student / null
+     */
     public Optional<Student> cautaStudent(String id){
         return repoS.findOne(Optional.of(id));
     }
