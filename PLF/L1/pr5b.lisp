@@ -5,8 +5,9 @@
 (defun substituie (L e Ls)
 	(cond 
 		( (NULL L) NIL )
-		( (AND (NUMBERP (CAR L)) (= (CAR L) e))
+		( (equal (CAR L) e)
 			(APPEND Ls (substituie (CDR L) e Ls) )
+			;(COND Ls (substituie (CDR L) e Ls) )
 		)
 		( (LISTP (CAR L)) 
 			(APPEND (CONS (substituie (CAR L) e Ls) NIL) (substituie (CDR L) e Ls) )

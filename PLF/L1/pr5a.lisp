@@ -3,6 +3,7 @@
 ;;; liniare sortate.
 
 (defun interclasare(L1 L2)
+	;L1, L2 liste de numere
 	(cond
 		( (AND (NULL L1 ) (NULL L2) ) NIL )
 		( (NULL L1) L2 )
