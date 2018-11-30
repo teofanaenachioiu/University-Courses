@@ -7,7 +7,7 @@
 		( (NULL L) NIL )
 		( (equal (CAR L) e)
 			(APPEND Ls (substituie (CDR L) e Ls) )
-			;(COND Ls (substituie (CDR L) e Ls) )
+			;(CONS Ls (substituie (CDR L) e Ls) )
 		)
 		( (LISTP (CAR L)) 
 			(APPEND (CONS (substituie (CAR L) e Ls) NIL) (substituie (CDR L) e Ls) )

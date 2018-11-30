@@ -32,3 +32,4 @@
 (defun cmmdc (L)
 	(cmmdc_aux (getNumar L 1) L)
 	)
+
