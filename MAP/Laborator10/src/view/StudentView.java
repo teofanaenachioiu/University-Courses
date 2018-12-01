@@ -48,6 +48,10 @@ public class StudentView   {
         initView();
     }
 
+    public BorderPane getBorderPaneStudent() {
+        return borderPane;
+    }
+
     private void initView() {
         borderPane=new BorderPane();
         //top AnchorPane

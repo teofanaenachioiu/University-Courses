@@ -1,5 +1,4 @@
-import controller.MainMenuController;
-import domain.Student;
+import view.MainMenuController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -26,16 +25,14 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        StudentController ctrl=new StudentController(service);
-        service.addObserver(ctrl);
-        StudentView view=new StudentView(ctrl);
-        ctrl.setView(view);
 
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image(new File("./src/resources/teacher.png").toURI().toString()));
-        primaryStage.setTitle("Student Management System");
-        primaryStage.setScene(new Scene(view.getView(), 720, 600));
-        primaryStage.show();
+        primaryStage.setTitle("MAP Class Book Manager");
+        primaryStage.setResizable(false);
+        primaryStage.getIcons().add(new Image(new File("./src/resources/teacher.png").toURI().toString()));
+
+        init(primaryStage);
     }
 
     private void init(Stage primaryStage) throws IOException {
@@ -44,35 +41,24 @@ public class Main extends Application {
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/view/MainMenuView.fxml"));
-        BorderPane rootLayout = loader.load();
+        AnchorPane rootLayout = loader.load();
+
         MainMenuController controller = loader.getController();
         Scene mainMenuScene = new Scene(rootLayout);
-        primaryStage.setScene(mainMenuScene);
+
         controller.setPrimaryStage(primaryStage);
 
 
-        //2.Student view
-        FXMLLoader studentLoader = new FXMLLoader();
-        studentLoader.setLocation(getClass().getResource("/view/StudentView.fxml"));
-        AnchorPane studentLayout = studentLoader.load();
-        StudentController studentController = studentLoader.getController();
-        studentController.setService(service);
-        ////controller.setCenterMessageLayout(messageTaskLayout);
-        rootLayout.setCenter(studentLayout);
+       // Student view
+        StudentController ctrl=new StudentController(service);
+        service.addObserver(ctrl);
+        StudentView view=new StudentView(ctrl);
+        ctrl.setView(view);
+        Scene scene=new Scene(view.getView(),720,600);
+        controller.setStudentScene(scene);
 
-
-        //2.Grade view
-        FXMLLoader gradeLoader = new FXMLLoader();
-        gradeLoader.setLocation(getClass().getResource("/views/gradesView.fxml"));
-        AnchorPane gradeLayout = gradeLoader.load();
-        GradeController gradeController = gradeLoader.getController();
-        //gradeController.setGradeTaskService(messageGradeService);
-        controller.setCenterGradeLayout(gradeLayout);
-
-
+        primaryStage.setScene(mainMenuScene);
         primaryStage.show();
-//        primaryStage.setWidth(500);
-//        primaryStage.setHeight(500);
 
     }
 

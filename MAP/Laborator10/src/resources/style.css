@@ -1,0 +1,6 @@
+#MainMenuAnchorPane{
+	-fx-background-image: url(image1.jpg);
+	-fx-background-repeat: stretch;   
+    	-fx-background-size: 730 610;
+    	-fx-background-position: center center;
+}

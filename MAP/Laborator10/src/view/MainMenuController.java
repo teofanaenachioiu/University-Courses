@@ -1,4 +1,4 @@
-package controller;
+package view;
 
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -17,19 +17,21 @@ public class MainMenuController {
         this.gradeScene = gradeScene;
     }
 
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage=primaryStage;
+    }
+
     @FXML
     public void handleStudentCRUD()
     {
-        this.primaryStage.setScene(studentScene);
+        this.primaryStage.setScene(this.studentScene);
     }
 
     @FXML
     public void handleGradeCRUD()
     {
-        this.primaryStage.setScene(gradeScene);
+        this.primaryStage.setScene(this.gradeScene);
     }
 
-    public void setPrimaryStage(Stage primaryStage) {
-        this.primaryStage=primaryStage;
-    }
+
 }
