@@ -27,12 +27,14 @@ public class StudentController implements Observer<StudentChangeEvent> {
     private StudentView view;
 
     public StudentController(Service service) {
-        this.service = service;
+        setService(service);
         List<Student> list= StreamSupport.stream(service.listaStudenti().spliterator(), false)
                 .collect(Collectors.toList());
         model= FXCollections.observableArrayList(list);
     }
-
+    public void setService(Service service){
+        this.service = service;
+    }
 
     @Override
     public void update(StudentChangeEvent studentChangeEvent) {
