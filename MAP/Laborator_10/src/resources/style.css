@@ -1,0 +1,21 @@
+#MainMenuAnchorPane{
+	-fx-background-image: url(image1.jpg);
+	-fx-background-size: 720 600;
+	-fx-background-repeat: stretch;   
+    	-fx-background-position: center center;
+}
+
+#GradeBorderPane{
+	-fx-background-image: url(image1.jpg);
+	-fx-background-size: 720 600;
+	-fx-background-repeat: stretch;   
+    	-fx-background-position: center center;
+}
+
+#imageButton{
+	-fx-background-image: url('exit.png');
+    -fx-background-size: 30px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    	
+}
