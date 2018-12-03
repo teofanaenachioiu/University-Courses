@@ -1,6 +1,7 @@
 package service;
 
 import domain.Nota;
+import domain.NotaDTO;
 import domain.Student;
 import domain.Tema;
 import javafx.util.Pair;
@@ -11,14 +12,18 @@ import utils.StudentChangeEvent;
 import validator.ValidatorNota;
 import validator.ValidatorStudent;
 import validator.ValidatorTema;
-import view.StudentController;
 
+import javax.swing.text.html.Option;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.temporal.WeekFields;
 import java.util.*;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 /**
  * Clasa Service
@@ -130,6 +135,10 @@ public class Service implements Observable<StudentChangeEvent> {
      * Lista de studenti
      * @return iterabil
      */
+    public Iterable<Tema> listaTeme(){
+        return repoT.findAll();
+    }
+
     public Iterable<Student> listaStudenti(){
         return repoS.findAll();
     }
@@ -234,9 +243,6 @@ public class Service implements Observable<StudentChangeEvent> {
         }
     }
 
-    public Iterable<Nota> listaNote(){
-        return repoN.findAll();
-    }
 
     private <T> Iterable <T> filter(Iterable <T> list, Predicate<T> cond)
     {
@@ -278,4 +284,79 @@ public class Service implements Observable<StudentChangeEvent> {
         }
         return null;
     }
+
+    public List<NotaDTO> listaNoteDTO(){
+        List<NotaDTO> lista=new ArrayList<>();
+        for(Nota nota:repoN.findAll()){
+            Student s=repoS.findOne(Optional.ofNullable(nota.getStudentID())).get();
+            NotaDTO notaDTO=new NotaDTO(nota);
+            notaDTO.setNumeStudent(s.getNume());
+            lista.add(notaDTO);
+        }
+        return lista;
+
+    }
+
+    public Nota getNotaFromNotaDTO(NotaDTO notaDTO){
+        String idStudent=notaDTO.getIdStudent();
+        String idTema=notaDTO.getIdTema();
+        Pair id=new Pair(idStudent,idTema);
+        Optional<Nota> notaNormala=repoN.findOne(Optional.ofNullable(id));
+        return notaNormala.get();
+    }
+
+    public String getIdStudent(String string){
+        String[] parts=string.split("[:)]");
+        return parts[1];
+    }
+
+    private Integer getCurrentWeek() {
+        LocalDate date = LocalDate.now();
+        WeekFields weekFields = WeekFields.of(Locale.getDefault());
+        return date.get(weekFields.weekOfWeekBasedYear());
+    }
+
+    /**
+     * Se determina numarul laboratorului (tinand cont de vacanta de iarna)
+     * @return dif (nurmarul laboratorului)
+     */
+    public Integer getLabNumber(){
+        Integer saptCurenta=getCurrentWeek();
+        Integer dif=saptCurenta-39;
+        if(dif<1||dif>16) return null;
+        if(saptCurenta.equals(13) || saptCurenta.equals(14))
+            return 12;
+        if(saptCurenta.equals(15)) return dif-1;
+        if(saptCurenta.equals(16)) return dif-2;
+        return dif;
+    }
+
+    public Integer getCurrentAssignment(){
+        int currentLab=getLabNumber();
+        List<Tema> lista= StreamSupport.stream(repoT.findAll().spliterator(),false).
+                filter(t->t.getDataPredare()<=currentLab&&currentLab<=t.getDeadline()).collect(Collectors.toList());
+        return Integer.parseInt(lista.get(0).getID());
+    }
+
+    public Nota cautaNota(String idStudent, String idTema){
+        List<Nota> lista=StreamSupport.stream(repoN.findAll().spliterator(),false).
+                filter(n->n.getStudentID().equals(idStudent)&&n.getTemaID().equals(idTema)).collect(Collectors.toList());
+        return lista.get(0);
+    }
+
+    public Integer getWeek(LocalDate date) {
+        WeekFields weekFields = WeekFields.of(Locale.getDefault());
+        return date.get(weekFields.weekOfWeekBasedYear());
+    }
+
+    public Integer getWeekUni(Integer saptCurenta){
+        Integer dif=saptCurenta-39;
+        if(dif<1||dif>16) return null;
+        if(saptCurenta.equals(13) || saptCurenta.equals(14))
+            return 12;
+        if(saptCurenta.equals(15)) return dif-1;
+        if(saptCurenta.equals(16)) return dif-2;
+        return dif;
+    }
+
 }

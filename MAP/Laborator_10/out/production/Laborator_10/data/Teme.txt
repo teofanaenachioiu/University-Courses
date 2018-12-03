@@ -1,0 +1,8 @@
+1/Citire din linia de comanda/2/1
+2/Sabloane de proiectare, interfete/3/2
+3/Catalog MAP - iteratia 1/5/3
+4/Catalog MAP - iteratia 1/6/4
+5/Catalog MAP - iteratia 2/7/5
+6/Catalog MAP - iteratia 2/8/6
+7/Catalog MAP - iteratia 3/9/7
+8/Catalog MAP - iteratia 4/10/8

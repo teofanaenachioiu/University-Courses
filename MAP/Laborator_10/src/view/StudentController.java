@@ -35,11 +35,9 @@ public class StudentController implements Observer<StudentChangeEvent> {
         this.mainScene = mainScene;
     }
 
-
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage=primaryStage;
     }
-
 
     public StudentController(Service service) {
         setService(service);

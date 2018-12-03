@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<inbox>
+    <nota idStudent="1002" idTema="4"><dataCurenta>10</dataCurenta><notaProf>9.0</notaProf></nota>
+    <nota idStudent="1001" idTema="4"><dataCurenta>10</dataCurenta><notaProf>10.0</notaProf></nota>
+</inbox>

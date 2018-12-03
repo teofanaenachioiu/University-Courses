@@ -5,10 +5,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 import repository.ValidationException;
 import service.Service;
 import utils.ChangeEventType;
@@ -25,6 +27,19 @@ public class StudentController implements Observer<StudentChangeEvent> {
     private ObservableList<Student> model;
 
     private StudentView view;
+
+    private Stage primaryStage;
+    private Scene mainScene;
+
+    public void setMainScene(Scene mainScene) {
+        this.mainScene = mainScene;
+    }
+
+
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage=primaryStage;
+    }
+
 
     public StudentController(Service service) {
         setService(service);
@@ -269,5 +284,9 @@ public class StudentController implements Observer<StudentChangeEvent> {
         student.setIndrumatorLab(studentStringCellEditEvent.getNewValue());
         view.textFieldProf.setText(student.getIndrumatorLab());
         handleUpdateStudent(student);
+    }
+
+    public void handleExit(ActionEvent actionEvent) {
+        this.primaryStage.setScene(mainScene);
     }
 }

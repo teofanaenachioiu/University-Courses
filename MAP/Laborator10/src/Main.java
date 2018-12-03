@@ -1,3 +1,4 @@
+import view.GradeController;
 import view.MainMenuController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -29,37 +30,49 @@ public class Main extends Application {
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image(new File("./src/resources/teacher.png").toURI().toString()));
         primaryStage.setTitle("MAP Class Book Manager");
-        primaryStage.setResizable(false);
-        primaryStage.getIcons().add(new Image(new File("./src/resources/teacher.png").toURI().toString()));
-
         init(primaryStage);
     }
 
     private void init(Stage primaryStage) throws IOException {
 
+
         //main menu
+
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/view/MainMenuView.fxml"));
         AnchorPane rootLayout = loader.load();
 
         MainMenuController controller = loader.getController();
-        Scene mainMenuScene = new Scene(rootLayout);
+        Scene mainMenuScene = new Scene(rootLayout,720,600);
 
         controller.setPrimaryStage(primaryStage);
 
 
        // Student view
-        StudentController ctrl=new StudentController(service);
-        service.addObserver(ctrl);
-        StudentView view=new StudentView(ctrl);
-        ctrl.setView(view);
-        Scene scene=new Scene(view.getView(),720,600);
-        controller.setStudentScene(scene);
+        StudentController studentController=new StudentController(service);
+        service.addObserver(studentController);
+        StudentView studentView=new StudentView(studentController);
+        studentController.setView(studentView);
+        Scene scene=new Scene(studentView.getView(),720,600);
+        studentController.setPrimaryStage(primaryStage);
+        studentController.setMainScene(mainMenuScene);
 
+        // Grade view
+
+        FXMLLoader gradeLoader = new FXMLLoader();
+        gradeLoader.setLocation(getClass().getResource("/view/GradeView.fxml"));
+        BorderPane gradeLayout = gradeLoader.load();
+        GradeController gradeController = gradeLoader.getController();
+        gradeController.setService(service);
+        Scene gradeScene=new Scene(gradeLayout,720,600);
+        gradeController.setPrimaryStage(primaryStage);
+        gradeController.setMainScene(mainMenuScene);
+
+        controller.setStudentScene(scene);
+        controller.setGradeStage(gradeScene);
         primaryStage.setScene(mainMenuScene);
         primaryStage.show();
-
     }
 
 }

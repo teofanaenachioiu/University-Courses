@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="GradeBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="720.0" stylesheets="@../../../Laborator10/src/resources/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GradeController">
+   <top>
+      <AnchorPane prefHeight="98.0" prefWidth="720.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="282.0" layoutY="36.0" text="Grades Management System" textFill="WHITE">
+               <font>
+                  <Font name="Georgia Bold" size="29.0" />
+               </font>
+            </Label>
+            <Button fx:id="imageButton" layoutX="52.0" layoutY="37.0" mnemonicParsing="false" onAction="#handleExit" prefHeight="35.0" prefWidth="35.0" stylesheets="@../../../Laborator10/src/resources/style.css" textFill="WHITE" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="630.0" AnchorPane.topAnchor="35.0" />
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="485.0" prefWidth="125.0" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane layoutX="14.0" layoutY="14.0" prefHeight="145.0" prefWidth="208.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="128.0" minWidth="10.0" prefWidth="75.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="199.0" minWidth="10.0" prefWidth="133.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Laboratory:" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label text="Student:" textFill="WHITE" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label text="Grade:" textFill="WHITE" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label text="Feedback:" textFill="WHITE" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField opacity="0.7" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField opacity="0.7" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextArea opacity="0.7" prefHeight="66.0" prefWidth="197.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <ComboBox prefWidth="150.0" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+            <Button layoutX="184.0" layoutY="177.0" mnemonicParsing="false" text="Add" />
+         </children>
+      </AnchorPane>
+   </center>
+   <left>
+      <AnchorPane prefHeight="427.0" prefWidth="414.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView layoutX="12.0" layoutY="11.0" prefHeight="443.0" prefWidth="460.0">
+              <columns>
+                <TableColumn prefWidth="100.0" text="Name" />
+                <TableColumn prefWidth="30.0" resizable="false" text="L1" />
+                  <TableColumn prefWidth="30.0" resizable="false" text="L2" />
+                  <TableColumn prefWidth="30.0" resizable="false" text="L3" />
+                  <TableColumn prefWidth="30.0" resizable="false" text="L4" />
+                  <TableColumn prefWidth="30.0" resizable="false" text="L5" />
+                  <TableColumn prefWidth="30.0" resizable="false" text="L6" />
+                  <TableColumn prefWidth="30.0" resizable="false" text="L7" />
+                  <TableColumn prefWidth="30.0" resizable="false" text="L8" />
+                  <TableColumn prefWidth="30.0" resizable="false" text="L9" />
+                  <TableColumn prefWidth="30.0" resizable="false" text="L10" />
+                  <TableColumn prefWidth="30.0" resizable="false" text="L11" />
+              </columns>
+               <cursor>
+                  <Cursor fx:constant="MOVE" />
+               </cursor>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </left>
+   <bottom>
+      <Label text="Copyright © Teofana Enachioiu" textFill="WHITE" BorderPane.alignment="BOTTOM_LEFT">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </Label>
+   </bottom>
+</BorderPane>

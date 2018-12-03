@@ -90,7 +90,7 @@ public class AutoCompleteTextField extends TextField {
      * Default: "-fx-font-weight: bold; -fx-fill: red;"
      * <p>
      * Note: This style is going to be applied on an
-     * {@link javafx.scene.text.Text Text} instance. See the <i>JavaFX CSS
+     * {@link Text Text} instance. See the <i>JavaFX CSS
      * Reference Guide</i> for available CSS Propeties.
      */
     private String textOccurenceStyle = "-fx-font-weight: bold; "

@@ -234,6 +234,10 @@ public class Service implements Observable<StudentChangeEvent> {
         }
     }
 
+    public Iterable<Nota> listaNote(){
+        return repoN.findAll();
+    }
+
     private <T> Iterable <T> filter(Iterable <T> list, Predicate<T> cond)
     {
         List<T> rez=new ArrayList<>();

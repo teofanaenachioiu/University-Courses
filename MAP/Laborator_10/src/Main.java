@@ -1,3 +1,4 @@
+import javafx.scene.Parent;
 import view.GradeController;
 import view.MainMenuController;
 import javafx.application.Application;
@@ -35,7 +36,6 @@ public class Main extends Application {
 
     private void init(Stage primaryStage) throws IOException {
 
-
         //main menu
 
 
@@ -61,10 +61,16 @@ public class Main extends Application {
         // Grade view
 
         FXMLLoader gradeLoader = new FXMLLoader();
-        gradeLoader.setLocation(getClass().getResource("views/GradeView.fxml"));
+        gradeLoader.setLocation(getClass().getResource("view/GradeView.fxml"));
+
         BorderPane gradeLayout = gradeLoader.load();
+
         GradeController gradeController = gradeLoader.getController();
+
+        //setez service-ul
         gradeController.setService(service);
+
+
         Scene gradeScene=new Scene(gradeLayout,720,600);
         gradeController.setPrimaryStage(primaryStage);
         gradeController.setMainScene(mainMenuScene);

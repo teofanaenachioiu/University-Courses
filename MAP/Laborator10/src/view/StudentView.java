@@ -82,6 +82,21 @@ public class StudentView   {
     private AnchorPane initTop()  {
         AnchorPane topAnchorPane=new AnchorPane();
 
+        Button buttonImage=new Button();
+
+        Image img = new Image(new File("./src/resources/exit.png").toURI().toString());
+        ImageView imageView=new ImageView(img);
+        imageView.setFitWidth(20);
+        imageView.setFitHeight(20);
+
+        buttonImage.setGraphic(imageView);
+        buttonImage.setOnAction(controller::handleExit);
+
+        topAnchorPane.getChildren().add(buttonImage);
+        AnchorPane.setTopAnchor(buttonImage,40d);
+        AnchorPane.setLeftAnchor(buttonImage,50d);
+        AnchorPane.setBottomAnchor(buttonImage,30d);
+
         Label titleLabel=new Label("Student Management System");
         topAnchorPane.getChildren().add(titleLabel);
         AnchorPane.setTopAnchor(titleLabel,40d);
