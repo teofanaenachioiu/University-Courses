@@ -46,8 +46,9 @@ public class ConfirmController {
         Student student=this.service.cautaStudent(this.nota.getStudentID()).get();
         Tema tema=this.service.cautaTema(this.nota.getTemaID()).get();
         this.descriere.setText("Studentul de notat: "+student.getNume()+" din grupa "+student.getGrupa()
-                +"\nTema: Lab"+tema.getID()+" ("+tema.getDescriere()+") deadline: "+tema.getDeadline()+"\n"
-                +"Nota primita: "+this.nota.getNotaProf().toString()
+                +"\nTema: Lab"+tema.getID()+" ("+tema.getDescriere()+") \n     deadline: "+tema.getDeadline()+"\n"
+                +"Nota primita: "+service.calculeazaNota(this.nota.getDataCurenta(),
+                this.nota.getNotaProf().toString(),this.service.cautaTema(nota.getTemaID()).get())
                 );
     }
 
@@ -71,6 +72,7 @@ public class ConfirmController {
         } catch (ValidationException e) {
             this.controller.showErrorMessage("Date invalide!");
         }
+        this.stage.close();
     }
 
 

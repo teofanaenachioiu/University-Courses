@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/utils/ControllerChangeEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/Catalog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Catalog.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/Teofana.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Teofana.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/Vlad.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Vlad.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ConfirmController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ConfirmController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GradeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GradeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GradeView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GradeView.fxml" afterDir="false" />
+    </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -56,7 +65,7 @@
     <session id="531697007">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="9" />
+          <entry key="project.closed" value="11" />
           <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.5" value="1" />
@@ -65,36 +74,36 @@
           <entry key="project.open.time.56" value="1" />
           <entry key="project.open.time.57" value="2" />
           <entry key="project.open.time.58" value="1" />
-          <entry key="project.open.time.60" value="1" />
+          <entry key="project.open.time.60" value="2" />
           <entry key="project.open.time.74" value="1" />
-          <entry key="project.opened" value="11" />
+          <entry key="project.opened" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="5" />
           <entry key="fxml" value="7" />
-          <entry key="java" value="68" />
+          <entry key="java" value="74" />
           <entry key="xml" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="5" />
-          <entry key="JAVA" value="68" />
+          <entry key="JAVA" value="74" />
           <entry key="XML" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="fxml" value="1" />
-          <entry key="java" value="8983" />
+          <entry key="java" value="9077" />
           <entry key="xml" value="54" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="8983" />
+          <entry key="JAVA" value="9077" />
           <entry key="XML" value="55" />
         </counts>
       </usages-collector>
@@ -106,29 +115,22 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/GradeController.java">
+        <entry file="file://$PROJECT_DIR$/src/utils/ControllerChangeEvent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="67" column="9" lean-forward="true" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
+            <state relative-caret-position="425">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main.java">
+        <entry file="file://$PROJECT_DIR$/src/view/StudentController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="816">
-              <caret line="65" selection-start-line="65" selection-end-line="65" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/view/GradeView.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="128" column="54" selection-start-line="128" selection-start-column="54" selection-end-line="128" selection-end-column="54" />
+            <state relative-caret-position="731">
+              <caret line="72" column="68" selection-start-line="72" selection-start-column="23" selection-end-line="72" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -136,7 +138,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/service/Service.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5219">
+            <state relative-caret-position="5304">
               <caret line="349" selection-start-line="349" selection-end-line="349" />
               <folding>
                 <element signature="e#3801#3802#0" expanded="true" />
@@ -146,29 +148,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/data/Catalog.xml">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/view/GradeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+            <state relative-caret-position="434">
+              <caret line="477" lean-forward="true" selection-start-line="477" selection-end-line="477" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/data/Studenti.xml">
+        <entry file="file://$PROJECT_DIR$/src/view/ConfirmController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="916" selection-start-column="916" selection-end-column="916" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/data/Teme.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="33" column="44" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
+            <state relative-caret-position="241">
+              <caret line="49" column="63" lean-forward="true" selection-start-line="49" selection-start-column="63" selection-end-line="49" selection-end-column="63" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -199,6 +195,7 @@
       <find>numefil</find>
       <find>choice</find>
       <find>labelfil</find>
+      <find>comboboxnumes</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -219,11 +216,12 @@
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/view/AutoCompleteComboBoxListener.java" />
         <option value="$PROJECT_DIR$/src/utils/NotaChangeEvent.java" />
-        <option value="$PROJECT_DIR$/src/view/ConfirmController.java" />
         <option value="$PROJECT_DIR$/src/view/GradeView.fxml" />
         <option value="$PROJECT_DIR$/src/service/Service.java" />
         <option value="$PROJECT_DIR$/src/data/Studenti.xml" />
         <option value="$PROJECT_DIR$/src/data/Catalog.xml" />
+        <option value="$PROJECT_DIR$/src/utils/ControllerChangeEvent.java" />
+        <option value="$PROJECT_DIR$/src/view/ConfirmController.java" />
         <option value="$PROJECT_DIR$/src/view/GradeController.java" />
       </list>
     </option>
@@ -256,6 +254,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -272,19 +272,13 @@
               <item name="Laborator_10" type="b2602c69:ProjectViewProjectNode" />
               <item name="Laborator_10" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Laborator_10" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Laborator_10" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Laborator_10" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Laborator_10" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Laborator_10" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Laborator_10" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Laborator_10" type="b2602c69:ProjectViewProjectNode" />
@@ -296,8 +290,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -313,7 +305,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543920104661" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543926598507" />
     <property name="dynamic.classpath" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -444,27 +436,29 @@
       <workItem from="1543913194119" duration="1848000" />
       <workItem from="1543916495551" duration="590000" />
       <workItem from="1543918965347" duration="1132000" />
-      <workItem from="1543923493027" duration="235000" />
+      <workItem from="1543923493027" duration="588000" />
+      <workItem from="1543924767595" duration="1878000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48116000" />
+    <option name="totallyTimeSpent" value="50347000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.23146747" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.23524962" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="Image Layers" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Capture Tool" order="6" />
+      <window_info anchor="bottom" id="Thumbnails" weight="0.32850242" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32850242" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32850242" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32850242" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5152979" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -548,12 +542,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -598,10 +592,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/MainMenuView.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-51" />
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/teste/Catalog.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -708,30 +702,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/NotaChangeEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="1" lean-forward="true" selection-start-column="1" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/ConfirmView.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="5" column="34" lean-forward="true" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/ConfirmController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="60" selection-start-line="60" selection-end-line="60" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_181/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -792,35 +769,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/StudentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="72" column="68" selection-start-line="72" selection-start-column="23" selection-end-line="72" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/GradeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="67" column="9" lean-forward="true" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="816">
           <caret line="65" selection-start-line="65" selection-end-line="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/service/Service.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5219">
-          <caret line="349" selection-start-line="349" selection-end-line="349" />
-          <folding>
-            <element signature="e#3801#3802#0" expanded="true" />
-            <element signature="e#3854#3855#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -846,10 +798,62 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/GradeView.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="128" column="54" selection-start-line="128" selection-start-column="54" selection-end-line="128" selection-end-column="54" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/NotaChangeEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="28" column="5" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="28" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/service/Service.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5304">
+          <caret line="349" selection-start-line="349" selection-end-line="349" />
+          <folding>
+            <element signature="e#3801#3802#0" expanded="true" />
+            <element signature="e#3854#3855#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/StudentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="72" column="68" selection-start-line="72" selection-start-column="23" selection-end-line="72" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/ControllerChangeEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/ConfirmController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="49" column="63" lean-forward="true" selection-start-line="49" selection-start-column="63" selection-end-line="49" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/GradeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="477" lean-forward="true" selection-start-line="477" selection-end-line="477" />
         </state>
       </provider>
     </entry>

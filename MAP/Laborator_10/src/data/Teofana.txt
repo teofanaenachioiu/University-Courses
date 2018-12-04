@@ -10,3 +10,10 @@ Predata in saptamana: 7
 Deadline: 8
 Feedback: da
 
+Tema: 7
+Nota: 6.5
+Predata in saptamana: 8
+Deadline: 9
+Feedback: NOTA A FOST DIMINUATĂ CU 2.5
+PUNCTE DATORITĂ ÎNTÂRZIERILOR
+

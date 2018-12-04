@@ -415,7 +415,6 @@ public class GradeController implements Observer<NotaChangeEvent> {
         List<NotaDTO> list= StreamSupport.stream(service.listaNoteDTO().spliterator(), false)
                 .collect(Collectors.toList());
         model.setAll(list);
-
     }
 
     private Integer getDate1(){
@@ -438,21 +437,13 @@ public class GradeController implements Observer<NotaChangeEvent> {
 
     @FXML
     private void handleFilter() {
-
-        Integer data1=getDate1();
-        Integer data2=getDate2();
-
-        Predicate<NotaDTO> p4 =
-
-                n->service.cautaNota(n.getIdStudent(),n.getIdTema())
+        Predicate<NotaDTO> p4 = n->
+                service.cautaNota(n.getIdStudent(),n.getIdTema())
                 .getDataCurenta().isEmpty() ||
                 this.datePickerFilter1.getValue()==null ||
                 this.datePickerFilter2.getValue()==null ||
                 Integer.parseInt(service.cautaNota(n.getIdStudent(),n.getIdTema()).getDataCurenta()) >=getDate1() &&
-                        Integer.parseInt(service.cautaNota(n.getIdStudent(),n.getIdTema()).getDataCurenta()) <=getDate2();// ||
-                       // this.datePickerFilter1.getValue()==null ||
-                        //this.datePickerFilter2.getValue()==null;
-
+                        Integer.parseInt(service.cautaNota(n.getIdStudent(),n.getIdTema()).getDataCurenta()) <=getDate2();
 
         Predicate<NotaDTO> p1 = n->
                 this.comboBoxLabFilter.getSelectionModel().getSelectedItem()==null ||
@@ -472,13 +463,11 @@ public class GradeController implements Observer<NotaChangeEvent> {
 
         model.setAll(service.listaNoteDTO().stream()
                 .filter(p4.and(p3).and(p2).and(p1))
-                .collect(Collectors.toList())
-        );
-
+                .collect(Collectors.toList()));
     }
+
     @FXML
     private void handleClear(){
-
         this.comboBoxLabFilter.getSelectionModel().select(8);
         this.comboBoxGroupFilter.getSelectionModel().select(7);
         this.comboBoxNumeFilter.getSelectionModel().select(this.comboBoxNumeFilter.getItems().size()-1);
