@@ -78,10 +78,6 @@ public class GradeController implements Observer<NotaChangeEvent> {
 
 
     @FXML
-    private ChoiceBox<String> choiceBoxFilter;
-    @FXML
-    private Label LabelFilter;
-    @FXML
     private Label labelLabFilter;
     @FXML
     private Label labelStudentFilter;
@@ -123,6 +119,8 @@ public class GradeController implements Observer<NotaChangeEvent> {
         ObservableList<String> data = FXCollections.observableArrayList(lista);
 
         this.comboBoxNumeStudent.setItems(data);
+        lista.add("");
+        data = FXCollections.observableArrayList(lista);
         this.comboBoxNumeFilter.setItems(data);
         new AutoCompleteComboBoxListener<>(this.comboBoxNumeStudent);
         new AutoCompleteComboBoxListener<>(this.comboBoxNumeFilter);
@@ -134,7 +132,8 @@ public class GradeController implements Observer<NotaChangeEvent> {
                 "224",
                 "225",
                 "226",
-                "227"
+                "227",
+                ""
         );
         this.comboBoxGroupFilter.setItems(dataFilter);
     }
@@ -148,7 +147,7 @@ public class GradeController implements Observer<NotaChangeEvent> {
 
         tableView.setItems(model);
 
-        ObservableList<String> data = FXCollections.observableArrayList("1", "2", "3","4","5","6","7","8");
+        ObservableList<String> data = FXCollections.observableArrayList("1", "2", "3","4","5","6","7","8","");
         this.comboBoxLab.setItems(data);
 
         ObservableList<String> dataFilter = FXCollections.observableArrayList(
@@ -157,7 +156,7 @@ public class GradeController implements Observer<NotaChangeEvent> {
                 "group and laboratory",
                 "time"
         );
-        this.choiceBoxFilter.setItems(dataFilter);
+      //  this.choiceBoxFilter.setItems(dataFilter);
 
         this.comboBoxLabFilter.setItems(data);
 
@@ -172,8 +171,8 @@ public class GradeController implements Observer<NotaChangeEvent> {
         this.addButton.setVisible(false);
         this.checkBoxMotivation.setVisible(false);
 
-        this.LabelFilter.setVisible(false);
-        this.choiceBoxFilter.setVisible(false);
+        //this.LabelFilter.setVisible(false);
+       // this.choiceBoxFilter.setVisible(false);
         this.labelLabFilter.setVisible(false);
         this.labelStudentFilter.setVisible(false);
         this.labelGroupFilter.setVisible(false);
@@ -206,8 +205,8 @@ public class GradeController implements Observer<NotaChangeEvent> {
             this.addButton.setVisible(false);
             this.checkBoxMotivation.setVisible(false);
 
-            this.LabelFilter.setVisible(false);
-            this.choiceBoxFilter.setVisible(false);
+          //  this.LabelFilter.setVisible(false);
+           // this.choiceBoxFilter.setVisible(false);
             this.labelLabFilter.setVisible(false);
             this.labelStudentFilter.setVisible(false);
             this.labelGroupFilter.setVisible(false);
@@ -231,8 +230,8 @@ public class GradeController implements Observer<NotaChangeEvent> {
             this.addButton.setVisible(true);
             this.checkBoxMotivation.setVisible(true);
 
-            this.LabelFilter.setVisible(false);
-            this.choiceBoxFilter.setVisible(false);
+            //this.LabelFilter.setVisible(false);
+           // this.choiceBoxFilter.setVisible(false);
             this.labelLabFilter.setVisible(false);
             this.labelStudentFilter.setVisible(false);
             this.labelGroupFilter.setVisible(false);
@@ -248,9 +247,9 @@ public class GradeController implements Observer<NotaChangeEvent> {
 
     @FXML
     private void handleFilterButton(){
-        if(LabelFilter.isVisible()){
-            this.LabelFilter.setVisible(false);
-            this.choiceBoxFilter.setVisible(false);
+        if(labelLabFilter.isVisible()){
+         //   this.LabelFilter.setVisible(false);
+          //  this.choiceBoxFilter.setVisible(false);
             this.labelLabFilter.setVisible(false);
             this.labelStudentFilter.setVisible(false);
             this.labelGroupFilter.setVisible(false);
@@ -274,8 +273,8 @@ public class GradeController implements Observer<NotaChangeEvent> {
             this.checkBoxMotivation.setVisible(false);
         }
         else{
-            this.LabelFilter.setVisible(true);
-            this.choiceBoxFilter.setVisible(true);
+            //this.LabelFilter.setVisible(true);
+           // this.choiceBoxFilter.setVisible(true);
             this.labelLabFilter.setVisible(true);
             this.labelStudentFilter.setVisible(true);
             this.labelGroupFilter.setVisible(true);
@@ -419,56 +418,73 @@ public class GradeController implements Observer<NotaChangeEvent> {
 
     }
 
+    private Integer getDate1(){
+        if(this.datePickerFilter1.getValue()!=null){
+            LocalDate date1 = this.datePickerFilter1.getValue(); // input from your date picker
+            Integer week1=service.getWeek(date1);
+            return service.getWeekUni(week1);
+        }
+        return 0;
+    }
+
+    private Integer getDate2(){
+        if(this.datePickerFilter2.getValue()!=null){
+            LocalDate date2 = this.datePickerFilter2.getValue(); // input from your date picker
+            Integer week2=service.getWeek(date2);
+            return service.getWeekUni(week2);
+        }
+        return 15;
+    }
+
     @FXML
     private void handleFilter() {
-        Predicate<NotaDTO> p1 = n->n.getIdTema().isEmpty() || n.getIdTema()
-                .equals(comboBoxLabFilter.getSelectionModel().getSelectedItem());
 
-        Predicate<NotaDTO> p2 = n->n.getNumeStudent().isEmpty() || comboBoxNumeFilter.getSelectionModel().getSelectedItem()
+        Integer data1=getDate1();
+        Integer data2=getDate2();
+
+        Predicate<NotaDTO> p4 =
+
+                n->service.cautaNota(n.getIdStudent(),n.getIdTema())
+                .getDataCurenta().isEmpty() ||
+                this.datePickerFilter1.getValue()==null ||
+                this.datePickerFilter2.getValue()==null ||
+                Integer.parseInt(service.cautaNota(n.getIdStudent(),n.getIdTema()).getDataCurenta()) >=getDate1() &&
+                        Integer.parseInt(service.cautaNota(n.getIdStudent(),n.getIdTema()).getDataCurenta()) <=getDate2();// ||
+                       // this.datePickerFilter1.getValue()==null ||
+                        //this.datePickerFilter2.getValue()==null;
+
+
+        Predicate<NotaDTO> p1 = n->
+                this.comboBoxLabFilter.getSelectionModel().getSelectedItem()==null ||
+                n.getIdTema()
+                .contains(this.comboBoxLabFilter.getSelectionModel().getSelectedItem());
+
+        Predicate<NotaDTO> p2 = n->
+                this.comboBoxNumeFilter.getSelectionModel().getSelectedItem()==null ||
+                n.getNumeStudent().contains(this.comboBoxNumeFilter.getSelectionModel().getSelectedItem()) ||
+                this.comboBoxNumeFilter.getSelectionModel().getSelectedItem()
                 .contains(n.getNumeStudent());
 
-        Predicate<NotaDTO> p3 = n->service.cautaStudent(n.getIdStudent()).get().getGrupa().isEmpty()
-                || service.cautaStudent(n.getIdStudent()).get().getGrupa()
-                .equals(comboBoxGroupFilter.getSelectionModel().getSelectedItem());
-
-
-
-//        String idS=service.getIdStudent(this.comboBoxNumeFilter.getSelectionModel().getSelectedItem());
-//        String idT=this.comboBoxLabFilter.getSelectionModel().getSelectedItem();
-
-//        LocalDate date1 = this.datePickerFilter1.getValue(); // input from your date picker
-//        Integer week1=service.getWeek(date1);
-//        Integer weekUni1=service.getWeekUni(week1);
-//
-//        LocalDate date2 = this.datePickerFilter1.getValue(); // input from your date picker
-//        Integer week2=service.getWeek(date2);
-//        Integer weekUni2=service.getWeekUni(week2);
-
-//        Predicate<NotaDTO> p4 = n->service.cautaNota(idS,idT).getDataCurenta().isEmpty() ||
-//                this.datePickerFilter1.getValue().toString().isEmpty() ||
-//                this.datePickerFilter2.getValue().toString().isEmpty() ||
-//                Integer.parseInt(service.cautaNota(idS,idT).getDataCurenta()) >=weekUni1 &&
-//                        Integer.parseInt(service.cautaNota(idS,idT).getDataCurenta()) <=weekUni2;
-
-
-//        Predicate<NotaDTO> p1 = n->n.getIdTema()
-//                .equals(comboBoxLabFilter.getSelectionModel().getSelectedItem());
-//
-//        Predicate<NotaDTO> p2 = n->comboBoxNumeFilter.getSelectionModel().getSelectedItem()
-//                .contains(n.getNumeStudent());
-//
-//        Predicate<NotaDTO> p3 = n->service.cautaStudent(n.getIdStudent()).get().getGrupa()
-//                .equals(comboBoxGroupFilter.getSelectionModel().getSelectedItem());
+        Predicate<NotaDTO> p3 = n->
+                this.comboBoxGroupFilter.getSelectionModel().getSelectedItem()==null ||
+                this.service.cautaStudent(n.getIdStudent()).get().getGrupa()
+                .contains(this.comboBoxGroupFilter.getSelectionModel().getSelectedItem());
 
         model.setAll(service.listaNoteDTO().stream()
-                .filter(p3.and(p1))
+                .filter(p4.and(p3).and(p2).and(p1))
                 .collect(Collectors.toList())
         );
 
     }
     @FXML
     private void handleClear(){
+
+        this.comboBoxLabFilter.getSelectionModel().select(8);
+        this.comboBoxGroupFilter.getSelectionModel().select(7);
+        this.comboBoxNumeFilter.getSelectionModel().select(this.comboBoxNumeFilter.getItems().size()-1);
         model.setAll(service.listaNoteDTO());
+        this.datePickerFilter2.setValue(null);
+        this.datePickerFilter1.setValue(null);
     }
 
 }

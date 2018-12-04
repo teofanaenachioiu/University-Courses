@@ -3,7 +3,6 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -58,7 +57,7 @@
    <right>
       <AnchorPane prefHeight="397.0" prefWidth="362.0" BorderPane.alignment="CENTER">
          <children>
-            <GridPane layoutX="14.0" layoutY="72.0" prefHeight="145.0" prefWidth="268.0" AnchorPane.topAnchor="90.0">
+            <GridPane layoutX="14.0" layoutY="72.0" prefHeight="145.0" prefWidth="268.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="90.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="128.0" minWidth="10.0" prefWidth="70.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="199.0" minWidth="10.0" prefWidth="198.0" />
@@ -98,15 +97,9 @@
             </GridPane>
             <Button fx:id="addGradeButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleAddGradeButton" prefHeight="40.0" prefWidth="130.0" text="Add grade" AnchorPane.bottomAnchor="414.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="14.0" />
             <Button fx:id="filterButton" layoutX="151.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleFilterButton" prefHeight="40.0" prefWidth="130.0" text="Filter" AnchorPane.bottomAnchor="414.0" AnchorPane.topAnchor="14.0" />
-            <Button fx:id="addButton" layoutX="243.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleAddButton" text="Add" />
+            <Button fx:id="addButton" layoutX="243.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleAddButton" text="Add" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="260.0" />
             <CheckBox fx:id="checkBoxMotivation" layoutX="14.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleMotivation" text="Motivation" textFill="WHITE" />
-            <Label fx:id="LabelFilter" layoutX="14.0" layoutY="69.0" text="Filter by " textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <ChoiceBox fx:id="choiceBoxFilter" layoutX="85.0" layoutY="65.0" opacity="0.7" prefHeight="25.0" prefWidth="197.0" />
-            <GridPane layoutX="17.0" layoutY="291.0" prefHeight="145.0" prefWidth="268.0">
+            <GridPane layoutX="17.0" layoutY="291.0" prefHeight="145.0" prefWidth="268.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="90.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="128.0" minWidth="10.0" prefWidth="70.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="199.0" minWidth="10.0" prefWidth="198.0" />
@@ -149,7 +142,7 @@
                   </AnchorPane>
                </children>
             </GridPane>
-            <Button fx:id="buttonClear" layoutX="241.0" layoutY="442.0" mnemonicParsing="false" onAction="#handleClear" text="Clear" />
+            <Button fx:id="buttonClear" layoutX="241.0" layoutY="442.0" mnemonicParsing="false" onAction="#handleClear" text="Clear" AnchorPane.bottomAnchor="183.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="260.0" />
          </children>
       </AnchorPane>
    </right>
