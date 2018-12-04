@@ -31,7 +31,7 @@ import java.util.stream.StreamSupport;
 public class GradeController implements Observer<NotaChangeEvent> {
     public BorderPane GradeBorderPane;
     public Button imageButton;
-    private Service service;
+    public Service service;
     private ObservableList<NotaDTO> model;
 
     private Stage primaryStage;
@@ -102,40 +102,53 @@ public class GradeController implements Observer<NotaChangeEvent> {
         model= FXCollections.observableArrayList();
     }
 
-
     public void setMainScene(Scene mainScene) {
         this.mainScene = mainScene;
     }
-
 
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage=primaryStage;
     }
 
-    public void initComboBox(){
-
+    private void initComboBox(){
         List<String> lista= StreamSupport.stream(service.listaStudenti().spliterator(),false).
                 map(student->student.getNume()+" (ID:"+student.getID()+")").collect(Collectors.toList());
         ObservableList<String> data = FXCollections.observableArrayList(lista);
 
         this.comboBoxNumeStudent.setItems(data);
-        lista.add("");
-        data = FXCollections.observableArrayList(lista);
         this.comboBoxNumeFilter.setItems(data);
         new AutoCompleteComboBoxListener<>(this.comboBoxNumeStudent);
         new AutoCompleteComboBoxListener<>(this.comboBoxNumeFilter);
 
         ObservableList<String> dataFilter = FXCollections.observableArrayList(
-                "221",
-                "222",
-                "223",
-                "224",
-                "225",
-                "226",
-                "227",
-                ""
-        );
+                "221", "222", "223", "224", "225", "226", "227");
         this.comboBoxGroupFilter.setItems(dataFilter);
+    }
+
+    private void setVisibleAdd(boolean apare){
+        this.labelLab.setVisible(apare);
+        this.labelGrade.setVisible(apare);
+        this.labelStudent.setVisible(apare);
+        this.labelFeedback.setVisible(apare);
+        this.comboBoxLab.setVisible(apare);
+        this.textFieldGrade.setVisible(apare);
+        this.comboBoxNumeStudent.setVisible(apare);
+        this.textAreaFeedback.setVisible(apare);
+        this.addButton.setVisible(apare);
+        this.checkBoxMotivation.setVisible(apare);
+    }
+
+    private void setVisibleFilter(boolean apare){
+        this.labelLabFilter.setVisible(apare);
+        this.labelStudentFilter.setVisible(apare);
+        this.labelGroupFilter.setVisible(apare);
+        this.labelTimeFilter.setVisible(apare);
+        this.comboBoxLabFilter.setVisible(apare);
+        this.comboBoxNumeFilter.setVisible(apare);
+        this.comboBoxGroupFilter.setVisible(apare);
+        this.datePickerFilter1.setVisible(apare);
+        this.datePickerFilter2.setVisible(apare);
+        this.buttonClear.setVisible(apare);
     }
 
     @FXML
@@ -149,40 +162,10 @@ public class GradeController implements Observer<NotaChangeEvent> {
 
         ObservableList<String> data = FXCollections.observableArrayList("1", "2", "3","4","5","6","7","8","");
         this.comboBoxLab.setItems(data);
-
-        ObservableList<String> dataFilter = FXCollections.observableArrayList(
-                "laboratory",
-                "student",
-                "group and laboratory",
-                "time"
-        );
-      //  this.choiceBoxFilter.setItems(dataFilter);
-
         this.comboBoxLabFilter.setItems(data);
 
-        this.labelLab.setVisible(false);
-        this.labelGrade.setVisible(false);
-        this.labelStudent.setVisible(false);
-        this.labelFeedback.setVisible(false);
-        this.comboBoxLab.setVisible(false);
-        this.textFieldGrade.setVisible(false);
-        this.comboBoxNumeStudent.setVisible(false);
-        this.textAreaFeedback.setVisible(false);
-        this.addButton.setVisible(false);
-        this.checkBoxMotivation.setVisible(false);
-
-        //this.LabelFilter.setVisible(false);
-       // this.choiceBoxFilter.setVisible(false);
-        this.labelLabFilter.setVisible(false);
-        this.labelStudentFilter.setVisible(false);
-        this.labelGroupFilter.setVisible(false);
-        this.labelTimeFilter.setVisible(false);
-        this.comboBoxLabFilter.setVisible(false);
-        this.comboBoxNumeFilter.setVisible(false);
-        this.comboBoxGroupFilter.setVisible(false);
-        this.datePickerFilter1.setVisible(false);
-        this.datePickerFilter2.setVisible(false);
-        this.buttonClear.setVisible(false);
+        setVisibleAdd(false);
+        setVisibleFilter(false);
 
         this.comboBoxNumeFilter.valueProperty().addListener(o->handleFilter());
         this.comboBoxLabFilter.valueProperty().addListener(o->handleFilter());
@@ -194,118 +177,34 @@ public class GradeController implements Observer<NotaChangeEvent> {
     @FXML
     private void handleAddGradeButton(){
         if(this.labelLab.isVisible()) {
-            this.labelLab.setVisible(false);
-            this.labelGrade.setVisible(false);
-            this.labelStudent.setVisible(false);
-            this.labelFeedback.setVisible(false);
-            this.comboBoxLab.setVisible(false);
-            this.textFieldGrade.setVisible(false);
-            this.comboBoxNumeStudent.setVisible(false);
-            this.textAreaFeedback.setVisible(false);
-            this.addButton.setVisible(false);
-            this.checkBoxMotivation.setVisible(false);
-
-          //  this.LabelFilter.setVisible(false);
-           // this.choiceBoxFilter.setVisible(false);
-            this.labelLabFilter.setVisible(false);
-            this.labelStudentFilter.setVisible(false);
-            this.labelGroupFilter.setVisible(false);
-            this.labelTimeFilter.setVisible(false);
-            this.comboBoxLabFilter.setVisible(false);
-            this.comboBoxNumeFilter.setVisible(false);
-            this.comboBoxGroupFilter.setVisible(false);
-            this.datePickerFilter1.setVisible(false);
-            this.datePickerFilter2.setVisible(false);
-            this.buttonClear.setVisible(false);
+            this.setVisibleAdd(false);
+            this.setVisibleFilter(false);
         }
         else {
-            this.labelLab.setVisible(true);
-            this.labelGrade.setVisible(true);
-            this.labelStudent.setVisible(true);
-            this.labelFeedback.setVisible(true);
-            this.comboBoxLab.setVisible(true);
-            this.textFieldGrade.setVisible(true);
-            this.comboBoxNumeStudent.setVisible(true);
-            this.textAreaFeedback.setVisible(true);
-            this.addButton.setVisible(true);
-            this.checkBoxMotivation.setVisible(true);
-
-            //this.LabelFilter.setVisible(false);
-           // this.choiceBoxFilter.setVisible(false);
-            this.labelLabFilter.setVisible(false);
-            this.labelStudentFilter.setVisible(false);
-            this.labelGroupFilter.setVisible(false);
-            this.labelTimeFilter.setVisible(false);
-            this.comboBoxLabFilter.setVisible(false);
-            this.comboBoxNumeFilter.setVisible(false);
-            this.comboBoxGroupFilter.setVisible(false);
-            this.datePickerFilter1.setVisible(false);
-            this.datePickerFilter2.setVisible(false);
-            this.buttonClear.setVisible(false);
+            setVisibleAdd(true);
+            setVisibleFilter(false);
         }
     }
 
     @FXML
     private void handleFilterButton(){
         if(labelLabFilter.isVisible()){
-         //   this.LabelFilter.setVisible(false);
-          //  this.choiceBoxFilter.setVisible(false);
-            this.labelLabFilter.setVisible(false);
-            this.labelStudentFilter.setVisible(false);
-            this.labelGroupFilter.setVisible(false);
-            this.labelTimeFilter.setVisible(false);
-            this.comboBoxLabFilter.setVisible(false);
-            this.comboBoxNumeFilter.setVisible(false);
-            this.comboBoxGroupFilter.setVisible(false);
-            this.datePickerFilter1.setVisible(false);
-            this.datePickerFilter2.setVisible(false);
-            this.buttonClear.setVisible(false);
-
-            this.labelLab.setVisible(false);
-            this.labelGrade.setVisible(false);
-            this.labelStudent.setVisible(false);
-            this.labelFeedback.setVisible(false);
-            this.comboBoxLab.setVisible(false);
-            this.textFieldGrade.setVisible(false);
-            this.comboBoxNumeStudent.setVisible(false);
-            this.textAreaFeedback.setVisible(false);
-            this.addButton.setVisible(false);
-            this.checkBoxMotivation.setVisible(false);
+            setVisibleAdd(false);
+            setVisibleFilter(false);
         }
         else{
-            //this.LabelFilter.setVisible(true);
-           // this.choiceBoxFilter.setVisible(true);
-            this.labelLabFilter.setVisible(true);
-            this.labelStudentFilter.setVisible(true);
-            this.labelGroupFilter.setVisible(true);
-            this.labelTimeFilter.setVisible(true);
-            this.comboBoxLabFilter.setVisible(true);
-            this.comboBoxNumeFilter.setVisible(true);
-            this.comboBoxGroupFilter.setVisible(true);
-            this.datePickerFilter1.setVisible(true);
-            this.datePickerFilter2.setVisible(true);
-            this.buttonClear.setVisible(true);
-
-            this.labelLab.setVisible(false);
-            this.labelGrade.setVisible(false);
-            this.labelStudent.setVisible(false);
-            this.labelFeedback.setVisible(false);
-            this.comboBoxLab.setVisible(false);
-            this.textFieldGrade.setVisible(false);
-            this.comboBoxNumeStudent.setVisible(false);
-            this.textAreaFeedback.setVisible(false);
-            this.addButton.setVisible(false);
-            this.checkBoxMotivation.setVisible(false);
+            setVisibleAdd(false);
+            setVisibleFilter(true);
         }
     }
 
     private Nota extractNota(){
         String idLab=this.comboBoxLab.getValue();
-        String student=this.comboBoxNumeStudent.getValue();
-        if(student==null) return null;
+        String numeStudent=this.comboBoxNumeStudent.getValue();
+        if(numeStudent==null) return null;
         String nota=this.textFieldGrade.getText();
         if(nota==null) return null;
-        String idStudent=service.getIdStudent(student);
+        String idStudent=service.getIdStudent(numeStudent);
         return new Nota(idStudent,idLab,service.getLabNumber().toString(),nota);
     }
 
@@ -321,7 +220,7 @@ public class GradeController implements Observer<NotaChangeEvent> {
         Integer assignment=service.getCurrentAssignment();
         Integer lab=Integer.parseInt(this.comboBoxLab.getValue());
 
-        Integer dif=assignment-lab;
+        int dif=assignment-lab;
 
         boolean motivat=this.checkBoxMotivation.isSelected();
 
@@ -329,7 +228,6 @@ public class GradeController implements Observer<NotaChangeEvent> {
             this.textAreaFeedback.setText("NOTA A FOST DIMINUATĂ CU "+dif*2.5f +"\n" +
                     "PUNCTE DATORITĂ ÎNTÂRZIERILOR");
         }
-
         if(!motivat && dif>2){
             this.textAreaFeedback.setText("SE ACORDA NOTA DIN OFICIU");
         }
@@ -366,17 +264,14 @@ public class GradeController implements Observer<NotaChangeEvent> {
                 stage.show();
 
                 ConfirmController gradeController = fxmlLoader.getController();
+                gradeController.init(stage,nota,motivat,feedback,this);
 
-
-
-                gradeController.init(stage, service, nota,motivat,feedback,this);
+                showDetails();
             } catch (IOException e) {
                 System.out.println("di ce nu mergi?");
             }
         }
     }
-
-
 
     @FXML
     public void handleExit() {
@@ -385,13 +280,14 @@ public class GradeController implements Observer<NotaChangeEvent> {
 
     public void setService(Service service){
         this.service = service;
+
         List<NotaDTO> list= StreamSupport.stream(service.listaNoteDTO().spliterator(), false)
                 .collect(Collectors.toList());
         model.setAll(list);
-        int nrAssignment=service.getCurrentAssignment();
-        //MAi trebuie sa pun date in tabeleleaaaaaaaaaaaaaaaa
 
+        int nrAssignment=service.getCurrentAssignment();
         this.comboBoxLab.getSelectionModel().select(nrAssignment-1);
+
         initComboBox();
 
     }
@@ -415,6 +311,12 @@ public class GradeController implements Observer<NotaChangeEvent> {
         List<NotaDTO> list= StreamSupport.stream(service.listaNoteDTO().spliterator(), false)
                 .collect(Collectors.toList());
         model.setAll(list);
+
+        //Trebuie OBSERVER!!!
+//        List<String> lista= StreamSupport.stream(service.listaStudenti().spliterator(),false).
+//                map(student->student.getNume()+" (ID:"+student.getID()+")").collect(Collectors.toList());
+//        ObservableList<String> data = FXCollections.observableArrayList(lista);
+//        this.comboBoxNumeStudent.setItems(data);
     }
 
     private Integer getDate1(){
@@ -468,10 +370,10 @@ public class GradeController implements Observer<NotaChangeEvent> {
 
     @FXML
     private void handleClear(){
-        this.comboBoxLabFilter.getSelectionModel().select(8);
-        this.comboBoxGroupFilter.getSelectionModel().select(7);
-        this.comboBoxNumeFilter.getSelectionModel().select(this.comboBoxNumeFilter.getItems().size()-1);
         model.setAll(service.listaNoteDTO());
+        this.comboBoxLabFilter.setValue(null);
+        this.comboBoxNumeFilter.setValue(null);
+        this.comboBoxGroupFilter.setValue(null);
         this.datePickerFilter2.setValue(null);
         this.datePickerFilter1.setValue(null);
     }

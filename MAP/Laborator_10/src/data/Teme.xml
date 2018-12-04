@@ -40,4 +40,19 @@
         <deadline>10</deadline>
         <dataPredare>9</dataPredare>
     </tema>
+    <tema idTema="9">
+        <descriere>Catalog MAP - C# (iteratia 1)</descriere>
+        <deadline>11</deadline>
+        <dataPredare>10</dataPredare>
+    </tema>
+    <tema idTema="10">
+        <descriere>Catalog MAP - C# (iteratia 2)</descriere>
+        <deadline>12</deadline>
+        <dataPredare>11</dataPredare>
+    </tema>
+    <tema idTema="11">
+        <descriere>Catalog MAP - C# (iteratia 3)</descriere>
+        <deadline>14</deadline>
+        <dataPredare>12</dataPredare>
+    </tema>
 </inbox>
