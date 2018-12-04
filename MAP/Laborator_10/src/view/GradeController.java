@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import repository.ValidationException;
 import service.Service;
 import utils.ChangeEventType;
+import utils.Event;
 import utils.NotaChangeEvent;
 import utils.Observer;
 
@@ -313,10 +314,10 @@ public class GradeController implements Observer<NotaChangeEvent> {
         model.setAll(list);
 
         //Trebuie OBSERVER!!!
-//        List<String> lista= StreamSupport.stream(service.listaStudenti().spliterator(),false).
-//                map(student->student.getNume()+" (ID:"+student.getID()+")").collect(Collectors.toList());
-//        ObservableList<String> data = FXCollections.observableArrayList(lista);
-//        this.comboBoxNumeStudent.setItems(data);
+        List<String> lista= StreamSupport.stream(service.listaStudenti().spliterator(),false).
+                map(student->student.getNume()+" (ID:"+student.getID()+")").collect(Collectors.toList());
+        ObservableList<String> data = FXCollections.observableArrayList(lista);
+        this.comboBoxNumeStudent.setItems(data);
     }
 
     private Integer getDate1(){

@@ -3,7 +3,7 @@ package utils;
 import domain.Student;
 import view.StudentController;
 
-public class ControllerChangeEvent {
+public class ControllerChangeEvent implements Event {
     private ChangeEventType type;
     private StudentController data, oldData;
 

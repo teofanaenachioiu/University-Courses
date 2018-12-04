@@ -13,16 +13,16 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import repository.ValidationException;
 import service.Service;
-import utils.ChangeEventType;
+import utils.*;
+import utils.Observable;
 import utils.Observer;
-import utils.StudentChangeEvent;
 
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 
-public class StudentController implements Observer<StudentChangeEvent> {
+public class StudentController implements Observer<StudentChangeEvent>, Observable<ControllerChangeEvent> {
     private Service service;
     private ObservableList<Student> model;
 
@@ -286,5 +286,21 @@ public class StudentController implements Observer<StudentChangeEvent> {
 
     public void handleExit(ActionEvent actionEvent) {
         this.primaryStage.setScene(mainScene);
+    }
+
+    private List<Observer<ControllerChangeEvent>> observers=new ArrayList<>();
+    @Override
+    public void addObserver(Observer<ControllerChangeEvent> e) {
+        observers.add(e);
+    }
+
+    @Override
+    public void removeObserver(Observer<ControllerChangeEvent> e) {
+        observers.remove(e);
+    }
+
+    @Override
+    public void notifyObservers(ControllerChangeEvent t) {
+        observers.stream().forEach(x->x.update(t));
     }
 }

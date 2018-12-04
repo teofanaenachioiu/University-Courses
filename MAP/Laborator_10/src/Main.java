@@ -70,7 +70,6 @@ public class Main extends Application {
         //setez service-ul
         gradeController.setService(service);
 
-
         Scene gradeScene=new Scene(gradeLayout,720,600);
         gradeController.setPrimaryStage(primaryStage);
         gradeController.setMainScene(mainMenuScene);

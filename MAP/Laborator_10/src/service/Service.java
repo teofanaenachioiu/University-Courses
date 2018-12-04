@@ -243,7 +243,6 @@ public class Service implements Observable<StudentChangeEvent> {
         }
     }
 
-
     private <T> Iterable <T> filter(Iterable <T> list, Predicate<T> cond)
     {
         List<T> rez=new ArrayList<>();
@@ -294,15 +293,6 @@ public class Service implements Observable<StudentChangeEvent> {
             lista.add(notaDTO);
         }
         return lista;
-
-    }
-
-    public Nota getNotaFromNotaDTO(NotaDTO notaDTO){
-        String idStudent=notaDTO.getIdStudent();
-        String idTema=notaDTO.getIdTema();
-        Pair id=new Pair(idStudent,idTema);
-        Optional<Nota> notaNormala=repoN.findOne(Optional.ofNullable(id));
-        return notaNormala.get();
     }
 
     public String getIdStudent(String string){
@@ -321,13 +311,12 @@ public class Service implements Observable<StudentChangeEvent> {
      * @return dif (nurmarul laboratorului)
      */
     public Integer getLabNumber(){
-        Integer saptCurenta=getCurrentWeek();
-        Integer dif=saptCurenta-39;
+        Integer dif=getCurrentWeek()-39;
         if(dif<1||dif>16) return null;
-        if(saptCurenta.equals(13) || saptCurenta.equals(14))
+        if(getCurrentWeek().equals(13) || getCurrentWeek().equals(14))
             return 12;
-        if(saptCurenta.equals(15)) return dif-1;
-        if(saptCurenta.equals(16)) return dif-2;
+        if(getCurrentWeek().equals(15)) return dif-1;
+        if(getCurrentWeek().equals(16)) return dif-2;
         return dif;
     }
 
