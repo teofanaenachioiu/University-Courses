@@ -1,0 +1,7 @@
+function pseudo()
+   a=rand(0,1);
+   n=10;
+   x=zeros(n);
+   x=exponential(a,n);
+   x
+end

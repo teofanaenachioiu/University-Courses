@@ -43,6 +43,7 @@ function graficaCerc()
         
         for i=1:n
             nr=Bern(p);
+            pause(0.5)
             if nr==0
 
                 y=sqrt(1-x(poz+1)*x(poz+1));
