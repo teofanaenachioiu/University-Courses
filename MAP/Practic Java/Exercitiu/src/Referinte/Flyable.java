@@ -1,4 +1,6 @@
 package Referinte;
 
-public interface Flyable {
+@FunctionalInterface
+public interface Flyable<T> {
+    int canFly(T t);
 }
