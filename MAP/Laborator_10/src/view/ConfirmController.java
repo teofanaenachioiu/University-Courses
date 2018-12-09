@@ -63,6 +63,7 @@ public class ConfirmController {
             if (!saved.isPresent()) {
                 this.controller.showMessage(Alert.AlertType.INFORMATION, "Adaugare informatii", "Nota a fost adaugata!");
                 controller.update(new NotaChangeEvent(ChangeEventType.ADD,nota));
+                controller.averageController.update(new NotaChangeEvent(ChangeEventType.ADD));
             }
             else
                 this.controller.showErrorMessage("Studentul are deja nota!");

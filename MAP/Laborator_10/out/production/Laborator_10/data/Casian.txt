@@ -10,3 +10,9 @@ Predata in saptamana: 7
 Deadline: 8
 Feedback: da
 
+Tema: 9
+Nota: 9.0
+Predata in saptamana: 10
+Deadline: 12
+Feedback: Bun
+

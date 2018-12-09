@@ -6,6 +6,10 @@ public class NotaChangeEvent implements Event{
     private ChangeEventType type;
     private Nota data, oldData;
 
+    public NotaChangeEvent(ChangeEventType type) {
+        this.type = type;
+    }
+
     public NotaChangeEvent(ChangeEventType type, Nota data) {
         this.type = type;
         this.data = data;

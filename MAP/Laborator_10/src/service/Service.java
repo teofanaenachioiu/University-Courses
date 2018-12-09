@@ -1,9 +1,6 @@
 package service;
 
-import domain.Nota;
-import domain.NotaDTO;
-import domain.Student;
-import domain.Tema;
+import domain.*;
 import javafx.util.Pair;
 import repository.*;
 import utils.Observable;
@@ -13,7 +10,6 @@ import validator.ValidatorNota;
 import validator.ValidatorStudent;
 import validator.ValidatorTema;
 
-import javax.swing.text.html.Option;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -346,6 +342,54 @@ public class Service implements Observable<StudentChangeEvent> {
         if(saptCurenta.equals(15)) return dif-1;
         if(saptCurenta.equals(16)) return dif-2;
         return dif;
+    }
+
+    private List<Float> initNote(){
+        List<Float> note;
+        note = Arrays.asList(0f,0f,0f,0f,0f,0f,0f,0f,0f,0f);
+        Integer crr=getCurrentAssignment();
+        for(int i=0;i<crr-1;i++) note.set(i,1f);
+        return note;
+    }
+
+    public Collection<NotaDTO2> noteLaboratoare(){
+
+        HashMap<String,NotaDTO2> mapNote=new HashMap();
+        for(Nota n:repoN.findAll()){
+            NotaDTO2 notaDTO2=new NotaDTO2(n.getStudentID(),repoS.findOne(Optional.of(n.getStudentID())).get().getNume());
+            notaDTO2.setNote(initNote());
+            mapNote.putIfAbsent(n.getStudentID(),notaDTO2);
+           // NotaDTO2 newNota=mapNote.get(n.getStudentID()).setNotaLab(n.getTemaID(),n.getNotaProf());
+            //mapNote.replace(n.getStudentID(),newNota);
+            mapNote.computeIfPresent(n.getStudentID(),(x,y)->y.setNotaLab(n.getTemaID(),n.getNotaProf()));
+        }
+        return mapNote.values();
+    }
+
+    private Float calculeazaMedia(List<Float> listaNote){
+        Float suma=0f;
+        Integer sumaPonderi=0;
+        Integer lab=1;
+        for(Float nota:listaNote){
+            Tema t=repoT.findOne(Optional.of(lab.toString())).get();
+            Integer pondere=t.getDeadline()-t.getDataPredare();
+            suma=suma+pondere*nota;
+            sumaPonderi+=pondere;
+            lab+=1;
+        }
+        return suma/sumaPonderi;
+    }
+
+    public Collection<Media> medieStudenti(){
+        Collection<Media> listaMedii=new ArrayList<>();
+        Float medie;
+        for (NotaDTO2 nota:noteLaboratoare()) {
+            medie=calculeazaMedia(nota.getNote());
+            String grupa=repoS.findOne(Optional.of(nota.getIdStudent())).get().getGrupa();
+            Media m=new Media(nota.getIdStudent(),nota.getNumeStudent(),grupa,medie);
+            listaMedii.add(m);
+        }
+        return listaMedii;
     }
 
 }

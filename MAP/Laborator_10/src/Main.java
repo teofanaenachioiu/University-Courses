@@ -1,3 +1,5 @@
+import domain.Media;
+import domain.NotaDTO2;
 import javafx.scene.Parent;
 import view.GradeController;
 import view.MainMenuController;
@@ -14,6 +16,8 @@ import view.StudentView;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 
 
 public class Main extends Application {
@@ -27,7 +31,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
+        Collection<NotaDTO2> li=service.noteLaboratoare();
+        Collection<Media> lista=service.medieStudenti();
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image(new File("./src/resources/teacher.png").toURI().toString()));
         primaryStage.setTitle("MAP Class Book Manager");

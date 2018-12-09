@@ -2,11 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/../Practic Java/Exercitiu/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Practic Java/Exercitiu/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Practic Java/Exercitiu/src/InnerOuter/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Practic Java/Exercitiu/src/InnerOuter/Outer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/Media.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/NotaDTO2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/AverageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practic Java/Sablon/src/domain/Entity1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practic Java/Sablon/src/domain/Entity12.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practic Java/Sablon/src/domain/Entity2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laborator_10/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator_10/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laborator_10/data/Andreea.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator_10/data/Andreea.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laborator_10/data/Casian.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator_10/data/Casian.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laborator_10/data/Catalog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator_10/data/Catalog.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laborator_10/data/Teme.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator_10/data/Teme.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laborator_10/data/Teofana.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator_10/data/Teofana.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laborator_10/data/Vlad.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator_10/data/Vlad.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laborator_10/service/Service.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator_10/service/Service.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laborator_10/utils/NotaChangeEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator_10/utils/NotaChangeEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laborator_10/view/ConfirmController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator_10/view/ConfirmController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laborator_10/view/GradeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator_10/view/GradeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laborator_10/view/GradeView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laborator_10/view/GradeView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/Andreea.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Andreea.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/Casian.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Casian.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/Catalog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Catalog.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/Teme.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Teme.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/Teofana.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Teofana.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/Vlad.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Vlad.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/Service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/NotaChangeEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/NotaChangeEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ConfirmController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ConfirmController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GradeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GradeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GradeView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GradeView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practic Java/Exercitiu/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Practic Java/Exercitiu/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practic Java/Exercitiu/src/Stream/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Practic Java/Exercitiu/src/Stream/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Probabilitati si statistica/Laborator5/pseudo.asv" beforeDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -75,35 +103,36 @@
           <entry key="project.open.time.60" value="2" />
           <entry key="project.open.time.74" value="1" />
           <entry key="project.open.time.75" value="1" />
-          <entry key="project.opened" value="14" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="5" />
+          <entry key="class" value="6" />
           <entry key="fxml" value="7" />
-          <entry key="java" value="81" />
-          <entry key="xml" value="11" />
+          <entry key="java" value="99" />
+          <entry key="xml" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="5" />
-          <entry key="JAVA" value="81" />
-          <entry key="XML" value="18" />
+          <entry key="CLASS" value="6" />
+          <entry key="JAVA" value="99" />
+          <entry key="XML" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="fxml" value="1" />
-          <entry key="java" value="9514" />
-          <entry key="xml" value="117" />
+          <entry key="java" value="12162" />
+          <entry key="xml" value="120" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="9514" />
-          <entry key="XML" value="118" />
+          <entry key="JAVA" value="12162" />
+          <entry key="XML" value="121" />
         </counts>
       </usages-collector>
     </session>
@@ -112,66 +141,106 @@
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/ControllerChangeEvent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/GradeController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4675">
-              <caret line="310" column="38" selection-start-line="310" selection-start-column="38" selection-end-line="310" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="71" selection-start-line="71" selection-end-line="71" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/service/Service.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4029">
-              <caret line="274" column="22" selection-start-line="274" selection-start-column="16" selection-end-line="274" selection-end-column="22" />
-              <folding>
-                <element signature="e#3801#3802#0" expanded="true" />
-                <element signature="e#3854#3855#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/StudentController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4471">
-              <caret line="302" column="19" selection-start-line="302" selection-start-column="16" selection-end-line="302" selection-end-column="19" />
-              <folding>
-                <element signature="e#11418#11419#0" expanded="true" />
-                <element signature="e#11453#11454#0" expanded="true" />
-                <element signature="e#11527#11528#0" expanded="true" />
-                <element signature="e#11585#11586#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.8430067">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/Main.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="68">
+                  <caret line="34" column="6" selection-start-line="33" selection-start-column="7" selection-end-line="34" selection-end-column="6" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/view/GradeController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-6116">
+                  <caret line="31" column="10" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/view/ConfirmController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="102">
+                  <caret line="62" column="37" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="37" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/utils/NotaChangeEvent.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="102">
+                  <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+                  <folding>
+                    <element signature="e#200#201#0" expanded="true" />
+                    <element signature="e#232#233#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/view/AverageController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="165">
+                  <caret line="58" selection-start-line="58" selection-end-line="58" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/view/GradeController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="79">
+                  <caret line="301" selection-start-line="301" selection-end-line="301" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/domain/Media.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="255">
+                  <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+                  <folding>
+                    <element signature="e#408#409#0" expanded="true" />
+                    <element signature="e#458#459#0" expanded="true" />
+                    <element signature="e#500#501#0" expanded="true" />
+                    <element signature="e#538#539#0" expanded="true" />
+                    <element signature="e#572#573#0" expanded="true" />
+                    <element signature="e#626#627#0" expanded="true" />
+                    <element signature="e#672#673#0" expanded="true" />
+                    <element signature="e#704#705#0" expanded="true" />
+                    <element signature="e#732#733#0" expanded="true" />
+                    <element signature="e#774#775#0" expanded="true" />
+                    <element signature="e#808#809#0" expanded="true" />
+                    <element signature="e#839#840#0" expanded="true" />
+                    <element signature="e#867#868#0" expanded="true" />
+                    <element signature="e#908#909#0" expanded="true" />
+                    <element signature="e#942#943#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -185,7 +254,6 @@
       <find>40</find>
       <find>39</find>
       <find>auto</find>
-      <find>handleAdd</find>
       <find>setall</find>
       <find>cauta</find>
       <find>getcurr</find>
@@ -204,6 +272,12 @@
       <find>not</find>
       <find>notify</find>
       <find>initCombobox</find>
+      <find>model</find>
+      <find>update</find>
+      <find>notach</find>
+      <find>comboboxlab</find>
+      <find>loaderAb</find>
+      <find>handleAdd</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -220,17 +294,20 @@
         <option value="$PROJECT_DIR$/src/teste/StudentTest.java" />
         <option value="$PROJECT_DIR$/src/domain/NotaDTO.java" />
         <option value="$PROJECT_DIR$/src/view/AutoCompleteComboBoxListener.java" />
-        <option value="$PROJECT_DIR$/src/utils/NotaChangeEvent.java" />
         <option value="$PROJECT_DIR$/src/view/GradeView.fxml" />
         <option value="$PROJECT_DIR$/src/data/Studenti.xml" />
         <option value="$PROJECT_DIR$/src/data/Catalog.xml" />
         <option value="$PROJECT_DIR$/src/utils/ControllerChangeEvent.java" />
-        <option value="$PROJECT_DIR$/src/data/Teme.xml" />
-        <option value="$PROJECT_DIR$/src/view/ConfirmController.java" />
-        <option value="$PROJECT_DIR$/src/service/Service.java" />
         <option value="$PROJECT_DIR$/src/view/StudentController.java" />
-        <option value="$PROJECT_DIR$/src/view/GradeController.java" />
+        <option value="$PROJECT_DIR$/src/data/Teme.xml" />
+        <option value="$PROJECT_DIR$/src/service/Service.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/domain/NotaDTO2.java" />
+        <option value="$PROJECT_DIR$/src/domain/Media.java" />
+        <option value="$PROJECT_DIR$/src/view/AverageController.java" />
+        <option value="$PROJECT_DIR$/src/utils/NotaChangeEvent.java" />
+        <option value="$PROJECT_DIR$/src/view/ConfirmController.java" />
+        <option value="$PROJECT_DIR$/src/view/GradeController.java" />
       </list>
     </option>
   </component>
@@ -253,7 +330,9 @@
     <option name="width" value="1386" />
     <option name="height" value="788" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
   </component>
@@ -263,7 +342,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -275,18 +353,6 @@
               <item name="Laborator_10" type="b2602c69:ProjectViewProjectNode" />
               <item name="Laborator_10" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Laborator_10" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Laborator_10" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Laborator_10" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Laborator_10" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Laborator_10" type="b2602c69:ProjectViewProjectNode" />
@@ -304,6 +370,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -319,8 +386,9 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543926598507" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544357973749" />
     <property name="dynamic.classpath" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="recentsLimit" value="5" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
@@ -454,17 +522,18 @@
       <workItem from="1543924767595" duration="1878000" />
       <workItem from="1543926865527" duration="3339000" />
       <workItem from="1544260377167" duration="680000" />
+      <workItem from="1544342435672" duration="16022000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54366000" />
+    <option name="totallyTimeSpent" value="70388000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.24281392" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.20499243" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -473,7 +542,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32850242" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32850242" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32850242" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5152979" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -627,31 +696,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_181/jre/lib/jfr.jar!/com/oracle/jrockit/jfr/FlightRecorder.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_181/jre/lib/rt.jar!/sun/reflect/NativeConstructorAccessorImpl.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="33" column="33" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/repository/RepoInMemory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/NotaDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="19" column="23" lean-forward="true" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -726,13 +774,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/Nota.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="46" selection-start-line="46" selection-end-line="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/domain/Tema.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
@@ -797,13 +838,6 @@
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/NotaChangeEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="28" column="5" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="28" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/AutoCompleteComboBoxListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -811,23 +845,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/Teme.xml">
+    <entry file="file://$PROJECT_DIR$/src/domain/NotaDTO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="56" column="11" lean-forward="true" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="11" />
+        <state relative-caret-position="306">
+          <caret line="19" column="23" lean-forward="true" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/ConfirmController.java">
+    <entry file="file://$PROJECT_DIR$/src/domain/Student.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+        <state relative-caret-position="91">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="e#995#996#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_181/src.zip!/java/util/HashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10761">
+          <caret line="955" column="25" selection-start-line="955" selection-start-column="25" selection-end-line="955" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/ControllerChangeEvent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
+        <state relative-caret-position="85">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -835,27 +879,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/GradeController.java">
+    <entry file="file://$PROJECT_DIR$/src/repository/RepoInMemory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4675">
-          <caret line="310" column="38" selection-start-line="310" selection-start-column="38" selection-end-line="310" selection-end-column="38" />
+        <state relative-caret-position="34">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+          <folding>
+            <element signature="e#1362#1363#0" expanded="true" />
+            <element signature="e#1402#1403#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/service/Service.java">
+    <entry file="file://$PROJECT_DIR$/src/data/Teme.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4029">
-          <caret line="274" column="22" selection-start-line="274" selection-start-column="16" selection-end-line="274" selection-end-column="22" />
+        <state relative-caret-position="332">
+          <caret line="44" column="20" selection-start-line="44" selection-start-column="20" selection-end-line="44" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domain/Nota.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
           <folding>
-            <element signature="e#3801#3802#0" expanded="true" />
-            <element signature="e#3854#3855#0" expanded="true" />
+            <element signature="e#543#544#0" expanded="true" />
+            <element signature="e#668#669#0" expanded="true" />
+            <element signature="e#697#698#0" expanded="true" />
+            <element signature="e#983#984#0" expanded="true" />
+            <element signature="e#1032#1033#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domain/NotaDTO2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="43" column="46" selection-start-line="43" selection-start-column="46" selection-end-line="43" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#467#468#0" expanded="true" />
+            <element signature="e#499#500#0" expanded="true" />
+            <element signature="e#629#630#0" expanded="true" />
+            <element signature="e#663#664#0" expanded="true" />
+            <element signature="e#792#793#0" expanded="true" />
+            <element signature="e#819#820#0" expanded="true" />
+            <element signature="e#857#858#0" expanded="true" />
+            <element signature="e#889#890#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/StudentController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4471">
+        <state relative-caret-position="216">
           <caret line="302" column="19" selection-start-line="302" selection-start-column="16" selection-end-line="302" selection-end-column="19" />
           <folding>
             <element signature="e#11418#11419#0" expanded="true" />
@@ -866,10 +942,87 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/domain/Media.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+          <folding>
+            <element signature="e#408#409#0" expanded="true" />
+            <element signature="e#458#459#0" expanded="true" />
+            <element signature="e#500#501#0" expanded="true" />
+            <element signature="e#538#539#0" expanded="true" />
+            <element signature="e#572#573#0" expanded="true" />
+            <element signature="e#626#627#0" expanded="true" />
+            <element signature="e#672#673#0" expanded="true" />
+            <element signature="e#704#705#0" expanded="true" />
+            <element signature="e#732#733#0" expanded="true" />
+            <element signature="e#774#775#0" expanded="true" />
+            <element signature="e#808#809#0" expanded="true" />
+            <element signature="e#839#840#0" expanded="true" />
+            <element signature="e#867#868#0" expanded="true" />
+            <element signature="e#908#909#0" expanded="true" />
+            <element signature="e#942#943#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/service/Service.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="271" column="46" selection-start-line="271" selection-start-column="40" selection-end-line="271" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/AverageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/NotaChangeEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+          <folding>
+            <element signature="e#200#201#0" expanded="true" />
+            <element signature="e#232#233#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="71" selection-start-line="71" selection-end-line="71" />
+        <state relative-caret-position="68">
+          <caret line="34" column="6" selection-start-line="33" selection-start-column="7" selection-end-line="34" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_181/jre/lib/jfr.jar!/com/oracle/jrockit/jfr/FlightRecorder.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="e#450#451#0" expanded="true" />
+            <element signature="e#479#480#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/ConfirmController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="62" column="37" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/GradeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6116">
+          <caret line="31" column="10" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
         </state>
       </provider>
     </entry>

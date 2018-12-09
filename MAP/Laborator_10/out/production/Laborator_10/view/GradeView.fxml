@@ -143,6 +143,7 @@
                </children>
             </GridPane>
             <Button fx:id="buttonClear" layoutX="19.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleClear" text="Clear" AnchorPane.bottomAnchor="183.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="240.0" AnchorPane.topAnchor="260.0" />
+            <Button fx:id="buttonAverage" layoutX="15.0" layoutY="442.0" mnemonicParsing="false" onAction="#handleMedieStudenti" text="Average" />
          </children>
       </AnchorPane>
    </right>

@@ -15,10 +15,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import repository.ValidationException;
 import service.Service;
-import utils.ChangeEventType;
-import utils.Event;
-import utils.NotaChangeEvent;
-import utils.Observer;
+import utils.*;
 
 import javax.management.StandardEmitterMBean;
 import java.io.IOException;
@@ -29,7 +26,10 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import static utils.ChangeEventType.ADD;
+
 public class GradeController implements Observer<NotaChangeEvent> {
+    public AverageController averageController;
     public BorderPane GradeBorderPane;
     public Button imageButton;
     public Service service;
@@ -38,6 +38,8 @@ public class GradeController implements Observer<NotaChangeEvent> {
     private Stage primaryStage;
     private Scene mainScene;
 
+    private FXMLLoader loaderAvg;
+    private Scene sceneAvg;
     @FXML
     private TableView<NotaDTO> tableView;
     @FXML
@@ -98,6 +100,9 @@ public class GradeController implements Observer<NotaChangeEvent> {
     private DatePicker datePickerFilter2;
     @FXML
     private Button buttonClear;
+
+    @FXML
+    private Button buttonAverage;
 
     public GradeController() {
         model= FXCollections.observableArrayList();
@@ -161,7 +166,7 @@ public class GradeController implements Observer<NotaChangeEvent> {
 
         tableView.setItems(model);
 
-        ObservableList<String> data = FXCollections.observableArrayList("1", "2", "3","4","5","6","7","8","");
+        ObservableList<String> data = FXCollections.observableArrayList("1", "2", "3","4","5","6","7","8","9","10");
         this.comboBoxLab.setItems(data);
         this.comboBoxLabFilter.setItems(data);
 
@@ -173,6 +178,8 @@ public class GradeController implements Observer<NotaChangeEvent> {
         this.comboBoxGroupFilter.valueProperty().addListener(o->handleFilter());
         this.datePickerFilter1.valueProperty().addListener(o->handleFilter());
         this.datePickerFilter2.valueProperty().addListener(o->handleFilter());
+
+       // averageController=new AverageController();
     }
 
     @FXML
@@ -246,6 +253,7 @@ public class GradeController implements Observer<NotaChangeEvent> {
 
     @FXML
     public void handleAddButton(){
+
         Nota nota=extractNota();
         boolean motivat=this.checkBoxMotivation.isSelected();
         String feedback=this.textAreaFeedback.getText();
@@ -272,6 +280,7 @@ public class GradeController implements Observer<NotaChangeEvent> {
                 System.out.println("di ce nu mergi?");
             }
         }
+
     }
 
     @FXML
@@ -281,7 +290,6 @@ public class GradeController implements Observer<NotaChangeEvent> {
 
     public void setService(Service service){
         this.service = service;
-
         List<NotaDTO> list= StreamSupport.stream(service.listaNoteDTO().spliterator(), false)
                 .collect(Collectors.toList());
         model.setAll(list);
@@ -290,6 +298,17 @@ public class GradeController implements Observer<NotaChangeEvent> {
         this.comboBoxLab.getSelectionModel().select(nrAssignment-1);
 
         initComboBox();
+
+
+        loaderAvg=new FXMLLoader();
+        loaderAvg.setLocation(getClass().getResource("/view/AverageView.fxml"));
+        try {
+            sceneAvg=new Scene(loaderAvg.load(),400,400);
+            averageController=loaderAvg.getController();
+            averageController.init(service);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -379,4 +398,15 @@ public class GradeController implements Observer<NotaChangeEvent> {
         this.datePickerFilter1.setValue(null);
     }
 
+    @FXML
+    private void handleMedieStudenti(){
+
+            averageController.update(new NotaChangeEvent(ChangeEventType.ADD));
+            Stage stage=new Stage();
+            stage.setTitle("Average of grades");
+            stage.setScene(sceneAvg);
+
+            stage.show();
+
+    }
 }

@@ -23,3 +23,9 @@ Deadline: 9
 Feedback: NOTA A FOST DIMINUATĂ CU 2.5
 PUNCTE DATORITĂ ÎNTÂRZIERILOR
 
+Tema: 9
+Nota: 10.0
+Predata in saptamana: 10
+Deadline: 12
+Feedback: da
+
