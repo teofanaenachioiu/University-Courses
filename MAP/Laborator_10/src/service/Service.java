@@ -269,7 +269,7 @@ public class Service implements Observable<StudentChangeEvent> {
 
     @Override
     public void notifyObservers(StudentChangeEvent t) {
-        observers.stream().forEach(x->x.update(t));
+        observers.forEach(x->x.update(t));
     }
 
     public Student getStudent(String detalii) {
