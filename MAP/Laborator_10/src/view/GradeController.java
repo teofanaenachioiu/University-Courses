@@ -30,6 +30,7 @@ import static utils.ChangeEventType.ADD;
 
 public class GradeController implements Observer<NotaChangeEvent> {
     public AverageController averageController;
+    public ExamController examController;
     public BorderPane GradeBorderPane;
     public Button imageButton;
     public Service service;
@@ -38,8 +39,8 @@ public class GradeController implements Observer<NotaChangeEvent> {
     private Stage primaryStage;
     private Scene mainScene;
 
-    private FXMLLoader loaderAvg;
-    private Scene sceneAvg;
+    private FXMLLoader loaderAvg,loaderExam;
+    private Scene sceneAvg,sceneExam;
     @FXML
     private TableView<NotaDTO> tableView;
     @FXML
@@ -178,8 +179,6 @@ public class GradeController implements Observer<NotaChangeEvent> {
         this.comboBoxGroupFilter.valueProperty().addListener(o->handleFilter());
         this.datePickerFilter1.valueProperty().addListener(o->handleFilter());
         this.datePickerFilter2.valueProperty().addListener(o->handleFilter());
-
-       // averageController=new AverageController();
     }
 
     @FXML
@@ -299,13 +298,24 @@ public class GradeController implements Observer<NotaChangeEvent> {
 
         initComboBox();
 
-
+        // Medii suntdenti
         loaderAvg=new FXMLLoader();
         loaderAvg.setLocation(getClass().getResource("/view/AverageView.fxml"));
         try {
             sceneAvg=new Scene(loaderAvg.load(),400,400);
             averageController=loaderAvg.getController();
             averageController.init(service);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //Studentii care pot intra in examen
+        loaderExam=new FXMLLoader();
+        loaderExam.setLocation(getClass().getResource("/view/ExamView.fxml"));
+        try {
+            sceneExam=new Scene(loaderExam.load(),400,400);
+            examController=loaderExam.getController();
+            examController.init(service);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -400,13 +410,20 @@ public class GradeController implements Observer<NotaChangeEvent> {
 
     @FXML
     private void handleMedieStudenti(){
+        averageController.update(new NotaChangeEvent(ChangeEventType.ADD));
+        Stage stage=new Stage();
+        stage.setTitle("Average of grades");
+        stage.setScene(sceneAvg);
+        stage.show();
+    }
 
-            averageController.update(new NotaChangeEvent(ChangeEventType.ADD));
-            Stage stage=new Stage();
-            stage.setTitle("Average of grades");
-            stage.setScene(sceneAvg);
-
-            stage.show();
+    @FXML
+    private void handlePromovat(){
+        examController.update(new NotaChangeEvent(ChangeEventType.ADD));
+        Stage stage=new Stage();
+        stage.setTitle("Students");
+        stage.setScene(sceneExam);
+        stage.show();
 
     }
 }
