@@ -41,8 +41,9 @@ public class Service {
                 lista.add(reservation.getLocation());
         }
         return lista;
-
     }
+
+
 
     public Map<String,Integer> numarRezervari(){
         initReservations();
@@ -58,10 +59,12 @@ public class Service {
     }
 
     public Map<String,List< Reservation>> sumaIncasata(){
-        Map<String,List<Reservation>> map=repositoryReservation.findAll().stream().collect(Collectors.groupingBy(x->x.getLocation().getHotel()));
-
-      return map;
-
-
+        Map<String,List<Reservation>> map
+                = repositoryReservation.findAll()
+                .stream()
+                .collect(Collectors.groupingBy(x->x.getLocation().getHotel()));
+        return map;
     }
+
+
 }

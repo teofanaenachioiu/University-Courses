@@ -15,6 +15,7 @@ import repository.RepositoryInFileLocation;
 import repository.RepositoryInFileReservation;
 import service.Service;
 
+import java.time.LocalDateTime;
 import java.util.Locale;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
@@ -47,7 +48,7 @@ public class Main extends Application {
                     System.out.println(suma);
                 }
         );
-        
+        LocalDateTime date;
         launch(args);
     }
 }
