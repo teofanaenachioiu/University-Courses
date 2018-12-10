@@ -1,0 +1,3 @@
+1,Suceava,Imperial,2,250
+2,Falticeni,IriStar,3,150
+3,Cluj-Napoca,Belvedere,4,400
