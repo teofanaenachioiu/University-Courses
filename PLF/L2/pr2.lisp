@@ -1,15 +1,16 @@
 (defun arboreDr(L nrv nrm)
 	(cond
-		((equal nrv (+ nrm 1))  L)
 		((NULL L) NIL)
+		((equal nrv (+ nrm 1))  L)
 		(T (arboreDr (CDDR L) (+ nrv 1) (+ nrm (CADR L)) ))
 	)
 )
 
 (defun arboreStg(L nrv nrm)
 	(cond
-		((equal nrv (+ nrm 1)) NIL)
 		((NULL L) NIL)
+		((equal nrv (+ nrm 1)) NIL)
+		
 		(T (APPEND (LIST (CAR L) (CADR L)) 
 			(arboreStg (CDDR L)  (+ nrv 1) (+ nrm (CADR L)))
 			)	
