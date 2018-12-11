@@ -2,7 +2,6 @@ package view;
 
 import domain.Nota;
 import domain.NotaDTO;
-import domain.Student;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,20 +12,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import repository.ValidationException;
 import service.Service;
 import utils.*;
 
-import javax.management.StandardEmitterMBean;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
-
-import static utils.ChangeEventType.ADD;
 
 public class GradeController implements Observer<NotaChangeEvent> {
     public AverageController averageController;
