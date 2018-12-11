@@ -1,0 +1,16 @@
+  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+
+        String date = "2016/07/01";
+
+        //convert String to LocalDate
+        LocalDate localDate = LocalDate.parse(date, formatter);
+
+
+
+//in functia initialize
+
+        this.comboBoxNumeFilter.valueProperty().addListener(o->handleFilter());
+                this.comboBoxLabFilter.valueProperty().addListener(o->handleFilter());
+                this.comboBoxGroupFilter.valueProperty().addListener(o->handleFilter());
+                this.datePickerFilter1.valueProperty().addListener(o->handleFilter());
+                this.datePickerFilter2.valueProperty().addListener(o->handleFilter());

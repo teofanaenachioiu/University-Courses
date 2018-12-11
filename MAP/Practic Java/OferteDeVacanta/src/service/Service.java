@@ -20,6 +20,11 @@ public class Service {
     Repository<Pair<Client,Location>, Reservation> repositoryReservation
             =new RepositoryInFileReservation("./src/data/reservation.txt") ;
 
+    public Service() {
+        initReservations();
+    }
+
+
     private void initReservations(){
         for(Reservation r:repositoryReservation.findAll()){
             for(Client c:repositoryClient.findAll()){
@@ -34,7 +39,7 @@ public class Service {
     }
 
     public ArrayList<Location> getLocatii(String locatie){
-        initReservations();
+        //initReservations();
         ArrayList <Location> lista =new ArrayList<>();
         for(Reservation reservation:repositoryReservation.findAll()){
             if(reservation.getLocation().getLocationName().equals(locatie))
@@ -46,7 +51,7 @@ public class Service {
 
 
     public Map<String,Integer> numarRezervari(){
-        initReservations();
+        //initReservations();
         Map<String,Integer> map=new HashMap<>();
         for(Reservation reservation:repositoryReservation.findAll()){
             if(reservation.getStartDate().getYear()== LocalDateTime.now().getYear()) {

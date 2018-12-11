@@ -15,7 +15,12 @@ import repository.RepositoryInFileLocation;
 import repository.RepositoryInFileReservation;
 import service.Service;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
@@ -34,21 +39,26 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-        for(Location l:service.getLocatii(args[0]))
-            System.out.println(l);
+//        for(Location l:service.getLocatii(args[0]))
+//            System.out.println(l);
         service.numarRezervari().forEach((x,y)->System.out.println(x+" "+y));
+//
+//        service.sumaIncasata().entrySet().forEach(
+//                e->{
+//                    System.out.println(e.getKey());
+//                    double suma=e.getValue()
+//                            .stream()
+//                            .map(r->r.getLocation().getPricePerNight())
+//                            .reduce(0d,(r1,r2)->r1+r2);
+//                    System.out.println(suma);
+//                }
+//        );
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-        service.sumaIncasata().entrySet().forEach(
-                e->{
-                    System.out.println(e.getKey());
-                    double suma=e.getValue()
-                            .stream()
-                            .map(r->r.getLocation().getPricePerNight())
-                            .reduce(0d,(r1,r2)->r1+r2);
-                    System.out.println(suma);
-                }
-        );
-        LocalDateTime date;
+        String date = "01-07-1999";
+
+        //convert String to LocalDate
+        LocalDate localDate = LocalDate.parse(date, formatter);
         launch(args);
     }
 }

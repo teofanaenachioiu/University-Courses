@@ -1,0 +1,13 @@
+1,fail to load benefits on Config screen,2,13-12-2018, 2389.78
+2,submit button disabled on Transaction screen, 2,11-12-2018, 2150.50
+3,product description not editable in Products screen,3,12-12-2018,300.65
+4,sum computed incorrectly in benefits window, 1,10-11-2018, 987.9
+5,create a dropdown on user screen with benefits, 1,30-04-2018,365
+6,member registration window should allow role selection,8,19-03-2018, 7890.87
+7,another ticket for Horizon, 11,11-06-2018, 980
+8,create a window to view the fuel consumption graphic daily, 12,11-12-2018,789.56
+9,allow update of speed, 10,01-12-2018, 500.50
+10,login for controller not working, 13,11-11-2018, 800
+11, accountant window does not have a back button, 18,10-10-2018, 300
+12, exit button not working, 14,15-09-2018,600
+13, add a submit button to send command window, 16,08-12-2018, 500
