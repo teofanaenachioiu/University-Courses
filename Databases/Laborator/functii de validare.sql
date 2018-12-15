@@ -4,6 +4,19 @@ go
 SET LANGUAGE us_english;  
 SET DATEFORMAT ymd;  
 go
+-- Validare numar randuri
+create or alter function dbo.validare_NrRanduri(@rows int)
+returns bit
+as
+begin
+	declare @flag bit;
+	set @flag=0;
+	if @rows>=0 
+		set @flag=1;
+	return @flag;
+end
+go
+
 
 -- Validare id Asociatie
 create or alter function dbo.validare_IdAsociatie (@aid int)

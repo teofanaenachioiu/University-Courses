@@ -11,7 +11,8 @@ create or alter procedure verificare_Participanti
 	@aid int, -- id asociatie
 	@gid int, -- id grupa
 	@nume varchar(50),
-	@data date
+	@data date,
+	@rows int
 as
 begin
 	declare @suma int;
@@ -21,16 +22,18 @@ begin
 	if dbo.validare_DataCalendaristica(@data) = 1
 	begin
 		if dbo.validare_IdAsociatie(@aid)=0 
-			set @mesaj=@mesaj+'IDasociatie '
+			set @mesaj=@mesaj+'IDasociatie ';
 		if dbo.validare_IdGrupa(@gid) = 0 
-			set @mesaj=@mesaj+ 'IDgrupa ' 
+			set @mesaj=@mesaj+ 'IDgrupa ' ;
 		if dbo.validare_DataN(@data) =0 
-			set @mesaj=@mesaj+'data ' 
-		set @suma= @suma+dbo.validare_IdAsociatie(@aid)+dbo.validare_IdGrupa(@gid) + dbo.validare_DataN(@data);
+			set @mesaj=@mesaj+'data ' ;
+		if dbo.validare_NrRanduri(@rows)=0
+			set @mesaj=@mesaj+'nrRanduri ';
+		set @suma= @suma+dbo.validare_IdAsociatie(@aid)+dbo.validare_IdGrupa(@gid) + dbo.validare_DataN(@data)+dbo.validare_NrRanduri(@rows);
 	end
 	else 
 		set @mesaj='data nu e calentaristica!'
-	if @suma=3 
+	if @suma=4 
 		set @flag=1;
 end
 go
@@ -39,7 +42,8 @@ create or alter procedure verificare_Evenimente
 	@flag bit output,
 	@mesaj varchar(30) output,
 	@data date,
-	@ora time(7)
+	@ora time(7),
+	@rows int
 as
 begin
 	declare @suma int;
@@ -50,8 +54,9 @@ begin
 		set @mesaj=@mesaj+'format data! '
 	if dbo.validare_Ora(@ora)=1
 		set @mesaj=@mesaj+'fromat ora! '
-
-	set @suma= @suma+dbo.validare_DataCalendaristica(@data)+dbo.validare_Ora(@ora);
+	if dbo.validare_NrRanduri(@rows)=0
+			set @mesaj=@mesaj+'nrRanduri ';
+	set @suma= @suma+dbo.validare_DataCalendaristica(@data)+dbo.validare_Ora(@ora)+dbo.validare_NrRanduri(@rows);
 	
 	if @suma=2 
 		set @flag=1;
@@ -82,6 +87,36 @@ end
 go
 
 
+create or alter procedure verificare_Asociatii
+	@flag bit output,
+	@mesaj varchar(30) output,
+	@rows int
+as
+begin
+	set @flag=1;
+	if dbo.validare_NrRanduri(@rows)=0
+		begin
+			set @mesaj='nrRanduri ';
+			set @flag=0;
+		end
+end
+go
+
+create or alter procedure verificare_Grupe
+	@flag bit output,
+	@mesaj varchar(30) output,
+	@rows int
+as
+begin
+	set @flag=1;
+	if dbo.validare_NrRanduri(@rows)=0
+		begin
+			set @mesaj='nrRanduri ';
+			set @flag=0;
+		end
+end
+go
+
 --------------- Operatii CRUD pe tabela ASOCIATII ----------------
 
 create or alter procedure CRUD_Asociatii
@@ -93,34 +128,42 @@ begin
 
 	declare @i int;
 	declare @aid int;
-	
+	declare @flag bit;
+	declare @mesaj varchar(30)
+
 	set @aid=0;
 
 	select top 1 @aid=Aid from Asociatii order by Aid desc
 	set @i=1;
 
-	-- INSERT --------------------------------------------------------------
-	WHILE @i<=@rows
-	BEGIN
-		SET @aid=@aid+1	
-		INSERT INTO Insotitori VALUES (@aid,'data_de_test',null); -- adaug mai intai in tabela Insotiori
-		INSERT INTO Asociatii VALUES (@aid,@denumire)
-		SET @i=@i+1
-		print 'Asociatia '+@denumire+' a fost adaugata!';
-	END
+	exec verificare_Asociatii @flag output,@mesaj output,@rows
 
-	-- SELECT --------------------------------------------------------------
-	SELECT * from Asociatii
+	if @flag=0 
+		print 'Eroare la datele de intrare: '+@mesaj
+	else 
+		begin
+			-- INSERT --------------------------------------------------------------
+			WHILE @i<=@rows
+			BEGIN
+				SET @aid=@aid+1	
+				INSERT INTO Insotitori VALUES (@aid,'data_de_test',null); -- adaug mai intai in tabela Insotiori
+				INSERT INTO Asociatii VALUES (@aid,@denumire)
+				SET @i=@i+1
+				print 'Asociatia '+@denumire+' a fost adaugata!';
+			END
 
-	-- UPDATE --------------------------------------------------------------
-	UPDATE Asociatii set Denumire='DeSters' WHERE Aid>5
+			-- SELECT --------------------------------------------------------------
+			SELECT * from Asociatii
 
-	-- DELETE --------------------------------------------------------------
-	DELETE Asociatii where Denumire='DeSters';
-	DELETE Insotitori where Nume='data_de_test'; --sterg si din tabela Insotitori
+			-- UPDATE --------------------------------------------------------------
+			UPDATE Asociatii set Denumire='DeSters' WHERE Aid>5
 
-	print 'S-au efectuat operatiile CRUD pe tabela Asociatii'
+			-- DELETE --------------------------------------------------------------
+			DELETE Asociatii where Denumire='DeSters';
+			DELETE Insotitori where Nume='data_de_test'; --sterg si din tabela Insotitori
 
+			print 'S-au efectuat operatiile CRUD pe tabela Asociatii'
+	end
 end
 go
 
@@ -136,34 +179,43 @@ begin
 
 	declare @i int;
 	declare @gid int;
+	declare @flag bit;
+	declare @mesaj varchar(30)
 	
 	set @gid=100;
 
 	select top 1 @gid=Gid from Grupe order by Gid desc
 	set @i=1;
 
-	-- INSERT --------------------------------------------------------------
-	WHILE @i<=@rows
-	BEGIN
-		SET @gid=@gid+1	
-		INSERT INTO Moderatori VALUES(@gid,'data_de_test','0000000000',null);
-		INSERT INTO Grupe VALUES (@gid,@denumire)
-		SET @i=@i+1
-		print 'Grupa '+@denumire+' a fost adaugata!';
-	END
+	exec verificare_Grupe @flag output,@mesaj output,@rows
 
-	-- SELECT --------------------------------------------------------------
-	SELECT * from Grupe
+	if @flag=0 
+		print 'Eroare la datele de intrare: '+@mesaj
+	else 
+		begin
 
-	-- UPDATE --------------------------------------------------------------
-	UPDATE Grupe set Denumire='DeSters' WHERE Gid>107
+			-- INSERT --------------------------------------------------------------
+			WHILE @i<=@rows
+			BEGIN
+				SET @gid=@gid+1	
+				INSERT INTO Moderatori VALUES(@gid,'data_de_test','0000000000',null);
+				INSERT INTO Grupe VALUES (@gid,@denumire)
+				SET @i=@i+1
+				print 'Grupa '+@denumire+' a fost adaugata!';
+			END
 
-	-- DELETE --------------------------------------------------------------
-	DELETE Grupe where Denumire='DeSters';
-	DELETE Moderatori where Nume='data_de_test'
+			-- SELECT --------------------------------------------------------------
+			SELECT * from Grupe
 
-	print 'S-au efectuat operatiile CRUD pe tabela Grupe'
+			-- UPDATE --------------------------------------------------------------
+			UPDATE Grupe set Denumire='DeSters' WHERE Gid>107
 
+			-- DELETE --------------------------------------------------------------
+			DELETE Grupe where Denumire='DeSters';
+			DELETE Moderatori where Nume='data_de_test'
+
+			print 'S-au efectuat operatiile CRUD pe tabela Grupe'
+	end
 end
 go
 
@@ -193,7 +245,7 @@ begin
 
 	select top 1 @pid=Pid from Participanti order by Pid desc
 
-	exec verificare_Participanti @flag output,@mesaj output, @aid,@gid,@nume,@data
+	exec verificare_Participanti @flag output,@mesaj output, @aid,@gid,@nume,@data,@rows
 
 	if @flag=0 
 		print 'Eroare la datele de intrare: '+@mesaj
@@ -248,7 +300,7 @@ begin
 
 	select top 1 @eid=Eid from Evenimente order by Eid desc
 
-	exec verificare_Evenimente @flag output,@mesaj output, @data, @ora
+	exec verificare_Evenimente @flag output,@mesaj output, @data, @ora,@rows
 
 	if @flag=0 
 		print 'Eroare la datele de intrare: '+@mesaj
