@@ -53,12 +53,16 @@ public class Main extends Application {
 //                    System.out.println(suma);
 //                }
 //        );
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-        String date = "01-07-1999";
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+//        String date = "01-07-1999";
 
         //convert String to LocalDate
-        LocalDate localDate = LocalDate.parse(date, formatter);
+//        LocalDate localDate = LocalDate.parse(date, formatter);
+
+
+
         launch(args);
     }
 }
