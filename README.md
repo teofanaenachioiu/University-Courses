@@ -1,6 +1,5 @@
 # University-Courses
 Algorithms implementation, labs, courses, docs, additional exercises etc
-<hr>
 
 <h1> Year 1 </h1>
 
