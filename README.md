@@ -6,27 +6,27 @@ Algorithms implementation, labs, courses, docs, additional exercises etc
 
 <h3> First semester 🤷 </h3>
 
-📌 Computer System Architecture (~ ASC) <i> => Assembly </i>
-📌 Fundamentals of Programming (~ FP) <i> => Python </i>
-📌 Computational Logic (~ Logica)
-📌 Algebra
-📌 Mathematical Analysis
+<p>📌 Computer System Architecture (~ ASC) <i> => Assembly </i></p>
+<p>📌 Fundamentals of Programming (~ FP) <i> => Python </i></p>
+<p>📌 Computational Logic (~ Logica)</p>
+<p>📌 Algebra</p>
+<p>📌 Mathematical Analysis</p>
 
 <h3> Second semester 🙆🏻 </h3>
 
-📌 Operating Systems (~ OS)
-📌 Object-Oriented Programming (~ OOP) <i> => C, C++ </i>
-📌 Graph Algorithms (~ Graph)
-📌 Data Structures and Algorithms (~ SDA)
-📌 Dynamical systems 
-📌 Geometry
+<p>📌 Operating Systems (~ OS)</p>
+<p>📌 Object-Oriented Programming (~ OOP) <i> => C, C++ </i></p>
+<p>📌 Graph Algorithms (~ Graph)</p>
+<p>📌 Data Structures and Algorithms (~ SDA)</p>
+<p>📌 Dynamical systems </p>
+<p>📌 Geometry</p>
 
 <h1> Year 2 </h1>
 
 <h3> Third semester 🙋🏻 </h3>
 
-📌 Advanced Programming Methods (~ MAP) <i> => Java, C# </i>
-📌 Logical and Functional Programming (~ PLF) <i> => Prolog, Lisp </i>
-📌 Databases (~ Databases) <i> => SQL </i>
-📌 Computer Network (~ Computer Network) 
-📌 Probabilities and Statistics (~ Probabilitati si statistica)
+<p>📌 Advanced Programming Methods (~ MAP) <i> => Java, C# </i></p>
+<p>📌 Logical and Functional Programming (~ PLF) <i> => Prolog, Lisp </i></p>
+<p>📌 Databases (~ Databases) <i> => SQL </i></p>
+<p>📌 Computer Network (~ Computer Network) </p>
+<p>📌 Probabilities and Statistics (~ Probabilitati si statistica)</p>
