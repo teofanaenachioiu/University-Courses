@@ -28,7 +28,6 @@
 				(noduriNivel (arboreDr (CDDR L) 0 0) (- k 1)))
 			)
 		
-
 		)
 	)
 	 
