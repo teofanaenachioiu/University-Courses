@@ -373,9 +373,20 @@ end
 go
 
 
+create or alter procedure CRUD_main
+as
+begin 
+	exec CRUD_Participanti 'Teofana','1998-04-11',1,101,1
+	exec CRUD_Asociatii 'ATOR Cluj',1
+	exec CRUD_Grupe 'GrupaNoua',10
+	exec CRUD_Evenimente 'FaraDenumire','2018-07-21','15:30:00',1
+	exec CRUD_Inscrieri 3, 102
+end
+go
+
 exec CRUD_Participanti 'Teofana','1998-04-11',1,101,1
 exec CRUD_Asociatii 'ATOR Cluj',1
 exec CRUD_Grupe 'GrupaNoua',10
 exec CRUD_Evenimente 'FaraDenumire','2018-07-21','15:30:00',1
 exec CRUD_Inscrieri 3, 102
-go
+go 
