@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DF744330-4D07-4EA4-9936-278D4837E39D}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Curs12_2019_2019</RootNamespace>
+    <AssemblyName>Curs12_2019_2019</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\Angajat.cs" />
+    <Compile Include="Model\EntityToFileMapping.cs" />
+    <Compile Include="Model\IHadID.cs" />
+    <Compile Include="Model\Pontaj.cs" />
+    <Compile Include="Model\PontajDTO.cs" />
+    <Compile Include="Model\Sarcina.cs" />
+    <Compile Include="Model\Validator\PontajValidator.cs" />
+    <Compile Include="Model\Validator\SarcinaValidator.cs" />
+    <Compile Include="Model\Validator\AngajatValidator.cs" />
+    <Compile Include="Model\Validator\IValidator.cs" />
+    <Compile Include="Model\MessageTask.cs" />
+    <Compile Include="Model\Validator\MessageTaskValidator.cs" />
+    <Compile Include="Model\Task.cs" />
+    <Compile Include="Model\Validator\ValidationException.cs" />
+    <Compile Include="OtherLINQEx\LINQ_Examples.cs" />
+    <Compile Include="OtherLINQEx\TestClass.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AngajatInFileRepository.cs" />
+    <Compile Include="Repository\DataReader.cs" />
+    <Compile Include="Repository\InFileRepository.cs" />
+    <Compile Include="Repository\InMemoryRepository.cs" />
+    <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\PontajInFileRepository.cs" />
+    <Compile Include="Repository\SarcinaInFileRepository.cs" />
+    <Compile Include="Service\AngajatService.cs" />
+    <Compile Include="Service\MessageTaskService.cs" />
+    <Compile Include="Service\PontajService.cs" />
+    <Compile Include="Service\SarcinaService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
