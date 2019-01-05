@@ -3,10 +3,15 @@
 ;; De exemplu: 
 ;; (inserare '1 '(2 3)) --> ((1 2 3) (2 1 3) (2 3 1))
 
-(defun inserare (E L) 
+(defun inserare_aux (E Lf L) 
 	(cond
-		((null L) (list E))
-		(T (append  (list E (car L)) (inserare E (cdr L)))
-		)
+		((null L) (list (append Lf (list E))))
+		(T (cons (append Lf (cons E L)) 
+			(inserare_aux E (append Lf (list(car L))) (cdr L))))
 	)
 )
+
+(defun inserare (E L)
+	(inserare_aux E nil L)
+	)
+
