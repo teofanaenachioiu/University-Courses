@@ -134,20 +134,12 @@ begin
 			inner join Agenti A on A.aid=F.aid
 			inner join Vanzari V on V.numar=F.numar
 			group by Month(F.enitere), A.nume,A.prenume
+			order by Month(F.enitere), A.nume
 return;
 end;
 go
 
-select * from  uf_facturi()
-go
+drop function uf_facturi
 
-create or alter function uf_facturi()
-returns table
-as  
-	return select Month(F.enitere) as 'Luna', A.nume as 'NumeAgent', A.prenume as 'PrenumeAgent', 
-	sum(V.cantitate*V.pret) as 'ValoareTotala'
-	from Facturi F
-	inner join Agenti A on A.aid=F.aid
-	inner join Vanzari V on V.numar=F.numar
-	group by Month(F.enitere), A.nume,A.prenume
+select * from  uf_facturi()
 go
