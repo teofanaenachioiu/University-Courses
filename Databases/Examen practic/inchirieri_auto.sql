@@ -113,14 +113,17 @@ go
 
 create or alter view vw_Angajati
 as
-select A.nume +' '+A.prenume as 'Nume', count(I.id) as 'Nr inchirieri'
+select A.nume +' '+A.prenume as 'Nume', count(I.id) as 'Nr inchirieri', M.denumire as 'Marca'
 from Angajati A
 inner join Inchirieri I on I.aid=A.aid
+inner join Autovehicule Au on Au.numar=I.numar
+inner join Marci M on M.mid=Au.mid
 where month(I.d_inchiriere)=MONTH(GETDATE())
-group by A.nume, A.prenume
+group by A.nume, A.prenume, M.denumire
 having count(I.id)>=1
 
-select * from vw_Angajati
+select Nume, [Nr inchirieri] from vw_Angajati
+where Marca='Dacia'
 go
 
 
