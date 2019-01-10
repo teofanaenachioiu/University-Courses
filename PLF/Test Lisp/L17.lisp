@@ -11,12 +11,15 @@
 	)
 )
 
-(defun elimina (L)
-	(cond
-		((null L) nil)
-		((listp (car L)) (cons (elimina (car L)) (elimina (cdr L))))
-		((equal (maxim (car L) L) (car L)) (elimina (cdr L)))
-		(T (cons (car L) (elimina (cdr L))))
-		)
-	)
+(defun elimin (L maxi)
+(cond
+    ((null L) nil)
+    ((and (numberP (car L)) (= (car L) maxi)) (elimin(cdr L) maxi))
+     ((and (listp (car L)) (null (elimin (car L) maxi))) (elimin (cdr L) maxi))
+    ((listp (car L)) (append (list(elimin (car L) maxi)) (elimin (cdr L) maxi)))
+    (T (append (list (car L)) (elimin (cdr L) maxi)))
+))
 
+(defun elimina (L)
+    (elimin L (maxim L (car L)))
+    )

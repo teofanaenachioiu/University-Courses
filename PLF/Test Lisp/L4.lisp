@@ -1,5 +1,5 @@
 ;; Definiti o functie care, dintr-o lista liniara de atomi, produce 
-;; o lista de  perechi (atom n), unde atom apare in lista initiala 
+;; o lista de perechi (atom n), unde atom apare in lista initiala 
 ;; de n ori. De exemplu:  
 ;; (A B A B A C A) --> ((A 4) (B 2) (C 1))
 

@@ -1,4 +1,4 @@
-00--99;; Sa se scrie o functie care, primind o lista liniara, intoarce multimea 
+;; Sa se scrie o functie care, primind o lista liniara, intoarce multimea 
 ;; tuturor  perechilor de atomi nenumerici din lista. De exemplu: 
 ;; (A 2 B 3 C D 1)  --> ((A B) (A C) (A D) (B C) (B D) (C D))
 
