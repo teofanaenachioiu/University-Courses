@@ -14,7 +14,7 @@
 		((null L) (list nil))
 		(T
 		;;(append (submultimi (cdr L)) (insereaza (car L) (submultimi (cdr L))) )
-		(
+			(
 			(lambda (V)
 				(append V (insereaza (car L) V))
 				)

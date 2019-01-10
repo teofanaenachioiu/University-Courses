@@ -23,7 +23,7 @@
 
 (defun secvCresc (maxi curent L)
 	(cond
-		((null L) T)
+		((null L) nil)
 		((and (< curent (car L)) (< (car L) maxi)) (secvCresc maxi (car L) (cdr L)))
 		((and (= (car L) maxi) (not (null (cdr L)))) (secvDescresc maxi (cdr L)))
 		(T nil)
