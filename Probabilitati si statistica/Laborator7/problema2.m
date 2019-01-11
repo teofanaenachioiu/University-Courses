@@ -1,0 +1,26 @@
+function baterii_test()
+    X=[ones(1,25)*343,...
+        ones(1,15)*345,...
+        ones(1,132)*347,...
+        ones(1,84)*348,...
+        ones(1,40)*349,...
+        ones(1,34)*350,...
+        ones(1,51)*352,...
+        ones(1,8)*353,...
+        ones(1,11)*355];
+    lung=length(X);
+    MX=mean(X);
+    %H0: miu(0)>=350
+    %H1: miu(0)<350
+    alfa = 0.05;
+    sigma = 2;
+    [H,P,CI,ZVAL]=ztest(X,350,sigma,alfa, -1) ;
+    %H - 0=ipoteza acceptata, 1=ipoteza respinsa
+    %P - punctul critic
+    %CI - interval de incredere
+    %ZVAL - valoare care momentan nu ne intereseaza
+    if H==0
+        fprintf('Publicitatea firmei este justificata\n');
+    else fprintf('Publicitatea firmei NU este justificata\n');
+    end
+end

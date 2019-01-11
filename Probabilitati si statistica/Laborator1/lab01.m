@@ -1,4 +1,4 @@
-﻿function lab01()
+function lab01()
   clf
   hold on
   x=[0 :0.01: 3];
