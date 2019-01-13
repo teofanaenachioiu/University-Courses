@@ -1,7 +1,0 @@
-(defun minim(mini L)
-	(cond
-		((null L) mini)
-		((< (car L) mini) (minim (car L) (cdr L)))
-		(T (minim mini (cdr L)))
-		)
-	)
