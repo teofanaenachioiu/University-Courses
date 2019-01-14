@@ -18,3 +18,21 @@ submulSuma(L,S,R):-submultimi(L,R),suma(R,S).
 
 toateSub(L,S,R):-findall(Sub,submulSuma(L,S,Sub),R).
 
+
+candidat(E,[E|_]).
+candidat(E,[_|T]):-candidat(E,T).
+
+apare(E,[E|_]):-!.
+apare(E,[_|T]):-apare(E,T).
+
+subm(L,S,R):-candidat(E,L),E=<S,submAux(L,S,[E],E,R).
+
+submAux(_,S,Col,S,Col):-!.
+submAux(L,S,[H|Col],Sp,R):-
+    candidat(E,L),
+    H<E,
+    not(apare(E,Col)),
+    S1 is Sp+E,
+    S1 =<S,
+    submAux(L,S,[E,H|Col],S1,R).
+
