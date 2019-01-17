@@ -8,15 +8,10 @@ namespace CatalogMAP.domain
 {
     public class Tema : IHasID<string>
     {
-        private string idTema;
-        private string descriere;
-        private string deadline;
-        private string dataPredare;
-
-        public string ID { get => idTema; set => idTema = value; }
-        public string Descriere { get => descriere; set => descriere = value; }
-        public string Deadline { get => deadline; set => deadline = value; }
-        public string DataPredare { get => dataPredare; set => dataPredare = value; }
+        public string ID { get; set; }
+        public string Descriere { get; set; }
+        public string Deadline { get; set; }
+        public string DataPredare { get; set; }
 
         public override bool Equals(object obj)
         {

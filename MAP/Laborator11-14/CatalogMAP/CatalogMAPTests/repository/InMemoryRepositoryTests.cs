@@ -14,7 +14,7 @@ namespace CatalogMAP.repository.Tests
     public class InMemoryRepositoryTests
     {
         //Repository de Teme
-        private static IValidator<Tema> validator = new ValidatorTema();
+        /*private static IValidator<Tema> validator = new ValidatorTema();
         private IRepository<string, Tema> repo = new InMemoryRepository<string, Tema>(validator);
 
         [TestMethod()]
@@ -107,7 +107,7 @@ namespace CatalogMAP.repository.Tests
             tema1.ID = "100";
 
             Assert.AreEqual(tema1, repo.Update(tema1));
-        }
+        }*/
     }
 }
 

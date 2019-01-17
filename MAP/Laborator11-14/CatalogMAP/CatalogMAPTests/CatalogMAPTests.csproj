@@ -59,6 +59,7 @@
     <Compile Include="domain\StudentTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="repository\InMemoryRepositoryTests.cs" />
+    <Compile Include="repository\StudentInFileRepositoryTests.cs" />
     <Compile Include="service\ServiceTests.cs" />
     <Compile Include="validator\ValidatorStudentTests.cs" />
   </ItemGroup>
@@ -70,6 +71,12 @@
       <Project>{84586313-5001-4370-9669-331C8E8EAEA7}</Project>
       <Name>CatalogMAP</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="repository\studentiTest.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="data\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

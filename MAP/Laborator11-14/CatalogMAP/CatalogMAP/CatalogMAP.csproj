@@ -44,14 +44,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="consola\Consola.cs" />
+    <Compile Include="domain\EntitiyToFileMapping.cs" />
     <Compile Include="domain\IHasID.cs" />
     <Compile Include="domain\Nota.cs" />
     <Compile Include="domain\Student.cs" />
     <Compile Include="domain\Tema.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="repository\DataReader.cs" />
+    <Compile Include="repository\InFileRepository.cs" />
     <Compile Include="repository\InMemoryRepository.cs" />
     <Compile Include="repository\IRepository.cs" />
+    <Compile Include="repository\NotaInFileRepository.cs" />
+    <Compile Include="repository\StudentInFileRepository.cs" />
+    <Compile Include="repository\TemaInFileRepository.cs" />
     <Compile Include="service\Service.cs" />
     <Compile Include="validator\IValidator.cs" />
     <Compile Include="validator\ValidationException.cs" />
@@ -61,6 +67,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\note.txt" />
+    <Content Include="Data\studenti.txt" />
+    <Content Include="Data\teme.txt" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace CatalogMAP.repository
 {
-    public class InMemoryRepository<ID, E> : IRepository<ID, E> where E : IHasID<ID>
+    class InMemoryRepository<ID, E> : IRepository<ID, E> where E : IHasID<ID>
     {
-
-        private IDictionary<ID, E> entities = new Dictionary<ID, E>();
+        protected IDictionary<ID, E> entities = new Dictionary<ID, E>();
         private IValidator<E> validator;
 
 

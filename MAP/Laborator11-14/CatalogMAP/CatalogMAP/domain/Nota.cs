@@ -8,25 +8,17 @@ namespace CatalogMAP.domain
 {
     public class Nota : IHasID<KeyValuePair<string, string>>
     {
-        private String studentID;
-
-        private String temaID;
-
-        private String dataCurenta;
-
-        private String notaProf;
-
-        public string DataCurenta { get => dataCurenta; set => dataCurenta = value; }
-        public string NotaProf { get => notaProf; set => notaProf = value; }
-        public string TemaID { get => temaID; set => temaID = value; }
-        public string StudentID { get => studentID; set => studentID = value; }
+        public string DataCurenta { get; set; }
+        public string NotaProf { get; set; }
+        public string TemaID { get; set; }
+        public string StudentID { get; set; }
         public KeyValuePair<string, string> ID
         {
-            get => new KeyValuePair<string, string>(studentID, temaID);
+            get => new KeyValuePair<string, string>(StudentID, TemaID);
             set
             {
-                studentID = value.Key;
-                temaID = value.Value;
+                StudentID = value.Key;
+                TemaID = value.Value;
             }
         }
 

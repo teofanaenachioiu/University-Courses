@@ -14,7 +14,7 @@ namespace CatalogMAP.service.Tests
     [TestClass()]
     public class ServiceTests
     {
-        static IValidator<Student> validatorS = new ValidatorStudent();
+        /*static IValidator<Student> validatorS = new ValidatorStudent();
         static IValidator<Tema> validatorT = new ValidatorTema();
         static IValidator<Nota> validatorN = new ValidatorNota();
 
@@ -178,6 +178,6 @@ namespace CatalogMAP.service.Tests
 
             Assert.IsTrue(service.AdaugaNota(nota3, false));
             Assert.AreEqual("5", repoN.FindAll().ElementAt(2).NotaProf);
-        }
+        }*/
     }
 }

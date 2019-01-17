@@ -30,6 +30,14 @@ namespace CatalogMAP.consola
             Console.WriteLine("7. Prelungire deadline");
             Console.WriteLine("8. Vizualizare lista teme");
             Console.WriteLine("9. Asignare nota");
+            Console.WriteLine("10. Filtrare dupa grupa");
+            Console.WriteLine("11. Filtrare teme dupa interval");
+
+            Console.WriteLine("12. Media studentilor la laborator");
+            Console.WriteLine("13. Studentii care intra in examen");
+            Console.WriteLine("14. Studentii care au predat toate temele la timp");
+           // Console.WriteLine("15. Media per laborator");
+            
             Console.WriteLine("0. Exit");
             Console.WriteLine("-----------------------------");
         }
@@ -139,6 +147,8 @@ namespace CatalogMAP.consola
                 Console.WriteLine(">> " + e.Message);
             }
         }
+
+        
 
         private void CallCautaStudent()
         {
@@ -270,6 +280,57 @@ namespace CatalogMAP.consola
             }
         }
     
+        private void CallFiltrareGrupa()
+        {
+            Console.Write("Grupa: ");
+            string grupa = Console.ReadLine();
+            foreach (Student student in service.FilterByGrupa(grupa))
+            {
+                Console.WriteLine(student.ID+" "+student.Nume+" "+student.Email);
+                
+            }
+        }
+
+        private void CallFiltrareInterval()
+        {
+            Console.Write("Start: ");
+            string start = Console.ReadLine();
+            Console.Write("End: ");
+            string end = Console.ReadLine();
+            foreach (Tema t in service.FilterByInterval(start, end)) 
+            {
+                Console.WriteLine(t);
+
+            }
+        }
+
+        private void CallMedieStudenti()
+        {
+            List<KeyValuePair<Student, double>> lista = service.MediaStudentilor();
+            foreach (KeyValuePair<Student, double> pair in lista)
+            {
+                Console.WriteLine(pair.Key.Nume + " " + pair.Value);
+            }
+        }
+
+        private void CallExamen()
+        {
+            List<KeyValuePair<Student, double>> lista = service.ListaExamen();
+            foreach (KeyValuePair<Student, double> pair in lista)
+            {
+                Console.WriteLine(pair.Key.Nume + " - media:" + pair.Value);
+            }
+        }
+
+        private void CallStudentiLaTimp()
+        {
+            List<Student> lista = service.ListaStudentiTemeLaTimp();
+            foreach (Student s in lista)
+            {
+                Console.WriteLine(s.Nume);
+            }
+        }
+
 
         public void Run()
         {
@@ -328,6 +389,36 @@ namespace CatalogMAP.consola
                 if (cmd.Equals("9"))
                 {
                     CallAsignareNota();
+                    continue;
+                }
+                if (cmd.Equals("10"))
+                {
+                    CallFiltrareGrupa();
+                    continue;
+                }
+                if (cmd.Equals("11"))
+                {
+                    CallFiltrareInterval();
+                    continue;
+                }
+                if (cmd.Equals("12"))
+                {
+                    CallMedieStudenti();
+                    continue;
+                }
+                if (cmd.Equals("13"))
+                {
+                    CallExamen();
+                    continue;
+                }
+                if (cmd.Equals("14"))
+                {
+                    CallStudentiLaTimp();
+                    continue;
+                }
+                if (cmd.Equals("15"))
+                {
+                    
                     continue;
                 }
                 Console.WriteLine("Comanda invalida!");

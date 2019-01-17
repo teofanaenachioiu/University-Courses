@@ -157,5 +157,109 @@ namespace CatalogMAP.service
                 return true;
             else return false;
         }
+
+        /**
+         * Media fiecarui student la laborator
+         */
+        /*public IDictionary<Student, float> MedieLaborator()
+        {
+
+            var rez = (from n in repoN.FindAll().Distinct()
+                       group n.Student by n.Student.ID into gr
+                       select gr.First()).Distinct().ToList();
+
+            IDictionary<Student, float> dic = new Dictionary<Student, float>();
+            rez.ForEach(stu =>
+            {
+                var media = _repoNota.FindAll().ToList()
+                    .Where(n => n.Student.ID.Equals(stu.ID))
+                    .Sum(no => no.NotaValue);
+                dic.Add(stu, media / 13);
+
+            });
+            return dic;
+        }*/
+
+        private List<E> FilterBy<E>(Predicate<E> predicate,List<E> lista) where E : IHasID<string>
+        {       
+            return lista.Where((x, y) => { return predicate(x); }).ToList();
+        }
+
+        public List<Student> FilterByGrupa(string level)
+        {
+            Predicate<Student> pred = x => x.Grupa.Equals(level);
+            List<Student> lista = repoS.FindAll().ToList();
+            return FilterBy(pred,lista);
+        }
+
+        public List<Tema> FilterByInterval(String start, String end)
+        {
+            Predicate<Tema> pred = x => int.Parse(x.Deadline) >= int.Parse(start) && int.Parse(x.Deadline) <= int.Parse(end);
+            List<Tema> lista = repoT.FindAll().ToList();
+            return FilterBy(pred, lista);
+        }
+
+        private double MedieStd(string idSudent)
+        {
+            double suma = 0;
+            foreach(Nota n in repoN.FindAll().ToList())
+            {
+                if (n.StudentID.Equals(idSudent))
+                {
+                    Tema tema = repoT.FindOne(n.TemaID);
+                    int pond = int.Parse(tema.Deadline) - int.Parse(tema.DataPredare);
+                    suma = suma + double.Parse(n.NotaProf) * pond;
+                }
+            }
+            int pondere = 0;
+            foreach(Tema tema in repoT.FindAll())
+            {
+                pondere= pondere +int.Parse(tema.Deadline) - int.Parse(tema.DataPredare);
+            }
+
+            return Math.Truncate(suma / pondere * 100) / 100; 
+        }
+
+        public List<KeyValuePair<Student, double>> MediaStudentilor()
+        {
+            // IQueryable methods extensions
+            List<Student> students = repoS.FindAll().ToList();
+            var rez = from a in students
+                      select new KeyValuePair<Student, double>(a, MedieStd(a.ID));
+            return rez.ToList();
+        }
+
+        public List<KeyValuePair<Student, double>> ListaExamen()
+        {
+            List<KeyValuePair<Student, double>> lista = MediaStudentilor();
+            var rez=from a in lista
+                    where a.Value>=4
+                    select new KeyValuePair<Student, double>(a.Key,a.Value);
+            return rez.ToList();
+        }
+
+        public List<Student> ListaStudentiTemeLaTimp()
+        {
+            List<Nota> lista = repoN.FindAll().ToList();
+            var rez = from n in lista
+                      where int.Parse(n.DataCurenta) <= int.Parse(repoT.FindOne(n.TemaID).Deadline)
+                      select n;
+
+            List<Student> students = new List<Student>();
+            foreach(Student s in repoS.FindAll())
+            {
+                int nr = 0;
+                rez.ToList().ForEach(nota => { if (nota.StudentID.Equals(s.ID))
+                        nr++;
+            
+                        });
+
+                if (nr == repoT.FindAll().Count())
+                {
+                    students.Add(s);
+                }
+            }
+            return students;
+        }
     }
 }

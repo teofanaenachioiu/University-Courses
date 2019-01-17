@@ -19,12 +19,15 @@ namespace CatalogMAP
             IValidator<Tema> validatorT = new ValidatorTema();
             IValidator<Nota> validatorN = new ValidatorNota();
 
-            IRepository<string, Student> repoS
-                = new InMemoryRepository<string,Student>(validatorS);
-            IRepository<string, Tema> repoT
-                = new InMemoryRepository<string,Tema>(validatorT);
-            IRepository<KeyValuePair<string,string>, Nota> repoN 
-                = new InMemoryRepository<KeyValuePair<string, string>, Nota>(validatorN);
+            string fileNameStudenti = "..\\..\\Data\\studenti.txt";
+            string fileNameTeme = "..\\..\\Data\\teme.txt";
+            string fileNameNote = "..\\..\\Data\\note.txt";
+            IRepository<string, Student> repoS = new StudentInFileRepository(validatorS, fileNameStudenti);
+            //   = new InMemoryRepository<string,Student>(validatorS);
+            IRepository<string, Tema> repoT = new TemaInFileRepository(validatorT, fileNameTeme);
+            //   = new InMemoryRepository<string,Tema>(validatorT);
+            IRepository<KeyValuePair<string, string>, Nota> repoN = new NotaInFileRepository(validatorN, fileNameNote);
+             //   = new InMemoryRepository<KeyValuePair<string, string>, Nota>(validatorN);
 
             Service service = new Service(repoS, repoT, repoN);
             Consola consola = new Consola(service);
