@@ -48,3 +48,45 @@ where b= any (select a from T)
 
 insert into R(a,b)
 values (7,3)
+
+create table R1(a integer, b integer, c integer)
+create table R2(a integer, d integer)
+
+insert into R1(a,b,c)
+values 
+(1,2,3),
+(1,2,4),
+(3,3,5)
+
+insert into R2(a,d)
+values
+(1,4),
+(1,7),
+(3,8)
+
+select R1.a from R1 inner join R2 on R1.a=R2.a except select R1.a from R1
+
+select R1.a from R1 inner join R2 on R1.a=R2.a intersect select R1.a from R1
+
+
+-- verificare constrangere a->bc
+create table DF(a integer, b integer, c integer, d integer)
+
+insert into DF(a,b,c,d)
+values
+(1,3,5,1),
+(1,3,5,4),
+(2,3,4,5)
+
+select  * from DF d1, DF d2
+where d1.a=d2.a and d1.b!=d2.b
+union 
+select  * from DF d1, DF d2
+where d1.a=d2.a and  d1.c!=d2.c
+
+insert into DF(a,b,c,d)
+values (1,3,4,4)
+
+select * from DF
+
+delete from DF
