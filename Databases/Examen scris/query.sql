@@ -79,14 +79,91 @@ values
 (2,3,4,5)
 
 select  * from DF d1, DF d2
-where d1.a=d2.a and d1.b!=d2.b
-union 
-select  * from DF d1, DF d2
-where d1.a=d2.a and  d1.c!=d2.c
+where d1.a=d2.a and d1.b!=d2.b or d1.a=d2.a and d1.c!=d2.c
+
+select * from DF
 
 insert into DF(a,b,c,d)
 values (1,3,4,4)
 
-select * from DF
-
 delete from DF
+
+-- verificare ACD cheie candidat si dependenta functionala A->B
+
+create table CheieCandidat(a integer, b integer, c integer, d integer)
+
+insert into CheieCandidat
+values
+(1,2,3,4),
+(2,3,4,5),
+(3,3,4,5)
+select * from CheieCandidat
+
+-- daca e corect, da o tabela de dimensiunea tebelei initiale
+select count(*) from CheieCandidat c1, CheieCandidat c2
+where c1.a=c2.a and c1.c=c2.c and c1.d=c2.d -- tabela de dimensiunea tabelei
+union all
+select count(*) from CheieCandidat c1, CheieCandidat c2
+where c1.a=c2.a and c1.b!=c2.b -- ar trebui sa dea 0 daca e corect
+union all
+select count(*) from CheieCandidat c1, CheieCandidat c2
+where c1.a=c2.a and c1.c=c2.c -- ar trebui sa fie diferita de dimensiunea tabelei
+union all
+select count(*) from CheieCandidat c1, CheieCandidat c2
+where c1.a=c2.a and c1.d=c2.d -- ar trebui sa fie diferita de dimensiunea tabelei
+union all
+select count(*) from CheieCandidat c1, CheieCandidat c2
+where c1.c=c2.c and c1.d=c2.d -- ar trebui sa fie diferita de dimensiunea tabelei
+
+insert into CheieCandidat
+values
+(1,2,3,4) -- cheie duplicat
+
+insert into CheieCandidat
+values (1,3,4,5) -- nu respecta dependenta functionala
+
+delete from CheieCandidat
+
+-- count, avg
+
+create table Numbers(n integer)
+insert into Numbers(n)
+values (2),(null),(3),(1),(2),(1)
+
+delete from Numbers
+
+insert into Numbers(n)
+values (5)
+
+select * from Numbers
+select avg(n) from Numbers
+select count(n) from Numbers
+select count(distinct n) from Numbers
+select count(n)-max(n) from Numbers
+
+-- verificare inner join (except + intersect)
+
+create table RR(a integer, b integer, c integer)
+insert into RR values
+(1,2,3),(1,2,4),(3,3,5)
+
+select * from RR
+
+create table SS(a integer, d integer)
+insert into SS values
+(1,4),(1,7),(3,8)
+
+select * from SS
+
+select RR.a from RR, SS except select RR.a from RR
+select RR.a from RR, SS intersect select RR.a from RR
+
+create table G(a integer, b integer)
+insert into G values 
+(1,2),(1,3),(null,5),(null,1),(2,7)
+
+select distinct a from G where b>0
+
+select a from G where b>0 group by a
+
+delete from G
