@@ -29,3 +29,11 @@ Algorithms implementation, labs, courses, docs, additional exercises etc
 <p>📌 Databases (~ Databases) <i> => SQL </i></p>
 <p>📌 Computer Network (~ Computer Network) </p>
 <p>📌 Probabilities and Statistics (~ Probabilitati si statistica)</p>
+
+<h3> Fourth semester 🙇‍♀️ </h3>
+
+<p>📌  (~ MPP) <i></i></p>
+<p>📌 Artificial Intelligence (~ AI) <i></i></p>
+<p>📌 Database Management System (~ SGBD) <i> => SQL </i></p>
+<p>📌 Software Engineering (~ ISS) </p>
+<p>📌 Web programming (~ WEB)</p>
