@@ -1,0 +1,291 @@
+Bibliografie curs CSS
+
+http://www.w3schools.com/css/default.asp
+http://www.w3schools.com/css/css3_intro.asp
+http://www.w3schools.com/css/css_rwd_intro.asp
+http://www.tizag.com/cssT/index.php
+http://www.barelyfitz.com/screencast/html-training/css/positioning/
+
+Scopul si filozofia CSS, separarea prezentarii de structura (HTML)
+
+Unde pot aparea elemente legate de stil in cadrul unei pagini html:
+
+1. Externe - In antetul pagini (in interiorul tag-ului head),
+prin includerea unui fisier extern cu ajutorul tagului link.
+
+Exemplu:
+
+<link rel="stylesheet" type="text/css" href="stiluri.css"/>
+
+Fisierul stiluri.css va contine definitii de stiluri.
+
+2. Interne - In antetul pagini (in interiorul tag-ului head), prin plasarea
+definitiilor de stiluri in interiorul tagului <style>. Exemplu:
+
+<style type="text/css">
+    table {
+        font-family: Tahoma;
+    }
+</style>
+
+
+Observatii:
+
+Tagul <style> poate fi plasat oriunde in cadrul paginii html (chiar si
+dupa sfarsitul paginii (intalnirea tag-ului </html>). Totusi,
+pentru randarea corecta a paginii (browserul e posibil sa afiseze portiuni
+ale paginii inainte de descarcarea completa a acesteia) se recomanda plasarea stilurilor
+cat mai in fata in cadrul paginii (de obicei in sectiunea head).
+
+Definitiile externe sunt de preferat celor interne deoarce stilurile definite
+in cadrul unui fisier extern pot fi reutilizate si in alte documente HTML (pagini Web)
+din cadrul unui site.
+
+3. Definitii inline - cu ajutorul atributului style pe un tag.
+
+Exemplu:
+
+<img src="poza.jpg" width="100" height="100" style="border: 3px solid red"/>
+
+Se recomanda evitarea stilurilor inline datorita imposibilitatii reutilizarii lor
+(exceptand mecanismul copy/paste) si datorita dificultatii inlocuirii stilului
+daca acesta este reptetat inline pe mai multe elemente de acelasi tip.
+
+Observatie: Ce se intampla daca pe un element trebuie aplicate mai multe stiluri
+in acelasi timp?
+
+Forma generala a definitiei unui stil:
+
+selector {
+  atribut1: valoare1;
+  atribut2: valoare2;
+  ...
+  atributn: valoaren
+}
+
+Observatie: dupa ultima componenta a unui still nu este necasar ";")
+
+
+Tipuri de stiluri:
+
+1. Aplicabile pe toate tagurile de acelasi tip din cadrul unui document HTML.
+
+Exemplu:
+
+img {
+  border: 3px solid blue;    
+}
+
+body {
+  font-family: Tahoma, Arial Black;
+  background-color: blue;
+  margin: 0;
+  padding: 0;
+}
+
+Observatie: atributele stilului se vor aplica pe toate tagurile img, respectiv body (adica
+pe un singur body). O astfel de definitie poate aparea intr-un fisier separat (inclus cu link) sau
+in interiorul tagului <style></style>
+
+2. Aplicabile pe orice tag.
+
+Exemplu
+
+.text {
+  font-family: Tahoma;
+  font-size: 12px;
+  color: #666666;
+}
+
+<div class="text">
+    Ana are mere si cocosul canta.
+</div>
+
+
+3. Aplicabile doar pe tagul cu un anumit id.
+
+Exemplu: 
+
+#demo {
+  background-color: red;
+  border: 1px solid black;
+  color: white;
+  width: 300px;
+  text-align: center;
+}
+
+<div id="demo">
+    Alba ca zapada si cei sapte pitici
+</div>
+
+
+4. Aplicabile doar pe o categorie de taguri si doar daca se specifica explicit cu ajutorul atributului class.
+
+div.steaua {
+    background-color: blue;
+    color: red;
+}
+
+div.dinamo {
+    background-color: red;
+    color: white;
+}
+
+
+<div class="steaua">
+    Steaua
+</div>
+
+<div class="dinamo">
+    Dinamo
+</div>
+
+
+5. Pseudo clase:
+
+Exemple
+
+a:link {
+  color: red;
+  text-decoration: none;
+}
+
+a:visited {
+  color: red;
+  text-decoration: none;
+} 
+
+a:hover {
+  color: blue;
+  text-decoration: none;
+} 
+
+
+Exemple de selectori:
+
+1)
+
+a.legatura:link {
+  color: red;
+  text-decoration: none;
+}
+
+<a href="altapagina.html" class="legatura">Link nesubliniat</a>
+
+2)
+
+table.chenar td {
+   font: 80% Verdana, Arial, Helvetica, sans-serif;
+   color: #666666;
+   text-align: justify;
+   padding: 1px 5px 1px 5px;
+   border-right: 2px;
+   border-bottom: 2px;
+   background-color: #eeeeee;
+}
+
+Defineste cum arata celula (td-ul) din cadrul unui tabel de tipul (din clasa) chenar
+
+3)
+
+
+div.meniu ul li a {
+   ...
+}
+
+Defineste cum arata textul incapsulat in tagul <a></a> ce apare in cadrul unui element al
+unei liste nenumerotate plasate in cadrul unui div din clasa meniu.
+
+Observatii:
+
+O definitie de stil poate fi precedata de doi sau mai multi selectori daca se doreste
+aplicarea/folosirea aceluiasi still in mai multe situatii.
+
+Exemplu:
+
+.text, div {
+    font-family: Tahoma;
+    font-size: 12px;
+    color: #666666;
+}
+
+
+<span class="text">Ana are mere</span><br/>
+<div>
+    Cocosul canta
+</div>
+
+
+Ordinea de aplicare a stilurilor / mostenirea stilurilor
+
+Reguli de aplicare pe baza modalitatii de definire
+
+- O definitie de stil (clasa) poate fi suprascrisa in totalitate sau partial (se suprascriu doar anumite atribute
+din cadrul definitiei);
+
+- Daca un stil apare definit in cadrul mai multor fisiere externe (fisiere css importate) si/sau intern,
+atributele care se regasesc in mai multe definiti vor fi suprascrise, se va pastra doar valoarea atributului
+din ultima definitie. Atributele care se regasesc doar in anumite definitii se vor adauga la caracteristicile stilului.
+(observatie: nu existat nici o regula de prioritate intre stilurile interne si cele externe, prioritatea
+este data de aparitia acestora cat mai tarziu in cadrul fisierului HTML).
+
+- Stilurile inline suprascriu intotdeauna definitiile externe sau interne.
+
+- valorile atributelor stilului unui tag interior suparscriu valorile acelorasi atribute din stilul unui tag parinte.
+(spre exemplu background-color aplicat pe un div suprascrie background-color-ul aplicat pe body).
+
+- clasa are prioritate fata de atributele setate de un selector specificat prin tag.
+- selectorul specificat prin intermediul id-ului tagului are prioritate in fata clasei.
+
+
+Cele mai importante / des utilizate atribute:
+    font-family: Tahoma, Arial, Verdana, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: bold;
+    letter-spacing: 0.7px;
+    color: #666666;
+    word-spacing: 2px;
+    text-align: justify;
+    background-image: none;
+    background-image: url( ../images/selected_left.png );
+    background-repeat: no-repeat;
+    width: 34px;
+    height: 34px;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #CCCCCC;
+    background-color: white;
+    padding: 1px 5px 1px 5px;
+    margin: 1px 5px 1px 5px;
+    visibility: hidden;
+    background-color: white;
+    float: right;
+    position: absolute;
+    top: 30px;
+    left: 50px;
+    z-index: 2;
+
+pozitionare (position): static, relative, absolute, fixed
+float: left, right, none
+
+padding, margin
+
+display: block, inline, none
+visibility: visible, hidden
+display none vs visibility hidden
+
+Atentie, unele atribute CSS se mostenesc de la containerul parinte, altele nu.
+Mostenirea valorilor atributelor CSS pentru unele atribute!
+Cele 3 exemple: text-align, background-color (nu! dar din cauza transparentei uneori pare mostenita), latime la latimea containerului parinte din cauza display-ului block.
+
+Exemplul cu prioretizarea stilurilor
+
+Valori pentru atributele CSS expresii javascript (IE only)
+
+Unitati de masura: px, pt, em, %, mm, cm, in (https://www.w3.org/Style/Examples/007/units.en.html)
+Responsive Web Design
+
+In Java Script atributele CSS se pot accesa ca obiect.style.numeProprietate
+test-align se transforma in textAlign

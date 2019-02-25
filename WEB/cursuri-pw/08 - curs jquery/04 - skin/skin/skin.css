@@ -1,0 +1,24 @@
+.text {
+    font: 76%/1.6em verdana, tahoma, arial, sans-serif;
+    color: #333333;
+    letter-spacing: 0.5px;
+}
+
+ul.combo {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 80px;
+    display: none;
+    border-bottom: 1px solid #dddddd;
+    background-color: white;
+}
+
+ul.combo li {
+    height: 21px;
+    border-left: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+    padding-left: 6px;
+    padding-top: 2px;
+    cursor: pointer;
+}

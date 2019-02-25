@@ -1,0 +1,31 @@
+<html>
+<head>
+<script>
+  function muta() {
+     var patratel = document.getElementById("patratel");
+     for (i = 0; i < 500; i+=0.0001) {
+        patratel.style.left = i + 'px';
+     }
+  }
+
+
+  var i = 0;
+  function muta2() {
+     var patratel = document.getElementById("patratel");
+     if (i < 500) {
+        i+=0.1
+        patratel.style.left = i + 'px';
+        setTimeout(muta2, 20);
+     }
+     // console.log(i);
+  }
+
+</script>
+</head>
+<body>
+<div id="container" style="position: relative; width: 500px; height: 200px; border: 1px solid black">
+<div id="patratel" style="position: absolute; left: 0px; top: 100px; width: 10px; height: 10px; background-color: blue" onclick="muta2()">
+</div>
+</div>
+</body>
+</html>

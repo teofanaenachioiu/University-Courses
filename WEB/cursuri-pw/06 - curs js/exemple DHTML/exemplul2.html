@@ -1,0 +1,35 @@
+<html>
+<head>
+    <title>Exemplul 2 DHTML</title>
+    <script type="text/javascript">
+    var select = null;
+    function genereaza() {
+        var container = document.getElementById("container");
+        var oldOption = null;
+
+        if (select == null) {
+            select = document.createElement('select');
+            select.setAttribute("name", "numar");
+            container.appendChild(select);
+            for (var i = 0; i < 100; i++) {
+                var option = document.createElement('option');
+                option.value = i;
+                option.text = i;
+
+                if (i == 79)
+                    option.selected = "selected";
+                //    option.setAttribute("selected", "selected")
+                
+                select.add(option, oldOption);
+                oldOption = option;
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+<input type="button" value="Genereaza" onclick="genereaza()"/>
+<div id="container">    
+</div>
+</body>
+</html>

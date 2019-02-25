@@ -1,0 +1,26 @@
+<html>
+<head>
+   <title>Exemplu CSS</title>
+
+   <style type="text/css">
+
+   table.last_column_justify td:last-child {
+      text-align: center
+   }
+
+   table.last_column_justify td {
+      text-align: expression(this.nextSibling==null?'center':'left');
+   }
+
+   </style>
+
+</head>
+<body>
+<table border="1" class="last_column_justify">
+<tr><th>Nr.</th><th>Fucte</th><th>Pret / kg</th></tr>
+<tr><td>1</td><td>Mere</td><td>3</td></tr>
+<tr><td>2</td><td>Pere</td><td>4</td></tr>
+<tr><td>3</td><td>Banane</td><td>3</td></tr>
+</table>
+</body>
+</html>

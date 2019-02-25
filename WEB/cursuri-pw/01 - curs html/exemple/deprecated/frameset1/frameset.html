@@ -1,0 +1,25 @@
+<html>
+<head><title>Exemplu cu frame-uri</title></head>
+
+  <frameset cols="20%, 30%, *">
+    <frame src="stanga.html"/>
+    <frame src="mijloc.html"/>
+    <frame src="dreapta.html"/>
+  </frameset>
+
+  <noframes>
+    <body>Browser-ul dvs nu suporta frame-uri</body>
+  </noframes>
+
+</html>
+
+<!--
+
+Atribute:
+
+cols: pixeli, %, *
+rows: pixeli, %, *
+
+Atentie: A nu se folosi <body></body> in cadrul unei pagini ce contine un frameset
+
+-->

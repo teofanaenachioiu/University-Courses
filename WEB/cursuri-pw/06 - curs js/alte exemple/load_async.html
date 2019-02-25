@@ -1,0 +1,12 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+  var resource = document.createElement('script'); 
+  resource.src = "demo.js";
+  var script = document.getElementsByTagName('script')[0];
+  script.parentNode.insertBefore(resource, script);
+</script>
+</body>
+</html>

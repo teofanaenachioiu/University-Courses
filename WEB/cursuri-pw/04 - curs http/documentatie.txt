@@ -1,0 +1,6 @@
+Bibliografie - Lectura OBLIGATORIE!!!
+
+HTTP Made Really Easy - http://www.jmarshall.com/easy/http/
+Hypertext Transfer Protocol - https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
+HTTP cookie https://en.wikipedia.org/wiki/HTTP_cookie
+How the web works: HTTP and CGI explained http://www.garshol.priv.no/download/text/http-tut.html

@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>Exemplu cu obiecte JavaScript</title>
+<script type="text/javascript">
+
+    function Student(nume, prenume) {
+        this.nume = nume;
+        this.prenume = prenume;
+        this.addMarks = addNote;
+        this.getAverage = getMedia;
+    }
+
+    function addNote(note) {
+        this.note = note;
+    }
+
+    function getMedia() {
+        var s = 0;
+        for (var i = 0; i <this.note.length; i++)
+            s += this.note[i];
+        return s / this.note.length;
+    }
+
+</script>
+</head>
+<body>
+<script type="text/javascript">
+    var s = new Student("Pop", "Ionel");
+    s.addMarks(new Array(5, 8, 10, 1));
+    alert(s.getAverage());
+
+    addNote(new Array(1, 2, 3, 4));
+    alert(getMedia());
+
+    for (i in this) {
+        document.write(i + " = " + this[i] + "<br/>");
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+table.tabel {
+  border-collapse: collapse;
+  margin-left: 0px;
+  border: 1px solid;
+}
+
+table.tabel td {
+  border: 1px solid;
+  background-color: white;
+  font-family: Verdana, Arial, Helvetica, Sans-Serif;
+  font-size: 10.0pt;
+  color: black;
+  text-align: justify;
+  padding: 1px 5px 1px 5px;
+}
+
+table.tabel th {
+  border: 1px solid;
+  background-color: black;
+  font-family: Verdana, Arial, Helvetica, Sans-Serif;
+  font-size: 10.0pt;
+  color: white;
+  table-layout: fixed;
+  text-align: center;
+}
+
+table td {
+  font-family: Verdena, Arial, Helvetica, Sans-Serif;
+  font-size: 10.0pt;
+}

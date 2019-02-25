@@ -1,0 +1,27 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+html {
+    overflow-y: scroll;    
+}
+
+#container {
+    min-height: 100%;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+* html #container {
+    height: 100%;
+}
+
+.text {
+    font: 74%/1.6em verdana, tahoma, arial, sans-serif;
+    color: #333333;
+}

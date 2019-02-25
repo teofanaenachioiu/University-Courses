@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+
+    $(function() {
+        $("#tabel td").click(function() {
+            var clicktd = this;
+            $(this).prev().add($(this).next().add($(this).parent().prev().children(":nth-child(" + ($(this).index() + 1) + ")")).add($(this).parent().next().children(":nth-child(" + ($(this).index() + 1) + ")"))).not(":has(img)").html(function(index, oldhtml) {
+                var newhtml = $(clicktd).html();
+                $(clicktd).empty();
+                return newhtml;
+            });
+        });
+    });
+
+    </script>
+
+    <style type="text/css">
+    table {
+        border: 1px solid black;
+        border-collapse: collapse
+    }
+
+    td {
+        border: 1px solid black;
+        font-family: Tahoma, sans-serif;
+        font-size: 12px;
+        cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+<table cellspacing="0" cellpadding="0" id="tabel">
+    <tr><td><img src="images/p_0_0.jpg"/></td><td><img src="images/p_0_1.jpg"/></td><td><img src="images/p_0_2.jpg"/></td><td><img src="images/p_0_3.jpg"/></td></tr>
+    <tr><td><img src="images/p_1_0.jpg"/></td><td><img src="images/p_1_1.jpg"/></td><td><img src="images/p_1_2.jpg"/></td><td><img src="images/p_1_3.jpg"/></td></tr>
+    <tr><td><img src="images/p_2_0.jpg"/></td><td><img src="images/p_2_1.jpg"/></td><td><img src="images/p_2_2.jpg"/></td><td><img src="images/p_2_3.jpg"/></td></tr>
+    <tr><td><img src="images/p_3_0.jpg"/></td><td><img src="images/p_3_1.jpg"/></td><td><img src="images/p_3_2.jpg"/></td><td></td></tr>
+</table>
+</body>
+</html>

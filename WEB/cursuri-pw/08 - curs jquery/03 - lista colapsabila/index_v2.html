@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Web Programming - Lab 5</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script type="text/javascript" charset="" src="jquery-1.8.2.js"></script>
+    <script type="text/javascript" charset="" src="functions_v2.js"></script>
+</head>
+<body>
+<p>Intr-o pagina HTML exista un element ul ce contine in interiorul sau mai multe elemente li.
+    Acestea din urma contin fie text, fie alte liste nenumerotate, multimea de liste imbricate putandu-se extinde
+    pe oricate nivele. Folosind jQuery sa se randeze, expandeze si colapseze aceste liste.
+    Nu se vor folosi alte biblioteci de functii, pluginuri, etc in afara de jQuery (jquery.min.js).</p>
+<ul id="list">
+    <li>option 1</li>
+    <li>option 2</li>
+    <li>option 3
+        <ul>
+            <li>option 3.1</li>
+            <li>option 3.2
+                <ul>
+                    <li>option 3.2.1</li>
+                    <li>option 3.2.2</li>
+                    <li>option 3.2.3
+                        <ul>
+                            <li>option 3.2.3.1</li>
+                            <li>option 3.2.3.2</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>option 3.3</li>
+            <li>option 3.4</li>
+        </ul>
+    </li>
+    <li>option 4</li>
+    <li>option 5
+        <ul>
+            <li>option 5.1</li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>

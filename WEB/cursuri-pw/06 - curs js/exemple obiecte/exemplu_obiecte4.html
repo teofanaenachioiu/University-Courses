@@ -1,0 +1,25 @@
+<html>
+<head>
+<title>Exemplu cu obiecte JavaScript</title>
+<script type="text/javascript">
+
+var s = {
+    nume: 'Pop',
+    prenume: 'Ionel',
+    note: [5, 8, 10, 1],
+    getAverage: function() {
+        var s = 0;
+        for (var i = 0; i < this.note.length; i++)
+            s += this.note[i];
+        return s / this.note.length;
+    }
+};
+
+</script>
+</head>
+<body>
+<script type="text/javascript">
+    alert(s.getAverage());
+</script>
+</body>
+</html>

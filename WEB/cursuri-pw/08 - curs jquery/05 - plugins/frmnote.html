@@ -1,0 +1,42 @@
+<html>
+<head>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery.numeric.min.js"></script>
+    <script type="text/javascript">
+
+     $(function() {
+         $("#nota").numeric({format: { format: '0'}, buttons: false, minValue: 1, maxValue: 10, emptyValue: false, increment: 1});
+         $("#data").datepicker({changeYear: true, dateFormat: 'dd.mm.yy', firstDay: 1, dayNamesMin: ['D', 'L', 'Ma', 'Mi', 'J', 'V', 'S'], dayNames: ['Duminica', 'Luni', 'Marti', 'Miercuri', 'Joi', 'Vineri', 'Sambata'], monthNames: ['Ianurie', 'Februarie', 'Martie', 'Aprilie', 'Mai', 'Iunie', 'Iulie', 'August', 'Septembrie', 'Octobrie', 'Noiembrie', 'Decembrie'], changeMonth: true, monthNamesShort: ['Ian', 'Feb', 'Mar', 'Apr', 'Mai', 'Iun', 'Iul', 'Aug', 'Sep', 'Oct', 'Noi', 'Dec'], defaultDate: new Date(), minDate: new Date()});
+     });
+
+    </script>
+
+    <link rel="stylesheet" href="styles/jquery-ui.css"/>
+    <style type="text/css">
+        body, input, table {
+            font-family: Tahoma, sans-serif;
+            font-size: 12px;
+            font-weight: normal;
+        }
+
+        input {
+            width: 150px;    
+        }
+    </style>
+</head>
+<body>
+
+<fieldset style="display: inline" class="ui-corner-all">
+    <legend>Acorda nota</legend>
+    <form action="#">
+        <table>
+        <tr><td><label>Nume student:</label></td><td><input type="text" name="student"/></td></tr>
+        <tr><td><label>Nota:</label></td><td><input type="text" name="nota" id="nota" style="text-align: right"/></td></tr>
+        <tr><td><label>Data:</label></td><td><input type="text" name="data" id="data"/></td></tr>
+        <tr><td colspan="2" style="text-align: right"><input type="submit" value="Submit" style="width: 50px; margin-top: 8px"/></td></tr>
+        </table>
+    </form>
+</fieldset>
+</body>
+</html>

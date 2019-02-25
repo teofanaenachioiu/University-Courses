@@ -1,0 +1,26 @@
+<html>
+<head>
+<script>
+  var i = 0;
+  function muta() {
+     var patratel = document.getElementById("patratel");
+     if (i < 490) {
+        i+=1;
+        patratel.style.left = i + 'px';
+        setTimeout(muta, 20);
+     } else {
+        alert('Am terminat');
+     }
+  }
+
+</script>
+</head>
+<body>
+<div id="container" style="position: relative; width: 500px; height: 200px; border: 1px solid black">
+<div id="patratel" style="position: absolute; left: 0px; top: 100px; width: 10px; height: 10px; background-color: blue">
+</div>
+</div>
+<br>
+<input type="button" onclick="muta()" value="Start">
+</body>
+</html>

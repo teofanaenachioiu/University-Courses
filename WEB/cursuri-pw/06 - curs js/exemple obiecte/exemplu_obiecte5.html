@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>Exemplu cu obiecte JavaScript</title>
+<script type="text/javascript">
+
+    function Student(name, years) {
+        this.name = name; // public data member
+        var age = years; // private data member
+
+        this.displayNameAndAge = function() { // public function
+            alert(name + '-' + age);
+            displayAgeAndName();
+        };
+
+        function displayAgeAndName() { // private function
+            this.contry = 'ro';
+            alert(age + '-' + this.name);
+        }
+    }
+
+</script>
+</head>
+<body>
+<script type="text/javascript">
+    var s = new Student("Pop Ionel", 21);
+    alert(s.name); // s.name is public
+//    alert(s.age); // undefined
+    s.displayNameAndAge(); // working
+//    s.displayAgeAndName(); // not working
+    alert(s.contry);
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript">
+        var imagini = ['image01.jpg', 'image02.jpg', 'image03.jpg', 'image04.jpg', 'image05.jpg', 'image06.jpg', 'image07.jpg', 'image08.jpg', 'image09.jpg', 'image10.jpg', 'image11.jpg'];
+
+        var index = 0;
+        var timer = 1000;
+        var play = false;
+        var thread;
+
+        function slideshow() {
+            if (index == imagini.length && ! document.getElementById("loop").checked) {
+                document.getElementById("button").value = 'Play';
+                play = false;
+                index = 0;
+                return;
+            }
+            if (index == imagini.length)
+                index = 0;
+            console.log(index);
+            document.images.slide.src = imagini[index];
+            index++;
+            thread = setTimeout(slideshow, timer);
+        }
+
+        function buttonClick() {
+            play = ! play;
+            if (play) {
+                document.getElementById("button").value = 'Pause';
+                slideshow();
+            }
+            else {
+                document.getElementById("button").value = 'Play';
+                clearTimeout(thread);
+            }
+        }
+
+        function setNewTimer() {
+            timer = parseInt(document.getElementById("timer").options[document.getElementById("timer").selectedIndex].text) * 1000;
+        }
+
+    </script>
+</head>
+
+<body>
+<img src="image01.jpg" name="slide" width="640" height="360">
+<br>
+<br>
+<input type="button" id="button" value="Play" onclick="buttonClick()">
+<br>
+<br>
+<select id="timer" onchange="setNewTimer()">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+</select>
+<br>
+<br>
+<input type="checkbox" id="loop">Loop
+</body>
+</html>

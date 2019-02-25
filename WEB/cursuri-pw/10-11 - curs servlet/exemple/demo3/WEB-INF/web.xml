@@ -1,0 +1,16 @@
+<web-app>
+	<display-name>Aplicatie Web cu Filtre</display-name>
+
+	<filter>
+		<filter-name>Image Filter</filter-name>
+		<filter-class>ImageFilter</filter-class>
+		<init-param>
+			<param-name>text</param-name>
+			<param-value>CANCAN</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+	        <filter-name>Image Filter</filter-name>
+        	<url-pattern>*.gif</url-pattern>
+    	</filter-mapping>    
+</web-app>

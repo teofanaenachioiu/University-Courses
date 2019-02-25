@@ -1,0 +1,27 @@
+$('*')
+$('#id')
+$('tag')
+$('.clasa') - clasa css
+$('selector, selector') - selector multiplu
+
+$('[atribut=valoare]')
+$('input:text')
+$('[type=text]')
+
+Lista completa: http://api.jquery.com/category/selectors/
+
+Selectorul returneaza un obiect JavaScript construit (wrapper) in jurul elementului/elementelor din pagina selectate conform selectorului.
+
+.length - numarul de elemente selectate
+
+var obj = $("selector");
+obj[0] - obiectul javascript corespunzator obiectului jquery daca acesta se refera la un singur obiect
+
+var id = document.getElementById("someid");
+$('#someid') = $(id);
+id = $('#someid')[0];
+
+$("selector").css("atribut_css", "valoare");
+$("selector").attr("atribut_html", "valoare");
+$("selector").attr("atribut_html");
+$("selector").removeAttr("atribut_html");

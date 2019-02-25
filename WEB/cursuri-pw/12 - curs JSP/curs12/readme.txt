@@ -1,0 +1,2 @@
+- request time vs. translation time
+- parametri <jsp:param name="name" value="value"/>

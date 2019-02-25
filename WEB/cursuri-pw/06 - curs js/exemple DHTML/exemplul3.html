@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title>Exemplul 3 DHTML</title>
+    <script type="text/javascript">
+    function genereaza() {
+        var container = document.getElementById("container");
+        var string = '<select name="numar">';
+        for (var i = 0; i < 100; i++)
+            string += '<option value="' + i + '">' + i + '</option>';
+        string += '</select>';
+        container.innerHTML = string;
+    }
+    </script>
+</head>
+<body>
+<input type="button" value="Genereaza" onclick="genereaza()"/>
+<div id="container">    
+</div>
+</body>
+</html>

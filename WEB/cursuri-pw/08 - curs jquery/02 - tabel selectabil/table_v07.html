@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript">
+
+    function init() {
+        var table = document.getElementById('tabel');
+        for (var i = 0; i < table.rows.length; i++) {
+            var row = table.rows[i];
+            for (var j = 0; j < row.cells.length; j++) {
+                var cell = row.cells[j];
+                cell.onmouseover = function() {
+                    selectColumn(this);
+                };
+                cell.onmouseout = function() {
+                    unselectColumn(this);
+                };
+            }
+        }
+    }
+
+    function selectColumn(cell) {
+        var index;
+        var row = cell.parentNode;
+        for (var i = 0; i < row.cells.length; i++)
+            if (row.cells[i] == cell)
+                index = i;
+        var table = row.parentNode;
+        for (i = 0; i < table.rows.length; i++) {
+            row = table.rows[i];
+            selectCell(row.cells[index]);
+        }
+    }
+
+    function unselectColumn(cell) {
+        var index;
+        var row = cell.parentNode;
+        for (var i = 0; i < row.cells.length; i++)
+            if (row.cells[i] == cell)
+                index = i;
+        var table = row.parentNode;
+        for (i = 0; i < table.rows.length; i++) {
+            row = table.rows[i];
+            unselectCell(row.cells[index]);
+        }
+    }
+
+    function selectCell(cell) {
+         cell.style.backgroundColor = 'red';
+         cell.style.color = 'white'
+    }
+
+    function unselectCell(cell) {
+        cell.style.backgroundColor = 'white';
+        cell.style.color = 'black'
+    }
+
+    </script>
+
+    <style type="text/css">
+    table {
+        border: 1px solid black;
+        border-collapse: collapse
+    }
+
+    td {
+        padding: 4px;
+        border: 1px solid black;
+        font-family: Tahoma, sans-serif;
+        font-size: 12px
+    }
+    </style>
+</head>
+<body onload="init();">
+<table cellspacing="0" cellpadding="0" id="tabel">
+    <tr><td>Memorie</td><td>DDRAM II</td><td>2GB</td></tr>
+    <tr><td>Harddisk</td><td>SATA</td><td>2TB</td></tr>
+    <tr><td>Monitor</td><td>LCD</td><td>22 inch</td></tr>
+    <tr><td>DVD</td><td>Double Layer</td><td>24X</td></tr>
+    <tr><td>Video</td><td>GeForce</td><td>8600GT</td></tr>
+</table>
+</body>
+</html>

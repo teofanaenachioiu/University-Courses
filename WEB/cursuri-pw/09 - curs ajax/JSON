@@ -1,0 +1,18 @@
+{
+     "firstName": "John",
+     "lastName": "Smith",
+     "address": {
+         "streetAddress": "21 2nd Street",
+         "city": "New York",
+         "state": "NY",
+         "postalCode": 10021
+     },
+     "phoneNumbers": [
+         "212 555-1234",
+         "646 555-4567"
+     ]
+}
+
+
+var p = JSON.parse(contact);
+var p = eval('(' + contact + ')'); // nerecomandat din motive de securitate. Daca stringul evaluat de eval contine cod, apeluri de functii, etc, acesta este executat!

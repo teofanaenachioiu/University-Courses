@@ -1,0 +1,24 @@
+<html>
+<head>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script>
+
+  $(function() {
+     $("#button").click(function() {
+        $("#patratel").animate({left: "490px"}, 4900, 'linear', function() {
+           alert('Am terminat');
+        });
+     });
+  });
+
+</script>
+</head>
+<body>
+<div id="container" style="position: relative; width: 500px; height: 200px; border: 1px solid black">
+<div id="patratel" style="position: absolute; left: 0px; top: 100px; width: 10px; height: 10px; background-color: blue">
+</div>
+</div>
+<br>
+<input type="button" id="button" value="Start">
+</body>
+</html>

@@ -1,0 +1,32 @@
+<web-app>
+	<display-name>Aplicatie Web Demo 2</display-name>
+ 	<session-timeout>30</session-timeout>
+
+	<servlet>
+    		<servlet-name>Servlet care verifica userul si parola</servlet-name>
+    		<servlet-class>ro.ubbcluj.cs.pw.Login</servlet-class>
+		<load-on-startup>1</load-on-startup>
+  	</servlet>
+  	<servlet-mapping>
+    	<servlet-name>Servlet care verifica userul si parola</servlet-name>
+    		<url-pattern>/login.check</url-pattern>
+  	</servlet-mapping>
+
+	<context-param>
+		<param-name>DataBaseURL</param-name>
+		<param-value>jdbc:mysql://localhost:3306/bufny</param-value>
+	</context-param>
+	<context-param>
+		<param-name>DataBaseUser</param-name>
+		<param-value>root</param-value>
+	</context-param>
+	<context-param>
+		<param-name>DataBasePassword</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>ro.ubbcluj.cs.pw.ApplicationManagement</listener-class>
+	</listener>
+
+</web-app>

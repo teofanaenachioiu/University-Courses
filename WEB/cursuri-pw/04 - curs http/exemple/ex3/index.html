@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Query String Demo</title>
+</head>
+<body>
+   <form method="GET" action="show_input_data.cgi">
+       <input type="text" name="nume" placeholder="Nume"><br>
+       <input type="text" name="telefon" placeholder="Telefon"><br>
+       <input type="text" name="varsta" placeholder="Varsta"><br>
+       <input type="submit" value="Trimite">
+   </form>
+</body>
+</html>
