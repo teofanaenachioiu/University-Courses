@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="trace">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+
+            <PatternLayout pattern="%d{DATE} %-5level %class{36} %L %M - %msg%n"/>
+        </Console>
+        <File name="log" fileName="target/test.log" append="true">
+            <PatternLayout pattern="%d{DATE} %-5level %class{36} %L %M - %msg%n"/>
+        </File>c
+    </Appenders>
+    <Loggers>
+        <Root level="trace">
+            <AppenderRef ref="log"/>
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
