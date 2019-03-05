@@ -33,6 +33,7 @@
 <li> Jurnalizare clasa folosind Gradle si log4j2 </li>
 
 - In /main/resources adaugam configurarea log4j2.xml
+- In fisierul build.gradle punem dependentele pentru log4j2
 - Adaugam loggerul inainte de metoda main:
 <i>private static final Logger logger = LogManager.getLogger();</i>
 - Urmarirea fluxului executiei se face cu metodele: traceEntry(), traceExit() etc.
