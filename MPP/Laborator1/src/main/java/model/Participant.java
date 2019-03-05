@@ -7,6 +7,12 @@ public class Participant implements HasID<Integer> {
     private String nume;
     private Integer varsta;
 
+    public Participant(Integer id,String nume, Integer varsta) {
+        this.nume = nume;
+        this.varsta = varsta;
+        this.id=id;
+    }
+
     public Participant(String nume, Integer varsta) {
         this.nume = nume;
         this.varsta = varsta;

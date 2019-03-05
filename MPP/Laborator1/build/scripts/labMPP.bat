@@ -63,7 +63,7 @@ set CMD_LINE_ARGS=%*
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\labMPP-1.0.jar;%APP_HOME%\lib\log4j-core-2.8.2.jar;%APP_HOME%\lib\log4j-api-2.8.2.jar
+set CLASSPATH=%APP_HOME%\lib\labMPP-1.0.jar;%APP_HOME%\lib\log4j-core-2.8.2.jar;%APP_HOME%\lib\log4j-api-2.8.2.jar;%APP_HOME%\lib\sqlite-jdbc-3.16.1.jar
 
 @rem Execute labMPP
 "%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %LAB_MPP_OPTS%  -classpath "%CLASSPATH%" Main %CMD_LINE_ARGS%

@@ -64,7 +64,7 @@ case "`uname`" in
     ;;
 esac
 
-CLASSPATH=$APP_HOME/lib/labMPP-1.0.jar:$APP_HOME/lib/log4j-core-2.8.2.jar:$APP_HOME/lib/log4j-api-2.8.2.jar
+CLASSPATH=$APP_HOME/lib/labMPP-1.0.jar:$APP_HOME/lib/log4j-core-2.8.2.jar:$APP_HOME/lib/log4j-api-2.8.2.jar:$APP_HOME/lib/sqlite-jdbc-3.16.1.jar
 
 # Determine the Java command to use to start the JVM.
 if [ -n "$JAVA_HOME" ] ; then
