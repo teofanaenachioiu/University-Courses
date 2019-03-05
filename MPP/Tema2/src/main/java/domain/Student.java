@@ -3,23 +3,23 @@ package domain;
 import java.util.Objects;
 
 public class Student {
-    private int nrMatricol;
+    private Integer nrMatricol;
     private String nume;
     private String facultate;
-    private int an;
+    private Integer an;
 
-    public Student(int nrMatricol, String nume, String facultate, int an) {
+    public Student(Integer nrMatricol, String nume, String facultate, Integer an) {
         this.nrMatricol = nrMatricol;
         this.nume = nume;
         this.facultate = facultate;
         this.an = an;
     }
 
-    public int getNrMatricol() {
+    public Integer getNrMatricol() {
         return nrMatricol;
     }
 
-    public void setNrMatricol(int nrMatricol) {
+    public void setNrMatricol(Integer nrMatricol) {
         this.nrMatricol = nrMatricol;
     }
 
@@ -39,11 +39,11 @@ public class Student {
         this.facultate = facultate;
     }
 
-    public int getAn() {
+    public Integer getAn() {
         return an;
     }
 
-    public void setAn(int an) {
+    public void setAn(Integer an) {
         this.an = an;
     }
 
@@ -52,8 +52,8 @@ public class Student {
         if (this == o) return true;
         if (!(o instanceof Student)) return false;
         Student student = (Student) o;
-        return getNrMatricol() == student.getNrMatricol() &&
-                getAn() == student.getAn() &&
+        return getNrMatricol().equals(student.getNrMatricol()) &&
+                getAn().equals(student.getAn()) &&
                 Objects.equals(getNume(), student.getNume()) &&
                 Objects.equals(getFacultate(), student.getFacultate());
     }
