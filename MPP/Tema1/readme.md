@@ -15,7 +15,7 @@
                attributes('Main-Class':'ClasaCuMain')
           }
           from {
-               configuration.compile.ollect{it.isDirectory() ?it : zipTree(it)}
+               configurations.compile.collect{it.isDirectory() ?it : zipTree(it)}
           }
     }</i>
 - Se executa task-ul <i>jar</i> din pachetul build (dublu click)
