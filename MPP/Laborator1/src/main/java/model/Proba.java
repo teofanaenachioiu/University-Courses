@@ -2,11 +2,17 @@ package model;
 
 public class Proba implements HasID<Integer> {
     private Integer id;
-    private String descriere;
+    private String denumire;
     private Enum<Categorie> catg;
 
-    public Proba(String descriere, Enum<Categorie> catg) {
-        this.descriere = descriere;
+    public Proba(Integer id, String denumire, Enum<Categorie> catg) {
+        this.denumire = denumire;
+        this.catg = catg;
+        this.id=id;
+    }
+
+    public Proba(String denumire, Enum<Categorie> catg) {
+        this.denumire = denumire;
         this.catg = catg;
         this.id=null;
     }
@@ -21,12 +27,12 @@ public class Proba implements HasID<Integer> {
         this.id=integer;
     }
 
-    public String getDescriere() {
-        return descriere;
+    public String getDenumire() {
+        return denumire;
     }
 
-    public void setDescriere(String descriere) {
-        this.descriere = descriere;
+    public void setDenumire(String denumire) {
+        this.denumire = denumire;
     }
 
     public Enum<Categorie> getCatg() {
