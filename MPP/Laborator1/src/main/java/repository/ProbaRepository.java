@@ -43,7 +43,7 @@ public class ProbaRepository implements IRepository<Integer, Proba> {
     public void save(Proba entity) {
         logger.traceEntry("saving proba {} ",entity);
         Connection con=dbUtils.getConnection();
-        try(PreparedStatement preStmt=con.prepareStatement("insert into Probe values (?,?)")){
+        try(PreparedStatement preStmt=con.prepareStatement("insert into Probe(denumire, categorie) values (?,?)")){
             preStmt.setString(1,entity.getDenumire());
             preStmt.setString(2,entity.getCatg().toString());
             int result=preStmt.executeUpdate();
@@ -122,7 +122,7 @@ public class ProbaRepository implements IRepository<Integer, Proba> {
             try(ResultSet result=preStmt.executeQuery()) {
                 while (result.next()) {
                     Integer id = result.getInt("id");
-                    String descriere = result.getString("descriere");
+                    String descriere = result.getString("denumire");
                     String categorie = result.getString("categorie");
                     Proba proba=new Proba(id,descriere,Categorie.valueOf(categorie));
                     probe.add(proba);

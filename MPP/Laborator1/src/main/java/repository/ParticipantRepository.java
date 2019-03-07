@@ -43,7 +43,7 @@ public class ParticipantRepository implements IRepository<Integer, Participant> 
     public void save(Participant entity) {
         logger.traceEntry("saving participant {} ",entity);
         Connection con=dbUtils.getConnection();
-        try(PreparedStatement preStmt=con.prepareStatement("insert into Participanti values (?,?)")){
+        try(PreparedStatement preStmt=con.prepareStatement("insert into Participanti(nume, varsta) values (?,?)")){
             preStmt.setString(1,entity.getNume());
             preStmt.setInt(2,entity.getVarsta());
             int result=preStmt.executeUpdate();

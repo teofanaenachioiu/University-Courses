@@ -1,8 +1,5 @@
 import javafx.util.Pair;
-import model.Inscriere;
-import model.Participant;
-import model.Proba;
-import model.User;
+import model.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import repository.*;
@@ -23,9 +20,32 @@ public class Main {
             e.printStackTrace();
         }
 
+
+
+//        IRepository<Integer,Participant> repoParticipant=new ParticipantRepository(prop);
+//        repoParticipant.save(new Participant("Maria",8));
+//        repoParticipant.save(new Participant("Ioana",6));
+//        repoParticipant.save(new Participant("Vlad",14));
+//        repoParticipant.save(new Participant("Andrei",10));
+//        repoParticipant.save(new Participant("Alexandra",9));
+
+//        IRepository<Integer,Proba> repository=new ProbaRepository(prop);
+//        repository.save(new Proba("Pictura", Categorie.CATEGORIE_6_8));
+//        repository.save(new Proba("Pictura", Categorie.CATEGORIE_9_11));
+//        repository.save(new Proba("Pictura", Categorie.CATEGORIE_12_15));
+//        repository.save(new Proba("Inot", Categorie.CATEGORIE_12_15));
+//        repository.save(new Proba("Tir cu arcul", Categorie.CATEGORIE_12_15));
+
 //        IRepository<Pair<Integer,Integer>, Inscriere> repo=new InscrieriRepository(prop);
-//        IRepository<String, User> repo=new UserRepository(prop);
-//        System.out.println(repo.size());
+//        repo.save(new Inscriere(1,10,"maria_avram"));
+//        repo.save(new Inscriere(3,10,"maria_avram"));
+//        repo.save(new Inscriere(4,13,"maria_avram"));
+//        repo.save(new Inscriere(4,14,"maria_avram"));
+
+//        for(Inscriere i:repo.findAll()){
+//            System.out.println(i);
+//        }
+
         System.out.println("Hello!");
         logger.traceExit();
     }
