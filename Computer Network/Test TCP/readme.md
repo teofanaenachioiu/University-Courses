@@ -1,4 +1,5 @@
-Probleme:
+Implementarea in C a unei de programe client/server care comunica prin socket-uri TCP/IP 
+pentru rezolvarea problemelor:
 
 1. Schimb de mesaje intre client si server pentru obtinerea problemei de la test.
 2. Se da un sir de caractere si un caracter. Se cere sa se elimine din sir prima aparitie 
