@@ -1,4 +1,4 @@
-Implementarea in C a unei de programe client/server care comunica prin socket-uri TCP/IP 
+Implementarea in C a unei perechi de programe client/server care comunica prin socket-uri TCP/IP 
 pentru rezolvarea problemelor:
 
 1. Schimb de mesaje intre client si server pentru obtinerea problemei de la test.
