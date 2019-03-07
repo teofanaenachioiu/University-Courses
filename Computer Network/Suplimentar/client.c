@@ -1,12 +1,12 @@
 /*
-A client server implementation in python for the number guess problem.
+A client server implementation in C for the number guess problem.
 The server chooses a random number.
 The clients connect and send numbers to server.
 The server returns to each client a status message:
-– send a larger number
-– send a lower number
-– you guessed my number
-– another client guessed the number. You are a looser !
+â€“ send a larger number
+â€“ send a lower number
+â€“ you guessed my number
+â€“ another client guessed the number. You are a looser !
 */
 #include <sys/types.h>
 #include <sys/socket.h>
