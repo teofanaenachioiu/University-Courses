@@ -43,7 +43,7 @@ public class InscrieriRepository implements IRepository<Pair<Integer,Integer>, I
         long nrProbe= StreamSupport
                 .stream(findProbeDupaParticipant(entity.getID().getKey()).spliterator(),false)
                 .count();
-        if(nrProbe>2) throw new RepositoryException("Participantul e deja inscris la doua probe");
+        if(nrProbe>=2) throw new RepositoryException("Participantul e deja inscris la doua probe");
 
         logger.traceEntry("saving inscriere {} ",entity);
         Connection con=dbUtils.getConnection();
@@ -130,7 +130,9 @@ public class InscrieriRepository implements IRepository<Pair<Integer,Integer>, I
     public Iterable<Inscriere> findAll() {
         logger.traceEntry();
         Connection con=dbUtils.getConnection();
+
         List<Inscriere> inscrieri=new ArrayList<>();
+
         try(PreparedStatement preStmt=con.prepareStatement("select * from Inscrieri")) {
             try(ResultSet result=preStmt.executeQuery()) {
                 while (result.next()) {
@@ -151,59 +153,28 @@ public class InscrieriRepository implements IRepository<Pair<Integer,Integer>, I
         return inscrieri;
     }
 
-    public Iterable<Inscriere> findProbeDupaParticipant(Integer idP) {
+    private Iterable<Inscriere> findProbeDupaParticipant(Integer idP) {
         logger.traceEntry("finding inscrieri with idParticipant {} ",idP);
         Connection con=dbUtils.getConnection();
         List<Inscriere> inscrieri=new ArrayList<>();
         try(PreparedStatement preStmt=con.prepareStatement("select * from Inscrieri where idParticipant=?")){
             preStmt.setInt(1,idP);
             try(ResultSet result=preStmt.executeQuery()) {
-                if (result.next()) {
-                    Integer idParticipant = result.getInt("idParticipant");
-                    Integer idProba = result.getInt("idProba");
+                while (result.next()) {
                     Date data= result.getDate("data_op");
                     String operator=result.getString("operator");
+                    Integer idProba = result.getInt("idProba");
                     Inscriere inscriere=
-                            new Inscriere(idParticipant,idProba,data.toLocalDate(),operator);
+                            new Inscriere(idP,idProba,data.toLocalDate(),operator);
                     inscrieri.add(inscriere);
-                    logger.traceExit(inscrieri);
-                    return inscrieri;
                 }
             }
         }catch (SQLException ex){
             logger.error(ex);
             System.out.println("Error DB "+ex);
         }
-        logger.traceExit("No inscriere found with idParticipant {}", idP);
-
+        logger.traceExit(inscrieri);
         return inscrieri;
     }
 
-    public Iterable<Inscriere> findParticipantiDupaProba(Integer idP) {
-        logger.traceEntry("finding inscrieri with idProba {} ",idP);
-        Connection con=dbUtils.getConnection();
-        List<Inscriere> inscrieri=new ArrayList<>();
-        try(PreparedStatement preStmt=con.prepareStatement("select * from Inscrieri where idProba=?")){
-            preStmt.setInt(1,idP);
-            try(ResultSet result=preStmt.executeQuery()) {
-                if (result.next()) {
-                    Integer idParticipant = result.getInt("idParticipant");
-                    String operator=result.getString("operator");
-                    Integer idProba = result.getInt("idProba");
-                    Date data= result.getDate("data_op");
-                    Inscriere inscriere=
-                            new Inscriere(idParticipant,idProba,data.toLocalDate(),operator);
-                    inscrieri.add(inscriere);
-                    logger.traceExit(inscrieri);
-                    return inscrieri;
-                }
-            }
-        }catch (SQLException ex){
-            logger.error(ex);
-            System.out.println("Error DB "+ex);
-        }
-        logger.traceExit("No inscriere found with idProba {}", idP);
-
-        return inscrieri;
-    }
 }

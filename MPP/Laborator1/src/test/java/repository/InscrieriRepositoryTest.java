@@ -38,9 +38,6 @@ public class InscrieriRepositoryTest {
         //save
         repo.save(inscriere);
         assertEquals(1,repo.size());
-        List<Inscriere> lista=
-                StreamSupport.stream(repo.findAll().spliterator(),false )
-                        .collect(Collectors.toList());
 
         //findone
         assertEquals(inscriere,repo.findOne(new Pair<>(1,10)));
@@ -48,7 +45,7 @@ public class InscrieriRepositoryTest {
         //update
         repo.update(new Pair<>(1,10),new Inscriere(1,10,"ioana_avram"));
 
-        lista=
+        List<Inscriere> lista=
                 StreamSupport.stream(repo.findAll().spliterator(),false )
                         .collect(Collectors.toList());
 
@@ -58,19 +55,20 @@ public class InscrieriRepositoryTest {
         repo.delete(inscriere.getID());
 
         //nr Probe/Participant
-        repo.save(new Inscriere(1,10,"maria"));
-        repo.save(new Inscriere(1,11,"maria"));
-        lista= StreamSupport.stream(((InscrieriRepository) repo).findProbeDupaParticipant(1).spliterator(),false)
-                        .collect(Collectors.toList());
-        assertEquals(2,lista.size());
+        repo.save(new Inscriere(1,10,"maria_avram"));
+        repo.save(new Inscriere(1,11,"maria_avram"));
+//        lista= StreamSupport.stream(((InscrieriRepository) repo).findProbeDupaParticipant(1).spliterator(),false)
+//                        .collect(Collectors.toList());
+//        assertEquals(2,lista.size());
 
         //max 2 probe
 
         try{
-            repo.save(new Inscriere(1,12,"maria"));
+            repo.save(new Inscriere(1,12,"maria_avram"));
             assertEquals(2,repo.size());
         }
         catch (RepositoryException e){
+            assertEquals("Participantul e deja inscris la doua probe",e.getMessage());
             assertEquals(2,repo.size());
             repo.delete(new Pair<>(1,10));
             repo.delete(new Pair<>(1,11));
