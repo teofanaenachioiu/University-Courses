@@ -2,9 +2,6 @@ package validation;
 
 import model.Proba;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class ProbaValidation implements Validator<Proba> {
     @Override
     public void validate(Proba entity) throws ValidationException {

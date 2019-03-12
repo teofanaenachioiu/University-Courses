@@ -21,6 +21,8 @@ public class ProbaRepository implements IRepository<Integer, Proba> {
         logger.info("Initializing ProbaRepository with properties: {} ",props);
         dbUtils=new JdbcUtils(props);
     }
+    public ProbaRepository(){
+    }
     @Override
     public int size() {
         logger.traceEntry();
@@ -99,7 +101,7 @@ public class ProbaRepository implements IRepository<Integer, Proba> {
                     Integer id = result.getInt("id");
                     String descriere = result.getString("denumire");
                     String categorie = result.getString("categorie");
-                    Proba proba=new Proba(id,descriere,Categorie.valueOf(categorie));
+                    Proba proba=new Proba(id,descriere, Categorie.valueOf(categorie));
                     logger.traceExit(proba);
                     return proba;
                 }
@@ -124,7 +126,7 @@ public class ProbaRepository implements IRepository<Integer, Proba> {
                     Integer id = result.getInt("id");
                     String descriere = result.getString("denumire");
                     String categorie = result.getString("categorie");
-                    Proba proba=new Proba(id,descriere,Categorie.valueOf(categorie));
+                    Proba proba=new Proba(id,descriere, Categorie.valueOf(categorie));
                     probe.add(proba);
                 }
             }
@@ -134,5 +136,17 @@ public class ProbaRepository implements IRepository<Integer, Proba> {
         }
         logger.traceExit(probe);
         return probe;
+    }
+
+    public JdbcUtils getDbUtils() {
+        return dbUtils;
+    }
+
+    public void setDbUtils(JdbcUtils dbUtils) {
+        this.dbUtils = dbUtils;
+    }
+
+    public static Logger getLogger() {
+        return logger;
     }
 }

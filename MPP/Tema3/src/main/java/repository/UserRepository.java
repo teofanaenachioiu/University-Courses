@@ -22,6 +22,8 @@ public class UserRepository implements IRepository<String, User> {
         logger.info("Initializing UserRepository with properties: {} ",props);
         dbUtils=new JdbcUtils(props);
     }
+    public UserRepository(){
+    }
 
     @Override
     public int size() {
@@ -137,5 +139,17 @@ public class UserRepository implements IRepository<String, User> {
         }
         logger.traceExit(users);
         return users;
+    }
+
+    public JdbcUtils getDbUtils() {
+        return dbUtils;
+    }
+
+    public void setDbUtils(JdbcUtils dbUtils) {
+        this.dbUtils = dbUtils;
+    }
+
+    public static Logger getLogger() {
+        return logger;
     }
 }

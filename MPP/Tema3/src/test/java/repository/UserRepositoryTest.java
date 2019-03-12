@@ -11,7 +11,8 @@ import java.util.Properties;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class UserRepositoryTest {
     @Test
@@ -24,7 +25,7 @@ public class UserRepositoryTest {
             e.printStackTrace();
         }
 
-        IRepository<String, User>repo=new UserRepository(prop);
+        IRepository<String, User> repo=new UserRepository(prop);
 
         User user=new User("ioana_l","hashhash");
 
@@ -41,7 +42,7 @@ public class UserRepositoryTest {
 
         //update
         user.setTip(TipUser.OPERATOR);
-        repo.update("ioana_l",new User("ioana_l","hashhash",TipUser.OPERATOR));
+        repo.update("ioana_l",new User("ioana_l","hashhash", TipUser.OPERATOR));
 
         List<User> lista= StreamSupport.stream(repo.findAll().spliterator(),false)
                 .collect(Collectors.toList());

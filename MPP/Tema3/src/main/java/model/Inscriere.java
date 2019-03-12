@@ -2,10 +2,7 @@ package model;
 
 import javafx.util.Pair;
 
-import javax.xml.crypto.Data;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Objects;
 
 public class Inscriere implements HasID<Pair<Integer,Integer>> {

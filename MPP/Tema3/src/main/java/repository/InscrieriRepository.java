@@ -11,13 +11,16 @@ import java.util.List;
 import java.util.Properties;
 import java.util.stream.StreamSupport;
 
-public class InscrieriRepository implements IRepository<Pair<Integer,Integer>, Inscriere>{
+public class InscrieriRepository implements IRepository<Pair<Integer,Integer>, Inscriere> {
     private JdbcUtils dbUtils;
 
     private static final Logger logger= LogManager.getLogger();
     public InscrieriRepository(Properties props) {
         logger.info("Initializing ProbaRepository with properties: {} ", props);
         dbUtils = new JdbcUtils(props);
+    }
+
+    public InscrieriRepository() {
     }
 
     @Override
@@ -177,4 +180,15 @@ public class InscrieriRepository implements IRepository<Pair<Integer,Integer>, I
         return inscrieri;
     }
 
+    public JdbcUtils getDbUtils() {
+        return dbUtils;
+    }
+
+    public void setDbUtils(JdbcUtils dbUtils) {
+        this.dbUtils = dbUtils;
+    }
+
+    public static Logger getLogger() {
+        return logger;
+    }
 }

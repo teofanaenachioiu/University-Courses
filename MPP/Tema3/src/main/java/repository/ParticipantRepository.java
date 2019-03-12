@@ -4,6 +4,7 @@ import model.Participant;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,15 +13,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-public class ParticipantRepository implements IRepository<Integer, Participant> {
+public class ParticipantRepository implements IRepository<Integer, Participant>, Serializable {
     private JdbcUtils dbUtils;
-
     private static final Logger logger= LogManager.getLogger();
+
     public ParticipantRepository(Properties props){
         logger.info("Initializing ParticipantRepository with properties: {} ",props);
         dbUtils=new JdbcUtils(props);
     }
 
+    public ParticipantRepository(){
+
+    }
     @Override
     public int size() {
         logger.traceEntry();
@@ -134,5 +138,17 @@ public class ParticipantRepository implements IRepository<Integer, Participant> 
         }
         logger.traceExit(participanti);
         return participanti;
+    }
+
+    public JdbcUtils getDbUtils() {
+        return dbUtils;
+    }
+
+    public void setDbUtils(JdbcUtils dbUtils) {
+        this.dbUtils = dbUtils;
+    }
+
+    public static Logger getLogger() {
+        return logger;
     }
 }

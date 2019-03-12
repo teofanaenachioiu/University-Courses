@@ -1,9 +1,7 @@
 package repository;
 
 import javafx.util.Pair;
-import model.Categorie;
 import model.Inscriere;
-import model.Proba;
 import org.junit.Test;
 
 import java.io.FileReader;
@@ -13,7 +11,7 @@ import java.util.Properties;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class InscrieriRepositoryTest {
     @Test

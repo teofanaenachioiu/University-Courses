@@ -11,7 +11,7 @@ import java.util.Properties;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class ProbaRepositoryTest {
 
@@ -48,7 +48,7 @@ public class ProbaRepositoryTest {
         assertEquals(proba,repo.findOne(lastProba.getID()));
 
         //update
-        repo.update(lastProba.getID(),new Proba("tenis",Categorie.CATEGORIE_12_15));
+        repo.update(lastProba.getID(),new Proba("tenis", Categorie.CATEGORIE_12_15));
 
         lista=
                 StreamSupport.stream(repo.findAll().spliterator(),false )

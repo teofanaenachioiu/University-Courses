@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'tema3.teo'
+version '1.0'
+mainClassName='Main'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.8.2'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8.2'
+    compile 'org.springframework:spring-context:5.0.4.RELEASE'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    runtime group: 'org.xerial', name: 'sqlite-jdbc', version: '3.16.1'
+}
+
+jar{
+    manifest{
+        attributes('Main-Class':'Main')
+    }
+    from {
+        configurations.compile.collect{it.isDirectory() ?it : zipTree(it)
+        }
+    }
+}
