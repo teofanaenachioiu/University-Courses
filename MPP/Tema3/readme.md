@@ -5,3 +5,4 @@
 * Se creaza o noua clasa 'Config'
 * Se adnoteaza clasa cu @Configuration
 * Metodele se adnoteaza cu @Bean
+* In main:
