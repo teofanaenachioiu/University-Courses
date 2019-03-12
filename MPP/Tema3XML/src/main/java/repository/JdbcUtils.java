@@ -19,11 +19,7 @@ public class JdbcUtils {
         logger.traceEntry();
         String driver=jdbcProps.getProperty("mtasks.jdbc.driver");
         String url=jdbcProps.getProperty("mtasks.jdbc.url");
-//        String user=jdbcProps.getProperty("tasks.jdbc.user");
-//        String pass=jdbcProps.getProperty("tasks.jdbc.pass");
        logger.info("trying to connect to database ... {}",url);
-//        logger.info("user: {}",user);
-//        logger.info("pass: {}", pass);
         Connection con=null;
         try {
             Class.forName(driver);

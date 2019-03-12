@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <util:properties id="jdbcProps">
+        <prop key="mtasks.jdbc.driver">org.sqlite.JDBC</prop>
+        <prop key="mtasks.jdbc.url">jdbc:sqlite:D:/University-Courses/MPP/Laborator1/src/main/resources/concurs.db</prop>
+    </util:properties>
+
+    <util:properties id="jdbcProps1" location="classpath:bd.properties"/>
+
+
+    <bean id="repoParticipant" class="repository.ParticipantRepository">
+        <constructor-arg ref="jdbcProps"/>
+    </bean>
+
+    <bean id="repoProba" class="repository.ProbaRepository">
+        <constructor-arg ref="jdbcProps1"/>
+    </bean>
+
+    <bean id="repoUser" class="repository.UserRepository">
+        <constructor-arg ref="jdbcProps1"/>
+    </bean>
+
+    <bean id="repoInscrieri" class="repository.InscrieriRepository">
+        <constructor-arg ref="jdbcProps1"/>
+    </bean>
+
+    <bean id="serviceParticipant"
+          class="service.ParticipantService">
+        <property name="repo">
+                <bean class="repository.ParticipantRepository">
+                    <constructor-arg ref="jdbcProps1"/>
+                </bean>
+        </property>
+    </bean>
+
+</beans>

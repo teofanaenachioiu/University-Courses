@@ -1,0 +1,56 @@
+¤2019-03-12 13:39:35,430 Test worker DEBUG Initializing configuration XmlConfiguration[location=D:\University-Courses\MPP\Tema3XML\build\resources\main\log4j2.xml]
+D2019-03-12 13:39:35,499 Test worker DEBUG Installed script engines
+á2019-03-12 13:39:36,253 Test worker DEBUG Oracle Nashorn Version: 1.8.0_181, Language: ECMAScript, Threading: Not Thread Safe, Compile: true, Names: {nashorn, Nashorn, js, JS, JavaScript, javascript, ECMAScript, ecmascript}
+R2019-03-12 13:39:36,253 Test worker DEBUG PluginManager 'Core' found 112 plugins
+Q2019-03-12 13:39:36,253 Test worker DEBUG PluginManager 'Level' found 0 plugins
+S2019-03-12 13:39:36,269 Test worker DEBUG PluginManager 'Lookup' found 13 plugins
+ƒ2019-03-12 13:39:36,269 Test worker DEBUG Building Plugin[name=layout, class=org.apache.logging.log4j.core.layout.PatternLayout].
+O2019-03-12 13:39:36,284 Test worker TRACE TypeConverterRegistry initializing.
+Z2019-03-12 13:39:36,284 Test worker DEBUG PluginManager 'TypeConverter' found 26 plugins
+ç2019-03-12 13:39:36,316 Test worker DEBUG PatternLayout$Builder(pattern="%d{DATE} [%t] %class{36} %L %M - %msg%xEx%n", PatternSelector=null, Configuration(D:\University-Courses\MPP\Tema3XML\build\resources\main\log4j2.xml), Replace=null, charset="null", alwaysWriteExceptions="null", disableAnsi="null", noConsoleNoAnsi="null", header="null", footer="null")
+V2019-03-12 13:39:36,316 Test worker DEBUG PluginManager 'Converter' found 41 plugins
+†2019-03-12 13:39:36,353 Test worker DEBUG Building Plugin[name=appender, class=org.apache.logging.log4j.core.appender.FileAppender].
+º2019-03-12 13:39:36,369 Test worker DEBUG FileAppender$Builder(fileName="logs/app.log", append="null", locking="null", advertise="null", advertiseUri="null", createOnDemand="null", bufferedIo="null", bufferSize="null", immediateFlush="null", ignoreExceptions="null", PatternLayout(%d{DATE} [%t] %class{36} %L %M - %msg%xEx%n), name="FisierLog", Configuration(D:\University-Courses\MPP\Tema3XML\build\resources\main\log4j2.xml), Filter=null)
+M2019-03-12 13:39:36,385 Test worker DEBUG Starting FileManager logs/app.log
+ˆ2019-03-12 13:39:36,385 Test worker DEBUG Building Plugin[name=appenders, class=org.apache.logging.log4j.core.config.AppendersPlugin].
+I2019-03-12 13:39:36,385 Test worker DEBUG createAppenders(={FisierLog})
+†2019-03-12 13:39:36,385 Test worker DEBUG Building Plugin[name=AppenderRef, class=org.apache.logging.log4j.core.config.AppenderRef].
+i2019-03-12 13:39:36,400 Test worker DEBUG createAppenderRef(ref="FisierLog", level="null", Filter=null)
+‹2019-03-12 13:39:36,400 Test worker DEBUG Building Plugin[name=root, class=org.apache.logging.log4j.core.config.LoggerConfig$RootLogger].
+å2019-03-12 13:39:36,400 Test worker DEBUG createLogger(additivity="null", level="TRACE", includeLocation="null", ={FisierLog}, ={}, Configuration(D:\University-Courses\MPP\Tema3XML\build\resources\main\log4j2.xml), Filter=null)
+„2019-03-12 13:39:36,400 Test worker DEBUG Building Plugin[name=loggers, class=org.apache.logging.log4j.core.config.LoggersPlugin].
+B2019-03-12 13:39:36,400 Test worker DEBUG createLoggers(={root})
+£2019-03-12 13:39:36,432 Test worker DEBUG Configuration XmlConfiguration[location=D:\University-Courses\MPP\Tema3XML\build\resources\main\log4j2.xml] initialized
+ 2019-03-12 13:39:36,432 Test worker DEBUG Starting configuration XmlConfiguration[location=D:\University-Courses\MPP\Tema3XML\build\resources\main\log4j2.xml]
+£2019-03-12 13:39:36,432 Test worker DEBUG Started configuration XmlConfiguration[location=D:\University-Courses\MPP\Tema3XML\build\resources\main\log4j2.xml] OK.
+y2019-03-12 13:39:36,438 Test worker TRACE Stopping org.apache.logging.log4j.core.config.DefaultConfiguration@1862acd...
+~2019-03-12 13:39:36,438 Test worker TRACE DefaultConfiguration notified 1 ReliabilityStrategies that config will be stopped.
+\2019-03-12 13:39:36,438 Test worker TRACE DefaultConfiguration stopping root LoggerConfig.
+€2019-03-12 13:39:36,438 Test worker TRACE DefaultConfiguration notifying ReliabilityStrategies that appenders will be stopped.
+^2019-03-12 13:39:36,438 Test worker TRACE DefaultConfiguration stopping remaining Appenders.
+f2019-03-12 13:39:36,438 Test worker DEBUG Shutting down OutputStreamManager SYSTEM_OUT.false.false-1
+€2019-03-12 13:39:36,438 Test worker DEBUG Shut down OutputStreamManager SYSTEM_OUT.false.false-1, all resources released: true
+^2019-03-12 13:39:36,438 Test worker DEBUG Appender DefaultConsole-1 stopped with status true
+_2019-03-12 13:39:36,438 Test worker TRACE DefaultConfiguration stopped 1 remaining Appenders.
+i2019-03-12 13:39:36,438 Test worker TRACE DefaultConfiguration cleaning Appenders from 1 LoggerConfigs.
+x2019-03-12 13:39:36,438 Test worker DEBUG Stopped org.apache.logging.log4j.core.config.DefaultConfiguration@1862acd OK
+¤2019-03-12 13:39:36,570 Test worker TRACE Reregistering MBeans after reconfigure. Selector=org.apache.logging.log4j.core.selector.ClassLoaderContextSelector@6da0f
+†2019-03-12 13:39:36,570 Test worker TRACE Reregistering context (1/1): '1d16e93' org.apache.logging.log4j.core.LoggerContext@1d07330
+2019-03-12 13:39:36,570 Test worker TRACE Unregistering but no MBeans found matching 'org.apache.logging.log4j2:type=1d16e93'
+–2019-03-12 13:39:36,570 Test worker TRACE Unregistering but no MBeans found matching 'org.apache.logging.log4j2:type=1d16e93,component=StatusLogger'
+™2019-03-12 13:39:36,570 Test worker TRACE Unregistering but no MBeans found matching 'org.apache.logging.log4j2:type=1d16e93,component=ContextSelector'
+˜2019-03-12 13:39:36,570 Test worker TRACE Unregistering but no MBeans found matching 'org.apache.logging.log4j2:type=1d16e93,component=Loggers,name=*'
+š2019-03-12 13:39:36,570 Test worker TRACE Unregistering but no MBeans found matching 'org.apache.logging.log4j2:type=1d16e93,component=Appenders,name=*'
+Ÿ2019-03-12 13:39:36,570 Test worker TRACE Unregistering but no MBeans found matching 'org.apache.logging.log4j2:type=1d16e93,component=AsyncAppenders,name=*'
+Ÿ2019-03-12 13:39:36,570 Test worker TRACE Unregistering but no MBeans found matching 'org.apache.logging.log4j2:type=1d16e93,component=AsyncLoggerRingBuffer'
+«2019-03-12 13:39:36,570 Test worker TRACE Unregistering but no MBeans found matching 'org.apache.logging.log4j2:type=1d16e93,component=Loggers,name=*,subtype=RingBuffer'
+d2019-03-12 13:39:36,585 Test worker DEBUG Registering MBean org.apache.logging.log4j2:type=1d16e93
+{2019-03-12 13:39:36,585 Test worker DEBUG Registering MBean org.apache.logging.log4j2:type=1d16e93,component=StatusLogger
+~2019-03-12 13:39:36,601 Test worker DEBUG Registering MBean org.apache.logging.log4j2:type=1d16e93,component=ContextSelector
+|2019-03-12 13:39:36,601 Test worker DEBUG Registering MBean org.apache.logging.log4j2:type=1d16e93,component=Loggers,name=
+‡2019-03-12 13:39:36,601 Test worker DEBUG Registering MBean org.apache.logging.log4j2:type=1d16e93,component=Appenders,name=FisierLog
+U2019-03-12 13:39:36,616 Test worker TRACE Using default SystemClock for timestamps.
+[2019-03-12 13:39:36,616 Test worker TRACE Using DummyNanoClock for nanosecond timestamps.
+þ2019-03-12 13:39:36,616 Test worker DEBUG Reconfiguration complete for context[name=1d16e93] at URI D:\University-Courses\MPP\Tema3XML\build\resources\main\log4j2.xml (org.apache.logging.log4j.core.LoggerContext@1d07330) with optional ClassLoader: null
+Y2019-03-12 13:39:36,616 Test worker DEBUG Shutdown hook enabled. Registering a new one.
+ˆ2019-03-12 13:39:36,616 Test worker DEBUG LoggerContext[name=1d16e93, org.apache.logging.log4j.core.LoggerContext@1d07330] started OK.

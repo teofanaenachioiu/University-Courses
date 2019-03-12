@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="repository.UserRepositoryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-03-12T11:39:41" hostname="Teofana-PC" time="0.378">
+  <properties/>
+  <testcase name="test" classname="repository.UserRepositoryTest" time="0.378"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
