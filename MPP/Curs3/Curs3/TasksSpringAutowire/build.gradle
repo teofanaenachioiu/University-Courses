@@ -1,0 +1,17 @@
+group 'TasksSpringAutowire'
+version '1.0'
+
+apply plugin: 'java'
+apply plugin:'application'
+
+sourceCompatibility = 1.8
+mainClassName='tasks.AutowireMainSpring'
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile 'org.springframework:spring-context:5.0.4.RELEASE'
+    runtime group: 'org.xerial', name: 'sqlite-jdbc', version: '3.16.1'
+}
