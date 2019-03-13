@@ -1,4 +1,5 @@
 ﻿using Concurs.model;
+using Concurs.repository.utils;
 using log4net;
 using System;
 using System.Collections.Generic;
@@ -7,27 +8,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Concurs.repository.utils
+namespace Concurs.repository
 {
-    public class ParticipantRepository : IRepository<int, Participant>
+    public class ProbaRepository : IRepository<int, Proba>
     {
-        private static readonly ILog log = LogManager.GetLogger("ParticipantRepository");
+        private static readonly ILog log = LogManager.GetLogger("ProbaRepository");
 
         IDictionary<String, string> props;
-        public ParticipantRepository(IDictionary<String, string> props)
+        public ProbaRepository(IDictionary<String, string> props)
         {
-            log.Info("Creating ParticipantRepository... ");
+            log.Info("Creating ProbaRepository... ");
             this.props = props;
         }
 
-        public Participant FindOne(int id)
+        public Proba FindOne(int id)
         {
             log.InfoFormat("Entering findOne with value {0}", id);
             IDbConnection con = DBUtils.getConnection(props);
 
             using (var comm = con.CreateCommand())
             {
-                comm.CommandText = "select * from Participanti where id=@id";
+                comm.CommandText = "select id, denumire, categorie from Probe where id=@id";
                 IDbDataParameter paramId = comm.CreateParameter();
                 paramId.ParameterName = "@id";
                 paramId.Value = id;
@@ -38,11 +39,11 @@ namespace Concurs.repository.utils
                     if (dataR.Read())
                     {
                         int idP = dataR.GetInt32(0);
-                        string nume = dataR.GetString(1);
-                        int varsta = dataR.GetInt32(2);
-                        Participant participant = new Participant(idP, nume, varsta);
-                        log.InfoFormat("Exiting findOne with value {0}", participant);
-                        return participant;
+                        string denumire = dataR.GetString(1);
+                        string categorie = dataR.GetString(2);
+                        Proba proba = new Proba(idP, denumire, categorie);
+                        log.InfoFormat("Exiting findOne with value {0}", proba);
+                        return proba;
                     }
                 }
             }
@@ -50,51 +51,51 @@ namespace Concurs.repository.utils
             return null;
         }
 
-        public IEnumerable<Participant> FindAll()
+        public IEnumerable<Proba> FindAll()
         {
             IDbConnection con = DBUtils.getConnection(props);
             log.InfoFormat("Entering FindAll...");
-            IList<Participant> partic = new List<Participant>();
+            IList<Proba> probe = new List<Proba>();
             using (var comm = con.CreateCommand())
             {
-                comm.CommandText = "select id, nume, varsta from Participanti";
+                comm.CommandText = "select id, denumire, categorie from Probe";
 
                 using (var dataR = comm.ExecuteReader())
                 {
                     while (dataR.Read())
                     {
                         int idP = dataR.GetInt32(0);
-                        String nume = dataR.GetString(1);
-                        int varsta = dataR.GetInt32(2);
-                        Participant participant = new Participant(idP, nume, varsta);
-                        partic.Add(participant);
+                        string denumire = dataR.GetString(1);
+                        string categorie = dataR.GetString(2);
+                        Proba proba = new Proba(idP, denumire, categorie);
+                        probe.Add(proba);
                     }
                 }
             }
             log.InfoFormat("Exiting findAll");
-            return partic;
+            return probe;
         }
-        public void Save(Participant entity)
+        public void Save(Proba entity)
         {
             log.InfoFormat("Entering Save with new value {0}...", entity);
             var con = DBUtils.getConnection(props);
             using (var comm = con.CreateCommand())
             {
-                comm.CommandText = "insert into Participanti(nume,varsta) values (@nume, @varsta)";
+                comm.CommandText = "insert into Probe(denumire,categorie) values (@denumire, @categorie)";
 
-                var paramNume = comm.CreateParameter();
-                paramNume.ParameterName = "@nume";
-                paramNume.Value = entity.Nume;
-                comm.Parameters.Add(paramNume);
+                var paramDenumire = comm.CreateParameter();
+                paramDenumire.ParameterName = "@denumire";
+                paramDenumire.Value = entity.Denumire;
+                comm.Parameters.Add(paramDenumire);
 
-                var paramVarsta = comm.CreateParameter();
-                paramVarsta.ParameterName = "@varsta";
-                paramVarsta.Value = entity.Varsta;
-                comm.Parameters.Add(paramVarsta);
+                var paramCategorie = comm.CreateParameter();
+                paramCategorie.ParameterName = "@categorie";
+                paramCategorie.Value = entity.Categorie;
+                comm.Parameters.Add(paramCategorie);
 
                 var result = comm.ExecuteNonQuery();
                 if (result == 0)
-                    throw new RepositoryException("Error: Nu s-a putut adauga participantul!");
+                    throw new RepositoryException("Error: Nu s-a putut adauga proba!");
                 log.InfoFormat("Exiting Save");
             }
 
@@ -105,44 +106,44 @@ namespace Concurs.repository.utils
             IDbConnection con = DBUtils.getConnection(props);
             using (var comm = con.CreateCommand())
             {
-                comm.CommandText = "delete from Participanti where id=@id";
+                comm.CommandText = "delete from Probe where id=@id";
                 IDbDataParameter paramId = comm.CreateParameter();
                 paramId.ParameterName = "@id";
                 paramId.Value = id;
                 comm.Parameters.Add(paramId);
                 var rez = comm.ExecuteNonQuery();
                 if (rez == 0)
-                    throw new RepositoryException("Error: Nu s-a putut sterge participantul!");
+                    throw new RepositoryException("Error: Proba nu s-a putut sterge!");
                 log.InfoFormat("Exiting Delete");
             }
         }
 
-        public void Update(int id, Participant entity)
+        public void Update(int id, Proba entity)
         {
             log.InfoFormat("Entering Update with value {0}", id);
             var con = DBUtils.getConnection(props);
 
             using (var comm = con.CreateCommand())
             {
-                comm.CommandText = "update Participanti set  nume=@nume, varsta=@varsta where id=@id";
+                comm.CommandText = "update Probe set  denumire=@denumire, categorie=@categorie where id=@id";
                 var paramId = comm.CreateParameter();
                 paramId.ParameterName = "@id";
                 paramId.Value = id;
                 comm.Parameters.Add(paramId);
 
-                var paramNume = comm.CreateParameter();
-                paramNume.ParameterName = "@nume";
-                paramNume.Value = entity.Nume;
-                comm.Parameters.Add(paramNume);
+                var paramDenumire = comm.CreateParameter();
+                paramDenumire.ParameterName = "@denumire";
+                paramDenumire.Value = entity.Denumire;
+                comm.Parameters.Add(paramDenumire);
 
-                var paramVarsta = comm.CreateParameter();
-                paramVarsta.ParameterName = "@varsta";
-                paramVarsta.Value = entity.Varsta;
-                comm.Parameters.Add(paramVarsta);
+                var paramCategorie = comm.CreateParameter();
+                paramCategorie.ParameterName = "@categorie";
+                paramCategorie.Value = entity.Categorie;
+                comm.Parameters.Add(paramCategorie);
 
                 var result = comm.ExecuteNonQuery();
                 if (result == 0)
-                    throw new RepositoryException("Error: Nu s-a putut actualiza participantul!");
+                    throw new RepositoryException("Error: Nu s-a putut actualiza proba!");
                 log.InfoFormat("Exiting Update");
             }
         }
@@ -154,7 +155,7 @@ namespace Concurs.repository.utils
             int size = -1;
             using (var comm = con.CreateCommand())
             {
-                comm.CommandText = "select count(*) from Participanti";
+                comm.CommandText = "select count(*) from Probe";
 
                 var rez = comm.ExecuteNonQuery();
                 if (rez == 0)

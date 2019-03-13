@@ -1,4 +1,5 @@
 ﻿using Concurs.model;
+using Concurs.repository.utils;
 using log4net;
 using System;
 using System.Collections.Generic;
@@ -7,27 +8,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Concurs.repository.utils
+namespace Concurs.repository
 {
-    public class ParticipantRepository : IRepository<int, Participant>
+    public class UserRepository : IRepository<string, User>
     {
-        private static readonly ILog log = LogManager.GetLogger("ParticipantRepository");
+        private static readonly ILog log = LogManager.GetLogger("UserRepository");
 
         IDictionary<String, string> props;
-        public ParticipantRepository(IDictionary<String, string> props)
+        public UserRepository(IDictionary<String, string> props)
         {
-            log.Info("Creating ParticipantRepository... ");
+            log.Info("Creating UserRepository... ");
             this.props = props;
         }
 
-        public Participant FindOne(int id)
+        public User FindOne(string id)
         {
             log.InfoFormat("Entering findOne with value {0}", id);
             IDbConnection con = DBUtils.getConnection(props);
 
             using (var comm = con.CreateCommand())
             {
-                comm.CommandText = "select * from Participanti where id=@id";
+                comm.CommandText = "select * from Users where username=@id";
                 IDbDataParameter paramId = comm.CreateParameter();
                 paramId.ParameterName = "@id";
                 paramId.Value = id;
@@ -37,112 +38,119 @@ namespace Concurs.repository.utils
                 {
                     if (dataR.Read())
                     {
-                        int idP = dataR.GetInt32(0);
-                        string nume = dataR.GetString(1);
-                        int varsta = dataR.GetInt32(2);
-                        Participant participant = new Participant(idP, nume, varsta);
-                        log.InfoFormat("Exiting findOne with value {0}", participant);
-                        return participant;
+                        string username = dataR.GetString(0);
+                        string hash = dataR.GetString(1);
+                        string tip = dataR.GetString(2);
+                        User user = new User(username,hash,tip);
+                        log.InfoFormat("Exiting findOne with value {0}", user);
+                        return user;
                     }
                 }
             }
-            log.InfoFormat("Exiting findOne with value {0}", null);
+            log.InfoFormat("Exiting findOne");
             return null;
         }
 
-        public IEnumerable<Participant> FindAll()
+        public IEnumerable<User> FindAll()
         {
             IDbConnection con = DBUtils.getConnection(props);
             log.InfoFormat("Entering FindAll...");
-            IList<Participant> partic = new List<Participant>();
+            IList<User> users = new List<User>();
             using (var comm = con.CreateCommand())
             {
-                comm.CommandText = "select id, nume, varsta from Participanti";
+                comm.CommandText = "select * from Users";
 
                 using (var dataR = comm.ExecuteReader())
                 {
                     while (dataR.Read())
                     {
-                        int idP = dataR.GetInt32(0);
-                        String nume = dataR.GetString(1);
-                        int varsta = dataR.GetInt32(2);
-                        Participant participant = new Participant(idP, nume, varsta);
-                        partic.Add(participant);
+                        string username = dataR.GetString(0);
+                        string hash = dataR.GetString(1);
+                        string tip = dataR.GetString(2);
+                        User user = new User(username, hash, tip);
+                        users.Add(user);
                     }
                 }
             }
             log.InfoFormat("Exiting findAll");
-            return partic;
+            return users;
         }
-        public void Save(Participant entity)
+        public void Save(User entity)
         {
             log.InfoFormat("Entering Save with new value {0}...", entity);
             var con = DBUtils.getConnection(props);
             using (var comm = con.CreateCommand())
             {
-                comm.CommandText = "insert into Participanti(nume,varsta) values (@nume, @varsta)";
+                comm.CommandText = "insert into Users values (@username, @hash, @tip)";
 
-                var paramNume = comm.CreateParameter();
-                paramNume.ParameterName = "@nume";
-                paramNume.Value = entity.Nume;
-                comm.Parameters.Add(paramNume);
+                var paramUsername = comm.CreateParameter();
+                paramUsername.ParameterName = "@username";
+                paramUsername.Value = entity.Id;
+                comm.Parameters.Add(paramUsername);
 
-                var paramVarsta = comm.CreateParameter();
-                paramVarsta.ParameterName = "@varsta";
-                paramVarsta.Value = entity.Varsta;
-                comm.Parameters.Add(paramVarsta);
+                var paramHash = comm.CreateParameter();
+                paramHash.ParameterName = "@hash";
+                paramHash.Value = entity.Hash;
+                comm.Parameters.Add(paramHash);
+
+                var paramTip = comm.CreateParameter();
+                paramTip.ParameterName = "@tip";
+                paramTip.Value = entity.Tip;
+                comm.Parameters.Add(paramTip);
 
                 var result = comm.ExecuteNonQuery();
                 if (result == 0)
-                    throw new RepositoryException("Error: Nu s-a putut adauga participantul!");
+                    throw new RepositoryException("Error: Nu s-a putut adauga userul!");
                 log.InfoFormat("Exiting Save");
             }
 
         }
-        public void Delete(int id)
+        public void Delete(string id)
         {
             log.InfoFormat("Entering Delete with new value {0}...", id);
             IDbConnection con = DBUtils.getConnection(props);
             using (var comm = con.CreateCommand())
             {
-                comm.CommandText = "delete from Participanti where id=@id";
+                comm.CommandText = "delete from Users where username=@id";
                 IDbDataParameter paramId = comm.CreateParameter();
                 paramId.ParameterName = "@id";
                 paramId.Value = id;
                 comm.Parameters.Add(paramId);
+
+           
                 var rez = comm.ExecuteNonQuery();
                 if (rez == 0)
-                    throw new RepositoryException("Error: Nu s-a putut sterge participantul!");
+                    throw new RepositoryException("Error: Userul nu s-a putut sterge!");
                 log.InfoFormat("Exiting Delete");
             }
         }
 
-        public void Update(int id, Participant entity)
+        public void Update(string id, User entity)
         {
             log.InfoFormat("Entering Update with value {0}", id);
             var con = DBUtils.getConnection(props);
 
             using (var comm = con.CreateCommand())
             {
-                comm.CommandText = "update Participanti set  nume=@nume, varsta=@varsta where id=@id";
+                comm.CommandText = "update Users set hash=@hash, tip=@tip where username=@id";
                 var paramId = comm.CreateParameter();
                 paramId.ParameterName = "@id";
                 paramId.Value = id;
                 comm.Parameters.Add(paramId);
 
-                var paramNume = comm.CreateParameter();
-                paramNume.ParameterName = "@nume";
-                paramNume.Value = entity.Nume;
-                comm.Parameters.Add(paramNume);
+                var paramHash = comm.CreateParameter();
+                paramHash.ParameterName = "@hash";
+                paramHash.Value = entity.Hash;
+                comm.Parameters.Add(paramHash);
 
-                var paramVarsta = comm.CreateParameter();
-                paramVarsta.ParameterName = "@varsta";
-                paramVarsta.Value = entity.Varsta;
-                comm.Parameters.Add(paramVarsta);
+                var paramTip = comm.CreateParameter();
+                paramTip.ParameterName = "@tip";
+                paramTip.Value = entity.Tip;
+                comm.Parameters.Add(paramTip);
 
                 var result = comm.ExecuteNonQuery();
                 if (result == 0)
-                    throw new RepositoryException("Error: Nu s-a putut actualiza participantul!");
+                    throw new RepositoryException("Error: Nu s-a putut actualiza userul!");
                 log.InfoFormat("Exiting Update");
             }
         }
@@ -154,7 +162,7 @@ namespace Concurs.repository.utils
             int size = -1;
             using (var comm = con.CreateCommand())
             {
-                comm.CommandText = "select count(*) from Participanti";
+                comm.CommandText = "select count(*) from Users";
 
                 var rez = comm.ExecuteNonQuery();
                 if (rez == 0)

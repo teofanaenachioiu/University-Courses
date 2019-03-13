@@ -14,6 +14,14 @@ namespace Concurs.model
         private DateTime data;
         private string usernameOperator;
 
+        public Inscriere(int idParticipant, int idProba, string usernameOperator)
+        {
+            this.idParticipant = idParticipant;
+            this.idProba = idProba;
+            this.data = DateTime.Now.Date;
+            this.usernameOperator = usernameOperator;
+        }
+
         public Inscriere(int idParticipant, int idProba, DateTime data, string usernameOperator)
         {
             this.idParticipant = idParticipant;
@@ -21,6 +29,7 @@ namespace Concurs.model
             this.data = data;
             this.usernameOperator = usernameOperator;
         }
+
 
         [XmlAttribute]
         public KeyValuePair<int, int> Id

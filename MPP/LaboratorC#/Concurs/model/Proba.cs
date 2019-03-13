@@ -19,6 +19,13 @@ namespace Concurs.model
             this.categorie = categorie;
         }
 
+        public Proba(int id,string denumire, string categorie)
+        {
+            this.id = id;
+            this.denumire = denumire;
+            this.categorie = categorie;
+        }
+
         [XmlAttribute]
         public int Id
         {

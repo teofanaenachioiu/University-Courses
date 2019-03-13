@@ -20,6 +20,13 @@ namespace Concurs.model
             this.tip = tip;
         }
 
+        public User(string username, string hash)
+        {
+            this.username = username;
+            this.hash = hash;
+            this.tip = "ADMIN";
+        }
+
         [XmlAttribute]
         public string Id
         {
