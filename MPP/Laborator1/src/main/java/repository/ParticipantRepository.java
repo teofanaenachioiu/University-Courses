@@ -1,5 +1,6 @@
 package repository;
 
+import javafx.util.Pair;
 import model.Participant;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-public class ParticipantRepository implements IRepository<Integer, Participant> {
+public class ParticipantRepository implements IRepositoryParticipant{
     private JdbcUtils dbUtils;
 
     private static final Logger logger= LogManager.getLogger();
@@ -40,18 +41,28 @@ public class ParticipantRepository implements IRepository<Integer, Participant> 
     }
 
     @Override
-    public void save(Participant entity) {
+    public Integer save(Participant entity) {
         logger.traceEntry("saving participant {} ",entity);
         Connection con=dbUtils.getConnection();
         try(PreparedStatement preStmt=con.prepareStatement("insert into Participanti(nume, varsta) values (?,?)")){
             preStmt.setString(1,entity.getNume());
             preStmt.setInt(2,entity.getVarsta());
             int result=preStmt.executeUpdate();
+            if (result==0)
+                throw new RepositoryException("Error: Nu s-a putut adauga participantul!");
+            try(PreparedStatement preStmt1=con.prepareStatement("select top 1 id from Participanti order by id desc")) {
+                try(ResultSet result1 = preStmt.executeQuery()) {
+                    if (result1.next()) {
+                        return result1.getInt("id");
+                    }
+                }
+            }
         }catch (SQLException ex){
             logger.error(ex);
             System.out.println("Error DB "+ex);
         }
         logger.traceExit();
+        return null;
     }
 
     @Override
@@ -61,6 +72,8 @@ public class ParticipantRepository implements IRepository<Integer, Participant> 
         try(PreparedStatement preStmt=con.prepareStatement("delete from Participanti where id=?")){
             preStmt.setInt(1,integer);
             int result=preStmt.executeUpdate();
+            if(result == 0)
+                throw new RepositoryException("Error: Nu s-a putut sterge participantul!");
         }catch (SQLException ex){
             logger.error(ex);
             System.out.println("Error DB "+ex);
@@ -80,6 +93,8 @@ public class ParticipantRepository implements IRepository<Integer, Participant> 
             preStmt.setString(1,entity.getNume());
             preStmt.setInt(2,entity.getVarsta());
             int result=preStmt.executeUpdate();
+            if(result == 0)
+                throw new RepositoryException("Error: Nu s-a putut actualiza participantul!");
         }catch (SQLException ex){
             logger.error(ex);
             System.out.println("Error DB "+ex);

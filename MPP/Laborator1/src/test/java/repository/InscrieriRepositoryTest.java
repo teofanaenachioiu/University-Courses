@@ -1,9 +1,7 @@
 package repository;
 
 import javafx.util.Pair;
-import model.Categorie;
 import model.Inscriere;
-import model.Proba;
 import org.junit.Test;
 
 import java.io.FileReader;
@@ -18,7 +16,7 @@ import static org.junit.Assert.*;
 public class InscrieriRepositoryTest {
     @Test
     public void test(){
-        IRepository<Pair<Integer,Integer>, Inscriere> repo;
+        IRepositoryInscriere repo;
         Inscriere inscriere=new Inscriere(1,10,"maria_avram");
 
         Properties prop=new Properties();
@@ -29,7 +27,7 @@ public class InscrieriRepositoryTest {
             e.printStackTrace();
         }
 
-        repo=new InscrieriRepository(prop);
+        repo=new InscriereRepository(prop);
 
 
         //size
@@ -63,6 +61,27 @@ public class InscrieriRepositoryTest {
 
         //max 2 probe
 
+        //cautaParticipantiDupaCategorie
+        long dim=StreamSupport
+                .stream(repo.cautaParticipantiDupaCategorie("CATEGORIE_6_8").spliterator(),false)
+                .count();
+        assertEquals(1,dim);
+        assertEquals(1,repo.nrParticipantiCategorie("CATEGORIE_6_8"));
+
+        //cautaParticipantiDupaProba
+        dim=StreamSupport
+                .stream(repo.cautaParticipantiDupaProba("Pictura").spliterator(),false)
+                .count();
+        assertEquals(2,dim);
+        assertEquals(2,repo.nrParticipantiProba("Pictura"));
+
+        //cautaParticipantDupaProbaCategorie
+        dim=StreamSupport
+                .stream(repo.cautaParticipantDupaProbaCategorie("Pictura","CATEGORIE_6_8").spliterator(),false)
+                .count();
+        assertEquals(1,dim);
+
+
         try{
             repo.save(new Inscriere(1,12,"maria_avram"));
             assertEquals(2,repo.size());
@@ -73,6 +92,10 @@ public class InscrieriRepositoryTest {
             repo.delete(new Pair<>(1,10));
             repo.delete(new Pair<>(1,11));
         }
+
+
+
+
     }
 
 }

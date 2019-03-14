@@ -1,5 +1,6 @@
 package repository;
 
+import javafx.util.Pair;
 import model.TipUser;
 import model.User;
 import org.apache.logging.log4j.LogManager;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-public class UserRepository implements IRepository<String, User> {
+public class UserRepository implements IRepositoryUser {
 
     private JdbcUtils dbUtils;
 
@@ -42,7 +43,7 @@ public class UserRepository implements IRepository<String, User> {
     }
 
     @Override
-    public void save(User entity) {
+    public Pair<int, int> save(User entity) {
         logger.traceEntry("saving user {} ",entity);
         Connection con=dbUtils.getConnection();
         try(PreparedStatement preStmt=con.prepareStatement("insert into Users values (?,?,?)")){
@@ -50,6 +51,7 @@ public class UserRepository implements IRepository<String, User> {
             preStmt.setString(2,entity.getHash());
             preStmt.setString(3,entity.getTip().toString());
             int result=preStmt.executeUpdate();
+            if(result==0) throw new RepositoryException("Error: Nu s-a putut adauga userul!");
         }catch (SQLException ex){
             logger.error(ex);
             System.out.println("Error DB "+ex);
@@ -64,6 +66,7 @@ public class UserRepository implements IRepository<String, User> {
         try(PreparedStatement preStmt=con.prepareStatement("delete from Users where username=?")){
             preStmt.setString(1,s);
             int result=preStmt.executeUpdate();
+            if(result==0) throw new RepositoryException("Error: Nu s-a putut sterge userul!");
         }catch (SQLException ex){
             logger.error(ex);
             System.out.println("Error DB "+ex);
@@ -83,6 +86,7 @@ public class UserRepository implements IRepository<String, User> {
             preStmt.setString(1,entity.getHash());
             preStmt.setString(2,entity.getTip().toString());
             int result=preStmt.executeUpdate();
+            if(result==0) throw new RepositoryException("Error: Nu s-a putut actualiza userul!");
         }catch (SQLException ex){
             logger.error(ex);
             System.out.println("Error DB "+ex);

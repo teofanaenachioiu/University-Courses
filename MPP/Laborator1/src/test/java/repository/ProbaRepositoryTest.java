@@ -17,7 +17,7 @@ public class ProbaRepositoryTest {
 
     @Test
     public void test() {
-        IRepository<Integer, Proba> repo;
+        IRepositoryProba repo;
         Proba proba=new Proba("tenis", Categorie.CATEGORIE_9_11);
         Proba lastProba;
 

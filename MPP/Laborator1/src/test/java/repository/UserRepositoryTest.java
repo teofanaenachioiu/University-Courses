@@ -24,16 +24,16 @@ public class UserRepositoryTest {
             e.printStackTrace();
         }
 
-        IRepository<String, User>repo=new UserRepository(prop);
+        IRepositoryUser repo=new UserRepository(prop);
 
         User user=new User("ioana_l","hashhash");
 
         //size
-        assertEquals(2,repo.size());
+        assertEquals(3,repo.size());
 
         //save
         repo.save(user);
-        assertEquals(3,repo.size());
+        assertEquals(4,repo.size());
 
         //find
         assertNull(repo.findOne("teofana"));
@@ -50,7 +50,7 @@ public class UserRepositoryTest {
 
         //delete
         repo.delete("ioana_l");
-        assertEquals(2,repo.size());
+        assertEquals(3,repo.size());
 
     }
 

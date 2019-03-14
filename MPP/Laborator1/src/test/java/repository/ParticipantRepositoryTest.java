@@ -1,7 +1,9 @@
 package repository;
 
 import model.Participant;
+import org.junit.Assert;
 import org.junit.Test;
+import org.junit.internal.runners.statements.Fail;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -11,11 +13,11 @@ import java.util.Properties;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 
 public class ParticipantRepositoryTest {
-    IRepository<Integer, Participant> repo;
+    IRepositoryParticipant repo;
     Participant participant=new Participant("Teodora",11);
     Participant lastParticipant;
 
@@ -27,9 +29,7 @@ public class ParticipantRepositoryTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
        repo=new ParticipantRepository(prop);
-
     }
 
     @Test
@@ -60,7 +60,23 @@ public class ParticipantRepositoryTest {
         participant.setVarsta(6);
         assertEquals(participant,lastParticipant);
 
+        try{
+            repo.update(-1,participant);
+            fail();
+        }
+        catch (RepositoryException e){
+            assertEquals("Error: Nu s-a putut actualiza participantul!",e.getMessage());
+        }
+        //delete
         repo.delete(lastParticipant.getID());
+        assertEquals(5,repo.size());
+        try{
+            repo.delete(-1);
+            fail();
+        }
+        catch (RepositoryException e){
+            assertEquals("Error: Nu s-a putut sterge participantul!",e.getMessage());
+        }
     }
 
 }

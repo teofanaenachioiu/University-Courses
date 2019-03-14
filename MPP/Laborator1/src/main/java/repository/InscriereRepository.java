@@ -2,6 +2,7 @@ package repository;
 
 import javafx.util.Pair;
 import model.Inscriere;
+import model.Participant;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,11 +12,11 @@ import java.util.List;
 import java.util.Properties;
 import java.util.stream.StreamSupport;
 
-public class InscrieriRepository implements IRepository<Pair<Integer,Integer>, Inscriere>{
+public class InscriereRepository implements IRepositoryInscriere{
     private JdbcUtils dbUtils;
 
     private static final Logger logger= LogManager.getLogger();
-    public InscrieriRepository(Properties props) {
+    public InscriereRepository(Properties props) {
         logger.info("Initializing ProbaRepository with properties: {} ", props);
         dbUtils = new JdbcUtils(props);
     }
@@ -39,7 +40,7 @@ public class InscrieriRepository implements IRepository<Pair<Integer,Integer>, I
     }
 
     @Override
-    public void save(Inscriere entity) {
+    public Pair<Integer,Integer> save(Inscriere entity) {
         long nrProbe= StreamSupport
                 .stream(findProbeDupaParticipant(entity.getID().getKey()).spliterator(),false)
                 .count();
@@ -54,11 +55,14 @@ public class InscrieriRepository implements IRepository<Pair<Integer,Integer>, I
             preStmt.setDate(3,date);
             preStmt.setString(4,entity.getUsernameOperator());
             int result=preStmt.executeUpdate();
+            if(result==0)
+                throw new RepositoryException("Error: Nu s-a putut adauga inscrierea!");
         }catch (SQLException ex){
             logger.error(ex);
             System.out.println("Error DB "+ex);
         }
         logger.traceExit();
+        return new Pair<>(entity.getID().getKey(),entity.getID().getValue());
     }
 
     @Override
@@ -69,6 +73,8 @@ public class InscrieriRepository implements IRepository<Pair<Integer,Integer>, I
             preStmt.setInt(1,integerIntegerPair.getKey());
             preStmt.setInt(2,integerIntegerPair.getValue());
             int result=preStmt.executeUpdate();
+            if(result==0)
+                throw new RepositoryException("Error: Nu s-a putut sterge inscrierea!");
         }catch (SQLException ex){
             logger.error(ex);
             System.out.println("Error DB "+ex);
@@ -90,6 +96,8 @@ public class InscrieriRepository implements IRepository<Pair<Integer,Integer>, I
             preStmt.setDate(1, date);
             preStmt.setString(2,entity.getUsernameOperator());
             int result=preStmt.executeUpdate();
+            if(result==0)
+                throw new RepositoryException("Error: Nu s-a putut actualiza inscrierea!");
         }catch (SQLException ex){
             logger.error(ex);
             System.out.println("Error DB "+ex);
@@ -153,7 +161,7 @@ public class InscrieriRepository implements IRepository<Pair<Integer,Integer>, I
         return inscrieri;
     }
 
-    private Iterable<Inscriere> findProbeDupaParticipant(Integer idP) {
+    public Iterable<Inscriere> findProbeDupaParticipant(Integer idP) {
         logger.traceEntry("finding inscrieri with idParticipant {} ",idP);
         Connection con=dbUtils.getConnection();
         List<Inscriere> inscrieri=new ArrayList<>();
@@ -177,4 +185,114 @@ public class InscrieriRepository implements IRepository<Pair<Integer,Integer>, I
         return inscrieri;
     }
 
+    @Override
+    public Iterable<Participant> cautaParticipantiDupaCategorie(String categorie) {
+        logger.traceEntry("finding participants with categorie {} ",categorie);
+        Connection con=dbUtils.getConnection();
+        List<Participant> participants=new ArrayList<>();
+        try(PreparedStatement preStmt=con.prepareStatement("select P.id, P.nume, P.varsta from Participanti P inner join Inscrieri I on P.id==I.idParticipant inner join Probe Pr on Pr.id==I.idProba where Pr.categorie=?")){
+            preStmt.setString(1,categorie);
+            try(ResultSet result=preStmt.executeQuery()) {
+                while (result.next()) {
+                    Integer id = result.getInt("id");
+                    String nume = result.getString("nume");
+                    Integer varsta = result.getInt("varsta");
+                    Participant participant=new Participant(id,nume,varsta);
+                    participants.add(participant);
+                }
+            }
+        }catch (SQLException ex){
+            logger.error(ex);
+            System.out.println("Error DB "+ex);
+        }
+        logger.traceExit(participants);
+        return participants;
+    }
+
+    @Override
+    public Iterable<Participant> cautaParticipantiDupaProba(String proba) {
+        logger.traceEntry("finding participants with categorie {} ",proba);
+        Connection con=dbUtils.getConnection();
+        List<Participant> participants=new ArrayList<>();
+        try(PreparedStatement preStmt=con.prepareStatement("select P.id, P.nume, P.varsta from Participanti P inner join Inscrieri I on P.id==I.idParticipant inner join Probe Pr on Pr.id==I.idProba where Pr.denumire=?")){
+            preStmt.setString(1,proba);
+            try(ResultSet result=preStmt.executeQuery()) {
+                while (result.next()) {
+                    Integer id = result.getInt("id");
+                    String nume = result.getString("nume");
+                    Integer varsta = result.getInt("varsta");
+                    Participant participant=new Participant(id,nume,varsta);
+                    participants.add(participant);
+                }
+            }
+        }catch (SQLException ex){
+            logger.error(ex);
+            System.out.println("Error DB "+ex);
+        }
+        logger.traceExit(participants);
+        return participants;
+    }
+
+    @Override
+    public Iterable<Participant> cautaParticipantDupaProbaCategorie(String proba, String categorie) {
+        logger.traceEntry("finding participants with categorie {} ",categorie);
+        Connection con=dbUtils.getConnection();
+        List<Participant> participants=new ArrayList<>();
+        try(PreparedStatement preStmt=con.prepareStatement("select P.id, P.nume, P.varsta from Participanti P inner join Inscrieri I on P.id==I.idParticipant inner join Probe Pr on Pr.id==I.idProba where Pr.categorie=? and Pr.denumire=?")){
+            preStmt.setString(2,proba);
+            preStmt.setString(1,categorie);
+            try(ResultSet result=preStmt.executeQuery()) {
+                while (result.next()) {
+                    Integer id = result.getInt("id");
+                    String nume = result.getString("nume");
+                    Integer varsta = result.getInt("varsta");
+                    Participant participant=new Participant(id,nume,varsta);
+                    participants.add(participant);
+                }
+            }
+        }catch (SQLException ex){
+            logger.error(ex);
+            System.out.println("Error DB "+ex);
+        }
+        logger.traceExit(participants);
+        return participants;
+    }
+
+    @Override
+    public int nrParticipantiProba(String proba) {
+        logger.traceEntry();
+        Connection con=dbUtils.getConnection();
+        try(PreparedStatement preStmt=con.prepareStatement("select count(*) as [SIZE] from Inscrieri I inner join Probe P on P.id=I.idProba where P.denumire=?")) {
+            preStmt.setString(1,proba);
+            try(ResultSet result = preStmt.executeQuery()) {
+                if (result.next()) {
+                    logger.traceExit(result.getInt("SIZE"));
+                    return result.getInt("SIZE");
+                }
+            }
+        }catch(SQLException ex){
+            logger.error(ex);
+            System.out.println("Error DB "+ex);
+        }
+        return 0;
+    }
+
+    @Override
+    public int nrParticipantiCategorie(String categorie) {
+        logger.traceEntry();
+        Connection con=dbUtils.getConnection();
+        try(PreparedStatement preStmt=con.prepareStatement("select count(*) as [SIZE] from Inscrieri I inner join Probe P on P.id=I.idProba where P.categorie=?")) {
+            preStmt.setString(1,categorie);
+            try(ResultSet result = preStmt.executeQuery()) {
+                if (result.next()) {
+                    logger.traceExit(result.getInt("SIZE"));
+                    return result.getInt("SIZE");
+                }
+            }
+        }catch(SQLException ex){
+            logger.error(ex);
+            System.out.println("Error DB "+ex);
+        }
+        return 0;
+    }
 }

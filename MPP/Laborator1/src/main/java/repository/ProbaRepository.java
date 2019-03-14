@@ -1,5 +1,6 @@
 package repository;
 
+import javafx.util.Pair;
 import model.Categorie;
 import model.Proba;
 import org.apache.logging.log4j.LogManager;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-public class ProbaRepository implements IRepository<Integer, Proba> {
+public class ProbaRepository implements IRepositoryProba{
     private JdbcUtils dbUtils;
 
     private static final Logger logger= LogManager.getLogger();
@@ -40,18 +41,27 @@ public class ProbaRepository implements IRepository<Integer, Proba> {
     }
 
     @Override
-    public void save(Proba entity) {
+    public Integer save(Proba entity) {
         logger.traceEntry("saving proba {} ",entity);
         Connection con=dbUtils.getConnection();
         try(PreparedStatement preStmt=con.prepareStatement("insert into Probe(denumire, categorie) values (?,?)")){
             preStmt.setString(1,entity.getDenumire());
             preStmt.setString(2,entity.getCatg().toString());
             int result=preStmt.executeUpdate();
+            if(result==0) throw new RepositoryException("Error: Nu s-a putut salva proba!");
+            try(PreparedStatement preStmt1=con.prepareStatement("select top 1 id from Probe order by id desc")) {
+                try(ResultSet result1 = preStmt.executeQuery()) {
+                    if (result1.next()) {
+                        return result1.getInt("id");
+                    }
+                }
+            }
         }catch (SQLException ex){
             logger.error(ex);
             System.out.println("Error DB "+ex);
         }
         logger.traceExit();
+        return null;
     }
 
     @Override
@@ -61,6 +71,7 @@ public class ProbaRepository implements IRepository<Integer, Proba> {
         try(PreparedStatement preStmt=con.prepareStatement("delete from Probe where id=?")){
             preStmt.setInt(1,integer);
             int result=preStmt.executeUpdate();
+            if(result==0) throw new RepositoryException("Error: Nu s-a putut sterge proba!");
         }catch (SQLException ex){
             logger.error(ex);
             System.out.println("Error DB "+ex);
@@ -80,6 +91,7 @@ public class ProbaRepository implements IRepository<Integer, Proba> {
             preStmt.setString(1,entity.getDenumire());
             preStmt.setString(2,entity.getCatg().toString());
             int result=preStmt.executeUpdate();
+            if(result==0) throw new RepositoryException("Error: Nu s-a putut actualiza proba!");
         }catch (SQLException ex){
             logger.error(ex);
             System.out.println("Error DB "+ex);
@@ -134,5 +146,25 @@ public class ProbaRepository implements IRepository<Integer, Proba> {
         }
         logger.traceExit(probe);
         return probe;
+    }
+
+    @Override
+    public Iterable<Categorie> listaCategorii() {
+        logger.traceEntry();
+        Connection con=dbUtils.getConnection();
+        List<Categorie> categorii=new ArrayList<>();
+        try(PreparedStatement preStmt=con.prepareStatement("select distinct categorie from Probe")) {
+            try(ResultSet result=preStmt.executeQuery()) {
+                while (result.next()) {
+                    String categorie = result.getString("categorie");
+                    categorii.add(Categorie.valueOf(categorie));
+                }
+            }
+        } catch (SQLException e) {
+            logger.error(e);
+            System.out.println("Error DB "+e);
+        }
+        logger.traceExit(categorii);
+        return categorii;
     }
 }
