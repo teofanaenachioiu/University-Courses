@@ -9,6 +9,7 @@ import repository.IRepositoryParticipant;
 import repository.IRepositoryProba;
 import repository.RepositoryException;
 import utils.DataChanged;
+import utils.EventType;
 import utils.Observable;
 import utils.Observer;
 
@@ -28,11 +29,17 @@ public class ServiceOperator implements Observable<DataChanged> {
         this.repoInscriere = repoInscriere;
     }
 
-    public Iterable<Participant> filtreazaStudentiKeyword(String proba,String categorie) {
+    public Iterable<Participant> filtreazaParticipantiKeyword(String proba,String categorie) {
+//        if(proba.equals(""))
+//            proba=null;
+//        if(categorie.equals(""))
+//            categorie=null;
+
         if(proba==null)
             return repoInscriere.cautaParticipantiDupaCategorie(categorie);
         if(categorie==null)
             return repoInscriere.cautaParticipantiDupaProba(proba);
+
         return repoInscriere.cautaParticipantDupaProbaCategorie(proba,categorie);
     }
 
@@ -40,11 +47,19 @@ public class ServiceOperator implements Observable<DataChanged> {
         return repoProba.findAll();
     }
 
+    public Iterable<Participant> listaParticipanti(){
+        return repoParticipant.findAll();
+    }
+
     public Iterable<Categorie> listaCategorii(){
         return repoProba.listaCategorii();
     }
 
-    public int nrParticipantiProba(String proba){
+    public Iterable<String> listaProbeNume(){
+        return repoProba.listaProbeNume();
+    }
+
+    public int nrParticipantiProba(Proba proba){
         return repoInscriere.nrParticipantiProba(proba);
     }
 
@@ -53,10 +68,19 @@ public class ServiceOperator implements Observable<DataChanged> {
     }
 
     public void inscriereParticipant(String nume, int varsta, List<Proba> listaProbe,String usernameOperator){
-        int idPartic = repoParticipant.save(new Participant(nume,varsta));
+        for(Proba p:listaProbe){
+            if(!verificaCtg(varsta, p))
+                throw new RepositoryException("Participantul nu se poate inscrie la aceasta categorie de varsta");
+        }
         if(listaProbe.size()>2)
             throw new RepositoryException("Participantul nu se poate inscrie la mai mult de 2 probe");
+        int idPartic = repoParticipant.save(new Participant(nume,varsta));
         listaProbe.forEach(pr->repoInscriere.save(new Inscriere(idPartic,pr.getID(),usernameOperator)));
+        notifyObservers(new DataChanged(EventType.ADD));
+    }
+
+    public void stergeToateInregistrarile(){
+        repoInscriere.deleteAll();
     }
 
     @Override
@@ -74,5 +98,14 @@ public class ServiceOperator implements Observable<DataChanged> {
         observers.forEach(o->o.update(t));
     }
 
-
+    private boolean verificaCtg(int varsta, Proba proba){
+        String categorie=proba.getCatg().toString();
+        String var=categorie.substring(10);
+        String[] varste = var.split("_");
+        int min=Integer.parseInt(varste[0]);
+        int max=Integer.parseInt(varste[1]);
+        if(varsta>=min && varsta<=max)
+            return true;
+        return false;
+    }
 }

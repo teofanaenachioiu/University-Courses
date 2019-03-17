@@ -1,17 +1,40 @@
+import GUI.ControllerLogin;
+import GUI.operator.ControllerOperator;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Pair;
 import model.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import repository.*;
+import service.ServiceAdmin;
+import service.ServiceOperator;
+import utils.PasswordStorage;
 
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
-public class Main {
+public class Main extends Application {
     private static final Logger logger = LogManager.getLogger();
     public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
         logger.traceEntry();
+        primaryStage.setResizable(false);
+        primaryStage.setTitle("Concurs");
+        init(primaryStage);
+        logger.traceExit();
+    }
+
+    private void init(Stage primaryStage) throws IOException, PasswordStorage.CannotPerformOperationException {
+
         Properties prop=new Properties();
 
         try {
@@ -20,33 +43,28 @@ public class Main {
             e.printStackTrace();
         }
 
+        IRepositoryParticipant repoParticipant=new ParticipantRepository(prop);
+        IRepositoryProba repoProba=new ProbaRepository(prop);
+        IRepositoryInscriere repoInscriere=new InscriereRepository(prop);
+        ServiceOperator service = new ServiceOperator(repoParticipant,repoProba,repoInscriere);
+        ServiceAdmin serviceAdmin=new ServiceAdmin(new UserRepository(prop));
 
-
-//        IRepository<Integer,Participant> repoParticipant=new ParticipantRepository(prop);
-//        repoParticipant.save(new Participant("Maria",8));
-//        repoParticipant.save(new Participant("Ioana",6));
-//        repoParticipant.save(new Participant("Vlad",14));
-//        repoParticipant.save(new Participant("Andrei",10));
-//        repoParticipant.save(new Participant("Alexandra",9));
-
-//        IRepository<Integer,Proba> repository=new ProbaRepository(prop);
-//        repository.save(new Proba("Pictura", Categorie.CATEGORIE_6_8));
-//        repository.save(new Proba("Pictura", Categorie.CATEGORIE_9_11));
-//        repository.save(new Proba("Pictura", Categorie.CATEGORIE_12_15));
-//        repository.save(new Proba("Inot", Categorie.CATEGORIE_12_15));
-//        repository.save(new Proba("Tir cu arcul", Categorie.CATEGORIE_12_15));
-
-//        IRepository<Pair<Integer,Integer>, Inscriere> repo=new InscrieriRepository(prop);
-//        repo.save(new Inscriere(1,10,"maria_avram"));
-//        repo.save(new Inscriere(3,10,"maria_avram"));
-//        repo.save(new Inscriere(4,13,"maria_avram"));
-//        repo.save(new Inscriere(4,14,"maria_avram"));
-
-//        for(Inscriere i:repo.findAll()){
-//            System.out.println(i);
-//        }
-
+//        serviceAdmin.createUser();
+//        serviceAdmin.createUser("maria_avram","parola");
         System.out.println("Hello!");
-        logger.traceExit();
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/ViewLogin.fxml"));
+        AnchorPane rootLayout = loader.load();
+        Scene mainMenuScene = new Scene(rootLayout,600,400);
+
+        ControllerLogin controllerLogin=loader.getController();
+        controllerLogin.init(service,serviceAdmin,mainMenuScene);
+
+        controllerLogin.setPrimaryStage(primaryStage);
+
+        primaryStage.setScene(mainMenuScene);
+        primaryStage.show();
+
     }
 }

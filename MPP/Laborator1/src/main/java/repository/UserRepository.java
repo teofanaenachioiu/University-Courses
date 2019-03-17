@@ -43,7 +43,7 @@ public class UserRepository implements IRepositoryUser {
     }
 
     @Override
-    public Pair<int, int> save(User entity) {
+    public String save(User entity) {
         logger.traceEntry("saving user {} ",entity);
         Connection con=dbUtils.getConnection();
         try(PreparedStatement preStmt=con.prepareStatement("insert into Users values (?,?,?)")){
@@ -52,11 +52,13 @@ public class UserRepository implements IRepositoryUser {
             preStmt.setString(3,entity.getTip().toString());
             int result=preStmt.executeUpdate();
             if(result==0) throw new RepositoryException("Error: Nu s-a putut adauga userul!");
+            return entity.getID();
         }catch (SQLException ex){
             logger.error(ex);
             System.out.println("Error DB "+ex);
         }
         logger.traceExit();
+        return null;
     }
 
     @Override

@@ -3,6 +3,7 @@ package repository;
 import javafx.util.Pair;
 import model.Inscriere;
 import model.Participant;
+import model.Proba;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -259,11 +260,11 @@ public class InscriereRepository implements IRepositoryInscriere{
     }
 
     @Override
-    public int nrParticipantiProba(String proba) {
+    public int nrParticipantiProba(Proba proba) {
         logger.traceEntry();
         Connection con=dbUtils.getConnection();
-        try(PreparedStatement preStmt=con.prepareStatement("select count(*) as [SIZE] from Inscrieri I inner join Probe P on P.id=I.idProba where P.denumire=?")) {
-            preStmt.setString(1,proba);
+        try(PreparedStatement preStmt=con.prepareStatement("select count(*) as [SIZE] from Inscrieri I inner join Probe P on P.id=I.idProba where P.id=?")) {
+            preStmt.setInt(1,proba.getID());
             try(ResultSet result = preStmt.executeQuery()) {
                 if (result.next()) {
                     logger.traceExit(result.getInt("SIZE"));
@@ -294,5 +295,20 @@ public class InscriereRepository implements IRepositoryInscriere{
             System.out.println("Error DB "+ex);
         }
         return 0;
+    }
+
+    @Override
+    public void deleteAll() {
+        logger.traceEntry("deleting all");
+        Connection con=dbUtils.getConnection();
+        try(PreparedStatement preStmt=con.prepareStatement("delete from Inscrieri")){
+            int result=preStmt.executeUpdate();
+            if(result==0)
+                throw new RepositoryException("Error: Nu s-au putut sterge inregistrarile!");
+        }catch (SQLException ex){
+            logger.error(ex);
+            System.out.println("Error DB "+ex);
+        }
+        logger.traceExit();
     }
 }

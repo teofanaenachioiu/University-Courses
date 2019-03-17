@@ -5,4 +5,5 @@ import model.Proba;
 
 public interface IRepositoryProba extends IRepository<Integer, Proba> {
     public Iterable<Categorie> listaCategorii();
+    public Iterable<String> listaProbeNume();
 }

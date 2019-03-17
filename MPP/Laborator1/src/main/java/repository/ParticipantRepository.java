@@ -50,8 +50,8 @@ public class ParticipantRepository implements IRepositoryParticipant{
             int result=preStmt.executeUpdate();
             if (result==0)
                 throw new RepositoryException("Error: Nu s-a putut adauga participantul!");
-            try(PreparedStatement preStmt1=con.prepareStatement("select top 1 id from Participanti order by id desc")) {
-                try(ResultSet result1 = preStmt.executeQuery()) {
+            try(PreparedStatement preStmt1=con.prepareStatement("select id from Participanti order by id desc limit 1")) {
+                try(ResultSet result1 = preStmt1.executeQuery()) {
                     if (result1.next()) {
                         return result1.getInt("id");
                     }

@@ -167,4 +167,24 @@ public class ProbaRepository implements IRepositoryProba{
         logger.traceExit(categorii);
         return categorii;
     }
+
+    @Override
+    public Iterable<String> listaProbeNume() {
+        logger.traceEntry();
+        Connection con=dbUtils.getConnection();
+        List<String> probe=new ArrayList<>();
+        try(PreparedStatement preStmt=con.prepareStatement("select distinct denumire from Probe")) {
+            try(ResultSet result=preStmt.executeQuery()) {
+                while (result.next()) {
+                    String denumire = result.getString("denumire");
+                    probe.add(denumire);
+                }
+            }
+        } catch (SQLException e) {
+            logger.error(e);
+            System.out.println("Error DB "+e);
+        }
+        logger.traceExit(probe);
+        return probe;
+    }
 }
