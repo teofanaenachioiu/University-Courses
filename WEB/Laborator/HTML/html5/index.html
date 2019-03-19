@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+	<meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
+	<title>Comanda pizza</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<body>
+
+	<header>
+  		<h2><img src="pizza.png" alt="logo"> Pizza </h2>
+	</header>
+
+
+
+	<section>
+  		
+	<a href="https://www.cs.ubbcluj.ro/~bufny/programare-web/laborator-html/" target="_blank"> << Back </a>
+	 	<br><br><br>
+	 	<h3>Comandă pizza</h3>
+	 	<hr>
+	 	<br><br>
+
+	 	<table >
+		<tr>
+			<th>
+				Date personale
+			</th>
+			<td></td>
+		</tr>
+		<tr  >
+			<td>
+				<form>
+	  			<label for="nume">Nume:</label> 
+	  				<input type="text" name="nume"><br>
+				</form>
+			</td>
+			<td >
+				<form>
+	  			<label for="prenume">Prenume:</label> 
+	  				<input type="text" name="prenume"><br>
+				</form>
+			</td>
+		</tr>
+		<tr>
+			<td  >
+				<form>
+	  			<label for="telefon">Telefon:</label> 
+	  				<input type="text" name="telefon"><br>
+				</form>
+			</td>
+			<td  >
+				<form>
+	  			<label for="email">Email:</label> 
+	  				<input type="text" name="email"><br>
+				</form>
+			</td>
+		</tr>
+		<tr>
+			<th >
+				Adresa
+			</th>
+			<td></td>
+		</tr>
+		<tr>
+			<td >
+				<form>
+	  			<label for="strada">Stradă:</label> 
+	  				<input type="text" name="strada"><br>
+				</form>
+			</td>
+			<td>
+				<form>
+	  			<label for="numar">Număr:</label> 
+	  				<input type="text" name="numar"><br>
+				</form>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<form>
+	  			<label for="oras">Oraș:</label> 
+	  				<input type="text" name="oras" readonly value="Cluj-Napoca"><br>
+				</form>
+			</td>
+			<td>
+				<form>
+	  			<label for="judet">Județ:</label> 
+	  				<input type="text" name="judet" disabled  value="Cluj"><br>
+				</form>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				Metoda de livrare:
+			</th>
+			<td></td>
+		</tr>
+		<tr>
+			<td>
+		      <ul>
+		          <li>
+		            <label for="Livrare">
+		            <input type="radio" name="title" checked="true">
+		              Livrare la domiciliu
+		            </label>
+		          </li>
+		          <li>
+		            <label for="Ridicare">
+		            <input type="radio" name="title">
+		              Ridicare
+		            </label>
+		          </li>
+		      </ul> 
+			</td>
+		</tr>
+
+		<tr>
+			<th >
+				Comanda:
+			</th>
+			<td></td>
+		</tr>
+		<tr>
+			<td >
+		      
+		    <fieldset>
+			    <legend>Produse</legend>
+			    <table>
+			    	<tr>
+			    		<td >
+			    			Pizza
+			    		</td>
+			    		<td >
+			    			Sosuri
+			    		</td>
+			    	</tr>
+			    	<tr>
+			    		<td >
+					     	<form action="doSomething" method="get">
+					     		
+								<select name="pizza" size="5" multiple="multiple">
+								  <option value="0">Pizza Bismark - 14 lei</option>
+								  <option value="1">Pizza Canibale - 15 lei</option>
+								  <option value="2">Pizza Capricioza - 14 lei</option>
+								  <option value="3">Pizza Carbonara - 20 lei</option>
+								  <option value="4">Pizza Chorizo - 20 lei</option>
+								  <option value="5">Pizza con Petto di Pollo - 18 lei</option>
+								</select>
+							</form>
+						</td>
+						<td >
+							<form action="doSomething" method="get">
+			     				
+								<select name="sosuri" size="3" multiple="multiple">
+								  <option value="0">Ketchup dulce - 3 lei</option>
+								  <option value="1">Ketchup picant - 3 lei</option>
+								  <option value="2">Sos tzatiki - 4 lei</option>
+								  <option value="3">Sos alb - 5 lei</option>
+								  <option value="4" selected> (fara sos) </option>
+								</select>
+							</form>
+						</td>
+					</tr >
+					<tr>
+						<td >
+							<br>
+							<form action="doSomething" method="get">
+								<input type="checkbox" name="tacamuri" value="Tacamuri"> Tacâmuri<br>
+							</form>
+						</td>
+					</tr>
+					<tr>
+						<td >
+							<form action="doSomething" method="get">
+								<p>Observații</p>
+								<textarea cols="90%" rows="5" name="continut" maxlength="300">
+									</textarea>
+						
+								<br>
+							</form>
+						</td>
+					<tr>
+						<td >
+							<form action="doSomething" method="get">
+								<i>
+								<p>Alergeni</p>
+								<ol start="1">
+									<li>
+										Ouă şi produse derivate:  
+										<ul>
+											<li>
+												Pizza Capriciosa
+											</li>
+											<li>
+												Pizza Carbonara
+											</li>
+										</ul>
+									</li>
+									<li>
+										Gluten: 
+										<ul>
+											<li>
+												Blat pizza
+											</li>
+										</ul>
+									</li>
+									<li>
+										Lapte sau proteine din lapte: 
+										<ul>
+											<li>
+												Toate sortimentele de pizza
+											</li>
+										</ul>
+									</li>
+								</ol>
+								</i>
+								<br>
+							</form>
+						</td>
+					</tr>
+				</table>
+
+				<table>
+					<tr>
+						<td>
+							<form action="doSomething" method="get">
+								<b>Parerea dvs conteaza!</b>
+								<label> Evaluati calitatea produselor: 
+								<input type="number" name="points" step="-1" max="5" min="1" value="5">
+							</label>
+								<br>
+								<br>
+							<input  type="submit" value="Finalizare"/>
+							</form>
+						</td>
+					</tr>
+				</table>
+				</fieldset>
+			</td>
+		</tr>
+		</table>
+		<br><br>
+		
+	</section>
+
+
+
+	<footer>
+		<hr><br>
+		<b>
+		Pentru detalii despre livreare sunati la:
+		</b>
+		<ul>
+			<li>
+				Cart. Mărăști/Gheorgheni/Între Lacuri: 0768123598
+			</li>
+			<li>
+				Cart. Mănăștur: 0768112345
+			</li>
+			<li>
+				Cart. Zorilor/Bună Ziua/Andrei Mureșanu: 0768112346
+			</li>
+		</ul>
+	</footer>
+
+</body>
+
+</html> 
