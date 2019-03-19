@@ -89,9 +89,6 @@
     -fx-table-cell-border-color: transparent;
 }
 
-.table-row-cell:even {
-    -fx-background-color: ;
-}
 
 .table-row-cell:empty, .table-row-cell:empty:hover {
     -fx-background-color: transparent;

@@ -25,11 +25,11 @@ namespace UnitTest
             User user = new User("ioana_l", "hashhash");
 
             //size
-            Assert.AreEqual(2, repo.Size());
+            Assert.AreEqual(3, repo.Size());
 
             //save
             repo.Save(user);
-            Assert.AreEqual(3, repo.Size());
+            Assert.AreEqual(4, repo.Size());
 
             //find
             Assert.IsNull(repo.FindOne("teofana"));
@@ -55,7 +55,7 @@ namespace UnitTest
 
             //delete
             repo.Delete("ioana_l");
-            Assert.AreEqual(2, repo.Size());
+            Assert.AreEqual(3, repo.Size());
             try
             {
                 repo.Delete("ioana_l");
