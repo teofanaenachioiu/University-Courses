@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Windows.Forms;
 using WindowsFormsApp1;
+using Concurs.repository;
+using Concurs.service;
 
 namespace Concurs
 {
@@ -17,7 +19,7 @@ namespace Concurs
         [STAThread]
         static void Main(string[] args)
         {
-            XmlConfigurator.Configure(new System.IO.FileInfo("App.config"));
+            /*XmlConfigurator.Configure(new System.IO.FileInfo("App.config"));
             
             IDictionary<String, string> props = new SortedList<String, String>();
 
@@ -25,8 +27,13 @@ namespace Concurs
             
             ParticipantRepository repo = new ParticipantRepository(props);
 
-            Console.WriteLine("Dimensiune baza de date: "+repo.Size());
-        
+            //Console.WriteLine("Dimensiune baza de date: "+repo.Size());
+
+            IRepositoryUser userRepository = new UserRepository(props);
+            ServiceAdmin serviceAdmin = new ServiceAdmin(userRepository);
+            //serviceAdmin.CreateUser("teofana", "parola");
+            //Console.WriteLine(serviceAdmin.VerificareParola("teofana", "parola").ToString());
+            */
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
