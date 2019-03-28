@@ -13,7 +13,7 @@ namespace Concurs.repository
 
         IEnumerable<E> FindAll();
 
-        void Save(E entity);
+        ID Save(E entity);
 
         void Delete(ID id);
 

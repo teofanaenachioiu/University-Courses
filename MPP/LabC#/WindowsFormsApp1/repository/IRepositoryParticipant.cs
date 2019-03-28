@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Concurs.repository
 {
-    interface IRepositoryParticipant: IRepository<int, Participant>
+    public interface IRepositoryParticipant: IRepository<int, Participant>
     {
     }
 }

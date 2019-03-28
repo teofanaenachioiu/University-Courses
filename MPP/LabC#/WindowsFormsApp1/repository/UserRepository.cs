@@ -75,7 +75,7 @@ namespace Concurs.repository
             log.InfoFormat("Exiting findAll");
             return users;
         }
-        public void Save(User entity)
+        public string Save(User entity)
         {
             log.InfoFormat("Entering Save with new value {0}...", entity);
             var con = DBUtils.getConnection(props);
@@ -102,8 +102,9 @@ namespace Concurs.repository
                 if (result == 0)
                     throw new RepositoryException("Error: Nu s-a putut adauga userul!");
                 log.InfoFormat("Exiting Save");
+                
             }
-
+            return entity.Id;
         }
         public void Delete(string id)
         {

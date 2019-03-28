@@ -65,7 +65,8 @@ namespace Concurs.model
 
         public override string ToString()
         {
-            return id + " " + denumire + " " + categorie;
+            string[] nr = categorie.Split('_'); 
+            return denumire + " (ctg. " + nr[1]+"-"+nr[2]+")";
         }
     }
 }

@@ -112,7 +112,7 @@ namespace Concurs.repository
         }
 
 
-        public void Save(Inscriere entity)
+        public KeyValuePair<int, int> Save(Inscriere entity)
         {
             log.InfoFormat("Entering Save with new value {0}...", entity);
             var con = DBUtils.getConnection(props);
@@ -147,10 +147,11 @@ namespace Concurs.repository
                 var result = comm.ExecuteNonQuery();
                 if (result == 0)
                     throw new RepositoryException("Error: Nu s-a putut adauga inscrierea!");
-                log.InfoFormat("Exiting Save");
+                log.InfoFormat("Exiting Save");      
             }
-
+            return entity.Id;
         }
+
         public void Delete(KeyValuePair<int,int> id)
         {
             log.InfoFormat("Entering Delete with new value {0}...", id);

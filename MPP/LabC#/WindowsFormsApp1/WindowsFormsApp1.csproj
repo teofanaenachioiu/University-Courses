@@ -102,6 +102,7 @@
     <Compile Include="repository\utils\RepositoryException.cs" />
     <Compile Include="repository\utils\SqliteConnectionFactory.cs" />
     <Compile Include="service\ServiceAdmin.cs" />
+    <Compile Include="service\ServiceOperator.cs" />
     <Compile Include="utils\Observer.cs" />
     <Compile Include="utils\PasswordStorage.cs" />
     <Compile Include="utils\Subject.cs" />

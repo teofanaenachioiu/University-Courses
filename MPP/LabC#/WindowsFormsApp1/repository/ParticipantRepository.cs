@@ -74,7 +74,7 @@ namespace Concurs.repository.utils
             log.InfoFormat("Exiting findAll");
             return partic;
         }
-        public void Save(Participant entity)
+        public int Save(Participant entity)
         {
             log.InfoFormat("Entering Save with new value {0}...", entity);
             var con = DBUtils.getConnection(props);
@@ -96,7 +96,22 @@ namespace Concurs.repository.utils
                 if (result == 0)
                     throw new RepositoryException("Error: Nu s-a putut adauga participantul!");
                 log.InfoFormat("Exiting Save");
+
+                using (var comm1 = con.CreateCommand())
+                {
+                    comm.CommandText = "select id from Participanti order by id desc limit 1";
+
+                    using (var dataR = comm.ExecuteReader())
+                    {
+                        if (dataR.Read())
+                        {
+                            int idP = dataR.GetInt32(0);
+                            return idP;
+                        }
+                    }
+                }
             }
+            return -1;
 
         }
         public void Delete(int id)
