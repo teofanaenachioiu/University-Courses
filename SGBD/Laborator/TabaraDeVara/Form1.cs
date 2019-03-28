@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Configuration;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,9 +19,7 @@ namespace TabaraDeVara
         SqlDataAdapter daPartic, daGrupe;
         BindingSource bsPartic, bsGrupe;
         SqlCommandBuilder cb;
-        string connectionString = "Data Source=TEOFANA-PC; " +
-               "Initial Catalog=TabaraDeVara; " +
-               "Integrated Security=True;";
+        string connectionString;
 
         public Form1()
         {
@@ -29,6 +28,7 @@ namespace TabaraDeVara
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            connectionString = Configuration.ConfigurationManager.ConnectionStrings["cn"].ConnectionString;
             conn = new SqlConnection(connectionString);
             daPartic = new SqlDataAdapter("SELECT * FROM Participanti", conn);
             daGrupe = new SqlDataAdapter("SELECT * FROM Grupe", conn);
@@ -43,7 +43,7 @@ namespace TabaraDeVara
 
             bsGrupe = new BindingSource();
             bsGrupe.DataSource = ds;
-            bsGrupe.DataMember = "Grupe"; // nume local
+            bsGrupe.DataMember = "Grupe"; 
 
             bsPartic = new BindingSource();
             bsPartic.DataSource = bsGrupe;
