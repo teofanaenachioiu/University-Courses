@@ -1,0 +1,42 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+#main {
+    display: flex;
+    flex: 8;
+}
+nav {
+    background: #D7E8D4;
+    order: 1;
+    flex-grow: 1;
+}
+article {
+    flex-grow: 9;
+    order: 2;
+}
+header, footer{
+    flex-grow: 1;
+    background-color: yellowgreen;
+}
+
+/*partea de meniu*/
+nav a {
+  background-color: #eee; 
+  color: black; 
+  display: block; 
+  padding: 20px; 
+  text-decoration: none; 
+  text-align: center;
+}
+
+nav a:hover {
+  background-color: #ccc; 
+}
+
+nav a:active {
+  background-color: #4CAF50; 
+  color: white;
+}

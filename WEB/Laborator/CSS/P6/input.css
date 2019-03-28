@@ -1,0 +1,34 @@
+/*input {
+ border: none;
+  width: 40ch;
+  background: 
+    repeating-linear-gradient(90deg, 
+        dimgrey 0, 
+        dimgrey 1ch, 
+        transparent 0, 
+        transparent 2ch) 
+      0 100%/100% 2px no-repeat;
+  color: dimgrey;
+  font-family: "Courier New", monospace;
+  
+  letter-spacing: 1ch;
+}
+input:focus {
+  outline: none;
+}*/
+
+input{
+    background-image: url("http://3.bp.blogspot.com/-4oAWWCcNNz4/Tjr3nKNyVUI/AAAAAAAAPLU/Pouua-pNsEY/s1600/sq.gif");    
+    width: 516px;
+    height: 25px;
+    background-size: 26px;
+    border: none;
+    font-family: "Courier New", monospace;
+    padding-left: 5px;
+    letter-spacing: 2.3ch;
+    white-space: pre;
+  }
+
+#cnp{
+  width: 360px;
+}

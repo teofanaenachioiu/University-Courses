@@ -1,0 +1,45 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+#main {
+    flex-grow: 8;
+    display: flex;
+    flex-direction: column;
+}
+
+article {
+    flex-grow: 20;
+}
+header, footer{
+    flex-grow: 1;
+    background-color: yellowgreen;
+}
+
+nav {
+    
+    background: #D7E8D4;
+    display: flex;
+    flex-direction: row;
+}
+
+/*partea de meniu*/
+nav a {
+    flex-grow: 1;
+    background-color: #eee; 
+    color: black; 
+    padding: 15px; 
+    text-decoration: none; 
+    text-align: center;
+}
+
+nav a:hover {
+    background-color: #ccc; 
+}
+
+nav a:active {
+    background-color: #4CAF50; 
+    color: white;
+}
