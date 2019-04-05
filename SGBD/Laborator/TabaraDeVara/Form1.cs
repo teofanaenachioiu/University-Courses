@@ -18,8 +18,9 @@ namespace TabaraDeVara
         DataSet ds;
         SqlDataAdapter daPartic, daGrupe;
         BindingSource bsPartic, bsGrupe;
-        SqlCommandBuilder cb;
         string connectionString;
+        string numeFiu;
+        string numeParinte;
 
         public Form1()
         {
@@ -29,30 +30,35 @@ namespace TabaraDeVara
         private void Form1_Load(object sender, EventArgs e)
         {
             connectionString = Configuration.ConfigurationManager.ConnectionStrings["cn"].ConnectionString;
+            numeFiu = Configuration.ConfigurationManager.AppSettings["fiu"];
+            numeParinte = Configuration.ConfigurationManager.AppSettings["parinte"];
+            string selectFiu = Configuration.ConfigurationManager.AppSettings["selectFiu"];
+            string selectParinte = Configuration.ConfigurationManager.AppSettings["selectParinte"];
+            string idParinte = Configuration.ConfigurationManager.AppSettings["idParinte"];
+
             conn = new SqlConnection(connectionString);
-            daPartic = new SqlDataAdapter("SELECT * FROM Participanti", conn);
-            daGrupe = new SqlDataAdapter("SELECT * FROM Grupe", conn);
+
+            daPartic = new SqlDataAdapter(selectFiu, conn);
+            daGrupe = new SqlDataAdapter(selectParinte, conn);
 
             ds = new DataSet();
-
-            daPartic.Fill(ds, "Participanti");
-            
-            daGrupe.Fill(ds, "Grupe");
-            ds.Relations.Add("FK_Grupe_Participanti", ds.Tables["Grupe"].Columns["Gid"],
-                ds.Tables["Participanti"].Columns["Gid"]);
+            daPartic.Fill(ds, numeFiu);
+            daGrupe.Fill(ds, numeParinte);
+         
+            ds.Relations.Add("FK_Tabele", ds.Tables[numeParinte].Columns[idParinte],
+            ds.Tables[numeFiu].Columns[idParinte]);
 
             bsGrupe = new BindingSource();
             bsGrupe.DataSource = ds;
-            bsGrupe.DataMember = "Grupe"; 
+            bsGrupe.DataMember = numeParinte; 
 
             bsPartic = new BindingSource();
             bsPartic.DataSource = bsGrupe;
-            bsPartic.DataMember = "FK_Grupe_Participanti";
+            bsPartic.DataMember = "FK_Tabele";
 
             dataGridViewChild.DataSource = bsPartic;
             dataGridViewParent.DataSource = bsGrupe;
-
-            //cb = new SqlCommandBuilder(daPartic);
+            
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -63,9 +69,9 @@ namespace TabaraDeVara
                 {
                     daPartic.SelectCommand.Connection = connection;
                     SqlCommandBuilder builder = new SqlCommandBuilder(daPartic);
-                    daPartic.Update(ds, "Participanti");
-                    ds.Tables["Participanti"].Clear();
-                    daPartic.Fill(ds, "Participanti");
+                    daPartic.Update(ds, numeFiu);
+                    ds.Tables[numeFiu].Clear();
+                    daPartic.Fill(ds, numeFiu);
 
                 }
             }
