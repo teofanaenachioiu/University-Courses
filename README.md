@@ -32,8 +32,8 @@ Algorithms implementation, labs, courses, docs, additional exercises etc
 
 <h3> Fourth semester 🙇‍♀️ </h3>
 
-<p>📌  (~ MPP) <i> => Java, C#</i></p>
+<p>📌  (~ MPP) <i> => Java, C#, React </i></p>
 <p>📌 Artificial Intelligence (~ AI) <i> => Python</i></p>
 <p>📌 Database Management System (~ SGBD) <i> => SQL, C# </i></p>
-<p>📌 Software Engineering (~ ISS) <i> => Java</i> </p>
+<p>📌 Software Engineering (~ ISS) <i> => Angular, TypeScript, Bootstrap, Java</i> </p>
 <p>📌 Web programming (~ WEB) <i> => HTML4.01, HTML5, CSS, JavaScript </i></p>
