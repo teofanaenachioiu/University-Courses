@@ -27,14 +27,20 @@ namespace TabaraDeVara
             InitializeComponent();
         }
 
+   
+
         private void Form1_Load(object sender, EventArgs e)
         {
+            string title = Configuration.ConfigurationManager.AppSettings["title"];
             connectionString = Configuration.ConfigurationManager.ConnectionStrings["cn"].ConnectionString;
             numeFiu = Configuration.ConfigurationManager.AppSettings["fiu"];
             numeParinte = Configuration.ConfigurationManager.AppSettings["parinte"];
             string selectFiu = Configuration.ConfigurationManager.AppSettings["selectFiu"];
             string selectParinte = Configuration.ConfigurationManager.AppSettings["selectParinte"];
             string idParinte = Configuration.ConfigurationManager.AppSettings["idParinte"];
+            List<string> eticheteFiu= new List<string>(Configuration.ConfigurationManager.AppSettings["eticheteFiu"].Split(','));
+
+            this.Text = title;
 
             conn = new SqlConnection(connectionString);
 
@@ -58,7 +64,23 @@ namespace TabaraDeVara
 
             dataGridViewChild.DataSource = bsPartic;
             dataGridViewParent.DataSource = bsGrupe;
-            
+
+            labelFiu.Text = numeFiu;
+            labelParinte.Text = numeParinte;
+
+            foreach (string column in eticheteFiu)
+            {
+                //TextBox textBox = (TextBox)panelTextBoxes.Controls[column];
+                Label lbl = new Label();
+                lbl.Text = column;
+                panelTextBoxes.Controls.Add(lbl);
+
+                /*TextBox txt = new TextBox();
+                panelTextBoxes.Controls.Add(txt);*/
+
+                
+            }
+
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
