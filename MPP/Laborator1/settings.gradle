@@ -1,2 +1,8 @@
 rootProject.name = 'labMPP'
+include 'Model'
+include 'Client'
+include 'Server'
+include 'Networking'
+include 'Persistence'
+include 'Services'
 

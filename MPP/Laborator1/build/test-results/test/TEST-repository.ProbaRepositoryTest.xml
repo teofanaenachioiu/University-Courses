@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="repository.ProbaRepositoryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-03-16T11:10:25" hostname="Teofana-PC" time="0.333">
-  <properties/>
-  <testcase name="test" classname="repository.ProbaRepositoryTest" time="0.333"/>
-  <system-out><![CDATA[Error DB org.sqlite.SQLiteException: [SQLITE_ERROR] SQL error or missing database (near "1": syntax error)
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
