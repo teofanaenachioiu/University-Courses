@@ -37,6 +37,7 @@
             this.panelTextBoxes = new System.Windows.Forms.Panel();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
+            this.buttonReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewParent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewChild)).BeginInit();
             this.SuspendLayout();
@@ -45,23 +46,29 @@
             // 
             this.dataGridViewParent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewParent.Location = new System.Drawing.Point(21, 31);
+            this.dataGridViewParent.MultiSelect = false;
             this.dataGridViewParent.Name = "dataGridViewParent";
+            this.dataGridViewParent.ReadOnly = true;
+            this.dataGridViewParent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewParent.Size = new System.Drawing.Size(365, 207);
             this.dataGridViewParent.TabIndex = 0;
+            this.dataGridViewParent.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewParent_CellClick);
             // 
             // dataGridViewChild
             // 
             this.dataGridViewChild.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewChild.Location = new System.Drawing.Point(21, 272);
+            this.dataGridViewChild.MultiSelect = false;
             this.dataGridViewChild.Name = "dataGridViewChild";
             this.dataGridViewChild.Size = new System.Drawing.Size(365, 207);
             this.dataGridViewChild.TabIndex = 1;
+            this.dataGridViewChild.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewChild_CellClick);
             // 
             // buttonSave
             // 
             this.buttonSave.Location = new System.Drawing.Point(406, 257);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(75, 50);
+            this.buttonSave.Size = new System.Drawing.Size(65, 50);
             this.buttonSave.TabIndex = 2;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -101,30 +108,43 @@
             // 
             this.panelTextBoxes.Location = new System.Drawing.Point(406, 313);
             this.panelTextBoxes.Name = "panelTextBoxes";
-            this.panelTextBoxes.Size = new System.Drawing.Size(270, 166);
+            this.panelTextBoxes.Size = new System.Drawing.Size(278, 166);
             this.panelTextBoxes.TabIndex = 6;
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.Location = new System.Drawing.Point(504, 257);
+            this.buttonUpdate.Location = new System.Drawing.Point(477, 257);
             this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(75, 50);
+            this.buttonUpdate.Size = new System.Drawing.Size(65, 50);
             this.buttonUpdate.TabIndex = 7;
             this.buttonUpdate.Text = "Update";
             this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(601, 257);
+            this.buttonDelete.Location = new System.Drawing.Point(548, 257);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(75, 50);
+            this.buttonDelete.Size = new System.Drawing.Size(65, 50);
             this.buttonDelete.TabIndex = 8;
             this.buttonDelete.Text = "Delete";
             this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
+            // buttonReset
+            // 
+            this.buttonReset.Location = new System.Drawing.Point(619, 257);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.Size = new System.Drawing.Size(65, 50);
+            this.buttonReset.TabIndex = 9;
+            this.buttonReset.Text = "Reset";
+            this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(708, 495);
+            this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonUpdate);
@@ -154,6 +174,7 @@
         private System.Windows.Forms.Panel panelTextBoxes;
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.Button buttonReset;
     }
 }
 
