@@ -1,14 +1,14 @@
 package services;
 
-public class ChatException extends Exception{
-    public ChatException() {
+public class MyAppException extends Exception{
+    public MyAppException() {
     }
 
-    public ChatException(String message) {
+    public MyAppException(String message) {
         super(message);
     }
 
-    public ChatException(String message, Throwable cause) {
+    public MyAppException(String message, Throwable cause) {
         super(message, cause);
     }
 }

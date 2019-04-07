@@ -9,14 +9,16 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 
-public class ChatClientObjectWorker implements Runnable, IObserver {
+public class ClientObjectWorker implements Runnable, IObserver {
+
     private IServer server;
     private Socket connection;
 
     private ObjectInputStream input;
     private ObjectOutputStream output;
     private volatile boolean connected;
-    public ChatClientObjectWorker(IServer server, Socket connection) {
+
+    public ClientObjectWorker(IServer server, Socket connection) {
         this.server = server;
         this.connection = connection;
         try{
@@ -54,26 +56,6 @@ public class ChatClientObjectWorker implements Runnable, IObserver {
             connection.close();
         } catch (IOException e) {
             System.out.println("Error "+e);
-        }
-    }
-
-    public void messageReceived(Message message) throws ChatException {
-        MessageDTO mdto= DTOUtils.getDTO(message);
-        System.out.println("Message received  "+message);
-        try {
-            sendResponse(new NewMessageResponse(mdto));
-        } catch (IOException e) {
-            throw new ChatException("Sending error: "+e);
-        }
-    }
-
-    public void friendLoggedIn(User friend) throws ChatException {
-        UserDTO udto= DTOUtils.getDTO(friend);
-        System.out.println("Friend logged in "+friend);
-        try {
-            sendResponse(new FriendLoggedInResponse(udto));
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 

@@ -1,13 +1,13 @@
 package utils;
 
-import services.IChatServer;
+import services.IServer;
 
 import java.net.Socket;
 
 
-public class ChatObjectConcurrentServer extends AbsConcurrentServer {
-    private IChatServer chatServer;
-    public ChatObjectConcurrentServer(int port, IChatServer chatServer) {
+public class ObjectConcurrentServer extends AbsConcurrentServer {
+    private IServer chatServer;
+    public ObjectConcurrentServer(int port, IServer chatServer) {
         super(port);
         this.chatServer = chatServer;
         System.out.println("ObjectConcurrentServer");

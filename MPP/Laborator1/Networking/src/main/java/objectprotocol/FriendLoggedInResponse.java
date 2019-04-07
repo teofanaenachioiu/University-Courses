@@ -1,6 +1,4 @@
-package chat.network.objectprotocol;
-
-import chat.network.dto.UserDTO;
+package objectprotocol;
 
 /**
  * Created by IntelliJ IDEA.

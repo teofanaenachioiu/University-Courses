@@ -5,6 +5,7 @@ import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Categorie;
@@ -13,18 +14,19 @@ import model.Proba;
 import model.User;
 import org.controlsfx.control.CheckComboBox;
 import repository.RepositoryException;
-import service.ServiceOperator;
+import services.IObserver;
+import services.IServer;
 import utils.AutoCompleteComboBoxListener;
-import utils.DataChanged;
 import utils.GUIutils;
-import utils.Observer;
 
+import java.net.URL;
 import java.util.Collection;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-public class ControllerInscrieri implements Observer<DataChanged> {
+public class ControllerInscrieri implements Initializable, IObserver {
     @FXML
     TextField fieldNume;
     @FXML
@@ -47,7 +49,7 @@ public class ControllerInscrieri implements Observer<DataChanged> {
     @FXML
     Button buttonCauta;
 
-    ServiceOperator service;
+    IServer server;
     User user;
     @FXML
     public void initialize() {
@@ -60,22 +62,19 @@ public class ControllerInscrieri implements Observer<DataChanged> {
         this.comboBoxProba.valueProperty().addListener(o->handleCauta());
     }
 
-    public void setData(ServiceOperator service, User user){
+    public void setData(IServer server, User user){
         this.user=user;
-        this.service=service;
+        this.server=server;
         final ObservableList<Proba> probe = FXCollections.observableArrayList();
-        probe.setAll((Collection<? extends Proba>) service.listaProbe());
+        probe.setAll((Collection<? extends Proba>) server.listaProbe());
 
         checkComboBox.getItems().setAll(probe);
-//        checkComboBox.getCheckModel()
-//                .getCheckedItems()
-//                .addListener((ListChangeListener<? super Proba>) o->handleMarcat());
         SpinnerValueFactory<Integer> valueFactory =
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(6, 15);
 
         spinnerVarsta.setValueFactory(valueFactory);
 
-        modelCaut.setAll(StreamSupport.stream(this.service.listaParticipanti().spliterator(),false)
+        modelCaut.setAll(StreamSupport.stream(this.server.listaParticipanti().spliterator(),false)
                 .collect(Collectors.toList()));
         tableView.setItems(modelCaut);
         initComboBox();
@@ -90,7 +89,7 @@ public class ControllerInscrieri implements Observer<DataChanged> {
         if(probe11.size()==0)
             GUIutils.showErrorMessage("Nu s-a selectat probe");
         try{
-            service.inscriereParticipant(nume,varsta,probe11,this.user.getID());
+            server.inscriereParticipant(nume,varsta,probe11,this.user.getID());
             GUIutils.showInfoMessage("Participantul a fost inscris");
             this.fieldNume.setText(null);
         }
@@ -99,27 +98,16 @@ public class ControllerInscrieri implements Observer<DataChanged> {
         }
     }
 
-    @Override
-    public void update(DataChanged dataChanged) {
-        modelCaut.setAll(StreamSupport.stream(this.service.listaParticipanti().spliterator(),false)
-                .collect(Collectors.toList()));
-        tableView.setItems(modelCaut);
-        initComboBox();
-    }
-
     @FXML
     public void handleCauta(){
         String denumireProba=this.comboBoxProba.getSelectionModel().getSelectedItem();
-//        if(this.comboBoxProba.getSelectionModel().getSelectedItem()==null)
-//            denumireProba="";
-//        else denumireProba=this.comboBoxProba.getSelectionModel().getSelectedItem();
         String categorie;
         if(this.comboBoxCategorie.getSelectionModel().getSelectedItem()==null)
             categorie=null;
         else categorie=this.comboBoxCategorie.getSelectionModel().getSelectedItem().toString();
 
         modelCaut.setAll(StreamSupport
-                .stream(service.filtreazaParticipantiKeyword(denumireProba,categorie).spliterator(),false)
+                .stream(server.filtreazaParticipantiKeyword(denumireProba,categorie).spliterator(),false)
                 .collect(Collectors.toList()));
 
         tableView.setItems(modelCaut);
@@ -129,25 +117,35 @@ public class ControllerInscrieri implements Observer<DataChanged> {
     public void handleReset(){
         this.comboBoxProba.setValue(null);
         this.comboBoxCategorie.setValue(null);
-        modelCaut.setAll(StreamSupport.stream(this.service.listaParticipanti().spliterator(),false)
+        modelCaut.setAll(StreamSupport.stream(this.server.listaParticipanti().spliterator(),false)
                 .collect(Collectors.toList()));
         tableView.setItems(modelCaut);
     }
 
     private void initComboBox(){
-        List<String> lista= StreamSupport.stream(service.listaProbeNume().spliterator(),false)
+        List<String> lista= StreamSupport.stream(server.listaProbeNume().spliterator(),false)
                 .collect(Collectors.toList());
         ObservableList<String> data = FXCollections.observableArrayList(lista);
         this.comboBoxProba.setItems(data);
 
-        List<Categorie> lista1=StreamSupport.stream(service.listaCategorii().spliterator(),false)
+        List<Categorie> lista1=StreamSupport.stream(server.listaCategorii().spliterator(),false)
                 .collect(Collectors.toList());
         ObservableList<Categorie> data1 = FXCollections.observableArrayList(lista1);
         this.comboBoxCategorie.setItems(data1);
-        //this.comboBoxCategorie.setValue(lista1.get(0));
-        //new AutoCompleteComboBoxListener<>(this.comboBoxCategorie);
         new AutoCompleteComboBoxListener<>(this.comboBoxProba);
 
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
+
+    @Override
+    public void inscriereParticipant() {
+        modelCaut.setAll(StreamSupport.stream(this.server.listaParticipanti().spliterator(),false)
+                .collect(Collectors.toList()));
+        tableView.setItems(modelCaut);
+        initComboBox();
+    }
 }

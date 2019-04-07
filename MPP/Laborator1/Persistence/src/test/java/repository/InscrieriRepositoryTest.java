@@ -22,7 +22,7 @@ public class InscrieriRepositoryTest {
         Properties prop=new Properties();
 
         try {
-            prop.load(new FileReader("D:\\University-Courses\\MPP\\Laborator1\\src\\test\\resources\\bd.properties"));
+            prop.load(new FileReader("D:\\University-Courses\\MPP\\Laborator1\\Persistence\\src\\test\\resources\\bd.properties"));
         } catch (IOException e) {
             e.printStackTrace();
         }

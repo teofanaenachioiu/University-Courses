@@ -1,14 +1,12 @@
-package chat.client;
-
-import chat.client.gui.*;
-
-import chat.network.rpcprotocol.ChatServerRpcProxy;
-import chat.services.IChatServer;
+import GUI.ControllerLogin;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import objectprotocol.ServerObjectProxy;
+import services.IServer;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -44,36 +42,25 @@ public class StartRpcClientFX extends Application {
         System.out.println("Using server IP " + serverIP);
         System.out.println("Using server port " + serverPort);
 
-        IChatServer server = new ChatServerRpcProxy(serverIP, serverPort);
+        IServer server = new ServerObjectProxy(serverIP, serverPort);
 
+        System.out.println("Hello!");
 
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/ViewLogin.fxml"));
+        AnchorPane rootLayout = loader.load();
+        Scene mainMenuScene = new Scene(rootLayout,600,400);
 
-        FXMLLoader loader = new FXMLLoader(
-                getClass().getClassLoader().getResource("LoginW.fxml"));
-        Parent root=loader.load();
+        ControllerLogin controllerLogin=loader.getController();
+        controllerLogin.init(server,mainMenuScene);
 
+        controllerLogin.setPrimaryStage(primaryStage);
 
-        LoginController ctrl =
-                loader.<LoginController>getController();
-        ctrl.setServer(server);
+        primaryStage.setScene(mainMenuScene);
 
+        primaryStage.setResizable(false);
+        primaryStage.setTitle("Concurs");
 
-
-
-        FXMLLoader cloader = new FXMLLoader(
-                getClass().getClassLoader().getResource("ChatW.fxml"));
-        Parent croot=cloader.load();
-
-
-        ChatController chatCtrl =
-                cloader.<ChatController>getController();
-        chatCtrl.setServer(server);
-
-        ctrl.setChatController(chatCtrl);
-        ctrl.setParent(croot);
-
-        primaryStage.setTitle("MPP chat");
-        primaryStage.setScene(new Scene(root, 300, 130));
         primaryStage.show();
 
 

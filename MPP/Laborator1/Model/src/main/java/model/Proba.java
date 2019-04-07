@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Proba implements HasID<Integer> {
+public class Proba implements HasID<Integer>, Serializable {
     private Integer id;
     private String denumire;
     private Enum<Categorie> catg;

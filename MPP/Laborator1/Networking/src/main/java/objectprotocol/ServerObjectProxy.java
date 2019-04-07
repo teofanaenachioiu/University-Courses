@@ -1,13 +1,8 @@
 package objectprotocol;
 
-import chat.model.Message;
-import chat.model.User;
-import chat.network.dto.DTOUtils;
-import chat.network.dto.MessageDTO;
-import chat.network.dto.UserDTO;
-import chat.services.ChatException;
-import chat.services.IChatObserver;
-import chat.services.IChatServer;
+import services.IObserver;
+import services.IServer;
+import services.MyAppException;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -17,11 +12,11 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 
-public class ChatServerObjectProxy implements IChatServer {
+public class ServerObjectProxy implements IServer {
     private String host;
     private int port;
 
-    private IChatObserver client;
+    private IObserver client;
 
     private ObjectInputStream input;
     private ObjectOutputStream output;
@@ -30,7 +25,7 @@ public class ChatServerObjectProxy implements IChatServer {
     //private List<Response> responses;
     private BlockingQueue<Response> qresponses;
     private volatile boolean finished;
-    public ChatServerObjectProxy(String host, int port) {
+    public ServerObjectProxy(String host, int port) {
         this.host = host;
         this.port = port;
         //responses=new ArrayList<Response>();
@@ -127,7 +122,7 @@ public class ChatServerObjectProxy implements IChatServer {
         }
         return response;
     }
-    private void initializeConnection() throws ChatException {
+    private void initializeConnection() throws MyAppException {
          try {
             connection=new Socket(host,port);
             output=new ObjectOutputStream(connection.getOutputStream());
@@ -153,7 +148,7 @@ public class ChatServerObjectProxy implements IChatServer {
             System.out.println("Friend logged in "+friend);
             try {
                 client.friendLoggedIn(friend);
-            } catch (ChatException e) {
+            } catch (MyAppException e) {
                 e.printStackTrace();
             }
         }
@@ -163,7 +158,7 @@ public class ChatServerObjectProxy implements IChatServer {
             System.out.println("Friend logged out "+friend);
             try {
                 client.friendLoggedOut(friend);
-            } catch (ChatException e) {
+            } catch (MyAppException e) {
                 e.printStackTrace();
             }
         }
@@ -173,7 +168,7 @@ public class ChatServerObjectProxy implements IChatServer {
             Message message=DTOUtils.getFromDTO(msgRes.getMessage());
             try {
                 client.messageReceived(message);
-            } catch (ChatException e) {
+            } catch (MyAppException e) {
                 e.printStackTrace();  
             }
         }

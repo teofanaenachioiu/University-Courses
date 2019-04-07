@@ -5,9 +5,8 @@ import utils.PasswordStorage;
 
 import java.util.List;
 
-import static utils.PasswordStorage.createHash;
 
-public interface IChatServer {
+public interface IServer {
     public void inscriereParticipant(String nume, int varsta, List<Proba> listaProbe, String usernameOperator);
 
     public Iterable<Participant> filtreazaParticipantiKeyword(String proba, String categorie);
@@ -23,8 +22,6 @@ public interface IChatServer {
     public int nrParticipantiProba(Proba proba);
 
     public int nrParticipantiCategorie(String categorie);
-
-    public void stergeToateInregistrarile();
 
     public boolean verificaCtg(int varsta, Proba proba);
 

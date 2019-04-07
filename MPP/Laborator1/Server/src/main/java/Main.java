@@ -56,7 +56,7 @@ public class Main extends Application {
         Scene mainMenuScene = new Scene(rootLayout,600,400);
 
         ControllerLogin controllerLogin=loader.getController();
-        controllerLogin.init(service,serviceAdmin,mainMenuScene);
+        //controllerLogin.init(service,serviceAdmin,mainMenuScene);
 
         controllerLogin.setPrimaryStage(primaryStage);
 

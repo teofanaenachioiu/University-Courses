@@ -2,10 +2,11 @@ package model;
 
 import javafx.util.Pair;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Inscriere implements HasID<Pair<Integer,Integer>> {
+public class Inscriere implements HasID<Pair<Integer,Integer>>, Serializable {
     private Integer idParticipant;
     private Integer idProba;
     private LocalDate data;

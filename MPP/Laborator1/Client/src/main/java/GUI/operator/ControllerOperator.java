@@ -8,13 +8,11 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.User;
-import service.ServiceOperator;
-import utils.DataChanged;
-import utils.Observer;
+import services.IServer;
 
 import java.io.IOException;
 
-public class ControllerOperator implements Observer<DataChanged> {
+public class ControllerOperator {
     @FXML
     AnchorPane mainPane;
     @FXML
@@ -33,15 +31,15 @@ public class ControllerOperator implements Observer<DataChanged> {
     private AnchorPane probePane;
     private AnchorPane inscrieriPane;
 
-    private ServiceOperator service;
+    private IServer server;
     private User user;
 
     private Stage primaryStage;
     private Scene loginScene;
 
-    public void setData(ServiceOperator service, User user) throws IOException {
+    public void setData(IServer server, User user) throws IOException {
         setUser(user);
-        setService(service);
+        setServer(server);
     }
 
     private void setUser(User user){
@@ -49,33 +47,21 @@ public class ControllerOperator implements Observer<DataChanged> {
         usernameLabel.setText("OPERATOR " + this.user.getID());
     }
 
-    private void setService(ServiceOperator service) throws IOException {
-        this.service=service;
+    private void setServer(IServer server) throws IOException {
+        this.server=server;
 
         FXMLLoader loaderProbe = new FXMLLoader();
         loaderProbe.setLocation(getClass().getResource("/ViewProbe.fxml"));
         this.probePane = loaderProbe.load();
         ControllerProbe probeController=loaderProbe.getController();
-        probeController.initData(this.service);
-        this.service.addObserver(probeController);
+        probeController.initData(this.server);
 
-//        FXMLLoader loaderCategorii = new FXMLLoader();
-//        loaderCategorii.setLocation(getClass().getResource("/ViewCategorii.fxml"));
-//        this.categoriiPane = loaderCategorii.load();
 
         FXMLLoader loaderInscrieri = new FXMLLoader();
         loaderInscrieri.setLocation(getClass().getResource("/ViewInscrieri.fxml"));
         this.inscrieriPane = loaderInscrieri.load();
         ControllerInscrieri controllerInscrieri = loaderInscrieri.getController();
-        controllerInscrieri.setData(service,user);
-        this.service.addObserver(controllerInscrieri);
-
-//        FXMLLoader loaderCautare = new FXMLLoader();
-//        loaderCautare.setLocation(getClass().getResource("/ViewCautare.fxml"));
-//        this.cautarePane = loaderCautare.load();
-//        ControllerCautare cautareController=loaderCautare.getController();
-//        cautareController.initData(service);
-//        this.service.addObserver(cautareController);
+        controllerInscrieri.setData(server,user);
 
         this.viewPane.getChildren().clear();
         this.viewPane.getChildren().add(probePane);
@@ -106,8 +92,4 @@ public class ControllerOperator implements Observer<DataChanged> {
         this.primaryStage.setScene(loginScene);
     }
 
-    @Override
-    public void update(DataChanged dataChanged) {
-
-    }
 }

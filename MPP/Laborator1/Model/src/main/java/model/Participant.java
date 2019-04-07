@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Participant implements HasID<Integer> {
+public class Participant implements HasID<Integer>, Serializable {
     private Integer id;
     private String nume;
     private Integer varsta;

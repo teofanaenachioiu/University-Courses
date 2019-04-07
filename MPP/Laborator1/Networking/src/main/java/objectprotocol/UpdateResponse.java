@@ -1,4 +1,4 @@
-package chat.network.objectprotocol;
+package objectprotocol;
 
 
 public interface UpdateResponse extends Response {

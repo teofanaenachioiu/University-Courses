@@ -104,8 +104,6 @@ public class ServiceOperator implements Observable<DataChanged> {
         String[] varste = var.split("_");
         int min=Integer.parseInt(varste[0]);
         int max=Integer.parseInt(varste[1]);
-        if(varsta>=min && varsta<=max)
-            return true;
-        return false;
+        return varsta >= min && varsta <= max;
     }
 }

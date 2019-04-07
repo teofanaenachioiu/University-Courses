@@ -1,31 +1,26 @@
 import model.*;
 import repository.*;
-import services.MyAppException;
-import services.IChatObserver;
-import services.IChatServer;
+import services.IObserver;
+import services.IServer;
 import utils.PasswordStorage;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import static utils.PasswordStorage.createHash;
 
 
-public class ChatServerImpl implements IChatServer {
+public class ServerImpl implements IServer {
 
     private IRepositoryUser userRepository;
     private IRepositoryParticipant participantRepository;
     private IRepositoryProba probaRepository;
     private IRepositoryInscriere inscriereRepository;
 
-    private Map<String, IChatObserver> loggedClients;
+    private Map<String, IObserver> loggedClients;
 
-    public ChatServerImpl(IRepositoryUser uRepo, IRepositoryParticipant pRepo, IRepositoryProba prRepo, IRepositoryInscriere iRepo) {
+    public ServerImpl(IRepositoryUser uRepo, IRepositoryParticipant pRepo, IRepositoryProba prRepo, IRepositoryInscriere iRepo) {
 
         this.userRepository= uRepo;
         this.probaRepository=prRepo;

@@ -11,8 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.TipUser;
 import model.User;
-import service.ServiceAdmin;
-import service.ServiceOperator;
+import services.IServer;
 
 import java.io.IOException;
 
@@ -24,14 +23,11 @@ public class ControllerLogin {
     @FXML
     Label errorLabel;
 
-    ServiceAdmin serviceAdmin;
-    ServiceOperator serviceOperator;
+    IServer server;
 
     private Stage primaryStage;
     private Scene operatorScene;
-    //private Scene adminScene;
     private Scene loginScene;
-    //private ControllerAdmin adminController;
     private ControllerOperator controllerOperator;
 
     private void initViewOperator(User user) throws IOException {
@@ -44,13 +40,12 @@ public class ControllerLogin {
 
         controllerOperator.setLoginScene(loginScene);
         controllerOperator.setPrimaryStage(primaryStage);
-        controllerOperator.setData(serviceOperator,user);
+        controllerOperator.setData(server,user);
         this.operatorScene = sceneOperator;
     }
 
-    public void init(ServiceOperator serviceOperator, ServiceAdmin serviceAdmin,Scene loginScene){
-        this.serviceAdmin=serviceAdmin;
-        this.serviceOperator=serviceOperator;
+    public void init(IServer server,Scene loginScene){
+        this.server=server;
         this.loginScene=loginScene;
         this.errorLabel.setVisible(false);
     }
@@ -71,13 +66,11 @@ public class ControllerLogin {
         if (fieldPassword.getText() != null)
             password = fieldPassword.getText();
 
-        boolean valid=serviceAdmin.verificareParola(username, password);
+        boolean valid=server.verificareParola(username, password);
         if (valid) {
-            User utilizator=serviceAdmin.cauta(username);
+            User utilizator=server.cauta(username);
             if(utilizator.getTip().equals(TipUser.ADMIN)){
                 System.out.println("AM INTRAT LA ADMIN");
-//                initViewAdmin();
-//                handleAdminWindow();
             }
             else if(utilizator.getTip().equals(TipUser.OPERATOR)) {
                 initViewOperator(utilizator);
