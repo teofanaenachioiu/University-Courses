@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import org.controlsfx.control.CheckComboBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="330.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.operator.ControllerInscrieri">
+   <children>
+      <GridPane layoutX="269.0" layoutY="63.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="71.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="10.0" prefWidth="129.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField fx:id="fieldNume" GridPane.columnIndex="1" />
+            <Label text="Nume:" />
+            <Label text="Varsta:" GridPane.rowIndex="1" />
+            <Label text="Probe:" GridPane.rowIndex="2" />
+            <CheckComboBox fx:id="checkComboBox" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Spinner fx:id="spinnerVarsta" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+      <Label fx:id="labelTitlu" layoutX="419.0" layoutY="34.0" text="Inscrieri" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="30.0" />
+      <TableView fx:id="tableView" layoutX="31.0" layoutY="35.0" prefHeight="260.0" prefWidth="200.0">
+         <columns>
+            <TableColumn fx:id="columnNume" prefWidth="112.0" text="Nume" />
+            <TableColumn fx:id="columnVarsta" prefWidth="61.0" text="Varsta" />
+         </columns>
+      </TableView>
+      <GridPane layoutX="269.0" layoutY="212.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="53.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="147.0" minWidth="10.0" prefWidth="147.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label text="Proba:" />
+            <Label text="Categorie:" GridPane.rowIndex="1" />
+            <ComboBox fx:id="comboBoxProba" prefWidth="150.0" GridPane.columnIndex="1" />
+            <ComboBox fx:id="comboBoxCategorie" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+      <Button fx:id="buttonCauta" layoutX="424.0" layoutY="283.0" mnemonicParsing="false" text="Cauta" />
+      <Button layoutX="341.0" layoutY="283.0" mnemonicParsing="false" text="Reseteaza" />
+      <Button fx:id="buttonInscriere" layoutX="410.0" layoutY="165.0" mnemonicParsing="false"  text="Inscriere" />
+   </children>
+</AnchorPane>
