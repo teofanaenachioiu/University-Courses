@@ -60,11 +60,14 @@ public class ServerImpl implements IServer {
         if (user != null) {
             if (loggedClients.get(user.getID()) != null)
                 throw new MyAppException("User already logged in.");
-            loggedClients.put(user.getID(), client);
+
             String userHash = user.getHash();
             try {
                 if (!PasswordStorage.verifyPassword(password, userHash))
                     throw new MyAppException("Invalid password.");
+                else {
+                    loggedClients.put(user.getID(), client);
+                }
             } catch (PasswordStorage.CannotPerformOperationException | PasswordStorage.InvalidHashException e) {
                 throw new MyAppException("Authentication failed.");
             }

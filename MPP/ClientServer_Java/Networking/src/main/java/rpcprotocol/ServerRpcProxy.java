@@ -98,6 +98,7 @@ public class ServerRpcProxy implements IServer {
     }
 
     private void closeConnection() {
+        System.out.println("Inchidem conexiunea");
         finished = true;
         try {
             input.close();
@@ -170,6 +171,7 @@ public class ServerRpcProxy implements IServer {
     private class ReaderThread implements Runnable {
         public void run() {
             while (!finished) {
+                System.out.println("in while");
                 try {
                     Object response = input.readObject();
                     System.out.println("response received " + response);
@@ -183,8 +185,11 @@ public class ServerRpcProxy implements IServer {
                             e.printStackTrace();
                         }
                     }
+                    Thread.sleep(100);
                 } catch (IOException | ClassNotFoundException e) {
                     System.out.println("Reading error " + e);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         }
