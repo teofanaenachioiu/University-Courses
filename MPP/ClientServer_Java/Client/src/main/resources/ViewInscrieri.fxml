@@ -57,8 +57,8 @@
             <ComboBox fx:id="comboBoxCategorie" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Button fx:id="buttonCauta" layoutX="424.0" layoutY="283.0" mnemonicParsing="false" text="Cauta" />
-      <Button layoutX="341.0" layoutY="283.0" mnemonicParsing="false" text="Reseteaza" />
-      <Button fx:id="buttonInscriere" layoutX="410.0" layoutY="165.0" mnemonicParsing="false"  text="Inscriere" />
+      <Button fx:id="buttonCauta" layoutX="424.0" layoutY="283.0" mnemonicParsing="false" onAction="#handleCauta" text="Cauta" />
+      <Button layoutX="341.0" layoutY="283.0" mnemonicParsing="false" onAction="#handleReset" text="Reseteaza" />
+      <Button fx:id="buttonInscriere" layoutX="410.0" layoutY="165.0" mnemonicParsing="false" onAction="#handleMarcat" text="Inscriere" />
    </children>
 </AnchorPane>

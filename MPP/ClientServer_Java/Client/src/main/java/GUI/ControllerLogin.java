@@ -97,4 +97,9 @@ public class ControllerLogin implements IObserver {
         this.primaryStage.setScene(this.operatorScene);
     }
 
+    @Override
+    public void update() throws MyAppException {
+        System.out.println("Update la login");
+        controllerOperator.update();
+    }
 }

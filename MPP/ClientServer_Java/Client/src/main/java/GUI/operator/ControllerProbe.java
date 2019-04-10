@@ -9,68 +9,55 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Proba;
+import model.dto.ProbaDTO;
 import services.IObserver;
 import services.IServer;
 import services.MyAppException;
 
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 
 public class ControllerProbe implements Initializable, IObserver {
-    private final ObservableList<Proba> model = FXCollections.observableArrayList();
+    private final ObservableList<ProbaDTO> model = FXCollections.observableArrayList();
     @FXML
-    TableView<Proba> tableView;
+    TableView<ProbaDTO> tableView;
     @FXML
-    TableColumn<Proba, String> columnDenumire;
+    TableColumn<ProbaDTO, String> columnDenumire;
     @FXML
-    TableColumn<Proba, String> columnCategorie;
+    TableColumn<ProbaDTO, String> columnCategorie;
     @FXML
-    TableColumn<Proba, String> columnNumar;
+    TableColumn<ProbaDTO, Integer> columnNumar;
 
     private IServer server;
 
     public void initData(IServer server){
         this.server=server;
-        try {
-            model.setAll(StreamSupport.stream(this.server.listaProbe().spliterator(),false)
-                    .collect(Collectors.toList()));
+       try {
+            ProbaDTO[] probaDTO=this.server.listaProbeDTO();
+            ArrayList<ProbaDTO> items = new ArrayList<>(Arrays.asList(probaDTO));
+            model.setAll(items);
         } catch (MyAppException e) {
             e.printStackTrace();
         }
-        tableView.setItems(model);
     }
-
-    @FXML
-    public void initialize() {
-        columnNumar.setCellValueFactory(cellData -> {
-            Proba current_item = cellData.getValue();
-            try {
-                return new ReadOnlyStringWrapper(""+server.nrParticipantiProba(current_item));
-            } catch (MyAppException e) {
-                e.printStackTrace();
-            }
-            return new ReadOnlyStringWrapper("0");
-        });
-        columnDenumire.setCellValueFactory(new PropertyValueFactory<>("denumire"));
-        columnCategorie.setCellValueFactory(cellData -> {
-            Proba current_item = cellData.getValue();
-            return new ReadOnlyStringWrapper(current_item.getCatg().toString());
-        });
-
-    }
-
-//    @Override
-//    public void inscriereParticipant() {
-//        model.setAll(StreamSupport.stream(this.server.listaProbe().spliterator(),false)
-//                .collect(Collectors.toList()));
-//        tableView.setItems(model);
-//    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        columnDenumire.setCellValueFactory(new PropertyValueFactory<>("denumire"));
+        columnCategorie.setCellValueFactory(new PropertyValueFactory<>("categorie"));
+        columnNumar.setCellValueFactory(new PropertyValueFactory<>("nrParticipanti"));
+        tableView.setItems(model);
+    }
+
+    @Override
+    public void update() throws MyAppException {
+        System.out.println("Incerc sa updatez probele");
+        ProbaDTO[] probaDTO=this.server.listaProbeDTO();
+        ArrayList<ProbaDTO> items = new ArrayList<>(Arrays.asList(probaDTO));
+        model.setAll(items);
 
     }
 }

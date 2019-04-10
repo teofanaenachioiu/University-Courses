@@ -1,5 +1,5 @@
 package services;
 
 public interface IObserver {
-    // public void inscriereParticipant();
+    public void update() throws MyAppException;
 }

@@ -8,12 +8,13 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.User;
+import services.IObserver;
 import services.IServer;
 import services.MyAppException;
 
 import java.io.IOException;
 
-public class ControllerOperator {
+public class ControllerOperator implements IObserver {
     @FXML
     AnchorPane mainPane;
     @FXML
@@ -38,6 +39,9 @@ public class ControllerOperator {
     private Stage primaryStage;
     private Scene loginScene;
 
+    ControllerInscrieri controllerInscrieri;
+    ControllerProbe probeController;
+
     public void setData(IServer server, User user) throws IOException {
         setUser(user);
         setServer(server);
@@ -54,15 +58,17 @@ public class ControllerOperator {
         FXMLLoader loaderProbe = new FXMLLoader();
         loaderProbe.setLocation(getClass().getResource("/ViewProbe.fxml"));
         this.probePane = loaderProbe.load();
-        ControllerProbe probeController=loaderProbe.getController();
+        this.probeController=loaderProbe.getController();
+        System.out.println("Init Data controller");
         probeController.initData(this.server);
+        System.out.println("Ies din init");
 
 
         FXMLLoader loaderInscrieri = new FXMLLoader();
         loaderInscrieri.setLocation(getClass().getResource("/ViewInscrieri.fxml"));
         this.inscrieriPane = loaderInscrieri.load();
-        ControllerInscrieri controllerInscrieri = loaderInscrieri.getController();
-//        controllerInscrieri.setData(server,user);
+        this.controllerInscrieri = loaderInscrieri.getController();
+        controllerInscrieri.setData(server,user);
 
         this.viewPane.getChildren().clear();
         this.viewPane.getChildren().add(probePane);
@@ -99,4 +105,10 @@ public class ControllerOperator {
         this.primaryStage.setScene(loginScene);
     }
 
+
+    @Override
+    public void update() throws MyAppException {
+        controllerInscrieri.update();
+        probeController.update();
+    }
 }

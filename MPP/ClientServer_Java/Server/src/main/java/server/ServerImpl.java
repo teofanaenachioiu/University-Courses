@@ -1,7 +1,8 @@
 package server;
 
-import model.Proba;
-import model.User;
+import model.*;
+import model.dto.DTOutils;
+import model.dto.ProbaDTO;
 import repository.IRepositoryInscriere;
 import repository.IRepositoryParticipant;
 import repository.IRepositoryProba;
@@ -10,9 +11,8 @@ import services.IObserver;
 import services.IServer;
 import services.MyAppException;
 
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -38,13 +38,102 @@ public class ServerImpl implements IServer {
         ;
     }
 
+    private synchronized boolean verificaCtg(int varsta, Proba proba){
+        String categorie=proba.getCatg().toString();
+        String var=categorie.substring(10);
+        String[] varste = var.split("_");
+        int min=Integer.parseInt(varste[0]);
+        int max=Integer.parseInt(varste[1]);
+        return varsta >= min && varsta <= max;
+    }
+
+    private void notifyClients() throws MyAppException {
+        System.out.println("Notify");
+
+        ExecutorService executor= Executors.newFixedThreadPool(defaultThreadsNo);
+        for(String username: loggedClients.keySet()){
+            IObserver client=loggedClients.get(username);
+            if (client!=null)
+                executor.execute(() -> {
+                    try {
+                        System.out.println("Notifying [" + username+ "]");
+                        client.update();
+                    } catch (MyAppException e) {
+                        System.err.println("Error notifying " + e);
+                    }
+                });
+        }
+
+        executor.shutdown();
+    }
+
     @Override
-    public Iterable<Proba> listaProbe() throws MyAppException{
+    public synchronized void inscriereParticipant(String nume, int varsta, List<Proba> listaProbe, String usernameOperator) throws MyAppException {
+        for(Proba p:listaProbe){
+            if(!verificaCtg(varsta, p))
+                throw new MyAppException("Participantul nu se poate inscrie la aceasta categorie de varsta");
+        }
+        if(listaProbe.size()>2)
+            throw new MyAppException("Participantul nu se poate inscrie la mai mult de 2 probe");
+        int idPartic = participantRepository.save(new Participant(nume,varsta));
+        listaProbe.forEach(pr->inscriereRepository.save(new Inscriere(idPartic,pr.getID(),usernameOperator)));
+        notifyClients();
+    }
+
+    @Override
+    public synchronized Iterable<Participant> filtreazaParticipantiKeyword(String proba, String categorie) {
+        if(proba==null)
+            return inscriereRepository.cautaParticipantiDupaCategorie(categorie);
+        if(categorie==null)
+            return inscriereRepository.cautaParticipantiDupaProba(proba);
+
+        return inscriereRepository.cautaParticipantDupaProbaCategorie(proba,categorie);
+    }
+
+    @Override
+    public synchronized Iterable<Proba> listaProbe() throws MyAppException{
         return probaRepository.findAll();
     }
 
     @Override
-    public int nrParticipantiProba(Proba proba) throws MyAppException {
+    public  synchronized ProbaDTO[] listaProbeDTO() throws MyAppException {
+        Iterable<Proba> pr= this.listaProbe();
+
+        int nr=0;
+        for (Proba ignored : pr){
+            nr+=1;
+        }
+
+        Proba[] probe=new Proba[nr];
+        int[] nrPartic = new int[nr];
+
+        int i=0;
+        for (Proba p : pr){
+            probe[i]=p;
+            nrPartic[i]=this.nrParticipantiProba(p);
+            i+=1;
+        }
+        System.out.println(probe.length);
+        return DTOutils.getDTO(probe, nrPartic);
+    }
+
+    @Override
+    public synchronized Iterable<Participant> listaParticipanti()  throws MyAppException {
+        return participantRepository.findAll();
+    }
+
+    @Override
+    public synchronized Iterable<Categorie> listaCategorii() throws MyAppException{
+        return probaRepository.listaCategorii();
+    }
+
+    @Override
+    public synchronized Iterable<String> listaProbeNume() throws MyAppException {
+        return probaRepository.listaProbeNume();
+    }
+
+    @Override
+    public synchronized int nrParticipantiProba(Proba proba) throws MyAppException {
         return inscriereRepository.nrParticipantiProba(proba);
     }
 
@@ -78,7 +167,7 @@ public class ServerImpl implements IServer {
     }
 
     @Override
-    public void logout(User user) throws MyAppException {
+    public synchronized void logout(User user) throws MyAppException {
         IObserver localClient=loggedClients.remove(user.getID());
         if (localClient==null)
             throw new MyAppException("User "+user.getID()+" is not logged in.");
