@@ -110,6 +110,41 @@ namespace TabaraDeVara
             }
         }
 
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            List<string> ColumnNamesInsertParameters
+                = new List<string>(Configuration.ConfigurationManager
+                .AppSettings["ColumnNamesInsertParameters"].Split(','));
+            try
+            {
+                string sql = "INSERT INTO " +
+                    numeFiu + " (" + Configuration.ConfigurationManager
+                .AppSettings["numeColoaneFiu"] + ") VALUES(" + Configuration.ConfigurationManager
+                .AppSettings["ColumnNamesInsertParameters"] + ")";
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    foreach (string column in coloaneFiu)
+                    {
+                        TextBox textBox = (TextBox)panelTextBoxes.Controls[column];
+                        cmd.Parameters.AddWithValue("@" + column, textBox.Text);
+                    }
+                    cmd.ExecuteNonQuery();
+                    ds.Clear();
+                    daPartic.Fill(ds);
+                    conn.Close();
+                    showData();
+                    MessageBox.Show("Row inserted !! ");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Eroareeeeeeeee! ");
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
             List<string> ColumnNamesUpdateParameters
@@ -118,19 +153,17 @@ namespace TabaraDeVara
             try
             {
                 TextBox textBox = (TextBox)panelTextBoxes.Controls[idFiu];
-                string sql= "UPDATE " + numeFiu +"("+ coloaneFiu +")" +
-                    " VALUES ("+ColumnNamesUpdateParameters +") WHERE "+idFiu +"=" + textBox.Text;
+                string sql=  Configuration.ConfigurationManager
+                .AppSettings["updateFiu"];
                 conn.Open();
 
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
                     foreach (string column in coloaneFiu)
                     {
-                        if (column != idFiu)
-                        {
-                            TextBox textBox1 = (TextBox)panelTextBoxes.Controls[column];
-                            cmd.Parameters.AddWithValue("@" + column, textBox1.Text);
-                        }  
+                        
+                        TextBox textBox1 = (TextBox)panelTextBoxes.Controls[column];
+                        cmd.Parameters.AddWithValue("@" + column, textBox1.Text);
                     }
                     cmd.ExecuteNonQuery();
                     ds.Clear();
@@ -208,6 +241,7 @@ namespace TabaraDeVara
             idFiu = Configuration.ConfigurationManager.AppSettings["idFiu"];
             List<string> eticheteFiu= new List<string>(Configuration.ConfigurationManager.AppSettings["eticheteFiu"].Split(','));
             coloaneFiu= new List<string>(Configuration.ConfigurationManager.AppSettings["numeColoaneFiu"].Split(','));
+            
 
             this.Text = title;
 
@@ -246,36 +280,6 @@ namespace TabaraDeVara
                 
         }
 
-        private void buttonSave_Click(object sender, EventArgs e)
-        {
-            List<string> ColumnNamesInsertParameters
-                = new List<string>(Configuration.ConfigurationManager
-                .AppSettings["ColumnNamesInsertParameters"].Split(','));
-            try
-            {
-                string sql = "INSERT INTO " +
-                    numeFiu + " (" + coloaneFiu + ") VALUES(" + ColumnNamesInsertParameters + ")";
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand(sql, conn))
-                {
-                    foreach (string column in coloaneFiu)
-                    {
-                        TextBox textBox = (TextBox)panelTextBoxes.Controls[column];
-                        cmd.Parameters.AddWithValue("@" + column, textBox.Text);
-                    }
-                    cmd.ExecuteNonQuery();
-                    ds.Clear();
-                    daPartic.Fill(ds);
-                    conn.Close();
-                    MessageBox.Show("Row inserted !! ");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Eroareeeeeeeee! ");
-                MessageBox.Show(ex.Message);
-            }
-        }
         
     }
 }
