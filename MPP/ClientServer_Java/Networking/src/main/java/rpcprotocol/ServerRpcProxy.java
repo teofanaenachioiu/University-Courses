@@ -54,7 +54,7 @@ public class ServerRpcProxy implements IServer {
         Response response=readResponse();
         if (response.type() == ResponseType.ERROR) {
             String err=response.data().toString();
-            closeConnection();
+            //closeConnection();
             throw new MyAppException(err);
         }
     }
@@ -274,7 +274,7 @@ public class ServerRpcProxy implements IServer {
                     Object response = input.readObject();
                     System.out.println("response received " + response);
                     if (isUpdate((Response) response)) {
-                        handleUpdate((Response) response);
+                        Platform.runLater(() -> handleUpdate((Response) response));
                     } else {
 
                         try {
@@ -283,12 +283,13 @@ public class ServerRpcProxy implements IServer {
                             e.printStackTrace();
                         }
                     }
-                    Thread.sleep(100);
+                   // Thread.sleep(100);
                 } catch (IOException | ClassNotFoundException e) {
                     System.out.println("Reading error " + e);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
                 }
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
             }
         }
     }

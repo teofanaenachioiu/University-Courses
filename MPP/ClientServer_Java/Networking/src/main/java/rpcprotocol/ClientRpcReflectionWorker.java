@@ -179,7 +179,8 @@ public class ClientRpcReflectionWorker implements Runnable, IObserver {
             List<Proba> lista = new ArrayList<>(Arrays.asList(inscriereDTO.getProbe()));
             server.inscriereParticipant(inscriereDTO.getNume(),inscriereDTO.getVarsta(),
                     lista,inscriereDTO.getUsernameOperator());
-            return new Response.Builder().type(ResponseType.UPDATE).data(null).build();
+//            return new Response.Builder().type(ResponseType.UPDATE).data(null).build();
+            return new Response.Builder().type(ResponseType.OK).data(null).build();
         } catch (MyAppException e) {
             return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
         }

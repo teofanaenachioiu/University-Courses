@@ -26,10 +26,6 @@ public interface IServer {
 
     public int nrParticipantiProba(Proba proba) throws MyAppException;
 
-//    public int nrParticipantiCategorie(String categorie);
-
-//    public boolean verificaCtg(int varsta, Proba proba);
-
     public User cauta(String username) throws MyAppException;
 
     public void login(String username, String password, IObserver client) throws MyAppException;
