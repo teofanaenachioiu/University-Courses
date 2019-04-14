@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "Windows
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "..\UnitTest\UnitTest.csproj", "{AC8282F4-298C-4580-A690-C9087125A488}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "..\Model\Model\Model.csproj", "{013F2E6E-F86B-4190-BA0F-36FA01B22209}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "..\Persistence\Persistence\Persistence.csproj", "{98006737-3E68-4009-A2EC-2FB8C4AE8B5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{AC8282F4-298C-4580-A690-C9087125A488}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC8282F4-298C-4580-A690-C9087125A488}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC8282F4-298C-4580-A690-C9087125A488}.Release|Any CPU.Build.0 = Release|Any CPU
+		{013F2E6E-F86B-4190-BA0F-36FA01B22209}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{013F2E6E-F86B-4190-BA0F-36FA01B22209}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{013F2E6E-F86B-4190-BA0F-36FA01B22209}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{013F2E6E-F86B-4190-BA0F-36FA01B22209}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98006737-3E68-4009-A2EC-2FB8C4AE8B5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98006737-3E68-4009-A2EC-2FB8C4AE8B5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98006737-3E68-4009-A2EC-2FB8C4AE8B5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98006737-3E68-4009-A2EC-2FB8C4AE8B5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

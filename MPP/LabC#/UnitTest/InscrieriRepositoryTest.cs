@@ -34,7 +34,7 @@ namespace UnitTest
                 repo.Save(inscriere);
                 Assert.Fail();
             }
-            catch (System.Data.SQLite.SQLiteException e)
+            catch (System.Data.SQLite.SQLiteException)
             {
                 Assert.IsTrue(true);
             }

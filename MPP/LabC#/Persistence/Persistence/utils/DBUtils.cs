@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -34,7 +34,7 @@ namespace Concurs.repository
             string returnValue = null;
 
             // Look for the name in the connectionStrings section.
-            ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings[name];
+            ConnectionStringSetting settings = Configuration.ConfigurationManager.ConnectionStrings[name];
 
             // If found, return the connection string.
             if (settings != null)
