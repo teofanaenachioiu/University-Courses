@@ -52,7 +52,9 @@
     <Compile Include="ListaCategoriiResponse.cs" />
     <Compile Include="ListaParticipantiFiltratiRequest.cs" />
     <Compile Include="ListaParticipantiFiltratiResponse.cs" />
+    <Compile Include="ListaProbeDTORequest.cs" />
     <Compile Include="ListaProbeRequest.cs" />
+    <Compile Include="ListaProbeDTOResponse.cs" />
     <Compile Include="ListaProbeResponse.cs" />
     <Compile Include="ListaParticipantiResponse.cs" />
     <Compile Include="ListaParticipantiRequest.cs" />
@@ -67,6 +69,7 @@
     <Compile Include="Response.cs" />
     <Compile Include="ServerProxy.cs" />
     <Compile Include="ServerUtils.cs" />
+    <Compile Include="UpdateResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

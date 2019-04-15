@@ -1,4 +1,5 @@
 ﻿using Concurs.model;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace Services
         IEnumerable<String> ListaCategorii();
         IEnumerable<Participant> FiltreazaParticipantiKeyword(string proba, string categorie);
         IEnumerable<Proba> ListaProbe();
+        IEnumerable<ProbaDTO> ListaProbeDTO();
         void InscriereParticipant(string nume, int varsta, List<Proba> listaProbe, string usernameOperator);
     }
 }

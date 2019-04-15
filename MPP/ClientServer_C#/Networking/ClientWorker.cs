@@ -7,6 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using Services;
 using Concurs.model;
 using System.Collections.Generic;
+using Model;
 
 namespace Networking
 {
@@ -74,7 +75,20 @@ namespace Networking
 			}
 		}
 
-		private Response handleRequest(Request request)
+        public virtual void Update()
+        {
+            Console.WriteLine("Update all tables");
+            try
+            {
+                sendResponse(new UpdateResponse());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
+        }
+
+        private Response handleRequest(Request request)
 		{
 			Response response =null;
 			if (request is LoginRequest)
@@ -284,6 +298,36 @@ namespace Networking
                         }
                     }
                     return new ListaProbeResponse(parts);
+                }
+                catch (MyAppException e)
+                {
+                    return new ErrorResponse(e.Message);
+                }
+            }
+
+            if (request is ListaProbeDTORequest)
+            {
+                Console.WriteLine("ListaProbeDTO Request ...");
+                try
+                {
+                    ProbaDTO[] parts;
+                    lock (server)
+                    {
+                        IEnumerable<ProbaDTO> part = server.ListaProbeDTO();
+                        int dim = 0;
+                        foreach (ProbaDTO p in part)
+                        {
+                            dim += 1;
+                        }
+                        parts = new ProbaDTO[dim];
+                        dim = 0;
+                        foreach (ProbaDTO p in part)
+                        {
+                            parts[dim] = p;
+                            dim += 1;
+                        }
+                    }
+                    return new ListaProbeDTOResponse(parts);
                 }
                 catch (MyAppException e)
                 {

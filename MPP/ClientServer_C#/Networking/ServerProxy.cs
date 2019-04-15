@@ -8,6 +8,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using Concurs.model;
 using Services;
 using System.Collections;
+using Model;
 
 namespace Networking
 { 
@@ -153,6 +154,22 @@ namespace Networking
             return enume;
         }
 
+
+        public IEnumerable<ProbaDTO> ListaProbeDTO()
+        {
+            sendRequest(new ListaProbeDTORequest());
+            Response response = readResponse();
+            if (response is ErrorResponse)
+            {
+                ErrorResponse err = (ErrorResponse)response;
+                throw new MyAppException(err.Message);
+            }
+            ListaProbeDTOResponse resp = (ListaProbeDTOResponse)response;
+            ProbaDTO[] parts = resp.Probe;
+            IEnumerable<ProbaDTO> enume = new LinkedList<ProbaDTO>(parts);
+            return enume;
+        }
+
         public void InscriereParticipant(string nume, int varsta, List<Proba> listaProbe, string usernameOperator)
         {
 
@@ -249,7 +266,20 @@ namespace Networking
 			tw.Start();
 		}
 
-		public virtual void run()
+        private void handleUpdate(UpdateResponse update)
+        {
+            Console.WriteLine("Update tables");
+            try
+            {
+                client.Update();
+            }
+            catch (MyAppException e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
+        }
+
+        public virtual void run()
 			{
 				while(!finished)
 				{
@@ -258,12 +288,12 @@ namespace Networking
                     object response = formatter.Deserialize(stream);
                     Console.WriteLine("response received " + response);
               
-						/*if (response is UpdateResponse)
+						if (response is UpdateResponse)
 						{
 							 handleUpdate((UpdateResponse)response);
 						}
 						else
-						{*/
+						{
 							
 							lock (responses)
 							{
@@ -273,7 +303,7 @@ namespace Networking
                                
 							}
                             _waitHandle.Set();
-						//}
+						}
 					}
 					catch (Exception e)
 					{
@@ -283,7 +313,6 @@ namespace Networking
 				}
 			}
 
-       
     }
 
 }

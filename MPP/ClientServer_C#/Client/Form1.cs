@@ -1,5 +1,6 @@
 ﻿using Client;
 using Concurs.model;
+using Model;
 using Services;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,7 @@ namespace WindowsFormsApp1
             controller = ctrl; 
             errorLabel.Visible = false;
             panelOperator.Visible = false;
+            controller.updateEvent += userUpdate;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -36,7 +38,9 @@ namespace WindowsFormsApp1
         {
             panelOperator.Visible = false;
             panelLogin.Visible = true;
+            controller.updateEvent -= userUpdate;
             controller.Logout();
+
         }
 
         private void buttonConectare_Click(object sender, EventArgs e)
@@ -105,15 +109,15 @@ namespace WindowsFormsApp1
             ProbeTable.Columns.Add(c1);
             ProbeTable.Columns.Add(c2);
 
-            /*foreach (Proba proba in serviceOperator.ListaProbe())
+            foreach (ProbaDTO proba in controller.ListaProbeDTO())
             {
                 DataRow row;
                 row = ProbeTable.NewRow();
                 row["Denumire"] = proba.Denumire;
                 row["Categorie"] = proba.Categorie;
-                row["Nr Participanti"] = serviceOperator.NrParticipantiProba(proba);
+                row["Nr Participanti"] = proba.NrParticipanti;
                 ProbeTable.Rows.Add(row);
-            }*/
+            }
 
             bsStatistici.DataSource = ProbeTable;
             dataGridViewStatistici.DataSource = bsStatistici;
@@ -228,8 +232,8 @@ namespace WindowsFormsApp1
                 int varsta = int.Parse(listBoxVarsta.Text);
 
                 controller.InscriereParticipant(nume, varsta, ProbeSelectate(), user.Id);
-                PopulateGridStatistici();
-                PopulateGridInscrieri();
+                /*PopulateGridStatistici();
+                PopulateGridInscrieri();*/
                 MessageBox.Show("Participantul a fost inscris!");
             } catch(MyAppException ex)
             {
@@ -295,5 +299,20 @@ namespace WindowsFormsApp1
                 Application.Exit();
             }
         }
+
+        public void userUpdate(object sender, UserEventArgs e)
+        {
+            Console.WriteLine("[UpdateAllTableInWindow]");
+            BeginInvoke(new UpdateTablesCallback(updateTables));
+            
+        }
+
+        private void updateTables()
+        {
+            this.PopulateGridInscrieri();
+            this.PopulateGridStatistici();
+        }
+
+        public delegate void UpdateTablesCallback();
     }
 }

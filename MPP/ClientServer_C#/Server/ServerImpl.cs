@@ -6,6 +6,7 @@ using Concurs.repository;
 using Services;
 using Concurs.model;
 using Concurs.utils;
+using Model;
 
 namespace chat.server
 {
@@ -116,6 +117,37 @@ namespace chat.server
                 throw new MyAppException("Participantul nu se poate inscrie la mai mult de 2 probe");
             int idPartic = participantRepository.Save(new Participant(nume, varsta));
             listaProbe.ForEach(pr => inscrieriRepository.Save(new Inscriere(idPartic, pr.Id, usernameOperator)));
+            notifyClients();
         }
+
+        public IEnumerable<ProbaDTO> ListaProbeDTO()
+        {
+            IEnumerable<Proba> pr = this.ListaProbe();
+            IList<ProbaDTO> probeDTO = new List<ProbaDTO>();
+            
+            foreach (Proba p in pr)
+            {
+                int nrP = this.NrParticipantiProba(p);
+                ProbaDTO proba = new ProbaDTO(p.Id, p.Denumire, p.Categorie, nrP);
+                probeDTO.Add(proba);
+            }
+            return probeDTO;
+        }
+
+        private int NrParticipantiProba(Proba proba)
+        {
+            return inscrieriRepository.NrParticipantiProba(proba);
+        }
+
+        private void notifyClients()
+        {
+            Console.WriteLine("notify clients...");
+            foreach (IObserver obs in loggedClients.Values)
+            {
+                Task.Run(() => obs.Update());
+                
+            }
+        }
+
     }
 }

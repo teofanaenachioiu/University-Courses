@@ -1,5 +1,6 @@
 ﻿
 using Concurs.model;
+using Model;
 using Services;
 using System;
 using System.Collections.Generic;
@@ -59,7 +60,6 @@ namespace Client{
             return server.ListaProbe();
         }
 
-
         public IEnumerable<string> ListaProbeNume()
         {
             return server.ListaProbeNume();
@@ -73,6 +73,12 @@ namespace Client{
         public void InscriereParticipant(string nume, int varsta, List<Proba> listaProbe, string usernameOperator)
         {
             server.InscriereParticipant(nume, varsta, listaProbe, usernameOperator);
+           // this.Update();
+        }
+
+        public IEnumerable<ProbaDTO> ListaProbeDTO()
+        {
+            return server.ListaProbeDTO();
         }
 
         protected virtual void OnUserEvent(UserEventArgs e)
@@ -82,5 +88,11 @@ namespace Client{
             Console.WriteLine("Update Event called");
         }
 
+        public void Update()
+        {
+            Console.WriteLine("I have to update tables.");
+            UserEventArgs userArgs = new UserEventArgs(UserEvent.Update, null);
+            OnUserEvent(userArgs);
+        }
     }
 }
