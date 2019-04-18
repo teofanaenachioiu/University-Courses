@@ -99,7 +99,7 @@ class Cromozon:
     # determin cate duplicate am pe linie/coloana/cadran + cate nepotriviri fata de tabela initiala
     # pentru fiecare element din lista de linii, coloane, cadrane verific daca mai exista un alt element egal cu el
     # nu iau in considerare elementul cand calculez eroarea. Vad doar daca are dublura
-    def eval1(self, sudoku):
+    def eval1(self):
         err = 0
         for r in range(self.getDimensiune()):
             rr = self.row(r)
@@ -113,11 +113,11 @@ class Cromozon:
             rr = self.block(r)
             for el in rr:
                 err = err + rr.count(el) - 1
-        for i in range(len(self.getConfiguratie())):
-            if self.getConfiguratie()[i] != sudoku[i] and sudoku[i] != 0:
-                err += 1
-            if self.getConfiguratie()[i] == 0:
-                err += 1
+        # for i in range(len(self.getConfiguratie())):
+        #     if self.getConfiguratie()[i] != sudoku[i] and sudoku[i] != 0:
+        #         err += 1
+        #     if self.getConfiguratie()[i] == 0:
+        #         err += 1
         self.__fitness = err
         return err
 

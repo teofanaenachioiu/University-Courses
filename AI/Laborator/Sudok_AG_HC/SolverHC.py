@@ -1,3 +1,4 @@
+import random
 from math import sqrt
 
 import numpy
@@ -65,16 +66,28 @@ class SolverHC:
         return block
 
     def getUnSudokuCompletat(self):
+        lista = [self.getDimensiune() for x in range(self.getDimensiune())]
+        for el in self.getInitialSudoku():
+            if el != 0:
+                lista[el - 1] -= 1
+
         values = []
-        for ind in range(self.getDimensiune()):
-            row, nonApp = self.rowApp(ind)
-            while row.count(0) > 0:
-                i = row.index(0)
-                row[i] = secrets.choice(nonApp)
-                nonApp.remove(row[i])
-                numpy.random.shuffle(nonApp)
-            values.extend(row)
-        return values
+
+        nr = 1
+        for frec in lista:
+            while frec != 0:
+                values.append(nr)
+                frec -= 1
+            nr += 1
+
+        val = self.getInitialSudoku()[:]
+        numere = values[:]
+        random.shuffle(numere)
+        empty = self.__problema.empty()
+        while len(empty) != 0:
+            poz = empty.pop()
+            val[poz] = numere.pop()
+        return val
 
     def nrGreseli(self, sudoku):
         err = 0
@@ -85,32 +98,19 @@ class SolverHC:
         for r in range(self.getDimensiune()):
             rr = self.column(sudoku, r)
             for el in rr:
-                err = err + rr.count(el) - 1
+                err = err + rr.count(el) - 2
         for r in range(self.getDimensiune()):
             rr = self.block(sudoku, r)
             for el in rr:
-                err = err + rr.count(el) - 1
-        for i in range(len(sudoku)):
-            if sudoku[i] != self.__configuratieInitiala[i] and self.__configuratieInitiala[i] != 0:
-                err += 1
-            if sudoku[i] == 0:
-                err += 1
+                err = err + rr.count(el) - 2
         return err
 
     def getPozitii(self):
-        dim = self.getDimensiune()
-        while True:
-            lin = numpy.random.randint(0, dim)
-            c1 = numpy.random.randint(0, dim)
-            c2 = numpy.random.randint(0, dim)
-            poz1 = lin * dim + c1
-            poz2 = lin * dim + c2
-            rand, app = self.rowApp(lin)
-            if rand[c1] == 0 and rand[c2] == 0:
-                break
-            else:
-                continue
-        return poz1, poz2
+        emp = self.__problema.empty()
+        c1 = secrets.choice(emp)
+        emp.remove(c1)
+        c2 = secrets.choice(emp)
+        return c1, c2
 
     def swap(self, su, poz1, poz2):
         sudoku = su[:]
@@ -119,74 +119,36 @@ class SolverHC:
         sudoku[poz2] = a
         return sudoku
 
-    def best(self, pop):
-        bestSudoku = pop[0]
-        bestScor = self.nrGreseli(bestSudoku)
-
-        for i in range(len(pop)):
-            scor = self.nrGreseli(pop[i])
-            if scor < bestScor:
-                bestScor = scor
-                bestSudoku = pop[i][:]
-
-        return bestSudoku, bestScor
-
-    def generatePop(self,sudoku):
-        pop = []
-
-        for i in range(self.__popSize):
-            a, b = self.getPozitii()
-            sudoku1 = self.swap(sudoku, a, b)[:]
-            pop.append(sudoku1)
-        return pop
-
     def climb(self, sudoku):
-        greseliConfigCurenta = self.nrGreseli(sudoku)
-        self.__crt += 1
-        self.bestFit.append(greseliConfigCurenta)
 
-        if greseliConfigCurenta < self.__best:
-            self.__best = greseliConfigCurenta
-            print('ITERATION ' + str(self.__crt) + ' -> best fitness: ' + str(greseliConfigCurenta))
+        while True:
+            greseliConfigCurenta = self.nrGreseli(sudoku)
+            self.__crt += 1
+            self.bestFit.append(greseliConfigCurenta)
 
-        if self.__crt % 1000 == 0:
-            print('ITERATION ' + str(self.__crt) + ': ' + str(greseliConfigCurenta))
+            if self.__crt % 10 == 0:
+                print('ITERATION ' + str(self.__crt) + ': ' + str(greseliConfigCurenta))
 
-        pop = self.generatePop(sudoku)
+            a, b = self.getPozitii()
+            sudokuUrm = self.swap(sudoku, a, b)[:]
+            greseliConfigUrmatoare = self.nrGreseli(sudokuUrm)
+            self.__iteratie += 1
 
-        # if numpy.random.rand() < 0.5:
-        #     bestSudoku = pop[0]
-        #     greseliConfigUrmatoare = self.nrGreseli(bestSudoku)
-        # else:
-        #     bestSudoku, greseliConfigUrmatoare = self.best(pop)
-        bestSudoku, greseliConfigUrmatoare = self.best(pop)
-        self.__iteratie += 1
+            if greseliConfigUrmatoare == 0:
+                return sudokuUrm
+            if greseliConfigUrmatoare < greseliConfigCurenta:
+                sudoku = sudokuUrm
 
-        if greseliConfigUrmatoare == 0:
-            return sudoku
+            if self.__crt > 10000:
 
-        if greseliConfigUrmatoare < greseliConfigCurenta:
-            if self.__iteratie == 50:
-                self.__iteratie = 0
-                if numpy.random.rand() < 0.05:
-                    return sudoku
-                return bestSudoku
-            return self.climb(bestSudoku)
-        else:
-            if self.__iteratie == 50:
-                self.__iteratie = 0
-                if numpy.random.rand() < 0.05:
-                    return bestSudoku
                 return sudoku
-            return self.climb(sudoku)
 
     def hillClimbing(self):
-        temp = self.getUnSudokuCompletat()
-        while self.nrGreseli(temp) > 0:
-            # while self.__nrGeneratii>0 and self.nrGreseli(temp) > 0:
-            temp = self.climb(temp)
+        temp = self.climb(self.getUnSudokuCompletat())
+
+
         self.bestFit.append(0)
-        plt.plot(list(range(len(self.bestFit))), self.best, 'ro')
+        plt.plot(list(range(len(self.bestFit))), self.bestFit, 'ro')
         plt.axis([0, len(self.bestFit), 0, 50])
         plt.show()
 

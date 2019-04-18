@@ -8,10 +8,10 @@ from SolverHC import SolverHC
 
 
 def main():
-    # inputFile = "input_usor.txt"
+    inputFile = "input_usor.txt"
     # inputFile = "easy_sudoku.txt"
     # inputFile = "medium_sudoku.txt"
-    inputFile = "hard_sudoku.txt"
+    # inputFile = "hard_sudoku.txt"
     # inputFile = "inputAlex.txt"
     # inputFile = "in.txt"
     # inputFile = "medium_s.txt"
@@ -22,6 +22,8 @@ def main():
     # inputFile = "hard_01_sudoku.txt"
     # inputFile = "medium_01_sudoku.txt"
     # inputFile = "inputTest.txt"
+    # inputFile = "hard3.txt"
+    inputFile = "input.txt"
 
     problema = Problema(inputFile, 100, 100)
 
@@ -33,7 +35,7 @@ def main():
     print(cr.getFitness())
     print('execution: ' + str(end - start) + ' seconds')
 
-    # solver = Solver(problema, 50000)
+    # solver = SolverHC(problema, 50000)
     # start = time()
     # rez = solver.hillClimbing()
     # end = time()
