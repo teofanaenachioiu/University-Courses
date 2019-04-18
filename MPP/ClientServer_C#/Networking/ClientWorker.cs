@@ -354,7 +354,7 @@ namespace Networking
                 }
                 catch (MyAppException e)
                 {
-                    connected = false;
+                    //connected = false;
                     return new ErrorResponse(e.Message);
                 }
             }

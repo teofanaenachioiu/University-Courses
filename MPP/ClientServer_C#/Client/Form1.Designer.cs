@@ -117,7 +117,7 @@
             this.panelLogin.Controls.Add(this.textBoxUsername);
             this.panelLogin.Controls.Add(this.label1);
             this.panelLogin.Controls.Add(this.labelUsername);
-            this.panelLogin.Location = new System.Drawing.Point(1, 0);
+            this.panelLogin.Location = new System.Drawing.Point(0, 0);
             this.panelLogin.Name = "panelLogin";
             this.panelLogin.Size = new System.Drawing.Size(600, 400);
             this.panelLogin.TabIndex = 4;
