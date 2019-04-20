@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Problema 5</title>
+	<style>
+		li 
+		{
+			display: list-item;
+			list-style-type: none;
+		}
+		img
+		{
+			width: 30;
+			height: 30;
+		}
+	</style>
+	
+</head>
+<body>
+	<ol id="listaDragu">
+		<li>
+			<a> 
+				<img src='https://source.unsplash.com/random/900x600/?water' style="width: 30">
+			</a>		
+		</li>
+		<li>
+			<a> 
+				<img src='https://source.unsplash.com/collection/190727/900x600' style="width: 30">
+			</a>
+		</li>
+		<li>
+			<a> 
+				<img src='https://source.unsplash.com/900x600/?nature' style="width: 30">
+			</a>
+		</li>
+	</ol>
+	<button onclick="prev()" >Inapoi</button>
+	<button onclick="next()" >Inainte</button>
+	<script>
+			var pos = -1;
+			var id,id2;
+			function next()
+			{
+				pos++;
+				clearInterval(id);
+				clearInterval(id2);
+				register("listaDragu");
+			}
+			function prev()
+			{
+				pos--;
+				clearInterval(id);
+				clearInterval(id2);
+				register("listaDragu");
+			}
+			
+			function register(listID)
+			{
+				
+				
+				var list = document.getElementById(listID);
+				var items = list.getElementsByTagName('li');
+				id2 = setInterval(loop,2000);
+				function loop()
+				{
+					if (pos>=items.length-1)
+					{
+						pos=-1;
+					}
+					pos++;
+					console.log(pos);
+					onlyShow(items,pos);
+					items[pos].style.opacity=0;
+					var opacity = Number(items[pos].style.opacity);
+					
+					
+					id = setInterval(frame,50);
+					function frame()
+					{
+						
+						if (opacity >=1) 
+						{
+							clearInterval(id);
+						} else {
+							items[pos].style.opacity=(opacity+"");
+							opacity+=0.1;
+						}
+					}
+					
+				}
+				
+			}
+			function onlyShow(list,n)
+			{
+				for (var i=0;i<list.length;i++)
+				{
+					if (i!=n)
+					{
+						list[i].style.display = "none";
+					}
+				}
+				list[n].style.display="block";
+			}
+		</script>
+		<script>
+			register("listaDragu");
+		</script>
+</body>
+</html>
