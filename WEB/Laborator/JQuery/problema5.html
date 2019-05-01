@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Problema 5</title>
+	<style>
+		li 
+		{
+			display: list-item;
+			list-style-type: none;
+		}
+		img
+		{
+			width: 30;
+			height: 30;
+		}
+		div 
+		{
+    		position: relative;
+    		display: inline-block;
+		}
+
+		div a 
+		{
+		    position: absolute;
+		    top: 80%;
+		    left: 50%;
+		    margin-top: -1em;
+		    margin-left: -50%;
+		    width: 100%;
+		    height: 2em;
+		    color: white;
+		    text-align: center;
+		    font-size: 20px;
+		    background-color: rgba(0,0,0,0.5);
+		}​
+
+	</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+		$(document).ready(function(){
+    		var pos = 0;
+			var id, id2;
+
+			var list = $("#listaDragu");
+			var items = list.children('li');
+
+			onlyShow($('#listaDragu').children('li'),0);
+
+			register("listaDragu");
+
+			function register(listID)
+			{
+				id2 = setInterval(loop,2000);
+				function loop()
+				{
+					if (pos == items.length-1)
+					{
+						pos=-1;
+					}
+					pos++;
+					onlyShow(items,pos);
+					$(items[pos]).css('opacity','');
+					var opacity = Number($(items[pos]).css('opacity'));
+					
+					id = setInterval(frame,50);
+					function frame()
+					{
+						if (opacity >=1) 
+						{
+							clearInterval(id);
+						} else {
+							items[pos].css('opacity',`${opacity}+""`);
+							opacity+=0.1;
+						}
+					}		
+				}
+			}
+
+			function onlyShow(list,n)
+			 {
+				for (var i=0;i<list.length;i++)
+				{
+					if (i!=n)
+					{
+						$(list[i]).css('display', "none");
+					}
+				}
+				$(list[n]).css('display', "block");
+			}
+
+			$('#inainte').click(function()
+			{
+				pos++;
+				if (pos >= items.length){
+					pos = 0;
+				}
+				clearInterval(id);
+				clearInterval(id2);
+				onlyShow(items,pos);
+				register("listaDragu");
+			});
+
+			$('#inapoi').click(function()
+			{
+				pos--;
+				if (pos <0){
+					pos = items.length-1;
+				}
+				clearInterval(id);
+				clearInterval(id2);
+				onlyShow(items,pos);
+				register("listaDragu");
+			});
+		})
+		
+</script>
+</head>
+<body>
+	<ol id="listaDragu">
+		<li>
+			<div>
+				<img src='https://thespoon.tech/wp-content/uploads/2019/03/keatz-restaurant-green-gurus.jpg' style="width: 30">
+				<a class = "myLink" href='https://thespoon.tech/wp-content/uploads/2019/03/keatz-restaurant-green-gurus.jpg'> 
+				Text1
+				</a>	
+			</div>
+				
+		</li>
+		<li>
+			<div>
+				<img src='https://www.parenttoolkit.com/images/dmImage/StandardImage/teaser_800x500_tablefood.jpg' style="width: 30">
+				<a class = "myLink" href='https://www.parenttoolkit.com/images/dmImage/StandardImage/teaser_800x500_tablefood.jpg'> 
+				Text2
+				</a>	
+			</div>
+		</li>
+		<li>
+			<div>
+				<img src='http://www.ballitolifestylecentre.co.za/wp-content/uploads/2017/11/we-are-food-plate.jpg' style="width: 30">
+				<a class = "myLink" href='http://www.ballitolifestylecentre.co.za/wp-content/uploads/2017/11/we-are-food-plate.jpg'> 
+				Text3
+				</a>	
+			</div>
+		</li>
+	</ol>
+	<button id='inapoi' >Inapoi</button>
+	<button id='inainte' >Inainte</button>
+</body>
+</html>
