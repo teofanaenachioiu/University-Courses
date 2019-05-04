@@ -1,0 +1,44 @@
+.root {
+    background-dark: #333333;
+    background-dark-hover: #2f2f2f;
+    background-dark-pressed: #282828;
+    background-focused: #ac1427;
+
+    -fx-accent: #ac1427;
+    -fx-focus-color: #ac1427;
+    -fx-faint-focus-color: transparent;
+
+    -fx-background-image: url("login.jpg");
+    -fx-background-size: cover;
+}
+
+.button {
+    -fx-font-size: 12px;
+    -fx-background-color: rgba(0, 0, 0, 0.2);
+    -fx-background-radius: 20px;
+    -fx-font-family: 'Roboto Light';
+    -fx-padding: 10px;
+}
+
+.button:hover {
+    -fx-background-color: #ac1427;
+    -fx-text-fill: rgba(255, 255, 255, 0.7);
+}
+
+.text-field, .password-field {
+    -jfx-focus-color: -fx-accent;
+    -jfx-label-float: true;
+}
+
+.text-field .text {
+    -fx-font-size: 15px;
+}
+
+#errorLabel{
+    -fx-font-size: 10px;  
+}
+
+.label{
+    -fx-font-size: 13px;
+    -fx-font-family: 'Roboto Light';
+}

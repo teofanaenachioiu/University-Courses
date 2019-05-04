@@ -1,0 +1,114 @@
+package GUI.operator;
+
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import model.User;
+import org.apache.thrift.TException;
+import org.teofana.concurs.ConcursService;
+import org.teofana.concurs.MyAppExecption;
+
+import java.io.IOException;
+
+public class ControllerOperator  {
+    @FXML
+    AnchorPane mainPane;
+    @FXML
+    AnchorPane viewPane;
+    @FXML
+    AnchorPane buttonPane;
+    @FXML
+    Button inscrieriButton;
+    @FXML
+    Button logoutButton;
+    @FXML
+    Button probeButton;
+    @FXML
+    Label usernameLabel;
+
+    private AnchorPane probePane;
+    private AnchorPane inscrieriPane;
+
+    private ConcursService.Client client;
+    private User user;
+
+    private Stage primaryStage;
+    private Scene loginScene;
+
+//    ControllerInscrieri controllerInscrieri;
+    ControllerProbe probeController;
+
+    public void setData(ConcursService.Client client, User user) throws IOException {
+        setUser(user);
+        setServer(client);
+    }
+
+    private void setUser(User user){
+        this.user=user;
+        usernameLabel.setText("OPERATOR " + this.user.getUsername());
+    }
+
+    private void setServer(ConcursService.Client client) throws IOException {
+        this.client=client;
+
+        FXMLLoader loaderProbe = new FXMLLoader();
+        loaderProbe.setLocation(getClass().getResource("/ViewProbe.fxml"));
+        this.probePane = loaderProbe.load();
+        this.probeController=loaderProbe.getController();
+        probeController.initData(this.client);
+
+
+//        FXMLLoader loaderInscrieri = new FXMLLoader();
+//        loaderInscrieri.setLocation(getClass().getResource("/ViewInscrieri.fxml"));
+//        this.inscrieriPane = loaderInscrieri.load();
+//        this.controllerInscrieri = loaderInscrieri.getController();
+//        controllerInscrieri.setData(client,user);
+
+        this.viewPane.getChildren().clear();
+        this.viewPane.getChildren().add(probePane);
+    }
+
+    public void setPrimaryStage(Stage primaryStage){
+        this.primaryStage=primaryStage;
+    }
+
+    public void setLoginScene(Scene scene){
+        this.loginScene=scene;
+    }
+
+    @FXML
+    public void handleProbePane()  {
+        this.viewPane.getChildren().clear();
+        this.viewPane.getChildren().add(probePane);
+    }
+
+    @FXML
+    public void handleInscrieriPane() {
+        this.viewPane.getChildren().clear();
+//        this.viewPane.getChildren().add(inscrieriPane);
+    }
+
+    @FXML
+    public void handleLogout(){
+        System.out.println("AM IESIT DE LA OPERATOR "+ user.getUsername());
+        try {
+            this.client.logout(user);
+        } catch (MyAppExecption e) {
+            System.out.println("Am prins eroarea: "+e.getMessage());
+        } catch (TException e) {
+            e.printStackTrace();
+        }
+        this.primaryStage.setScene(loginScene);
+    }
+
+
+//    @Override
+//    public void update() throws MyAppException {
+//        controllerInscrieri.update();
+//        probeController.update();
+//    }
+}
