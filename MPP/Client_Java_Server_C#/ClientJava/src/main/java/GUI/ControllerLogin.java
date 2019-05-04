@@ -13,7 +13,7 @@ import model.TipUser;
 import model.User;
 import org.apache.thrift.TException;
 import org.teofana.concurs.ConcursService;
-import org.teofana.concurs.MyAppExecption;
+import org.teofana.concurs.MyAppException;
 
 import java.io.IOException;
 
@@ -45,7 +45,7 @@ public class ControllerLogin {
         this.operatorScene = sceneOperator;
     }
 
-    public void init(ConcursService.Client client,Scene loginScene){
+    public void init(ConcursService.Client client, Scene loginScene){
         this.client=client;
         this.loginScene=loginScene;
         this.errorLabel.setVisible(false);
@@ -81,7 +81,7 @@ public class ControllerLogin {
                 }
             }
         }
-        catch (MyAppExecption e){
+        catch (MyAppException e){
             System.out.println("Am prins eroarea: "+ e.getMessage());
             errorLabel.setText(e.getMessage());
             errorLabel.setVisible(true);

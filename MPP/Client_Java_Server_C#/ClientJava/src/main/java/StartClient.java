@@ -4,14 +4,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import org.apache.thrift.TException;
 import org.apache.thrift.protocol.*;
 import org.apache.thrift.transport.*;
 import org.teofana.concurs.ConcursService;
-import model.TipUser;
-import model.User;
-
-import java.io.IOException;
 
 public class StartClient extends Application {
 

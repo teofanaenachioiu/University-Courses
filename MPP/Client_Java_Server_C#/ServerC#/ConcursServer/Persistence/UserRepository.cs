@@ -58,7 +58,7 @@ namespace Concurs.repository
             return null;
         }
 
-        public IEnumerable<User> FindAll()
+        public IList<User> FindAll()
         {
             IDbConnection con = DBUtils.getConnection(props);
             log.InfoFormat("Entering FindAll...");

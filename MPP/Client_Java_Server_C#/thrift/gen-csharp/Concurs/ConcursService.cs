@@ -22,6 +22,13 @@ namespace Concurs
       void login(string username, string password);
       User cauta(string username);
       void logout(User user);
+      List<Participant> listaParticipanti();
+      List<string> listaProbeNume();
+      List<string> listaCategorii();
+      List<Participant> filtreazaParticipantiKeyword(string proba, string categorie);
+      List<Proba> listaProbe();
+      List<ProbaDTO> listaProbeDTO();
+      void inscriereParticipant(string nume, int varsta, List<Proba> listaProbe, string usernameOperator);
     }
 
     public interface Iface : ISync {
@@ -36,6 +43,34 @@ namespace Concurs
       #if SILVERLIGHT
       IAsyncResult Begin_logout(AsyncCallback callback, object state, User user);
       void End_logout(IAsyncResult asyncResult);
+      #endif
+      #if SILVERLIGHT
+      IAsyncResult Begin_listaParticipanti(AsyncCallback callback, object state);
+      List<Participant> End_listaParticipanti(IAsyncResult asyncResult);
+      #endif
+      #if SILVERLIGHT
+      IAsyncResult Begin_listaProbeNume(AsyncCallback callback, object state);
+      List<string> End_listaProbeNume(IAsyncResult asyncResult);
+      #endif
+      #if SILVERLIGHT
+      IAsyncResult Begin_listaCategorii(AsyncCallback callback, object state);
+      List<string> End_listaCategorii(IAsyncResult asyncResult);
+      #endif
+      #if SILVERLIGHT
+      IAsyncResult Begin_filtreazaParticipantiKeyword(AsyncCallback callback, object state, string proba, string categorie);
+      List<Participant> End_filtreazaParticipantiKeyword(IAsyncResult asyncResult);
+      #endif
+      #if SILVERLIGHT
+      IAsyncResult Begin_listaProbe(AsyncCallback callback, object state);
+      List<Proba> End_listaProbe(IAsyncResult asyncResult);
+      #endif
+      #if SILVERLIGHT
+      IAsyncResult Begin_listaProbeDTO(AsyncCallback callback, object state);
+      List<ProbaDTO> End_listaProbeDTO(IAsyncResult asyncResult);
+      #endif
+      #if SILVERLIGHT
+      IAsyncResult Begin_inscriereParticipant(AsyncCallback callback, object state, string nume, int varsta, List<Proba> listaProbe, string usernameOperator);
+      void End_inscriereParticipant(IAsyncResult asyncResult);
       #endif
     }
 
@@ -304,6 +339,487 @@ namespace Concurs
         return;
       }
 
+      
+      #if SILVERLIGHT
+      
+      public IAsyncResult Begin_listaParticipanti(AsyncCallback callback, object state)
+      {
+        return send_listaParticipanti(callback, state);
+      }
+
+      public List<Participant> End_listaParticipanti(IAsyncResult asyncResult)
+      {
+        oprot_.Transport.EndFlush(asyncResult);
+        return recv_listaParticipanti();
+      }
+
+      #endif
+
+      public List<Participant> listaParticipanti()
+      {
+        #if SILVERLIGHT
+        var asyncResult = Begin_listaParticipanti(null, null);
+        return End_listaParticipanti(asyncResult);
+
+        #else
+        send_listaParticipanti();
+        return recv_listaParticipanti();
+
+        #endif
+      }
+      #if SILVERLIGHT
+      public IAsyncResult send_listaParticipanti(AsyncCallback callback, object state)
+      {
+        oprot_.WriteMessageBegin(new TMessage("listaParticipanti", TMessageType.Call, seqid_));
+        listaParticipanti_args args = new listaParticipanti_args();
+        args.Write(oprot_);
+        oprot_.WriteMessageEnd();
+        return oprot_.Transport.BeginFlush(callback, state);
+      }
+
+      #else
+
+      public void send_listaParticipanti()
+      {
+        oprot_.WriteMessageBegin(new TMessage("listaParticipanti", TMessageType.Call, seqid_));
+        listaParticipanti_args args = new listaParticipanti_args();
+        args.Write(oprot_);
+        oprot_.WriteMessageEnd();
+        oprot_.Transport.Flush();
+      }
+      #endif
+
+      public List<Participant> recv_listaParticipanti()
+      {
+        TMessage msg = iprot_.ReadMessageBegin();
+        if (msg.Type == TMessageType.Exception) {
+          TApplicationException x = TApplicationException.Read(iprot_);
+          iprot_.ReadMessageEnd();
+          throw x;
+        }
+        listaParticipanti_result result = new listaParticipanti_result();
+        result.Read(iprot_);
+        iprot_.ReadMessageEnd();
+        if (result.__isset.success) {
+          return result.Success;
+        }
+        throw new TApplicationException(TApplicationException.ExceptionType.MissingResult, "listaParticipanti failed: unknown result");
+      }
+
+      
+      #if SILVERLIGHT
+      
+      public IAsyncResult Begin_listaProbeNume(AsyncCallback callback, object state)
+      {
+        return send_listaProbeNume(callback, state);
+      }
+
+      public List<string> End_listaProbeNume(IAsyncResult asyncResult)
+      {
+        oprot_.Transport.EndFlush(asyncResult);
+        return recv_listaProbeNume();
+      }
+
+      #endif
+
+      public List<string> listaProbeNume()
+      {
+        #if SILVERLIGHT
+        var asyncResult = Begin_listaProbeNume(null, null);
+        return End_listaProbeNume(asyncResult);
+
+        #else
+        send_listaProbeNume();
+        return recv_listaProbeNume();
+
+        #endif
+      }
+      #if SILVERLIGHT
+      public IAsyncResult send_listaProbeNume(AsyncCallback callback, object state)
+      {
+        oprot_.WriteMessageBegin(new TMessage("listaProbeNume", TMessageType.Call, seqid_));
+        listaProbeNume_args args = new listaProbeNume_args();
+        args.Write(oprot_);
+        oprot_.WriteMessageEnd();
+        return oprot_.Transport.BeginFlush(callback, state);
+      }
+
+      #else
+
+      public void send_listaProbeNume()
+      {
+        oprot_.WriteMessageBegin(new TMessage("listaProbeNume", TMessageType.Call, seqid_));
+        listaProbeNume_args args = new listaProbeNume_args();
+        args.Write(oprot_);
+        oprot_.WriteMessageEnd();
+        oprot_.Transport.Flush();
+      }
+      #endif
+
+      public List<string> recv_listaProbeNume()
+      {
+        TMessage msg = iprot_.ReadMessageBegin();
+        if (msg.Type == TMessageType.Exception) {
+          TApplicationException x = TApplicationException.Read(iprot_);
+          iprot_.ReadMessageEnd();
+          throw x;
+        }
+        listaProbeNume_result result = new listaProbeNume_result();
+        result.Read(iprot_);
+        iprot_.ReadMessageEnd();
+        if (result.__isset.success) {
+          return result.Success;
+        }
+        throw new TApplicationException(TApplicationException.ExceptionType.MissingResult, "listaProbeNume failed: unknown result");
+      }
+
+      
+      #if SILVERLIGHT
+      
+      public IAsyncResult Begin_listaCategorii(AsyncCallback callback, object state)
+      {
+        return send_listaCategorii(callback, state);
+      }
+
+      public List<string> End_listaCategorii(IAsyncResult asyncResult)
+      {
+        oprot_.Transport.EndFlush(asyncResult);
+        return recv_listaCategorii();
+      }
+
+      #endif
+
+      public List<string> listaCategorii()
+      {
+        #if SILVERLIGHT
+        var asyncResult = Begin_listaCategorii(null, null);
+        return End_listaCategorii(asyncResult);
+
+        #else
+        send_listaCategorii();
+        return recv_listaCategorii();
+
+        #endif
+      }
+      #if SILVERLIGHT
+      public IAsyncResult send_listaCategorii(AsyncCallback callback, object state)
+      {
+        oprot_.WriteMessageBegin(new TMessage("listaCategorii", TMessageType.Call, seqid_));
+        listaCategorii_args args = new listaCategorii_args();
+        args.Write(oprot_);
+        oprot_.WriteMessageEnd();
+        return oprot_.Transport.BeginFlush(callback, state);
+      }
+
+      #else
+
+      public void send_listaCategorii()
+      {
+        oprot_.WriteMessageBegin(new TMessage("listaCategorii", TMessageType.Call, seqid_));
+        listaCategorii_args args = new listaCategorii_args();
+        args.Write(oprot_);
+        oprot_.WriteMessageEnd();
+        oprot_.Transport.Flush();
+      }
+      #endif
+
+      public List<string> recv_listaCategorii()
+      {
+        TMessage msg = iprot_.ReadMessageBegin();
+        if (msg.Type == TMessageType.Exception) {
+          TApplicationException x = TApplicationException.Read(iprot_);
+          iprot_.ReadMessageEnd();
+          throw x;
+        }
+        listaCategorii_result result = new listaCategorii_result();
+        result.Read(iprot_);
+        iprot_.ReadMessageEnd();
+        if (result.__isset.success) {
+          return result.Success;
+        }
+        throw new TApplicationException(TApplicationException.ExceptionType.MissingResult, "listaCategorii failed: unknown result");
+      }
+
+      
+      #if SILVERLIGHT
+      
+      public IAsyncResult Begin_filtreazaParticipantiKeyword(AsyncCallback callback, object state, string proba, string categorie)
+      {
+        return send_filtreazaParticipantiKeyword(callback, state, proba, categorie);
+      }
+
+      public List<Participant> End_filtreazaParticipantiKeyword(IAsyncResult asyncResult)
+      {
+        oprot_.Transport.EndFlush(asyncResult);
+        return recv_filtreazaParticipantiKeyword();
+      }
+
+      #endif
+
+      public List<Participant> filtreazaParticipantiKeyword(string proba, string categorie)
+      {
+        #if SILVERLIGHT
+        var asyncResult = Begin_filtreazaParticipantiKeyword(null, null, proba, categorie);
+        return End_filtreazaParticipantiKeyword(asyncResult);
+
+        #else
+        send_filtreazaParticipantiKeyword(proba, categorie);
+        return recv_filtreazaParticipantiKeyword();
+
+        #endif
+      }
+      #if SILVERLIGHT
+      public IAsyncResult send_filtreazaParticipantiKeyword(AsyncCallback callback, object state, string proba, string categorie)
+      {
+        oprot_.WriteMessageBegin(new TMessage("filtreazaParticipantiKeyword", TMessageType.Call, seqid_));
+        filtreazaParticipantiKeyword_args args = new filtreazaParticipantiKeyword_args();
+        args.Proba = proba;
+        args.Categorie = categorie;
+        args.Write(oprot_);
+        oprot_.WriteMessageEnd();
+        return oprot_.Transport.BeginFlush(callback, state);
+      }
+
+      #else
+
+      public void send_filtreazaParticipantiKeyword(string proba, string categorie)
+      {
+        oprot_.WriteMessageBegin(new TMessage("filtreazaParticipantiKeyword", TMessageType.Call, seqid_));
+        filtreazaParticipantiKeyword_args args = new filtreazaParticipantiKeyword_args();
+        args.Proba = proba;
+        args.Categorie = categorie;
+        args.Write(oprot_);
+        oprot_.WriteMessageEnd();
+        oprot_.Transport.Flush();
+      }
+      #endif
+
+      public List<Participant> recv_filtreazaParticipantiKeyword()
+      {
+        TMessage msg = iprot_.ReadMessageBegin();
+        if (msg.Type == TMessageType.Exception) {
+          TApplicationException x = TApplicationException.Read(iprot_);
+          iprot_.ReadMessageEnd();
+          throw x;
+        }
+        filtreazaParticipantiKeyword_result result = new filtreazaParticipantiKeyword_result();
+        result.Read(iprot_);
+        iprot_.ReadMessageEnd();
+        if (result.__isset.success) {
+          return result.Success;
+        }
+        throw new TApplicationException(TApplicationException.ExceptionType.MissingResult, "filtreazaParticipantiKeyword failed: unknown result");
+      }
+
+      
+      #if SILVERLIGHT
+      
+      public IAsyncResult Begin_listaProbe(AsyncCallback callback, object state)
+      {
+        return send_listaProbe(callback, state);
+      }
+
+      public List<Proba> End_listaProbe(IAsyncResult asyncResult)
+      {
+        oprot_.Transport.EndFlush(asyncResult);
+        return recv_listaProbe();
+      }
+
+      #endif
+
+      public List<Proba> listaProbe()
+      {
+        #if SILVERLIGHT
+        var asyncResult = Begin_listaProbe(null, null);
+        return End_listaProbe(asyncResult);
+
+        #else
+        send_listaProbe();
+        return recv_listaProbe();
+
+        #endif
+      }
+      #if SILVERLIGHT
+      public IAsyncResult send_listaProbe(AsyncCallback callback, object state)
+      {
+        oprot_.WriteMessageBegin(new TMessage("listaProbe", TMessageType.Call, seqid_));
+        listaProbe_args args = new listaProbe_args();
+        args.Write(oprot_);
+        oprot_.WriteMessageEnd();
+        return oprot_.Transport.BeginFlush(callback, state);
+      }
+
+      #else
+
+      public void send_listaProbe()
+      {
+        oprot_.WriteMessageBegin(new TMessage("listaProbe", TMessageType.Call, seqid_));
+        listaProbe_args args = new listaProbe_args();
+        args.Write(oprot_);
+        oprot_.WriteMessageEnd();
+        oprot_.Transport.Flush();
+      }
+      #endif
+
+      public List<Proba> recv_listaProbe()
+      {
+        TMessage msg = iprot_.ReadMessageBegin();
+        if (msg.Type == TMessageType.Exception) {
+          TApplicationException x = TApplicationException.Read(iprot_);
+          iprot_.ReadMessageEnd();
+          throw x;
+        }
+        listaProbe_result result = new listaProbe_result();
+        result.Read(iprot_);
+        iprot_.ReadMessageEnd();
+        if (result.__isset.success) {
+          return result.Success;
+        }
+        throw new TApplicationException(TApplicationException.ExceptionType.MissingResult, "listaProbe failed: unknown result");
+      }
+
+      
+      #if SILVERLIGHT
+      
+      public IAsyncResult Begin_listaProbeDTO(AsyncCallback callback, object state)
+      {
+        return send_listaProbeDTO(callback, state);
+      }
+
+      public List<ProbaDTO> End_listaProbeDTO(IAsyncResult asyncResult)
+      {
+        oprot_.Transport.EndFlush(asyncResult);
+        return recv_listaProbeDTO();
+      }
+
+      #endif
+
+      public List<ProbaDTO> listaProbeDTO()
+      {
+        #if SILVERLIGHT
+        var asyncResult = Begin_listaProbeDTO(null, null);
+        return End_listaProbeDTO(asyncResult);
+
+        #else
+        send_listaProbeDTO();
+        return recv_listaProbeDTO();
+
+        #endif
+      }
+      #if SILVERLIGHT
+      public IAsyncResult send_listaProbeDTO(AsyncCallback callback, object state)
+      {
+        oprot_.WriteMessageBegin(new TMessage("listaProbeDTO", TMessageType.Call, seqid_));
+        listaProbeDTO_args args = new listaProbeDTO_args();
+        args.Write(oprot_);
+        oprot_.WriteMessageEnd();
+        return oprot_.Transport.BeginFlush(callback, state);
+      }
+
+      #else
+
+      public void send_listaProbeDTO()
+      {
+        oprot_.WriteMessageBegin(new TMessage("listaProbeDTO", TMessageType.Call, seqid_));
+        listaProbeDTO_args args = new listaProbeDTO_args();
+        args.Write(oprot_);
+        oprot_.WriteMessageEnd();
+        oprot_.Transport.Flush();
+      }
+      #endif
+
+      public List<ProbaDTO> recv_listaProbeDTO()
+      {
+        TMessage msg = iprot_.ReadMessageBegin();
+        if (msg.Type == TMessageType.Exception) {
+          TApplicationException x = TApplicationException.Read(iprot_);
+          iprot_.ReadMessageEnd();
+          throw x;
+        }
+        listaProbeDTO_result result = new listaProbeDTO_result();
+        result.Read(iprot_);
+        iprot_.ReadMessageEnd();
+        if (result.__isset.success) {
+          return result.Success;
+        }
+        throw new TApplicationException(TApplicationException.ExceptionType.MissingResult, "listaProbeDTO failed: unknown result");
+      }
+
+      
+      #if SILVERLIGHT
+      
+      public IAsyncResult Begin_inscriereParticipant(AsyncCallback callback, object state, string nume, int varsta, List<Proba> listaProbe, string usernameOperator)
+      {
+        return send_inscriereParticipant(callback, state, nume, varsta, listaProbe, usernameOperator);
+      }
+
+      public void End_inscriereParticipant(IAsyncResult asyncResult)
+      {
+        oprot_.Transport.EndFlush(asyncResult);
+        recv_inscriereParticipant();
+      }
+
+      #endif
+
+      public void inscriereParticipant(string nume, int varsta, List<Proba> listaProbe, string usernameOperator)
+      {
+        #if SILVERLIGHT
+        var asyncResult = Begin_inscriereParticipant(null, null, nume, varsta, listaProbe, usernameOperator);
+        End_inscriereParticipant(asyncResult);
+
+        #else
+        send_inscriereParticipant(nume, varsta, listaProbe, usernameOperator);
+        recv_inscriereParticipant();
+
+        #endif
+      }
+      #if SILVERLIGHT
+      public IAsyncResult send_inscriereParticipant(AsyncCallback callback, object state, string nume, int varsta, List<Proba> listaProbe, string usernameOperator)
+      {
+        oprot_.WriteMessageBegin(new TMessage("inscriereParticipant", TMessageType.Call, seqid_));
+        inscriereParticipant_args args = new inscriereParticipant_args();
+        args.Nume = nume;
+        args.Varsta = varsta;
+        args.ListaProbe = listaProbe;
+        args.UsernameOperator = usernameOperator;
+        args.Write(oprot_);
+        oprot_.WriteMessageEnd();
+        return oprot_.Transport.BeginFlush(callback, state);
+      }
+
+      #else
+
+      public void send_inscriereParticipant(string nume, int varsta, List<Proba> listaProbe, string usernameOperator)
+      {
+        oprot_.WriteMessageBegin(new TMessage("inscriereParticipant", TMessageType.Call, seqid_));
+        inscriereParticipant_args args = new inscriereParticipant_args();
+        args.Nume = nume;
+        args.Varsta = varsta;
+        args.ListaProbe = listaProbe;
+        args.UsernameOperator = usernameOperator;
+        args.Write(oprot_);
+        oprot_.WriteMessageEnd();
+        oprot_.Transport.Flush();
+      }
+      #endif
+
+      public void recv_inscriereParticipant()
+      {
+        TMessage msg = iprot_.ReadMessageBegin();
+        if (msg.Type == TMessageType.Exception) {
+          TApplicationException x = TApplicationException.Read(iprot_);
+          iprot_.ReadMessageEnd();
+          throw x;
+        }
+        inscriereParticipant_result result = new inscriereParticipant_result();
+        result.Read(iprot_);
+        iprot_.ReadMessageEnd();
+        if (result.__isset.e) {
+          throw result.E;
+        }
+        return;
+      }
+
     }
     public class Processor : TProcessor {
       public Processor(ISync iface)
@@ -312,6 +828,13 @@ namespace Concurs
         processMap_["login"] = login_Process;
         processMap_["cauta"] = cauta_Process;
         processMap_["logout"] = logout_Process;
+        processMap_["listaParticipanti"] = listaParticipanti_Process;
+        processMap_["listaProbeNume"] = listaProbeNume_Process;
+        processMap_["listaCategorii"] = listaCategorii_Process;
+        processMap_["filtreazaParticipantiKeyword"] = filtreazaParticipantiKeyword_Process;
+        processMap_["listaProbe"] = listaProbe_Process;
+        processMap_["listaProbeDTO"] = listaProbeDTO_Process;
+        processMap_["inscriereParticipant"] = inscriereParticipant_Process;
       }
 
       protected delegate void ProcessFunction(int seqid, TProtocol iprot, TProtocol oprot);
@@ -356,7 +879,7 @@ namespace Concurs
           {
             iface_.login(args.Username, args.Password);
           }
-          catch (MyAppExecption e)
+          catch (MyAppException e)
           {
             result.E = e;
           }
@@ -419,7 +942,7 @@ namespace Concurs
           {
             iface_.logout(args.User);
           }
-          catch (MyAppExecption e)
+          catch (MyAppException e)
           {
             result.E = e;
           }
@@ -436,6 +959,209 @@ namespace Concurs
           Console.Error.WriteLine(ex.ToString());
           TApplicationException x = new TApplicationException        (TApplicationException.ExceptionType.InternalError," Internal error.");
           oprot.WriteMessageBegin(new TMessage("logout", TMessageType.Exception, seqid));
+          x.Write(oprot);
+        }
+        oprot.WriteMessageEnd();
+        oprot.Transport.Flush();
+      }
+
+      public void listaParticipanti_Process(int seqid, TProtocol iprot, TProtocol oprot)
+      {
+        listaParticipanti_args args = new listaParticipanti_args();
+        args.Read(iprot);
+        iprot.ReadMessageEnd();
+        listaParticipanti_result result = new listaParticipanti_result();
+        try
+        {
+          result.Success = iface_.listaParticipanti();
+          oprot.WriteMessageBegin(new TMessage("listaParticipanti", TMessageType.Reply, seqid)); 
+          result.Write(oprot);
+        }
+        catch (TTransportException)
+        {
+          throw;
+        }
+        catch (Exception ex)
+        {
+          Console.Error.WriteLine("Error occurred in processor:");
+          Console.Error.WriteLine(ex.ToString());
+          TApplicationException x = new TApplicationException        (TApplicationException.ExceptionType.InternalError," Internal error.");
+          oprot.WriteMessageBegin(new TMessage("listaParticipanti", TMessageType.Exception, seqid));
+          x.Write(oprot);
+        }
+        oprot.WriteMessageEnd();
+        oprot.Transport.Flush();
+      }
+
+      public void listaProbeNume_Process(int seqid, TProtocol iprot, TProtocol oprot)
+      {
+        listaProbeNume_args args = new listaProbeNume_args();
+        args.Read(iprot);
+        iprot.ReadMessageEnd();
+        listaProbeNume_result result = new listaProbeNume_result();
+        try
+        {
+          result.Success = iface_.listaProbeNume();
+          oprot.WriteMessageBegin(new TMessage("listaProbeNume", TMessageType.Reply, seqid)); 
+          result.Write(oprot);
+        }
+        catch (TTransportException)
+        {
+          throw;
+        }
+        catch (Exception ex)
+        {
+          Console.Error.WriteLine("Error occurred in processor:");
+          Console.Error.WriteLine(ex.ToString());
+          TApplicationException x = new TApplicationException        (TApplicationException.ExceptionType.InternalError," Internal error.");
+          oprot.WriteMessageBegin(new TMessage("listaProbeNume", TMessageType.Exception, seqid));
+          x.Write(oprot);
+        }
+        oprot.WriteMessageEnd();
+        oprot.Transport.Flush();
+      }
+
+      public void listaCategorii_Process(int seqid, TProtocol iprot, TProtocol oprot)
+      {
+        listaCategorii_args args = new listaCategorii_args();
+        args.Read(iprot);
+        iprot.ReadMessageEnd();
+        listaCategorii_result result = new listaCategorii_result();
+        try
+        {
+          result.Success = iface_.listaCategorii();
+          oprot.WriteMessageBegin(new TMessage("listaCategorii", TMessageType.Reply, seqid)); 
+          result.Write(oprot);
+        }
+        catch (TTransportException)
+        {
+          throw;
+        }
+        catch (Exception ex)
+        {
+          Console.Error.WriteLine("Error occurred in processor:");
+          Console.Error.WriteLine(ex.ToString());
+          TApplicationException x = new TApplicationException        (TApplicationException.ExceptionType.InternalError," Internal error.");
+          oprot.WriteMessageBegin(new TMessage("listaCategorii", TMessageType.Exception, seqid));
+          x.Write(oprot);
+        }
+        oprot.WriteMessageEnd();
+        oprot.Transport.Flush();
+      }
+
+      public void filtreazaParticipantiKeyword_Process(int seqid, TProtocol iprot, TProtocol oprot)
+      {
+        filtreazaParticipantiKeyword_args args = new filtreazaParticipantiKeyword_args();
+        args.Read(iprot);
+        iprot.ReadMessageEnd();
+        filtreazaParticipantiKeyword_result result = new filtreazaParticipantiKeyword_result();
+        try
+        {
+          result.Success = iface_.filtreazaParticipantiKeyword(args.Proba, args.Categorie);
+          oprot.WriteMessageBegin(new TMessage("filtreazaParticipantiKeyword", TMessageType.Reply, seqid)); 
+          result.Write(oprot);
+        }
+        catch (TTransportException)
+        {
+          throw;
+        }
+        catch (Exception ex)
+        {
+          Console.Error.WriteLine("Error occurred in processor:");
+          Console.Error.WriteLine(ex.ToString());
+          TApplicationException x = new TApplicationException        (TApplicationException.ExceptionType.InternalError," Internal error.");
+          oprot.WriteMessageBegin(new TMessage("filtreazaParticipantiKeyword", TMessageType.Exception, seqid));
+          x.Write(oprot);
+        }
+        oprot.WriteMessageEnd();
+        oprot.Transport.Flush();
+      }
+
+      public void listaProbe_Process(int seqid, TProtocol iprot, TProtocol oprot)
+      {
+        listaProbe_args args = new listaProbe_args();
+        args.Read(iprot);
+        iprot.ReadMessageEnd();
+        listaProbe_result result = new listaProbe_result();
+        try
+        {
+          result.Success = iface_.listaProbe();
+          oprot.WriteMessageBegin(new TMessage("listaProbe", TMessageType.Reply, seqid)); 
+          result.Write(oprot);
+        }
+        catch (TTransportException)
+        {
+          throw;
+        }
+        catch (Exception ex)
+        {
+          Console.Error.WriteLine("Error occurred in processor:");
+          Console.Error.WriteLine(ex.ToString());
+          TApplicationException x = new TApplicationException        (TApplicationException.ExceptionType.InternalError," Internal error.");
+          oprot.WriteMessageBegin(new TMessage("listaProbe", TMessageType.Exception, seqid));
+          x.Write(oprot);
+        }
+        oprot.WriteMessageEnd();
+        oprot.Transport.Flush();
+      }
+
+      public void listaProbeDTO_Process(int seqid, TProtocol iprot, TProtocol oprot)
+      {
+        listaProbeDTO_args args = new listaProbeDTO_args();
+        args.Read(iprot);
+        iprot.ReadMessageEnd();
+        listaProbeDTO_result result = new listaProbeDTO_result();
+        try
+        {
+          result.Success = iface_.listaProbeDTO();
+          oprot.WriteMessageBegin(new TMessage("listaProbeDTO", TMessageType.Reply, seqid)); 
+          result.Write(oprot);
+        }
+        catch (TTransportException)
+        {
+          throw;
+        }
+        catch (Exception ex)
+        {
+          Console.Error.WriteLine("Error occurred in processor:");
+          Console.Error.WriteLine(ex.ToString());
+          TApplicationException x = new TApplicationException        (TApplicationException.ExceptionType.InternalError," Internal error.");
+          oprot.WriteMessageBegin(new TMessage("listaProbeDTO", TMessageType.Exception, seqid));
+          x.Write(oprot);
+        }
+        oprot.WriteMessageEnd();
+        oprot.Transport.Flush();
+      }
+
+      public void inscriereParticipant_Process(int seqid, TProtocol iprot, TProtocol oprot)
+      {
+        inscriereParticipant_args args = new inscriereParticipant_args();
+        args.Read(iprot);
+        iprot.ReadMessageEnd();
+        inscriereParticipant_result result = new inscriereParticipant_result();
+        try
+        {
+          try
+          {
+            iface_.inscriereParticipant(args.Nume, args.Varsta, args.ListaProbe, args.UsernameOperator);
+          }
+          catch (MyAppException e)
+          {
+            result.E = e;
+          }
+          oprot.WriteMessageBegin(new TMessage("inscriereParticipant", TMessageType.Reply, seqid)); 
+          result.Write(oprot);
+        }
+        catch (TTransportException)
+        {
+          throw;
+        }
+        catch (Exception ex)
+        {
+          Console.Error.WriteLine("Error occurred in processor:");
+          Console.Error.WriteLine(ex.ToString());
+          TApplicationException x = new TApplicationException        (TApplicationException.ExceptionType.InternalError," Internal error.");
+          oprot.WriteMessageBegin(new TMessage("inscriereParticipant", TMessageType.Exception, seqid));
           x.Write(oprot);
         }
         oprot.WriteMessageEnd();
@@ -594,9 +1320,9 @@ namespace Concurs
     #endif
     public partial class login_result : TBase
     {
-      private MyAppExecption _e;
+      private MyAppException _e;
 
-      public MyAppExecption E
+      public MyAppException E
       {
         get
         {
@@ -638,7 +1364,7 @@ namespace Concurs
             {
               case 1:
                 if (field.Type == TType.Struct) {
-                  E = new MyAppExecption();
+                  E = new MyAppException();
                   E.Read(iprot);
                 } else { 
                   TProtocolUtil.Skip(iprot, field.Type);
@@ -1035,9 +1761,9 @@ namespace Concurs
     #endif
     public partial class logout_result : TBase
     {
-      private MyAppExecption _e;
+      private MyAppException _e;
 
-      public MyAppExecption E
+      public MyAppException E
       {
         get
         {
@@ -1079,7 +1805,7 @@ namespace Concurs
             {
               case 1:
                 if (field.Type == TType.Struct) {
-                  E = new MyAppExecption();
+                  E = new MyAppException();
                   E.Read(iprot);
                 } else { 
                   TProtocolUtil.Skip(iprot, field.Type);
@@ -1128,6 +1854,1578 @@ namespace Concurs
 
       public override string ToString() {
         StringBuilder __sb = new StringBuilder("logout_result(");
+        bool __first = true;
+        if (E != null && __isset.e) {
+          if(!__first) { __sb.Append(", "); }
+          __first = false;
+          __sb.Append("E: ");
+          __sb.Append(E== null ? "<null>" : E.ToString());
+        }
+        __sb.Append(")");
+        return __sb.ToString();
+      }
+
+    }
+
+
+    #if !SILVERLIGHT
+    [Serializable]
+    #endif
+    public partial class listaParticipanti_args : TBase
+    {
+
+      public listaParticipanti_args() {
+      }
+
+      public void Read (TProtocol iprot)
+      {
+        iprot.IncrementRecursionDepth();
+        try
+        {
+          TField field;
+          iprot.ReadStructBegin();
+          while (true)
+          {
+            field = iprot.ReadFieldBegin();
+            if (field.Type == TType.Stop) { 
+              break;
+            }
+            switch (field.ID)
+            {
+              default: 
+                TProtocolUtil.Skip(iprot, field.Type);
+                break;
+            }
+            iprot.ReadFieldEnd();
+          }
+          iprot.ReadStructEnd();
+        }
+        finally
+        {
+          iprot.DecrementRecursionDepth();
+        }
+      }
+
+      public void Write(TProtocol oprot) {
+        oprot.IncrementRecursionDepth();
+        try
+        {
+          TStruct struc = new TStruct("listaParticipanti_args");
+          oprot.WriteStructBegin(struc);
+          oprot.WriteFieldStop();
+          oprot.WriteStructEnd();
+        }
+        finally
+        {
+          oprot.DecrementRecursionDepth();
+        }
+      }
+
+      public override string ToString() {
+        StringBuilder __sb = new StringBuilder("listaParticipanti_args(");
+        __sb.Append(")");
+        return __sb.ToString();
+      }
+
+    }
+
+
+    #if !SILVERLIGHT
+    [Serializable]
+    #endif
+    public partial class listaParticipanti_result : TBase
+    {
+      private List<Participant> _success;
+
+      public List<Participant> Success
+      {
+        get
+        {
+          return _success;
+        }
+        set
+        {
+          __isset.success = true;
+          this._success = value;
+        }
+      }
+
+
+      public Isset __isset;
+      #if !SILVERLIGHT
+      [Serializable]
+      #endif
+      public struct Isset {
+        public bool success;
+      }
+
+      public listaParticipanti_result() {
+      }
+
+      public void Read (TProtocol iprot)
+      {
+        iprot.IncrementRecursionDepth();
+        try
+        {
+          TField field;
+          iprot.ReadStructBegin();
+          while (true)
+          {
+            field = iprot.ReadFieldBegin();
+            if (field.Type == TType.Stop) { 
+              break;
+            }
+            switch (field.ID)
+            {
+              case 0:
+                if (field.Type == TType.List) {
+                  {
+                    Success = new List<Participant>();
+                    TList _list0 = iprot.ReadListBegin();
+                    for( int _i1 = 0; _i1 < _list0.Count; ++_i1)
+                    {
+                      Participant _elem2;
+                      _elem2 = new Participant();
+                      _elem2.Read(iprot);
+                      Success.Add(_elem2);
+                    }
+                    iprot.ReadListEnd();
+                  }
+                } else { 
+                  TProtocolUtil.Skip(iprot, field.Type);
+                }
+                break;
+              default: 
+                TProtocolUtil.Skip(iprot, field.Type);
+                break;
+            }
+            iprot.ReadFieldEnd();
+          }
+          iprot.ReadStructEnd();
+        }
+        finally
+        {
+          iprot.DecrementRecursionDepth();
+        }
+      }
+
+      public void Write(TProtocol oprot) {
+        oprot.IncrementRecursionDepth();
+        try
+        {
+          TStruct struc = new TStruct("listaParticipanti_result");
+          oprot.WriteStructBegin(struc);
+          TField field = new TField();
+
+          if (this.__isset.success) {
+            if (Success != null) {
+              field.Name = "Success";
+              field.Type = TType.List;
+              field.ID = 0;
+              oprot.WriteFieldBegin(field);
+              {
+                oprot.WriteListBegin(new TList(TType.Struct, Success.Count));
+                foreach (Participant _iter3 in Success)
+                {
+                  _iter3.Write(oprot);
+                }
+                oprot.WriteListEnd();
+              }
+              oprot.WriteFieldEnd();
+            }
+          }
+          oprot.WriteFieldStop();
+          oprot.WriteStructEnd();
+        }
+        finally
+        {
+          oprot.DecrementRecursionDepth();
+        }
+      }
+
+      public override string ToString() {
+        StringBuilder __sb = new StringBuilder("listaParticipanti_result(");
+        bool __first = true;
+        if (Success != null && __isset.success) {
+          if(!__first) { __sb.Append(", "); }
+          __first = false;
+          __sb.Append("Success: ");
+          __sb.Append(Success);
+        }
+        __sb.Append(")");
+        return __sb.ToString();
+      }
+
+    }
+
+
+    #if !SILVERLIGHT
+    [Serializable]
+    #endif
+    public partial class listaProbeNume_args : TBase
+    {
+
+      public listaProbeNume_args() {
+      }
+
+      public void Read (TProtocol iprot)
+      {
+        iprot.IncrementRecursionDepth();
+        try
+        {
+          TField field;
+          iprot.ReadStructBegin();
+          while (true)
+          {
+            field = iprot.ReadFieldBegin();
+            if (field.Type == TType.Stop) { 
+              break;
+            }
+            switch (field.ID)
+            {
+              default: 
+                TProtocolUtil.Skip(iprot, field.Type);
+                break;
+            }
+            iprot.ReadFieldEnd();
+          }
+          iprot.ReadStructEnd();
+        }
+        finally
+        {
+          iprot.DecrementRecursionDepth();
+        }
+      }
+
+      public void Write(TProtocol oprot) {
+        oprot.IncrementRecursionDepth();
+        try
+        {
+          TStruct struc = new TStruct("listaProbeNume_args");
+          oprot.WriteStructBegin(struc);
+          oprot.WriteFieldStop();
+          oprot.WriteStructEnd();
+        }
+        finally
+        {
+          oprot.DecrementRecursionDepth();
+        }
+      }
+
+      public override string ToString() {
+        StringBuilder __sb = new StringBuilder("listaProbeNume_args(");
+        __sb.Append(")");
+        return __sb.ToString();
+      }
+
+    }
+
+
+    #if !SILVERLIGHT
+    [Serializable]
+    #endif
+    public partial class listaProbeNume_result : TBase
+    {
+      private List<string> _success;
+
+      public List<string> Success
+      {
+        get
+        {
+          return _success;
+        }
+        set
+        {
+          __isset.success = true;
+          this._success = value;
+        }
+      }
+
+
+      public Isset __isset;
+      #if !SILVERLIGHT
+      [Serializable]
+      #endif
+      public struct Isset {
+        public bool success;
+      }
+
+      public listaProbeNume_result() {
+      }
+
+      public void Read (TProtocol iprot)
+      {
+        iprot.IncrementRecursionDepth();
+        try
+        {
+          TField field;
+          iprot.ReadStructBegin();
+          while (true)
+          {
+            field = iprot.ReadFieldBegin();
+            if (field.Type == TType.Stop) { 
+              break;
+            }
+            switch (field.ID)
+            {
+              case 0:
+                if (field.Type == TType.List) {
+                  {
+                    Success = new List<string>();
+                    TList _list4 = iprot.ReadListBegin();
+                    for( int _i5 = 0; _i5 < _list4.Count; ++_i5)
+                    {
+                      string _elem6;
+                      _elem6 = iprot.ReadString();
+                      Success.Add(_elem6);
+                    }
+                    iprot.ReadListEnd();
+                  }
+                } else { 
+                  TProtocolUtil.Skip(iprot, field.Type);
+                }
+                break;
+              default: 
+                TProtocolUtil.Skip(iprot, field.Type);
+                break;
+            }
+            iprot.ReadFieldEnd();
+          }
+          iprot.ReadStructEnd();
+        }
+        finally
+        {
+          iprot.DecrementRecursionDepth();
+        }
+      }
+
+      public void Write(TProtocol oprot) {
+        oprot.IncrementRecursionDepth();
+        try
+        {
+          TStruct struc = new TStruct("listaProbeNume_result");
+          oprot.WriteStructBegin(struc);
+          TField field = new TField();
+
+          if (this.__isset.success) {
+            if (Success != null) {
+              field.Name = "Success";
+              field.Type = TType.List;
+              field.ID = 0;
+              oprot.WriteFieldBegin(field);
+              {
+                oprot.WriteListBegin(new TList(TType.String, Success.Count));
+                foreach (string _iter7 in Success)
+                {
+                  oprot.WriteString(_iter7);
+                }
+                oprot.WriteListEnd();
+              }
+              oprot.WriteFieldEnd();
+            }
+          }
+          oprot.WriteFieldStop();
+          oprot.WriteStructEnd();
+        }
+        finally
+        {
+          oprot.DecrementRecursionDepth();
+        }
+      }
+
+      public override string ToString() {
+        StringBuilder __sb = new StringBuilder("listaProbeNume_result(");
+        bool __first = true;
+        if (Success != null && __isset.success) {
+          if(!__first) { __sb.Append(", "); }
+          __first = false;
+          __sb.Append("Success: ");
+          __sb.Append(Success);
+        }
+        __sb.Append(")");
+        return __sb.ToString();
+      }
+
+    }
+
+
+    #if !SILVERLIGHT
+    [Serializable]
+    #endif
+    public partial class listaCategorii_args : TBase
+    {
+
+      public listaCategorii_args() {
+      }
+
+      public void Read (TProtocol iprot)
+      {
+        iprot.IncrementRecursionDepth();
+        try
+        {
+          TField field;
+          iprot.ReadStructBegin();
+          while (true)
+          {
+            field = iprot.ReadFieldBegin();
+            if (field.Type == TType.Stop) { 
+              break;
+            }
+            switch (field.ID)
+            {
+              default: 
+                TProtocolUtil.Skip(iprot, field.Type);
+                break;
+            }
+            iprot.ReadFieldEnd();
+          }
+          iprot.ReadStructEnd();
+        }
+        finally
+        {
+          iprot.DecrementRecursionDepth();
+        }
+      }
+
+      public void Write(TProtocol oprot) {
+        oprot.IncrementRecursionDepth();
+        try
+        {
+          TStruct struc = new TStruct("listaCategorii_args");
+          oprot.WriteStructBegin(struc);
+          oprot.WriteFieldStop();
+          oprot.WriteStructEnd();
+        }
+        finally
+        {
+          oprot.DecrementRecursionDepth();
+        }
+      }
+
+      public override string ToString() {
+        StringBuilder __sb = new StringBuilder("listaCategorii_args(");
+        __sb.Append(")");
+        return __sb.ToString();
+      }
+
+    }
+
+
+    #if !SILVERLIGHT
+    [Serializable]
+    #endif
+    public partial class listaCategorii_result : TBase
+    {
+      private List<string> _success;
+
+      public List<string> Success
+      {
+        get
+        {
+          return _success;
+        }
+        set
+        {
+          __isset.success = true;
+          this._success = value;
+        }
+      }
+
+
+      public Isset __isset;
+      #if !SILVERLIGHT
+      [Serializable]
+      #endif
+      public struct Isset {
+        public bool success;
+      }
+
+      public listaCategorii_result() {
+      }
+
+      public void Read (TProtocol iprot)
+      {
+        iprot.IncrementRecursionDepth();
+        try
+        {
+          TField field;
+          iprot.ReadStructBegin();
+          while (true)
+          {
+            field = iprot.ReadFieldBegin();
+            if (field.Type == TType.Stop) { 
+              break;
+            }
+            switch (field.ID)
+            {
+              case 0:
+                if (field.Type == TType.List) {
+                  {
+                    Success = new List<string>();
+                    TList _list8 = iprot.ReadListBegin();
+                    for( int _i9 = 0; _i9 < _list8.Count; ++_i9)
+                    {
+                      string _elem10;
+                      _elem10 = iprot.ReadString();
+                      Success.Add(_elem10);
+                    }
+                    iprot.ReadListEnd();
+                  }
+                } else { 
+                  TProtocolUtil.Skip(iprot, field.Type);
+                }
+                break;
+              default: 
+                TProtocolUtil.Skip(iprot, field.Type);
+                break;
+            }
+            iprot.ReadFieldEnd();
+          }
+          iprot.ReadStructEnd();
+        }
+        finally
+        {
+          iprot.DecrementRecursionDepth();
+        }
+      }
+
+      public void Write(TProtocol oprot) {
+        oprot.IncrementRecursionDepth();
+        try
+        {
+          TStruct struc = new TStruct("listaCategorii_result");
+          oprot.WriteStructBegin(struc);
+          TField field = new TField();
+
+          if (this.__isset.success) {
+            if (Success != null) {
+              field.Name = "Success";
+              field.Type = TType.List;
+              field.ID = 0;
+              oprot.WriteFieldBegin(field);
+              {
+                oprot.WriteListBegin(new TList(TType.String, Success.Count));
+                foreach (string _iter11 in Success)
+                {
+                  oprot.WriteString(_iter11);
+                }
+                oprot.WriteListEnd();
+              }
+              oprot.WriteFieldEnd();
+            }
+          }
+          oprot.WriteFieldStop();
+          oprot.WriteStructEnd();
+        }
+        finally
+        {
+          oprot.DecrementRecursionDepth();
+        }
+      }
+
+      public override string ToString() {
+        StringBuilder __sb = new StringBuilder("listaCategorii_result(");
+        bool __first = true;
+        if (Success != null && __isset.success) {
+          if(!__first) { __sb.Append(", "); }
+          __first = false;
+          __sb.Append("Success: ");
+          __sb.Append(Success);
+        }
+        __sb.Append(")");
+        return __sb.ToString();
+      }
+
+    }
+
+
+    #if !SILVERLIGHT
+    [Serializable]
+    #endif
+    public partial class filtreazaParticipantiKeyword_args : TBase
+    {
+      private string _proba;
+      private string _categorie;
+
+      public string Proba
+      {
+        get
+        {
+          return _proba;
+        }
+        set
+        {
+          __isset.proba = true;
+          this._proba = value;
+        }
+      }
+
+      public string Categorie
+      {
+        get
+        {
+          return _categorie;
+        }
+        set
+        {
+          __isset.categorie = true;
+          this._categorie = value;
+        }
+      }
+
+
+      public Isset __isset;
+      #if !SILVERLIGHT
+      [Serializable]
+      #endif
+      public struct Isset {
+        public bool proba;
+        public bool categorie;
+      }
+
+      public filtreazaParticipantiKeyword_args() {
+      }
+
+      public void Read (TProtocol iprot)
+      {
+        iprot.IncrementRecursionDepth();
+        try
+        {
+          TField field;
+          iprot.ReadStructBegin();
+          while (true)
+          {
+            field = iprot.ReadFieldBegin();
+            if (field.Type == TType.Stop) { 
+              break;
+            }
+            switch (field.ID)
+            {
+              case 1:
+                if (field.Type == TType.String) {
+                  Proba = iprot.ReadString();
+                } else { 
+                  TProtocolUtil.Skip(iprot, field.Type);
+                }
+                break;
+              case 2:
+                if (field.Type == TType.String) {
+                  Categorie = iprot.ReadString();
+                } else { 
+                  TProtocolUtil.Skip(iprot, field.Type);
+                }
+                break;
+              default: 
+                TProtocolUtil.Skip(iprot, field.Type);
+                break;
+            }
+            iprot.ReadFieldEnd();
+          }
+          iprot.ReadStructEnd();
+        }
+        finally
+        {
+          iprot.DecrementRecursionDepth();
+        }
+      }
+
+      public void Write(TProtocol oprot) {
+        oprot.IncrementRecursionDepth();
+        try
+        {
+          TStruct struc = new TStruct("filtreazaParticipantiKeyword_args");
+          oprot.WriteStructBegin(struc);
+          TField field = new TField();
+          if (Proba != null && __isset.proba) {
+            field.Name = "proba";
+            field.Type = TType.String;
+            field.ID = 1;
+            oprot.WriteFieldBegin(field);
+            oprot.WriteString(Proba);
+            oprot.WriteFieldEnd();
+          }
+          if (Categorie != null && __isset.categorie) {
+            field.Name = "categorie";
+            field.Type = TType.String;
+            field.ID = 2;
+            oprot.WriteFieldBegin(field);
+            oprot.WriteString(Categorie);
+            oprot.WriteFieldEnd();
+          }
+          oprot.WriteFieldStop();
+          oprot.WriteStructEnd();
+        }
+        finally
+        {
+          oprot.DecrementRecursionDepth();
+        }
+      }
+
+      public override string ToString() {
+        StringBuilder __sb = new StringBuilder("filtreazaParticipantiKeyword_args(");
+        bool __first = true;
+        if (Proba != null && __isset.proba) {
+          if(!__first) { __sb.Append(", "); }
+          __first = false;
+          __sb.Append("Proba: ");
+          __sb.Append(Proba);
+        }
+        if (Categorie != null && __isset.categorie) {
+          if(!__first) { __sb.Append(", "); }
+          __first = false;
+          __sb.Append("Categorie: ");
+          __sb.Append(Categorie);
+        }
+        __sb.Append(")");
+        return __sb.ToString();
+      }
+
+    }
+
+
+    #if !SILVERLIGHT
+    [Serializable]
+    #endif
+    public partial class filtreazaParticipantiKeyword_result : TBase
+    {
+      private List<Participant> _success;
+
+      public List<Participant> Success
+      {
+        get
+        {
+          return _success;
+        }
+        set
+        {
+          __isset.success = true;
+          this._success = value;
+        }
+      }
+
+
+      public Isset __isset;
+      #if !SILVERLIGHT
+      [Serializable]
+      #endif
+      public struct Isset {
+        public bool success;
+      }
+
+      public filtreazaParticipantiKeyword_result() {
+      }
+
+      public void Read (TProtocol iprot)
+      {
+        iprot.IncrementRecursionDepth();
+        try
+        {
+          TField field;
+          iprot.ReadStructBegin();
+          while (true)
+          {
+            field = iprot.ReadFieldBegin();
+            if (field.Type == TType.Stop) { 
+              break;
+            }
+            switch (field.ID)
+            {
+              case 0:
+                if (field.Type == TType.List) {
+                  {
+                    Success = new List<Participant>();
+                    TList _list12 = iprot.ReadListBegin();
+                    for( int _i13 = 0; _i13 < _list12.Count; ++_i13)
+                    {
+                      Participant _elem14;
+                      _elem14 = new Participant();
+                      _elem14.Read(iprot);
+                      Success.Add(_elem14);
+                    }
+                    iprot.ReadListEnd();
+                  }
+                } else { 
+                  TProtocolUtil.Skip(iprot, field.Type);
+                }
+                break;
+              default: 
+                TProtocolUtil.Skip(iprot, field.Type);
+                break;
+            }
+            iprot.ReadFieldEnd();
+          }
+          iprot.ReadStructEnd();
+        }
+        finally
+        {
+          iprot.DecrementRecursionDepth();
+        }
+      }
+
+      public void Write(TProtocol oprot) {
+        oprot.IncrementRecursionDepth();
+        try
+        {
+          TStruct struc = new TStruct("filtreazaParticipantiKeyword_result");
+          oprot.WriteStructBegin(struc);
+          TField field = new TField();
+
+          if (this.__isset.success) {
+            if (Success != null) {
+              field.Name = "Success";
+              field.Type = TType.List;
+              field.ID = 0;
+              oprot.WriteFieldBegin(field);
+              {
+                oprot.WriteListBegin(new TList(TType.Struct, Success.Count));
+                foreach (Participant _iter15 in Success)
+                {
+                  _iter15.Write(oprot);
+                }
+                oprot.WriteListEnd();
+              }
+              oprot.WriteFieldEnd();
+            }
+          }
+          oprot.WriteFieldStop();
+          oprot.WriteStructEnd();
+        }
+        finally
+        {
+          oprot.DecrementRecursionDepth();
+        }
+      }
+
+      public override string ToString() {
+        StringBuilder __sb = new StringBuilder("filtreazaParticipantiKeyword_result(");
+        bool __first = true;
+        if (Success != null && __isset.success) {
+          if(!__first) { __sb.Append(", "); }
+          __first = false;
+          __sb.Append("Success: ");
+          __sb.Append(Success);
+        }
+        __sb.Append(")");
+        return __sb.ToString();
+      }
+
+    }
+
+
+    #if !SILVERLIGHT
+    [Serializable]
+    #endif
+    public partial class listaProbe_args : TBase
+    {
+
+      public listaProbe_args() {
+      }
+
+      public void Read (TProtocol iprot)
+      {
+        iprot.IncrementRecursionDepth();
+        try
+        {
+          TField field;
+          iprot.ReadStructBegin();
+          while (true)
+          {
+            field = iprot.ReadFieldBegin();
+            if (field.Type == TType.Stop) { 
+              break;
+            }
+            switch (field.ID)
+            {
+              default: 
+                TProtocolUtil.Skip(iprot, field.Type);
+                break;
+            }
+            iprot.ReadFieldEnd();
+          }
+          iprot.ReadStructEnd();
+        }
+        finally
+        {
+          iprot.DecrementRecursionDepth();
+        }
+      }
+
+      public void Write(TProtocol oprot) {
+        oprot.IncrementRecursionDepth();
+        try
+        {
+          TStruct struc = new TStruct("listaProbe_args");
+          oprot.WriteStructBegin(struc);
+          oprot.WriteFieldStop();
+          oprot.WriteStructEnd();
+        }
+        finally
+        {
+          oprot.DecrementRecursionDepth();
+        }
+      }
+
+      public override string ToString() {
+        StringBuilder __sb = new StringBuilder("listaProbe_args(");
+        __sb.Append(")");
+        return __sb.ToString();
+      }
+
+    }
+
+
+    #if !SILVERLIGHT
+    [Serializable]
+    #endif
+    public partial class listaProbe_result : TBase
+    {
+      private List<Proba> _success;
+
+      public List<Proba> Success
+      {
+        get
+        {
+          return _success;
+        }
+        set
+        {
+          __isset.success = true;
+          this._success = value;
+        }
+      }
+
+
+      public Isset __isset;
+      #if !SILVERLIGHT
+      [Serializable]
+      #endif
+      public struct Isset {
+        public bool success;
+      }
+
+      public listaProbe_result() {
+      }
+
+      public void Read (TProtocol iprot)
+      {
+        iprot.IncrementRecursionDepth();
+        try
+        {
+          TField field;
+          iprot.ReadStructBegin();
+          while (true)
+          {
+            field = iprot.ReadFieldBegin();
+            if (field.Type == TType.Stop) { 
+              break;
+            }
+            switch (field.ID)
+            {
+              case 0:
+                if (field.Type == TType.List) {
+                  {
+                    Success = new List<Proba>();
+                    TList _list16 = iprot.ReadListBegin();
+                    for( int _i17 = 0; _i17 < _list16.Count; ++_i17)
+                    {
+                      Proba _elem18;
+                      _elem18 = new Proba();
+                      _elem18.Read(iprot);
+                      Success.Add(_elem18);
+                    }
+                    iprot.ReadListEnd();
+                  }
+                } else { 
+                  TProtocolUtil.Skip(iprot, field.Type);
+                }
+                break;
+              default: 
+                TProtocolUtil.Skip(iprot, field.Type);
+                break;
+            }
+            iprot.ReadFieldEnd();
+          }
+          iprot.ReadStructEnd();
+        }
+        finally
+        {
+          iprot.DecrementRecursionDepth();
+        }
+      }
+
+      public void Write(TProtocol oprot) {
+        oprot.IncrementRecursionDepth();
+        try
+        {
+          TStruct struc = new TStruct("listaProbe_result");
+          oprot.WriteStructBegin(struc);
+          TField field = new TField();
+
+          if (this.__isset.success) {
+            if (Success != null) {
+              field.Name = "Success";
+              field.Type = TType.List;
+              field.ID = 0;
+              oprot.WriteFieldBegin(field);
+              {
+                oprot.WriteListBegin(new TList(TType.Struct, Success.Count));
+                foreach (Proba _iter19 in Success)
+                {
+                  _iter19.Write(oprot);
+                }
+                oprot.WriteListEnd();
+              }
+              oprot.WriteFieldEnd();
+            }
+          }
+          oprot.WriteFieldStop();
+          oprot.WriteStructEnd();
+        }
+        finally
+        {
+          oprot.DecrementRecursionDepth();
+        }
+      }
+
+      public override string ToString() {
+        StringBuilder __sb = new StringBuilder("listaProbe_result(");
+        bool __first = true;
+        if (Success != null && __isset.success) {
+          if(!__first) { __sb.Append(", "); }
+          __first = false;
+          __sb.Append("Success: ");
+          __sb.Append(Success);
+        }
+        __sb.Append(")");
+        return __sb.ToString();
+      }
+
+    }
+
+
+    #if !SILVERLIGHT
+    [Serializable]
+    #endif
+    public partial class listaProbeDTO_args : TBase
+    {
+
+      public listaProbeDTO_args() {
+      }
+
+      public void Read (TProtocol iprot)
+      {
+        iprot.IncrementRecursionDepth();
+        try
+        {
+          TField field;
+          iprot.ReadStructBegin();
+          while (true)
+          {
+            field = iprot.ReadFieldBegin();
+            if (field.Type == TType.Stop) { 
+              break;
+            }
+            switch (field.ID)
+            {
+              default: 
+                TProtocolUtil.Skip(iprot, field.Type);
+                break;
+            }
+            iprot.ReadFieldEnd();
+          }
+          iprot.ReadStructEnd();
+        }
+        finally
+        {
+          iprot.DecrementRecursionDepth();
+        }
+      }
+
+      public void Write(TProtocol oprot) {
+        oprot.IncrementRecursionDepth();
+        try
+        {
+          TStruct struc = new TStruct("listaProbeDTO_args");
+          oprot.WriteStructBegin(struc);
+          oprot.WriteFieldStop();
+          oprot.WriteStructEnd();
+        }
+        finally
+        {
+          oprot.DecrementRecursionDepth();
+        }
+      }
+
+      public override string ToString() {
+        StringBuilder __sb = new StringBuilder("listaProbeDTO_args(");
+        __sb.Append(")");
+        return __sb.ToString();
+      }
+
+    }
+
+
+    #if !SILVERLIGHT
+    [Serializable]
+    #endif
+    public partial class listaProbeDTO_result : TBase
+    {
+      private List<ProbaDTO> _success;
+
+      public List<ProbaDTO> Success
+      {
+        get
+        {
+          return _success;
+        }
+        set
+        {
+          __isset.success = true;
+          this._success = value;
+        }
+      }
+
+
+      public Isset __isset;
+      #if !SILVERLIGHT
+      [Serializable]
+      #endif
+      public struct Isset {
+        public bool success;
+      }
+
+      public listaProbeDTO_result() {
+      }
+
+      public void Read (TProtocol iprot)
+      {
+        iprot.IncrementRecursionDepth();
+        try
+        {
+          TField field;
+          iprot.ReadStructBegin();
+          while (true)
+          {
+            field = iprot.ReadFieldBegin();
+            if (field.Type == TType.Stop) { 
+              break;
+            }
+            switch (field.ID)
+            {
+              case 0:
+                if (field.Type == TType.List) {
+                  {
+                    Success = new List<ProbaDTO>();
+                    TList _list20 = iprot.ReadListBegin();
+                    for( int _i21 = 0; _i21 < _list20.Count; ++_i21)
+                    {
+                      ProbaDTO _elem22;
+                      _elem22 = new ProbaDTO();
+                      _elem22.Read(iprot);
+                      Success.Add(_elem22);
+                    }
+                    iprot.ReadListEnd();
+                  }
+                } else { 
+                  TProtocolUtil.Skip(iprot, field.Type);
+                }
+                break;
+              default: 
+                TProtocolUtil.Skip(iprot, field.Type);
+                break;
+            }
+            iprot.ReadFieldEnd();
+          }
+          iprot.ReadStructEnd();
+        }
+        finally
+        {
+          iprot.DecrementRecursionDepth();
+        }
+      }
+
+      public void Write(TProtocol oprot) {
+        oprot.IncrementRecursionDepth();
+        try
+        {
+          TStruct struc = new TStruct("listaProbeDTO_result");
+          oprot.WriteStructBegin(struc);
+          TField field = new TField();
+
+          if (this.__isset.success) {
+            if (Success != null) {
+              field.Name = "Success";
+              field.Type = TType.List;
+              field.ID = 0;
+              oprot.WriteFieldBegin(field);
+              {
+                oprot.WriteListBegin(new TList(TType.Struct, Success.Count));
+                foreach (ProbaDTO _iter23 in Success)
+                {
+                  _iter23.Write(oprot);
+                }
+                oprot.WriteListEnd();
+              }
+              oprot.WriteFieldEnd();
+            }
+          }
+          oprot.WriteFieldStop();
+          oprot.WriteStructEnd();
+        }
+        finally
+        {
+          oprot.DecrementRecursionDepth();
+        }
+      }
+
+      public override string ToString() {
+        StringBuilder __sb = new StringBuilder("listaProbeDTO_result(");
+        bool __first = true;
+        if (Success != null && __isset.success) {
+          if(!__first) { __sb.Append(", "); }
+          __first = false;
+          __sb.Append("Success: ");
+          __sb.Append(Success);
+        }
+        __sb.Append(")");
+        return __sb.ToString();
+      }
+
+    }
+
+
+    #if !SILVERLIGHT
+    [Serializable]
+    #endif
+    public partial class inscriereParticipant_args : TBase
+    {
+      private string _nume;
+      private int _varsta;
+      private List<Proba> _listaProbe;
+      private string _usernameOperator;
+
+      public string Nume
+      {
+        get
+        {
+          return _nume;
+        }
+        set
+        {
+          __isset.nume = true;
+          this._nume = value;
+        }
+      }
+
+      public int Varsta
+      {
+        get
+        {
+          return _varsta;
+        }
+        set
+        {
+          __isset.varsta = true;
+          this._varsta = value;
+        }
+      }
+
+      public List<Proba> ListaProbe
+      {
+        get
+        {
+          return _listaProbe;
+        }
+        set
+        {
+          __isset.listaProbe = true;
+          this._listaProbe = value;
+        }
+      }
+
+      public string UsernameOperator
+      {
+        get
+        {
+          return _usernameOperator;
+        }
+        set
+        {
+          __isset.usernameOperator = true;
+          this._usernameOperator = value;
+        }
+      }
+
+
+      public Isset __isset;
+      #if !SILVERLIGHT
+      [Serializable]
+      #endif
+      public struct Isset {
+        public bool nume;
+        public bool varsta;
+        public bool listaProbe;
+        public bool usernameOperator;
+      }
+
+      public inscriereParticipant_args() {
+      }
+
+      public void Read (TProtocol iprot)
+      {
+        iprot.IncrementRecursionDepth();
+        try
+        {
+          TField field;
+          iprot.ReadStructBegin();
+          while (true)
+          {
+            field = iprot.ReadFieldBegin();
+            if (field.Type == TType.Stop) { 
+              break;
+            }
+            switch (field.ID)
+            {
+              case 1:
+                if (field.Type == TType.String) {
+                  Nume = iprot.ReadString();
+                } else { 
+                  TProtocolUtil.Skip(iprot, field.Type);
+                }
+                break;
+              case 2:
+                if (field.Type == TType.I32) {
+                  Varsta = iprot.ReadI32();
+                } else { 
+                  TProtocolUtil.Skip(iprot, field.Type);
+                }
+                break;
+              case 3:
+                if (field.Type == TType.List) {
+                  {
+                    ListaProbe = new List<Proba>();
+                    TList _list24 = iprot.ReadListBegin();
+                    for( int _i25 = 0; _i25 < _list24.Count; ++_i25)
+                    {
+                      Proba _elem26;
+                      _elem26 = new Proba();
+                      _elem26.Read(iprot);
+                      ListaProbe.Add(_elem26);
+                    }
+                    iprot.ReadListEnd();
+                  }
+                } else { 
+                  TProtocolUtil.Skip(iprot, field.Type);
+                }
+                break;
+              case 4:
+                if (field.Type == TType.String) {
+                  UsernameOperator = iprot.ReadString();
+                } else { 
+                  TProtocolUtil.Skip(iprot, field.Type);
+                }
+                break;
+              default: 
+                TProtocolUtil.Skip(iprot, field.Type);
+                break;
+            }
+            iprot.ReadFieldEnd();
+          }
+          iprot.ReadStructEnd();
+        }
+        finally
+        {
+          iprot.DecrementRecursionDepth();
+        }
+      }
+
+      public void Write(TProtocol oprot) {
+        oprot.IncrementRecursionDepth();
+        try
+        {
+          TStruct struc = new TStruct("inscriereParticipant_args");
+          oprot.WriteStructBegin(struc);
+          TField field = new TField();
+          if (Nume != null && __isset.nume) {
+            field.Name = "nume";
+            field.Type = TType.String;
+            field.ID = 1;
+            oprot.WriteFieldBegin(field);
+            oprot.WriteString(Nume);
+            oprot.WriteFieldEnd();
+          }
+          if (__isset.varsta) {
+            field.Name = "varsta";
+            field.Type = TType.I32;
+            field.ID = 2;
+            oprot.WriteFieldBegin(field);
+            oprot.WriteI32(Varsta);
+            oprot.WriteFieldEnd();
+          }
+          if (ListaProbe != null && __isset.listaProbe) {
+            field.Name = "listaProbe";
+            field.Type = TType.List;
+            field.ID = 3;
+            oprot.WriteFieldBegin(field);
+            {
+              oprot.WriteListBegin(new TList(TType.Struct, ListaProbe.Count));
+              foreach (Proba _iter27 in ListaProbe)
+              {
+                _iter27.Write(oprot);
+              }
+              oprot.WriteListEnd();
+            }
+            oprot.WriteFieldEnd();
+          }
+          if (UsernameOperator != null && __isset.usernameOperator) {
+            field.Name = "usernameOperator";
+            field.Type = TType.String;
+            field.ID = 4;
+            oprot.WriteFieldBegin(field);
+            oprot.WriteString(UsernameOperator);
+            oprot.WriteFieldEnd();
+          }
+          oprot.WriteFieldStop();
+          oprot.WriteStructEnd();
+        }
+        finally
+        {
+          oprot.DecrementRecursionDepth();
+        }
+      }
+
+      public override string ToString() {
+        StringBuilder __sb = new StringBuilder("inscriereParticipant_args(");
+        bool __first = true;
+        if (Nume != null && __isset.nume) {
+          if(!__first) { __sb.Append(", "); }
+          __first = false;
+          __sb.Append("Nume: ");
+          __sb.Append(Nume);
+        }
+        if (__isset.varsta) {
+          if(!__first) { __sb.Append(", "); }
+          __first = false;
+          __sb.Append("Varsta: ");
+          __sb.Append(Varsta);
+        }
+        if (ListaProbe != null && __isset.listaProbe) {
+          if(!__first) { __sb.Append(", "); }
+          __first = false;
+          __sb.Append("ListaProbe: ");
+          __sb.Append(ListaProbe);
+        }
+        if (UsernameOperator != null && __isset.usernameOperator) {
+          if(!__first) { __sb.Append(", "); }
+          __first = false;
+          __sb.Append("UsernameOperator: ");
+          __sb.Append(UsernameOperator);
+        }
+        __sb.Append(")");
+        return __sb.ToString();
+      }
+
+    }
+
+
+    #if !SILVERLIGHT
+    [Serializable]
+    #endif
+    public partial class inscriereParticipant_result : TBase
+    {
+      private MyAppException _e;
+
+      public MyAppException E
+      {
+        get
+        {
+          return _e;
+        }
+        set
+        {
+          __isset.e = true;
+          this._e = value;
+        }
+      }
+
+
+      public Isset __isset;
+      #if !SILVERLIGHT
+      [Serializable]
+      #endif
+      public struct Isset {
+        public bool e;
+      }
+
+      public inscriereParticipant_result() {
+      }
+
+      public void Read (TProtocol iprot)
+      {
+        iprot.IncrementRecursionDepth();
+        try
+        {
+          TField field;
+          iprot.ReadStructBegin();
+          while (true)
+          {
+            field = iprot.ReadFieldBegin();
+            if (field.Type == TType.Stop) { 
+              break;
+            }
+            switch (field.ID)
+            {
+              case 1:
+                if (field.Type == TType.Struct) {
+                  E = new MyAppException();
+                  E.Read(iprot);
+                } else { 
+                  TProtocolUtil.Skip(iprot, field.Type);
+                }
+                break;
+              default: 
+                TProtocolUtil.Skip(iprot, field.Type);
+                break;
+            }
+            iprot.ReadFieldEnd();
+          }
+          iprot.ReadStructEnd();
+        }
+        finally
+        {
+          iprot.DecrementRecursionDepth();
+        }
+      }
+
+      public void Write(TProtocol oprot) {
+        oprot.IncrementRecursionDepth();
+        try
+        {
+          TStruct struc = new TStruct("inscriereParticipant_result");
+          oprot.WriteStructBegin(struc);
+          TField field = new TField();
+
+          if (this.__isset.e) {
+            if (E != null) {
+              field.Name = "E";
+              field.Type = TType.Struct;
+              field.ID = 1;
+              oprot.WriteFieldBegin(field);
+              E.Write(oprot);
+              oprot.WriteFieldEnd();
+            }
+          }
+          oprot.WriteFieldStop();
+          oprot.WriteStructEnd();
+        }
+        finally
+        {
+          oprot.DecrementRecursionDepth();
+        }
+      }
+
+      public override string ToString() {
+        StringBuilder __sb = new StringBuilder("inscriereParticipant_result(");
         bool __first = true;
         if (E != null && __isset.e) {
           if(!__first) { __sb.Append(", "); }

@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import model.User;
 import org.apache.thrift.TException;
 import org.teofana.concurs.ConcursService;
-import org.teofana.concurs.MyAppExecption;
+import org.teofana.concurs.MyAppException;
 
 import java.io.IOException;
 
@@ -39,7 +39,7 @@ public class ControllerOperator  {
     private Stage primaryStage;
     private Scene loginScene;
 
-//    ControllerInscrieri controllerInscrieri;
+    ControllerInscrieri controllerInscrieri;
     ControllerProbe probeController;
 
     public void setData(ConcursService.Client client, User user) throws IOException {
@@ -62,11 +62,11 @@ public class ControllerOperator  {
         probeController.initData(this.client);
 
 
-//        FXMLLoader loaderInscrieri = new FXMLLoader();
-//        loaderInscrieri.setLocation(getClass().getResource("/ViewInscrieri.fxml"));
-//        this.inscrieriPane = loaderInscrieri.load();
-//        this.controllerInscrieri = loaderInscrieri.getController();
-//        controllerInscrieri.setData(client,user);
+        FXMLLoader loaderInscrieri = new FXMLLoader();
+        loaderInscrieri.setLocation(getClass().getResource("/ViewInscrieri.fxml"));
+        this.inscrieriPane = loaderInscrieri.load();
+        this.controllerInscrieri = loaderInscrieri.getController();
+        controllerInscrieri.setData(client,user);
 
         this.viewPane.getChildren().clear();
         this.viewPane.getChildren().add(probePane);
@@ -89,7 +89,7 @@ public class ControllerOperator  {
     @FXML
     public void handleInscrieriPane() {
         this.viewPane.getChildren().clear();
-//        this.viewPane.getChildren().add(inscrieriPane);
+        this.viewPane.getChildren().add(inscrieriPane);
     }
 
     @FXML
@@ -97,7 +97,7 @@ public class ControllerOperator  {
         System.out.println("AM IESIT DE LA OPERATOR "+ user.getUsername());
         try {
             this.client.logout(user);
-        } catch (MyAppExecption e) {
+        } catch (MyAppException e) {
             System.out.println("Am prins eroarea: "+e.getMessage());
         } catch (TException e) {
             e.printStackTrace();

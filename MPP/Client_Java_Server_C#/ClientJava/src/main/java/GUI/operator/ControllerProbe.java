@@ -7,12 +7,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import model.ProbaDTO;
+import org.apache.thrift.TException;
 import org.teofana.concurs.ConcursService;
 
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -29,15 +30,14 @@ public class ControllerProbe implements Initializable{
 
     private ConcursService.Client client;
 
-    public void initData(ConcursService.Client client){
+    void initData(ConcursService.Client client){
         this.client=client;
        try {
-            ProbaDTO[] probaDTO=this.client.listaProbeDTO();
-            ArrayList<ProbaDTO> items = new ArrayList<>(Arrays.asList(probaDTO));
+            List<ProbaDTO> items = this.client.listaProbeDTO();
             model.setAll(items);
-        } catch (MyAppException e) {
-            e.printStackTrace();
-        }
+        } catch (TException e) {
+           e.printStackTrace();
+       }
     }
 
     @Override

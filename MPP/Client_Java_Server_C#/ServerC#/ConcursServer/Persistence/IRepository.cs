@@ -10,7 +10,7 @@ namespace Concurs.repository
     {
         E FindOne(ID id);
 
-        IEnumerable<E> FindAll();
+        IList<E> FindAll();
 
         ID Save(E entity);
 

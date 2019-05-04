@@ -20,4 +20,6 @@ dependencies {
     compile group: 'org.apache.httpcomponents', name: 'httpcore', version: '4.3'
     compile group: 'javax.servlet', name: 'servlet-api', version:'2.4'// https://mvnrepository.com/artifact/org.slf4j/slf4j-nop
     compile "org.slf4j:slf4j-simple:1.7.9"
+
+    compile group: 'org.controlsfx', name: 'controlsfx', version: '8.40.14'
 }
