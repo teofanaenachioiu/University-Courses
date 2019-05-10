@@ -1,6 +1,7 @@
 package GUI.operator;
 
 
+import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -8,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import model.Categorie;
 import model.Participant;
 import model.Proba;
 import model.User;
@@ -16,17 +16,19 @@ import org.apache.thrift.TException;
 import org.controlsfx.control.CheckComboBox;
 import org.teofana.concurs.ConcursService;
 import org.teofana.concurs.MyAppException;
+import org.teofana.concurs.ObserverService;
 import utils.AutoCompleteComboBoxListener;
 import utils.GUIutils;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-public class ControllerInscrieri implements Initializable{
+public class ControllerInscrieri implements Initializable, ObserverService.Iface {
     @FXML
     TextField fieldNume;
     @FXML
@@ -49,17 +51,15 @@ public class ControllerInscrieri implements Initializable{
     @FXML
     Button buttonCauta;
 
-    ConcursService.Client client;
-    User user;
+    private ConcursService.Client client;
+    private User user;
 
-    public void setData(  ConcursService.Client client, User user){
+    void setData(ConcursService.Client client, User user){
         this.user=user;
         this.client=client;
         final ObservableList<Proba> probe = FXCollections.observableArrayList();
         try {
-            probe.setAll((Collection<? extends Proba>) client.listaProbe());
-        } catch (MyAppException e) {
-            e.printStackTrace();
+            probe.setAll(client.listaProbe());
         } catch (TException e) {
             e.printStackTrace();
         }
@@ -71,8 +71,7 @@ public class ControllerInscrieri implements Initializable{
         spinnerVarsta.setValueFactory(valueFactory);
 
         try {
-            modelCaut.setAll(StreamSupport.stream(this.client.listaParticipanti().spliterator(),false)
-                    .collect(Collectors.toList()));
+            modelCaut.setAll(new ArrayList<>(this.client.listaParticipanti()));
         } catch (TException e) {
             e.printStackTrace();
         }
@@ -88,12 +87,12 @@ public class ControllerInscrieri implements Initializable{
             GUIutils.showErrorMessage("Nu ati introdus numele participantului");
         if(probe11.size()==0)
             GUIutils.showErrorMessage("Nu s-a selectat probe");
-        try{
-            client.inscriereParticipant(nume,varsta,probe11,this.user.getUsername());
+
+        try {
+            client.inscriereParticipant(nume, varsta, probe11, this.user.getUsername());
             GUIutils.showInfoMessage("Participantul a fost inscris");
             this.fieldNume.setText(null);
-        }
-        catch (MyAppException e){
+        } catch (MyAppException e){
             GUIutils.showErrorMessage(e.getMessage());
         } catch (TException e) {
             e.printStackTrace();
@@ -109,9 +108,7 @@ public class ControllerInscrieri implements Initializable{
         else categorie=this.comboBoxCategorie.getSelectionModel().getSelectedItem().toString();
 
         try {
-            modelCaut.setAll(StreamSupport
-                    .stream(client.filtreazaParticipantiKeyword(denumireProba,categorie).spliterator(),false)
-                    .collect(Collectors.toList()));
+            modelCaut.setAll(new ArrayList<>(client.filtreazaParticipantiKeyword(denumireProba, categorie)));
         } catch (TException e) {
             e.printStackTrace();
         }
@@ -124,8 +121,7 @@ public class ControllerInscrieri implements Initializable{
         this.comboBoxProba.setValue(null);
         this.comboBoxCategorie.setValue(null);
         try {
-            modelCaut.setAll(StreamSupport.stream(this.client.listaParticipanti().spliterator(),false)
-                    .collect(Collectors.toList()));
+            modelCaut.setAll(new ArrayList<>(this.client.listaParticipanti()));
         } catch (TException e) {
             e.printStackTrace();
         }
@@ -135,8 +131,7 @@ public class ControllerInscrieri implements Initializable{
     private void initComboBox(){
         List<String> lista= null;
         try {
-            lista = StreamSupport.stream(client.listaProbeNume().spliterator(),false)
-                    .collect(Collectors.toList());
+            lista = new ArrayList<>(client.listaProbeNume());
         } catch (TException e) {
             e.printStackTrace();
         }
@@ -145,8 +140,7 @@ public class ControllerInscrieri implements Initializable{
 
         List<String> lista1= null;
         try {
-            lista1 = StreamSupport.stream(client.listaCategorii().spliterator(),false)
-                    .collect(Collectors.toList());
+            lista1 = new ArrayList<>(client.listaCategorii());
         } catch (TException e) {
             e.printStackTrace();
         }
@@ -167,11 +161,10 @@ public class ControllerInscrieri implements Initializable{
         this.comboBoxProba.valueProperty().addListener(o->handleCauta());
     }
 
-//    @Override
-//    public void update() throws MyAppException {
-//        System.out.println("Incerc sa updatez participantii");
-//        modelCaut.setAll(StreamSupport.stream(this.server.listaParticipanti().spliterator(),false)
-//                .collect(Collectors.toList()));
-//        tableView.setItems(modelCaut);
-//    }
+    @Override
+    public void notifyClient() throws TException {
+        System.out.println("Update participanti");
+        modelCaut.setAll(new ArrayList<>(this.client.listaParticipanti()));
+        tableView.setItems(modelCaut);
+    }
 }

@@ -10,6 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import model.ProbaDTO;
 import org.apache.thrift.TException;
 import org.teofana.concurs.ConcursService;
+import org.teofana.concurs.ObserverService;
 
 
 import java.net.URL;
@@ -17,7 +18,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class ControllerProbe implements Initializable{
+public class ControllerProbe implements Initializable, ObserverService.Iface {
     private final ObservableList<ProbaDTO> model = FXCollections.observableArrayList();
     @FXML
     TableView<ProbaDTO> tableView;
@@ -32,12 +33,12 @@ public class ControllerProbe implements Initializable{
 
     void initData(ConcursService.Client client){
         this.client=client;
-       try {
+        try {
             List<ProbaDTO> items = this.client.listaProbeDTO();
-            model.setAll(items);
-        } catch (TException e) {
-           e.printStackTrace();
-       }
+                model.setAll(items);
+            } catch (TException e) {
+               e.printStackTrace();
+        }
     }
 
     @Override
@@ -48,12 +49,10 @@ public class ControllerProbe implements Initializable{
         tableView.setItems(model);
     }
 
-//    @Override
-//    public void update() throws MyAppException {
-//        System.out.println("Incerc sa updatez probele");
-//        ProbaDTO[] probaDTO=this.server.listaProbeDTO();
-//        ArrayList<ProbaDTO> items = new ArrayList<>(Arrays.asList(probaDTO));
-//        model.setAll(items);
-//
-//    }
+    @Override
+    public void notifyClient() throws TException {
+        System.out.println("Update probe");
+        List<ProbaDTO> items = this.client.listaProbeDTO();
+        model.setAll(items);
+    }
 }

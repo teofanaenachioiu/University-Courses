@@ -37,8 +37,7 @@ namespace ConcursServer
 
                 ConcursService.Processor processor = new ConcursService.Processor(handler);
                 TServerTransport serverTransport = new TServerSocket(9095);
-                //TServer server = new TSimpleServer(processor, serverTransport);
-                TServer server = new TThreadedServer(processor, serverTransport);
+                TServer server = new TThreadPoolServer(processor, serverTransport);
                 Console.WriteLine("Starting the server...");
                 server.Serve();
 

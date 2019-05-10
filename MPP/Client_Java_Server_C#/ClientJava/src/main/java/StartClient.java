@@ -12,11 +12,11 @@ public class StartClient extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        
         TTransport transport = new TSocket("localhost", 9095);
         transport.open();
         TProtocol protocol = new  TBinaryProtocol(transport);
         ConcursService.Client client = new ConcursService.Client(protocol);
-        //System.out.println("Hello");
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/ViewLogin.fxml"));
@@ -25,14 +25,13 @@ public class StartClient extends Application {
 
         ControllerLogin controllerLogin = loader.getController();
         controllerLogin.init(client, mainMenuScene);
-
         controllerLogin.setPrimaryStage(primaryStage);
 
         primaryStage.setScene(mainMenuScene);
-
         primaryStage.setResizable(false);
         primaryStage.setTitle("Concurs");
-
         primaryStage.show();
+
+
     }
 }

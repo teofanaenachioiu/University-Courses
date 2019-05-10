@@ -19,7 +19,7 @@ namespace Concurs
 {
   public partial class ConcursService {
     public interface ISync {
-      void login(string username, string password);
+      int login(string username, string password);
       User cauta(string username);
       void logout(User user);
       List<Participant> listaParticipanti();
@@ -34,7 +34,7 @@ namespace Concurs
     public interface Iface : ISync {
       #if SILVERLIGHT
       IAsyncResult Begin_login(AsyncCallback callback, object state, string username, string password);
-      void End_login(IAsyncResult asyncResult);
+      int End_login(IAsyncResult asyncResult);
       #endif
       #if SILVERLIGHT
       IAsyncResult Begin_cauta(AsyncCallback callback, object state, string username);
@@ -138,23 +138,23 @@ namespace Concurs
         return send_login(callback, state, username, password);
       }
 
-      public void End_login(IAsyncResult asyncResult)
+      public int End_login(IAsyncResult asyncResult)
       {
         oprot_.Transport.EndFlush(asyncResult);
-        recv_login();
+        return recv_login();
       }
 
       #endif
 
-      public void login(string username, string password)
+      public int login(string username, string password)
       {
         #if SILVERLIGHT
         var asyncResult = Begin_login(null, null, username, password);
-        End_login(asyncResult);
+        return End_login(asyncResult);
 
         #else
         send_login(username, password);
-        recv_login();
+        return recv_login();
 
         #endif
       }
@@ -184,7 +184,7 @@ namespace Concurs
       }
       #endif
 
-      public void recv_login()
+      public int recv_login()
       {
         TMessage msg = iprot_.ReadMessageBegin();
         if (msg.Type == TMessageType.Exception) {
@@ -195,10 +195,13 @@ namespace Concurs
         login_result result = new login_result();
         result.Read(iprot_);
         iprot_.ReadMessageEnd();
+        if (result.__isset.success) {
+          return result.Success;
+        }
         if (result.__isset.e) {
           throw result.E;
         }
-        return;
+        throw new TApplicationException(TApplicationException.ExceptionType.MissingResult, "login failed: unknown result");
       }
 
       
@@ -877,7 +880,7 @@ namespace Concurs
         {
           try
           {
-            iface_.login(args.Username, args.Password);
+            result.Success = iface_.login(args.Username, args.Password);
           }
           catch (MyAppException e)
           {
@@ -1320,7 +1323,21 @@ namespace Concurs
     #endif
     public partial class login_result : TBase
     {
+      private int _success;
       private MyAppException _e;
+
+      public int Success
+      {
+        get
+        {
+          return _success;
+        }
+        set
+        {
+          __isset.success = true;
+          this._success = value;
+        }
+      }
 
       public MyAppException E
       {
@@ -1341,6 +1358,7 @@ namespace Concurs
       [Serializable]
       #endif
       public struct Isset {
+        public bool success;
         public bool e;
       }
 
@@ -1362,6 +1380,13 @@ namespace Concurs
             }
             switch (field.ID)
             {
+              case 0:
+                if (field.Type == TType.I32) {
+                  Success = iprot.ReadI32();
+                } else { 
+                  TProtocolUtil.Skip(iprot, field.Type);
+                }
+                break;
               case 1:
                 if (field.Type == TType.Struct) {
                   E = new MyAppException();
@@ -1392,7 +1417,14 @@ namespace Concurs
           oprot.WriteStructBegin(struc);
           TField field = new TField();
 
-          if (this.__isset.e) {
+          if (this.__isset.success) {
+            field.Name = "Success";
+            field.Type = TType.I32;
+            field.ID = 0;
+            oprot.WriteFieldBegin(field);
+            oprot.WriteI32(Success);
+            oprot.WriteFieldEnd();
+          } else if (this.__isset.e) {
             if (E != null) {
               field.Name = "E";
               field.Type = TType.Struct;
@@ -1414,6 +1446,12 @@ namespace Concurs
       public override string ToString() {
         StringBuilder __sb = new StringBuilder("login_result(");
         bool __first = true;
+        if (__isset.success) {
+          if(!__first) { __sb.Append(", "); }
+          __first = false;
+          __sb.Append("Success: ");
+          __sb.Append(Success);
+        }
         if (E != null && __isset.e) {
           if(!__first) { __sb.Append(", "); }
           __first = false;

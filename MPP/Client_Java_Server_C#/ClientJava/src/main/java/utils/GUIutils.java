@@ -10,7 +10,6 @@ public class GUIutils {
         message.getDialogPane().setStyle("" +
                 "-fx-font-family: \"Trebuchet MS\", Helvetica, sans-serif;\n" +
                 "-fx-text-fill: white;\n" +
-//                "-fx-background-color: rgba(172,20,39,0.5);"+
                 "");
         message.showAndWait();
     }
@@ -22,7 +21,6 @@ public class GUIutils {
         message.getDialogPane().setStyle("" +
                 "-fx-font-family: \"Trebuchet MS\", Helvetica, sans-serif;\n" +
                 "-fx-text-fill: white;\n" +
-//                "-fx-background-color: rgba(172,20,39,0.5);"+
                 "");
         message.showAndWait();
     }

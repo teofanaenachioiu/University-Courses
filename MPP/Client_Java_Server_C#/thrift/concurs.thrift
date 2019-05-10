@@ -35,7 +35,7 @@ exception MyAppException {
 	1: string message
 }
 service ConcursService{
-	void login(1:string username,2:string password) throws (1: MyAppException e);
+	i32 login(1:string username,2:string password) throws (1: MyAppException e);
 	User cauta(1:string username);
 	void logout(1:User user) throws (1: MyAppException e);
 	

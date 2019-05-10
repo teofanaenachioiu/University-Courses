@@ -1,5 +1,6 @@
 package GUI.operator;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,12 +10,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.User;
 import org.apache.thrift.TException;
+import org.apache.thrift.server.TServer;
 import org.teofana.concurs.ConcursService;
-import org.teofana.concurs.MyAppException;
+import org.teofana.concurs.ObserverService;
 
 import java.io.IOException;
 
-public class ControllerOperator  {
+public class ControllerOperator implements ObserverService.Iface {
     @FXML
     AnchorPane mainPane;
     @FXML
@@ -39,17 +41,21 @@ public class ControllerOperator  {
     private Stage primaryStage;
     private Scene loginScene;
 
-    ControllerInscrieri controllerInscrieri;
-    ControllerProbe probeController;
+    private ControllerInscrieri controllerInscrieri;
+    private ControllerProbe probeController;
+    private TServer serverUpdate;
+    private Thread threadUpdate;
 
-    public void setData(ConcursService.Client client, User user) throws IOException {
+    public void setData(ConcursService.Client client, User user, TServer server, Thread thread) throws IOException {
         setUser(user);
         setServer(client);
+        this.serverUpdate=server;
+        this.threadUpdate = thread;
     }
 
     private void setUser(User user){
         this.user=user;
-        usernameLabel.setText("OPERATOR " + this.user.getUsername());
+        Platform.runLater(()->usernameLabel.setText("OPERATOR " + this.user.getUsername()));
     }
 
     private void setServer(ConcursService.Client client) throws IOException {
@@ -66,10 +72,10 @@ public class ControllerOperator  {
         loaderInscrieri.setLocation(getClass().getResource("/ViewInscrieri.fxml"));
         this.inscrieriPane = loaderInscrieri.load();
         this.controllerInscrieri = loaderInscrieri.getController();
-        controllerInscrieri.setData(client,user);
-
-        this.viewPane.getChildren().clear();
-        this.viewPane.getChildren().add(probePane);
+        this.controllerInscrieri.setData(client,user);
+        System.out.println(Platform.isFxApplicationThread());
+        Platform.runLater(()->this.viewPane.getChildren().clear());
+        Platform.runLater(()->this.viewPane.getChildren().add(probePane));
     }
 
     public void setPrimaryStage(Stage primaryStage){
@@ -97,8 +103,14 @@ public class ControllerOperator  {
         System.out.println("AM IESIT DE LA OPERATOR "+ user.getUsername());
         try {
             this.client.logout(user);
-        } catch (MyAppException e) {
-            System.out.println("Am prins eroarea: "+e.getMessage());
+
+            if (this.serverUpdate != null && serverUpdate.isServing()) {
+                System.out.print("Stopping the server... ");
+                serverUpdate.stop();
+                System.out.print("Stopping the thread... ");
+                threadUpdate.interrupt();
+                System.out.println("done.");
+            }
         } catch (TException e) {
             e.printStackTrace();
         }
@@ -106,9 +118,9 @@ public class ControllerOperator  {
     }
 
 
-//    @Override
-//    public void update() throws MyAppException {
-//        controllerInscrieri.update();
-//        probeController.update();
-//    }
+    @Override
+    public void notifyClient() throws TException {
+        this.controllerInscrieri.notifyClient();
+        this.probeController.notifyClient();
+    }
 }

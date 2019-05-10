@@ -7,16 +7,19 @@ using Concurs;
 using Concurs.model;
 using Concurs.repository;
 using Concurs.utils;
+using Thrift.Protocol;
+using Thrift.Transport;
 
 namespace ConcursServer
 {
-    class ConServer : ConcursService.Iface
+    class ConServer : ConcursService.Iface, ObserverService.Iface
     {
         private IRepositoryUser userRepository;
         private IRepositoryParticipant participantRepository;
         private IRepositoryProba probaRepository;
         private IRepositoryInscrieri inscrieriRepository;
-        private ISet<string> loggedClients;
+        private Dictionary<string,int> loggedClients;
+        private int portForClients;
 
         public ConServer(IRepositoryUser repositoryUser, IRepositoryParticipant repositoryParticipant, 
             IRepositoryProba repositoryProba, IRepositoryInscrieri repositoryInscrieri)
@@ -25,7 +28,8 @@ namespace ConcursServer
             participantRepository = repositoryParticipant;
             probaRepository = repositoryProba;
             inscrieriRepository = repositoryInscrieri;
-            loggedClients = new HashSet<string>();
+            loggedClients = new Dictionary<string,int>();
+            portForClients = 9900;
         }
 
         public User cauta(string username)
@@ -54,6 +58,7 @@ namespace ConcursServer
                 throw new MyAppException("Participantul nu se poate inscrie la mai mult de 2 probe");
             int idPartic = participantRepository.Save(new Participant(nume, varsta));
             listaProbe.ForEach(pr => inscrieriRepository.Save(new Inscriere(idPartic, pr.Id, usernameOperator)));
+            notifyClient();
         }
 
         private bool VerificaCtg(int varsta, Proba proba)
@@ -107,7 +112,30 @@ namespace ConcursServer
             return (List<string>)probaRepository.listaProbeNume();
         }
 
-        public void login(string username, string password)
+        public void logout(User user)
+        {
+            loggedClients.Remove(user.Username);
+            Console.WriteLine("User log out: " + user.Username);
+        }
+
+        public void notifyClient()
+        {
+            for (int i = 0; i < loggedClients.Values.Count; i++)
+            {
+                int port = loggedClients.Values.ElementAt(i);
+                TTransport transport = new TSocket("localhost", port);
+                TProtocol protocol = new TBinaryProtocol(transport);
+                ObserverService.Client client = new ObserverService.Client(protocol);
+
+                transport.Open();
+                client.notifyClient();
+                Console.WriteLine("Notific clientul cu portul "+ port);
+                transport.Close();
+            }
+            
+        }
+
+        int ConcursService.ISync.login(string username, string password)
         {
             User user = userRepository.FindOne(username);
             if (user != null)
@@ -115,10 +143,12 @@ namespace ConcursServer
                 string userHash = user.Password;
                 if (userHash == PasswordStorage.CreateHash(password))
                 {
-                    if (loggedClients.Contains(user.Username))
+                    if (loggedClients.ContainsKey(user.Username))
                         throw new MyAppException("User already logged in.");
-                    loggedClients.Add(user.Username);
+                    portForClients += 1;
+                    loggedClients.Add(user.Username, portForClients);
                     Console.WriteLine("New user: " + user.Username);
+                    return portForClients;
                 }
                 else
                 {
@@ -129,12 +159,6 @@ namespace ConcursServer
             {
                 throw new MyAppException("Authentication failed.");
             }
-        }
-
-        public void logout(User user)
-        {
-            loggedClients.Remove(user.Username);
-            Console.WriteLine("User log out: " + user.Username);
         }
     }
 }
