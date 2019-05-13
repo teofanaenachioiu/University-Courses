@@ -1,0 +1,12 @@
+rootProject.name = 'labMPP'
+include 'Model'
+include 'Persistence'
+include 'Services'
+//findProject(':Services')?.name = 'labMPP'
+include 'Client'
+//findProject(':Client')?.name = 'labMPP'
+include 'Server'
+//findProject(':Server')?.name = 'labMPP'
+include 'RestServices'
+//findProject(':RestServices')?.name = 'labMPP'
+

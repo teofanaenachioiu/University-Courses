@@ -1,5 +1,5 @@
 .root {
-    -fx-accent:  rgb(132, 193, 67);
+    -fx-accent: rgb(132, 193, 67);
     -fx-focus-color: rgb(132, 193, 67);
 }
 
@@ -9,27 +9,25 @@
     -fx-text-fill: black;
 }
 
-.text-field{
+.text-field {
     -jfx-focus-color: -fx-accent;
     -jfx-label-float: true;
 }
 
 .text-field .text {
-    -fx-font-size: 15 px;
+    -fx-font-size: 15px;
 }
 
-
-#usernameLabel{
-    -fx-text-fill:black;
+#usernameLabel {
+    -fx-text-fill: black;
     -fx-font-size: 18px;
     -fx-font-weight: bold;
     -fx-font-family: "Trebuchet MS", Helvetica, sans-serif;
     -fx-alignment: center;
 }
 
-
-#labelTitlu{
-    -fx-text-fill:black;
+#labelTitlu {
+    -fx-text-fill: black;
     -fx-font-size: 16px;
     -fx-font-weight: bold;
     -fx-font-family: "Trebuchet MS", Helvetica, sans-serif;
@@ -40,7 +38,7 @@
 
 .table-view {
     -fx-background-color: transparent;
-    -fx-table-cell-border-color:  transparent;
+    -fx-table-cell-border-color: transparent;
 }
 
 .table-view .cell,
@@ -56,7 +54,7 @@
     -fx-font-family: "Trebuchet MS", Helvetica, sans-serif;
     -fx-font-size: 12px;
     -fx-background-color: transparent;
-    -fx-border-color: transparent transparent  #221d23 transparent;
+    -fx-border-color: transparent transparent #221d23 transparent;
     -fx-border-width: 1.5;
     -fx-size: 30;
 }
@@ -69,7 +67,6 @@
     -fx-background-color: transparent;
 }
 
-
 .table-view .column-header-background {
     -fx-background-color: whitesmoke;
 }
@@ -80,7 +77,7 @@
 }
 
 .table-view .table-column {
-    -fx-alignment:center;
+    -fx-alignment: center;
 }
 
 .table-row-cell {
@@ -89,18 +86,16 @@
     -fx-table-cell-border-color: transparent;
 }
 
-
 .table-row-cell:empty, .table-row-cell:empty:hover {
     -fx-background-color: transparent;
 }
 
-.table-row-cell .text
- {
+.table-row-cell .text {
     -fx-fill: #221d23;
 }
 
 .table-row-cell:selected .text,
-.table-row-cell:hover .text ,
+.table-row-cell:hover .text,
 .table-row-cell:hover:selected .text,
 .table-row-cell:focused:selected .text {
     -fx-fill: black;
@@ -108,9 +103,7 @@
     -fx-font-size: 12px;
 }
 
-
-
-#gridMedia{
+#gridMedia {
     -fx-font-family: "Trebuchet MS", Helvetica, sans-serif;
     /*-fx-font-weight: bold;*/
     -fx-font-size: 13px;

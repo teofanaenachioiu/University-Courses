@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+}
+
+group 'labMPP'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile project(':Model')
+
+    runtime group: 'org.xerial', name: 'sqlite-jdbc', version: '3.16.1'
+
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.8.2'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8.2'
+//    compile group: 'org.hibernate.dialect', name: 'sqlite-dialect', version: '0.1.0'
+    compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.16.1'
+    compile 'org.hibernate:hibernate-core:5.2.10.Final'
+
+    compile 'org.springframework:spring-context:4.3.8.RELEASE'
+}

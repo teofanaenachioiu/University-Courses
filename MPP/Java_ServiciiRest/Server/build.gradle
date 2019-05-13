@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'labMPP'
+version '1.0-SNAPSHOT'
+mainClassName = 'StartRpcServer'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile 'org.springframework:spring-context:5.0.4.RELEASE'
+    compile project(':Model')
+    compile project(':Persistence')
+    compile project(':Services')
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.8.2'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8.2'
+}

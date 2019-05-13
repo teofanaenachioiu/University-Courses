@@ -5,10 +5,9 @@
 
     <bean id="concursService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
         <!--<property name="serviceUrl" value="rmi://192.168.86.161:1099/Concurs"/>-->
-          <property name="serviceUrl" value="rmi://127.0.0.1:1099/Concurs"/>
+        <property name="serviceUrl" value="rmi://127.0.0.1:1099/Concurs"/>
         <property name="serviceInterface" value="services.IServer"/>
     </bean>
 
 
-    
 </beans>

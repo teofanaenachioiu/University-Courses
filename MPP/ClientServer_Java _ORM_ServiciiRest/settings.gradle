@@ -1,8 +1,9 @@
-rootProject.name = 'LabJava'
-include 'Client'
-include 'Server'
-include 'Model'
-include 'Persistence'
-include 'Services'
-include 'Networking'
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+rootProject.name = 'restservices'
+include 'RestServices'
+findProject(':RestServices')?.name = 'LabMPP'
 

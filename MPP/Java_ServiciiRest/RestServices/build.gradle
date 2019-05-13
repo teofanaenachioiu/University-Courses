@@ -1,0 +1,37 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+
+group 'labMPP'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+jar {
+    baseName = 'concurs-rest-service'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project (':Model')
+    compile project(':Persistence')
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile("org.springframework.boot:spring-boot-starter-web")
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('com.jayway.jsonpath:json-path')
+}

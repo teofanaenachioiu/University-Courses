@@ -34,11 +34,11 @@
     -fx-font-size: 15px;
 }
 
-#errorLabel{
-    -fx-font-size: 10px;  
+#errorLabel {
+    -fx-font-size: 10px;
 }
 
-.label{
+.label {
     -fx-font-size: 13px;
     -fx-font-family: 'Roboto Light';
 }

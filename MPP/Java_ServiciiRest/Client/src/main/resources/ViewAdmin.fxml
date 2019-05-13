@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="400.0" prefWidth="600.0" stylesheets="@myStyle.css" xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.admin.ControllerAdmin">
+    <children>
+        <AnchorPane fx:id="buttonPane" prefHeight="200.0" prefWidth="200.0"
+                    style="-fx-background-color: rgb(132, 193, 67,0.7);" AnchorPane.bottomAnchor="0.0"
+                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Button fx:id="utilizatoriButton" layoutY="59.0" mnemonicParsing="false" text="Utilizatori"
+                        AnchorPane.bottomAnchor="281.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                        AnchorPane.topAnchor="59.0"/>
+                <Button fx:id="logoutButton" layoutY="119.0" mnemonicParsing="false" onAction="#handleLogout"
+                        text="Deconectare" AnchorPane.bottomAnchor="221.0" AnchorPane.leftAnchor="0.0"
+                        AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="119.0"/>
+            </children>
+        </AnchorPane>
+        <AnchorPane prefHeight="60.0" prefWidth="600.0" style="-fx-background-color: rgb(132, 193, 67);"
+                    AnchorPane.bottomAnchor="340.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                    AnchorPane.topAnchor="0.0">
+            <children>
+                <Label fx:id="usernameLabel" layoutX="458.0" layoutY="22.0" text="Admin: admin"
+                       AnchorPane.bottomAnchor="21.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="22.0"/>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="viewPane" layoutX="100.0" layoutY="60.0" prefHeight="330.0" prefWidth="500.0"
+                    style="-fx-background-color: rgb(132, 193, 67,0.1);" stylesheets="@myStyle.css"
+                    AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0"
+                    AnchorPane.topAnchor="60.0">
+            <children>
+                <TableView fx:id="tabelView" layoutX="31.0" layoutY="32.0" prefHeight="234.0" prefWidth="187.0">
+                    <columns>
+                        <TableColumn fx:id="columnUsername" prefWidth="110.0" text="username"/>
+                        <TableColumn fx:id="columnTip" prefWidth="76.0" text="tip"/>
+                    </columns>
+                </TableView>
+                <Button fx:id="deleteButton" layoutX="278.0" layoutY="137.0" mnemonicParsing="false"
+                        onAction="#handleDelete" text="Delete"/>
+                <GridPane layoutX="278.0" layoutY="32.0" prefHeight="90.0" prefWidth="187.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="88.0" minWidth="10.0" prefWidth="62.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="10.0" prefWidth="125.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <children>
+                        <Label text="Username:"/>
+                        <Label text="Parola:" GridPane.rowIndex="1"/>
+                        <Label text="Tip:" GridPane.rowIndex="2"/>
+                        <ComboBox fx:id="comboBoxTip" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                        <TextField fx:id="textFieldUsername" GridPane.columnIndex="1"/>
+                        <TextField fx:id="textFieldParola" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    </children>
+                </GridPane>
+                <Button fx:id="addButton" layoutX="425.0" layoutY="137.0" mnemonicParsing="false" onAction="#handleAdd"
+                        text="Add"/>
+                <Button fx:id="updateButton" layoutX="349.0" layoutY="137.0" mnemonicParsing="false"
+                        onAction="#handleUpdate" text="Update"/>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
