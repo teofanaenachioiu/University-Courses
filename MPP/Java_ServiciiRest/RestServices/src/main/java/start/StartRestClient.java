@@ -3,7 +3,6 @@ package start;
 import model.Categorie;
 import model.Proba;
 import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.RestTemplate;
 import restClient.ProbeClient;
 import restControllers.ServiceException;
 
@@ -16,8 +15,10 @@ public class StartRestClient {
 
         try {
             show(()-> System.out.println("Proba de adaugat: "+ probaT));
-//            // create
+
+            // create
             show(() -> System.out.println("Proba adaugata :" + probeClient.create(probaT)));
+
             // get all
             show(() -> {
                 System.out.println("Lista de probe");
@@ -29,16 +30,19 @@ public class StartRestClient {
             int size = probeClient.getAll().length;
             Integer idLast = probeClient.getAll()[size-1].getID();
             probaT.setID(idLast);
+
             // find by id
             show(()->{
                 System.out.println("Proba cu id-ul "+idLast + ": "+probeClient.getById(idLast));
             });
+
             // update
             probaT.setDenumire("AtletismUPDATE");
             show(()->{
                 probeClient.update(probaT);
                 System.out.println("Se updateaza proba cu id-ul "+idLast + ": "+ probaT);
             });
+
             // delete
             show(()->{
                 probeClient.delete(idLast);

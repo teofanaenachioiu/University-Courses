@@ -1,8 +1,6 @@
 package restClient;
 
 import model.Proba;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 import restControllers.ServiceException;
 
