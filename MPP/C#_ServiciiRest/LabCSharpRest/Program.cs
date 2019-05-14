@@ -85,10 +85,14 @@ namespace LabCSharpRest
         static async Task<Proba> DeleteProbaAsync(int id)
         {
             Proba proba = null;
-            HttpResponseMessage response = await client.DeleteAsync("/probe/"+id);
+            HttpResponseMessage response = await client.DeleteAsync(url + "/probe/"+id);
             if (response.IsSuccessStatusCode)
             {
                 proba = await response.Content.ReadAsAsync<Proba>();
+            }
+            else
+            {
+                Console.WriteLine(response.StatusCode);
             }
             return proba;
         }
@@ -96,14 +100,15 @@ namespace LabCSharpRest
         static async Task<Proba> PutProbaAsync(Proba p)
         {
             Proba product = null;
-            HttpResponseMessage response = await client.PutAsJsonAsync("/probe/"+p.Id, p);
+            HttpResponseMessage response = await client.PutAsJsonAsync(url + "/probe/" + p.Id, p);
+
             if (response.IsSuccessStatusCode)
             {
                 product = await response.Content.ReadAsAsync<Proba>();
             }
             else
             {
-                //Console.WriteLine(response.Headers);
+                Console.WriteLine(response.StatusCode);
             }
             return product;
         }
@@ -130,8 +135,5 @@ namespace LabCSharpRest
             }
             return probe;
         }
-
-
     }
-
 }
