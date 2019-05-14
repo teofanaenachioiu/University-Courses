@@ -11,8 +11,6 @@ import javax.persistence.*;
 @Table(name = "USERS")
 public class User implements Serializable, HasID<String> {
     @Id
-//    @GeneratedValue(generator="increment")
-//    @GenericGenerator(name="increment", strategy = "increment")
     private String username;
     private String hash;
     @Enumerated(EnumType.STRING)
