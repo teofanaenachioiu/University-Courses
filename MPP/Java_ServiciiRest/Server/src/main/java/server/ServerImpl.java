@@ -186,7 +186,7 @@ public class ServerImpl implements IServer {
                 throw new MyAppException("Authentication failed.");
             }
         } else {
-            throw new MyAppException("No user");
+            //throw new MyAppException("No user");
         }
     }
 
