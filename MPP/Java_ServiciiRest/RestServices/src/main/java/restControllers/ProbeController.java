@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import repository.ProbaRepository;
 import repository.RepositoryException;
 
-
+@CrossOrigin
 @RestController
 @RequestMapping("/concurs")
 public class ProbeController {

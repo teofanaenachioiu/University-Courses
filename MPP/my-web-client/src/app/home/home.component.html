@@ -1,0 +1,15 @@
+<div id="container">
+  <h2>Lista probe <button routerLink="/concurs/probe/add">Add</button></h2>
+  <div *ngIf="!probe && !error">Loading...</div>
+  <div *ngIf="error" (click)="retry()">{{error.status === 404 ? 'Proba not found' : 'Service unavailable or no connectivity'}}</div>
+  <table class="myTable" *ngFor="let proba of probe">
+    <tr>
+      <td>
+        {{proba.denumire}} {{proba.catg}}
+      </td>
+      <td id="but">
+        <button (click)="deleteProba(proba.id)">Delete</button>
+      </td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,13 @@
+<h3>Adaugare probe <button (click)="back()">Back</button></h3>
+
+  Denumire:<br>
+   <input type="text" name="denumire" [(ngModel)]="proba.denumire"><br>
+  Categorie:<br>
+    <input type="radio" name="gender" value="CATEGORIE_6_8" [(ngModel)]="proba.catg"> CATEGORIE_6_8<br>
+    <input type="radio" name="gender" value="CATEGORIE_9_11" [(ngModel)]="proba.catg"> CATEGORIE_9_11<br>
+    <input type="radio" name="gender" value="CATEGORIE_12_15" [(ngModel)]="proba.catg"> CATEGORIE_12_15<br>
+
+  <br>
+  <button (click)="addButtonClicked($event)">Adauga</button>
+
+
