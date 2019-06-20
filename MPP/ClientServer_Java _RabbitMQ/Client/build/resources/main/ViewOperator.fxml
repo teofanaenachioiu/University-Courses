@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@myStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.operator.ControllerOperator">
+   <children>
+      <AnchorPane fx:id="buttonPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(132, 193, 67,0.7);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button fx:id="probeButton" layoutY="119.0" mnemonicParsing="false" onAction="#handleProbePane" text="Statistici" AnchorPane.bottomAnchor="221.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="119.0" />
+            <Button fx:id="inscrieriButton" layoutY="59.0" mnemonicParsing="false" onAction="#handleInscrieriPane" text="Inscrieri" AnchorPane.bottomAnchor="281.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="59.0" />
+            <Button fx:id="logoutButton" layoutY="179.0" mnemonicParsing="false" onAction="#handleLogout" text="Deconectare" AnchorPane.bottomAnchor="161.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="179.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="60.0" prefWidth="600.0" style="-fx-background-color: rgb(132, 193, 67);" AnchorPane.bottomAnchor="340.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="usernameLabel" layoutX="458.0" layoutY="22.0" text="Operator: username" AnchorPane.bottomAnchor="21.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="22.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="viewPane" layoutX="100.0" layoutY="60.0" prefHeight="330.0" prefWidth="500.0" style="-fx-background-color: rgb(132, 193, 67,0.1);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+   <children>
+      <TableView fx:id="tableView" layoutX="45.0" layoutY="63.0" prefHeight="275.0" prefWidth="324.0">
+        <columns>
+          <TableColumn fx:id="numeColumn" prefWidth="101.0" text="nume" />
+          <TableColumn fx:id="statusColumn" prefWidth="99.0" text="status" />
+            <TableColumn fx:id="punctajColumn" prefWidth="90.0" text="punctaj" />
+        </columns>
+      </TableView>
+      <Button layoutX="485.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleLogout" prefHeight="53.0" prefWidth="73.0" text="Logout" />
+      <Label fx:id="utilizatorLabel" layoutX="402.0" layoutY="63.0" text="coord" />
+      <TextField fx:id="punctajTextField" layoutX="458.0" layoutY="111.0" prefHeight="25.0" prefWidth="97.0" />
+      <Label layoutX="402.0" layoutY="115.0" text="Punctaj: " />
+      <Button layoutX="461.0" layoutY="149.0" mnemonicParsing="false" onAction="#handleAcordaPunctaj" text="Acorda punctaj" />
+   </children>
+</AnchorPane>

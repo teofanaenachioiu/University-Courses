@@ -1,0 +1,35 @@
+package services;
+
+import model.Categorie;
+import model.Participant;
+import model.Proba;
+import model.User;
+import model.dto.ProbaDTO;
+
+import java.util.List;
+
+
+public interface IServer {
+    public void inscriereParticipant(String nume, int varsta, Proba[] listaProbe, String usernameOperator) throws MyAppException;
+
+    public Iterable<Participant> filtreazaParticipantiKeyword(String proba, String categorie) throws MyAppException;
+
+    public Iterable<Proba> listaProbe() throws MyAppException;
+
+    public ProbaDTO [] listaProbeDTO() throws MyAppException;
+
+    public Iterable<Participant> listaParticipanti() throws MyAppException;
+
+    public Iterable<Categorie> listaCategorii() throws MyAppException;
+
+    public Iterable<String> listaProbeNume() throws MyAppException;
+
+    public int nrParticipantiProba(Proba proba) throws MyAppException;
+
+    public User cauta(String username) throws MyAppException;
+
+    public void login(String username, String password) throws MyAppException;
+
+    public void logout(User user) throws MyAppException;
+
+}
