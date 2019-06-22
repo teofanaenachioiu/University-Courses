@@ -8,9 +8,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>$Title$</title>
+    <title>Add Regex</title>
 </head>
 <body>
-$END$
+<a href="index.jsp">Logout</a>
+<form action="/addRegex" method="post">
+    Enter regex : <input type="text" name="regex"> <BR>
+    <input type="submit" value="Add"/>
+</form>
 </body>
 </html>

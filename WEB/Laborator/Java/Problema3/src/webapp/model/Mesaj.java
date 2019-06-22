@@ -12,23 +12,13 @@ public class Mesaj {
     }
 
     private Integer id;
-    private String username;
     private String msg;
 
-    public Mesaj(Integer id, String username, String msg) {
+    public Mesaj(Integer id, String msg) {
         this.id = id;
-        this.username = username;
         this.msg = msg;
     }
 
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public String getMsg() {
         return msg;
@@ -44,12 +34,11 @@ public class Mesaj {
         if (!(o instanceof Mesaj)) return false;
         Mesaj mesaj = (Mesaj) o;
         return Objects.equals(getId(), mesaj.getId()) &&
-                Objects.equals(getUsername(), mesaj.getUsername()) &&
                 Objects.equals(getMsg(), mesaj.getMsg());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getUsername(), getMsg());
+        return Objects.hash(getId(), getMsg());
     }
 }

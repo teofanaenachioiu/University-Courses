@@ -1,0 +1,28 @@
+<taglib>
+    <tlib-version>1.0</tlib-version>
+    <jsp-version>2.0</jsp-version>
+    <short-name>My Custom Tag</short-name>
+    <tag>
+        <name>MyMsg</name>
+        <tag-class>main.Details</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>titleX</name>
+        </attribute>
+        <attribute>
+            <name>titleY</name>
+        </attribute>
+        <attribute>
+            <name>values</name>
+        </attribute>
+        <attribute>
+            <name>color</name>
+        </attribute>
+        <attribute>
+            <name>highest</name>
+        </attribute>
+        <attribute>
+            <name>lowest</name>
+        </attribute>
+    </tag>
+</taglib>

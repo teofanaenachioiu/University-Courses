@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app >
+    <!--<servlet>-->
+        <!--<servlet-name>Login</servlet-name>-->
+        <!--<servlet-class>webapp.controller.LoginController</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>Login</servlet-name>-->
+        <!--<url-pattern>/login</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+    <context-param>
+        <param-name>DataBaseURL</param-name>
+        <param-value>jdbc:mysql://localhost/problema6php_db</param-value>
+    </context-param>
+    <context-param>
+        <param-name>DataBaseUser</param-name>
+        <param-value>root</param-value>
+    </context-param>
+    <context-param>
+        <param-name>DataBasePassword</param-name>
+        <param-value></param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>webapp.model.ApplicationManagement</listener-class>
+    </listener>
+
+</web-app>

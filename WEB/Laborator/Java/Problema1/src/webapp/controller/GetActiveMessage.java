@@ -15,8 +15,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-@WebServlet("/getAllInactive")
-public class GetInactiveMessage extends HttpServlet {
+@WebServlet("/getAllActive")
+public class GetActiveMessage extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -26,12 +26,11 @@ public class GetInactiveMessage extends HttpServlet {
         try {
             Connection con = (Connection) request.getSession().getServletContext().getAttribute("conexiune");
             Statement query = con.createStatement();
-            ResultSet rs = query.executeQuery("SELECT id, username, message FROM messages WHERE active=0");
+            ResultSet rs = query.executeQuery("SELECT id, username, message FROM messages WHERE active=1");
             while(rs.next()){
                 Integer id = rs.getInt("id");
                 String userName = rs.getString("username");
                 String msg = rs.getString("message");
-
                 list.add(new Mesaj(id, userName,msg));
             }
         } catch (SQLException e) {
@@ -42,15 +41,8 @@ public class GetInactiveMessage extends HttpServlet {
         PrintWriter outp = response.getWriter();
 
         for(Mesaj m: list) {
-            outp.println( "<tr><td>" );
-            outp.println("<form action ='AcceptMessageController'>");
-            outp.println("<input type='hidden' name='id' value = '" + m.getId()+ "'>");
-            outp.println( "<button type='submit'> Aproba </button>");
-            outp.println("</form>");
-            outp.println("</td><td>");
-            outp.println("<strong>" +m.getUsername() +":" + "</strong>");
-            outp.println("<p>"+m.getMsg()+ "</p>");
-            outp.println("</td></tr>");
+            outp.println("<tr><th><hr>" +m.getUsername()+ ":" + "</th></tr>");
+            outp.println( "<tr><td>" +m.getMsg()+ "</td> </tr>");
         }
 
     }

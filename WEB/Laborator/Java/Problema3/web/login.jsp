@@ -8,9 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>$Title$</title>
+    <title>Login</title>
 </head>
 <body>
-$END$
+<a href="index.jsp">Back</a>
+<form action="/login" method="post">
+    Enter username : <input type="text" name="username"> <BR>
+    Enter password : <input type="password" name="password"> <BR>
+    <input type="submit" value="Login"/>
+</form>
 </body>
 </html>

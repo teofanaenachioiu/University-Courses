@@ -3,4 +3,35 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+
+    <context-param>
+        <param-name>DataBaseURL</param-name>
+        <param-value>jdbc:mysql://localhost/problema3_java</param-value>
+    </context-param>
+    <context-param>
+        <param-name>DataBaseUser</param-name>
+        <param-value>root</param-value>
+    </context-param>
+    <context-param>
+        <param-name>DataBasePassword</param-name>
+        <param-value></param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>webapp.model.ApplicationManagement</listener-class>
+    </listener>
+
+    <filter>
+        <filter-name>TextFilter</filter-name>
+        <filter-class>webapp.model.TextFilter</filter-class>
+        <init-param>
+            <param-name>outText</param-name>
+            <param-value>***</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>TextFilter</filter-name>
+        <url-pattern>/index.jsp</url-pattern>
+    </filter-mapping>
+
 </web-app>

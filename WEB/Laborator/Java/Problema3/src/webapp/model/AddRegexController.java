@@ -14,34 +14,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-@WebServlet("/login")
-public class LoginController extends HttpServlet {
+@WebServlet("/addRegex")
+public class AddRegexController extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String regex = request.getParameter("regex");
 
+        System.out.println("REGEX: "+ regex);
+        String sql = "INSERT INTO expresii(regex) VALUES(?)";
         try {
             ServletContext application = request.getSession().getServletContext();
-            Connection connection = (Connection) application.getAttribute("conexiune");
-            String sql = "SELECT password FROM users WHERE username=?";
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, username);
-            ResultSet rs = preparedStatement.executeQuery();
-            rs.next();
-            if (rs.getString("password").equals(password)) {
-                // password ok
-                HttpSession session = request.getSession();
-                session.setAttribute("login", "true");
-                response.sendRedirect("index.jsp");
-            } else {
-                response.sendRedirect("login.jsp");
-            }
+            Connection con = (Connection) application.getAttribute("conexiune");
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setString(1, regex);
+            preparedStatement.execute();
         } catch (SQLException e) {
-            System.err.println(e);
-            response.sendRedirect("index.jsp");
+            e.printStackTrace();
         }
+
+        response.sendRedirect("indexAdmin.jsp");
     }
 }

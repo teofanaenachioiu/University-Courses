@@ -1,42 +1,44 @@
 package webapp.controller;
 
-import webapp.model.DBManager;
-import webapp.model.User;
-
-import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.*;
 
+
+@WebServlet("/login")
 public class LoginController extends HttpServlet {
 
-    @Override
-    protected void doPost(HttpServletRequest request,
-                          HttpServletResponse response) throws ServletException, IOException {
-
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        RequestDispatcher rd = null;
 
-        DBManager dbmanager = new DBManager();
-        User user = dbmanager.authenticate(username, password);
-
-        HttpSession session = request.getSession();
-
-        if (user != null) {
-
-            rd = request.getRequestDispatcher("/succes.jsp");
-
-            session.setAttribute("user", user);
-
-        } else {
-            rd = request.getRequestDispatcher("/error.jsp");
+        try {
+            ServletContext application = request.getSession().getServletContext();
+            Connection connection = (Connection) application.getAttribute("conexiune");
+            String sql = "SELECT password FROM users WHERE username=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, username);
+            ResultSet rs = preparedStatement.executeQuery();
+            rs.next();
+            if (rs.getString("password").equals(password)) {
+                // password ok
+                HttpSession session = request.getSession();
+                session.setAttribute("login", "true");
+                response.sendRedirect("indexAdmin.jsp");
+            } else {
+                response.sendRedirect("index.jsp");
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+            response.sendRedirect("index.jsp");
         }
-        rd.forward(request, response);
     }
-
 }

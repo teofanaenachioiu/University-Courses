@@ -1,0 +1,33 @@
+<taglib>
+    <uri>pufuleti</uri>
+    <tlib-version>1.0</tlib-version>
+    <jsp-version>2.0</jsp-version>
+    <short-name>Calendar</short-name>
+
+    <tag>
+        <name>calendar</name>
+        <tag-class>pachet.CalendarCustom</tag-class>
+        <body-content>empty</body-content>
+
+        <attribute>
+            <name>an</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>luna</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>zi</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>culoare</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>style</name>
+            <required>false</required>
+        </attribute>
+    </tag>
+</taglib>
