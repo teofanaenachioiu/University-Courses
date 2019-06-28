@@ -1,0 +1,8 @@
+.necitit{
+    border: 1px black solid;
+}
+
+tr:hover {
+    background-color: lightskyblue;
+    color: darkblue;
+}

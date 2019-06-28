@@ -1,0 +1,35 @@
+img {
+    width:300px;
+
+}
+
+.content {
+    display: flex;
+    padding: 25px;
+    background-color: lightgray;
+    width: 650px;
+}
+
+
+.text {
+    position: relative;
+    width:300px;
+    background: #333333;
+    color: white;
+    text-align: center;
+}
+p{
+    position: absolute;
+    top:45%;
+    left: 45%;
+
+}
+
+.image{
+    position: relative;
+}
+.closeBtn{
+    position: absolute;
+    left: 0;
+    top: 0;
+}

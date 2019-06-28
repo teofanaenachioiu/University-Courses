@@ -1,0 +1,35 @@
+.meniu{
+    background-color: #111111;
+    height: 46px;
+}
+.meniu ul{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /*fixed to top*/
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.meniu li {
+    list-style-type: none;
+    float: left;
+}
+
+.meniu li a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.meniu li a:hover {
+    background-color: gray;
+}
+
+.meniu li a:active {
+    background-color: lightskyblue;
+}
