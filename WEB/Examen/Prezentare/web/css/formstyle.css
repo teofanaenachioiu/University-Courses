@@ -21,7 +21,7 @@ form{
     width:90%;
     margin:0 auto;
 }
-input[type=file],[type=text], [type=password]{
+input[type=file],[type=text], [type=number]{
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;

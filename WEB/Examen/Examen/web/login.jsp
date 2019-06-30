@@ -12,7 +12,6 @@
     <link rel="stylesheet" type="text/css" href="css/meniu.css">
     <link rel="stylesheet" type="text/css" href="css/login.css">
 
-
 </head>
 <body>
 <ul class="meniu">

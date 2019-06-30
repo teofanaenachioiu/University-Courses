@@ -4,7 +4,6 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import javax.activation.MimetypesFileTypeMap;
 import javax.servlet.ServletContext;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,15 +17,11 @@ import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 
-@WebServlet("/adaugaProdus")
-public class AdaugaProdusController extends HttpServlet {
+@WebServlet("/adaugaImagine")
+public class AdaugaImagineController extends HttpServlet {
     private String filePath;
     private File file;
-    private String nume = null;
     private String descriere = null;
-    private String producator = null;
-    private Integer pret = null;
-    private Integer cantitate = null;
     private String filename = null;
 
 
@@ -47,24 +42,8 @@ public class AdaugaProdusController extends HttpServlet {
                     String name = item.getFieldName();
                     String value = item.getString();
                     switch (name) {
-                        case "nume": {
-                            nume = value;
-                            break;
-                        }
                         case "descriere": {
                             descriere = value;
-                            break;
-                        }
-                        case "producator": {
-                            producator = value;
-                            break;
-                        }
-                        case "pret": {
-                            pret = Integer.valueOf(value);
-                            break;
-                        }
-                        case "cantitate": {
-                            cantitate = Integer.valueOf(value);
                             break;
                         }
                     }
@@ -75,19 +54,7 @@ public class AdaugaProdusController extends HttpServlet {
                     } else {
                         file = new File(filePath + filename.substring(filename.lastIndexOf("\\") + 1));
                     }
-                    String mimetype= new MimetypesFileTypeMap().getContentType(file);
-                    String type = mimetype.split("/")[0];
-                    if(type.equals("image")) {
-                        System.out.println("It's an image");
-                        item.write(file);
-                    }
-                    else{
-                        System.out.println("It's NOT an image");
-                        response.sendRedirect("indexAdmin.jsp");
-                        return;
-                    }
-
-
+                    item.write(file);
                 }
             }
         } catch (Exception e1) {
@@ -96,17 +63,13 @@ public class AdaugaProdusController extends HttpServlet {
         try {
             ServletContext application = request.getSession().getServletContext();
             Connection connection = (Connection) application.getAttribute("conexiune");
-            String sql = "INSERT INTO produse(nume, descriere, producator, pret, cantitate, path_poza) VALUES (?,?,?,?,?,?)";
+            String sql = "INSERT INTO imagini(descriere, path_img) VALUES (?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, nume);
-            preparedStatement.setString(2, descriere);
-            preparedStatement.setString(3, producator);
-            preparedStatement.setInt(4, pret);
-            preparedStatement.setInt(5, cantitate);
+            preparedStatement.setString(1, descriere);
             filename = "./uploads/" + filename;
-            preparedStatement.setString(6, filename);
+            preparedStatement.setString(2, filename);
             preparedStatement.execute();
-            response.sendRedirect("indexAdmin.jsp");
+            response.sendRedirect("adaugaPoza.jsp");
         } catch (SQLException e) {
             e.printStackTrace();
             response.sendRedirect("index.jsp");

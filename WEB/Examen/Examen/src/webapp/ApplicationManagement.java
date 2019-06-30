@@ -1,5 +1,8 @@
 package webapp;
 
+import javafx.util.Pair;
+import webapp.model.Castigator;
+import webapp.model.Imagine;
 import webapp.model.Utilizator;
 
 import javax.servlet.ServletContext;
@@ -13,6 +16,128 @@ import java.util.List;
 public class ApplicationManagement implements ServletContextListener {
     private static Connection connection;
     private static ServletContext application;
+
+    public static List<Imagine> getImagini() {
+        List<Imagine> list = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement(
+                    "SELECT id, path_img FROM imagini");
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                String imagine = rs.getString("path_img");
+                Integer id = rs.getInt("id");
+                list.add(Imagine.builder()
+                        .path_img(imagine)
+                        .id(id)
+                        .build());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+
+    public static List<String> getDescrieri() {
+        List<String> list = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement(
+                    "SELECT descriere FROM imagini");
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                String descriere = rs.getString("descriere");
+                list.add(descriere);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public static List<Castigator> getCeiMaiTari() {
+        List<Castigator> list = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement(
+                    "SELECT id,nume, timp FROM castigatori ORDER BY timp desc LIMIT 3");
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                String nume = rs.getString("nume");
+                Long timp = rs.getLong("timp");
+                Integer id = rs.getInt("id");
+                list.add(Castigator.builder()
+                        .id(id)
+                        .nume(nume)
+                        .timp(timp)
+                        .build());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+
+    public static boolean verificaPerechea(Integer id, String descriere) {
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement("SELECT descriere FROM imagini WHERE id=?");
+
+            preparedStatement.setInt(1, id);
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next() && rs.getString("descriere").equals(descriere)) {
+                System.out.println(rs.getString("descriere"));
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+
+    }
+
+    public static void inclouieste(Integer id, String nume, Long timp) {
+
+
+
+    }
+
+    public static void stergeCastigator(Integer id) {
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(
+                    "DELETE FROM castigatori WHERE id= ?");
+            preparedStatement.setInt(1, id);
+            preparedStatement.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void insereazaCastigator(String nume, Long timp) {
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(
+                    "INSERT INTO castigatori(nume, timp) VALUES (?,?)");
+            preparedStatement.setString(1, nume);
+            preparedStatement.setLong(2, timp);
+            preparedStatement.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void contextInitialized(ServletContextEvent event) {
         application = event.getServletContext();

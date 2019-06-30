@@ -1,0 +1,38 @@
+.layout1, .layout2{
+    position: relative;
+    background-color: lightskyblue;
+    width: 500px;
+    height: 350px;
+    display: inline-block;
+    color: white;
+    font-weight: bold;
+    margin: 5px;
+}
+
+.activ{
+    border: 3px black solid;
+}
+
+img{
+    width: 250px;
+}
+
+img, p{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+}
+
+.layout1 img, .layout1 p{
+    left: 50%;
+}
+
+.layout2 img{
+    left: 75%;
+}
+.layout2 p{
+    text-align: center;
+    width: 250px;
+    white-space: pre-line;
+    left: 25%;
+}

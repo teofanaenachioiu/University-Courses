@@ -20,7 +20,7 @@
         <description>Location to store uploaded file</description>
         <param-name>file-upload</param-name>
         <param-value>
-            D:\University-Courses\WEB\Examen\Examen\web\poze\
+            D:\University-Courses\WEB\Examen\Examen\web\uploads\
         </param-value>
     </context-param>
 

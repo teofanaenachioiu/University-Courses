@@ -1,5 +1,6 @@
 package webapp;
 
+import webapp.model.Slide;
 import webapp.model.Utilizator;
 
 import javax.servlet.ServletContext;
@@ -13,6 +14,110 @@ import java.util.List;
 public class ApplicationManagement implements ServletContextListener {
     private static Connection connection;
     private static ServletContext application;
+
+    public static void stergeSlide(Integer idSlide) {
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(
+                    "DELETE FROM slideuri WHERE id = ?");
+            preparedStatement.setInt(1,idSlide);
+            preparedStatement.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static int numarSlideuri() {
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(
+                    "SELECT COUNT(*) AS nrSlideuri FROM slideuri");
+            ResultSet rs = preparedStatement.executeQuery();
+            rs.next();
+            return rs.getInt("nrSlideuri");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public static Slide getSlide(Integer idSlide) {
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement(
+                    "SELECT titlu, text, path_img, nrSecunde, layout, nrOrd FROM slideuri WHERE id=?");
+
+            preparedStatement.setInt(1, idSlide);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                return Slide.builder()
+                        .id(idSlide)
+                        .titlu(rs.getString("titlu"))
+                        .text(rs.getString("text"))
+                        .layout(rs.getString("layout"))
+                        .nrSecunde(rs.getInt("nrSecunde"))
+                        .path_img(rs.getString("path_img"))
+                        .nrOrd(rs.getInt("nrOrd"))
+                        .build();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Slide.builder().build();
+    }
+
+    public static List<Slide> getSlideuri() {
+        List<Slide> list = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement(
+                    "SELECT  id, titlu, text, path_img, nrSecunde, layout, nrOrd FROM slideuri ORDER BY nrOrd");
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                Slide slide= Slide.builder()
+                        .id(rs.getInt("id"))
+                        .titlu(rs.getString("titlu"))
+                        .text(rs.getString("text"))
+                        .layout(rs.getString("layout"))
+                        .nrSecunde(rs.getInt("nrSecunde"))
+                        .nrOrd(rs.getInt("nrOrd"))
+                        .path_img(rs.getString("path_img"))
+                        .build();
+                list.add(slide);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public static void interschimbaPozitii(Integer id1, Integer id2) {
+        Slide slide1= getSlide(id1);
+        Slide slide2= getSlide(id2);
+
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(
+                    "UPDATE slideuri SET nrOrd=? WHERE id = ?");
+            preparedStatement.setInt(1, slide2.getNrOrd());
+            preparedStatement.setInt(2, slide1.getId());
+            preparedStatement.execute();
+
+
+            preparedStatement = connection.prepareStatement(
+                    "UPDATE slideuri SET nrOrd=? WHERE id = ?");
+            preparedStatement.setInt(1, slide1.getNrOrd());
+            preparedStatement.setInt(2, slide2.getId());
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void contextInitialized(ServletContextEvent event) {
         application = event.getServletContext();
