@@ -10,5 +10,9 @@ public class JucatorDto {
     private String username;
     private boolean muta;
     private boolean castigator;
-    private Integer numarPuncte; //optional
+    private Integer pozitie1;
+    private Integer pozitie2;
+    private Integer nrIncercari;
+    private boolean pozitie1Ghicita;
+    private boolean pozitie2Ghicita;
 }

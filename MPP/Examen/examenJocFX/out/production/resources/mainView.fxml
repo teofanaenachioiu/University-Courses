@@ -2,18 +2,79 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
    <children>
       <Button layoutX="496.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleLogout" prefHeight="60.0" prefWidth="60.0" text="Logout" />
       <Label fx:id="utilizatorLabel" layoutX="479.0" layoutY="63.0" text="Custom label" />
-      <Label fx:id="asteaptaLabel" layoutX="316.0" layoutY="343.0" text="Joc in desfasurare....">
+      <Label fx:id="asteaptaLabel" layoutX="316.0" layoutY="343.0" text="Asteptati adversar..." visible="false">
          <font>
             <Font size="29.0" />
          </font>
       </Label>
       <Button fx:id="startButton" layoutX="413.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleStart" prefHeight="60.0" prefWidth="60.0" text="Start" />
+      <GridPane gridLinesVisible="true" layoutX="53.0" layoutY="102.0" prefHeight="196.0" prefWidth="214.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="label1" text="1" GridPane.halignment="CENTER" />
+            <Label fx:id="label2" text="2" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+            <Label fx:id="label3" text="3" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+            <Label fx:id="label4" text="4" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
+            <Label fx:id="label5" text="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <Label fx:id="label6" text="6" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <Label fx:id="label7" text="7" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <Label fx:id="label8" text="8" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <Label fx:id="label9" text="9" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <Label fx:id="label10" text="10" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <Label fx:id="label11" text="11" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <Label fx:id="label12" text="12" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <Label fx:id="label13" text="13" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+            <Label fx:id="label14" text="14" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+            <Label fx:id="label15" text="15" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+            <Label fx:id="label16" text="16" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+      <TextField fx:id="atacaTextField" layoutX="466.0" layoutY="184.0" prefHeight="25.0" prefWidth="34.0" />
+      <Label layoutX="368.0" layoutY="188.0" text="Pozitie de atacat:" />
+      <Button fx:id="atacaButton" layoutX="456.0" layoutY="220.0" mnemonicParsing="false" onAction="#handleAtaca" text="Ataca" />
+      <Label fx:id="pozitieAdversarLabel" layoutX="294.0" layoutY="245.0" prefHeight="17.0" prefWidth="221.0" />
+      <GridPane layoutX="368.0" layoutY="102.0" prefHeight="60.0" prefWidth="116.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="93.0" minWidth="10.0" prefWidth="74.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="133.0" minWidth="10.0" prefWidth="42.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField fx:id="pozitie1TextField" GridPane.columnIndex="1" />
+            <TextField fx:id="pozitie2TextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Pozitie 1:" />
+            <Label text="Pozitie 2:" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+      <Label fx:id="invalidLabel" layoutX="366.0" layoutY="162.0" text="pozitii invalide" visible="false">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

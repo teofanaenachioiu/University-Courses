@@ -10,5 +10,16 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class JucatorFinalDto {
-    private String username;
+    private Integer idJoc;
+    private Integer idJucator;
+    private Integer idAdversar;
+    private String usernameJucator;
+    private String usernameAdversar;
+    private Integer pozitie1Jucator;
+    private Integer pozitie2Jucator;
+    private Integer pozitie1Adversar;
+    private Integer pozitie2Adversar;
+    private Integer numarIncercariJucator;
+    private Integer numarIncercariAdversar;
+    private String castigator;
 }
