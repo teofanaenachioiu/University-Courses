@@ -36,4 +36,16 @@ Algorithms implementation, labs, courses, docs, additional exercises etc
 <p>📌 Artificial Intelligence (~ AI) <i> => Python</i></p>
 <p>📌 Database Management System (~ SGBD) <i> => SQL, C# </i></p>
 <p>📌 Software Engineering (~ ISS) <i> => Angular, TypeScript, Bootstrap, Java</i> </p>
-<p>📌 Web programming (~ WEB) <i> => HTML4.01, HTML5, CSS, JavaScript </i></p>
+<p>📌 Web programming (~ WEB) <i> => HTML4.01, HTML5, CSS, JavaScript, PHP, Java Servlet </i></p>
+
+<h1> Year 3 </h1>
+
+<h3> Fifth semester 🤦🏻‍♀️</h3>
+
+<p>📌 Mobile Application (~ Mobile) </p>
+<p>📌 Formal Languages & Compiler Design (~ LFTC) </p>
+<p>📌 Parallel and distributed programming (~ PPD) </p>
+<p>📌 Human Computer Interaction (~ HCI) </p>
+<p>📌 Computer Graphics (~ Grafica) </p>
+
+<h3> Sixth semester 👩🏻‍🎓</h3>
