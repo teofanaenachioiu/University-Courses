@@ -1,0 +1,57 @@
+Tematica     Proba scrisa – (Obligatorie!)  Grafica pe Calculator  (1h 30min) 
+
+1p - oficiu
+
+Partea I - 4p    (Sub. 1, 2, 3 sau 4)
+
+Sub. 1 – C. 1   ~   Realizarea ?i Interpretarea elementelor ?n Grafica 2D     ~ El. Grafica 2D 
+
+·      Fereastra Fizica (Viewport), Fereastra Reala (Window),
+
+·      Reprezentarea:  formule de transformare Window à Viewport  [ u(x); v(y) ]
+
+·      Interpretarea datelor: Viewport à Window  [ x=u-1(u); y=v-1(v) ]
+
+Sub. 2 – C. 2   ~   Reprezentarea obiectelor 3D (Curbe, suprafete, sau corpuri)                                ~  El. Grafica 3D
+
+·      Transformari geometrice uzuale: Translatie, Rotatie, Scalare, Simetrie, ?i Proiec?ie (paralela, conica)
+
+Sub. 3 – C. 3   ~   Observarea unui sistem 3D de puncte
+
+·      Operatii de Vizualizare (Aducerea observatorului pe axa Oz  &  verticalitatea)
+
+·      Decuparea  Vol. Viz.
+
+Sub. 4 – C. 3    ~  Modelarea corpurilor [  a)  -  g)  ]
+
+Partea II - 5p    (Sub. 5, 6 sau 7)                                                                                             <<  Cresterea realismului imaginilor  >>
+
+Sub. 5 – C. 4   ~     Eliminarea suprafe?elor acoperite
+
+·       Prezentare generala a celor 4 Metode si  Met. OCTREE),    sau
+
+·       Prezentare ?n detaliu (met. ?i alg.) a unei singure metode  (la alegere) !
+
+Sub. 6 – C. 5   ~     Texturi
+
+·      Constante, variabile, neregulate.
+
+Sub. 7 – C. 6   ~     Lumina ?i Umbra
+
+·      Elemente, Clasificari ale surselor, Caracteristicile suprafetelor,
+
+·      Legea lui Lambert: formule,
+
+·      Cazurile de vizibilitate.
+
+Partea III –  +2p (+1p  +  +1p)                                                                                             Facultativ!
+
+Sub. 8 – C. 6   ~     Stereografie                                                  +1p
+
+·       Anaglife  ?i  Stereograme.
+
+Sub. 9 – C. 7   ~     OpenGL                                                  +1p
+
+·       Prezentare generala (etape, no?iuni de baza, elemente, principii, ... ),
+
+·       Notiuni introductive (coordonate, transformari, texturi, primitive, ... )  .

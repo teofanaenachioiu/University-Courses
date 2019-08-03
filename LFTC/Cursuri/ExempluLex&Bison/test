@@ -1,0 +1,15 @@
+program ex;
+var i:integer;
+begin
+read(i);
+if i<2 then i:=i+1
+ else i:=i+2;
+while i>10 do 
+ begin
+   i:=i+1;
+ end;
+write(i);
+for i:=1 to 100 do
+    i:=i+1;
+write(i);
+end. 

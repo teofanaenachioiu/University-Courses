@@ -1,0 +1,80 @@
+%{
+#include "y.tab.h"
+%}
+
+%option noyywrap
+%option caseless
+
+LITERA		[A-Za-z_]
+CIFRA_ZEC	[0-9]
+IDENTIFICATOR	{LITERA}({LITERA}|{CIFRA_ZEC})*
+NR_BAZA10	{CIFRA_ZEC}+
+
+NR_REAL		{NR_BAZA10}"."{NR_BAZA10}*
+DELIMIT_1	[;.,:]
+OPERATOR_1	[+*/()<>=]|"-"|"["|"]"
+COMENT		"{"[^}]*"}"
+SIR_CAR		["][^\n"]*["]
+CARACTER	"'"[^\n]"'"
+
+%%
+
+[ \t\n]
+{COMENT}
+
+begin		{return BEGINN;}
+const		{return CONST;}
+do		{return DO;}
+else		{return ELSE;}
+end		{return END;}
+if		{return IF;}
+
+program		{return PROGRAM;}
+read		{return READ;}
+write {return WRITE;}
+then		{return THEN;}
+var		{return VAR;}
+while		{return WHILE;}
+array           {return ARRAY;}
+of {return OFF;}
+for {return FOR;}
+to {return TO;}
+
+
+
+char		{return CHAR;}
+integer		{return INTEGER;}
+real		{return REAL;}
+boolean {return BOOLEAN;}
+
+":="		{return ATRIB;}
+
+"<"		{return LESS;}
+">"		{return GREATER;}
+
+
+or		{return OR;}
+and		{return AND;}
+not		{return NOT;}
+
+{IDENTIFICATOR}	{return ID;}
+{NR_BAZA10}	{
+	yylval.p_val = yytext;
+	return CONST_INT;
+		}
+{NR_REAL}	{
+	yylval.p_val = yytext;
+	return CONST_REAL;
+		}
+{CARACTER}	{
+	yylval.p_val = yytext;
+	return CONST_CAR;
+		}
+{SIR_CAR}	{return CONST_SIR;}
+
+{DELIMIT_1}	{return yytext[0];}
+{OPERATOR_1}	{return yytext[0];}
+
+%%
+
+
