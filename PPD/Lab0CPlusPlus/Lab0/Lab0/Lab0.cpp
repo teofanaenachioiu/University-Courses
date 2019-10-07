@@ -7,6 +7,7 @@
 
 int main()
 {
+	std::cout << "Hello world" << std::endl;
 	//Utils::createNewFile("test1.txt", 3, 2, 9);
 	//bool sameContent = Utils::checkIsSameContentInFile("test.txt", "test1.txt");
 	//std::cout << sameContent << std::endl;
