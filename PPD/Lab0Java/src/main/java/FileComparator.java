@@ -2,6 +2,9 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class FileComparator {
@@ -14,22 +17,29 @@ public class FileComparator {
             BufferedReader inputReader1 = new BufferedReader(file1);
             BufferedReader inputReader2 = new BufferedReader(file2);
 
-            String nextLine1;
-            String nextLine2;
-            while ((nextLine1 = inputReader1.readLine()) != null && (nextLine2 = inputReader2.readLine()) != null) {
-                if (!nextLine1.equals(nextLine2)) {
-                    return false;
-                }
+            List<String> list1 = new LinkedList<>();
+            List<String> list2 = new LinkedList<>();
+
+            String nextLine;
+            while ((nextLine = inputReader1.readLine()) != null) {
+                List<String> strings = Arrays.asList(nextLine.split(" *"));
+                list1.addAll(strings);
             }
-            if (inputReader1.readLine() != null || inputReader2.readLine() != null) {
-                return false;
+            list1.sort(String::compareTo);
+
+            while ((nextLine = inputReader2.readLine()) != null) {
+                List<String> strings = Arrays.asList(nextLine.split(" *"));
+                list2.addAll(strings);
             }
+            list2.sort(String::compareTo);
+
+            return list1.equals(list2);
         } catch (FileNotFoundException e) {
             System.out.println("Invalid files!");
-            return false;
         }
-        return true;
+        return false;
     }
+
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
 
@@ -39,7 +49,7 @@ public class FileComparator {
         System.out.println("File name2: ");
         String file_name2 = scanner.next();
 
-        boolean isSame = isSameContentInFile(file_name1,file_name2);
+        boolean isSame = isSameContentInFile(file_name1, file_name2);
         System.out.println(isSame);
     }
 }
