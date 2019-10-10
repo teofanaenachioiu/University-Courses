@@ -8,10 +8,21 @@ public class FileCreator {
     private static Random random = new Random();
 
     private static void writeInFile(FileWriter writer, int size, int min, int max) throws IOException {
-        int number;
+        int nr_cifre;
+        int cifra;
         for (int i = 0; i < size; i++) {
-            number = random.nextInt((max - min) + 1) + min;
-            writer.append(String.valueOf(number)).append("\n");
+            nr_cifre = random.nextInt((max - min) + 1) + min;
+            for(int j = 0; j < nr_cifre;j++){
+                if (j == 0) {
+                    cifra = random.nextInt(9) + 1;
+                    writer.append(String.valueOf(cifra));
+                }
+                else{
+                    cifra = random.nextInt(10);
+                    writer.append(String.valueOf(cifra));
+                }
+            }
+            writer.append("\n");
         }
         writer.close();
     }

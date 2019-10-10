@@ -4,17 +4,31 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <time.h>
 
 using namespace std;
 
 void createNewFile(string file_name, int size, int min, int max)
 {
 	ofstream outfile(file_name);
-	int number;
+	int nr_cifre;
+	int cifra;
 
 	for (int i = 0; i < size; i++) {
-		number = rand() % (max - min + 1) + min;
-		outfile << number << " ";
+
+		nr_cifre = rand() % (max - min + 1) + min;
+
+		for (int j = 0; j < nr_cifre; j++) {
+			if (j == 0) {
+				cifra = rand() % 9 + 1;
+			}
+			else {
+				cifra = rand() % 10;
+			}
+			outfile << cifra;
+		}
+		
+		outfile << endl;
 	}
 
 	outfile.close();
@@ -39,6 +53,6 @@ int main()
 	if (min > max) {
 		swap(min, max);
 	}
-
+	srand(time(NULL));
 	createNewFile(file_name, size, min, max);
 }
