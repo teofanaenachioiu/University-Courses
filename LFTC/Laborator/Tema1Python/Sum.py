@@ -1,4 +1,4 @@
-def number_sum(n):
+def numbers_sum(n):
     nr_sum = 0
 
     for i in range(n):
