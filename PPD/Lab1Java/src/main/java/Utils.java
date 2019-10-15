@@ -16,11 +16,11 @@ public class Utils {
         }
     }
 
-    public static void createNewFile(String file_name, int size, int min, int max) throws IOException {
+    public static void createNewFile(String fileName, int size, int min, int max) throws IOException {
         int no_digits;
         int digit;
 
-        File file = new File(file_name);
+        File file = new File(fileName);
         FileWriter writer = new FileWriter(file);
 
         for (int i = 0; i < size; i++) {
@@ -58,5 +58,48 @@ public class Utils {
             digits[index] = Integer.parseInt(string.substring(index, index + 1));
         }
         return digits;
+    }
+
+    public static void writeNumberInFile(BigNumber bigNumber, String fileName) throws IOException {
+        File file = new File(fileName);
+        FileWriter writer = new FileWriter(file);
+
+        int size = bigNumber.getSize();
+        for (int i = 0; i < size; i++) {
+            writer.append(String.valueOf(bigNumber.getDigit(i)));
+        }
+        writer.close();
+    }
+
+    public static boolean isSameContentInFile(String file_name1, String file_name2) throws IOException {
+
+        try {
+            FileReader file1 = new FileReader(file_name1);
+            FileReader file2 = new FileReader(file_name2);
+
+            BufferedReader inputReader1 = new BufferedReader(file1);
+            BufferedReader inputReader2 = new BufferedReader(file2);
+
+            List<String> list1 = new ArrayList<>();
+            List<String> list2 = new ArrayList<>();
+
+            String nextLine;
+            while ((nextLine = inputReader1.readLine()) != null) {
+                List<String> strings = Arrays.asList(nextLine.split(" *"));
+                list1.addAll(strings);
+            }
+            list1.sort(String::compareTo);
+
+            while ((nextLine = inputReader2.readLine()) != null) {
+                List<String> strings = Arrays.asList(nextLine.split(" *"));
+                list2.addAll(strings);
+            }
+            list2.sort(String::compareTo);
+
+            return list1.equals(list2);
+        } catch (FileNotFoundException e) {
+            System.out.println("Invalid files!");
+        }
+        return false;
     }
 }
