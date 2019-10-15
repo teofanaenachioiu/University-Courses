@@ -2,7 +2,8 @@
 //
 
 #include "pch.h"
-#include "Circle.h"
+#define _USE_MATH_DEFINES
+#include <cmath>
 #include <iostream>
 
 using namespace std;
@@ -26,36 +27,37 @@ void gcd()
 }
 
 void numberSum() {
-	double element, sum = 0;
+	double elems[100], sum = 0;
 	int n, index;
 
-	for (index = 0; index < n; index=index+1) {
-		cout << "element" << index << ": ";
-		cin >> element;
-		sum = sum + element;
+	cout << "n="; cin >> n;
+
+	index = 0;
+
+	while (index < n) {
+		cout << "elems[" << index << "]=";
+		cin >> elems[index];
+		sum = sum + elems[index];
+		index = index + 1;
 	}
 
 	cout << "SUM: " << sum << endl;
 }
 
-void circleCalcul() {
-	Circle circle;
+void computeCircleProps() {
 	int radius;
-	double perimeter, area;
+	double area, perimeter;
 
 	cout << "r="; cin >> radius;
 
-	circle = Circle(radius);
-
-	perimeter = circle.getPerimeter();
-	area = circle.getArea();
-
-	cout << "PERIMETER: " << perimeter << endl;
-	cout << "AREA: " << area << endl;
+	area = M_PI * radius * radius;
+	perimeter = 2 * M_PI  * radius;
+	cout << "area: " << area << endl;
+	cout << "perimeter: " << perimeter << endl;
 }
 
 
 int main()
 {
-	circleCalcul();
+	numberSum();
 }
