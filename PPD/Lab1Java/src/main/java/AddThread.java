@@ -20,8 +20,12 @@ public class AddThread extends Thread {
     @Override
     public void run() {
         super.run();
-        int digitSum;
-        int c = this.carry[noThread];
+        int digitSum, c = 0;
+
+        if (noThread > 0) {
+            c = this.carry[noThread - 1];
+        }
+
         for (int index = start; index < end; index++) {
             digitSum = bigNumber1.getDigit(index) + bigNumber2.getDigit(index) + c;
             bigNumberSum.setDigit(index, digitSum % 10);

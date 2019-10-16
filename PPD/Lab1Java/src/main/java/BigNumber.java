@@ -4,6 +4,7 @@ public class BigNumber {
 
     /**
      * Constructor
+     *
      * @param size numar intreg pozitiv: dimensiunea numarului
      */
     public BigNumber(int size) {
@@ -12,6 +13,7 @@ public class BigNumber {
 
     /**
      * Constructor
+     *
      * @param digits array de numere intregi >=0 si <=9: cifrele numarului
      */
     public BigNumber(int[] digits) {
@@ -20,6 +22,7 @@ public class BigNumber {
 
     /**
      * Lungimea numarului
+     *
      * @return numar intreg pozitiv
      */
     public int getSize() {
@@ -28,6 +31,7 @@ public class BigNumber {
 
     /**
      * Cifra de pe o anumita pozitie
+     *
      * @param index numar intreg pozitiv: pozitia cifrei
      * @return numar intrg >=0 si <=9: cifra de pe pozitia index sau 0 daca pozitia nu exista
      */
@@ -39,7 +43,8 @@ public class BigNumber {
 
     /**
      * Actializeaza cifra de pe o pozitie data
-     * @param poz numar intreg pozitiv: pozitia pe care se doreste sa se seteze noua valoare a cifrei
+     *
+     * @param poz   numar intreg pozitiv: pozitia pe care se doreste sa se seteze noua valoare a cifrei
      * @param digit numar intreg >=0 si <=9: noua cifra
      */
     public void setDigit(int poz, int digit) {
@@ -58,6 +63,7 @@ public class BigNumber {
 
     /**
      * Adunarea secventiala a doua numere
+     *
      * @param otherNumber BigNumber: numarul ce va fi adaugat la numarul curent
      * @return BigNumber: suma numerelor
      */
@@ -93,9 +99,10 @@ public class BigNumber {
     }
 
     /**
-     * Adunarea paralela a doua numere
+     * Adunarea paralela a doua numere (varianta 1)
+     *
      * @param otherNumber BigNumber: numarul ce va fi adaugat la numarul curent
-     * @param no_Threads numar intreg pozitiv: numarul de threaduri
+     * @param no_Threads  numar intreg pozitiv: numarul de threaduri
      * @return BigNumber: suma numerelor
      * @throws InterruptedException
      */
@@ -133,7 +140,7 @@ public class BigNumber {
 
         // se seteaza carry-ul pe ultima pozitie
         if (carry[no_Threads] == 2 && carry[no_Threads - 1] == 1) {
-            numberSum.setDigit(size, 1);
+            numberSum.setDigit(numberSum.getSize(), 1);
         }
 
         return numberSum;
@@ -141,8 +148,9 @@ public class BigNumber {
 
     /**
      * Determina numarul cel mai lung
+     *
      * @param otherNumber BigNumber: numarul cu care se compara numarul curent
-     * @param minLength numar intreg pozitiv: lungimea celui mai scurt numar
+     * @param minLength   numar intreg pozitiv: lungimea celui mai scurt numar
      * @return BigNumber: numarul
      */
     private BigNumber getLongestBigNumber(BigNumber otherNumber, int minLength) {
@@ -156,6 +164,7 @@ public class BigNumber {
 
     /**
      * Creaza un obiect de tip BigNumber de dimensiunea celui mai mare numar + 1
+     *
      * @param otherSize numar intreg pozitiv: lungimea celui de-al doilea numar
      * @return BigNumber
      */
@@ -164,61 +173,62 @@ public class BigNumber {
         return new BigNumber(size + 1);
     }
 
-//    public BigNumber addParallel(BigNumber otherNumber, int no_Threads) throws InterruptedException {
-//        BigNumber numberSum = computeSumNumber(otherNumber.getSize());
-//
-//        int size = numberSum.getSize();
-//
-//        int start = 0;
-//        int dim = size / no_Threads;
-//        int end = size / no_Threads;
-//        int rest = size % no_Threads;
-//
-//        Thread[] threadsClass = new ClassificationThread[no_Threads];
-//        Thread[] threads = new AddThread[no_Threads];
-//
-//        int[] carry = new int[no_Threads];
-//
-//        for (int index = 0; index < no_Threads; index++) {
-//            if (rest > 0) {
-//                end++;
-//                rest--;
-//            }
-//
-//            threadsClass[index] = new ClassificationThread(start, end, this, otherNumber, carry, index);
-//            threadsClass[index].start();
-//
-//            threads[index] = new AddThread(start, end, this, otherNumber, numberSum, carry, index);
-//            start = end;
-//            end = end + dim;
-//        }
-//
-//        for (int index = 0; index < no_Threads; index++) {
-//            threadsClass[index].join();
-//        }
-//
-//        for (int index = 1; index < no_Threads; index++) {
-//            if (carry[index - 1] == 2 && carry[index] == 1) {
-//                carry[index] = 2;
-//            }
-//        }
-//        carry[0] = 0;
-//
-//        for (int index = 0; index < no_Threads; index++) {
-//            if (carry[index] == 2 || carry[index] == 1) {
-//                carry[index]--;
-//            }
-//            threads[index].start();
-//        }
-//
-//        for (int index = 0; index < no_Threads; index++) {
-//            threads[index].join();
-//        }
-//
-//        if (carry[no_Threads - 1] == 1) {
-//            numberSum.setDigit(size, 1);
-//        }
-//
-//        return numberSum;
-//    }
+    /**
+     * Adunarea paralela a doua numere (varianta 2)
+     *
+     * @param otherNumber BigNumber: numarul ce va fi adaugat la numarul curent
+     * @param no_Threads  numar intreg pozitiv: numarul de threaduri
+     * @return BigNumber: suma numerelor
+     * @throws InterruptedException
+     */
+    public BigNumber addParallel22(BigNumber otherNumber, int no_Threads) throws InterruptedException {
+        BigNumber numberSum = createBigNumberSum(otherNumber.getSize());
+
+        int size = numberSum.getSize();
+
+        int start = 0;
+        int dim = size / no_Threads;
+        int end = size / no_Threads;
+        int rest = size % no_Threads;
+
+        Thread[] threadsClass = new ClassificationThread[no_Threads];
+        Thread[] threads = new AddThread[no_Threads];
+
+        int[] carry = new int[no_Threads];
+
+        for (int index = 0; index < no_Threads; index++) {
+            if (rest > 0) {
+                end++;
+                rest--;
+            }
+
+            threadsClass[index] = new ClassificationThread(start, end, this, otherNumber, carry, index);
+            threadsClass[index].start();
+
+            threads[index] = new AddThread(start, end, this, otherNumber, numberSum, carry, index);
+            start = end;
+            end = end + dim;
+        }
+
+        for (int index = 0; index < no_Threads; index++) {
+            threadsClass[index].join();
+        }
+
+        for (int index = 0; index < no_Threads; index++) {
+            if (index > 0 && carry[index] == 2 && carry[index - 1] == 1) {
+                carry[index] = 1;
+            }
+            threads[index].start();
+        }
+
+        for (int index = 0; index < no_Threads; index++) {
+            threads[index].join();
+        }
+
+        if (carry[no_Threads - 1] == 1) {
+            numberSum.setDigit(size - 1, 1);
+        }
+
+        return numberSum;
+    }
 }

@@ -19,25 +19,19 @@ public class ClassificationThread extends Thread {
     @Override
     public void run() {
         super.run();
-        boolean CanProduceCarry = true;
-        int carry = 0, sum;
+        int sum;
         for (int index = end - 1; index >= start; index--) {
-            sum = bigNumber1.getDigit(index) + bigNumber2.getDigit(index) + carry;
-            carry = sum / 10;
-            if (carry == 1) {
+            sum = bigNumber1.getDigit(index) + bigNumber2.getDigit(index);
+            if (sum > 9) {
+                this.produceCarry[noThread] = 1;
                 break;
-            }
-            if (sum % 10 != 9) {
-                CanProduceCarry = false;
+            } else if (sum < 9) {
+                this.produceCarry[noThread] = 0;
                 break;
+            }else {
+                this.produceCarry[noThread] = 2;
             }
         }
-        if (carry == 1) {
-            this.produceCarry[noThread] = 2;
-        } else if (CanProduceCarry) {
-            this.produceCarry[noThread] = 1;
-        } else {
-            this.produceCarry[noThread] = 0;
-        }
+
     }
 }
