@@ -22,7 +22,6 @@ void gcd()
 		else
 			b = b - a;
 	}
-
 	cout << "GCD:" << a << endl;
 }
 
@@ -59,5 +58,13 @@ void computeCircleProps() {
 
 int main()
 {
-	numberSum();
+	int radius;
+	double area, perimeter;
+
+	cout << "r="; cin >> radius;
+
+	area = M_PI * radius * radius;
+	perimeter = 2 * M_PI  * radius;
+	cout << "area: " << area << endl;
+	cout << "perimeter: " << perimeter << endl;
 }
