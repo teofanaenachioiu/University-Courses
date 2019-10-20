@@ -1,0 +1,11 @@
+int
+double
+void
+main
+cout
+cin
+while
+if
+else
+M_PI
+endl
