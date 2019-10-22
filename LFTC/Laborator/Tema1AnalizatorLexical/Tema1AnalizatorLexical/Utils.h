@@ -10,5 +10,6 @@ public:
 	~Utils();
 	static vector<string> getStringsLine(string filename);
 	static void printStrings(vector<string> vector);
+	static vector<string>  split(string const &input);
 };
 

@@ -1,0 +1,3 @@
+area 2
+perim 3
+radius 1

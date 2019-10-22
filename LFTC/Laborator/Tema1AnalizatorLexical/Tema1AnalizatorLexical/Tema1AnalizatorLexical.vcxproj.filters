@@ -21,23 +21,43 @@
     <ClInclude Include="Utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BST.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AnalizatorLexical.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Codare.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Tema1AnalizatorLexical.cpp">
+    <ClCompile Include="Utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Utils.cpp">
+    <ClCompile Include="BST.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AnalizatorLexical.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Codare.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="keywords.txt" />
-    <Text Include="input.txt" />
     <Text Include="operators.txt" />
     <Text Include="separators.txt" />
     <Text Include="code.txt" />
+    <Text Include="input2.txt" />
+    <Text Include="input1.txt" />
+    <Text Include="input3.txt" />
   </ItemGroup>
 </Project>
