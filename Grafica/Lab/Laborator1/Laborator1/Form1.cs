@@ -33,8 +33,7 @@ namespace Laborator1
             List<PointF> points = new List<PointF>();
        
             for (int i = -count; i < count; i++)
-            {
-                float x = i;
+            {            float x = i;
                 float y = (float)Math.Sqrt((((x - 300) * (x - 300)) / (a * a) - 1) * b * b);
                 points.Add(new PointF(x, y + 125));
                 points.Add(new PointF(x, -y + 125));

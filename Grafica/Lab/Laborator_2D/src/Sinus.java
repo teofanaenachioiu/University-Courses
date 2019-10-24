@@ -1,3 +1,5 @@
+import javafx.util.Pair;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -20,12 +22,12 @@ class Sinus extends JPanel {
     private int epsilon = 5;
 
     public Sinus() {
-        setCycles(3);
+        setCycles(6);
     }
 
     public void setCycles(int newCycles) {
         cycles = newCycles;
-        points = SCALEFACTOR * cycles * 2;
+        points = SCALEFACTOR * cycles;
         sines = new double[points];
         for (int i = 0; i < points; i++) {
             double radians = (Math.PI / SCALEFACTOR) * i;
@@ -37,11 +39,16 @@ class Sinus extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        g2.setStroke(new BasicStroke(3));
         g2.setColor(Color.BLACK);
 
         maxWidth = getWidth() - 200;
         maxHeight = maxWidth / cycles;
+
+//        g2.drawLine(0, maxHeight/2, maxWidth, maxHeight/2);
+//        g2.drawLine(maxWidth/2, 0, maxWidth/2, maxHeight);
+
+        g2.setStroke(new BasicStroke(2));
+        g2.setColor(Color.BLUE);
 
         hstep = (double) maxWidth / (double) points;
 
@@ -64,5 +71,13 @@ class Sinus extends JPanel {
         double radians = (Math.PI / SCALEFACTOR) * x;
         float sinesX = (float) Math.sin(radians);
         return  Math.abs(y2-(int) (sinesX * maxHeight / 2 + maxHeight / 2))<epsilon;
+    }
+
+    public Pair<Float, Float> getCoords(int x, int y){
+        float xp = (float) (x * hstep);
+        float radians = (float) (Math.PI / SCALEFACTOR) * xp;
+        float sinesX = (float) Math.sin(radians);
+        float yp= sinesX * maxHeight / 2 + maxHeight / 2;
+        return new Pair<Float, Float>(xp, yp);
     }
 }

@@ -1,3 +1,5 @@
+import javafx.util.Pair;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -24,8 +26,11 @@ public class Main extends JPanel {
                 int x = arg0.getX();
                 int y = arg0.getY();
                 if(sines.sinContains(x,y)){
-                    labelX.setText(String.valueOf(x));
-                    labelY.setText(String.valueOf(y));
+                    Pair<Float, Float> coords = sines.getCoords(x,y);
+                    labelX.setText(String.valueOf(coords.getKey()));
+                    labelY.setText(String.valueOf(coords.getValue()));
+//                    labelX.setText(String.valueOf(x));
+//                    labelY.setText(String.valueOf(y));
                 }
                 else{
                     labelX.setText("n/a");

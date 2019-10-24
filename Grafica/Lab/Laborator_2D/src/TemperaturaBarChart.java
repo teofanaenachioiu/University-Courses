@@ -88,7 +88,7 @@ public class TemperaturaBarChart extends JPanel {
         frame.setSize(350, 300);
 
         String title = "Temperaturi";
-        double[] values = new double[]{7,6,7,10,14,18,20,22,16,10,6,4};
+        double[] values = new double[]{-70,-7,7,10,14,22.5,20,22,16,10,6,4};
         String[] labels = new String[]{"Ian","Feb","Mar","Apr","Mai","Iun","Iul","Aug","Sept","Oct","Noi","Dec"};
         TemperaturaBarChart bc = new TemperaturaBarChart(values, labels, title);
 

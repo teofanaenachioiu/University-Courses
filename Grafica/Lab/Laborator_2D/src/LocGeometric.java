@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.geom.Line2D;
+import java.awt.geom.Path2D;
 import javax.swing.*;
 
 public class LocGeometric extends JPanel {
@@ -9,30 +10,8 @@ public class LocGeometric extends JPanel {
     private int width = 600;
     private int height = 400;
 
-//    private int xVarf = 400, yVarf = height / 2;
-//    private int x = 80, y = 50;
-
-//    public void paintComponent(Graphics g) {
-//
-//        Graphics2D g2 = (Graphics2D) g;
-//
-//        // draw X-Y axis
-//        g2.drawLine(0, height / 2, width, height / 2);
-//        g2.drawLine(width / 2, 0, width / 2, height);
-//
-//        // draw quadratic curve
-//        g2.setColor(Color.red);
-//        Path2D p = new Path2D.Double();
-//        p.moveTo(x, height - y);
-//        p.quadTo(xVarf, yVarf, x, y);
-//
-//        Path2D p1 = new Path2D.Double();
-//        p1.moveTo(width - x, height - y);
-//        p1.quadTo(width - xVarf, yVarf, width - x, y);
-//
-//        g2.draw(p);
-//        g2.draw(p1);
-//    }
+    private int xVarf = 400, yVarf = height / 2;
+    private int x = 80, y = 50;
 
     public void paintComponent(Graphics g) {
 
@@ -42,21 +21,43 @@ public class LocGeometric extends JPanel {
         g2.drawLine(0, height / 2, width, height / 2);
         g2.drawLine(width / 2, 0, width / 2, height);
 
-        g2.setColor(Color.black);
+        // draw quadratic curve
+        g2.setColor(Color.red);
+        Path2D p = new Path2D.Double();
+        p.moveTo(x, height - y);
+        p.quadTo(xVarf, yVarf, x, y);
 
-        float x;
-        float y;
+        Path2D p1 = new Path2D.Double();
+        p1.moveTo(width - x, height - y);
+        p1.quadTo(width - xVarf, yVarf, width - x, y);
 
-        float x2;
-        float y2;
-
-        for (x = 0; x <= width + 200; x = x + 1f) {
-            y = x * x;
-            x2 = x + 1f;
-            y2 = x2 * x2;
-            g2.draw(new Line2D.Double(x, y, x2, y2));
-        }
+        g2.draw(p);
+        g2.draw(p1);
     }
+
+//    public void paintComponent(Graphics g) {
+//
+//        Graphics2D g2 = (Graphics2D) g;
+//
+//        // draw X-Y axis
+//        g2.drawLine(0, height / 2, width, height / 2);
+//        g2.drawLine(width / 2, 0, width / 2, height);
+//
+//        g2.setColor(Color.black);
+//
+//        float x;
+//        float y;
+//
+//        float x2;
+//        float y2;
+//
+//        for (x = 0; x <= width + 200; x = x + 1f) {
+//            y = x * x;
+//            x2 = x + 1f;
+//            y2 = x2 * x2;
+//            g2.draw(new Line2D.Double(x, y, x2, y2));
+//        }
+//    }
 
     public static void main(String[] args) {
         JFrame.setDefaultLookAndFeelDecorated(true);
