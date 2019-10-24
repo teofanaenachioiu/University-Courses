@@ -26,6 +26,5 @@ public:
 	BigNumber addParallelClassification(BigNumber otherNumber, int no_threads);
 	BigNumber addParallelOptimised(BigNumber otherNumber, int no_threads);
 	void printBigNumber();
-
 };
 

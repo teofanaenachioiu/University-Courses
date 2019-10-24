@@ -11,8 +11,9 @@
 
 int main()
 {
+	int no_th = 1;
 	srand(time(NULL));
-	Utils::createNewFile("input.txt", 2, 500000, 500002);
+	Utils::createNewFile("input.txt", 2, 500000, 500010);
 
 	vector<BigNumber> bigNumbers = Utils::readBigNumbersFromFile("input.txt");
 
@@ -26,26 +27,22 @@ int main()
 	auto diff = endTime - startTime;
 	cout << "Time: " << chrono::duration<double, milli>(diff).count() << " ms" << endl;
 
-	startTime = chrono::steady_clock::now();
-	BigNumber parallelSum  = bn1.addParallelOptimised(bn2,4);
-	endTime = chrono::steady_clock::now();
+	auto startTime1 = chrono::steady_clock::now();
+	BigNumber parallelSum  = bn1.addParallelOptimised(bn2,no_th);
+	auto endTime1 = chrono::steady_clock::now();
 	Utils::writeBigNumberInFile(parallelSum, "parallel.txt");
 
-	diff = endTime - startTime;
-	cout << "Time: " << chrono::duration<double, milli>(diff).count() << " ms" << endl;
+	auto diff1 = endTime1 - startTime1;
+	cout << "Time: " << chrono::duration<double, milli>(diff1).count() << " ms" << endl;
 
-	startTime = chrono::steady_clock::now();
-	BigNumber parallelV2Sum = bn1.addParallelClassification(bn2, 4);
-	endTime = chrono::steady_clock::now();
+	auto startTime2 = chrono::steady_clock::now();
+	BigNumber parallelV2Sum = bn1.addParallelClassification(bn2, no_th);
+	auto endTime2 = chrono::steady_clock::now();
 
 
 	Utils::writeBigNumberInFile(parallelV2Sum, "parallelV2.txt");
 
-	diff = endTime - startTime;
-	cout << "Time: " << chrono::duration<double, milli>(diff).count() << " ms" << endl;
+	auto diff2 = endTime2 - startTime2;
+	cout << "Time: " << chrono::duration<double, milli>(diff2).count() << " ms" << endl;
 
-	bool equalsNumbers = Utils::compareFiles("parallelV2.txt", "parallel.txt");
-	bool equalsNumbers1 = Utils::compareFiles("seqvential.txt", "parallel.txt");
-	cout << equalsNumbers << endl;
-	cout << equalsNumbers1 << endl;
 }
