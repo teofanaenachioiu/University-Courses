@@ -4,7 +4,6 @@ int main ( )
 	double area , perim ;
 
 	cout << "r=" ; cin >> radius ;
-
 	area = M_PI * radius * radius ;
 	perim = 2 * M_PI  * radius ;
 	cout << "area:" << area << endl ;
