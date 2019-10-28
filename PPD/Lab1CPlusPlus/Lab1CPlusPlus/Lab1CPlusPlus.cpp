@@ -11,38 +11,33 @@
 
 int main()
 {
-	int no_th = 1;
+	int no_th = 4;
 	srand(time(NULL));
-	Utils::createNewFile("input.txt", 2, 500000, 500010);
+	//Utils::createNewFile("input.txt", 2, 100000, 100100);
 
 	vector<BigNumber> bigNumbers = Utils::readBigNumbersFromFile("input.txt");
 
 	BigNumber bn1 = bigNumbers.at(0);
 	BigNumber bn2 = bigNumbers.at(1);
 
-	auto startTime = chrono::steady_clock::now();
-	BigNumber sequentialSum = bn1.addSeqential(bn2);
-	auto endTime = chrono::steady_clock::now();
-	Utils::writeBigNumberInFile(sequentialSum, "seqvential.txt");
-	auto diff = endTime - startTime;
-	cout << "Time: " << chrono::duration<double, milli>(diff).count() << " ms" << endl;
+	auto starttime = chrono::steady_clock::now();
+	BigNumber sequentialmultiply = bn1.multiplySequentially(bn2);
+	auto endtime = chrono::steady_clock::now();
+	Utils::writeBigNumberInFile(sequentialmultiply, "seqvential.txt");
+
+	auto diff = endtime - starttime;
+	cout << "time: " << chrono::duration<double, milli>(diff).count() << endl;
+	sequentialmultiply.printBigNumber();
 
 	auto startTime1 = chrono::steady_clock::now();
-	BigNumber parallelSum  = bn1.addParallelOptimised(bn2,no_th);
+	BigNumber parallelMultiply  = bn1.multiplyParallel(bn2,no_th);
 	auto endTime1 = chrono::steady_clock::now();
-	Utils::writeBigNumberInFile(parallelSum, "parallel.txt");
+	Utils::writeBigNumberInFile(parallelMultiply, "parallel.txt");
 
 	auto diff1 = endTime1 - startTime1;
-	cout << "Time: " << chrono::duration<double, milli>(diff1).count() << " ms" << endl;
+	cout << "Time: " << chrono::duration<double, milli>(diff1).count() << endl;
+	parallelMultiply.printBigNumber();
 
-	auto startTime2 = chrono::steady_clock::now();
-	BigNumber parallelV2Sum = bn1.addParallelClassification(bn2, no_th);
-	auto endTime2 = chrono::steady_clock::now();
-
-
-	Utils::writeBigNumberInFile(parallelV2Sum, "parallelV2.txt");
-
-	auto diff2 = endTime2 - startTime2;
-	cout << "Time: " << chrono::duration<double, milli>(diff2).count() << " ms" << endl;
-
+	bool res = Utils::compareFiles("seqvential.txt", "parallel.txt");
+	cout << res << endl;
 }

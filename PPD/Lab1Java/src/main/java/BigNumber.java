@@ -231,4 +231,121 @@ public class BigNumber {
 
         return numberSum;
     }
+
+
+
+    BigNumber multiplySequentially(BigNumber otherNumber)  {
+        BigNumber smallestNr = getSmallestNumber(otherNumber);
+        BigNumber biggerNr = getBiggestNumber(otherNumber);
+
+        int minSize = smallestNr.getSize();
+        int maxSize = biggerNr.getSize();
+        BigNumber result = new BigNumber(minSize + maxSize);
+
+
+        int carry, produs, inmultitor, i,j;
+
+        for (i = 0; i < minSize; i++) {
+            inmultitor = smallestNr.getDigit(i);
+            carry = 0;
+            for (j = 0; j < maxSize; j++) {
+                produs = biggerNr.getDigit(j) * inmultitor + carry;
+                carry = produs / 10 + result.addDigit(j + i, produs % 10);
+            }
+            if (carry != 0) {
+                result.addDigit(j + i, carry % 10);
+            }
+        }
+        return result;
+    }
+
+
+    BigNumber multiplySequentiallyV2(BigNumber otherNumber) throws InterruptedException {
+        BigNumber smallestNr = getSmallestNumber(otherNumber);
+        BigNumber biggerNr = getBiggestNumber(otherNumber);
+
+        int minSize = smallestNr.getSize();
+        int maxSize = biggerNr.getSize();
+        BigNumber result = new BigNumber(minSize + maxSize);
+
+
+        int carry, produs, inmultitor;
+        BigNumber partial;
+        for (int i = 0; i < minSize; i++) {
+            inmultitor = smallestNr.getDigit(i);
+            partial = new BigNumber(maxSize + minSize);
+            carry = 0;
+            for (int j = 0; j < maxSize; j++) {
+                produs = inmultitor * biggerNr.getDigit(j) + carry;
+                partial.setDigit(i + j, produs%10);
+                carry = produs/10;
+            }
+            result = result.addParallel22(partial, 4);
+        }
+
+        return result;
+    }
+
+    private BigNumber getSmallestNumber(BigNumber otherNumber) {
+        return this.getSize() < otherNumber.getSize() ? this : otherNumber;
+    }
+
+    private BigNumber getBiggestNumber(BigNumber otherNumber) {
+        return this.getSize() > otherNumber.getSize() ? this : otherNumber;
+    }
+
+    public int addDigit(int poz, int digit) {
+        int sum = digits[poz] + digit;
+        digits[poz] = sum % 10;
+        return sum / 10;
+    }
+
+    public BigNumber multiplyParallel(BigNumber otherNumber, int no_Threads) throws InterruptedException {
+        BigNumber smallestNr = getSmallestNumber(otherNumber);
+        BigNumber biggerNr = getBiggestNumber(otherNumber);
+
+        int minSize = smallestNr.getSize();
+        int maxSize = biggerNr.getSize();
+
+        int start = 0;
+        int dim = minSize / no_Threads;
+        int end = minSize / no_Threads;
+        int rest = minSize % no_Threads;
+
+        Thread[] threads = new MultiplyThread[no_Threads];
+        BigNumber[] results = new BigNumber[no_Threads];
+
+        for (int index = 0; index < no_Threads; index++) {
+            if (rest > 0) {
+                end++;
+                rest--;
+            }
+            results[index] = new BigNumber(minSize + maxSize);
+
+            threads[index] = new MultiplyThread(start, end, smallestNr, biggerNr, results[index]);
+            threads[index].start();
+
+            start = end;
+            end = end + dim;
+        }
+
+        for (int index = 0; index < no_Threads; index++) {
+            threads[index].join();
+        }
+
+//        int carry, sum;
+//        carry = 0;
+//        for (int i = 0; i <maxSize+minSize; i++) {
+//            sum = carry;
+//            for (int j = 1; j <no_Threads; j++) {
+//                sum += results[j].getDigit(i);
+//            }
+//            carry = sum / 10 + results[0].addDigit(i, sum%10);
+//        }
+
+        for (int i = 1; i < no_Threads; i++) {
+            results[0] = results[0].addParallel22(results[i], no_Threads);
+        }
+        return results[0];
+    }
 }

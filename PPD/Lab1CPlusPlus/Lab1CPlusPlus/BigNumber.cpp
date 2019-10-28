@@ -59,6 +59,13 @@ void BigNumber::addDigit(int value)
 	this->digits.push_back(value);
 }
 
+int BigNumber::addDigit(int position, int value)
+{
+	int sum = digits[position] + value;
+	digits[position] = sum % 10;
+	return sum / 10;
+}
+
 BigNumber BigNumber::addSeqential(BigNumber otherNumber)
 {
 	BigNumber largeNumber = BigNumber();
@@ -95,6 +102,67 @@ BigNumber BigNumber::addSeqential(BigNumber otherNumber)
 
 	return largeNumber;
 }
+
+BigNumber BigNumber::multiplySequentially(BigNumber otherNumber)
+{
+	BigNumber largeNumber = BigNumber();
+	BigNumber smallNumber = BigNumber();
+
+	if (this->getSize() > otherNumber.getSize()) {
+		largeNumber.digits = this->digits;
+		smallNumber.digits = otherNumber.digits;
+	}
+	else
+	{
+		largeNumber.digits = otherNumber.digits;
+		smallNumber.digits = this->digits;
+	}
+
+	int minSize = smallNumber.getSize();
+	int maxSize = largeNumber.getSize();
+
+	BigNumber result = BigNumber(minSize + maxSize);
+
+	int carry, produs, deinmultit, inmultitor, i, j;
+	for (i = 0; i < minSize; i++) {
+		inmultitor = smallNumber.getDigit(i);
+		carry = 0;
+		for (j = 0; j < maxSize; j++) {
+			deinmultit = largeNumber.getDigit(j);
+			produs = deinmultit * inmultitor + carry;
+			carry = produs / 10 + result.addDigit(j + i, produs % 10);
+		}
+		if (carry != 0) {
+			result.addDigit(j + i, carry % 10);
+		}
+	}
+
+	return result;
+}
+
+void BigNumber::computeMultiply1(int start, int end) {
+
+}
+
+void BigNumber::computeMultiply(int start, int end, BigNumber & smallNumber, BigNumber & largeNumber, BigNumber & result)
+{
+	int maxSize = largeNumber.getSize();
+	int carry, produs, deinmultit, inmultitor, i, j;
+	for (i = start; i < end; i++) {
+		inmultitor = smallNumber.getDigit(i);
+		carry = 0;
+		for (j = 0; j < maxSize; j++) {
+			deinmultit = largeNumber.getDigit(j);
+			produs = deinmultit * inmultitor + carry;
+			carry = produs / 10 + result.addDigit(j + i, produs % 10);
+		}
+		if (carry != 0) {
+			result.addDigit(j + i, carry % 10);
+		}
+	}
+}
+
+
 
 
 
@@ -249,6 +317,8 @@ void BigNumber::computeClassification(int start, int end, int no_thread, BigNumb
 
 }
 
+
+
 void BigNumber::computeAdd(int start, int end, int no_thread, BigNumber & largeNumber, BigNumber & smallNumber, vector<int>& carries)
 {
 	int index, sumDigits, carry = 0;
@@ -264,7 +334,7 @@ void BigNumber::computeAdd(int start, int end, int no_thread, BigNumber & largeN
 
 	if (no_thread == carries.size() - 1) {
 		end = largeNumber.getSize();
-		while (index<end && carry == 1) {
+		while (index < end && carry == 1) {
 			sumDigits = largeNumber.getDigit(index) + carry;
 			largeNumber.setDigit(index, sumDigits % 10);
 			carry = sumDigits / 10;
@@ -350,4 +420,54 @@ void BigNumber::printBigNumber()
 		cout << this->getDigit(index);
 	}
 	cout << endl;
+}
+
+BigNumber BigNumber::multiplyParallel(BigNumber otherNumber, int no_threads)
+{
+	BigNumber largeNumber = BigNumber();
+	BigNumber smallNumber = BigNumber();
+
+	if (this->getSize() > otherNumber.getSize()) {
+		largeNumber.digits = this->digits;
+		smallNumber.digits = otherNumber.digits;
+	}
+	else
+	{
+		largeNumber.digits = otherNumber.digits;
+		smallNumber.digits = this->digits;
+	}
+
+	int minSize = smallNumber.getSize();
+	int maxSize = largeNumber.getSize();
+
+
+	int start = 0;
+	int dim = minSize / no_threads;
+	int end = minSize / no_threads;
+	int rest = minSize % no_threads;
+
+	vector<thread> threads = vector<thread>(no_threads);
+	vector<BigNumber> results = vector<BigNumber>(no_threads);
+
+	for (int index = 0; index < no_threads; index++) {
+		if (rest > 0) {
+			end++;
+			rest--;
+		}
+		results[index] = BigNumber(minSize + maxSize);
+
+		threads[index] = thread(&BigNumber::computeMultiply, this, start, end, ref(smallNumber), ref(largeNumber), ref(results[index]));
+
+		start = end;
+		end = end + dim;
+	}
+
+	for (int index = 0; index < no_threads; index++) {
+		threads[index].join();
+	}
+
+	for (int i = 1; i < no_threads; i++) {
+		results[0] = results[0].addParallelClassification(results[i], no_threads);
+	}
+	return results[0];
 }
