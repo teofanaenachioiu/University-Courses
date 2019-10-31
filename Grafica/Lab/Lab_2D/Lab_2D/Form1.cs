@@ -16,7 +16,8 @@ namespace Lab_2D
         {
             public double x, y;
             public Point(double X, double Y) { x = X; y = Y; }
-        }
+        }
+
         public Form1()
         {
             InitializeComponent();
@@ -67,7 +68,8 @@ namespace Lab_2D
             Brush myBrush = new SolidBrush(Color.Black);
 
             MessageGr.DrawString(s, myFont, myBrush, u(M.x)-10, v(M.y)-25);
-        }
+        }
+
         void LineOnGr(Graphics LineGr, Pen Pen, Point P, Point Q) 
         {
             LineGr.DrawLine(Pen, u(P.x), v(P.y), u(Q.x), v(Q.y));
