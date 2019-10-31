@@ -38,7 +38,7 @@ bool StateMachine::checkInput(string sequence)
 	if (checkIfAlphabetContainsLetters(sequence)) {
 		State s = startState;
 		string letter;
-		State next;
+		string nextStateName;
 		bool found;
 		for (int i = 0; i < sequence.size(); i++) {
 			letter = sequence.at(i);
@@ -46,9 +46,9 @@ bool StateMachine::checkInput(string sequence)
 			auto tr = s.getTransitions();
 			for (auto it = tr.begin(); it != tr.end(); ++it) {
 				if ((*it).first == letter) {
-					next = (*it).second;
+					nextStateName = (*it).second;
 					found = true;
-					auto iter = find(states.begin(), states.end(), next);
+					auto iter = find(states.begin(), states.end(), State(nextStateName));
 
 					s = (*iter);
 

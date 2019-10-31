@@ -8,11 +8,11 @@ class State
 {
 private:
 	string name;
-	multimap<string, State> transitions;
+	multimap<string, string> transitions;
 	bool isFinal =false;
 public:
 	State();
-	State(string name, multimap<string, State> transitions);
+	State(string name, multimap<string, string> transitions);
 	State(string name);
 
 	void setIsFinal(bool isFinal);
@@ -20,9 +20,9 @@ public:
 
 	string getName();
 
-	void setTransitions(multimap<string, State> transitions);
-	multimap<string, State> getTransitions();
-	void addTransition(string symbol, State& state);
+	void setTransitions(multimap<string, string> transitions);
+	multimap<string, string> getTransitions();
+	void addTransition(string symbol, string state);
 
 	bool operator ==(const State &d) const {
 		if (name == d.name) {

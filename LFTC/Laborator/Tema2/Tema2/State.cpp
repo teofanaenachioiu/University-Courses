@@ -6,7 +6,7 @@ State::State()
 {
 }
 
-State::State(string name, multimap<string, State> transitions)
+State::State(string name, multimap<string, string> transitions)
 {
 	this->name = name;
 	this->transitions = transitions;
@@ -33,19 +33,19 @@ string State::getName()
 	return name;
 }
 
-void State::setTransitions(multimap<string, State> transitions)
+void State::setTransitions(multimap<string, string> transitions)
 {
 	this->transitions = transitions;
 }
 
-multimap<string, State> State::getTransitions()
+multimap<string, string> State::getTransitions()
 {
 	return this->transitions;
 }
 
-void State::addTransition(string symbol, State& state)
+void State::addTransition(string symbol, string state)
 {
-	this->transitions.insert(pair<string, State>(symbol, state));
+	this->transitions.insert(pair<string, string>(symbol, state));
 }
 
 

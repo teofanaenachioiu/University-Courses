@@ -208,13 +208,13 @@ void Console::printTransitions()
 {
 	vector<State> states = stateMachine.getStates();
 	State currentState;
-	multimap<string, State> trans;
+	multimap<string, string> trans;
 	for (auto it = states.begin(); it != states.end(); ++it) {
 		currentState = *it;
 		trans = currentState.getTransitions();
 
 		for (auto itTrans = trans.begin(); itTrans != trans.end(); ++itTrans) {
-			cout << currentState.getName() << "--" << (*itTrans).first << "--" << (*itTrans).second.getName() << endl;
+			cout << currentState.getName() << "--" << (*itTrans).first << "--" << (*itTrans).second << endl;
 		}
 	}
 	cout << endl;
@@ -333,7 +333,7 @@ void Console::setStateTransition(string line, vector<State>& states, Alphabet al
 		return;
 	}
 
-	State destination = *itDestination;
+	//State destination = *itDestination;
 
 	auto itSource = find(states.begin(), states.end(), State(transition[0]));
 	if (itDestination == states.end()) {
@@ -344,9 +344,9 @@ void Console::setStateTransition(string line, vector<State>& states, Alphabet al
 	State source = *itSource;
 
 	int index = std::distance(states.begin(), itSource);
-	int indexDest = std::distance(states.begin(), itDestination);
+	//int indexDest = std::distance(states.begin(), itDestination);
 
-	states[index].addTransition(transition[1], states[indexDest]);
+	states[index].addTransition(transition[1], transition[2]);
 }
 
 vector<State> Console::getStatesFromLine(string line)
