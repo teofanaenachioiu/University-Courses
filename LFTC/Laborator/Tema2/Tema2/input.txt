@@ -1,0 +1,5 @@
+Q: A B C D E F G H
+A: 0 1 2 3 4 5 6 7 8 9 A B C D E F x X b B
+T: A 1 B; A 2 B; A 3 B; A 4 B; A 5 B; A 6 B; A 7 B; A 8 B; A 9 B; B 0 B; B 1 B; B 2 B; B 3 B; B 4 B; B 5 B; B 6 B; B 7 B; B 8 B; B 9 B; A 0 C; C 1 D; C 2 D; C 3 D; C 4 D; C 5 D; C 6 D; C 7 D; D 0 D; D 1 D; D 2 D; D 3 D; D 4 D; D 5 D; D 6 D; D 7 D; C x E; C X E; E 1 F; E 2 F; E 3 F; E 4 F; E 5 F; E 6 F; E 7 F; E 8 F; E 9 F; E A F; E B F; E C F; E D F; E E F; E F F; F 0 F; F 1 F; F 2 F; F 3 F; F 4 F; F 5 F; F 6 F; F 7 F; F 8 F; F 9 F; F A F; F B F; F C F; F D F; F E F; F F F; C b G; C B G; G 0 H; G 1 H; H 0 H; H 1 H
+F: B C D F H
+I: A
