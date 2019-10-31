@@ -70,7 +70,7 @@ void AnalizatorLexical::analiza(string input,  string codeFile, string outputFip
 
 	regex naturell_rx("[1-9][0/*-9]*");
 	regex naturellpoz_rx("(?:0)|[1-9][0-9]*");
-	regex identificator_rx("[a-za-z_][a-za-z1-9_]{0,7}");
+	regex identificator_rx("[a-zA-Z_][a-zA-Z1-9_]{0,7}");
 	regex string_const_rx("[\"].*[\"]");
 
 
