@@ -5,18 +5,13 @@
 #include <iostream>
 #include <math.h>
 
-const int SIZE = 10;
+const int SIZE1 = 10;
+const int SIZE2 = 15;
 
 
 int addNumbers(int *array1, int *array2, int* arrayRez, int size) {
 	int carry = 0, sum;
 	for (int i = 0; i < size; i++) {
-		if (array1[i] == NULL) {
-			array1[i] = 0;
-		}
-		if (array2[i] == NULL) {
-			array2[i] = 0;
-		}
 		sum = array1[i] + array2[i] + carry;
 		arrayRez[i] = sum % 10;
 		carry = sum / 10;
@@ -26,21 +21,50 @@ int addNumbers(int *array1, int *array2, int* arrayRez, int size) {
 
 
 int addNumbers(int *array, int size) {
-	int sum =0 ;
+	int sum = 0;
 	for (int i = 0; i < size; i++) {
 		sum += array[i];
 	}
 	return sum;
 }
 
+void getData(int *data1, int *data2) {
+	for (int i = 0; i < SIZE1; i++) {
+		data1[i] = i % 10;
+	}
+
+	for (int i = 0; i < SIZE2; i++) {
+		data2[i] = i % 10;
+	}
+}
+
+void calculatePartitions(int *sendcounts, int *displs, int size, int noProc) {
+	int sum = 0;        // Sum of counts. Used to calculate displacements
+
+	int rem = SIZE1 % noProc;
+	sendcounts[0] = 0;
+	displs[0] = 0;
+
+	for (int i = 1; i < size; i++) {
+		sendcounts[i] = SIZE1 / noProc;
+		if (rem > 0) {
+			sendcounts[i]++;
+			rem--;
+		}
+		displs[i] = sum;
+		sum += sendcounts[i];
+	}
+}
+
 int main(int argc, char *argv[])
 {
-	int rem;			// elements remaining after division among processes
 	int rank, size;     // for storing this process' rank, and the number of processes
 	int *sendcounts;    // array describing how many elements to send to each process
 	int *displs;        // array describing the displacements where each segment begins
-	int sum = 0;        // Sum of counts. Used to calculate displacements
-	int rec_buf[SIZE];  // buffer where the received data should be stored
+	int *rez;
+	int rec_buf1[SIZE1];  // buffer where the received data should be stored
+	int rec_buf2[SIZE1];
+	int nrProcExtra;
 
 
 	MPI_Init(&argc, &argv);
@@ -49,62 +73,68 @@ int main(int argc, char *argv[])
 
 	sendcounts = new int[size];
 	displs = new int[size];
-	
-	int nrProcExtra = size - 1;
+	rez = NULL;
+	nrProcExtra = size - 1;
 
-	int* rez = NULL;
-
-	rem = SIZE % nrProcExtra;
-
-	sendcounts[0] = 0;
-	displs[0] = 0;
-
-	for (int i = 1; i < size; i++) {
-		sendcounts[i] = SIZE / nrProcExtra;
-		if (rem > 0) {
-			sendcounts[i]++;
-			rem--;
-		}
-		displs[i] = sum;
-		sum += sendcounts[i];
-	}
+	calculatePartitions(sendcounts, displs, size, nrProcExtra);
 
 	if (0 == rank) {
-		int data[SIZE];		
+		int data1[SIZE1];
+		int data2[SIZE2];
+		int dataRez[SIZE1];
 
-		for (int i = 0; i < SIZE; i++) {
-			data[i] = i;
-		}
+		getData(data1, data2);
 
-		MPI_Scatterv(&data, sendcounts, displs, MPI_INT, &rec_buf, SIZE, MPI_INT, 0, MPI_COMM_WORLD);
+		MPI_Scatterv(&data1, sendcounts, displs, MPI_INT, &rec_buf1, SIZE1, MPI_INT, 0, MPI_COMM_WORLD);
+		MPI_Scatterv(&data2, sendcounts, displs, MPI_INT, &rec_buf2, SIZE1, MPI_INT, 0, MPI_COMM_WORLD);
 
 		rez = new int[size];
-	
-		int mylen = 0;
 
-		MPI_Gather(&mylen, 1, MPI_INT,
-			rez, 1, MPI_INT,
-			0, MPI_COMM_WORLD);
+		MPI_Gather(NULL, 0, MPI_INT, rez, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
+		MPI_Gatherv(NULL, 0, MPI_INT, dataRez, sendcounts, displs, MPI_INT, 0, MPI_COMM_WORLD);
+
+
+		/*printf("\n");
+
+		for (int i = 0; i < SIZE1; i++) {
+			printf("%d", data1[i]);
+		}
 		printf("\n");
 
-		for (int i = 0; i < size; i++) {
-			printf("Proc %d: sum = %d \n", i, rez[i]);
+		for (int i = 0; i < SIZE2; i++) {
+			printf("%d", data2[i]);
 		}
+		printf("\n");
+
+		for (int i = 0; i < SIZE1; i++) {
+			printf("%d", dataRez[i]);
+		}
+		printf("\n");*/
 	}
 	else {
-		MPI_Scatterv(NULL, NULL, NULL, MPI_INT, &rec_buf, SIZE, MPI_INT, 0, MPI_COMM_WORLD);
+		MPI_Scatterv(NULL, NULL, NULL, MPI_INT, &rec_buf1, SIZE1, MPI_INT, 0, MPI_COMM_WORLD);
+		MPI_Scatterv(NULL, NULL, NULL, MPI_INT, &rec_buf2, SIZE1, MPI_INT, 0, MPI_COMM_WORLD);
 
-		printf("sendcounts[%d] = %d\tdispls[%d] = %d\n", rank, sendcounts[rank], rank, displs[rank]);
+		//printf("sendcounts[%d] = %d\tdispls[%d] = %d\n", rank, sendcounts[rank], rank, displs[rank]);
 
-		printf("%d: ", rank);
-		for (int i = 0; i < sendcounts[rank]; i++) {
-			printf("%d\t", rec_buf[i]);
-		}
+		//printf("%d: ", rank);
+		//for (int i = 0; i < sendcounts[rank]; i++) {
+		//	printf("%d\t", rec_buf1[i]);
+		//}
+		//for (int i = 0; i < sendcounts[rank]; i++) {
+		//	printf("%d\t", rec_buf2[i]);
+		//}
 
-		int mylen = addNumbers(rec_buf, sendcounts[rank]);
+		int* rezArray = new int[sendcounts[rank]];
 
-		MPI_Gather(&mylen, 1, MPI_INT, NULL, NULL, MPI_INT, 0, MPI_COMM_WORLD);
+		int carryPartition = addNumbers(rec_buf1, rec_buf2, rezArray, sendcounts[rank]);
+
+		MPI_Gather(&carryPartition, 1, MPI_INT, NULL, NULL, MPI_INT, 0, MPI_COMM_WORLD);
+
+		MPI_Gatherv(rezArray, sendcounts[rank], MPI_INT, NULL, sendcounts, displs, MPI_INT, 0, MPI_COMM_WORLD);
+
+		delete rezArray;
 	}
 
 	MPI_Finalize();
