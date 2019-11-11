@@ -19,19 +19,23 @@ int main()
 
 	BigNumber bn1 = bigNumbers.at(0);
 	BigNumber bn2 = bigNumbers.at(1);
+	BigNumber bnSec;
+	BigNumber bnPar;
 
 
-	/*auto starttime = chrono::steady_clock::now();
-	bn1.multiplySequentially(bn2);
+	auto starttime = chrono::steady_clock::now();
+	bnSec = bn1.multiplySequentially(bn2);
 	auto endtime = chrono::steady_clock::now();
+	bnSec.printBigNumber();
 
 	auto diff = endtime - starttime;
 	cout << "time: " << chrono::duration<double, milli>(diff).count() << endl;
-*/
+
 
 	auto startTime1 = chrono::steady_clock::now();
-	bn1.multiplyParallel(bn2,no_th);
+	bnPar = bn1.multiplyParallel(bn2,no_th);
 	auto endTime1 = chrono::steady_clock::now();
+	bnPar.printBigNumber();
 
 	auto diff1 = endTime1 - startTime1;
 	cout << "Time: " << chrono::duration<double, milli>(diff1).count() << endl;

@@ -440,6 +440,10 @@ BigNumber BigNumber::multiplyParallel(BigNumber otherNumber, int no_threads)
 	int minSize = smallNumber.getSize();
 	int maxSize = largeNumber.getSize();
 
+	// cazul in care dimensiunea numarul mai mic este < nr_threaduri
+	if (minSize < no_threads) {
+		no_threads = minSize;
+	}
 
 	int start = 0;
 	int dim = minSize / no_threads;
@@ -448,6 +452,8 @@ BigNumber BigNumber::multiplyParallel(BigNumber otherNumber, int no_threads)
 
 	vector<thread> threads = vector<thread>(no_threads);
 	vector<BigNumber> results = vector<BigNumber>(no_threads);
+
+	
 
 	for (int index = 0; index < no_threads; index++) {
 		if (rest > 0) {
