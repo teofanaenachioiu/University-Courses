@@ -5,12 +5,13 @@
 #include <vector>
 #include <algorithm>
 #include "Utils.h"
+#include "time.h"
 
 using namespace std;
 
 int* Utils::createNewFile(string file_name, int size, int min, int max)
 {
-	srand(1);
+	srand(time(NULL));
 	ofstream outfile(file_name);
 	int nr_cifre;
 	int cifra;
@@ -31,9 +32,6 @@ int* Utils::createNewFile(string file_name, int size, int min, int max)
 			}
 			outfile << cifra;
 		}
-
-		outfile << endl;
-		
 	}
 
 	outfile.close();
@@ -75,11 +73,21 @@ void Utils::writeBigNumberInFile(int* bigNumber, int size, string file_name)
 {
 	ofstream outfile(file_name);
 	for (int i = size-1; i >= 0; i--) {
+		outfile << bigNumber[i];
+	}
+	cout << endl;
+}
+
+void Utils::writeBigNumberInFile2(int* bigNumber, int size, string file_name)
+{
+	ofstream outfile(file_name);
+	for (int i = 0; i <size ; i++) {
 		cout << bigNumber[i];
 		outfile << bigNumber[i];
 	}
 	cout << endl;
 }
+
 
 bool Utils::compareFiles(string file_name1, string file_name2) {
 	ifstream file1(file_name1);
