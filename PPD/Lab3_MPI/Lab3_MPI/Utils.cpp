@@ -82,7 +82,6 @@ void Utils::writeBigNumberInFile2(int* bigNumber, int size, string file_name)
 {
 	ofstream outfile(file_name);
 	for (int i = 0; i <size ; i++) {
-		cout << bigNumber[i];
 		outfile << bigNumber[i];
 	}
 	cout << endl;

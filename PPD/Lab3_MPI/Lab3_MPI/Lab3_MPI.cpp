@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 #include <math.h>
+#include <time.h>
+#include <chrono>
 #include "mpi.h"
 #include "Utils.h"
 #include "Lab3_MPI.h"
@@ -153,6 +155,8 @@ void manageOverflow(int overflow, int size_1, int &size_2, int * bigNumber2)
 }
 
 void metoda1(int argc, char* argv[]) {
+	auto starttime = chrono::steady_clock::now();
+
 	int world_size;
 	int rank;
 
@@ -226,11 +230,15 @@ void metoda1(int argc, char* argv[]) {
 		Utils::writeBigNumberInFile(bigNumber2, size_2, "result_1.txt");
 		cout << "Done1" << endl;
 	}
+	auto endtime = chrono::steady_clock::now();
 
+	auto diferenta = endtime - starttime;
+	cout << "time "<<rank <<": " << chrono::duration<double, milli>(diferenta).count() << endl;
 	MPI_Finalize();
 }
 
 void metoda2(int argc, char* argv[]) {
+	auto starttime = chrono::steady_clock::now();
 	char file1[] = "nr1.txt";
 	char file2[] = "nr2.txt";
 
@@ -365,12 +373,7 @@ void metoda2(int argc, char* argv[]) {
 	MPI_Scatter(carries, 1, MPI_INT, &carry, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
 	if (carry == 1) {
-		cout << "carry la rank " << rank << endl;
 		addCarry1(partial_result, sendcounts[rank]);
-	}
-
-	for (int i = 0; i < sendcounts[rank]; i++) {
-		cout << "rank " << rank << ": " << partial_result[i] << endl;
 	}
 
 	MPI_Gatherv(partial_result, sendcounts[rank], MPI_INT, number_result, sendcounts, displs, MPI_INT, 0, MPI_COMM_WORLD);
@@ -382,10 +385,18 @@ void metoda2(int argc, char* argv[]) {
 
 	}
 
+	auto endtime = chrono::steady_clock::now();
+
+	auto diferenta = endtime - starttime;
+	cout << "time " << rank << ": " << chrono::duration<double, milli>(diferenta).count() << endl;
+
 	MPI_Finalize();
 }
 
 void f2(int argc, char* argv[]) {
+
+
+
 	char file1[] = "nr1.txt";
 	char file2[] = "nr2.txt";
 
@@ -393,6 +404,10 @@ void f2(int argc, char* argv[]) {
 	int rank;
 	int n_per_proc;
 
+
+	MPI_Init(&argc, &argv);
+	MPI_Comm_size(MPI_COMM_WORLD, &total_proc);
+	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 	int* a = nullptr;
 
 	int i, n;
@@ -406,9 +421,7 @@ void f2(int argc, char* argv[]) {
 	std::ifstream fin1;
 	std::ifstream fin2;
 
-	MPI_Init(&argc, &argv);
-	MPI_Comm_size(MPI_COMM_WORLD, &total_proc);
-	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+
 
 	int* ap = nullptr;
 	int* bp = nullptr;
@@ -539,12 +552,9 @@ void f2(int argc, char* argv[]) {
 			}
 		}
 		Utils::writeBigNumberInFile2(a, size_b, "result_2.txt");
-		std::cout << std::endl;
-		for (int i = 0; i < size_b; i++) {
-			std::cout << a[i];
-		}
-		std::cout << std::endl;
+		cout << "Done2" << endl;
 	}
+	
 
 	MPI_Finalize();
 }
@@ -552,12 +562,18 @@ void f2(int argc, char* argv[]) {
 int main(int argc, char* argv[])
 {
 
-	int min = 100;
-	int max = 150;
+	int min = 100000;
+	int max = 150000;
 	//Utils::createNewFile("nr1.txt", 1, min, max);
 	//Utils::createNewFile("nr2.txt", 1, min, max);
+
+
 	//metoda1(argc, argv);
 	metoda2(argc, argv);
-	bool theSame = Utils::compareFiles("result_1.txt", "result_2.txt");
-	cout << theSame << endl;
+
+
+	//bool theSame = Utils::compareFiles("result_1.txt", "result_2.txt");
+	//cout << theSame << endl;
+
+	
 }
