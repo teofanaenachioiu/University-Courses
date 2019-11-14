@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "AnalizatorLexical.h"
 #include "Utils.h"
-#include "Console.h"
 #include <fstream>
 #include <regex>
 #include <algorithm>
@@ -141,100 +140,82 @@ void AnalizatorLexical::analizaLinie(string input, string codeFile, string outpu
 
 	vector<string> lines = Utils::getStringsLine(input);
 	string line;
-	string prefixID = "";
-	string prefixINT = "";
-	string prefixSTRING = "";
-	string prefix = "";
-	string prefixMore = "";
+	string atom = "";
+	string atomExtended = "";
 
 	for (unsigned i = 0; i < lines.size(); i++) {
-
 		line = lines[i];
+
 		while (line.size() > 0) {
-			prefixID = automatID.findPrefix(line);
-			prefixINT = automatConstInt.findPrefix(line);
-			prefixSTRING = automatConstString.findPrefix(line);
-			prefix = line[0];
-
-			if (prefixID != "") {
-				if (find(keywords.begin(), keywords.end(), prefixID) != keywords.end()) {
-
-					cout << prefixID << " e cuvant rezervat" << endl;
-
+			if ((atom = automatID.findPrefix(line)) != "") {
+				if (find(keywords.begin(), keywords.end(), atom) != keywords.end()) {
 					// scriere in fip
-					int cod = AnalizatorLexical::pozitie(prefixID, &treeCode);
+					int cod = AnalizatorLexical::pozitie(atom, &treeCode);
 					AnalizatorLexical::generareFip(cod, 0, outputFip);
 				}
 				else {
-					cout << prefixID << " e identificator" << endl;
-
 					// scriere in tabela identificator (cod 1)
-					int codTs = AnalizatorLexical::pozitie(prefixID, &treeId);
+					int codTs = AnalizatorLexical::pozitie(atom, &treeId);
 					if (codTs == 0) {
-						codTs = AnalizatorLexical::adaugaInTree(prefixID, &treeId);
+						codTs = AnalizatorLexical::adaugaInTree(atom, &treeId);
 					}
 
 					// scriere in fip
 					AnalizatorLexical::generareFip(1, codTs, outputFip);
 				}
-				line = line.substr(prefixID.size());
 			}
-			else if (prefixSTRING != "") {
-				cout << prefixSTRING << " e constanta string" << endl;
-				line = line.substr(prefixSTRING.size());
-
+			else if ((atom = automatConstString.findPrefix(line)) != "") {
 				// scriere in tabela constante (cod 2)
-				int codTs = AnalizatorLexical::pozitie(prefixSTRING, &treeConst);
+				int codTs = AnalizatorLexical::pozitie(atom, &treeConst);
 				if (codTs == 0) {
-					codTs = AnalizatorLexical::adaugaInTree(prefixSTRING, &treeConst);
+					codTs = AnalizatorLexical::adaugaInTree(atom, &treeConst);
 				}
-
 				// scriere in fip
 				AnalizatorLexical::generareFip(2, codTs, outputFip);
 
 			}
-			else if (prefixINT != "") {
-				cout << prefixINT << " e constanta intreaga" << endl;
-				line = line.substr(prefixINT.size());
-
+			else if ((atom = automatConstInt.findPrefix(line)) != "") {
 				// scriere in tabela constante (cod 2)
-				int codTs = AnalizatorLexical::pozitie(prefixINT, &treeConst);
+				int codTs = AnalizatorLexical::pozitie(atom, &treeConst);
 				if (codTs == 0) {
-					codTs = AnalizatorLexical::adaugaInTree(prefixINT, &treeConst);
+					codTs = AnalizatorLexical::adaugaInTree(atom, &treeConst);
 				}
-
 				// scriere in fip
 				AnalizatorLexical::generareFip(2, codTs, outputFip);
-			}
-			else if (find(separators.begin(), separators.end(), prefix) != separators.end()) {
-				cout << prefix << " e separator" << endl;
-				line = line.substr(1);
-
-				// scriere in fip
-				int cod = AnalizatorLexical::pozitie(prefix, &treeCode);
-				AnalizatorLexical::generareFip(cod, 0, outputFip);
 			}
 			else {
-				int index = 1;
-				prefixMore = prefix;
-				while (find(operators.begin(), operators.end(), prefixMore) != operators.end()) {
-					prefixMore += line[index];
-					index++;
-				}
-				if (find(operators.begin(), operators.end(), prefix) != operators.end()) {
-					prefix = prefixMore.substr(0,prefixMore.size()-1);
-					cout << prefix << " e operator" << endl;
+				atom = line[0];
 
+				if (find(separators.begin(), separators.end(), atom) != separators.end()) {
 					// scriere in fip
-					int cod = AnalizatorLexical::pozitie(prefix, &treeCode);
+					int cod = AnalizatorLexical::pozitie(atom, &treeCode);
 					AnalizatorLexical::generareFip(cod, 0, outputFip);
 				}
-				else {
-					cout << "Eroare lexicala la linia " << i << " caracter " << prefix << endl;
-				}
-				line = line.substr(prefix.size());
-			}
 
+				else {
+					int index = 1;
+					atomExtended = atom;
+
+					bool isOperator = false;
+
+					while (find(operators.begin(), operators.end(), atomExtended) != operators.end()) {
+						atom = atomExtended;
+						atomExtended += line[index];
+						index++;
+						isOperator = true;
+					}
+
+					if (isOperator) {
+						// scriere in fip
+						int cod = AnalizatorLexical::pozitie(atom, &treeCode);
+						AnalizatorLexical::generareFip(cod, 0, outputFip);
+					}
+					else {
+						cout << "Eroare lexicala la linia " << i << " caracter " << atom << endl;
+					}
+				}
+			}
+			line = line.substr(atom.size());
 		}
 	}
 
