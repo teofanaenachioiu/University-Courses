@@ -1,0 +1,5 @@
+Q: A B C
+A: ! " # $ % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ? @ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z [ \ ] ^ _ ` a b c d e f g h i j k l m n o p q r s t u v w x y z { | } ~
+T: A " B; B " C; B ! B; B # B; B $ B; B % B; B & B; B ' B; B ( B; B ) B; B * B; B + B; B , B; B - B; B . B; B / B; B 0 B; B 1 B; B 2 B; B 3 B; B 4 B; B 5 B; B 6 B; B 7 B; B 8 B; B 9 B; B : B; B < B; B = B; B > B; B ? B; B @ B; B A B; B B B; B C B; B D B; B E B; B F B; B G B; B H B; B I B; B J B; B K B; B L B; B M B; B N B; B O B; B P B; B Q B; B R B; B S B; B T B; B U B; B V B; B W B; B X B; B Y B; B Z B; B [ B; B \ B; B ] B; B ^ B; B _ B; B ` B; B a B; B b B; B c B; B d B; B e B; B f B; B g B; B h B; B i B; B j B; B k B; B l B; B m B; B n B; B o B; B p B; B q B; B r B; B s B; B t B; B u B; B v B; B w B; B x B; B y B; B z B; B { B; B | B; B } B; B ~ B
+F: C
+I: A

@@ -1,0 +1,5 @@
+area 2
+perim 5
+perimetr 3
+radius 1
+u 4

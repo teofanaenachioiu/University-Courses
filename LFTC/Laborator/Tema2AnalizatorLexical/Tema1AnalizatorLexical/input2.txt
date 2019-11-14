@@ -1,0 +1,17 @@
+int main ( ) {
+	double elems [ 100 ] , sum = 0 ;
+	int n , index ;
+
+	cout << "n=" ; cin >> n ;
+
+	index = 0 ;
+
+	while ( index < n ) {
+		cout << "elems[" << index << "]=" ;
+		cin >> elems [ index ] ;
+		sum = sum + elems [ index ] ;
+		index = index + 1 ;
+	}
+
+	cout << "SUM:" << sum << endl ;
+}

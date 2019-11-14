@@ -1,0 +1,5 @@
+Q: A B C D E F G H I J K L M
+A: 0 1 2 3 4 5 6 7 8 9 a A b B c C d D e E f F x X b B u U l L
+T: A 1 B; A 2 B; A 3 B; A 4 B; A 5 B; A 6 B; A 7 B; A 8 B; A 9 B; B 0 B; B 1 B; B 2 B; B 3 B; B 4 B; B 5 B; B 6 B; B 7 B; B 8 B; B 9 B; A 0 C; C 1 D; C 2 D; C 3 D; C 4 D; C 5 D; C 6 D; C 7 D; D 0 D; D 1 D; D 2 D; D 3 D; D 4 D; D 5 D; D 6 D; D 7 D; C x E; C X E; E 1 F; E 2 F; E 3 F; E 4 F; E 5 F; E 6 F; E 7 F; E 8 F; E 9 F; E A F; E a F; E B F; E b F; E C F; E c F; E D F; E d F; E E F; E e F; E F F; E f F; F 0 F; F 1 F; F 2 F; F 3 F; F 4 F; F 5 F; F 6 F; F 7 F; F 8 F; F 9 F; F A F; F a F; F B F; F b F; F C F; F c F; F D F; F d F; F E F; F e F; F F F; F f F; C b G; C B G; G 0 H; G 1 H; H 0 H; H 1 H; B u I; B U I; B l L; B L L; I l J; I L J; J l K; J L K; L u K; L U K; L l M; L L M; M u K; M U K; D u I; D U I; D l L; D L L; F u I; F U I; F l L; F L L; H u I; H U I; H l L; H L L 
+F: B C D F H I J K L M
+I: A
