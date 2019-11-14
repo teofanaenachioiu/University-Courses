@@ -277,7 +277,6 @@ void Console::findPrefix()
 	}
 }
 
-
 int Console::getInitialState(string line, vector<State> & states)
 {
 	auto it = find(states.begin(), states.end(), State(line));
@@ -371,7 +370,3 @@ Alphabet Console::getAlphabetFromLine(string line)
 
 	return alphabet;
 }
-
-
-
-
