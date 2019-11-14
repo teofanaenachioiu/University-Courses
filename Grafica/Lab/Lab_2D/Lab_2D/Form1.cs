@@ -133,9 +133,9 @@ namespace Lab_2D
             Pen penSinus = new Pen(Color.Blue, 2);
             float y;
 
-            for (double i=-3*Math.PI; i <= 3*Math.PI; i=i+Math.PI/100)
+            for (double i=a; i <= b; i=i+Math.PI/100)
             {
-                y = (float)Math.Sin(i);
+                y = (float)Math.Cos(i)+15;
                 PointOnGr(SinusGr, penSinus, new Point(i, y));
             }
         }
