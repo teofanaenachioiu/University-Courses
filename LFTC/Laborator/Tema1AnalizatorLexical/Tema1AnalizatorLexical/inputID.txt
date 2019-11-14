@@ -1,0 +1,5 @@
+Q: A B C D E F G H I J K L M
+A: a A b B c C d D e E f F g G h H i I j J k K l L m M n N o O p P q Q r R s S t T u U v V w W x X y Y z Z _ 0 1 2 3 4 5 6 7 8 9
+T: A a B; A A B; A b B; A B B; A c B; A C B; A d B; A D B; A e B; A E B; A f B; A F B; A g B; A G B; A h B; A H B; A i B; A I B; A j B; A J B; A k B; A K B; A l B; A L B; A m B; A M B; A n B; A N B; A o B; A O B; A p B; A P B; A q B; A Q B; A r B; A R B; A s B; A S B; A t B; A T B; A u B; A U B; A v B; A V B; A w B; A W B; A x B; A X B; A y B; A Y B; A z B; A Z B; A _ B; B a C; B A C; B b C; B B C; B c C; B C C; B d C; B D C; B e C; B E C; B f C; B F C; B g C; B G C; B h C; B H C; B i C; B I C; B j C; B J C; B k C; B K C; B l C; B L C; B m C; B M C; B n C; B N C; B o C; B O C; B p C; B P C; B q C; B Q C; B r C; B R C; B s C; B S C; B t C; B T C; B u C; B U C; B v C; B V C; B w C; B W C; B x C; B X C; B y C; B Y C; B z C; B Z C; B _ C; B 0 C; B 1 C; B 2 C; B 3 C; B 4 C; B 5 C; B 6 C; B 7 C; B 8 C; B 9 C
+F: B C D E F G H
+I: A

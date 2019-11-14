@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "AnalizatorLexical.h"
 #include "Utils.h"
+#include "Console.h"
 #include <fstream>
 #include <regex>
 
@@ -68,11 +69,13 @@ void AnalizatorLexical::analiza(string input,  string codeFile, string outputFip
 	vector<string> separators = Utils::getStringsLine("separators.txt");
 	vector<string> keywords = Utils::getStringsLine("keywords.txt");
 
-	regex naturell_rx("[1-9][0/*-9]*");
-	regex naturellpoz_rx("(?:0)|[1-9][0-9]*");
+	//regex naturell_rx("[1-9][0/*-9]*");
+	//regex naturellpoz_rx("(?:0)|[1-9][0-9]*");
 	regex identificator_rx("[a-zA-Z_][a-zA-Z1-9_]{0,7}");
 	regex string_const_rx("[\"].*[\"]");
 
+	conIntregi.readFromFile("inputINT.txt");
+	conIdentificatori.readFromFile("inputID.txt");
 
 	AnalizatorLexical::codificare(codeFile);
 	AnalizatorLexical::clearFile(outputFip);
@@ -94,7 +97,8 @@ void AnalizatorLexical::analiza(string input,  string codeFile, string outputFip
 				AnalizatorLexical::generareFip(cod, 0, outputFip);
 			}
 			else
-				if (regex_match(atom, identificator_rx)) {
+				//if (regex_match(atom, identificator_rx)) {
+				if (conIdentificatori.checkSequence(atom)) {
 					int codTs = AnalizatorLexical::pozitie(atom, &treeId);
 					if (codTs == 0) {
 						codTs = AnalizatorLexical::adaugaInTree(atom, &treeId);
@@ -102,7 +106,8 @@ void AnalizatorLexical::analiza(string input,  string codeFile, string outputFip
 					AnalizatorLexical::generareFip(1, codTs, outputFip);
 				}
 				else
-					if (regex_match(atom, naturellpoz_rx) || regex_match(atom, string_const_rx)) {
+					//if (regex_match(atom, naturellpoz_rx) || regex_match(atom, string_const_rx)) {
+					if (conIntregi.checkSequence(atom) || regex_match(atom, string_const_rx)) {
 						int codTs = AnalizatorLexical::pozitie(atom, &treeConst);
 						if (codTs == 0) {
 							codTs = AnalizatorLexical::adaugaInTree(atom, &treeConst);

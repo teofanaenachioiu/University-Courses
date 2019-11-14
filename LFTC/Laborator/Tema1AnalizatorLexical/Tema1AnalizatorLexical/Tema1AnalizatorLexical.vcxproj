@@ -151,16 +151,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Alphabet.h" />
     <ClInclude Include="AnalizatorLexical.h" />
     <ClInclude Include="BST.h" />
     <ClInclude Include="Codare.h" />
+    <ClInclude Include="Console.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="State.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Alphabet.cpp" />
     <ClCompile Include="AnalizatorLexical.cpp" />
     <ClCompile Include="BST.cpp" />
     <ClCompile Include="Codare.cpp" />
+    <ClCompile Include="Console.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -168,9 +173,12 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="State.cpp" />
+    <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="..\..\Tema2\Tema2\inputINT.txt" />
     <Text Include="code.txt" />
     <Text Include="input1.txt" />
     <Text Include="input2.txt" />
@@ -178,6 +186,7 @@
     <Text Include="keywords.txt" />
     <Text Include="operators.txt" />
     <Text Include="separators.txt" />
+    <Text Include="inputID.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

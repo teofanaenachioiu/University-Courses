@@ -2,6 +2,7 @@
 #include <string>
 #include "BST.h"
 #include "Codare.h"
+#include "Console.h"
 using namespace std;
 class AnalizatorLexical
 {
@@ -12,7 +13,8 @@ public:
 	void analiza(string input, string codeFile, string outputFip, string outputTsConst, string outputTsId);
 
 private:
-
+	Console conIntregi = Console();
+	Console conIdentificatori = Console();
 	BST treeConst = BST();
 	BST treeId = BST();
 	BST treeCode = BST();
