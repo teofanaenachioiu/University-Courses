@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab_Texturi", "Lab_Texturi\Lab_Texturi.csproj", "{1EEE7D5A-A01D-40E6-8BB6-1FA39F008400}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1EEE7D5A-A01D-40E6-8BB6-1FA39F008400}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EEE7D5A-A01D-40E6-8BB6-1FA39F008400}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EEE7D5A-A01D-40E6-8BB6-1FA39F008400}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EEE7D5A-A01D-40E6-8BB6-1FA39F008400}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A01107D0-AA4D-4B68-85D3-32B605713449}
+	EndGlobalSection
+EndGlobal

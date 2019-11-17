@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab_Z_Buffer_Alg", "Lab_Z_Buffer_Alg\Lab_Z_Buffer_Alg.csproj", "{93FC8ACB-8796-46E0-80BA-CB239AB56E78}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{93FC8ACB-8796-46E0-80BA-CB239AB56E78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93FC8ACB-8796-46E0-80BA-CB239AB56E78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93FC8ACB-8796-46E0-80BA-CB239AB56E78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93FC8ACB-8796-46E0-80BA-CB239AB56E78}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7B577A69-81B3-4895-95D3-53C692B9220F}
+	EndGlobalSection
+EndGlobal
