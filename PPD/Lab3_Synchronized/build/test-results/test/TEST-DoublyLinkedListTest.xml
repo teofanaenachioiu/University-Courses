@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="DoublyLinkedListTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-11-24T10:35:30" hostname="DESKTOP-RMG9085" time="0.008">
+  <properties/>
+  <testcase name="insert" classname="DoublyLinkedListTest" time="0.008"/>
+  <system-out><![CDATA[Doubly Linked List = Monom{coefficient=1, exponent=100}
+Doubly Linked List = Monom{coefficient=1, exponent=100} <-> Monom{coefficient=1, exponent=99}
+Doubly Linked List = Monom{coefficient=1, exponent=100} <-> Monom{coefficient=2, exponent=99}
+Doubly Linked List = Monom{coefficient=1, exponent=100}
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

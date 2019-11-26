@@ -1,0 +1,4 @@
+9Doubly Linked List = Monom{coefficient=1, exponent=100}
+^Doubly Linked List = Monom{coefficient=1, exponent=100} <-> Monom{coefficient=1, exponent=99}
+^Doubly Linked List = Monom{coefficient=1, exponent=100} <-> Monom{coefficient=2, exponent=99}
+9Doubly Linked List = Monom{coefficient=1, exponent=100}
