@@ -19,16 +19,16 @@ public class DoublyLinkedList {
         return size;
     }
 
-    public void insert(Monom val, boolean deleteImmediately) {
-        Node nptr = new Node(val, null, null);
-        Node tmp, ptr;
+    public synchronized void insert(Monom val, boolean deleteImmediately) {
+        Node newNode = new Node(val, null, null);
+        Node crrNode, nextNode;
         boolean ins = false;
         if (start == null)
-            start = nptr;
+            start = newNode;
         else if (val.getExponent() > start.getData().getExponent()) {
-            nptr.setLinkNext(start);
-            start.setLinkPrev(nptr);
-            start = nptr;
+            newNode.setLinkNext(start);
+            start.setLinkPrev(newNode);
+            start = newNode;
         } else if (val.getExponent() == start.getData().getExponent()) {
             start.addCoefficient(val.getCoefficient());
 
@@ -37,35 +37,34 @@ public class DoublyLinkedList {
             }
             return;
         } else {
-            tmp = start;
-            ptr = start.getLinkNext();
-            while (ptr != null) {
-                if (val.getExponent() < tmp.getData().getExponent() && val.getExponent() > ptr.getData().getExponent()) {
-                    tmp.setLinkNext(nptr);
-                    nptr.setLinkPrev(tmp);
-                    nptr.setLinkNext(ptr);
-                    ptr.setLinkPrev(nptr);
+            crrNode = start;
+            nextNode = start.getLinkNext();
+            while (nextNode != null) {
+                if (val.getExponent() < crrNode.getData().getExponent() && val.getExponent() > nextNode.getData().getExponent()) {
+                    crrNode.setLinkNext(newNode);
+                    newNode.setLinkPrev(crrNode);
+                    newNode.setLinkNext(nextNode);
+                    nextNode.setLinkPrev(newNode);
                     ins = true;
                     break;
                 }
 
-                if (val.getExponent() == ptr.getData().getExponent()) {
-                    ptr.addCoefficient(val.getCoefficient());
+                if (val.getExponent() == nextNode.getData().getExponent()) {
+                    nextNode.addCoefficient(val.getCoefficient());
                     ins = true;
                     size--;
-                    if (ptr.isCoefficientZero() && deleteImmediately) {
-                        delete(ptr);
+                    if (nextNode.isCoefficientZero() && deleteImmediately) {
+                        delete(nextNode);
                     }
                     break;
                 }
 
-                tmp = ptr;
-                ptr = ptr.getLinkNext();
+                crrNode = nextNode;
+                nextNode = nextNode.getLinkNext();
             }
             if (!ins) {
-                //adaug la final
-                tmp.setLinkNext(nptr);
-                nptr.setLinkPrev(tmp);
+                crrNode.setLinkNext(newNode);
+                newNode.setLinkPrev(crrNode);
             }
         }
         size++;
@@ -148,6 +147,171 @@ public class DoublyLinkedList {
             }
         }
     }
+
+    void insertSync2(Monom val, boolean deleteImmediately) {
+        Node newNode = new Node(val, null, null);
+
+        int valExponent = val.getExponent();
+
+        Node currentNode, nextNode, nextNextNode;
+
+        synchronized (this) {
+            if (start == null) {
+                start = newNode;
+                size++;
+                return;
+            }
+        }
+
+        synchronized (start) {
+            if (valExponent > start.getData().getExponent()) {
+                start.setLinkPrev(newNode);
+                newNode.setLinkNext(start);
+                start = newNode;
+                size++;
+                return;
+            }
+
+            if (start.getData().getExponent() == valExponent) {
+                start.addCoefficient(val.getCoefficient());
+                if (start.isCoefficientZero()) {
+                    delete(start);
+                }
+                return;
+            }
+
+            if (start.getLinkNext() == null) {
+                start.setLinkNext(newNode);
+                newNode.setLinkPrev(start);
+                size++;
+                return;
+            }
+
+            currentNode = start;
+            nextNode = start.getLinkNext();
+        }
+
+        int crrExponent;
+        int nextExponent;
+
+        while (true) {
+            synchronized (currentNode) {
+                synchronized (nextNode) {
+                    if (nextNode.getLinkNext() != null) {
+                        synchronized (nextNode.getLinkNext()) {
+                            crrExponent = currentNode.getData().getExponent();
+                            nextExponent = nextNode.getData().getExponent();
+
+                            if (crrExponent > valExponent && valExponent > nextExponent) {
+                                currentNode.setLinkNext(newNode);
+                                newNode.setLinkPrev(currentNode);
+                                newNode.setLinkNext(nextNode);
+                                nextNode.setLinkPrev(newNode);
+                                size++;
+                                break;
+                            }
+
+                            if (valExponent == crrExponent) {
+                                currentNode.addCoefficient(val.getCoefficient());
+                                if (currentNode.isCoefficientZero() && deleteImmediately) {
+                                    delete(currentNode);
+                                }
+                                break;
+                            }
+
+                            if (nextNode.getLinkNext() == null) {
+                                if (nextNode.getData().getExponent() == valExponent) {
+                                    nextNode.addCoefficient(val.getCoefficient());
+                                    if (nextNode.isCoefficientZero() && deleteImmediately) {
+                                        delete(nextNode);
+                                    }
+                                } else {
+                                    nextNode.setLinkNext(newNode);
+                                    newNode.setLinkPrev(nextNode);
+                                    size++;
+                                }
+                                break;
+                            }
+                            currentNode = nextNode;
+                            nextNode = nextNode.getLinkNext();
+                            crrExponent = currentNode.getData().getExponent();
+                            nextExponent = nextNode.getData().getExponent();
+
+                            if (crrExponent > valExponent && valExponent > nextExponent) {
+                                currentNode.setLinkNext(newNode);
+                                newNode.setLinkPrev(currentNode);
+                                newNode.setLinkNext(nextNode);
+                                nextNode.setLinkPrev(newNode);
+                                size++;
+                                break;
+                            }
+
+                            if (valExponent == crrExponent) {
+                                currentNode.addCoefficient(val.getCoefficient());
+                                if (currentNode.isCoefficientZero() && deleteImmediately) {
+                                    delete(currentNode);
+                                }
+                                break;
+                            }
+
+                            if (nextNode.getLinkNext() == null) {
+                                if (nextNode.getData().getExponent() == valExponent) {
+                                    nextNode.addCoefficient(val.getCoefficient());
+                                    if (nextNode.isCoefficientZero() && deleteImmediately) {
+                                        delete(nextNode);
+                                    }
+                                } else {
+                                    nextNode.setLinkNext(newNode);
+                                    newNode.setLinkPrev(nextNode);
+                                    size++;
+                                }
+                                break;
+                            }
+                            currentNode = nextNode;
+                            nextNode = nextNode.getLinkNext();
+                        }
+                    } else {
+                        crrExponent = currentNode.getData().getExponent();
+                        nextExponent = nextNode.getData().getExponent();
+
+                        if (crrExponent > valExponent && valExponent > nextExponent) {
+                            currentNode.setLinkNext(newNode);
+                            newNode.setLinkPrev(currentNode);
+                            newNode.setLinkNext(nextNode);
+                            nextNode.setLinkPrev(newNode);
+                            size++;
+                            break;
+                        }
+
+                        if (valExponent == crrExponent) {
+                            currentNode.addCoefficient(val.getCoefficient());
+                            if (currentNode.isCoefficientZero() && deleteImmediately) {
+                                delete(currentNode);
+                            }
+                            break;
+                        }
+
+                        if (nextNode.getLinkNext() == null) {
+                            if (nextNode.getData().getExponent() == valExponent) {
+                                nextNode.addCoefficient(val.getCoefficient());
+                                if (nextNode.isCoefficientZero() && deleteImmediately) {
+                                    delete(nextNode);
+                                }
+                            } else {
+                                nextNode.setLinkNext(newNode);
+                                newNode.setLinkPrev(nextNode);
+                                size++;
+                            }
+                            break;
+                        }
+                        currentNode = nextNode;
+                        nextNode = nextNode.getLinkNext();
+                    }
+                }
+            }
+        }
+    }
+
 
     private void delete(Node node) {
         if (start == node) {

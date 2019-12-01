@@ -29,7 +29,7 @@ public class NodeThread extends Thread {
                     String line = sc.nextLine();
                     String[] elem = line.split(",");
                     Monom monom = new Monom(Integer.parseInt(elem[0]), Integer.parseInt(elem[1]));
-                    linkedList.insertSync(monom, deleteImmediately);
+                    linkedList.insertSync2(monom, deleteImmediately);
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

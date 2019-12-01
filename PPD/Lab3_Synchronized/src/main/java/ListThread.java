@@ -29,9 +29,7 @@ public class ListThread extends Thread {
                     String line = sc.nextLine();
                     String[] elem = line.split(",");
                     Monom monom = new Monom(Integer.parseInt(elem[0]), Integer.parseInt(elem[1]));
-                    synchronized (linkedList) {
                         linkedList.insert(monom, deleteImmediately);
-                    }
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

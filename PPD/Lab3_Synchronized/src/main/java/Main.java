@@ -2,11 +2,11 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
-        int noPolynomials = 10;
+        int noPolynomials = 5;
         int noThreads = 4;
         int minCoef = -100;
         int maxCoef = 100;
-        int maxExp = 10000;
+        int maxExp = 1000;
 
         // Generare polinoame
 
@@ -40,7 +40,7 @@ public class Main {
         linkedList1.writeInFile("result.txt");
 
         time1 = (finish1 - start1) / (float) 1_000_000;
-        System.out.println("Time: " + time1 + " ms list");
+        System.out.println("Time: " + time1 + " ms list delete immediately");
 
 
         // Sincronizare la nivel de nod
@@ -51,7 +51,6 @@ public class Main {
         long start, finish;
         float time;
 
-        linkedList.prepare(maxExp);
 
         for (int i = 0; i < noThreads; i++) {
             threads[i] = new NodeThread(noPolynomials, linkedList, true);
@@ -69,16 +68,15 @@ public class Main {
 
         finish = System.nanoTime();
 
-        linkedList.broke();
         linkedList.writeInFile("result1.txt");
 
         time = (finish - start) / (float) 1_000_000;
-        System.out.println("Time: " + time + " ms node");
+        System.out.println("Time: " + time + " ms node delete immediately");
 
 
         // Verificare rezultate
 
-        System.out.println("Result: " + Utils.isSameContentInFile("result.txt", "result1.txt"));
+        //System.out.println("Result: " + Utils.isSameContentInFile("result.txt", "result1.txt"));
 
 
 
@@ -111,7 +109,7 @@ public class Main {
         linkedList2.writeInFile("result.txt");
 
         time2 = (finish2 - start2) / (float) 1_000_000;
-        System.out.println("Time: " + time2 + " ms list");
+        System.out.println("Time: " + time2 + " ms list delete in the end");
 
 
         // Sincronizare la nivel de lista
@@ -122,7 +120,6 @@ public class Main {
         long start3, finish3;
         float time3;
 
-        linkedList3.prepare(maxExp);
 
         for (int i = 0; i < noThreads; i++) {
             threads3[i] = new NodeThread(noPolynomials, linkedList, false);
@@ -142,11 +139,10 @@ public class Main {
 
         finish3 = System.nanoTime();
 
-        linkedList3.broke();
         linkedList3.writeInFile("result1.txt");
 
         time3 = (finish3 - start3) / (float) 1_000_000;
-        System.out.println("Time: " + time3 + " ms node");
-        System.out.println("Result: " + Utils.isSameContentInFile("result.txt", "result1.txt"));
+        System.out.println("Time: " + time3 + " ms node delete in the end");
+        //System.out.println("Result: " + Utils.isSameContentInFile("result.txt", "result1.txt"));
     }
 }
