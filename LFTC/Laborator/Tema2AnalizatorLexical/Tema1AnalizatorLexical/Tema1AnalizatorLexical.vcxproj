@@ -155,7 +155,6 @@
     <ClInclude Include="AnalizatorLexical.h" />
     <ClInclude Include="BST.h" />
     <ClInclude Include="Codare.h" />
-    <ClInclude Include="Console.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateMachine.h" />
@@ -166,7 +165,6 @@
     <ClCompile Include="AnalizatorLexical.cpp" />
     <ClCompile Include="BST.cpp" />
     <ClCompile Include="Codare.cpp" />
-    <ClCompile Include="Console.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

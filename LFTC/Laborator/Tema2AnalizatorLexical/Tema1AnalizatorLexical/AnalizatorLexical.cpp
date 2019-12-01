@@ -149,11 +149,15 @@ void AnalizatorLexical::analizaLinie(string input, string codeFile, string outpu
 		while (line.size() > 0) {
 			if ((atom = automatID.findPrefix(line)) != "") {
 				if (find(keywords.begin(), keywords.end(), atom) != keywords.end()) {
+					cout << atom << " e cuvant rezervat" << endl;
+
 					// scriere in fip
 					int cod = AnalizatorLexical::pozitie(atom, &treeCode);
 					AnalizatorLexical::generareFip(cod, 0, outputFip);
 				}
 				else {
+					cout << atom << " e identificator" << endl;
+
 					// scriere in tabela identificator (cod 1)
 					int codTs = AnalizatorLexical::pozitie(atom, &treeId);
 					if (codTs == 0) {
@@ -165,6 +169,9 @@ void AnalizatorLexical::analizaLinie(string input, string codeFile, string outpu
 				}
 			}
 			else if ((atom = automatConstString.findPrefix(line)) != "") {
+				cout << atom << " e constanta string" << endl;
+
+
 				// scriere in tabela constante (cod 2)
 				int codTs = AnalizatorLexical::pozitie(atom, &treeConst);
 				if (codTs == 0) {
@@ -175,6 +182,9 @@ void AnalizatorLexical::analizaLinie(string input, string codeFile, string outpu
 
 			}
 			else if ((atom = automatConstInt.findPrefix(line)) != "") {
+				cout << atom << " e constanta intreaga" << endl;
+
+
 				// scriere in tabela constante (cod 2)
 				int codTs = AnalizatorLexical::pozitie(atom, &treeConst);
 				if (codTs == 0) {
@@ -187,6 +197,8 @@ void AnalizatorLexical::analizaLinie(string input, string codeFile, string outpu
 				atom = line[0];
 
 				if (find(separators.begin(), separators.end(), atom) != separators.end()) {
+					cout << atom << " e separator" << endl;
+
 					// scriere in fip
 					int cod = AnalizatorLexical::pozitie(atom, &treeCode);
 					AnalizatorLexical::generareFip(cod, 0, outputFip);
@@ -206,6 +218,8 @@ void AnalizatorLexical::analizaLinie(string input, string codeFile, string outpu
 					}
 
 					if (isOperator) {
+						cout << atom << " e operator" << endl;
+
 						// scriere in fip
 						int cod = AnalizatorLexical::pozitie(atom, &treeCode);
 						AnalizatorLexical::generareFip(cod, 0, outputFip);

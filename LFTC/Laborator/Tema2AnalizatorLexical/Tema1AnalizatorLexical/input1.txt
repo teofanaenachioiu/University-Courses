@@ -2,7 +2,7 @@ int main()
 {
 	int radius;
 	double area, perimetru;
-
+	
 	cout<<"r="; cin>>radius;
 	area = M_PI * radius * radius;
 	perim = 2*M_PI*radius;
