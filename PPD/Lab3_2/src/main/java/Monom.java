@@ -1,5 +1,3 @@
-package collections;
-
 import java.util.Objects;
 
 public class Monom {

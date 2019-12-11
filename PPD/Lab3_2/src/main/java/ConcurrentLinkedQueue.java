@@ -1,5 +1,3 @@
-package collections;
-
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -7,21 +5,22 @@ import java.io.IOException;
 public class ConcurrentLinkedQueue {
     private Node start;
     private int size;
+    private boolean stillReading;
 
     public ConcurrentLinkedQueue() {
         start = null;
         size = 0;
     }
 
-    public synchronized boolean isEmpty() {
+    public  boolean isEmpty() {
         return start == null;
     }
 
-    public synchronized int getSize() {
+    public  int getSize() {
         return size;
     }
 
-    public synchronized void add(Monom val) {
+    public  void add(Monom val) {
         Node newNode = new Node(val, null, null);
         Node currentNode;
         if (start == null) {
@@ -37,17 +36,20 @@ public class ConcurrentLinkedQueue {
         size++;
     }
 
-    public synchronized Monom peek(){
+    public  Monom peek(){
         if(start==null) return null;
+
         Monom returned = start.getData();
         delete(start);
         return returned;
     }
 
-    private synchronized void delete(Node node) {
+    private void delete(Node node) {
         if (start == node) {
             start = start.getLinkNext();
-            start.setLinkPrev(null);
+            if(start!=null){
+                start.setLinkPrev(null);
+            }
         } else {
             Node ptr = start.getLinkNext();
             while (ptr != node) {
@@ -71,7 +73,7 @@ public class ConcurrentLinkedQueue {
     }
 
     public void display() {
-        System.out.print("Doubly Linked List = ");
+        System.out.print("Queue = ");
         if (size == 0) {
             System.out.print("empty\n");
             return;

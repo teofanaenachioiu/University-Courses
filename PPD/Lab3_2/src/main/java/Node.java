@@ -1,5 +1,3 @@
-package collections;
-
 public class Node {
     private Monom data;
     private Node next, prev;
