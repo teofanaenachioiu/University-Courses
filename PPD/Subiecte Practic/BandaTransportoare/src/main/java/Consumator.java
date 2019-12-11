@@ -26,7 +26,10 @@ public class Consumator extends Thread {
                     val = banda.list.removeFirst();
                     System.out.println("Consumer1 " + val);
                     banda.notify();
-
+                    if (banda.finish.get()) {
+                        consume();
+                        return;
+                    }
 
                     while (banda.list.size() == 0) {
                         System.out.println("WAIT 2");
@@ -41,7 +44,10 @@ public class Consumator extends Thread {
                     val = banda.list.removeFirst();
                     System.out.println("Consumer2 " + val);
                     banda.notify();
-
+                    if (banda.finish.get()) {
+                        consume();
+                        return;
+                    }
 
                     while (banda.list.size() == 0) {
                         System.out.println("WAIT 3");
@@ -56,7 +62,10 @@ public class Consumator extends Thread {
                     val = banda.list.removeFirst();
                     System.out.println("Consumer3 " + val);
                     banda.notify();
-
+                    if (banda.finish.get()) {
+                        consume();
+                        return;
+                    }
                     Thread.sleep(8);
                 }
             }

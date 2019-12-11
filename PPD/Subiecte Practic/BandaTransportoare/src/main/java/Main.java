@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        int n = 51;
+        int n = 47;
         int p = 11;
         int c = 5;
 
@@ -29,5 +29,7 @@ public class Main {
         for (int i = 0; i < c; i++) {
             consumatori[i].join();
         }
+
+        System.out.println(banda.list.size());
     }
 }

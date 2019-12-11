@@ -12,7 +12,7 @@ public class BandaTransportoare {
     public BandaTransportoare(int capacity) {
         this.capacity = capacity;
         this.list = new LinkedList<>();
-        this.iteratii = 100;
+        this.iteratii = 101;
         this.value = new AtomicInteger(1);
         this.finish = new AtomicBoolean(false);
     }
