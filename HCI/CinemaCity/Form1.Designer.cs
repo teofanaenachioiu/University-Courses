@@ -78,7 +78,7 @@
             this.comandaButton.Name = "comandaButton";
             this.comandaButton.Size = new System.Drawing.Size(86, 21);
             this.comandaButton.TabIndex = 4;
-            this.comandaButton.Text = "Comanda";
+            this.comandaButton.Text = "&Comanda";
             this.comandaButton.UseVisualStyleBackColor = true;
             // 
             // nextButton
@@ -90,7 +90,7 @@
             this.nextButton.Name = "nextButton";
             this.nextButton.Size = new System.Drawing.Size(114, 34);
             this.nextButton.TabIndex = 7;
-            this.nextButton.Text = "Next";
+            this.nextButton.Text = "&Next";
             this.nextButton.UseVisualStyleBackColor = true;
             // 
             // theMainMenu
@@ -103,8 +103,10 @@
             this.theMainMenu.Name = "theMainMenu";
             this.theMainMenu.Padding = new System.Windows.Forms.Padding(10, 2, 0, 2);
             this.theMainMenu.Size = new System.Drawing.Size(635, 24);
-            this.theMainMenu.TabIndex = 5;
+            this.theMainMenu.TabIndex = 10;
+            this.theMainMenu.TabStop = true;
             this.theMainMenu.Text = "menuStrip1";
+            this.theMainMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.theMainMenu_ItemClicked);
             // 
             // fileToolStripMenuItem
             // 
@@ -112,13 +114,13 @@
             this.closeToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
+            this.fileToolStripMenuItem.Text = "&File";
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
             this.closeToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.closeToolStripMenuItem.Text = "Close";
+            this.closeToolStripMenuItem.Text = "&Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.CloseToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
@@ -132,34 +134,34 @@
             this.fontColorToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.settingsToolStripMenuItem.Text = "Settings";
+            this.settingsToolStripMenuItem.Text = "&Settings";
             // 
             // biggerFontSizeToolStripMenuItem
             // 
             this.biggerFontSizeToolStripMenuItem.Name = "biggerFontSizeToolStripMenuItem";
-            this.biggerFontSizeToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.biggerFontSizeToolStripMenuItem.Text = "Bigger Font Size";
+            this.biggerFontSizeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.biggerFontSizeToolStripMenuItem.Text = "&Bigger Font Size";
             this.biggerFontSizeToolStripMenuItem.Click += new System.EventHandler(this.BiggerFontSizeToolStripMenuItem_Click);
             // 
             // smallerFontSizeToolStripMenuItem
             // 
             this.smallerFontSizeToolStripMenuItem.Name = "smallerFontSizeToolStripMenuItem";
-            this.smallerFontSizeToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.smallerFontSizeToolStripMenuItem.Text = "Smaller Font Size";
+            this.smallerFontSizeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.smallerFontSizeToolStripMenuItem.Text = "&Smaller Font Size";
             this.smallerFontSizeToolStripMenuItem.Click += new System.EventHandler(this.SmallerFontSizeToolStripMenuItem_Click);
             // 
             // backgroundColorToolStripMenuItem
             // 
             this.backgroundColorToolStripMenuItem.Name = "backgroundColorToolStripMenuItem";
-            this.backgroundColorToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.backgroundColorToolStripMenuItem.Text = "Background Color";
+            this.backgroundColorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.backgroundColorToolStripMenuItem.Text = "&Background Color";
             this.backgroundColorToolStripMenuItem.Click += new System.EventHandler(this.BackgroundColorToolStripMenuItem_Click);
             // 
             // fontColorToolStripMenuItem
             // 
             this.fontColorToolStripMenuItem.Name = "fontColorToolStripMenuItem";
-            this.fontColorToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.fontColorToolStripMenuItem.Text = "Font Color";
+            this.fontColorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fontColorToolStripMenuItem.Text = "&Font Color";
             this.fontColorToolStripMenuItem.Click += new System.EventHandler(this.FontColorToolStripMenuItem_Click);
             // 
             // numeLabel
@@ -195,7 +197,7 @@
             this.rezervaButton.Size = new System.Drawing.Size(79, 21);
             this.rezervaButton.TabIndex = 3;
             this.rezervaButton.TabStop = true;
-            this.rezervaButton.Text = "Rezerva";
+            this.rezervaButton.Text = "&Rezerva";
             this.rezervaButton.UseVisualStyleBackColor = true;
             // 
             // prenumeLabel
@@ -216,7 +218,7 @@
             this.clientLabel.Name = "clientLabel";
             this.clientLabel.Size = new System.Drawing.Size(86, 17);
             this.clientLabel.TabIndex = 0;
-            this.clientLabel.Text = "Date client";
+            this.clientLabel.Text = "&Date client";
             // 
             // prenumeTextBox
             // 
@@ -248,7 +250,7 @@
             this.filmList.Location = new System.Drawing.Point(46, 153);
             this.filmList.Name = "filmList";
             this.filmList.Size = new System.Drawing.Size(141, 196);
-            this.filmList.TabIndex = 1;
+            this.filmList.TabIndex = 0;
             // 
             // locuriTextBox
             // 

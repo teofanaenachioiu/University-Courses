@@ -133,7 +133,7 @@ namespace CinemaCity
         }
 
         private void SetBackColor(Color color)
-        {
+        { 
             BackColor = color;
             filmList.BackColor = color;
             locuriTextBox.BackColor = color;
@@ -142,6 +142,9 @@ namespace CinemaCity
             nextButton.BackColor = color;
             comandaButton.BackColor = color;
             rezervaButton.BackColor = color;
+            theMainMenu.BackColor = color;
+            fileToolStripMenuItem.BackColor = color;
+            settingsToolStripMenuItem.BackColor = color;
         }
 
         private void SetFontColor(Color color)
@@ -184,6 +187,11 @@ namespace CinemaCity
                 return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void theMainMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }
