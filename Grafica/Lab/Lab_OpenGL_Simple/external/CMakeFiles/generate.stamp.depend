@@ -1,0 +1,6 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.16/Modules/CheckFunctionExists.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/CheckIncludeFile.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/CheckIncludeFileCXX.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/CheckTypeSize.cmake
+D:/ogl-master/ogl-master/external/CMakeLists.txt

@@ -15,7 +15,7 @@ namespace Lab_Texturi
     {
         private int u1, v1, u2, v2;   	    //  ViewPort
         private double a, b, c, d;     	    //  Window
-        private int Tip;                    //  Pr. Par.=1, Perp.=2
+        private int Tip;                    
         private double Raza, Alfa;
         private Bitmap Im1;
         private int dimTextura;
@@ -39,7 +39,7 @@ namespace Lab_Texturi
         void ViewPort(int x1, int y1, int x2, int y2) { u1 = x1; v1 = y1; u2 = x2; v2 = y2; }
         void Window(double x1, double y1, double x2, double y2) { a = x1; d = y1; b = x2; c = y2; }
 
-        void DefPr(double r, double a) { Raza = r; Alfa = a; }   //   r=1; a=0.8;   // = Pi/4  
+        void DefPr(double r, double a) { Raza = r; Alfa = a; }   
 
         double PrX(double x, double z) { return x + Raza * z * Math.Cos(Alfa); }
         double PrY(double y, double z) { return y + Raza * z * Math.Sin(Alfa); }
@@ -77,7 +77,7 @@ namespace Lab_Texturi
 
             PuncteTextura = new Punct[5];
 
-            dimTextura = Math.Min(Im1.Height, Im1.Width) - 1;            // Dim. Text.
+            dimTextura = Math.Min(Im1.Height, Im1.Width) - 1;       
 
             PuncteTextura[1] = new Punct()
             {
@@ -147,7 +147,7 @@ namespace Lab_Texturi
             Raza = Convert.ToDouble(Split[1]);
             Alfa = Convert.ToDouble(Split[2]);
 
-            line = streamReader.ReadLine();                               // Nr.Fete
+            line = streamReader.ReadLine();                           
             Split = line.Split(' ');
             NrFetevizibile = Convert.ToInt32(Split[0]);
 
@@ -156,9 +156,9 @@ namespace Lab_Texturi
 
             streamReader.Close();
 
-            DefPr(Raza, Alfa); // Persp.(d,q);
+            //DefPr(Raza, Alfa); 
 
-            a = b = Px(V[1]); c = d = Py(V[1]);     //  Window ...
+            a = b = Px(V[1]); c = d = Py(V[1]);     
 
             for (int i = 2; i <= nrVarfuri; i++)
             {
@@ -185,19 +185,19 @@ namespace Lab_Texturi
 
             Window(a, d, b, c);
 
-            for (int j = 1; j <= nrMuchii; j++)        //  Corp ... [Muchii]
+            for (int j = 1; j <= nrMuchii; j++)       
             {
                 myPen.Color = Color.Black;
                 formGraphics.DrawLine(myPen, u(Px(V[M[j].stanga])), v(Py(V[M[j].stanga])), u(Px(V[M[j].dreapta])), v(Py(V[M[j].dreapta])));
             }
 
-            Fata(1, 0, 0, 0, 1, 0, 1);
-            Fata(2, 0, 0, 0, 1, 0, 1);
-            Fata(3, 0, 0, 0, 1, 0, 1);
+            Fata(1);
+            Fata(2);
+            Fata(3);
         }
 
 
-        Punct Afin(Punct A, Punct B, double a)
+        Punct Trans(Punct A, Punct B, double a)
         {
             return new Punct()
             {
@@ -206,12 +206,12 @@ namespace Lab_Texturi
             };
         }
 
-        Punct Afin4(Punct A, Punct B, Punct C, Punct D, double a, double b, double c)
+        Punct Trans4Puncte(Punct A, Punct B, Punct C, Punct D, double a, double b, double c)
         {
-            return Afin(Afin(Afin(A, B, a), C, b), D, c);
+            return Trans(Trans(Trans(A, B, a), C, b), D, c);
         }
 
-        void Fata(int f, double a1, double a2, double b1, double b2, double c1, double c2)
+        void Fata(int f)
         {
             string[] Split = Fete[f].Split(' ');
 
@@ -245,32 +245,31 @@ namespace Lab_Texturi
             double Pas = Math.Abs(1.0 / h);
 
             Punct T, P;
-            for (double a = a1; a <= a2; a += Pas)
-                for (double b = b1; b <= b2; b += Pas)
-                    for (double c = c1; c <= c2; c += Pas)
+                for (double b = 0; b <= 1; b += Pas)
+                    for (double c = 0; c <= 1; c += Pas)
                     {
-                        T = Afin4(PuncteTextura[1], PuncteTextura[2], PuncteTextura[3], PuncteTextura[4], a, b, c);
+                        T = Trans4Puncte(PuncteTextura[1], PuncteTextura[2], PuncteTextura[3], PuncteTextura[4], a, b, c);
                         bm.SetPixel(0, 0, Im1.GetPixel((int)T.x, Im1.Height - (int)T.y - 1));
 
-                        P = Afin4(Puncte[1], Puncte[2], Puncte[3], Puncte[4], a, b, c);
+                        P = Trans4Puncte(Puncte[1], Puncte[2], Puncte[3], Puncte[4], a, b, c);
                         formGraphics.DrawImageUnscaled(bm, (int)P.x, (int)P.y);
 
-                        T = Afin4(PuncteTextura[4], PuncteTextura[1], PuncteTextura[2], PuncteTextura[3], a, b, c);
+                        T = Trans4Puncte(PuncteTextura[4], PuncteTextura[1], PuncteTextura[2], PuncteTextura[3], a, b, c);
                         bm.SetPixel(0, 0, Im1.GetPixel((int)T.x, Im1.Height - (int)T.y - 1));
 
-                        P = Afin4(Puncte[4], Puncte[1], Puncte[2], Puncte[3], a, b, c);
+                        P = Trans4Puncte(Puncte[4], Puncte[1], Puncte[2], Puncte[3], a, b, c);
                         formGraphics.DrawImageUnscaled(bm, (int)P.x, (int)P.y);
 
-                        T = Afin4(PuncteTextura[3], PuncteTextura[4], PuncteTextura[1], PuncteTextura[2], a, b, c);
+                        T = Trans4Puncte(PuncteTextura[3], PuncteTextura[4], PuncteTextura[1], PuncteTextura[2], a, b, c);
                         bm.SetPixel(0, 0, Im1.GetPixel((int)T.x, Im1.Height - (int)T.y - 1));
 
-                        P = Afin4(Puncte[3], Puncte[4], Puncte[1], Puncte[2], a, b, c);
+                        P = Trans4Puncte(Puncte[3], Puncte[4], Puncte[1], Puncte[2], a, b, c);
                         formGraphics.DrawImageUnscaled(bm, (int)P.x, (int)P.y);
 
-                        T = Afin4(PuncteTextura[2], PuncteTextura[3], PuncteTextura[4], PuncteTextura[1], a, b, c);
+                        T = Trans4Puncte(PuncteTextura[2], PuncteTextura[3], PuncteTextura[4], PuncteTextura[1], a, b, c);
                         bm.SetPixel(0, 0, Im1.GetPixel((int)T.x, Im1.Height - (int)T.y - 1));
 
-                        P = Afin4(Puncte[2], Puncte[3], Puncte[4], Puncte[1], a, b, c);
+                        P = Trans4Puncte(Puncte[2], Puncte[3], Puncte[4], Puncte[1], a, b, c);
                         formGraphics.DrawImageUnscaled(bm, (int)P.x, (int)P.y);
                     }
         }

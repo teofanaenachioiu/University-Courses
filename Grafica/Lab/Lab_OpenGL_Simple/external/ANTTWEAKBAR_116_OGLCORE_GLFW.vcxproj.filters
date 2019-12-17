@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\ogl-master\ogl-master\external\AntTweakBar-1.16\src\LoadOGL.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\ogl-master\ogl-master\external\AntTweakBar-1.16\src\LoadOGLCore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\ogl-master\ogl-master\external\AntTweakBar-1.16\src\TwColors.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\ogl-master\ogl-master\external\AntTweakBar-1.16\src\TwBar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\ogl-master\ogl-master\external\AntTweakBar-1.16\src\TwEventGLFW.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\ogl-master\ogl-master\external\AntTweakBar-1.16\src\TwFonts.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\ogl-master\ogl-master\external\AntTweakBar-1.16\src\TwMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\ogl-master\ogl-master\external\AntTweakBar-1.16\src\TwOpenGL.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\ogl-master\ogl-master\external\AntTweakBar-1.16\src\TwOpenGLCore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\ogl-master\ogl-master\external\AntTweakBar-1.16\src\TwPrecomp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\ogl-master\ogl-master\external\AntTweakBar-1.16\src\AntPerfTimer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\ogl-master\ogl-master\external\AntTweakBar-1.16\src\LoadOGL.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\ogl-master\ogl-master\external\AntTweakBar-1.16\src\LoadOGLCore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\ogl-master\ogl-master\external\AntTweakBar-1.16\src\MiniGLFW.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\ogl-master\ogl-master\external\AntTweakBar-1.16\src\resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\ogl-master\ogl-master\external\AntTweakBar-1.16\src\TwBar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\ogl-master\ogl-master\external\AntTweakBar-1.16\src\TwColors.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\ogl-master\ogl-master\external\AntTweakBar-1.16\src\TwFonts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\ogl-master\ogl-master\external\AntTweakBar-1.16\src\TwGraph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\ogl-master\ogl-master\external\AntTweakBar-1.16\src\TwMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\ogl-master\ogl-master\external\AntTweakBar-1.16\src\TwOpenGL.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\ogl-master\ogl-master\external\AntTweakBar-1.16\src\TwOpenGLCore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\ogl-master\ogl-master\external\AntTweakBar-1.16\src\TwPrecomp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\ogl-master\ogl-master\external\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{19827F60-87BF-38A3-B576-C1036084E4B5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{209CD9E1-72D8-3217-BFA7-51E1D7440633}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
