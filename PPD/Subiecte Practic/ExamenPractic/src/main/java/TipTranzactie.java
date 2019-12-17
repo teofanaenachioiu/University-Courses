@@ -1,4 +1,3 @@
-package PACKAGE_NAME;
-
-public class TipTranzactie {
+public enum TipTranzactie {
+    DEPUNE, RETRAGE
 }

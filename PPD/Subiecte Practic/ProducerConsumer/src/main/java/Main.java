@@ -30,7 +30,6 @@ public class Main {
             threadDels[i].join();
         }
 
-        //queue.display();
         System.out.println("GATA");
     }
 }

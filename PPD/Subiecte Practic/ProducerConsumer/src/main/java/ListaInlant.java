@@ -56,32 +56,57 @@ class MyLinkedList<T> {
         size--;
     }
 
-    public Iterator getIterator() {
+    public void delete(T value) {
+        if (start == null) return;
+
+        if (start.getData().equals(value)) {
+            start = start.getNext();
+            size--;
+            return;
+        }
+
+        Node prev = start;
+        Node crr = start.getNext();
+        while (crr != null && !crr.getData().equals(value)) {
+            prev = crr;
+            crr = crr.getNext();
+        }
+
+        if (crr == null) {
+            System.out.println("Node not found. I can't delete!! " + value);
+            return;
+        }
+
+        prev.setNext(crr.getNext());
+        size--;
+    }
+
+    public Iterator<T> getIterator() {
         return new MyIterator();
     }
 
     public void iterate() {
         System.out.println("ITERARE:");
 
-        Iterator iterator = this.getIterator();
+        Iterator<T> iterator = this.getIterator();
         while (iterator.hasNext()) {
-            Node node = (Node) iterator.next();
+            T node = iterator.next();
             System.out.println(node);
         }
     }
 
-    private class MyIterator implements Iterator {
-        private Node crr = start;
+    private class MyIterator implements Iterator<T> {
+        private Node<T> crr = start;
 
         public boolean hasNext() {
             return crr != null;
         }
 
-        public Node next() {
+        public T next() {
             if (this.hasNext()) {
-                Node returned = crr;
+                Node<T> returned = crr;
                 crr = crr.getNext();
-                return returned;
+                return returned.getData();
             } else
                 return null;
         }
@@ -95,5 +120,10 @@ public class ListaInlant{
         linkedList.add(1);
         linkedList.add(1);
         linkedList.add(1);
+
+        linkedList.iterate();
+        linkedList.delete(1);
+        linkedList.iterate();
+
     }
 }
