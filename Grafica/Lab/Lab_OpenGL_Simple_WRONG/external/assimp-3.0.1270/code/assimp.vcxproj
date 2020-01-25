@@ -1,0 +1,651 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{97AD7B51-DE70-3570-AFB7-570E7838A680}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>assimp</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\pufarinu\external\assimp-3.0.1270\code\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">assimp.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">assimp</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\pufarinu\external\assimp-3.0.1270\code\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">assimp.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">assimp</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\pufarinu\external\assimp-3.0.1270\code\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">assimp.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">assimp</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\pufarinu\external\assimp-3.0.1270\code\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">assimp.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">assimp</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\ogl-master\ogl-master\external\glfw-3.1.2\include\GLFW;D:\ogl-master\ogl-master\external\glew-1.13.0\include;D:\ogl-master\ogl-master\external\AntTweakBar-1.16\include;D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BoostWorkaround;D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;TW_STATIC;TW_NO_LIB_PRAGMA;TW_NO_DIRECT3D;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;ASSIMP_BUILD_BOOST_WORKAROUND;ASSIMP_BUILD_DLL_EXPORT;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;TW_STATIC;TW_NO_LIB_PRAGMA;TW_NO_DIRECT3D;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;ASSIMP_BUILD_BOOST_WORKAROUND;ASSIMP_BUILD_DLL_EXPORT;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\ogl-master\ogl-master\external\glfw-3.1.2\include\GLFW;D:\ogl-master\ogl-master\external\glew-1.13.0\include;D:\ogl-master\ogl-master\external\AntTweakBar-1.16\include;D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BoostWorkaround;D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\ogl-master\ogl-master\external\glfw-3.1.2\include\GLFW;D:\ogl-master\ogl-master\external\glew-1.13.0\include;D:\ogl-master\ogl-master\external\AntTweakBar-1.16\include;D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BoostWorkaround;D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\ogl-master\ogl-master\external\glfw-3.1.2\include\GLFW;D:\ogl-master\ogl-master\external\glew-1.13.0\include;D:\ogl-master\ogl-master\external\AntTweakBar-1.16\include;D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BoostWorkaround;D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;TW_STATIC;TW_NO_LIB_PRAGMA;TW_NO_DIRECT3D;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;ASSIMP_BUILD_BOOST_WORKAROUND;ASSIMP_BUILD_DLL_EXPORT;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;TW_STATIC;TW_NO_LIB_PRAGMA;TW_NO_DIRECT3D;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;ASSIMP_BUILD_BOOST_WORKAROUND;ASSIMP_BUILD_DLL_EXPORT;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\ogl-master\ogl-master\external\glfw-3.1.2\include\GLFW;D:\ogl-master\ogl-master\external\glew-1.13.0\include;D:\ogl-master\ogl-master\external\AntTweakBar-1.16\include;D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BoostWorkaround;D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\ogl-master\ogl-master\external\glfw-3.1.2\include\GLFW;D:\ogl-master\ogl-master\external\glew-1.13.0\include;D:\ogl-master\ogl-master\external\AntTweakBar-1.16\include;D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BoostWorkaround;D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\ogl-master\ogl-master\external\glfw-3.1.2\include\GLFW;D:\ogl-master\ogl-master\external\glew-1.13.0\include;D:\ogl-master\ogl-master\external\AntTweakBar-1.16\include;D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BoostWorkaround;D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;TW_STATIC;TW_NO_LIB_PRAGMA;TW_NO_DIRECT3D;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;ASSIMP_BUILD_BOOST_WORKAROUND;ASSIMP_BUILD_DLL_EXPORT;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;TW_STATIC;TW_NO_LIB_PRAGMA;TW_NO_DIRECT3D;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;ASSIMP_BUILD_BOOST_WORKAROUND;ASSIMP_BUILD_DLL_EXPORT;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\ogl-master\ogl-master\external\glfw-3.1.2\include\GLFW;D:\ogl-master\ogl-master\external\glew-1.13.0\include;D:\ogl-master\ogl-master\external\AntTweakBar-1.16\include;D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BoostWorkaround;D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\ogl-master\ogl-master\external\glfw-3.1.2\include\GLFW;D:\ogl-master\ogl-master\external\glew-1.13.0\include;D:\ogl-master\ogl-master\external\AntTweakBar-1.16\include;D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BoostWorkaround;D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\ogl-master\ogl-master\external\glfw-3.1.2\include\GLFW;D:\ogl-master\ogl-master\external\glew-1.13.0\include;D:\ogl-master\ogl-master\external\AntTweakBar-1.16\include;D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BoostWorkaround;D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;TW_STATIC;TW_NO_LIB_PRAGMA;TW_NO_DIRECT3D;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;ASSIMP_BUILD_BOOST_WORKAROUND;ASSIMP_BUILD_DLL_EXPORT;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;TW_STATIC;TW_NO_LIB_PRAGMA;TW_NO_DIRECT3D;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;ASSIMP_BUILD_BOOST_WORKAROUND;ASSIMP_BUILD_DLL_EXPORT;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\ogl-master\ogl-master\external\glfw-3.1.2\include\GLFW;D:\ogl-master\ogl-master\external\glew-1.13.0\include;D:\ogl-master\ogl-master\external\AntTweakBar-1.16\include;D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BoostWorkaround;D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\ogl-master\ogl-master\external\glfw-3.1.2\include\GLFW;D:\ogl-master\ogl-master\external\glew-1.13.0\include;D:\ogl-master\ogl-master\external\AntTweakBar-1.16\include;D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BoostWorkaround;D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/ogl-master/ogl-master/external/assimp-3.0.1270/code/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/ogl-master/ogl-master -BD:/pufarinu --check-stamp-file D:/pufarinu/external/assimp-3.0.1270/code/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\pufarinu\external\assimp-3.0.1270\code\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/ogl-master/ogl-master/external/assimp-3.0.1270/code/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/ogl-master/ogl-master -BD:/pufarinu --check-stamp-file D:/pufarinu/external/assimp-3.0.1270/code/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\pufarinu\external\assimp-3.0.1270\code\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/ogl-master/ogl-master/external/assimp-3.0.1270/code/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/ogl-master/ogl-master -BD:/pufarinu --check-stamp-file D:/pufarinu/external/assimp-3.0.1270/code/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\pufarinu\external\assimp-3.0.1270\code\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/ogl-master/ogl-master/external/assimp-3.0.1270/code/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/ogl-master/ogl-master -BD:/pufarinu --check-stamp-file D:/pufarinu/external/assimp-3.0.1270/code/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\pufarinu\external\assimp-3.0.1270\code\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\Assimp.cpp" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\AssimpPCH.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\AssimpPCH.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\fast_atof.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\qnan.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BaseImporter.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BaseImporter.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BaseProcess.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BaseProcess.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\Importer.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ScenePrivate.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\PostStepRegistry.cpp" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ImporterRegistry.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ByteSwap.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\DefaultProgressHandler.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\DefaultIOStream.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\DefaultIOStream.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\DefaultIOSystem.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\DefaultIOSystem.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\CInterfaceIOWrapper.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\Hash.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\Importer.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\IFF.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ParsingUtils.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\StdOStreamLogStream.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\StreamReader.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\StringComparison.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\SGSpatialSort.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\SGSpatialSort.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\VertexTriangleAdjacency.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\VertexTriangleAdjacency.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\GenericProperty.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\SpatialSort.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\SpatialSort.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\SceneCombiner.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\SceneCombiner.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ScenePreprocessor.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ScenePreprocessor.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\SkeletonMeshBuilder.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\SkeletonMeshBuilder.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\SplitByBoneCountProcess.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\SplitByBoneCountProcess.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\SmoothingGroups.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\StandardShapes.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\StandardShapes.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\TargetAnimation.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\TargetAnimation.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\RemoveComments.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\RemoveComments.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\Subdivision.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\Subdivision.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\Vertex.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\LineSplitter.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\TinyFormatter.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\Profiler.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\LogAux.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\DefaultLogger.hpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\IOStream.hpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\LogStream.hpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\Logger.hpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\NullLogger.hpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\Win32DebugLogStream.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\DefaultLogger.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\FileLogStream.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\Exporter.cpp" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\AssimpCExport.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BlobIOSystem.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\CalcTangentsProcess.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\CalcTangentsProcess.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ComputeUVMappingProcess.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ComputeUVMappingProcess.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ConvertToLHProcess.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ConvertToLHProcess.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\FindDegenerates.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\FindDegenerates.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\FindInstancesProcess.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\FindInstancesProcess.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\FindInvalidDataProcess.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\FindInvalidDataProcess.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\FixNormalsStep.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\FixNormalsStep.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\GenFaceNormalsProcess.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\GenFaceNormalsProcess.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\GenVertexNormalsProcess.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\GenVertexNormalsProcess.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\PretransformVertices.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\PretransformVertices.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ImproveCacheLocality.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ImproveCacheLocality.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\JoinVerticesProcess.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\JoinVerticesProcess.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\LimitBoneWeightsProcess.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\LimitBoneWeightsProcess.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\RemoveRedundantMaterials.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\RemoveRedundantMaterials.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\RemoveVCProcess.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\RemoveVCProcess.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\SortByPTypeProcess.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\SortByPTypeProcess.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\SplitLargeMeshes.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\SplitLargeMeshes.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\TerragenLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\TerragenLoader.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\TextureTransform.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\TextureTransform.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\TriangulateProcess.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\TriangulateProcess.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ValidateDataStructure.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ValidateDataStructure.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\OptimizeGraph.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\OptimizeGraph.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\OptimizeMeshes.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\OptimizeMeshes.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\DeboneProcess.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\DeboneProcess.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ProcessHelper.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ProcessHelper.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\PolyTools.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\MakeVerboseFormat.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\MakeVerboseFormat.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\3DSConverter.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\3DSHelper.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\3DSLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\3DSLoader.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ACLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ACLoader.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ASELoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ASELoader.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ASEParser.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ASEParser.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\B3DImporter.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\B3DImporter.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BVHLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BVHLoader.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ColladaHelper.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ColladaLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ColladaLoader.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ColladaParser.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ColladaParser.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ColladaExporter.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ColladaExporter.cpp" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\DXFLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\DXFLoader.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\DXFHelper.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\CSMLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\CSMLoader.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\HMPFileData.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\HMPLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\HMPLoader.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\HalfLifeFileData.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\IRRLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\IRRLoader.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\IRRMeshLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\IRRMeshLoader.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\IRRShared.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\IRRShared.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\LWOAnimation.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\LWOAnimation.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\LWOBLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\LWOFileData.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\LWOLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\LWOLoader.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\LWOMaterial.cpp" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\LWSLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\LWSLoader.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\M3Importer.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\M3Importer.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\MD2FileData.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\MD2Loader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\MD2Loader.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\MD2NormalTable.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\MD3FileData.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\MD3Loader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\MD3Loader.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\MD5Loader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\MD5Loader.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\MD5Parser.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\MD5Parser.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\MDCFileData.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\MDCLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\MDCLoader.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\MDCNormalTable.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\MDLDefaultColorMap.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\MDLFileData.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\MDLLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\MDLLoader.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\MDLMaterialLoader.cpp" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\MaterialSystem.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\MaterialSystem.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\NFFLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\NFFLoader.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\OFFLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\OFFLoader.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ObjFileData.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ObjFileImporter.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ObjFileImporter.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ObjFileMtlImporter.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ObjFileMtlImporter.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ObjFileParser.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ObjFileParser.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ObjTools.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ObjExporter.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\ObjExporter.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\OgreImporter.hpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\OgreXmlHelper.hpp" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\OgreImporter.cpp" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\OgreMaterial.cpp" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\OgreMesh.cpp" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\OgreSkeleton.cpp" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\PlyLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\PlyLoader.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\PlyParser.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\PlyParser.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\PlyExporter.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\PlyExporter.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\Q3DLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\Q3DLoader.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\Q3BSPFileData.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\Q3BSPFileParser.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\Q3BSPFileParser.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\Q3BSPFileImporter.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\Q3BSPFileImporter.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\Q3BSPZipArchive.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\Q3BSPZipArchive.cpp" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\RawLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\RawLoader.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\SMDLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\SMDLoader.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\STLLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\STLLoader.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\STLExporter.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\STLExporter.cpp" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\UnrealLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\UnrealLoader.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\XFileHelper.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\XFileImporter.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\XFileImporter.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\XFileParser.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\XFileParser.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\MD4FileData.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\MS3DLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\MS3DLoader.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\COBLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\COBLoader.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\COBScene.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BlenderLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BlenderLoader.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BlenderDNA.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BlenderDNA.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BlenderDNA.inl" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BlenderScene.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BlenderScene.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BlenderSceneGen.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BlenderIntermediate.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BlenderModifier.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BlenderModifier.cpp" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\NDOLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\NDOLoader.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\IFCLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\IFCLoader.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\IFCReaderGen.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\IFCReaderGen.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\IFCUtil.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\IFCUtil.cpp" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\IFCGeometry.cpp" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\IFCMaterial.cpp" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\IFCProfile.cpp" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\IFCCurve.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\STEPFile.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\STEPFileReader.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\STEPFileReader.cpp" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\XGLLoader.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\XGLLoader.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\irrXMLWrapper.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\contrib\irrXML\CXMLReaderImpl.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\contrib\irrXML\heapsort.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\contrib\irrXML\irrArray.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\contrib\irrXML\irrString.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\contrib\irrXML\irrTypes.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\contrib\irrXML\irrXML.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\contrib\irrXML\irrXML.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\contrib\ConvertUTF\ConvertUTF.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\contrib\ConvertUTF\ConvertUTF.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\contrib\unzip\crypt.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\contrib\unzip\ioapi.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\contrib\unzip\ioapi.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\contrib\unzip\unzip.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\contrib\unzip\unzip.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\contrib\poly2tri\poly2tri\common\shapes.cc" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\contrib\poly2tri\poly2tri\common\shapes.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\contrib\poly2tri\poly2tri\common\utils.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\contrib\poly2tri\poly2tri\sweep\advancing_front.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\contrib\poly2tri\poly2tri\sweep\advancing_front.cc" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\contrib\poly2tri\poly2tri\sweep\cdt.cc" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\contrib\poly2tri\poly2tri\sweep\cdt.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\contrib\poly2tri\poly2tri\sweep\sweep.cc" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\contrib\poly2tri\poly2tri\sweep\sweep.h" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\contrib\poly2tri\poly2tri\sweep\sweep_context.cc" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\contrib\poly2tri\poly2tri\sweep\sweep_context.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\contrib\clipper\clipper.hpp" />
+    <ClCompile Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\contrib\clipper\clipper.cpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BoostWorkaround\boost\math\common_factor_rt.hpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BoostWorkaround\boost\foreach.hpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BoostWorkaround\boost\format.hpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BoostWorkaround\boost\scoped_array.hpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BoostWorkaround\boost\scoped_ptr.hpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BoostWorkaround\boost\shared_array.hpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BoostWorkaround\boost\shared_ptr.hpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BoostWorkaround\boost\make_shared.hpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BoostWorkaround\boost\static_assert.hpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\BoostWorkaround\boost\tuple\tuple.hpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\anim.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\ai_assert.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\camera.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\color4.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\color4.inl" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\config.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\defs.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\cfileio.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\light.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\material.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\material.inl" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\matrix3x3.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\matrix3x3.inl" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\matrix4x4.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\matrix4x4.inl" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\mesh.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\postprocess.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\quaternion.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\quaternion.inl" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\scene.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\texture.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\types.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\vector2.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\vector2.inl" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\vector3.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\vector3.inl" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\version.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\cimport.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\importerdesc.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\Importer.hpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\ProgressHandler.hpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\IOSystem.hpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\cexport.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\Exporter.hpp" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\Compiler\pushpack1.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\include\assimp\Compiler\poppack1.h" />
+    <ClInclude Include="D:\ogl-master\ogl-master\external\assimp-3.0.1270\code\pstdint.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:\pufarinu\ZERO_CHECK.vcxproj">
+      <Project>{7F600FA2-1076-3FDA-9237-AB85AADC35B2}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\pufarinu\external\assimp-3.0.1270\contrib\zlib\zlib.vcxproj">
+      <Project>{E14F0FE8-528A-346C-BA94-065752D37ED6}</Project>
+      <Name>zlib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

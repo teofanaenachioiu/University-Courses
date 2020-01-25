@@ -13,6 +13,6 @@ int main()
 	//regex integerr("(\\+|-)?[[:digit:]]+");
 
 	AnalizatorLexical analizator = AnalizatorLexical();
-	analizator.analiza("input1.txt","code.txt","fip.txt", "ts_const.txt", "ts_id.txt");
+	analizator.analiza("input3.txt","code.txt","fip.txt", "ts_const.txt", "ts_id.txt");
 
 }

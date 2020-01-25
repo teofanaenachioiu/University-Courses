@@ -83,25 +83,39 @@ public class MainService {
             loc.setVanzareMapata(vanzare);
         }
 
+
+
         Callable<Vanzare> worker = new Worker(vanzareRepository, locRepository, vanzare, locuriSpectacol);
         Future<Vanzare> submit = executor.submit(worker);
+
+
 
         boolean isAdded = submit.get() != null;
 
         synchronized (list) {
             if (isAdded) {
                 list.add(submit);
-
-                if (list.size() % MAXITERATII == 0) {
-                    writeSoldRaport();
-                    writeBileteRaport();
-                    writeVanzariRaport();
-                    list.clear();
-                }
             }
         }
 
+        CompletableFuture
+                .runAsync(this::workerRaports)
+                .join();
+
         return isAdded;
+    }
+
+    private void workerRaports() {
+        if (list.size() % MAXITERATII == 0) {
+            System.out.println("Raport Periodic");
+            writeBileteRaport();
+            writeVanzariRaport();
+            writeSoldRaport();
+            System.out.println("Raport incheiat");
+            list.clear();
+            System.out.println("Am golit lista");
+
+        }
     }
 
     private void writeVanzariRaport() {
@@ -116,7 +130,6 @@ public class MainService {
             String spectacolId = vanzare.getSpectacolMapat().getId().toString();
 
             String numarBilete = String.valueOf(vanzare.getNumarBilete());
-
             for (Loc loc : vanzare.getListaLocuri()) {
                 String nrScaun = String.valueOf(loc.getNumar());
                 String[] data = {vanzareDate, spectacolId, numarBilete, nrScaun};
