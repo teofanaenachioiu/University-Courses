@@ -1,14 +1,35 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      InventoryApp
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+  <ion-button [disabled]="!service.isError" (click)="service.downloadInfo()"> Download</ion-button>
+  <ion-button (click)="upload()">Upload</ion-button>
+  <p *ngIf="service.isDownloadingAll">Download...</p>
+  <p *ngIf="service.isDownloadingAll">Download {{service.currentPageNumber-1}}/{{service.totalPageNumber}}</p>
+
+  <p *ngIf="service.isUploading">Upload {{service.currentItem}}/{{service.totalItems}}</p>
+
+  <ion-input [(ngModel)]="quantity" placeholder="Enter Input"></ion-input>  <ion-button (click)="add()">Add</ion-button>
+  <ion-list>
+    <ion-item *ngFor="let item of service.items" >
+      <ion-label >({{item.code}}) {{item.name}}, {{item.quantity}}</ion-label>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
+<ion-footer>
+  <ion-list>
+    <ion-item *ngFor="let product of products" (click)="productClicked(product)">
+      <ion-label>{{product.name}}</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-toolbar>
+    <ion-searchbar   [(ngModel)]="searchTerm"
+                     (ionChange)="setFilteredItems()"></ion-searchbar>
+  </ion-toolbar>
+</ion-footer>
