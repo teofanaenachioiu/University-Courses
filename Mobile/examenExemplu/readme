@@ -1,0 +1,40 @@
+Inventory
+
+Pentru inventarierea produselor unui magazin, o firma s-a gandit la un sistem client-server.
+Serverul expune prin http (localhost:3000) un API REST peste resursele Product si Item.
+Un Product reprezinta informatii despre un produs: code - numar intreg, name - sir de caractere.
+Un Item reprezinta informatii despre cantitate existenta in magazin: code - codul produsului, quantity - numar.
+Dezvoltati o aplicatie mobila (client) dupa cum urmeaza.
+
+1. La pornirea aplicatiei client, aceasta incepe descarcarea informatiilor despre produse.
+Ecranul aplicatiei va afisa 'Downloading ...'. Produsele sunt aduse de pe server prin
+http GET /product?page=n, paginat, cu maxim 10 produse per pagina. Raspunsul serverului este
+in formatul { total, page, products }, total - indicand numarul total al produselor,
+page - pagina curenta, products - produsele paginii curente.
+
+2. La descarcarea unei pagini p, aplicatia va arata 'Downloading p/n', unde n reprezinta numarul total de pagini.
+
+3. Descarcarea produselor se poate incheia cu succes (toate paginile au fost descarcate) sau fara succes (erori la
+descarcarea unei pagini). Daca a fost fara succes, utilizatorul poate declansa explicit un buton 'Download' pentru
+a relua descarcarea de la pagina care a esuat. Butonul 'Download' nu este activ daca descarcarea a fost cu succes.
+
+4. Pentru a introduce cantitatile existente in magazin dintr-un anume produs, utilizatorul introduce cateva
+caractere din numele produsului. Dupa 2 secunde de la ultimul caracter introdus aplicatia afiseaza primele 5
+produse care au in nume secventa de caractere introdusa.
+
+5. Utilizatorul selecteaza un produs, introduce cantitatea si declanseaza un buton 'Add' pentru a adauga un Item
+in lista de elemente introduse de el. Aceasta lista este prezentata in interfata cu utilizatorul.
+
+6. Utilizatorul poate declansa transmiterea elementelor catre server via un buton 'Upload'.
+Aplicatia client va trimite catre server pe rand elementele prin http POST /item, incluzand cate un item in
+corpul cererii.
+
+7. In timpul transmiterii datelor aplicatia arata progresul indicand 'Uploading k/n' unde k este numarul de ordine
+al elementului trimis, iar n este numarul total al elementelor la inceputul transmiterii.
+
+8. Aplicatia persista local elementele introduse, astfel daca utilizatorul inchide aplicatia sau procesul de incarcare
+esueaza, elementele introduse si netrimise catre server vor fi prezentate in interfata cu utilizatorul.
+
+9. Serverul emite notificari prin ws pe localhost:3000. Notificarile indica faptul ca lista produselor a fost modificata.
+La primirea unei notificari, aplicatia client va activa butonul 'Download' permitand utilizatorului sa re-descarce
+lista tuturor produselor.
