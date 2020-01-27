@@ -4,6 +4,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {Product} from './Product';
 import {Item} from './Item';
 import {ItemList} from './ItemList';
+import {Storage} from '@ionic/storage';
 
 declare var WebSocket: any;
 
@@ -36,9 +37,14 @@ export class ItemService {
     currentItem = 0;
     isDownloadingAll = true;
 
-    constructor(private http: HttpClient) {
-        this.productSubject = new BehaviorSubject([]);
-        this.itemSubject = new BehaviorSubject<ItemList[]>([]);
+    constructor(private http: HttpClient, private storage: Storage) {
+        storage.get('items').then((val) => {
+            console.log("Get items");
+            console.log(val);
+            this.itemSubject = new BehaviorSubject(val);
+            this.items = this.itemSubject.value;
+        });
+        this.productSubject = new BehaviorSubject<ItemList[]>([]);
 
         const ws: any = new WebSocket(wsServerUrl);
 
@@ -110,11 +116,11 @@ export class ItemService {
     upload(items: ItemList[]) {
         this.isUploading = true;
         this.totalItems = items.length;
-
+        this.currentItem = 0;
         for (const item of items) {
             return this.http.post<ItemList>(itemUrl, item, httpOptions).subscribe(res => {
             }, err => {
-              console.log(err);
+                console.log(err);
             }, () => {
                 this.currentItem = this.currentItem + 1;
                 if (this.currentItem === this.totalItems) {
@@ -127,5 +133,6 @@ export class ItemService {
     addItem(item: ItemList) {
         this.itemSubject.next(this.itemSubject.value.concat([item]));
         this.items = this.itemSubject.value;
+        this.storage.set('items', this.items);
     }
 }
