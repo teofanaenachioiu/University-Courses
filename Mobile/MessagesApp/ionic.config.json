@@ -1,0 +1,7 @@
+{
+  "name": "MessagesApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
