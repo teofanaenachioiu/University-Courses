@@ -1,0 +1,8 @@
+{
+  "appId": "com.example.app",
+  "appName": "NoteApp",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {}
+}
