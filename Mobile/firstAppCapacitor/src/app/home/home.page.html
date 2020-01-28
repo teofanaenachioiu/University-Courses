@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            Orders Application
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="ion-padding">
+        <ion-label *ngIf="isSpecialOffer" (click)="addSpecialOfferInList()">Oferta: {{specialMenu.name}}</ion-label>
+        <ion-input [(ngModel)]="quantity" placeholder="Enter Input"></ion-input>
+        <ion-button (click)="addInOrderList()">Order</ion-button>
+        <ion-list>
+            <ion-item *ngFor="let item of orders; let i=index">
+                <ion-label [ngClass]="myClass[i]">{{item.name}} {{item.quantity}}</ion-label>
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>
+
+<ion-footer>
+    <ion-list>
+        <ion-item *ngFor="let item of items" (click)="addOrder(item)">
+            <ion-label>{{item.name}}</ion-label>
+        </ion-item>
+    </ion-list>
+    <ion-toolbar>
+        <ion-searchbar [(ngModel)]="searchTerm"
+                       (ionChange)="setFilteredItems()"></ion-searchbar>
+    </ion-toolbar>
+</ion-footer>

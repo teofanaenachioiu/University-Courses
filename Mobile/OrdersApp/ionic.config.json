@@ -1,0 +1,7 @@
+{
+  "name": "OrdersApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

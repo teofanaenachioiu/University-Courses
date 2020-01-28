@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-list>
+    <ion-item *ngFor="let item of items" (click)="itemClicked(item)">
+      <ion-label>{{item.name}}</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-toolbar>
+    <ion-searchbar   [(ngModel)]="searchTerm"
+                     (ionChange)="setFilteredItems()"></ion-searchbar>
+  </ion-toolbar>
+</ion-footer>
