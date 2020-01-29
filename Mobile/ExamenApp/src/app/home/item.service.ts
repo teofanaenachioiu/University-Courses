@@ -59,14 +59,6 @@ export class ItemService {
             }));
     }
 
-    delete(item: Item) {
-        return this.http.delete<any>(`${itemUrl}/${item.id}`, httpOptions);
-    }
-
-    getAll(): Observable<any> {
-        return this.itemSubject.asObservable();
-    }
-
     // verifica ce vine de pe server (res)
     refresh(): Observable<any> {
         return this.http.get<any>(itemUrl, httpOptions).pipe(tap(res => {
@@ -74,6 +66,20 @@ export class ItemService {
             this.itemSubject.next(res);
             localStorage.setItem('items', JSON.stringify(this.itemSubject.value));
         }));
+    }
+
+    // sterge-l si local
+    delete(item: Item) {
+        return this.http.delete<any>(`${itemUrl}/${item.id}`, httpOptions);
+    }
+
+    // actualizeaza-l si local
+    update(item: Item) {
+        return this.http.put<any>(`${itemUrl}/${item.id}`, item, httpOptions);
+    }
+
+    getAll(): Observable<any> {
+        return this.itemSubject.asObservable();
     }
 
     // modifHttpOptions(): any {
