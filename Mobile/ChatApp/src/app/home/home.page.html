@@ -8,7 +8,16 @@
 
 <ion-content>
   <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+    <ion-input placeholder="Username" [(ngModel)]="username" ></ion-input>
+    <ion-button (click)="login()">Identify me</ion-button>
+
+    <ion-label *ngIf="isShowError">Error</ion-label>
+    <br>
+    <ion-button [disabled]="!canEnterInRoom" routerLink='/room' >Enter in rooms</ion-button>
+    <ion-list *ngIf="!isShowError">
+      <ion-item *ngFor="let item of items; let i = index">
+        {{ item.text }}
+      </ion-item>
+    </ion-list>
   </div>
 </ion-content>
