@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>table</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-button class="ion-padding" *ngIf="isSpecialOffer" (click)="buyOffer(specialItem)">
+        Special offer: {{specialItem.name}} ({{specialItem.code}})
+    </ion-button>
+    <br>
+    <ion-list>
+        <ion-item *ngFor="let item of orderItems; let i = index">
+            Name: {{ item.name }}
+            <br>
+            Quantity: {{item.quantity}}
+            <br>
+            Free: {{item.free}}
+            <ion-button *ngIf="item.mustSend" (click)="sendMess(item)"> Not send</ion-button>
+        </ion-item>
+    </ion-list>
+</ion-content>
+
+<ion-footer>
+    <ion-list>
+        <ion-item *ngFor="let item of menuItems; let i = index" (click)="itemClicked(item)">
+            {{ item.name }}
+        </ion-item>
+    </ion-list>
+    <ion-searchbar [(ngModel)]="searchTerm"
+                   (ionChange)="setFilteredItems()"></ion-searchbar>
+    <ion-input [(ngModel)]="quantity" placeholder="Quantity">
+    </ion-input>
+    <ion-button (click)="orderItem()">Order</ion-button>
+    <ion-label *ngIf="!menuItem">Please select a menu item</ion-label>
+    <ion-label *ngIf="menuItem">You choose: {{menuItem.name}}</ion-label>
+</ion-footer>
