@@ -121,67 +121,107 @@ app.use(async (ctx, next) => {
   const ms = new Date() - start;
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
 });
+const tableMap = {};
+app.use(async (ctx, next) => {
+  const token = ctx.request.headers['authorization'];
+
+  if (ctx.request.url !== '/auth') {
+    if (!token || !tableMap[token]) {
+      ctx.response.status = 401;
+      return;
+    }
+  }
+
+  await next();
+});
 app.use(async (ctx, next) => {
   await new Promise(resolve => setTimeout(resolve, 1000));
   await next();
 });
-const messages = [];
+const menuItems = [];
+let prefixChar = 'a';
 
-function addMessageToUser(userIndex) {
-  const username = `u${userIndex}`;
-  const messageIndex = messages.length;
-  messages.push({
-    id: messageIndex,
-    text: `m${messageIndex} to ${username}?`,
-    read: false,
-    sender: username,
-    created: Date.now()
-  });
-  console.log(`Added m${messageIndex} to ${username}`);
-}
+const addMenuItems = () => {
+  console.log(`add products ${prefixChar}...`);
 
-for (let i = 0; i < 100; i++) {
-  addMessageToUser(i % 10, messages.length);
-}
-
-let userIndex = 0;
-
-const broadcast = () => {
-  addMessageToUser(userIndex);
-  userIndex++;
-
-  if (userIndex > 9) {
-    userIndex = userIndex % 10;
+  for (let i = 0; i < 10; i++) {
+    menuItems.push({
+      code: menuItems.length + 1,
+      name: `${prefixChar}0${i}`
+    });
   }
 
-  wss.clients.forEach(client => {
-    if (client.readyState === WebSocket.OPEN) {
-      client.send(JSON.stringify(messages[messages.length - 1]));
-    }
-  });
+  prefixChar = String.fromCharCode(prefixChar.charCodeAt(0) + 1);
 };
 
-setInterval(() => {
-  broadcast();
-}, 5000);
-const router = new Router();
-router.get('/message', ctx => {
-  ctx.response.body = messages;
-  ctx.response.status = 200;
-});
-router.put('/message/:id', ctx => {
-  const message = ctx.request.body;
-  const id = parseInt(ctx.params.id);
-  const index = messages.findIndex(msg => msg.id === id);
+for (let i = 0; i < 25; i++) {
+  addMenuItems();
+}
 
-  if (id !== message.id || index === -1) {
+const broadcast = data => wss.clients.forEach(client => {
+  if (client.readyState === WebSocket.OPEN) {
+    client.send(JSON.stringify(data));
+  }
+});
+
+setInterval(() => {
+  broadcast(menuItems[Math.floor(Math.random() * menuItems.length)]);
+}, 15000);
+const router = new Router();
+router.post('/auth', ctx => {
+  const {
+    table
+  } = ctx.request.body;
+
+  if (!table || tableMap[table]) {
+    ctx.response.status = 400;
+  } else {
+    tableMap[table] = true;
     ctx.response.body = {
-      text: 'Message not found'
+      token: table
+    };
+    ctx.response.status = 201;
+  }
+});
+router.get('/MenuItem', ctx => {
+  const {
+    q
+  } = ctx.request.query;
+
+  if (!q || !q.length || q.length < 1) {
+    ctx.response.body = {
+      issue: 'q query param missing'
     };
     ctx.response.status = 400;
   } else {
-    messages[index].read = message.read;
-    ctx.response.body = messages[index];
+    ctx.response.body = menuItems.filter(menuItem => menuItem.name.indexOf(q) !== -1);
+    ctx.response.status = 200;
+  }
+});
+const items = [];
+router.post('/OrderItem', ctx => {
+  const {
+    code,
+    quantity,
+    free
+  } = ctx.request.body;
+
+  if (typeof code !== 'number' || menuItems.findIndex(p => p.code === code) === -1) {
+    ctx.response.body = {
+      issue: 'MenuItem code not found'
+    };
+    ctx.response.status = 400;
+  } else {
+    const token = ctx.request.headers['authorization'];
+    const item = {
+      id: items.length + 1,
+      code,
+      quantity,
+      table: token,
+      free
+    };
+    items.push(item);
+    ctx.response.body = item;
     ctx.response.status = 200;
   }
 });
@@ -198,7 +238,7 @@ server.listen(3000);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\University-Courses\Mobile\e1\src/index.js */"./src/index.js");
+module.exports = __webpack_require__(/*! C:\Users\Teofana\Desktop\examen\src/index.js */"./src/index.js");
 
 
 /***/ }),

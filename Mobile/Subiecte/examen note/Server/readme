@@ -1,0 +1,39 @@
+Note
+
+Pentru gestiunea notitelor, o firma s-a gandit la un sistem client-server.
+Serverul expune prin http (localhost:3000) un API REST peste resursa Note.
+O nota are un id - numar intreg, text - sir de caractere, date - data la care
+a fost creata sau modificata.
+Dezvoltati o aplicatie mobila (client) dupa cum urmeaza.
+
+1. Aplicatiei prezinta lista notelor. Notele sunt aduse de pe server prin http GET /note.
+Aplicatia aduce note de pe server la fiecare lansare in executie.
+
+2. Deoarece serverul foloseste paginare (ex. GET /note?page=2), aplicatia aduce notele
+pagina cu pagina, doar atunci cand utilizatorul navigheaza prin lista.
+
+3. Notele sunt salvate local, astfel incat daca operatiile de descarcare esueaza, aplicatia
+prezinta notele salvate anterior.
+
+4. Utilizatorul poate declansa o actiune delete pentru a sterge o nota din lista.
+Un dialog de confirmare a stergerii este prezentat utilizatorului.
+
+5. Nota stearsa e trimisa pe server prin http DELETE /note/id.
+
+6. Stergerea poate esua daca serverul nu este accesibil.
+In astfel de situatii aplicatia informeaza utilizatorul,
+evidentiind in lista notele sterse dar netrimise inca pe server.
+
+7. Daca exista note sterse local, aplicatia va incerca sa trimita
+modificarile pe server, periodic (la 20 sec).
+
+8. Serverul emite notificari prin ws pe localhost:3000.
+Notificarile contin evenimente 'inserted'/'deleted' in formatul { event, note }.
+Aplicatia client foloseste aceste notificari pentru a actaliza datele aduse la pasul (2).
+
+9. La fiecare raspuns GET /note, serverul include in header Last-Modified,
+reprezentand data ultimei modificari facute pe elementele listei.
+Pentru a minimiza traficul, aplicatie client va include in header-ul cererilor
+GET /note, If-Modified-Since reprezentand data ultimei modificari de care
+are cunostinta clientul, serverul putand returna 304 Not modified, invitand
+clientul sa foloseasca ce are in cache.

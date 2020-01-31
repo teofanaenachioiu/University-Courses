@@ -1,0 +1,17 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            ExamenApp
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="ion-padding">
+        <ion-label>Type a table:</ion-label>
+        <ion-input placeholder="Table..." [(ngModel)]="table"></ion-input>
+        <ion-button (click)="login()">Enter</ion-button>
+        <ion-label *ngIf="isShowError"> Error! </ion-label>
+
+    </div>
+</ion-content>

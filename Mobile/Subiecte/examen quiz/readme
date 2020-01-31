@@ -1,0 +1,43 @@
+Quiz
+
+Pentru pregatirea examenului, un profesor s-a gandit la un sistem client-server.
+Serverul expune prin http (localhost:3000) un API REST peste resursele Question si Quiz.
+O intrebare (question) are un id - numar intreg si un text - sir de caractere.
+Un test (quiz) este o lista de raspunsuri la intrebari, fiecare raspuns indicand
+id-ul intrebarii (questionId) si raspunsul la intrebare (answer) - sir de caractere.
+Dezvoltati o aplicatie mobila (client) dupa cum urmeaza.
+
+1. La pornirea aplicatiei, se descarca lista intrebarilor de pe server, via
+http GET /question.
+
+2. Daca aplicatia a reusit sa descarce intrebarile, utilizatorul poate declansa
+un buton 'Start quiz', in caz contrar acest buton este dezactivat.
+
+3. Dupa ce a pornit un test, aplicatia prezinta pe rand doua intrebari luate aleator
+din lista descarcata de pe server. Timpul limita de raspuns la fiecare intrebare este de
+5 secunde. Daca utilizatorul n-a raspun in acest timp, se trece la urmatoarea intrebare.
+
+4. Utilizatorul citeste textul intrebarii, introduce un raspuns (sir de caractere) si
+declanseaza un buton 'Next' pentru a trece la urmatoarea intrebare.
+
+5. Dupa ce a raspuns la toate intrebarile, raspunsurile sunt trimise la server via http
+POST /quiz, in formatul [{ questionId, answer }], serverul returnand numarul raspunsurilor
+corecte.
+
+6. Testele la care a raspuns utilizatorul sunt prezentate intr-o lista, indicand data testului
+si numarul raspunsurilor corecte (daca testul a fost trmis cu succes catre server, in caz contrar
+indicand 'pending').
+
+7. Serverul emite notificari prin ws pe localhost:3000. O notificare contine un test adhoc
+trimis de profesor in timpul lectiilor. Testul trimis contine o lista de intrebari.
+Aplicatia prezinta o notificare timp de 3 secunde. Daca utilizatorul face click pe aceasta
+notificare, urmeaza pasii (3-6) cu intrebarile primite in notificare.
+
+8. Aplicatia persista local testele la care a raspuns.
+
+9. Daca device-ul nu se poate conecta la server la pasul (5), aplicatia va indica
+in lista faptul ca testul nu a fost trimis pe server. In mod automat, aplicatia
+va reincerca testelor netrimise catre server.
+
+
+

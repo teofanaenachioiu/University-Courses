@@ -1,0 +1,40 @@
+Chat
+
+Pentru o comunicarea intre utilizatori, o firma s-a gandit la un sistem client-server.
+Serverul expune prin http (localhost:3000) un API ce permite transmiterea unor mesaje (Message) catre toti
+utilizatorii. Un mesaj are un id - numar intreg, text - sir de caractere, created - intreg ce reprezinta in
+milisecuncde cand a fost creat mesajul, room - sir de caractere folosit pentru a grupa mesajele,
+si un username - sir de caractere.
+Dezvoltati o aplicatie mobila (client) dupa cum urmeaza.
+
+1. Primul ecran al aplicatiei permite utilizatorului sa se identifice, introducand un username (ex 'u0').
+Username-ul este trimis la server apeland prin http POST /login, incluzand { username } in corpul cererii.
+Daca serverul raspunde cu success (201), el va returna un { token } care va trebui pus in header-ul tuturor
+cererilor http urmatoare.
+
+2. Operatia 1 poate esua (400) daca exista un alt utilizator deja logat cu acelasi username sau daca username
+este necunoscut de server. Aplicatia va informa utilizatorului si-i va permite reluarea identificarii.
+
+3. Imediat dupa efectuarea cu succes a operatiei 1, aplicatia va descarca de pe server
+mesaje - apeland GET /message/?created=x, unde x este cea mai mare valoare created a mesajelor descarcate
+anterior de pe server, sau 0 daca aplicatia nu a descarcat inca mesaje.
+
+4. Al doilea ecran al aplicatiei prezinta lista room-urilor pe care au fost trimise mesajele
+primite de la server, ordonate descrescator dupa data created a ultimelor mesaje care au fost trimise in acele room-uri.
+
+5. Daca exista room-uri, una dintre acestea este selectata. Utilizatorul poate selecta oricare din aceste room-uri.
+Pentru room-ul selectat aplicatia prezinta mesajele trimise catre acel room. Un mesaj este afisat
+in formatul [username] - text.
+
+6. In contextul celui de-al doilea ecran, utilizatorul poate introduce un text si poate declansa un buton submit
+prin care trimite un mesaj pe server apeland POST /message, incluzand in corpul cererii { text, room }.
+Daca operatia esueaza, utilizatorul va fi informat prin afisarea in dreptul mesajului respectiv a textului "not sent".
+
+7. Serverul emite notificari prin ws pe localhost:3000. O notificare contine un mesaj { id, text, created, room, username}.
+Mesajele primite vor fi adaugate in lista prezentata de al doilea ecran.
+
+8. Utilizatorul poate iesi din aplicatie, la repornirea aplicatiei prezentandu-se al doilea ecran,
+chiar daca in acel moment aplicatia nu se poate conecta la server.
+
+9. Retrimiterea mesajelor catre server poate fi reluata. Utilizatorul poate face click pe textul 'not sent' iar
+aplicatia va reincerca trimiterea mesajului, aratand un progress indicator in tipul efectuarii operatiei.
