@@ -1,0 +1,128 @@
+%% Created by Maple 17.00, Windows 8
+%% Source Worksheet: geome.mw
+%% Generated: Sat May 17 00:47:47 EEST 2014
+\documentclass{article}
+\usepackage{maplestd2e}
+\def\emptyline{\vspace{12pt}}
+\begin{document}
+\pagestyle{empty}
+\DefineParaStyle{Maple Heading 1}
+\DefineParaStyle{Maple Text Output}
+\DefineParaStyle{Maple Dash Item}
+\DefineParaStyle{Maple Bullet Item}
+\DefineParaStyle{Maple Normal}
+\DefineParaStyle{Maple Heading 4}
+\DefineParaStyle{Maple Heading 3}
+\DefineParaStyle{Maple Heading 2}
+\DefineParaStyle{Maple Warning}
+\DefineParaStyle{Maple Title}
+\DefineParaStyle{Maple Error}
+\DefineCharStyle{Maple Hyperlink}
+\DefineCharStyle{Maple 2D Math}
+\DefineCharStyle{Maple Maple Input}
+\DefineCharStyle{Maple 2D Output}
+\DefineCharStyle{Maple 2D Input}
+\begin{Maple Normal}{
+\begin{Maple Normal}{
+\mapleinline{inert}{2d}{}{\[\displaystyle \]}
+}\end{Maple Normal}
+}\end{Maple Normal}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{restart; 1}{\[\]}
+\end{mapleinput}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{interface(showassumed = 2); 1}{\[\]}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{2}{\[\displaystyle 2\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{cos(arctan(yB-yA, xB-xA)); 1}{\[\]}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{(xB-xA)/sqrt((yB-yA)^2+(xB-xA)^2)}{\[\displaystyle {\frac {{\it xB}-{\it xA}}{ \sqrt{ \left( {\it yB}-{\it yA} \right) ^{2}+ \left( {\it xB}-{\it xA} \right) ^{2}}}}\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{sin(arctan(yB-yA, xB-xA)); 1}{\[\]}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{(yB-yA)/sqrt((yB-yA)^2+(xB-xA)^2)}{\[\displaystyle {\frac {{\it yB}-{\it yA}}{ \sqrt{ \left( {\it yB}-{\it yA} \right) ^{2}+ \left( {\it xB}-{\it xA} \right) ^{2}}}}\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{}{\[\]}
+\end{mapleinput}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{a := sqrt((-xB+xA)^2+(yA-yB)^2); 1}{\[\]}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{a := sqrt((-xB+xA)^2+(yA-yB)^2)}{\[\displaystyle a\, := \, \sqrt{ \left( -{\it xB}+{\it xA} \right) ^{2}+ \left( {\it yA}-{\it yB} \right) ^{2}}\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{U := Vector[column](%id = 18446744074230664718); 1}{\[\]}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{U := Vector[column](%id = 18446744074230664838)}{\[\displaystyle U\, := \, \left[ \begin {array}{c} 1/2\,{\it xA}+1/2\,{\it xB}\\ \noalign{\medskip}1/2\,{\it yA}+1/2\,{\it yB}\end {array} \right] \]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{Q := Typesetting:-delayDotProduct(Matrix(%id = 18446744074205202662)/a, Vector[column](%id = 18446744074205202782))+U; 1}{\[\]}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{Q := Vector[column](%id = 18446744074205203382)}{\[\displaystyle Q\, := \, \left[ \begin {array}{c} 1/2\,{\frac { \left( {\it yA}-{\it yB} \right) \sqrt {4\,{R}^{2}-{{\it xA}}^{2}+2\,{\it xB}\,{\it xA}-{{\it xB}}^{2}-{{\it yA}}^{2}+2\,{\it yB}\,{\it yA}-{{\it yB}}^{2}}}{\sqrt { \left( -{\it xB}+{\it xA} \right) ^{2}+ \left( {\it yA}-{\it yB} \right) ^{2}}}}+1/2\,{\it xA}+1/2\,{\it xB}\\ \noalign{\medskip}1/2\,{\frac { \left( {\it xB}-{\it xA} \right) \sqrt {4\,{R}^{2}-{{\it xA}}^{2}+2\,{\it xB}\,{\it xA}-{{\it xB}}^{2}-{{\it yA}}^{2}+2\,{\it yB}\,{\it yA}-{{\it yB}}^{2}}}{\sqrt { \left( -{\it xB}+{\it xA} \right) ^{2}+ \left( {\it yA}-{\it yB} \right) ^{2}}}}+1/2\,{\it yA}+1/2\,{\it yB}\end {array} \right] \]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{}{\[\]}
+\end{mapleinput}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{dist := (Q[1]-xA)^2+(Q[2]-yA)^2; 1}{\[\]}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{dist := ((1/2)*(yA-yB)*sqrt(4*R^2-xA^2+2*xA*xB-xB^2-yA^2+2*yA*yB-yB^2)/sqrt((-xB+xA)^2+(yA-yB)^2)-(1/2)*xA+(1/2)*xB)^2+((1/2)*(xB-xA)*sqrt(4*R^2-xA^2+2*xA*xB-xB^2-yA^2+2*yA*yB-yB^2)/sqrt((-xB+xA)^2+(yA-yB)^2)-(1/2)*yA+(1/2)*yB)^2}{\[\displaystyle {\it dist}\, := \, \left( 1/2\,{\frac { \left( {\it yA}-{\it yB} \right)  \sqrt{4\,{R}^{2}-{{\it xA}}^{2}+2\,{\it xB}\,{\it xA}-{{\it xB}}^{2}-{{\it yA}}^{2}+2\,{\it yB}\,{\it yA}-{{\it yB}}^{2}}\\
+\mbox{}}{ \sqrt{ \left( -{\it xB}+{\it xA} \right) ^{2}+ \left( {\it yA}-{\it yB} \right) ^{2}}}}-1/2\,{\it xA}+1/2\,{\it xB} \right) ^{2}+ \left( 1/2\,{\frac { \left( {\it xB}-{\it xA} \right)  \sqrt{4\,{R}^{2}-{{\it xA}}^{2}+2\,{\it xB}\,{\it xA}-{{\it xB}}^{2}-{{\it yA}}^{2}+2\,{\it yB}\,{\it yA}-{{\it yB}}^{2}}}{ \sqrt{ \left( -{\it xB}+{\it xA} \right) ^{2}+ \left( {\it yA}-{\it yB} \right) ^{2}}}}-1/2\,{\it yA}+1/2\,{\it yB} \right) ^{2}\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{simplify(%)}{\[{\it simplify} \left( {R}^{2} \right) \]}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{R^2}{\[\displaystyle {R}^{2}\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{}{\[\]}
+\end{mapleinput}
+\end{maplegroup}
+\begin{Maple Normal}{
+\begin{Maple Normal}{
+\mapleinline{inert}{2d}{}{\[\displaystyle \]}
+}\end{Maple Normal}
+}\end{Maple Normal}
+\end{document}

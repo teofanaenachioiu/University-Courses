@@ -1,0 +1,249 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>demointnum</title><meta name="generator" content="MATLAB 8.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-05-16"><meta name="DC.source" content="demointnum.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">Exemple de integrare numerica</a></li><li><a href="#2">Consideratii legate de formulele repetate</a></li><li><a href="#5">Implementare</a></li><li><a href="#8">Metoda trapezelor</a></li><li><a href="#9">Metoda lui Simpson</a></li><li><a href="#10">Metoda lui Romberg</a></li><li><a href="#11">Cuadratura adaptiva (Simpson)</a></li></ul></div><h2>Exemple de integrare numerica<a name="1"></a></h2><p>Foloseste diferite metode de integrare Vom integra functia</p><p><img src="demointnum_eq18280872560433544908.png" alt="$$f(x)=\frac{xe^x}{(x+1)^2}$$"></p><p>pe intervalul [0,1].</p><pre class="codeinput">f = @(x) x.*exp(x)./(x+1).^2;
+</pre><h2>Consideratii legate de formulele repetate<a name="2"></a></h2><p>O implementare directa a formulei trapezului sau a formulei lui Simpson are dezavantajul ca <img src="demointnum_eq08984225997457563733.png" alt="$n$"> este dificil de determinat daca se doreste atingerea unei precizii date, <tt>tol</tt></p><pre class="language-matlab"><span class="keyword">function</span> I=trapezes(f,a,b,n)
+<span class="comment">%TRAPEZES trapezes formula</span>
+<span class="comment">%call I=trapezes(f,a,b,n);</span>
+h=(b-a)/n;
+I=(f(a)+f(b)+2*sum(f([1:n-1]*h+a)))*h/2;
+</pre><pre class="language-matlab"><span class="keyword">function</span> I=Simpson(f,a,b,n)
+<span class="comment">%SIMPSON composite Simpson formula</span>
+<span class="comment">%call I=Simpson(f,a,b,n);</span>
+</pre><pre class="language-matlab">h=(b-a)/n;
+x2=(1:n-1)*h+a;
+x4=(0:n-1)*h+a+h/2;
+I=h/6*(f(a)+f(b)+2*sum(f(x2))+4*sum(f(x4)));
+</pre><h2>Implementare<a name="5"></a></h2><p>Pentru a evita calculul lui <img src="demointnum_eq08984225997457563733.png" alt="$n$"> vom proceda pas cu pas dubland la fiecare pas numarul de subintervale si stabilind o relatie de recurenta. Functia pentru metoda trapezelor este</p><pre class="language-matlab"><span class="keyword">function</span> t=TrapezoidalRule(f,a,b,tol)
+<span class="comment">%TRAPEZOIDALRULE composite quadrature using the trapezoidal rule</span>
+<span class="comment">%t=TrapezoidalRule(f,a,b,tol); computes an approximation of</span>
+<span class="comment">%int_a^b f(x) dx to a relative tolerance tol using the</span>
+<span class="comment">%composite trapezoidal rule.</span>
+</pre><pre class="language-matlab">h=b-a; s=(f(a)+f(b))/2;
+t=h*s; zh=1; told=2*t;
+<span class="keyword">while</span> abs(told-t)&gt;tol*abs(t),
+    told=t; zh=2*zh; h=h/2;
+    s=s+sum(f(a+(1:2:zh)*h));
+    t=h*s;
+<span class="keyword">end</span>;
+</pre><pre class="language-matlab"><span class="keyword">function</span> s=SimpsonsRule(f,a,b,tol)
+<span class="comment">%SIMPSONSRULE composite quadrature using Simpson&#8217;s rule</span>
+<span class="comment">%s=SimpsonsRule(f,a,b,tol); computes an approximation of</span>
+<span class="comment">%$\int_a^b f(x) dx$ to a relative tolerance tol using the</span>
+<span class="comment">%composite Simpson&#8217;s rule.</span>
+</pre><pre class="language-matlab">h=(b-a)/2; s1=f(a)+f(b); s2=0;
+s4=f(a+h); s=h*(s1+4*s4)/3;
+zh=2; sold=2*s;
+<span class="keyword">while</span> abs(sold-s)&gt;tol*abs(s),
+    sold=s; zh=2*zh; h=h/2; s2=s2+s4;
+    s4=sum(f(a+(1:2:zh)*h));
+    s=h*(s1+2*s2+4*s4)/3;
+<span class="keyword">end</span>
+</pre><h2>Metoda trapezelor<a name="8"></a></h2><pre class="codeinput">format <span class="string">long</span>
+TrapezoidalRule(f,0,1,1e-8)
+</pre><pre class="codeoutput">
+ans =
+
+   0.359140913831625
+
+</pre><h2>Metoda lui Simpson<a name="9"></a></h2><pre class="codeinput">SimpsonsRule(f,0,1,1e-8)
+</pre><pre class="codeoutput">
+ans =
+
+   0.359140914057362
+
+</pre><h2>Metoda lui Romberg<a name="10"></a></h2><pre class="codeinput">[I,nfev]=Romberg(f,0,1,1e-8)
+</pre><pre class="codeoutput">
+ans =
+
+  Columns 1 through 3
+
+   0.339785228557381                   0                   0
+   0.353083866578705   0.357516745919146                   0
+   0.357515195871924   0.358992305636330   0.359090676284142
+   0.358726477164210   0.359130237594973   0.359139433058882
+   0.359036783555770   0.359140219019623   0.359140884447933
+   0.359114848619295   0.359140870307137   0.359140913726304
+
+  Columns 4 through 6
+
+                   0                   0                   0
+                   0                   0                   0
+                   0                   0                   0
+   0.359140206975942                   0                   0
+   0.359140907485854   0.359140910232952                   0
+   0.359140914191040   0.359140914217335   0.359140914221230
+
+
+I =
+
+   0.359140914221230
+
+
+nfev =
+
+    33
+
+</pre><h2>Cuadratura adaptiva (Simpson)<a name="11"></a></h2><pre class="codeinput">[Q,fcount] = adquad(f,0,1,1e-8)
+</pre><pre class="codeoutput">
+Q =
+
+   0.359140914218223
+
+
+fcount =
+
+    61
+
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Exemple de integrare numerica
+% Foloseste diferite metode de integrare
+% Vom integra functia 
+% 
+% $$f(x)=\frac{xe^x}{(x+1)^2}$$
+%
+% pe intervalul [0,1].
+f = @(x) x.*exp(x)./(x+1).^2;
+%% Consideratii legate de formulele repetate
+% O implementare directa a formulei trapezului sau a formulei lui Simpson
+% are dezavantajul ca $n$ este dificil de determinat daca se doreste
+% atingerea unei precizii date, |tol|
+
+%%
+% 
+%   function I=trapezes(f,a,b,n)
+%   %TRAPEZES trapezes formula
+%   %call I=trapezes(f,a,b,n);
+%   h=(b-a)/n;
+%   I=(f(a)+f(b)+2*sum(f([1:n-1]*h+a)))*h/2;
+% 
+%%
+% 
+%   function I=Simpson(f,a,b,n)
+%   %SIMPSON composite Simpson formula
+%   %call I=Simpson(f,a,b,n);
+%    
+%   h=(b-a)/n;
+%   x2=(1:n-1)*h+a;
+%   x4=(0:n-1)*h+a+h/2;
+%   I=h/6*(f(a)+f(b)+2*sum(f(x2))+4*sum(f(x4)));
+% 
+%% Implementare
+% Pentru a evita calculul lui $n$ vom proceda pas cu pas
+% dubland la fiecare pas numarul de subintervale si stabilind o relatie de
+% recurenta. Functia pentru metoda trapezelor este
+%% 
+% 
+%   function t=TrapezoidalRule(f,a,b,tol)
+%   %TRAPEZOIDALRULE composite quadrature using the trapezoidal rule
+%   %t=TrapezoidalRule(f,a,b,tol); computes an approximation of
+%   %int_a^b f(x) dx to a relative tolerance tol using the
+%   %composite trapezoidal rule.
+% 
+%   h=b-a; s=(f(a)+f(b))/2;
+%   t=h*s; zh=1; told=2*t;
+%   while abs(told-t)>tol*abs(t),
+%       told=t; zh=2*zh; h=h/2;
+%       s=s+sum(f(a+(1:2:zh)*h));
+%       t=h*s;
+%   end;
+% 
+%%
+% 
+%   function s=SimpsonsRule(f,a,b,tol)
+%   %SIMPSONSRULE composite quadrature using Simpson’s rule
+%   %s=SimpsonsRule(f,a,b,tol); computes an approximation of
+%   %$\int_a^b f(x) dx$ to a relative tolerance tol using the
+%   %composite Simpson’s rule.
+% 
+%   h=(b-a)/2; s1=f(a)+f(b); s2=0;
+%   s4=f(a+h); s=h*(s1+4*s4)/3;
+%   zh=2; sold=2*s;
+%   while abs(sold-s)>tol*abs(s),
+%       sold=s; zh=2*zh; h=h/2; s2=s2+s4;
+%       s4=sum(f(a+(1:2:zh)*h));
+%       s=h*(s1+2*s2+4*s4)/3;
+%   end
+% 
+%% Metoda trapezelor
+format long
+TrapezoidalRule(f,0,1,1e-8)
+%% Metoda lui Simpson
+SimpsonsRule(f,0,1,1e-8)
+%% Metoda lui Romberg
+[I,nfev]=Romberg(f,0,1,1e-8)
+%% Cuadratura adaptiva (Simpson)
+[Q,fcount] = adquad(f,0,1,1e-8)
+
+
+
+
+
+##### SOURCE END #####
+--></body></html>

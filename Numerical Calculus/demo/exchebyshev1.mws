@@ -1,0 +1,59 @@
+{VERSION 6 0 "IBM INTEL NT" "6.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{CSTYLE "2D Math" -1 2 "Times" 0 1 0 0 0 0 0 0 2 0 0 0 0 
+0 0 1 }{CSTYLE "2D Output" 2 20 "" 0 1 0 0 255 1 0 0 0 0 0 0 0 0 0 1 }
+{PSTYLE "Normal" -1 0 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 
+2 2 1 1 1 1 }1 1 0 0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "Maple Output" -1 
+11 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }3 3 0 
+0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "Maple Output" -1 12 1 {CSTYLE "" -1 
+-1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }1 3 0 0 0 0 1 0 1 0 2 2 
+0 1 }}
+{SECT 0 {EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 8 "restart;" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 25 "with(Student[Calculus1]);" }}{PARA 
+12 "" 1 "" {XPPMATH 20 "6#7Y%3AntiderivativePlotG%4AntiderivativeTutor
+G%/ApproximateIntG%4ApproximateIntTutorG%*ArcLengthG%/ArcLengthTutorG%
++AsymptotesG%&ClearG%/CriticalPointsG%3CurveAnalysisTutorG%/Derivative
+PlotG%0DerivativeTutorG%*DiffTutorG%.ExtremePointsG%0FunctionAverageG%
+5FunctionAverageTutorG%.FunctionChartG%-FunctionPlotG%+GetMessageG%/Ge
+tNumProblemsG%+GetProblemG%%HintG%1InflectionPointsG%)IntTutorG%*Integ
+randG%,InversePlotG%-InverseTutorG%+LimitTutorG%1MeanValueTheoremG%6Me
+anValueTheoremTutorG%/NewtonQuotientG%.NewtonsMethodG%3NewtonsMethodTu
+torG%3PointInterpolationG%+RiemannSumG%.RollesTheoremG%&RootsG%%RuleG%
+%ShowG%/ShowIncompleteG%-ShowSolutionG%*ShowStepsG%(SummandG%4SurfaceO
+fRevolutionG%9SurfaceOfRevolutionTutorG%(TangentG%3TangentSecantTutorG
+%-TangentTutorG%4TaylorApproximationG%9TaylorApproximationTutorG%+Unde
+rstandG%%UndoG%3VolumeOfRevolutionG%8VolumeOfRevolutionTutorG%,WhatPro
+blemG" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 63 "II:=2/Pi*Int(1/sqr
+t(1-t^2)*arccos(t)*cos(k*arccos(t)),t=-1..1);" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#>%#IIG,$,$-%$IntG6$*(,&\"\"\"F,*$)%\"tG\"\"#F,!\"\"#F1F
+0-%'arccosG6#F/F,-%$cosG6#*&%\"kGF,F3F,F,/F/;F1F,*&F0F,%#PiGF1F," }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 10 "value(II);" }}{PARA 11 "" 1 
+"" {XPPMATH 20 "6#,$**\"\"#\"\"\"%#PiG!\"\",(-%$cosG6#*&F'F&%\"kGF&F&*
+(F'F&F.F&-%$sinGF,F&F&F&F(F&F.!\"#F&" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 28 "simplify(%) assuming k::odd;" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#,$*(\"\"%\"\"\"%#PiG!\"\"%\"kG!\"#F(" }}}{EXCHG {PARA 
+0 "> " 0 "" {MPLTEXT 1 0 29 "simplify(%) assuming k::even;" }}{PARA 
+11 "" 1 "" {XPPMATH 20 "6#,$*(\"\"%\"\"\"%#PiG!\"\"%\"kG!\"#F(" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 29 "Rule[change,u=arccos(t)](II)
+;" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#/,$,$-%$IntG6$*(,&\"\"\"F+*$)%\"t
+G\"\"#F+!\"\"#F0F/-%'arccosG6#F.F+-%$cosG6#*&%\"kGF+F2F+F+/F.;F0F+*&F/
+F+%#PiGF0F+,$,$-F'6$,$*&-F36#-F66#%\"uGF+-F66#*&F9F+FHF+F+F0/FH;F=\"\"
+!*&F/F+F=F0F+" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 26 "simplify(r
+hs(%),symbolic);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#,$,$-%$IntG6$*&%\"
+uG\"\"\"-%$cosG6#*&%\"kGF*F)F*F*/F);%#PiG\"\"!*&\"\"#F*F2!\"\"F6" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 35 "c:=k->2/Pi*int(u*cos(k*u),u=
+0..Pi);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%\"cGf*6#%\"kG6\"6$%)opera
+torG%&arrowGF(,$,$-%$intG6$*&%\"uG\"\"\"-%$cosG6#*&9$F3F2F3F3/F2;\"\"!
+%#PiG*&\"\"#F3F<!\"\"F3F(F(F(" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 
+0 5 "c(0);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#%#PiG" }}}{EXCHG {PARA 
+0 "> " 0 "" {MPLTEXT 1 0 5 "c(1);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#,
+$*&\"\"%\"\"\"%#PiG!\"\"F(" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 
+5 "c(2);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#\"\"!" }}}{EXCHG {PARA 0 "
+> " 0 "" {MPLTEXT 1 0 25 "c(n) assuming n::natural;" }}{PARA 11 "" 1 "
+" {XPPMATH 20 "6#,$**\"\"#\"\"\"%#PiG!\"\",&F&F()F(%\"nGF&F&F+!\"#F&" 
+}}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 21 "c(n) assuming n::odd;" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6#,$*(\"\"%\"\"\"%#PiG!\"\"%\"nG!\"#F(" 
+}}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 22 "c(n) assuming n::even;" }
+}{PARA 11 "" 1 "" {XPPMATH 20 "6#\"\"!" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 0 "" }}}}{MARK "15 0 0" 0 }{VIEWOPTS 1 1 0 1 1 1803 1 1 
+1 1 }{PAGENUMBERS 0 1 2 33 1 1 }

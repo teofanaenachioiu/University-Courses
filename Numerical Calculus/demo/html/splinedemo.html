@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>splinedemo</title>
+<style type="text/css">
+/* <![CDATA[ */
+span.S0, a.S0 { font-family:sans-serif; font-size:11pt; font-style:normal; font-weight:normal; color:#000000; }
+span.S1, a.S1 { font-family:monospace; font-size:11pt; font-style:normal; font-weight:normal; color:#ff0000; }
+span.S2, a.S2 { font-family:monospace; font-size:11pt; font-style:normal; font-weight:normal; color:#5500ff; }
+span.S3, a.S3 { font-family:serif; font-size:11pt; font-style:normal; font-weight:normal; color:#5500ff; }
+p.P0 { text-align:justify; margin-top:0pt; margin-left:0pt; margin-right:0pt; margin-bottom:0pt; text-indent:0pt; }
+p.P1 { text-align:left; white-space:pre; margin-top: 0; margin-left: 0; margin-right: 0; margin-bottom: 0; }
+div.C2 { padding-top:0pt; padding-bottom:0pt; padding-left:5.7pt; border-left-width:1pt; border-left-style: solid; border-color: #808080; border-right-width: 0; border-right-style: none; border-top-width: 0; border-top-style: none; border-bottom-width: 0; border-bottom-style: none; }
+div.Csep3in { padding: 0; height: 0; width: 5pt; border-bottom: 1px solid #808080; margin-top:2.85pt; margin-bottom: 0; }
+div.Csep3out { padding: 0; height: 0; width: 3pt; border-bottom: 1px solid #808080; margin-top: 0;  margin-bottom: 0; }
+div.Csep3end { padding: 0; height: 0; width: 5pt; border-bottom: 1px solid #808080; margin-bottom:2.85pt; margin-top: 0; }
+p.P4 { margin-top:0pt; margin-left:0pt; margin-right:0pt; margin-bottom:0pt; text-indent:0pt; }
+body { background-color:white; }
+@page { margin:56pt; size:612pt 792pt; background-color:white; }
+/* ]]> */
+</style>
+</head>
+<body>
+<p class="P0">&nbsp;</p>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S1">reset();</span></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S1">x := [0, 1, 2, 3, 4];<br />y := map(x,x-&gt;f(x));<br /></span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="[0, 1, 2, 3, 4]" style="vertical-align:-10px" width="100" height="30" src="splinedemo_images/math0.png"></img><span class="S3"><br /></span><img alt="[f(0), f(1), f(2), f(3), f(4)]" style="vertical-align:-10px" width="215" height="30" src="splinedemo_images/math1.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S1">S1:=numeric::cubicSpline(x,y,Natural,Symbolic);</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="`proc S1(z) ... end`" style="vertical-align:-11px" width="118" height="31" src="splinedemo_images/math2.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S1">S1e:=piecewise([t&gt;=0 and t&lt;1, S1(t,0)],[t&lt;2, S1(t,1)], [t&lt;3, S1(t,2)], [Otherwise, S1(t,3)]);</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="piecewise([t &lt; 2, f(1) - (t - 1)*((13*f(0))/28 + (3*f(1))/14 - (6*f(2))/7 + (3*f(3))/14 - f(4)/28 - (t - 1)*((45*f(0))/56 - (51*f(1))/28 + (9*f(2))/7 - (9*f(3))/28 + (3*f(4))/56 - (t - 1)*((19*f(0))/56 - (29*f(1))/28 + (8*f(2))/7 - (15*f(3))/28 + (5*f(4))/56)))], [t &lt; 3, f(2) - (t - 2)*((3*f(1))/4 - f(0)/8 - (3*f(3))/4 + f(4)/8 + (t - 2)*((3*f(0))/14 - (9*f(1))/7 + (15*f(2))/7 - (9*f(3))/7 + (3*f(4))/14 - (t - 2)*((5*f(0))/56 - (15*f(1))/28 + (8*f(2))/7 - (29*f(3))/28 + (19*f(4))/56)))], [t in Dom::Interval([0], 1), f(0) - t*(((17*f(1))/28 - (15*f(0))/56 - (3*f(2))/7 + (3*f(3))/28 - f(4)/56)*t^2 + (71*f(0))/56 - (45*f(1))/28 + (3*f(2))/7 - (3*f(3))/28 + f(4)/56)], [Otherwise, f(3) + (t - 3)*((3*f(1))/14 - f(0)/28 - (6*f(2))/7 + (3*f(3))/14 + (13*f(4))/28 + (t - 3)*((3*f(0))/56 - (9*f(1))/28 + (9*f(2))/7 - (51*f(3))/28 + (45*f(4))/56 - (t - 3)*(f(0)/56 - (3*f(1))/28 + (3*f(2))/7 - (17*f(3))/28 + (15*f(4))/56)))])" style="vertical-align:-200px" width="1020" height="522" src="splinedemo_images/math3.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S1">S2:=numeric::cubicSpline(x,y,Complete=[f'(0),f'(4)],Symbolic);</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="`proc S2(z) ... end`" style="vertical-align:-11px" width="118" height="31" src="splinedemo_images/math4.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S1">S2e:=piecewise([t&gt;=0 and t&lt;1, S2(t,0)],[t&lt;2, S2(t,1)], [t&lt;3, S2(t,2)], [Otherwise, S2(t,3)]);</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="piecewise([t &lt; 2, f(1) - (t - 1)*((45*f(0))/56 - (3*f(1))/14 - (3*f(2))/4 + (3*f(3))/14 - (3*f(4))/56 + (15*D(f)(0))/56 + D(f)(4)/56 - (t - 1)*((39*f(0))/28 - (18*f(1))/7 + (3*f(2))/2 - (3*f(3))/7 + (3*f(4))/28 + (13*D(f)(0))/28 - D(f)(4)/28 - (t - 1)*((11*D(f)(0))/56 + (33*f(0))/56 - (3*D(f)(4))/56 + (9*f(4))/56 - (19*f(1))/14 + (5*f(2))/4 - (9*f(3))/14)))], [t &lt; 3, f(2) + (t - 2)*((3*f(0))/14 - (6*f(1))/7 + (6*f(3))/7 - (3*f(4))/14 + D(f)(0)/14 + D(f)(4)/14 - (t - 2)*((3*f(0))/8 - (3*f(1))/2 + (9*f(2))/4 - (3*f(3))/2 + (3*f(4))/8 + D(f)(0)/8 - D(f)(4)/8 - (t - 2)*((3*D(f)(0))/56 + (9*f(0))/56 - (11*D(f)(4))/56 + (33*f(4))/56 - (9*f(1))/14 + (5*f(2))/4 - (19*f(3))/14)))], [t in Dom::Interval([0], 1), f(0) + t*(D(f)(0) - t*((123*f(0))/56 - (39*f(1))/14 + (3*f(2))/4 - (3*f(3))/14 + (3*f(4))/56 + (97*D(f)(0))/56 - D(f)(4)/56 - t*((41*D(f)(0))/56 + (67*f(0))/56 - D(f)(4)/56 + (3*f(4))/56 - (25*f(1))/14 + (3*f(2))/4 - (3*f(3))/14)))], [Otherwise, f(3) - (t - 3)*((3*f(0))/56 - (3*f(1))/14 + (3*f(2))/4 + (3*f(3))/14 - (45*f(4))/56 + D(f)(0)/56 + (15*D(f)(4))/56 - (t - 3)*((3*f(0))/28 - (3*f(1))/7 + (3*f(2))/2 - (18*f(3))/7 + (39*f(4))/28 + D(f)(0)/28 - (13*D(f)(4))/28 - (t - 3)*(D(f)(0)/56 + (3*f(0))/56 - (41*D(f)(4))/56 + (67*f(4))/56 - (3*f(1))/14 + (3*f(2))/4 - (25*f(3))/14)))])" style="vertical-align:-251px" width="1321" height="620" src="splinedemo_images/math5.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S1">S3:=numeric::cubicSpline(x,y,NotAKnot,Symbolic);</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="`proc S3(z) ... end`" style="vertical-align:-11px" width="118" height="31" src="splinedemo_images/math6.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S1">S3e:=piecewise([t&gt;=0 and t&lt;1, S3(t,0)],[t&lt;2, S3(t,1)], [t&lt;3, S3(t,2)], [Otherwise, S3(t,3)]);</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="piecewise([t &lt; 2, f(1) - (t - 1)*((7*f(0))/24 + (2*f(1))/3 - (5*f(2))/4 + f(3)/3 - f(4)/24 - (t - 1)*(f(0)/2 - f(1) + f(2)/2 - (t - 1)*((5*f(0))/24 - (2*f(1))/3 + (3*f(2))/4 - f(3)/3 + f(4)/24)))], [t &lt; 3, f(2) - (t - 2)*((2*f(1))/3 - f(0)/12 - (2*f(3))/3 + f(4)/12 + (t - 2)*(f(0)/8 - f(1) + (7*f(2))/4 - f(3) + f(4)/8 - (t - 2)*(f(0)/24 - f(1)/3 + (3*f(2))/4 - (2*f(3))/3 + (5*f(4))/24)))], [t in Dom::Interval([0], 1), f(0) - t*((23*f(0))/12 - (10*f(1))/3 + 2*f(2) - (2*f(3))/3 + f(4)/12 - t*((9*f(0))/8 - 3*f(1) + (11*f(2))/4 - f(3) + f(4)/8 - t*((5*f(0))/24 - (2*f(1))/3 + (3*f(2))/4 - f(3)/3 + f(4)/24)))], [Otherwise, f(3) + (t - 3)*(f(1)/3 - f(0)/24 - (5*f(2))/4 + (2*f(3))/3 + (7*f(4))/24 + (t - 3)*(f(2)/2 - f(3) + f(4)/2 + (t - 3)*(f(0)/24 - f(1)/3 + (3*f(2))/4 - (2*f(3))/3 + (5*f(4))/24)))])" style="vertical-align:-183px" width="734" height="475" src="splinedemo_images/math7.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S1">S4:=numeric::cubicSpline([op(x),x[1]],[op(y),y[1]],Periodic,Symbolic);</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="`proc S4(z) ... end`" style="vertical-align:-11px" width="118" height="31" src="splinedemo_images/math8.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S1">S4e:=piecewise([t&gt;=0 and t&lt;1, S4(t,0)],[t&lt;2, S4(t,1)], [t&lt;3, S4(t,2)], [Otherwise, S4(t,3)]);</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="piecewise([t &lt; 2, f(1) - (t - 1)*((17*f(0))/48 + (5*f(1))/12 - (7*f(2))/8 + f(3)/12 + f(4)/48 - (t - 1)*((5*f(0))/8 - (3*f(1))/2 + (5*f(2))/4 - f(3)/2 + f(4)/8 - (t - 1)*((13*f(0))/48 - (11*f(1))/12 + (9*f(2))/8 - (7*f(3))/12 + (5*f(4))/48)))], [t &lt; 3, f(2) - (t - 2)*((2*f(1))/3 - f(0)/12 - (2*f(3))/3 + f(4)/12 + (t - 2)*((3*f(0))/16 - (5*f(1))/4 + (17*f(2))/8 - (5*f(3))/4 + (3*f(4))/16 - (t - 2)*((5*f(0))/48 - (7*f(1))/12 + (9*f(2))/8 - (11*f(3))/12 + (13*f(4))/48)))], [t in Dom::Interval([0], 1), f(0) - t*((5*f(0))/3 - (7*f(1))/3 + f(2)/2 + f(3)/3 - f(4)/6 - t*((11*f(0))/16 - (5*f(1))/4 + f(2)/8 + (3*f(3))/4 - (5*f(4))/16 - t*(f(0)/48 + f(1)/12 - (3*f(2))/8 + (5*f(3))/12 - (7*f(4))/48)))], [Otherwise, f(3) + (t - 3)*(f(0)/48 + f(1)/12 - (7*f(2))/8 + (5*f(3))/12 + (17*f(4))/48 + (t - 3)*(f(0)/8 - f(1)/2 + (5*f(2))/4 - (3*f(3))/2 + (5*f(4))/8 + (t - 3)*((5*f(1))/12 - (7*f(0))/48 - (3*f(2))/8 + f(3)/12 + f(4)/48)))])" style="vertical-align:-200px" width="995" height="522" src="splinedemo_images/math9.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1">&nbsp;</p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S1">f:=x-&gt;(x+1)/(x^2+1);</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="x -&gt; (x + 1)/(x^2 + 1)" style="vertical-align:-24px" width="87" height="53" src="splinedemo_images/math10.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S1">plot(<br />&nbsp; plot::Function2d(S1(t), t=0..4, Color = RGB::Black,Legend=&quot;Natural&quot;),<br />&nbsp; plot::Function2d(S2(t), t=0..4, Color = RGB::Red,Legend=&quot;Complete&quot;),<br />&nbsp; plot::Function2d(S3(t), t=0..4, Color = RGB::Blue,Legend=&quot;Not a Knot&quot;),<br />&nbsp; plot::Function2d(S4(t), t=0..4, Color = RGB::Orange,Legend=&quot;periodic&quot;),<br />&nbsp; plot::Function2d(f(t), t=0..4, Color = RGB::Green,Legend=&quot;f&quot;)<br />);</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="MuPAD graphics" src="splinedemo_images/plt2.png" width="454pt" height="302pt"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1">&nbsp;</p>
+</div>
+<div class="Csep3end"></div>
+<p class="P1">&nbsp;</p>
+<p class="P4">&nbsp;</p>
+</body>
+</html>

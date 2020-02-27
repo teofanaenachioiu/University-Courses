@@ -1,0 +1,667 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>FLOATING POINT DEMO</title><meta name="generator" content="MATLAB 9.4"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-02-26"><meta name="DC.source" content="fpdemo.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>FLOATING POINT DEMO</h1><!--introduction--><p>Shows several MATLAB floating point facilities such as: overflow,underflow, cancellation, machine epsilon, special quantities IEEE standard</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Floating Point Demo</a></li><li><a href="#2">Overflow/underflow</a></li><li><a href="#5">Cancellation</a></li><li><a href="#7">Epsilon</a></li><li><a href="#11">realmin and realmax</a></li><li><a href="#12">Signed zeros</a></li><li><a href="#13">Infinity</a></li><li><a href="#15">NaN</a></li><li><a href="#16">Check for NaN</a></li><li><a href="#17">Round to even</a></li><li><a href="#18">View hex/bin representations</a></li><li><a href="#19">Representation - short</a></li><li><a href="#20">Representation - long</a></li><li><a href="#21">Contradiction?</a></li><li><a href="#22">Explanation</a></li></ul></div><h2 id="1">Floating Point Demo</h2><pre class="codeinput">format <span class="string">long</span>
+format <span class="string">compact</span>
+</pre><h2 id="2">Overflow/underflow</h2><pre class="codeinput">1
+-1
+</pre><pre class="codeoutput">ans =
+     1
+ans =
+    -1
+</pre><pre class="codeinput">1e100
+1e-100
+</pre><pre class="codeoutput">ans =
+    1.000000000000000e+100
+ans =
+    1.000000000000000e-100
+</pre><pre class="codeinput">1e400
+1e-400
+</pre><pre class="codeoutput">ans =
+   Inf
+ans =
+     0
+</pre><h2 id="5">Cancellation</h2><pre class="codeinput">x=rand
+y=rand
+z=x-y
+</pre><pre class="codeoutput">x =
+   0.957506835434298
+y =
+   0.964888535199277
+z =
+  -0.007381699764979
+</pre><pre class="codeinput">x1=x+1e10
+y1=y+1e10
+z1=x1-y1
+
+z1-z
+</pre><pre class="codeoutput">x1 =
+     1.000000000095751e+10
+y1 =
+     1.000000000096489e+10
+z1 =
+  -0.007381439208984
+ans =
+     2.605559945578761e-07
+</pre><h2 id="7">Epsilon</h2><pre class="codeinput">1+1e-20
+(1+1e-20)-1
+</pre><pre class="codeoutput">ans =
+     1
+ans =
+     0
+</pre><pre class="codeinput">1+1e-16
+1+2e-16
+(1+2e-16)-1
+</pre><pre class="codeoutput">ans =
+     1
+ans =
+   1.000000000000000
+ans =
+     2.220446049250313e-16
+</pre><pre class="codeinput">e=1;
+<span class="keyword">while</span> (1+e&gt;1) e=e/2, <span class="keyword">end</span> <span class="comment">% Don't optimize!</span>
+eps
+</pre><pre class="codeoutput">e =
+   0.500000000000000
+e =
+   0.250000000000000
+e =
+   0.125000000000000
+e =
+   0.062500000000000
+e =
+   0.031250000000000
+e =
+   0.015625000000000
+e =
+   0.007812500000000
+e =
+   0.003906250000000
+e =
+   0.001953125000000
+e =
+     9.765625000000000e-04
+e =
+     4.882812500000000e-04
+e =
+     2.441406250000000e-04
+e =
+     1.220703125000000e-04
+e =
+     6.103515625000000e-05
+e =
+     3.051757812500000e-05
+e =
+     1.525878906250000e-05
+e =
+     7.629394531250000e-06
+e =
+     3.814697265625000e-06
+e =
+     1.907348632812500e-06
+e =
+     9.536743164062500e-07
+e =
+     4.768371582031250e-07
+e =
+     2.384185791015625e-07
+e =
+     1.192092895507813e-07
+e =
+     5.960464477539063e-08
+e =
+     2.980232238769531e-08
+e =
+     1.490116119384766e-08
+e =
+     7.450580596923828e-09
+e =
+     3.725290298461914e-09
+e =
+     1.862645149230957e-09
+e =
+     9.313225746154785e-10
+e =
+     4.656612873077393e-10
+e =
+     2.328306436538696e-10
+e =
+     1.164153218269348e-10
+e =
+     5.820766091346741e-11
+e =
+     2.910383045673370e-11
+e =
+     1.455191522836685e-11
+e =
+     7.275957614183426e-12
+e =
+     3.637978807091713e-12
+e =
+     1.818989403545856e-12
+e =
+     9.094947017729282e-13
+e =
+     4.547473508864641e-13
+e =
+     2.273736754432321e-13
+e =
+     1.136868377216160e-13
+e =
+     5.684341886080801e-14
+e =
+     2.842170943040401e-14
+e =
+     1.421085471520200e-14
+e =
+     7.105427357601002e-15
+e =
+     3.552713678800501e-15
+e =
+     1.776356839400250e-15
+e =
+     8.881784197001252e-16
+e =
+     4.440892098500626e-16
+e =
+     2.220446049250313e-16
+e =
+     1.110223024625157e-16
+ans =
+     2.220446049250313e-16
+</pre><pre class="codeinput">b=2^50
+(b+e*b)-b
+</pre><pre class="codeoutput">b =
+     1.125899906842624e+15
+ans =
+     0
+</pre><h2 id="11">realmin and realmax</h2><pre class="codeinput">realmin
+realmax
+</pre><pre class="codeoutput">ans =
+    2.225073858507201e-308
+ans =
+    1.797693134862316e+308
+</pre><h2 id="12">Signed zeros</h2><pre class="codeinput">0
++0
+-0
+</pre><pre class="codeoutput">ans =
+     0
+ans =
+     0
+ans =
+     0
+</pre><h2 id="13">Infinity</h2><pre class="codeinput">1/0
+-1/0
+0/0
+</pre><pre class="codeoutput">ans =
+   Inf
+ans =
+  -Inf
+ans =
+   NaN
+</pre><pre class="codeinput">inf
+1/inf
+-1/inf
+-1/-inf
+
+2*inf
+inf+inf
+inf^inf
+</pre><pre class="codeoutput">ans =
+   Inf
+ans =
+     0
+ans =
+     0
+ans =
+     0
+ans =
+   Inf
+ans =
+   Inf
+ans =
+   Inf
+</pre><h2 id="15">NaN</h2><pre class="codeinput">inf-inf
+inf/inf
+0/0
+nan+123
+</pre><pre class="codeoutput">ans =
+   NaN
+ans =
+   NaN
+ans =
+   NaN
+ans =
+   NaN
+</pre><h2 id="16">Check for NaN</h2><pre class="codeinput">x=nan;
+isnan(x)
+x==x
+
+isnan([1,2,3,nan,inf])
+isinf([1,2,3,nan,inf])
+</pre><pre class="codeoutput">ans =
+  logical
+   1
+ans =
+  logical
+   0
+ans =
+  1&times;5 logical array
+   0   0   0   1   0
+ans =
+  1&times;5 logical array
+   0   0   0   0   1
+</pre><h2 id="17">Round to even</h2><pre class="codeinput">e=eps/2
+1+e
+1+2*e
+((1+2*e)-1)/e
+((1+3*e)-1)/e
+((1+4*e)-1)/e
+[0:16; ((1+(0:16)*e)-1)/e]'
+</pre><pre class="codeoutput">e =
+     1.110223024625157e-16
+ans =
+     1
+ans =
+   1.000000000000000
+ans =
+     2
+ans =
+     4
+ans =
+     4
+ans =
+     0     0
+     1     0
+     2     2
+     3     4
+     4     4
+     5     4
+     6     6
+     7     8
+     8     8
+     9     8
+    10    10
+    11    12
+    12    12
+    13    12
+    14    14
+    15    16
+    16    16
+</pre><h2 id="18">View hex/bin representations</h2><pre class="codeinput">format <span class="string">hex</span>
+
+0
+-0
+inf
+-inf
+nan
+-nan
+123123+nan
+1
+2
+(1:10)'
+realmin
+realmax
+eps
+</pre><pre class="codeoutput">ans =
+   0000000000000000
+ans =
+   8000000000000000
+ans =
+   7ff0000000000000
+ans =
+   fff0000000000000
+ans =
+   fff8000000000000
+ans =
+   7ff8000000000000
+ans =
+   fff8000000000000
+ans =
+   3ff0000000000000
+ans =
+   4000000000000000
+ans =
+   3ff0000000000000
+   4000000000000000
+   4008000000000000
+   4010000000000000
+   4014000000000000
+   4018000000000000
+   401c000000000000
+   4020000000000000
+   4022000000000000
+   4024000000000000
+ans =
+   0010000000000000
+ans =
+   7fefffffffffffff
+ans =
+   3cb0000000000000
+</pre><h2 id="19">Representation - short</h2><pre class="codeinput">xs=[0,-0,inf,-inf,nan,-nan,1:10,1+(0:10)*2^-23,2-(10:-1:0)*2^-23];
+format <span class="string">short</span>
+<span class="keyword">for</span> x=xs
+  fprintf(<span class="string">'%10.8g %s\n'</span>,x,num2bin(single(x),true));
+  <span class="comment">%pause</span>
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">         0 0 00000000 00000000000000000000000
+        -0 1 00000000 00000000000000000000000
+       Inf 0 11111111 00000000000000000000000
+      -Inf 1 11111111 00000000000000000000000
+       NaN 1 11111111 10000000000000000000000
+       NaN 0 11111111 10000000000000000000000
+         1 0 01111111 00000000000000000000000
+         2 0 10000000 00000000000000000000000
+         3 0 10000000 10000000000000000000000
+         4 0 10000001 00000000000000000000000
+         5 0 10000001 01000000000000000000000
+         6 0 10000001 10000000000000000000000
+         7 0 10000001 11000000000000000000000
+         8 0 10000010 00000000000000000000000
+         9 0 10000010 00100000000000000000000
+        10 0 10000010 01000000000000000000000
+         1 0 01111111 00000000000000000000000
+ 1.0000001 0 01111111 00000000000000000000001
+ 1.0000002 0 01111111 00000000000000000000010
+ 1.0000004 0 01111111 00000000000000000000011
+ 1.0000005 0 01111111 00000000000000000000100
+ 1.0000006 0 01111111 00000000000000000000101
+ 1.0000007 0 01111111 00000000000000000000110
+ 1.0000008 0 01111111 00000000000000000000111
+  1.000001 0 01111111 00000000000000000001000
+ 1.0000011 0 01111111 00000000000000000001001
+ 1.0000012 0 01111111 00000000000000000001010
+ 1.9999988 0 01111111 11111111111111111110110
+ 1.9999989 0 01111111 11111111111111111110111
+  1.999999 0 01111111 11111111111111111111000
+ 1.9999992 0 01111111 11111111111111111111001
+ 1.9999993 0 01111111 11111111111111111111010
+ 1.9999994 0 01111111 11111111111111111111011
+ 1.9999995 0 01111111 11111111111111111111100
+ 1.9999996 0 01111111 11111111111111111111101
+ 1.9999998 0 01111111 11111111111111111111110
+ 1.9999999 0 01111111 11111111111111111111111
+         2 0 10000000 00000000000000000000000
+</pre><h2 id="20">Representation - long</h2><pre class="codeinput">xs=[0,-0,inf,-inf,nan,-nan,1:10,1+(0:10)*2^-23,2-(10:-1:0)*2^-23];
+format <span class="string">short</span>
+<span class="keyword">for</span> x=xs
+  fprintf(<span class="string">'%10.8g %s\n'</span>,x,num2bin(x,true));
+  <span class="comment">%pause</span>
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">         0 0 00000000000 0000000000000000000000000000000000000000000000000000
+        -0 1 00000000000 0000000000000000000000000000000000000000000000000000
+       Inf 0 11111111111 0000000000000000000000000000000000000000000000000000
+      -Inf 1 11111111111 0000000000000000000000000000000000000000000000000000
+       NaN 1 11111111111 1000000000000000000000000000000000000000000000000000
+       NaN 0 11111111111 1000000000000000000000000000000000000000000000000000
+         1 0 01111111111 0000000000000000000000000000000000000000000000000000
+         2 0 10000000000 0000000000000000000000000000000000000000000000000000
+         3 0 10000000000 1000000000000000000000000000000000000000000000000000
+         4 0 10000000001 0000000000000000000000000000000000000000000000000000
+         5 0 10000000001 0100000000000000000000000000000000000000000000000000
+         6 0 10000000001 1000000000000000000000000000000000000000000000000000
+         7 0 10000000001 1100000000000000000000000000000000000000000000000000
+         8 0 10000000010 0000000000000000000000000000000000000000000000000000
+         9 0 10000000010 0010000000000000000000000000000000000000000000000000
+        10 0 10000000010 0100000000000000000000000000000000000000000000000000
+         1 0 01111111111 0000000000000000000000000000000000000000000000000000
+ 1.0000001 0 01111111111 0000000000000000000000100000000000000000000000000000
+ 1.0000002 0 01111111111 0000000000000000000001000000000000000000000000000000
+ 1.0000004 0 01111111111 0000000000000000000001100000000000000000000000000000
+ 1.0000005 0 01111111111 0000000000000000000010000000000000000000000000000000
+ 1.0000006 0 01111111111 0000000000000000000010100000000000000000000000000000
+ 1.0000007 0 01111111111 0000000000000000000011000000000000000000000000000000
+ 1.0000008 0 01111111111 0000000000000000000011100000000000000000000000000000
+  1.000001 0 01111111111 0000000000000000000100000000000000000000000000000000
+ 1.0000011 0 01111111111 0000000000000000000100100000000000000000000000000000
+ 1.0000012 0 01111111111 0000000000000000000101000000000000000000000000000000
+ 1.9999988 0 01111111111 1111111111111111111011000000000000000000000000000000
+ 1.9999989 0 01111111111 1111111111111111111011100000000000000000000000000000
+  1.999999 0 01111111111 1111111111111111111100000000000000000000000000000000
+ 1.9999992 0 01111111111 1111111111111111111100100000000000000000000000000000
+ 1.9999993 0 01111111111 1111111111111111111101000000000000000000000000000000
+ 1.9999994 0 01111111111 1111111111111111111101100000000000000000000000000000
+ 1.9999995 0 01111111111 1111111111111111111110000000000000000000000000000000
+ 1.9999996 0 01111111111 1111111111111111111110100000000000000000000000000000
+ 1.9999998 0 01111111111 1111111111111111111111000000000000000000000000000000
+ 1.9999999 0 01111111111 1111111111111111111111100000000000000000000000000000
+         2 0 10000000000 0000000000000000000000000000000000000000000000000000
+</pre><h2 id="21">Contradiction?</h2><pre class="codeinput">format <span class="string">long</span>
+realmax
+log2(ans)
+2^1024
+</pre><pre class="codeoutput">ans =
+    1.797693134862316e+308
+ans =
+        1024
+ans =
+   Inf
+</pre><h2 id="22">Explanation</h2><p>This looks like a contradiction at first glance, since the largest exponent should be <img src="fpdemo_eq13416733194739178567.png" alt="$2^{2046-1023} = 2^{1023}$"> according the IEEE conventions. But <tt>realmax</tt> is the number with the largest possible exponent and with the semnificant F consisting of all ones:</p><pre class="codeinput">format <span class="string">hex</span>
+realmax
+</pre><pre class="codeoutput">ans =
+   7fefffffffffffff
+</pre><p>Even though Matlab reports <tt>log2(realmax)=1024</tt> , <tt>realmax</tt> does not equal <img src="fpdemo_eq01529415836840218863.png" alt="$2^{1024}$">, but rather <img src="fpdemo_eq17868059929076449203.png" alt="$2^{1023}(2-eps)$">; taking the logarithm of <tt>realmax</tt> yields 1024 only because of rounding. Similar rounding effects would also occur for machine numbers that are a bit smaller than <tt>realmax</tt> .</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% FLOATING POINT DEMO
+% Shows several MATLAB floating point facilities such as:
+% overflow,underflow, cancellation, machine epsilon, special quantities
+% IEEE standard
+
+%% Floating Point Demo
+% 
+
+format long
+format compact
+
+%% Overflow/underflow
+1
+-1
+%%
+1e100
+1e-100
+%%
+1e400
+1e-400
+
+%% Cancellation
+
+x=rand
+y=rand
+z=x-y
+%%
+x1=x+1e10
+y1=y+1e10
+z1=x1-y1
+
+z1-z
+
+%% Epsilon
+
+1+1e-20
+(1+1e-20)-1
+%%
+1+1e-16
+1+2e-16
+(1+2e-16)-1
+%%
+e=1;
+while (1+e>1) e=e/2, end % Don't optimize!
+eps
+%%
+b=2^50
+(b+e*b)-b
+%% realmin and realmax
+realmin
+realmax
+
+
+
+%% Signed zeros
+
+0
++0
+-0
+
+%% Infinity
+
+1/0
+-1/0
+0/0
+
+%%
+inf
+1/inf
+-1/inf
+-1/-inf
+
+2*inf
+inf+inf
+inf^inf
+
+%% NaN
+
+inf-inf
+inf/inf
+0/0
+nan+123
+
+%% Check for NaN
+
+x=nan;
+isnan(x)
+x==x
+
+isnan([1,2,3,nan,inf])
+isinf([1,2,3,nan,inf])
+
+%% Round to even
+
+e=eps/2
+1+e
+1+2*e
+((1+2*e)-1)/e
+((1+3*e)-1)/e
+((1+4*e)-1)/e
+[0:16; ((1+(0:16)*e)-1)/e]'
+
+%% View hex/bin representations
+
+format hex
+
+0
+-0
+inf
+-inf
+nan
+-nan
+123123+nan
+1
+2
+(1:10)'
+realmin
+realmax
+eps
+
+%% Representation - short
+xs=[0,-0,inf,-inf,nan,-nan,1:10,1+(0:10)*2^-23,2-(10:-1:0)*2^-23];
+format short
+for x=xs
+  fprintf('%10.8g %s\n',x,num2bin(single(x),true));
+  %pause
+end
+
+%% Representation - long
+xs=[0,-0,inf,-inf,nan,-nan,1:10,1+(0:10)*2^-23,2-(10:-1:0)*2^-23];
+format short
+for x=xs
+  fprintf('%10.8g %s\n',x,num2bin(x,true));
+  %pause
+end
+%% Contradiction?
+format long
+realmax
+log2(ans)
+2^1024
+
+%% Explanation
+% This looks like a contradiction at first glance, since the largest exponent
+% should be $2^{2046-1023} = 2^{1023}$ according the IEEE conventions. But
+% |realmax| is the number with the largest possible exponent and with the
+% semnificant F consisting of all ones:
+format hex
+realmax
+%%
+% Even though Matlab reports |log2(realmax)=1024| , |realmax| does not
+% equal $2^{1024}$, but rather $2^{1023}(2-eps)$; taking the logarithm of |realmax|
+% yields 1024 only because of rounding. Similar rounding effects would
+% also occur for machine numbers that are a bit smaller than |realmax| .
+
+
+
+##### SOURCE END #####
+--></body></html>

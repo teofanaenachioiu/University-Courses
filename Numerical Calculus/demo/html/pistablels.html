@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="MATLAB R2017b"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><title>Computation of π, stable version</title><style type="text/css">
+* {margin: 0; padding: 0;}
+body {text-align: start; line-height: 17.2339992523193px; min-height: 0px; white-space: normal; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; font-style: normal; font-size: 14px; font-weight: normal; text-decoration: none; white-space: normal; }
+h1, h2 {font-weight: normal;}
+.content { padding: 30px; }
+
+.S0 { margin-left: 0px; margin-top: 0px; margin-bottom: 0px; margin-right: 0px;  }
+.S1 { text-align: left; line-height: 26.3999996185303px; min-height: 24px; white-space: pre-wrap; color: rgb(213, 80, 0); font-family: Helvetica, Arial, sans-serif; font-size: 22px; white-space: pre-wrap; margin-left: 4px; margin-top: 3px; margin-bottom: 15px; margin-right: 10px;  }
+.S2 { min-height: 0px; margin-left: 0px; margin-top: 0px; margin-bottom: 0px; margin-right: 0px;  }
+.S3 { text-align: left; line-height: 21px; min-height: 17px; white-space: pre-wrap; font-family: Helvetica, Arial, sans-serif; white-space: pre-wrap; margin-left: 4px; margin-top: 2px; margin-bottom: 9px; margin-right: 10px;  }
+.S4 { text-align: center; line-height: 21px; min-height: 17px; white-space: pre-wrap; font-family: Helvetica, Arial, sans-serif; white-space: pre-wrap; margin-left: 4px; margin-top: 2px; margin-bottom: 9px; margin-right: 10px;  }
+.S5 { margin-left: 3px; margin-top: 10px; margin-bottom: 4px; margin-right: 3px;  }
+.S6 { min-height: 18px; white-space: nowrap; white-space: nowrap; margin-left: 0px; margin-top: 0px; margin-bottom: 0px; margin-right: 0px;  }
+.S7 { min-height: 0px; white-space: pre; white-space: pre; margin-left: 0px; margin-top: 0px; margin-bottom: 0px; margin-right: 45px;  }
+.S8 { color: rgb(34, 139, 34); margin-left: 0px; margin-top: 0px; margin-bottom: 0px; margin-right: 0px;  }
+.S9 { color: rgb(0, 0, 255); margin-left: 0px; margin-top: 0px; margin-bottom: 0px; margin-right: 0px;  }
+.S10 { color: rgb(160, 32, 240); margin-left: 0px; margin-top: 0px; margin-bottom: 0px; margin-right: 0px;  }
+.S11 { color: rgb(64, 64, 64); margin-left: 0px; margin-top: 0px; margin-bottom: 0px; margin-right: 0px;  }
+
+.CodeBlock {margin: 10px 0 10px 0; background-color: #F7F7F7;}
+.CodeBlock+.paragraphNode {margin-top: 10px;}
+.lineNode {padding-left: 10px; border-left: 1px solid #E9E9E9; border-right: 1px solid #E9E9E9;}
+.inlineWrapper:first-child .lineNode,.inlineWrapper.outputs+.inlineWrapper .lineNode {padding-top: 5px; border-top: 1px solid #E9E9E9;}
+.inlineWrapper:last-child .lineNode,.inlineWrapper.outputs .lineNode {padding-bottom: 5px; border-bottom: 1px solid #E9E9E9;}
+.lineNode .textBox {white-space: pre;}
+.outputGroup {margin: 2px 0 2px 0; padding: 2px 2px 2px 4px;}
+.outputRegion {}
+.outputParagraph {color: rgba(64, 64, 64, 1); padding: 10px 0 6px 17px; background: white; overflow-x: hidden;}
+.inlineWrapper:last-child .outputParagraph {border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;}
+.outputParagraph:empty {margin: 0;}
+.inlineElement .symbolicElement {margin-top: 1px; margin-bottom: 1px;}
+.embeddedOutputsSymbolicElement .MathEquation {margin-top: 4px; margin-bottom: 4px;}
+.embeddedOutputsSymbolicElement .MathEquation.displaySymbolicElement {margin-left: 15px;}
+.embeddedOutputsSymbolicElement .MathEquation.inlineSymbolicElement {}
+.embeddedOutputsSymbolicElement {overflow-x: auto; overflow-y: auto;}
+.embeddedOutputsSymbolicElement { overflow: initial !important;}
+.embeddedOutputsTextElement,.embeddedOutputsVariableStringElement {white-space: pre; word-wrap: initial; min-height: 18px; max-height: 250px; overflow: auto;}
+.textElement,.rtcDataTipElement .textElement {padding-top: 3px;}
+.embeddedOutputsTextElement.inlineElement,.embeddedOutputsVariableStringElement.inlineElement {}
+.inlineElement .textElement {}
+.embeddedOutputsTextElement,.embeddedOutputsVariableStringElement { max-height: none !important; overflow: initial !important;}
+.veSpecifier {}
+.veContainer {}
+.veSpecifierBox {height: 400px; width: 500px;}
+.veSpecifier .veTable {padding-top: 3px; padding-bottom: 4px;}
+.veSpecifierBox .veSpecifier .veContainer {position: relative; width: 100%; height: 370px;}
+.veSpecifierBox .dijitDialogPaneContent {width: 97% !important; height: 88% !important;}
+.veSpecifier .veTable .rowHeadersWrapper {padding-bottom: 0;}
+.veSpecifier .veTable .scroller .variableEditorRenderers {padding-right: 3px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;}
+.veSpecifier .veTable .topHeaderWrapper,.veSpecifier .veTable .bottomRowHeaderWrapper {visibility: hidden; z-index: 0;}
+.veMetaSummary {font-style: italic;}
+.veSpecifier .veTable .scroller {overflow: hidden;}
+.veSpecifier .veTable:hover .scroller {overflow: auto;}
+.veSpecifier .veVariableName,.veSpecifier .veDimensionFont {font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px;}
+.veSpecifier .veVariableName {padding-top: 2px;}
+.veSpecifier .veDimensionFont {font-style: italic; color: #9A9A9A;}
+.veSpecifier .scroller::-webkit-scrollbar-track {background-color: white;}
+.veSpecifier .scroller::-webkit-scrollbar-corner {background-color: white;}
+.veSpecifier .veTable .topRowHeaderWrapper {border: none; background-color: #F8F9FA;}
+.veSpecifier .mw_type_ListBase.showCellBorders,.veSpecifier .veTable .topHeaderWrapper,.veSpecifier .veTable .bottomRowHeaderWrapper,.veSpecifier .veTable .verticalScrollSpacer,.veSpecifier .veTable .horizontalScrollSpacer {border: none;}
+.veSpecifier .veTable .dataScrollerNode {border: 1px solid #BFBFBF;}
+.veSpecifier .veTable .columnHeaderNode,.veSpecifier .veTable .rowHeaderNode,.veSpecifier .veTable .dataBody {font-family: Arial; font-size: 13px;}
+.veSpecifier .veTable .columnHeaderNode,.veSpecifier .veTable .rowHeaderNode {color: #7F7F7F;}
+.veSpecifier .veTable .dataBody {color: #000000;}
+.veSpecifier .veTable .columnHeaderNode .cell .drag,.veSpecifier .veTable .columnHeaderNode .cell .header,.veSpecifier .veTable .topHeaderWrapper,.veSpecifier .veTable .bottomRowHeaderWrapper {background-color: #F8F9FA;}
+.veSpecifier .veTable .columnHeaderNode .cell .dragBorder {border-right: 1px solid #F8F9FA;}
+.veSpecifier .veTable .rowHeaderNode .cell {padding-top: 3px; text-align: center; border-bottom: 1px solid #F8F9FA;}
+.veSpecifier .veTable .dataBody .cell .plainText {text-align: right;}
+.veSpecifier .veTable .dataBody .row .cell {border-bottom: 1px solid #E9E9E9; border-right: 1px solid #E9E9E9;}
+.embeddedOutputsVariableElement {white-space: pre-wrap; word-wrap: break-word; min-height: 18px; max-height: 250px; overflow: auto;}
+.variableElement {}
+.embeddedOutputsVariableElement.inlineElement {}
+.inlineElement .variableElement {}
+.variableNameElement {margin-bottom: 3px; display: inline-block;}
+.variableValue { width: 100% !important; }
+.embeddedOutputsMatrixElement {min-height: 18px; box-sizing: border-box;}
+.embeddedOutputsMatrixElement .matrixElement,.rtcDataTipElement .matrixElement {position: relative;}
+.matrixElement .variableValue,.rtcDataTipElement .matrixElement .variableValue {white-space: pre; display: inline-block; vertical-align: top; overflow: hidden;}
+.embeddedOutputsMatrixElement.inlineElement {}
+.embeddedOutputsMatrixElement.inlineElement .topHeaderWrapper {display: none;}
+.embeddedOutputsMatrixElement.inlineElement .veTable .body {padding-top: 0 !important; max-height: 100px;}
+.inlineElement .matrixElement {max-height: 300px;}
+.embeddedOutputsMatrixElement .matrixElement .valueContainer,.rtcDataTipElement .matrixElement .valueContainer {white-space: nowrap; margin-bottom: 3px;}
+.embeddedOutputsMatrixElement .matrixElement .valueContainer .horizontalEllipsis.hide,.embeddedOutputsMatrixElement .matrixElement .verticalEllipsis.hide,.rtcDataTipElement .matrixElement .valueContainer .horizontalEllipsis.hide,.rtcDataTipElement .matrixElement .verticalEllipsis.hide {display: none;}
+.embeddedOutputsMatrixElement .matrixElement .valueContainer .horizontalEllipsis {margin-bottom: -3px;}
+.matrixElement { max-height: none !important; }
+.embeddedOutputsVariableTableElement .ClientViewDiv table tr {height: 22px; white-space: nowrap;}
+.embeddedOutputsVariableTableElement .ClientViewDiv table thead tr th {border-width: 1px 0px 1px 1px;}
+.embeddedOutputsVariableTableElement .ClientViewDiv table {border-spacing: 0px; border: 1px solid #bfbfbf; border-width: 0px 1px 0px 0px;}
+.embeddedOutputsVariableTableElement .ClientViewDiv table tr td,.embeddedOutputsVariableTableElement .ClientViewDiv table tr th {min-width : 75px; max-width : 75px; background-color:white; border: 1px solid #bfbfbf; text-overflow: ellipsis; border-width: 0px 0px 1px 1px; font-family: 'Arial', sans-serif; font-size: 12px; overflow : hidden;}
+.embeddedOutputsVariableTableElement .ClientViewDiv table tbody tr th {width: 34px; max-width: 100px;}
+.embeddedOutputsVariableTableElement .ClientViewDiv table tr span {text-overflow: ellipsis; padding: 3px;}
+.embeddedOutputsVariableTableElement .ClientViewDiv table tr th {background: #f5f5f5; color: rgba(0,0,0,0.5); padding: 3px; font-size: 9px;}
+.embeddedOutputsVariableTableElement .ClientViewDiv table tr th:first-child {min-width: 28px; max-width: 250px;}
+.dijitTooltipDialog .dijitTooltipContainer .dijitTooltipContents .alertPlugin-alertMessage {min-width: 12px; max-width: 400px; max-height: 300px; overflow: auto;}
+.dijitTooltipDialog .alertPlugin-alertMessage::-webkit-scrollbar {width: 11px; height: 11px;}
+.dijitTooltipDialog .alertPlugin-alertMessage::-webkit-scrollbar-track {background-color: rgba(0, 0, 0, 0);}
+.dijitTooltipDialog .alertPlugin-alertMessage::-webkit-scrollbar-corner {background-color: rgba(0, 0, 0, 0);}
+.dijitTooltipDialog .alertPlugin-alertMessage::-webkit-scrollbar-thumb {border-radius: 7px; background-color: rgba(0, 0, 0, 0.1); border: 2px solid rgba(0, 0, 0, 0); background-clip: padding-box;}
+.dijitTooltipDialog .alertPlugin-alertMessage::-webkit-scrollbar-thumb:hover {background-color: rgba(0, 0, 0, 0.2);}
+.dijitTooltipDialog .alertPlugin-alertMessage::-webkit-scrollbar-thumb {background-color: rgba(0, 0, 0, 0);}
+.dijitTooltipDialog .alertPlugin-alertMessage:hover::-webkit-scrollbar-thumb {background-color: rgba(0, 0, 0, 0.1);}
+.dijitTooltipDialog .alertPlugin-alertMessage:hover::-webkit-scrollbar-thumb:hover {background-color: rgba(0, 0, 0, 0.2);}
+.alertPlugin-alertLine {position: absolute; display: initial; width: 40px; text-align: right; cursor: text;}
+.alertPlugin-onTextLine {visibility: hidden;}
+.alertPlugin-hasTooltip .alertPlugin-warningImg,.alertPlugin-hasTooltip .alertPlugin-errorImg {cursor: pointer;}
+.alertPlugin-alertLine .alertPlugin-warningElement,.alertPlugin-alertLine .alertPlugin-errorElement {display: inline-block; margin-right: 4px;}
+.alertPlugin-isStale {-webkit-filter: opacity(0.4) grayscale(80%); filter: opacity(0.4) grayscale(80%);}
+.diagnosticMessage-wrapper {font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px;}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType {color: rgb(255,100,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType a {color: rgb(255,100,0); text-decoration: underline;}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType {color: rgb(230,0,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType a {color: rgb(230,0,0); text-decoration: underline;}
+.diagnosticMessage-wrapper .diagnosticMessage-messagePart {white-space: pre-wrap;}
+.diagnosticMessage-wrapper .diagnosticMessage-stackPart {white-space: pre;}
+.embeddedOutputsWarningElement{min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsWarningElement.inlineElement {}
+.embeddedOutputsErrorElement {min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsErrorElement.inlineElement {}
+.variableNameElement .headerElement {color: rgb(179, 179, 179); font-style: italic;}
+.variableNameElement .headerElement .headerDataType {color: rgb(147, 176, 230);}
+.matrixElement .horizontalEllipsis,.rtcDataTipElement .matrixElement .horizontalEllipsis {display: inline-block; margin-top: 3px; content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAJCAYAAADO1CeCAAAAJUlEQVR42mP4//8/A70xw0i29BUDFPxnAEtTW37wWDqakIa4pQDvOOG89lHX2gAAAABJRU5ErkJggg==");}
+.matrixElement .verticalEllipsis,.textElement .verticalEllipsis,.rtcDataTipElement .matrixElement .verticalEllipsis,.rtcDataTipElement .textElement .verticalEllipsis {margin-left: 35px; content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAZCAYAAAAIcL+IAAAALklEQVR42mP4//8/AzGYgWyFMECMwv8QddRS+P//KyimlmcGUOFoOI6GI/UVAgDnd8Dd4+NCwgAAAABJRU5ErkJggg==");}
+</style></head><body><div class = "content"><div class = 'SectionBlock containment active'><h1 class = "S1"><span class = "S2"><span class="S0">Computation of</span></span><span class = "S2"><span class="S0"> </span></span><span style="font-family:STIXGeneral, STIXGeneral-webfont, serif; font-style: italic; font-weight: normal">&#960;</span><span class = "S2"><span class="S0">, stable version</span></span></h1><div class = "S3"><span class = "S2"><span class="S0">We rewrite the recurrence relation as</span></span></div><div class = "S4"><span style="vertical-align:-22px"><img src="data:image/png;base64,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" width="172" height="46" /></span></div><div class = 'CodeBlock contiguous'><div class = 'inlineWrapper'><div class = "S6 lineNode"><span class = "S7"><span class="S0">oldA=0;s=sqrt(3)/2; newA=3*s; n=6; </span><span class="S8">% initialization</span></span></div></div><div class = 'inlineWrapper'><div class = "S6 lineNode"><span class = "S7"><span class="S0">z=[newA-pi n newA s]; </span><span class="S8">% store the results</span></span></div></div></div></div><div class = "S0"></div><div class = 'SectionBlock containment'><div class = "S3"><span class = "S2"><span class="S0">The stopping criterion</span></span></div><div class = "S4"><span style="vertical-align:-6px"><img src="data:image/png;base64,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" width="111" height="20" /></span></div><div class = "S3"><span class = "S2"><span class="S0">However, this cannot be true forever in finite precision arithmetic, since there is only a finite set of machine numbers. Thus, the situation</span></span><span class = "S2"><span class="S0"> </span></span><span style="vertical-align:-6px"><img src="data:image/png;base64,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" width="55" height="20" /></span><span class = "S2"><span class="S0"> must occur at some stage, and this is the condition to stop the iteration. Note that this condition is independent of the machine, in the sense that the iteration will always terminate as long as we have finite precision arithmetic, and when it does terminate, it always gives the best possible approximation for the precision of the machine.</span></span></div><div class = 'CodeBlock contiguous'><div class = 'inlineWrapper'><div class = "S6 lineNode"><span class = "S7"><span class="S9">while </span><span class="S0">newA&gt;oldA </span><span class="S8">% quit if area does not increase</span></span></div></div><div class = 'inlineWrapper'><div class = "S6 lineNode"><span class = "S7"><span class="S0">    oldA=newA;</span></span></div></div><div class = 'inlineWrapper'><div class = "S6 lineNode"><span class = "S7"><span class="S0">    s=s/sqrt(2*(1+sqrt((1+s)*(1-s)))); </span><span class="S8">% new sine value</span></span></div></div><div class = 'inlineWrapper'><div class = "S6 lineNode"><span class = "S7"><span class="S0">    n=2*n; newA=n/2*s;</span></span></div></div><div class = 'inlineWrapper'><div class = "S6 lineNode"><span class = "S7"><span class="S0">    </span><span class="S0">z</span><span class="S0">=[z; newA-pi n newA s];</span></span></div></div><div class = 'inlineWrapper'><div class = "S6 lineNode"><span class = "S7"><span class="S9">end</span></span></div></div><div class = 'inlineWrapper'><div class = "S6 lineNode"><span class = "S7"><span class="S0">m=length(z);</span></span></div></div><div class = 'inlineWrapper outputs'><div class = "S6 lineNode"><span class = "S7"><span class="S0">disp(</span><span class="S10">"      n              A                     err "</span><span class="S0">)</span></span></div><div class="outputParagraph" style="white-space: normal; font-style: normal; color: rgb(64, 64, 64); font-size: 14px;"><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="78D0D251" data-scroll-top="null" data-scroll-left="null" data-width="1762" data-height="18" data-testid="output_0" style="max-height: 261px; width: 1792px; white-space: pre; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"><div class="textElement" style="white-space: pre; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;">      n              A                     err </div></div></div></div><div class = 'inlineWrapper'><div class = "S6 lineNode"><span class = "S7"><span class="S9">for </span><span class="S0">i=1:m</span></span></div></div><div class = 'inlineWrapper'><div class = "S6 lineNode"><span class = "S7"><span class="S0">    fprintf(</span><span class="S10">'%10d %20.15f %20.15f\n'</span><span class="S0">,z(i,2),z(i,3),z(i,1))</span></span></div></div><div class = 'inlineWrapper outputs'><div class = "S6 lineNode"><span class = "S7"><span class="S9">end</span></span></div><div class="outputParagraph" style="white-space: normal; font-style: normal; color: rgb(64, 64, 64); font-size: 14px;"><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="C1FB93B5" data-scroll-top="null" data-scroll-left="null" data-width="1762" data-height="395" data-testid="output_1" style="max-height: 406px; width: 1792px; white-space: pre; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"><div class="textElement" style="white-space: pre; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;">         6    2.598076211353316   -0.543516442236477
+        12    3.000000000000000   -0.141592653589793
+        24    3.105828541230249   -0.035764112359544
+        48    3.132628613281238   -0.008964040308555
+        96    3.139350203046867   -0.002242450542926
+       192    3.141031950890509   -0.000560702699284
+       384    3.141452472285462   -0.000140181304332
+       768    3.141557607911857   -0.000035045677936
+      1536    3.141583892148318   -0.000008761441475
+      3072    3.141590463228050   -0.000002190361744
+      6144    3.141592105999271   -0.000000547590522
+     12288    3.141592516692156   -0.000000136897637
+     24576    3.141592619365383   -0.000000034224410
+     49152    3.141592645033690   -0.000000008556103
+     98304    3.141592651450766   -0.000000002139027
+    196608    3.141592653055036   -0.000000000534757
+    393216    3.141592653456104   -0.000000000133690
+    786432    3.141592653556371   -0.000000000033422
+   1572864    3.141592653581438   -0.000000000008355
+   3145728    3.141592653587705   -0.000000000002089
+   6291456    3.141592653589271   -0.000000000000522
+  12582912    3.141592653589663   -0.000000000000130
+  25165824    3.141592653589761   -0.000000000000032
+  50331648    3.141592653589786   -0.000000000000008
+ 100663296    3.141592653589791   -0.000000000000002
+ 201326592    3.141592653589794    0.000000000000000
+ 402653184    3.141592653589794    0.000000000000001
+ 805306368    3.141592653589794    0.000000000000001</div></div></div></div></div></div></div>
+<!-- 
+##### SOURCE BEGIN #####
+%% Computation of $\pi$, stable version
+% We rewrite the recurrence relation as
+% 
+% $$\sin\frac{\alpha_n}{2}=\frac{\sin\alpha{n}}{\sqrt{2+\sqrt{1-\sin^{2}\alpha_{n}}}}$$
+
+oldA=0;s=sqrt(3)/2; newA=3*s; n=6; % initialization
+z=[newA-pi n newA s]; % store the results
+%% 
+% The stopping criterion
+% 
+% $$A_{6}<\dots<A_{n}<\pi$$
+% 
+% However, this cannot be true forever in finite precision arithmetic, since 
+% there is only a finite set of machine numbers. Thus, the situation $A_n \geq 
+% A_{2n}$ must occur at some stage, and this is the condition to stop the iteration. 
+% Note that this condition is independent of the machine, in the sense that the 
+% iteration will always terminate as long as we have finite precision arithmetic, 
+% and when it does terminate, it always gives the best possible approximation 
+% for the precision of the machine.
+%%
+while newA>oldA % quit if area does not increase
+    oldA=newA;
+    s=s/sqrt(2*(1+sqrt((1+s)*(1-s)))); % new sine value
+    n=2*n; newA=n/2*s;
+    z=[z; newA-pi n newA s];
+end
+m=length(z);
+disp("      n              A                     err ")
+for i=1:m
+    fprintf('%10d %20.15f %20.15f\n',z(i,2),z(i,3),z(i,1))
+end
+##### SOURCE END #####
+--></body></html>

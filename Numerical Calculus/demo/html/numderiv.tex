@@ -1,0 +1,147 @@
+
+% This LaTeX was auto-generated from an M-file by MATLAB.
+% To make changes, update the M-file and republish this document.
+
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{color}
+
+\sloppy
+\definecolor{lightgray}{gray}{0.5}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+    
+    
+\section*{Derivare numeric\u{a}}
+
+
+\subsection*{Cuprins}
+
+\begin{itemize}
+\setlength{\itemsep}{-1ex}
+   \item Deducerea aproxim\u{a}rii
+   \item Exemplu
+   \item Precizia maxim\u{a}
+   \item Sursa nepl\u{a}cerii
+   \item Condi\c{t}ionarea absolut\u{a}
+   \item Condi\c{t}ionarea relativ\u{a}
+\end{itemize}
+
+
+\subsection*{Deducerea aproxim\u{a}rii}
+
+\begin{par}
+Utiliz\^{a}nd formula lui Taylor
+\end{par} \vspace{1em}
+\begin{par}
+$$f(x+h) = f(x) +hf'(x) + \frac{h^2}{2}f''(\xi), \xi \in [x,x+h]$$
+\end{par} \vspace{1em}
+\begin{par}
+se ob\c{t}ine
+\end{par} \vspace{1em}
+\begin{par}
+$$f'(x) = \frac{f(x+h)-f(x)}{h}-\frac{h}{2}f''(\xi)$$
+\end{par} \vspace{1em}
+\begin{par}
+Termenul $-\frac{h}{2}f''(\xi)$ este \textbf{eroarea de trunchiere} sau \textbf{eroarea de discretizare} la aproximarea lui $f'(x)$ prin $\frac{f(x+h)-f(x)}{h}$. Eroarea este $O(h)$ \c si spunem c\u a precizia este de ordinul I. La derivarea numeric\u a vom presupune c\u a $x+h$ \c si $x$ se reprezint\u a exact, iar erorile se comit doar la evaluarea lui $f(x+h)$ si $f(x)$. Ignor\^ and erorile de rotunjire la scadere \c si impartire, se calculeaz\u a
+\end{par} \vspace{1em}
+\begin{par}
+$$\frac{f(x+h)(1+\delta_{1})-f(x)(1+\delta_2)}{h}=\frac{f(x+h)-f(x)}{h}+ \frac{\delta_1f(x+h)-\delta_2f(x)}{h}$$
+\end{par} \vspace{1em}
+\begin{par}
+Deoarece $|\delta_1|<\mathrm{eps}$ \c si $|\delta_2|<\mathrm{eps}$, eroarea de rotunjire este mai mic\u a sau egal\u a cu $2\mathrm{eps}|f(x)|/h$, pentru $h$ mic. De notat c\u a eroarea de trunchiere este propor\c tional\u a cu $h$, iar eroarea de rotunjire este propor\c tional\u a cu $1/h$. Mic\c sorarea lui $h$  mic\c soreaz\u a eroarea de trunchiere, dar cre\c ste eroarea de rotunjire.
+\end{par} \vspace{1em}
+
+
+\subsection*{Exemplu}
+
+\begin{par}
+Lu\u am $f(x)=\sin x$ si $x=\pi/4$. Atunci $f'(x)=\cos x$ si $f''(x)=-\sin x$, deci eroarea de trunchiere este de aproximativ $\sqrt{2}h/4$, iar eroarea de rotunjire este de aproximativ $\sqrt{2} \mathrm{eps}/h$
+\end{par} \vspace{1em}
+\begin{verbatim}
+x = pi/4;
+h = 10.^(-(1:16))';
+d = (sin(x+h)-sin(x))./h;
+[d, sqrt(2)/2*ones(size(d)), abs(d-cos(x))]
+\end{verbatim}
+
+        \color{lightgray} \begin{verbatim}
+ans =
+
+    0.6706    0.7071    0.0365
+    0.7036    0.7071    0.0035
+    0.7068    0.7071    0.0004
+    0.7071    0.7071    0.0000
+    0.7071    0.7071    0.0000
+    0.7071    0.7071    0.0000
+    0.7071    0.7071    0.0000
+    0.7071    0.7071    0.0000
+    0.7071    0.7071    0.0000
+    0.7071    0.7071    0.0000
+    0.7071    0.7071    0.0000
+    0.7071    0.7071    0.0000
+    0.7083    0.7071    0.0012
+    0.7105    0.7071    0.0034
+    0.7772    0.7071    0.0700
+    1.1102    0.7071    0.4031
+
+\end{verbatim} \color{black}
+    
+
+\subsection*{Precizia maxim\u a}
+
+\begin{par}
+Precizia maxim\u a se ob\c tine dac\u a cele dou\u a erori sunt aproximativ egale
+\end{par} \vspace{1em}
+\begin{par}
+$$\frac{\sqrt{2}h}{4} = \frac{\sqrt{2}\mathrm{eps}}{h} \Rightarrow h=2\sqrt{\mathrm{eps}}$$
+\end{par} \vspace{1em}
+\begin{par}
+Eroarea este de ordinul $\sqrt{\mathrm{eps}}$
+\end{par} \vspace{1em}
+\begin{verbatim}
+ho = 2*sqrt(eps);
+do = (sin(x+ho)-sin(x))./ho;
+[ho, do]
+\end{verbatim}
+
+        \color{lightgray} \begin{verbatim}
+ans =
+
+    0.0000    0.7071
+
+\end{verbatim} \color{black}
+    
+
+\subsection*{Sursa nepl\u acerii}
+
+\begin{par}
+Sursa nepl\u acerii este \textit{algoritmul} nu problema determin\u arii
+\end{par} \vspace{1em}
+\begin{par}
+$$\frac{d}{dx}\left. \sin{x}\right|_{x=\pi/4} =\left. \cos x \right|_{x=\pi/4}=\frac{\sqrt{2}}{2}$$
+\end{par} \vspace{1em}
+\begin{par}
+care este bine condi\c tionat\u a
+\end{par} \vspace{1em}
+
+
+\subsection*{Condi\c tionarea absolut\u a}
+
+\begin{par}
+$$\kappa(x)=\left| -\sin x\right|_{x=\pi/4}=\frac{\sqrt{2}}{2}$$
+\end{par} \vspace{1em}
+
+
+\subsection*{Condi\c tionarea relativ\u a}
+
+\begin{par}
+$$cond(f)(x)=\left | \frac{x \sin x}{\cos x}\right|_{x=\pi/4}=\frac{\pi}{4}.$$
+\end{par} \vspace{1em}
+
+
+
+\end{document}
+    

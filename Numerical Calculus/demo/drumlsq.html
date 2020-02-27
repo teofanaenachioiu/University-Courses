@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="MATLAB R2016a"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><title>Masurarea unui segment de drum</title><style type="text/css">
+* {margin: 0; padding: 0;}
+body {text-align: start; line-height: 17.2339992523193px; min-height: 0px; white-space: normal; color: rgb(0, 0, 0); font-family: Consolas, Inconsolata, Menlo, monospace; font-style: normal; font-size: 14px; font-weight: normal; text-decoration: none; white-space: normal; }
+h1, h2 {font-weight: normal;}
+.content { padding: 30px; }
+
+.S0 { margin-left: 0px; margin-top: 0px; margin-bottom: 0px; margin-right: 0px;  }
+.S1 { line-height: 26.3999977111816px; min-height: 24px; white-space: pre-wrap; color: rgb(213, 80, 0); font-family: Helvetica, Arial, sans-serif; font-size: 22px; white-space: pre-wrap; margin-left: 4px; margin-top: 3px; margin-bottom: 15px; margin-right: 10px;  }
+.S2 { min-height: 0px; margin-left: 0px; margin-top: 0px; margin-bottom: 0px; margin-right: 0px;  }
+.S3 { line-height: 21px; min-height: 17px; white-space: pre-wrap; font-family: Helvetica, Arial, sans-serif; white-space: pre-wrap; margin-left: 4px; margin-top: 2px; margin-bottom: 9px; margin-right: 10px;  }
+.S4 { text-align: center; line-height: 21px; min-height: 17px; white-space: pre-wrap; font-family: Helvetica, Arial, sans-serif; white-space: pre-wrap; margin-left: 4px; margin-top: 2px; margin-bottom: 9px; margin-right: 10px;  }
+.S5 { line-height: 20.576000213623px; min-height: 20px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-size: 16px; font-weight: bold; white-space: pre-wrap; margin-left: 4px; margin-top: 15px; margin-bottom: 9px; margin-right: 10px;  }
+.S6 { margin-left: 3px; margin-top: 10px; margin-bottom: 4px; margin-right: 3px;  }
+.S7 { line-height: 15.5926666259766px; min-height: 18px; white-space: nowrap; font-size: 12.6666669845581px; white-space: nowrap; margin-left: 0px; margin-top: 0px; margin-bottom: 0px; margin-right: 0px;  }
+.S8 { line-height: 15.5926675796509px; min-height: 0px; white-space: pre; font-size: 12.6666679382324px; white-space: pre; margin-left: 0px; margin-top: 0px; margin-bottom: 0px; margin-right: 45px;  }
+.S9 { line-height: 15.5926675796509px; min-height: 0px; white-space: pre; font-size: 12.6666679382324px; white-space: pre; margin-left: 0px; margin-top: 0px; margin-bottom: 0px; margin-right: 0px;  }
+.S10 { color: rgb(64, 64, 64); margin-left: 0px; margin-top: 0px; margin-bottom: 0px; margin-right: 0px;  }
+.S11 { line-height: 20.576000213623px; min-height: 20px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-size: 16px; font-weight: bold; white-space: pre-wrap; margin-left: 4px; margin-top: 3px; margin-bottom: 9px; margin-right: 10px;  }
+.S12 { margin-left: 3px; margin-top: 10px; margin-bottom: 10px; margin-right: 3px;  }
+.S13 { line-height: 21px; min-height: 17px; white-space: pre-wrap; font-family: Helvetica, Arial, sans-serif; white-space: pre-wrap; margin-left: 4px; margin-top: 10px; margin-bottom: 9px; margin-right: 10px;  }
+
+.LineNodeBlock {margin: 10px 0 10px 0;}
+.LineNodeBlock+.paragraphNode {margin-top: 10px;}
+.lineNode {padding-left: 10px; background-color: #F7F7F7; border-left: 1px solid #E9E9E9; border-right: 1px solid #E9E9E9;}
+.inlineWrapper:first-child .lineNode,.inlineWrapper.outputs+.inlineWrapper .lineNode {padding-top: 5px; border-top: 1px solid #E9E9E9;}
+.inlineWrapper:last-child .lineNode,.inlineWrapper.outputs .lineNode {padding-bottom: 5px; border-bottom: 1px solid #E9E9E9;}
+.lineNode .textBox {white-space: pre;}
+.outputGroup {margin: 2px 0 2px 0; padding: 2px 2px 2px 4px;}
+.outputRegion {}
+.outputParagraph {color: rgba(64, 64, 64, 1); padding: 10px 0 6px 17px; background: white; overflow-x: hidden;}
+.inlineWrapper:last-child .outputParagraph {border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;}
+.outputParagraph:empty {margin: 0;}
+.inlineElement .symbolicElement {}
+.embeddedOutputsSymbolicElement .MathEquation {margin-top: 5px; margin-bottom: 5px;}
+.embeddedOutputsSymbolicElement .MathEquation.displaySymbolicElement {margin-left: 15px;}
+.embeddedOutputsSymbolicElement .MathEquation.inlineSymbolicElement {margin-left: 5px;}
+.embeddedOutputsSymbolicElement {overflow-x: auto; overflow-y: hidden;}
+.embeddedOutputsSymbolicElement { overflow: initial !important;}
+.embeddedOutputsTextElement,.embeddedOutputsVariableStringElement {font-family: Consolas, Inconsolata, Menlo, monospace; font-size: 12px; white-space: pre; word-wrap: initial; min-height: 18px; max-height: 250px; overflow: auto;}
+.textElement {padding-top: 3px;}
+.embeddedOutputsTextElement.inlineElement {}
+.inlineElement .textElement {}
+.embeddedOutputsTextElement,.embeddedOutputsVariableStringElement { max-height: none !important; overflow: initial !important;}
+.veSpecifier {}
+.veContainer {}
+.veSpecifierBox {height: 400px; width: 500px;}
+.veSpecifier .veTable {padding-top: 3px; padding-bottom: 4px;}
+.veSpecifierBox .veSpecifier .veContainer {position: relative; width: 100%; height: 370px;}
+.veSpecifierBox .dijitDialogPaneContent {width: 97% !important; height: 88% !important;}
+.veSpecifier .veTable .rowHeadersWrapper {padding-bottom: 0;}
+.veSpecifier .veTable .scroller .variableEditorRenderers {padding-right: 3px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;}
+.veVariableValueSummary {display: inline-block;}
+.veSpecifier .veTable .topHeaderWrapper,.veSpecifier .veTable .bottomRowHeaderWrapper {visibility: hidden; z-index: 0;}
+.veMetaSummary {font-style: italic;}
+.veSpecifier .veTable .scroller {overflow: hidden;}
+.veSpecifier .veTable:hover .scroller {overflow: auto;}
+.veSpecifier .veVariableName,.veSpecifier .veDimensionFont {font-family: Consolas, Inconsolata, Menlo, monospace; font-size: 12px;}
+.veSpecifier .veVariableName {padding-top: 3px;}
+.veSpecifier .veDimensionFont {font-style: italic; color: #9A9A9A;}
+.veSpecifier .scroller::-webkit-scrollbar-track {background-color: white;}
+.veSpecifier .scroller::-webkit-scrollbar-corner {background-color: white;}
+.veSpecifier .veTable .topRowHeaderWrapper {border: none; background-color: #F8F9FA;}
+.veSpecifier .mw_type_ListBase.showCellBorders,.veSpecifier .veTable .topHeaderWrapper,.veSpecifier .veTable .bottomRowHeaderWrapper,.veSpecifier .veTable .verticalScrollSpacer,.veSpecifier .veTable .horizontalScrollSpacer {border: none;}
+.veSpecifier .veTable .dataScrollerNode {border: 1px solid #BFBFBF;}
+.veSpecifier .veTable .columnHeaderNode,.veSpecifier .veTable .rowHeaderNode,.veSpecifier .veTable .dataBody {font-family: Arial; font-size: 13px;}
+.veSpecifier .veTable .columnHeaderNode,.veSpecifier .veTable .rowHeaderNode {color: #7F7F7F;}
+.veSpecifier .veTable .dataBody {color: #000000;}
+.veSpecifier .veTable .columnHeaderNode .cell .drag,.veSpecifier .veTable .columnHeaderNode .cell .header,.veSpecifier .veTable .topHeaderWrapper,.veSpecifier .veTable .bottomRowHeaderWrapper {background-color: #F8F9FA;}
+.veSpecifier .veTable .columnHeaderNode .cell .dragBorder {border-right: 1px solid #F8F9FA;}
+.veSpecifier .veTable .rowHeaderNode .cell {padding-top: 3px; text-align: center; border-bottom: 1px solid #F8F9FA;}
+.veSpecifier .veTable .dataBody .cell .plainText {text-align: right;}
+.veSpecifier .veTable .dataBody .row .cell {border-bottom: 1px solid #E9E9E9; border-right: 1px solid #E9E9E9;}
+.embeddedOutputsVariableElement {font-family: Consolas, Inconsolata, Menlo, monospace; font-size: 12px; white-space: pre-wrap; word-wrap: break-word; min-height: 18px; max-height: 250px; overflow: auto;}
+.variableElement {}
+.embeddedOutputsVariableElement.inlineElement {}
+.inlineElement .variableElement {}
+.variableValue { width: 100% !important; }
+.embeddedOutputsMatrixElement {min-height: 18px; box-sizing: border-box; font-family: Consolas, Inconsolata, Menlo, monospace; font-size: 12px;}
+.matrixElement .variableValue {white-space: pre; display: inline-block; vertical-align: top; overflow: hidden;}
+.embeddedOutputsMatrixElement.inlineElement {}
+.embeddedOutputsMatrixElement.inlineElement .topHeaderWrapper {display: none;}
+.embeddedOutputsMatrixElement.inlineElement .veTable .body {padding-top: 0 !important; max-height: 100px;}
+.embeddedOutputsMatrixElement.inlineElement .veVariableName {padding-top: 0;}
+.inlineElement .matrixElement {max-height: 300px;}
+.embeddedOutputsMatrixElement .matrixElement .valueContainer {white-space: nowrap; padding-top: 10px; margin-bottom: 3px;}
+.embeddedOutputsMatrixElement .matrixElement .valueContainer .horizontalEllipsis.hide,.embeddedOutputsMatrixElement .matrixElement .verticalEllipsis.hide {display: none;}
+.embeddedOutputsMatrixElement .matrixElement .valueContainer .horizontalEllipsis {margin-bottom: -3px;}
+.matrixElement { max-height: none !important; }
+.dijitTooltipDialog .dijitTooltipContainer .dijitTooltipContents .alertPlugin-alertMessage {min-width: 12px; max-width: 400px; max-height: 300px; overflow: auto;}
+.dijitTooltipDialog .alertPlugin-alertMessage::-webkit-scrollbar {width: 11px; height: 11px;}
+.dijitTooltipDialog .alertPlugin-alertMessage::-webkit-scrollbar-track {background-color: rgba(0, 0, 0, 0);}
+.dijitTooltipDialog .alertPlugin-alertMessage::-webkit-scrollbar-corner {background-color: rgba(0, 0, 0, 0);}
+.dijitTooltipDialog .alertPlugin-alertMessage::-webkit-scrollbar-thumb {border-radius: 7px; background-color: rgba(0, 0, 0, 0.1); border: 2px solid rgba(0, 0, 0, 0); background-clip: padding-box;}
+.dijitTooltipDialog .alertPlugin-alertMessage::-webkit-scrollbar-thumb:hover {background-color: rgba(0, 0, 0, 0.2);}
+.dijitTooltipDialog .alertPlugin-alertMessage::-webkit-scrollbar-thumb {background-color: rgba(0, 0, 0, 0);}
+.dijitTooltipDialog .alertPlugin-alertMessage:hover::-webkit-scrollbar-thumb {background-color: rgba(0, 0, 0, 0.1);}
+.dijitTooltipDialog .alertPlugin-alertMessage:hover::-webkit-scrollbar-thumb:hover {background-color: rgba(0, 0, 0, 0.2);}
+.alertPlugin-alertLine {position: absolute; display: initial; width: 40px; text-align: right; cursor: text;}
+.alertPlugin-onTextLine {visibility: hidden;}
+.alertPlugin-hasTooltip .alertPlugin-warningImg,.alertPlugin-hasTooltip .alertPlugin-errorImg {cursor: pointer;}
+.alertPlugin-isStale {-webkit-filter: opacity(0.4) grayscale(80%); filter: opacity(0.4) grayscale(80%);}
+.alertPlugin-alertLine .alertPlugin-errorElement {display: inline-block; margin-right: 4px;}
+.alertPlugin-errorImg {position: relative; display: inline-block; background-color: rgb(204, 55, 41); width: 14px; height: 14px; margin-top: 1px; -webkit-border-radius: 7px;}
+.alertPlugin-alertLine .alertPlugin-warningElement {display: inline-block; margin-right: 3px;}
+.alertPlugin-warningImg {position: relative; display: inline-block; width: 16px; height: 15px; overflow: hidden;}
+.diagnosticMessage-wrapper {font-family: Consolas, Inconsolata, Menlo, monospace; font-size: 12px;}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType {color: rgb(255,100,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType a {color: rgb(255,100,0); text-decoration: underline;}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType {color: rgb(230,0,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType a {color: rgb(230,0,0); text-decoration: underline;}
+.diagnosticMessage-wrapper .diagnosticMessage-messagePart {white-space: pre-wrap;}
+.diagnosticMessage-wrapper .diagnosticMessage-stackPart {white-space: pre;}
+.embeddedOutputsWarningElement{min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsWarningElement.inlineElement {}
+.embeddedOutputsErrorElement {min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsErrorElement.inlineElement {}
+.alertPlugin-warningImg {background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAPCAYAAADUFP50AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAB3RJTUUH3wgUDS0rRPm/rwAAAAd0RVh0QXV0aG9yAKmuzEgAAAAMdEVYdERlc2NyaXB0aW9uABMJISMAAAAKdEVYdENvcHlyaWdodACsD8w6AAAADnRFWHRDcmVhdGlvbiB0aW1lADX3DwkAAAAJdEVYdFNvZnR3YXJlAF1w/zoAAAALdEVYdERpc2NsYWltZXIAt8C0jwAAAAh0RVh0V2FybmluZwDAG+aHAAAAB3RFWHRTb3VyY2UA9f+D6wAAAAh0RVh0Q29tbWVudAD2zJa/AAAABnRFWHRUaXRsZQCo7tInAAAA80lEQVQokY2SPQrCQBCF3yaChUXS2eoNbOwschSPojfQG8QT6BEExcbKEyiCgYiSWFhIIs9iXONm488Hw+7OzOPNsguSsOI0JVe+xGnKqh5FEgZ5SqzbwD2Vs+sD3S1Q89V7m4My0agQAbKPRlabOUKWyHgL8MUCkssSY2TTsez2xbUQ5ilxGNsizWEsPZZwP6h2e3fdD0uOeUrEk88iTRy+XEWo78ZvKhh3VcwS891+8XxXB8fQFP3jegzh4DwzC/p/9ChRxXkGB/mfI5aowQuA68auLJWd0zQ6z08eh8RlDtx2RfF+kdX1ily9BXgB0OyrB6CCtdLfhGTSAAAAAElFTkSuQmCC)}
+.alertPlugin-errorImg {background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAB3RJTUUH3wgUDSwzTo4WuAAAAAd0RVh0QXV0aG9yAKmuzEgAAAAMdEVYdERlc2NyaXB0aW9uABMJISMAAAAKdEVYdENvcHlyaWdodACsD8w6AAAADnRFWHRDcmVhdGlvbiB0aW1lADX3DwkAAAAJdEVYdFNvZnR3YXJlAF1w/zoAAAALdEVYdERpc2NsYWltZXIAt8C0jwAAAAh0RVh0V2FybmluZwDAG+aHAAAAB3RFWHRTb3VyY2UA9f+D6wAAAAh0RVh0Q29tbWVudAD2zJa/AAAABnRFWHRUaXRsZQCo7tInAAABJ0lEQVQokZWSsWqDUBSG/3stQgpKxcU6OYl0FUI3hzrVxUfo3jeQOlXyBt37CC7pZAe3ECrdQpsuTkkXsWhoQJDbpTfExEDyjeecn/9wzk8YY+C0dcWKlxg/6St+5x8AgHPTwoVzA/XWhyDJhM8SLqyzKcujAM1ygT7ESx3GwwiSPSQbYZ1N2fz+rjNoT2YAgOz6qlM3n54h2UNC27pieRT0uvSRRwHaumK0GMcH1+ujWS5QjGPQMk2OFnHKNAFd/1/vFNZfn6AnqwCAMZwNTAur97e93u41txmYFqjiuCcbKo4Lqno+RE3fa9qT2eaX24iaDtXzQQVJJkY4OtrNCEcQJJl0I/cYoPk+EDlNhxHuRI7T1hUrxjHKNAF/08C0oDguVK8b8j+a03ZrT40rwQAAAABJRU5ErkJggg==)}
+</style></head><body><div class = "content"><div class = 'SectionBlock containment'><h1 class = "S1"><span class = "S2">Masurarea unui segment de drum</span></h1><p class = "S3"><span class = "S2">Stiefel - lectii tinute la ETH</span></p><p class = "S3"><span class = "S2">La măsurarea unui segment de drum, presupunem că am efectuat 5 măsurători</span></p><p class = "S3"><span class = "S2"></span></p><p class = "S3"><span class = "S2">	AD=89m, AC=67m, BD=53m, AB=35m şi CD=20m,</span></p><p class = "S3"><span class = "S2"></span></p><p class = "S4"><img class="imageNode" style="vertical-align: baseline" src="data:image/png;base64,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
+Dvk/U/PjZKZLNHUAAAAASUVORK5CYII=" alt="Stiefellsq.png"></p><h2 class = "S5"><span class = "S2">Initializare</span></h2><div class = 'LineNodeBlock contiguous'><div class = 'inlineWrapper'><p class = "S7 lineNode"><span class = "S8">A=[1	1	1</span></p></div><div class = 'inlineWrapper'><p class = "S7 lineNode"><span class = "S8">1	1	0</span></p></div><div class = 'inlineWrapper'><p class = "S7 lineNode"><span class = "S8">0	1	1</span></p></div><div class = 'inlineWrapper'><p class = "S7 lineNode"><span class = "S8">1	0	0</span></p></div><div class = 'inlineWrapper'><p class = "S7 lineNode"><span class = "S8">0	0	1];</span></p></div><div class = 'inlineWrapper'><p class = "S7 lineNode"><span class = "S8">b=[89</span></p></div><div class = 'inlineWrapper'><p class = "S7 lineNode"><span class = "S8">67</span></p></div><div class = 'inlineWrapper'><p class = "S7 lineNode"><span class = "S8">53</span></p></div><div class = 'inlineWrapper'><p class = "S7 lineNode"><span class = "S8">35</span></p></div><div class = 'inlineWrapper'><p class = "S7 lineNode"><span class = "S8">20];</span></p></div><div class = 'inlineWrapper outputs'><p class = "S7 lineNode"><span class = "S9">x</span><span class = "S8">=A\b</span></p><div class="outputParagraph"><div class="inlineElement embeddedOutputsMatrixElement" data-width="1928" style="width: 1928px;"><div class="matrixElement veSpecifier"><div class="veVariableName"><span>x = </span><span class="veVariableValueSummary veMetaSummary">3x1 double</span></div><div class="valueContainer" data-layout="{&quot;columnWidth&quot;:72.5,&quot;totalColumns&quot;:1,&quot;totalRows&quot;:3,&quot;charsPerColumn&quot;:10}"><div class="variableValue" style="width: 74.5px;">   35.1250
+   32.5000
+   20.6250
+</div><div class="horizontalEllipsis hide"></div><div class="verticalEllipsis hide"></div></div></div></div></div></div><div class = 'inlineWrapper'><p class = "S7 lineNode"><span class = "S8"></span></p></div></div></div><p class = "S0"></p><div class = 'SectionBlock containment active'><h2 class = "S11"><span class = "S2">Rezolvare</span></h2><div class = 'LineNodeBlock contiguous'><div class = 'inlineWrapper outputs'><p class = "S7 lineNode"><span class = "S8">x=A\b</span></p><div class="outputParagraph"><div class="inlineElement embeddedOutputsMatrixElement" data-width="1928" style="width: 1928px;"><div class="matrixElement veSpecifier"><div class="veVariableName"><span>x = </span><span class="veVariableValueSummary veMetaSummary">3x1 double</span></div><div class="valueContainer" data-layout="{&quot;columnWidth&quot;:72.5,&quot;totalColumns&quot;:1,&quot;totalRows&quot;:3,&quot;charsPerColumn&quot;:10}"><div class="variableValue" style="width: 74.5px;">   35.1250
+   32.5000
+   20.6250
+</div><div class="horizontalEllipsis hide"></div><div class="verticalEllipsis hide"></div></div></div></div></div></div><div class = 'inlineWrapper outputs'><p class = "S7 lineNode"><span class = "S8">r=b-A*x</span></p><div class="outputParagraph"><div class="inlineElement embeddedOutputsMatrixElement" data-width="1928" style="width: 1928px;"><div class="matrixElement veSpecifier"><div class="veVariableName"><span>r = </span><span class="veVariableValueSummary veMetaSummary">5x1 double</span></div><div class="valueContainer" data-layout="{&quot;columnWidth&quot;:72.5,&quot;totalColumns&quot;:1,&quot;totalRows&quot;:5,&quot;charsPerColumn&quot;:10}"><div class="variableValue" style="width: 74.5px;">    0.7500
+   -0.6250
+   -0.1250
+   -0.1250
+   -0.6250
+</div><div class="horizontalEllipsis hide"></div><div class="verticalEllipsis hide"></div></div></div></div></div></div><div class = 'inlineWrapper outputs'><p class = "S7 lineNode"><span class = "S8">norm(r)</span></p><div class="outputParagraph"><div class="inlineElement embeddedOutputsVariableElement" style="width: 1928px;"><div class="variableElement">ans = 1.1726</div></div></div></div></div><p class = "S13"><span class = "S2">Matricea ecuatiilor normale este</span></p><div class = 'LineNodeBlock contiguous'><div class = 'inlineWrapper outputs'><p class = "S7 lineNode"><span class = "S8">X=A'*A</span></p><div class="outputParagraph"><div class="inlineElement embeddedOutputsMatrixElement" data-width="1928" style="width: 1928px;"><div class="matrixElement veSpecifier"><div class="veVariableName"><span>X = </span><span class="veVariableValueSummary veMetaSummary">3x3 double</span></div><div class="valueContainer" data-layout="{&quot;columnWidth&quot;:43.5,&quot;totalColumns&quot;:3,&quot;totalRows&quot;:3,&quot;charsPerColumn&quot;:6}"><div class="variableValue" style="width: 132.5px;">     3     2     1
+     2     3     2
+     1     2     3
+</div><div class="horizontalEllipsis hide"></div><div class="verticalEllipsis hide"></div></div></div></div></div></div><div class = 'inlineWrapper outputs'><p class = "S7 lineNode"><span class = "S8">y=A'*b</span></p><div class="outputParagraph"><div class="inlineElement embeddedOutputsMatrixElement" data-width="1928" style="width: 1928px;"><div class="matrixElement veSpecifier"><div class="veVariableName"><span>y = </span><span class="veVariableValueSummary veMetaSummary">3x1 double</span></div><div class="valueContainer" data-layout="{&quot;columnWidth&quot;:43.5,&quot;totalColumns&quot;:1,&quot;totalRows&quot;:3,&quot;charsPerColumn&quot;:6}"><div class="variableValue" style="width: 45.5px;">   191
+   209
+   162
+</div><div class="horizontalEllipsis hide"></div><div class="verticalEllipsis hide"></div></div></div></div></div></div><div class = 'inlineWrapper outputs'><p class = "S7 lineNode"><span class = "S8">xn=X\y</span></p><div class="outputParagraph"><div class="inlineElement embeddedOutputsMatrixElement" data-width="1928" style="width: 1928px;"><div class="matrixElement veSpecifier"><div class="veVariableName"><span>xn = </span><span class="veVariableValueSummary veMetaSummary">3x1 double</span></div><div class="valueContainer" data-layout="{&quot;columnWidth&quot;:72.5,&quot;totalColumns&quot;:1,&quot;totalRows&quot;:3,&quot;charsPerColumn&quot;:10}"><div class="variableValue" style="width: 74.5px;">   35.1250
+   32.5000
+   20.6250
+</div><div class="horizontalEllipsis hide"></div><div class="verticalEllipsis hide"></div></div></div></div></div></div></div><p class = "S13"><span class = "S2">Conditionare</span></p><div class = 'LineNodeBlock contiguous'><div class = 'inlineWrapper outputs'><p class = "S7 lineNode"><span class = "S8">[cond(A),cond(X)]</span></p><div class="outputParagraph"><div class="inlineElement embeddedOutputsMatrixElement" data-width="1928" style="width: 1928px;"><div class="matrixElement veSpecifier"><div class="veVariableName"><span>ans = </span><span class="veVariableValueSummary veMetaSummary">1x2 double</span></div><div class="valueContainer" data-layout="{&quot;columnWidth&quot;:72.5,&quot;totalColumns&quot;:2,&quot;totalRows&quot;:1,&quot;charsPerColumn&quot;:10}"><div class="variableValue" style="width: 147px;">    3.1861   10.1515
+</div><div class="horizontalEllipsis hide"></div><div class="verticalEllipsis hide"></div></div></div></div></div></div></div></div></div>
+<!-- 
+##### SOURCE BEGIN #####
+%% Masurarea unui segment de drum
+% Stiefel - lectii tinute la ETH
+% 
+% La măsurarea unui segment de drum, presupunem că am efectuat 5 măsurători
+% 
+% 
+% 
+% 	AD=89m, AC=67m, BD=53m, AB=35m şi CD=20m,
+% 
+% 
+% 
+%  
+%% Initializare
+
+A=[1	1	1
+1	1	0
+0	1	1
+1	0	0
+0	0	1];
+b=[89
+67
+53
+35
+20];
+x=A\b
+
+%% Rezolvare
+
+x=A\b
+r=b-A*x
+norm(r)
+%% 
+% Matricea ecuatiilor normale este
+
+X=A'*A
+y=A'*b
+xn=X\y
+%% 
+% Conditionare
+
+[cond(A),cond(X)]
+##### SOURCE END #####
+--></body></html>

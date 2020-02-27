@@ -1,0 +1,108 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Conditionarea matricei lui Hilbert</title><meta name="generator" content="MATLAB 8.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2014-04-01"><meta name="DC.source" content="condHilbert.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Conditionarea matricei lui Hilbert</h1><!--introduction--><p>Calculeaza conditionarea matricei Hilbert <img src="condHilbert_eq36717.png" alt="$cond_{2}(H_{n})$"> cu ajutorul valorilor proprii. Se va utiliza formula</p><!--/introduction--><p><img src="condHilbert_eq10065.png" alt="$$\mathrm{cond}_{2}(H_n) = \lambda_{\max}(H_n)\lambda_{\max}(H_{n}^{-1})$$"></p><p>O estimare teoretica, pentru <img src="condHilbert_eq25947.png" alt="$n$"> mare, datorata lui Szego, este</p><p><img src="condHilbert_eq48569.png" alt="$$cond_{2}(H_n) = \frac{(1+\sqrt{2})^{4n+4}}{2^{15/4}\sqrt{\pi n}}$$"></p><pre class="codeinput">format <span class="string">short</span> <span class="string">e</span>
+<span class="keyword">for</span> n=[10:10:100]
+    c = max(eig(hilb(n)))*max(eig(invhilb(n)));
+    th = (sqrt(2)+1)^(4*n+4)/(2^(15/4)*sqrt(pi*n));
+    fprintf(<span class="string">'%3d, %11.4e, %11.4e\n'</span>, n,c,th)
+<span class="keyword">end</span>
+</pre><pre class="codeoutput"> 10,  1.6026e+13,  9.2192e+14
+ 20,  2.4522e+28,  1.3342e+30
+ 30,  4.2278e+43,  2.2294e+45
+ 40,  7.6529e+58,  3.9513e+60
+ 50,  1.4229e+74,  7.2330e+75
+ 60,  2.6913e+89,  1.3513e+91
+ 70, 5.1508e+104, 2.5604e+106
+ 80, 9.9444e+119, 4.9016e+121
+ 90, 1.9328e+135, 9.4578e+136
+100, 3.7765e+150, 1.8363e+152
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2014a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Conditionarea matricei lui Hilbert
+% Calculeaza conditionarea matricei Hilbert $cond_{2}(H_{n})$
+% cu ajutorul valorilor proprii.
+% Se va utiliza formula
+%%
+%
+% $$\mathrm{cond}_{2}(H_n) = \lambda_{\max}(H_n)\lambda_{\max}(H_{n}^{-1})$$
+% 
+% O estimare teoretica, pentru $n$ mare, datorata lui Szego, este
+%%
+% 
+% $$cond_{2}(H_n) = \frac{(1+\sqrt{2})^{4n+4}}{2^{15/4}\sqrt{\pi n}}$$
+% 
+
+format short e
+for n=[10:10:100]
+    c = max(eig(hilb(n)))*max(eig(invhilb(n)));
+    th = (sqrt(2)+1)^(4*n+4)/(2^(15/4)*sqrt(pi*n));
+    fprintf('%3d, %11.4e, %11.4e\n', n,c,th)
+end
+##### SOURCE END #####
+--></body></html>

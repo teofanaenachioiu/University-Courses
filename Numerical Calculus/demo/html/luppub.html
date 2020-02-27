@@ -1,0 +1,284 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Descompunere LUP</title><meta name="generator" content="MATLAB 8.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2014-03-18"><meta name="DC.source" content="luppub.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Descompunere LUP</h1><!--introduction--><p>-eliminare gaussiana</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Codul pentru sisteme triunghiulare</a></li><li><a href="#2">Codul pentru sisteme triunghiulare</a></li><li><a href="#3">Exemplu de utilizare</a></li><li><a href="#5">rezolvare efectiva</a></li><li><a href="#6">Exemplul de pe slide-uri</a></li></ul></div><h2>Codul pentru sisteme triunghiulare<a name="1"></a></h2><pre class="language-matlab"><span class="keyword">function</span> [L,U,P]=lup(A)
+<span class="comment">%LUP find LUP decomposition of matrix A</span>
+<span class="comment">%call [L,U,P]=lup(A)</span>
+<span class="comment">%permute effectively lines</span>
+</pre><pre class="language-matlab">[m,n]=size(A);
+P=zeros(m,n);
+piv=(1:m)';
+<span class="keyword">for</span> i=1:m-1
+   <span class="comment">%pivoting</span>
+   [pm,kp]=max(abs(A(i:m,i)));
+   kp=kp+i-1;
+   <span class="comment">%line interchange</span>
+   <span class="keyword">if</span> i~=kp
+       A([i,kp],:)=A([kp,i],:);
+       piv([i,kp])=piv([kp,i]);
+   <span class="keyword">end</span>
+   <span class="comment">%Schur complement</span>
+   lin=i+1:m;
+   A(lin,i)=A(lin,i)/A(i,i);
+   A(lin,lin)=A(lin,lin)-A(lin,i)*A(i,lin);
+<span class="keyword">end</span>;
+<span class="keyword">for</span> i=1:m
+   P(i,piv(i))=1;
+<span class="keyword">end</span>;
+U=triu(A);
+L=tril(A,-1)+eye(m);
+</pre><h2>Codul pentru sisteme triunghiulare<a name="2"></a></h2><pre class="language-matlab"><span class="keyword">function</span> x=backsubst(U,b)
+<span class="comment">%BACKSUBST - backward substitution</span>
+<span class="comment">%U - upper triangular matrix</span>
+<span class="comment">%b - right hand side vector</span>
+n=length(b);
+x=zeros(size(b));
+<span class="keyword">for</span> k=n:-1:1
+   x(k)=(b(k)-U(k,k+1:n)*x(k+1:n))/U(k,k);
+<span class="keyword">end</span>
+</pre><pre class="language-matlab"><span class="keyword">function</span> x=forwardsubst(L,b)
+<span class="comment">%FORWARDSUBST - forward substitution</span>
+<span class="comment">%L - lower triangular matrix</span>
+<span class="comment">%b - right hand side vector</span>
+</pre><pre class="language-matlab">x=zeros(size(b));
+n=length(b);
+<span class="keyword">for</span> k=1:n
+   x(k)=(b(k)-L(k,1:k-1)*x(1:k-1))/L(k,k);
+<span class="keyword">end</span>
+<span class="comment">%</span>
+</pre><pre class="codeinput">A = [10,7,0; -3, 2, 6; 5, -1, 5];
+b = [7; 4; 6];
+</pre><h2>Exemplu de utilizare<a name="3"></a></h2><p>Descompunere</p><pre class="codeinput">[L,U,P] = lup(A)
+norm(L*U-P*A)
+</pre><pre class="codeoutput">
+L =
+
+   1.0000e+00            0            0
+   5.0000e-01   1.0000e+00            0
+  -3.0000e-01  -9.1111e-01   1.0000e+00
+
+
+U =
+
+   1.0000e+01   7.0000e+00            0
+            0  -4.5000e+00   5.0000e+00
+            0            0   1.0556e+01
+
+
+P =
+
+     1     0     0
+     0     0     1
+     0     1     0
+
+
+ans =
+
+   6.6613e-16
+
+</pre><pre class="language-matlab"><span class="keyword">function</span> x=lupsolve(A,b)
+<span class="comment">%LUPSOLVE - solution of an algebraic system by LUP decomposition</span>
+</pre><pre class="language-matlab">[L,U,P]=lup(A);
+y=forwardsubst(L,P*b);
+x=backsubst(U,y);
+</pre><h2>rezolvare efectiva<a name="5"></a></h2><pre class="codeinput">x = lupsolve(A,b)
+</pre><pre class="codeoutput">
+x =
+
+   4.7158e-01
+   3.2632e-01
+   7.9368e-01
+
+</pre><h2>Exemplul de pe slide-uri<a name="6"></a></h2><pre class="codeinput">A = [1, 1, 1; 1, 1, 2; 2, 4, 2];
+b = [3,4,8]';
+[L,U,P] = lup(A)
+y = forwardsubst(L,P*b)
+x= backsubst(U,y)
+</pre><pre class="codeoutput">
+L =
+
+   1.0000e+00            0            0
+   5.0000e-01   1.0000e+00            0
+   5.0000e-01   1.0000e+00   1.0000e+00
+
+
+U =
+
+     2     4     2
+     0    -1     1
+     0     0    -1
+
+
+P =
+
+     0     0     1
+     0     1     0
+     1     0     0
+
+
+y =
+
+     8
+     0
+    -1
+
+
+x =
+
+     1
+     1
+     1
+
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2014a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Descompunere LUP
+% -eliminare gaussiana
+
+%% Codul pentru sisteme triunghiulare
+% 
+%   function [L,U,P]=lup(A)
+%   %LUP find LUP decomposition of matrix A
+%   %call [L,U,P]=lup(A)
+%   %permute effectively lines
+% 
+%   [m,n]=size(A);
+%   P=zeros(m,n);
+%   piv=(1:m)';
+%   for i=1:m-1
+%      %pivoting
+%      [pm,kp]=max(abs(A(i:m,i)));
+%      kp=kp+i-1;
+%      %line interchange
+%      if i~=kp
+%          A([i,kp],:)=A([kp,i],:);
+%          piv([i,kp])=piv([kp,i]);
+%      end
+%      %Schur complement
+%      lin=i+1:m;
+%      A(lin,i)=A(lin,i)/A(i,i);
+%      A(lin,lin)=A(lin,lin)-A(lin,i)*A(i,lin);
+%   end;
+%   for i=1:m
+%      P(i,piv(i))=1;
+%   end;
+%   U=triu(A);
+%   L=tril(A,-1)+eye(m);
+% 
+%% Codul pentru sisteme triunghiulare
+% 
+%   function x=backsubst(U,b)
+%   %BACKSUBST - backward substitution
+%   %U - upper triangular matrix
+%   %b - right hand side vector
+%   n=length(b);
+%   x=zeros(size(b));
+%   for k=n:-1:1
+%      x(k)=(b(k)-U(k,k+1:n)*x(k+1:n))/U(k,k);
+%   end
+%
+%   function x=forwardsubst(L,b)
+%   %FORWARDSUBST - forward substitution
+%   %L - lower triangular matrix
+%   %b - right hand side vector
+% 
+%   x=zeros(size(b));
+%   n=length(b);
+%   for k=1:n
+%      x(k)=(b(k)-L(k,1:k-1)*x(1:k-1))/L(k,k);
+%   end
+% % 
+
+A = [10,7,0; -3, 2, 6; 5, -1, 5];
+b = [7; 4; 6];
+%% Exemplu de utilizare
+% Descompunere
+
+[L,U,P] = lup(A)
+norm(L*U-P*A)
+%%
+% 
+%   function x=lupsolve(A,b)
+%   %LUPSOLVE - solution of an algebraic system by LUP decomposition
+% 
+%   [L,U,P]=lup(A);
+%   y=forwardsubst(L,P*b);
+%   x=backsubst(U,y);
+% 
+
+%% rezolvare efectiva 
+%
+x = lupsolve(A,b)
+
+%% Exemplul de pe slide-uri
+A = [1, 1, 1; 1, 1, 2; 2, 4, 2];
+b = [3,4,8]';
+[L,U,P] = lup(A)
+y = forwardsubst(L,P*b)
+x= backsubst(U,y)
+##### SOURCE END #####
+--></body></html>

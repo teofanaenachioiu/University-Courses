@@ -1,0 +1,179 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Derivare numerica</title><meta name="generator" content="MATLAB 9.2"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-05-02"><meta name="DC.source" content="numderiv.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Derivare numerica</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Deducerea aproximarii</a></li><li><a href="#4">Exemplu</a></li><li><a href="#5">Precizia maxima</a></li><li><a href="#6">Sursa neplacerii</a></li><li><a href="#8">Conditionarea absoluta</a></li><li><a href="#9">Conditionarea relativa</a></li><li><a href="#10">Reprezentare grafica</a></li></ul></div><h2 id="1">Deducerea aproximarii</h2><p>Utilizand formula lui Taylor</p><p><img src="numderiv_eq02432096488135536768.png" alt="$$f(x+h) = f(x) +hf'(x) + \frac{h^2}{2}f''(\xi), \xi \in [x,x+h]$$" style="width:254px;height:26px;"></p><p>se obtine</p><p><img src="numderiv_eq01874170338049587980.png" alt="$$f'(x) = \frac{f(x+h)-f(x)}{h}-\frac{h}{2}f''(\xi)$$" style="width:175px;height:26px;"></p><p>Termenul <img src="numderiv_eq06990395261650278830.png" alt="$-\frac{h}{2}f''(\xi)$" style="width:42px;height:15px;"> este <b>eroarea de trunchiere</b> sau <b>eroarea de discretizare</b> la aproximarea lui <img src="numderiv_eq06814216104256922524.png" alt="$f'(x)$" style="width:25px;height:13px;"> prin <img src="numderiv_eq11208992503821599011.png" alt="$\frac{f(x+h)-f(x)}{h}$" style="width:50px;height:17px;">. Eroarea este <img src="numderiv_eq06729638723743081984.png" alt="$O(h)$" style="width:24px;height:12px;"> si spunem ca precizia este de ordinul I. La derivarea numerica vom presupune ca <img src="numderiv_eq03186163640059447765.png" alt="$x+h$" style="width:28px;height:10px;"> si <img src="numderiv_eq12428413953531653171.png" alt="$x$" style="width:6px;height:6px;"> se reprezinta exact, iar erorile se comit doar la evaluarea lui <img src="numderiv_eq17039692104618336221.png" alt="$f(x+h)$" style="width:43px;height:12px;"> si <img src="numderiv_eq17663307419741296505.png" alt="$f(x)$" style="width:22px;height:12px;">. Ignorand erorile de rotunjire la scadere si impartire, se calculeaza</p><p><img src="numderiv_eq12853301022944987944.png" alt="$$\frac{f(x+h)(1+\delta_{1})-f(x)(1+\delta_2)}{h}=\frac{f(x+h)-f(x)}{h}+ \frac{\delta_1f(x+h)-\delta_2f(x)}{h}$$" style="width:378px;height:26px;"></p><p>Deoarece <img src="numderiv_eq00187408997654517617.png" alt="$|\delta_1|<eps$" style="width:47px;height:12px;"> si <img src="numderiv_eq08879847200036856956.png" alt="$|\delta_2|<eps$" style="width:47px;height:12px;">, eroare de rotunjire este mai mica sau egala cu <img src="numderiv_eq03063119667523635707.png" alt="$2eps|f(x)|/h$" style="width:64px;height:12px;">, pentru <img src="numderiv_eq08062630503172331818.png" alt="$h$" style="width:6px;height:9px;"> mic. De notat ca eroarea de trunchiere este proportionala cu <img src="numderiv_eq08062630503172331818.png" alt="$h$" style="width:6px;height:9px;">, iar eroarea de rotunjire este proportionala cu <img src="numderiv_eq18358860296195603619.png" alt="$1/h$" style="width:18px;height:12px;">. Micsorarea lui <img src="numderiv_eq08062630503172331818.png" alt="$h$" style="width:6px;height:9px;">  micsoreaza eroarea de trunchiere, dar creste eroarea de rotunjire.</p><h2 id="4">Exemplu</h2><p>Luam <img src="numderiv_eq07827062669064175828.png" alt="$f(x)=\sin x$" style="width:61px;height:12px;"> si <img src="numderiv_eq10164210919549273485.png" alt="$x=\pi/4$" style="width:41px;height:12px;">. Atunci <img src="numderiv_eq12534839977302800918.png" alt="$f'(x)=\cos x$" style="width:65px;height:13px;"> si <img src="numderiv_eq04471584300746811025.png" alt="$f''(x)=-\sin x$" style="width:77px;height:13px;">, deci eroarea de trunchiere este de aproximativ <img src="numderiv_eq12682918374255077490.png" alt="$\sqrt{2}h/4$" style="width:34px;height:14px;">, iar eroarea de rotunjire este de aproximativ <img src="numderiv_eq02548971340682874071.png" alt="$\sqrt{2} eps/h$" style="width:44px;height:14px;"></p><pre class="codeinput">x = pi/4;
+h = 10.^(-(1:16))';
+d = (sin(x+h)-sin(x))./h;
+[d, sqrt(2)/2*ones(size(d)), abs(d-cos(x))]
+</pre><pre class="codeoutput">
+ans =
+
+    0.6706    0.7071    0.0365
+    0.7036    0.7071    0.0035
+    0.7068    0.7071    0.0004
+    0.7071    0.7071    0.0000
+    0.7071    0.7071    0.0000
+    0.7071    0.7071    0.0000
+    0.7071    0.7071    0.0000
+    0.7071    0.7071    0.0000
+    0.7071    0.7071    0.0000
+    0.7071    0.7071    0.0000
+    0.7071    0.7071    0.0000
+    0.7071    0.7071    0.0000
+    0.7083    0.7071    0.0012
+    0.7105    0.7071    0.0034
+    0.7772    0.7071    0.0700
+    1.1102    0.7071    0.4031
+
+</pre><h2 id="5">Precizia maxima</h2><p>Precizia maxima se obtine daca cele doua erori sunt aproximativ egale</p><p><img src="numderiv_eq14433081279932237640.png" alt="$$\frac{\sqrt{2}h}{4} = \frac{\sqrt{2}eps}{h} \Rightarrow h=2\sqrt{eps}$$" style="width:149px;height:27px;"></p><p>Eroarea este de ordinul <img src="numderiv_eq10671596319604930739.png" alt="$\sqrt{eps}$" style="width:26px;height:12px;"></p><pre class="codeinput">ho = 2*sqrt(eps);
+do = (sin(x+ho)-sin(x))./ho;
+[ho, do]
+</pre><pre class="codeoutput">
+ans =
+
+    0.0000    0.7071
+
+</pre><h2 id="6">Sursa neplacerii</h2><p>Sursa neplacerii este <i>algoritmul</i> nu problema determinarii</p><p><img src="numderiv_eq11323049520494883157.png" alt="$$\frac{d}{dx}\left. \sin{x}\right|_{x=\pi/4} =\left. \cos x \right|_{x=\pi/4}=\frac{\sqrt{2}}{2}$$" style="width:171px;height:27px;"></p><p>care este bine conditionata</p><h2 id="8">Conditionarea absoluta</h2><p><img src="numderiv_eq00728233615496364348.png" alt="$$\kappa(x)=\left| -\sin x\right|_{x=\pi/4}=\frac{\sqrt{2}}{2}$$" style="width:136px;height:26px;"></p><h2 id="9">Conditionarea relativa</h2><p><img src="numderiv_eq10942411453646792247.png" alt="$$cond(f)(x)=\left | \frac{x \sin x}{\cos x}\right|_{x=\pi/4}=\frac{\pi}{4}.$$" style="width:166px;height:31px;"></p><h2 id="10">Reprezentare grafica</h2><pre class="codeinput">loglog(h,abs(d-cos(pi/4))/cos(pi/4))
+title(<span class="string">'Derivare numerica, $f(x)=\sin(x)$, $x_{0}=\frac{\pi}{4}$'</span>,<span class="string">'Interpreter'</span>,<span class="string">'LaTeX'</span>)
+</pre><img vspace="5" hspace="5" src="numderiv_01.png" style="width:560px;height:420px;" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Derivare numerica
+% 
+%% Deducerea aproximarii 
+% Utilizand formula lui Taylor
+% 
+% $$f(x+h) = f(x) +hf'(x) + \frac{h^2}{2}f''(\xi), \xi \in [x,x+h]$$
+% 
+% se obtine
+%%
+% 
+% $$f'(x) = \frac{f(x+h)-f(x)}{h}-\frac{h}{2}f''(\xi)$$
+% 
+% Termenul $-\frac{h}{2}f''(\xi)$ este *eroarea de trunchiere* sau *eroarea de
+% discretizare* la aproximarea lui $f'(x)$ prin $\frac{f(x+h)-f(x)}{h}$.
+% Eroarea este $O(h)$ si spunem ca precizia este de ordinul I.
+% La derivarea numerica vom presupune ca $x+h$ si $x$ se reprezinta exact, 
+% iar erorile se comit doar la evaluarea lui $f(x+h)$ si $f(x)$.
+% Ignorand erorile de rotunjire la scadere si impartire, se calculeaza
+%%
+% 
+% $$\frac{f(x+h)(1+\delta_{1})-f(x)(1+\delta_2)}{h}=\frac{f(x+h)-f(x)}{h}+ \frac{\delta_1f(x+h)-\delta_2f(x)}{h}$$
+% 
+% Deoarece $|\delta_1|<eps$ si $|\delta_2|<eps$, eroare de rotunjire este 
+% mai mica sau egala cu $2eps|f(x)|/h$, pentru $h$ mic. De notat ca eroarea
+% de trunchiere este proportionala cu $h$, iar eroarea de rotunjire este
+% proportionala cu $1/h$. Micsorarea lui $h$  micsoreaza eroarea de
+% trunchiere, dar creste eroarea de rotunjire.
+%% Exemplu
+% Luam $f(x)=\sin x$ si $x=\pi/4$. Atunci $f'(x)=\cos x$ si $f''(x)=-\sin
+% x$, deci eroarea de trunchiere este de aproximativ $\sqrt{2}h/4$, iar
+% eroarea de rotunjire este de aproximativ $\sqrt{2} eps/h$
+
+
+x = pi/4;
+h = 10.^(-(1:16))';
+d = (sin(x+h)-sin(x))./h;
+[d, sqrt(2)/2*ones(size(d)), abs(d-cos(x))]
+
+%% Precizia maxima
+% Precizia maxima se obtine daca cele doua erori sunt aproximativ egale
+%
+% $$\frac{\sqrt{2}h}{4} = \frac{\sqrt{2}eps}{h} \Rightarrow h=2\sqrt{eps}$$                  
+%
+% Eroarea este de ordinul $\sqrt{eps}$ 
+
+ho = 2*sqrt(eps); 
+do = (sin(x+ho)-sin(x))./ho;
+[ho, do]
+
+%% Sursa neplacerii  
+% Sursa neplacerii este _algoritmul_ nu problema determinarii 
+%%
+% 
+% $$\frac{d}{dx}\left. \sin{x}\right|_{x=\pi/4} =\left. \cos x \right|_{x=\pi/4}=\frac{\sqrt{2}}{2}$$
+% 
+% care este bine conditionata
+%
+%% Conditionarea absoluta
+% 
+% $$\kappa(x)=\left| -\sin x\right|_{x=\pi/4}=\frac{\sqrt{2}}{2}$$
+% 
+
+%% Conditionarea relativa
+% 
+% $$cond(f)(x)=\left | \frac{x \sin x}{\cos x}\right|_{x=\pi/4}=\frac{\pi}{4}.$$
+% 
+%% Reprezentare grafica
+loglog(h,abs(d-cos(pi/4))/cos(pi/4))
+title('Derivare numerica, $f(x)=\sin(x)$, $x_{0}=\frac{\pi}{4}$','Interpreter','LaTeX')
+
+
+
+
+##### SOURCE END #####
+--></body></html>

@@ -1,0 +1,352 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Cp1252">
+<title>exempletaylor1.html</title>
+<!-- Created by Maple 16.00, Windows Vista -->
+</head>
+<a name="MapleAutoBookmark1" />
+
+<body bgcolor="FFFFFF">
+<p align="left"><font color="#000000" size="3" face="Times New Roman"></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"></font><font color="#000000" size="3" face="Times New Roman"><strong>P1</strong></font><font color="#000000" size="3" face="Times New Roman">. &nbsp;Reprezenta&#355;i pe acela&#351;i grafic func&#355;ia <img src="images/exempletaylor_1.gif" width="76" height="13" alt="f(x) = sin(x)" align="center" border="0">&#351;i aproximantele <img src="images/exempletaylor_2.gif" width="18" height="17" alt="T[1]" align="center" border="0">, <img src="images/exempletaylor_3.gif" width="18" height="17" alt="T[3]" align="center" border="0"> &#351;i <img src="images/exempletaylor_4.gif" width="18" height="17" alt="T[5]" align="center" border="0"> pe intervalul <img src="images/exempletaylor_5.gif" width="54" height="16" alt="" align="center" border="0"></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman">Solu&#355;ie.</font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>restart;</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>taylor(sin(x),x=0,12);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="images/exempletaylor_6.gif" width="376" height="28" alt="series(`+`(x, `-`(`*`(`/`(1, 6), `*`(`^`(x, 3)))), `*`(`/`(1, 120), `*`(`^`(x, 5))), `-`(`*`(`/`(1, 5040), `*`(`^`(x, 7)))), `*`(`/`(1, 362880), `*`(`^`(x, 9))), `-`(`*`(`/`(1, 39916800), `*`(`^`(x, 1..." align="center" border="0"></td>
+<td width='5%' align='center'>(1)</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>Tn:=(n,x)-&gt;convert(taylor(sin(x),x=0,n+1),polynom);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="images/exempletaylor_7.gif" width="306" height="13" alt="proc (n, x) options operator, arrow; convert(taylor(sin(x), x = 0, `+`(n, 1)), polynom) end proc" align="center" border="0"></td>
+<td width='5%' align='center'>(2)</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>Tn(1,x),Tn(3,x),Tn(5,x);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="images/exempletaylor_8.gif" width="170" height="28" alt="x, `+`(x, `-`(`*`(`/`(1, 6), `*`(`^`(x, 3))))), `+`(x, `-`(`*`(`/`(1, 6), `*`(`^`(x, 3)))), `*`(`/`(1, 120), `*`(`^`(x, 5))))" align="center" border="0"></td>
+<td width='5%' align='center'>(3)</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>plot([sin(x),Tn(1,x),Tn(3,x),Tn(5,x)],x=-Pi..Pi,view=[-Pi..Pi,-2..2],legend=["f",typeset(T[1]),typeset(T[3]),typeset(T[5])],color=["red","green","blue","black"]);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#000000" size="3" face="Times New Roman"><img src="images/exempletaylor_9.gif" width="400" height="400" alt="Plot_2d" align="center" border="0"></td>
+<td width='5%' align='center'></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman">anima&#355;ie</font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>for k from 1 to 15 do p[k]:=plot([sin(x),Tn(k,x)],x=-2*Pi..2*Pi,view=[-2*Pi..2*Pi,-5..5]): end do:</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>plots[display](seq(p[2*i-1],i=1..8),insequence=true);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#000000" size="3" face="Times New Roman"><img src="images/exempletaylor_10.gif" width="400" height="400" alt="Plot_2d" align="center" border="0"></td>
+<td width='5%' align='center'></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"></td>
+</tr>
+</table>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman">P2. La fel pentru <img src="images/exempletaylor_11.gif" width="19" height="16" alt="exp(x)" align="center" border="0"> , aproximatele <img src="images/exempletaylor_12.gif" width="18" height="17" alt="T[1]" align="center" border="0">, ..., <img src="images/exempletaylor_13.gif" width="21" height="17" alt="T[5]" align="center" border="0">&#351;i intervalul [-2,2].</font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"></font><font color="#000000" size="3" face="Times New Roman"><strong>Solu&#355;ie</strong></font><font color="#000000" size="3" face="Times New Roman">. </font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>restart;</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>taylor(exp(x),x=0,10);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="images/exempletaylor_14.gif" width="515" height="28" alt="series(`+`(1, x, `*`(`/`(1, 2), `*`(`^`(x, 2))), `*`(`/`(1, 6), `*`(`^`(x, 3))), `*`(`/`(1, 24), `*`(`^`(x, 4))), `*`(`/`(1, 120), `*`(`^`(x, 5))), `*`(`/`(1, 720), `*`(`^`(x, 6))), `*`(`/`(1, 5040), ..." align="center" border="0"></td>
+<td width='5%' align='center'>(4)</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>Te:=(n,x)-&gt;convert(taylor(exp(x),x=0,n+1),polynom);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="images/exempletaylor_15.gif" width="287" height="16" alt="proc (n, x) options operator, arrow; convert(taylor(exp(x), x = 0, `+`(n, 1)), polynom) end proc" align="center" border="0"></td>
+<td width='5%' align='center'>(5)</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>plot([exp(x),seq(Te(k,x),k=1..5)],x=-2..5,view=[-2..2,-1..7]);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#000000" size="3" face="Times New Roman"><img src="images/exempletaylor_16.gif" width="400" height="400" alt="Plot_2d" align="center" border="0"></td>
+<td width='5%' align='center'></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"></td>
+</tr>
+</table>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman">P3. Deduce&#355;i seria Taylor pentru <img src="images/exempletaylor_17.gif" width="55" height="13" alt="ln(`+`(1, x))" align="center" border="0"> &#351;i aproxima&#355;i ln2 folosind primii 8 termeni. Câ&#355;i termeni sunt necesari pentru a ob&#355;ine ln2 cu 5 zecimale corecte. Aceea&#351;i problem&#259; pentru <img src="images/exempletaylor_18.gif" width="67" height="28" alt="ln(`/`(`*`(`+`(1, x)), `*`(`+`(1, `-`(x)))))" align="center" border="0">.</font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman">Solu&#355;ie.</font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>restart;</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>taylor(ln(1+x),x=0,9);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="images/exempletaylor_19.gif" width="346" height="28" alt="series(`+`(x, `-`(`*`(`/`(1, 2), `*`(`^`(x, 2)))), `*`(`/`(1, 3), `*`(`^`(x, 3))), `-`(`*`(`/`(1, 4), `*`(`^`(x, 4)))), `*`(`/`(1, 5), `*`(`^`(x, 5))), `-`(`*`(`/`(1, 6), `*`(`^`(x, 6)))), `*`(`/`(1, ..." align="center" border="0"></td>
+<td width='5%' align='center'>(6)</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>apln:=convert(%,polynom);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="images/exempletaylor_20.gif" width="337" height="28" alt="`+`(x, `-`(`*`(`/`(1, 2), `*`(`^`(x, 2)))), `*`(`/`(1, 3), `*`(`^`(x, 3))), `-`(`*`(`/`(1, 4), `*`(`^`(x, 4)))), `*`(`/`(1, 5), `*`(`^`(x, 5))), `-`(`*`(`/`(1, 6), `*`(`^`(x, 6)))), `*`(`/`(1, 7), `*`..." align="center" border="0"></td>
+<td width='5%' align='center'>(7)</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>eval(apln,x=1);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="images/exempletaylor_21.gif" width="34" height="28" alt="`/`(533, 840)" align="center" border="0"></td>
+<td width='5%' align='center'>(8)</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>evalf(%);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="images/exempletaylor_22.gif" width="77" height="13" alt=".6345238095" align="center" border="0"></td>
+<td width='5%' align='center'>(9)</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>evalf(ln(2));</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="images/exempletaylor_23.gif" width="77" height="13" alt=".6931471806" align="center" border="0"></td>
+<td width='5%' align='center'>(10)</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman">Câ&#355;i termeni sunt necesari?</font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>solve(1/(n+1)&lt;1e-5);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="images/exempletaylor_24.gif" width="308" height="13" alt="RealRange(`+`(`-`(infinity)), Open(-1.)), RealRange(Open(99999.), infinity)" align="center" border="0"></td>
+<td width='5%' align='center'>(11)</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"></td>
+</tr>
+</table>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman">Totu&#351;i, lucrurile merg bine în vecin&#259;tatea originii (de exemplu pentru ln 1.1)</font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>eval(apln,x=0.1);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="images/exempletaylor_25.gif" width="83" height="13" alt="0.9531017970e-1" align="center" border="0"></td>
+<td width='5%' align='center'>(12)</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>solve((1/10)^(n+1)/(n+1)&lt;1e-5,n);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="images/exempletaylor_26.gif" width="338" height="13" alt="RealRange(`+`(`-`(infinity)), Open(-1.)), RealRange(Open(3.360466996), infinity)" align="center" border="0"></td>
+<td width='5%' align='center'>(13)</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman">Remediu: s&#259; se utilizeze dezvoltarea Taylor a lui <img src="images/exempletaylor_27.gif" width="67" height="28" alt="ln(`/`(`*`(`+`(1, x)), `*`(`+`(1, `-`(x)))))" align="center" border="0"></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>taylor(ln((1+x)/(1-x)),x=0,16);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="images/exempletaylor_28.gif" width="393" height="28" alt="series(`+`(`*`(2, `*`(x)), `*`(`/`(2, 3), `*`(`^`(x, 3))), `*`(`/`(2, 5), `*`(`^`(x, 5))), `*`(`/`(2, 7), `*`(`^`(x, 7))), `*`(`/`(2, 9), `*`(`^`(x, 9))), `*`(`/`(2, 11), `*`(`^`(x, 11))), `*`(`/`(2, ..." align="center" border="0"></td>
+<td width='5%' align='center'>(14)</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>apln2:=convert(%,polynom);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="images/exempletaylor_29.gif" width="120" height="13" alt=".6931471795" align="center" border="0"></td>
+<td width='5%' align='center'>(15)</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>solve((1+x)/(1-x)=2,x);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="images/exempletaylor_30.gif" width="22" height="28" alt="`/`(1, 3)" align="center" border="0"></td>
+<td width='5%' align='center'>(16)</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>evalf(eval(apln2,x=1/3));</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="images/exempletaylor_31.gif" width="77" height="13" alt=".6931471795" align="center" border="0"></td>
+<td width='5%' align='center'>(17)</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>evalf(ln(2));</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="images/exempletaylor_32.gif" width="77" height="13" alt=".6931471806" align="center" border="0"></td>
+<td width='5%' align='center'>(18)</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman">Num&#259;rul de termeni necesar</font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>solve(2*(1/3)^(2*n+1)/(2*n+1)&lt;1e-5);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="images/exempletaylor_33.gif" width="398" height="13" alt="RealRange(`+`(`-`(infinity)), Open(-.5000000000)), RealRange(Open(4.050176419), infinity)" align="center" border="0"></td>
+<td width='5%' align='center'>(19)</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>evalf(eval(2*x+(2/3)*x^3+(2/5)*x^5+(2/7)*x^7+2/9*x^9,x=1/3));</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="images/exempletaylor_34.gif" width="77" height="13" alt=".6931460474" align="center" border="0"></td>
+<td width='5%' align='center'>(20)</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"></td>
+</tr>
+</table>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"></font>&nbsp;</p>
+</body>
+</html>

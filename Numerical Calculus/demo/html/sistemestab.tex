@@ -1,0 +1,136 @@
+
+% This LaTeX was auto-generated from an M-file by MATLAB.
+% To make changes, update the M-file and republish this document.
+
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{color}
+
+\sloppy
+\definecolor{lightgray}{gray}{0.5}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+    
+    
+\section*{Test stabilitate EG si QR}
+
+\begin{par}
+exemplu de matrice bine conditionata pentru care EG este instabila
+\end{par} \vspace{1em}
+
+\subsection*{Contents}
+
+\begin{itemize}
+\setlength{\itemsep}{-1ex}
+   \item Generare A si b
+   \item Rezolvare cu LUP
+   \item Rezolvare cu QR
+\end{itemize}
+
+
+\subsection*{Generare A si b}
+
+\begin{par}
+A are o forma speciala
+\end{par} \vspace{1em}
+\begin{par}
+$$a_{ij}=\left\lbrace
+\begin{array}{rl}
+    1, & \hbox{pentru $i=j$ sau $j=n$;} \\
+    -1, & \hbox{pentru $i>j$;} \\
+    0, & \hbox{\^{\i}n rest.} \\
+\end{array}%
+\right.$$
+\end{par} \vspace{1em}
+\begin{verbatim}
+n=100;
+A=[-tril(ones(n,n-1),-1)+eye(n,n-1),ones(n,1)];
+b=A*ones(n,1);
+\end{verbatim}
+
+
+\subsection*{Rezolvare cu LUP}
+
+\begin{par}
+se utilizeaza \ensuremath{\backslash}
+\end{par} \vspace{1em}
+\begin{verbatim}
+x=A\b;
+reshape(x,10,10)
+norm(b-A*x)/norm(b)
+cond(A)
+\end{verbatim}
+
+
+\subsection*{Rezolvare cu QR}
+
+\begin{par}
+se utilizeaza qr si \ensuremath{\backslash}
+\end{par} \vspace{1em}
+\begin{verbatim}
+[Q,R]=qr(A);
+x2=R\(Q'*b);
+reshape(x2,10,10)
+\end{verbatim}
+
+        \color{lightgray} \begin{verbatim}
+ans =
+
+     1     1     1     1     1     1     0     0     0     0
+     1     1     1     1     1     1     0     0     0     0
+     1     1     1     1     1     1     0     0     0     0
+     1     1     1     1     1     0     0     0     0     0
+     1     1     1     1     1     0     0     0     0     0
+     1     1     1     1     1     0     0     0     0     0
+     1     1     1     1     1     0     0     0     0     0
+     1     1     1     1     1     0     0     0     0     0
+     1     1     1     1     1     0     0     0     0     0
+     1     1     1     1     1     0     0     0     0     1
+
+
+ans =
+
+    0.3191
+
+
+ans =
+
+   44.8023
+
+
+ans =
+
+  Columns 1 through 7
+
+    1.0000    1.0000    1.0000    1.0000    1.0000    1.0000    1.0000
+    1.0000    1.0000    1.0000    1.0000    1.0000    1.0000    1.0000
+    1.0000    1.0000    1.0000    1.0000    1.0000    1.0000    1.0000
+    1.0000    1.0000    1.0000    1.0000    1.0000    1.0000    1.0000
+    1.0000    1.0000    1.0000    1.0000    1.0000    1.0000    1.0000
+    1.0000    1.0000    1.0000    1.0000    1.0000    1.0000    1.0000
+    1.0000    1.0000    1.0000    1.0000    1.0000    1.0000    1.0000
+    1.0000    1.0000    1.0000    1.0000    1.0000    1.0000    1.0000
+    1.0000    1.0000    1.0000    1.0000    1.0000    1.0000    1.0000
+    1.0000    1.0000    1.0000    1.0000    1.0000    1.0000    1.0000
+
+  Columns 8 through 10
+
+    1.0000    1.0000    1.0000
+    1.0000    1.0000    1.0000
+    1.0000    1.0000    1.0000
+    1.0000    1.0000    1.0000
+    1.0000    1.0000    1.0000
+    1.0000    1.0000    1.0000
+    1.0000    1.0000    1.0000
+    1.0000    1.0000    1.0000
+    1.0000    1.0000    1.0000
+    1.0000    1.0000    1.0000
+
+\end{verbatim} \color{black}
+    
+
+
+\end{document}
+    

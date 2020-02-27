@@ -1,0 +1,148 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Computation of , stable version</title><meta name="generator" content="MATLAB 9.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-03-12"><meta name="DC.source" content="pistable.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Computation of <img src="pistable_eq12719111378361454579.png" alt="$\pi$">, stable version</h1><!--introduction--><!--/introduction--><p>We rewrite the recurrence relation as</p><p><img src="pistable_eq01043719464644749266.png" alt="$$\sin\frac{\alpha_n}{2}=\frac{\sin\alpha_{n}}{\sqrt{2\left(1+\sqrt{1-\sin^{2}\alpha_{n}}\right)}}$$"></p><pre class="codeinput">oldA=0;s=sqrt(3)/2; newA=3*s; n=6; <span class="comment">% initialization</span>
+z=[newA-pi n newA s]; <span class="comment">% store the results</span>
+</pre><p>The stopping criterion</p><p><img src="pistable_eq03170966582090662253.png" alt="$$A_{6}<\dots<A_{n}<\pi$$"></p><p>However, this cannot be true forever in finite precision arithmetic, since there is only a finite set of machine numbers. Thus, the situation <img src="pistable_eq11621938572037745986.png" alt="$A_n \geq A_{2n}$"> must occur at some stage, and this is the condition to stop the iteration. Note that this condition is independent of the machine, in the sense that the iteration will always terminate as long as we have finite precision arithmetic, and when it does terminate, it always gives the best possible approximation for the precision of the machine.</p><pre class="codeinput"><span class="keyword">while</span> newA&gt;oldA <span class="comment">% quit if area does not increase</span>
+    oldA=newA;
+    s=s/sqrt(2*(1+sqrt((1+s)*(1-s)))); <span class="comment">% new sine value</span>
+    n=2*n; newA=n/2*s;
+    z=[z; newA-pi n newA s];
+<span class="keyword">end</span>
+m=length(z);
+disp(<span class="string">"      n              A                     err "</span>)
+<span class="keyword">for</span> i=1:m
+    fprintf(<span class="string">'%10d %20.15f %20.15f\n'</span>,z(i,2),z(i,3),z(i,1))
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">      n              A                     err 
+         6    2.598076211353316   -0.543516442236477
+        12    3.000000000000000   -0.141592653589793
+        24    3.105828541230249   -0.035764112359544
+        48    3.132628613281238   -0.008964040308555
+        96    3.139350203046867   -0.002242450542926
+       192    3.141031950890509   -0.000560702699284
+       384    3.141452472285462   -0.000140181304332
+       768    3.141557607911857   -0.000035045677936
+      1536    3.141583892148318   -0.000008761441475
+      3072    3.141590463228050   -0.000002190361744
+      6144    3.141592105999271   -0.000000547590522
+     12288    3.141592516692156   -0.000000136897637
+     24576    3.141592619365383   -0.000000034224410
+     49152    3.141592645033690   -0.000000008556103
+     98304    3.141592651450766   -0.000000002139027
+    196608    3.141592653055036   -0.000000000534757
+    393216    3.141592653456104   -0.000000000133690
+    786432    3.141592653556371   -0.000000000033422
+   1572864    3.141592653581438   -0.000000000008355
+   3145728    3.141592653587705   -0.000000000002089
+   6291456    3.141592653589271   -0.000000000000522
+  12582912    3.141592653589663   -0.000000000000130
+  25165824    3.141592653589761   -0.000000000000032
+  50331648    3.141592653589786   -0.000000000000008
+ 100663296    3.141592653589791   -0.000000000000002
+ 201326592    3.141592653589794    0.000000000000000
+ 402653184    3.141592653589794    0.000000000000001
+ 805306368    3.141592653589794    0.000000000000001
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Computation of $\pi$, stable version
+% 
+%%
+% We rewrite the recurrence relation as
+%
+% $$\sin\frac{\alpha_n}{2}=\frac{\sin\alpha_{n}}{\sqrt{2\left(1+\sqrt{1-\sin^{2}\alpha_{n}}\right)}}$$
+% 
+
+oldA=0;s=sqrt(3)/2; newA=3*s; n=6; % initialization
+z=[newA-pi n newA s]; % store the results
+%% 
+% The stopping criterion
+%
+% $$A_{6}<\dots<A_{n}<\pi$$
+%
+% However, this cannot be true forever in finite precision arithmetic, since there
+% is only a finite set of machine numbers. Thus, the situation $A_n \geq A_{2n}$ must
+% occur at some stage, and this is the condition to stop the iteration. Note that
+% this condition is independent of the machine, in the sense that the iteration
+% will always terminate as long as we have finite precision arithmetic, and when
+% it does terminate, it always gives the best possible approximation for the
+% precision of the machine.
+
+while newA>oldA % quit if area does not increase
+    oldA=newA;
+    s=s/sqrt(2*(1+sqrt((1+s)*(1-s)))); % new sine value
+    n=2*n; newA=n/2*s;
+    z=[z; newA-pi n newA s];
+end
+m=length(z);
+disp("      n              A                     err ")
+for i=1:m
+    fprintf('%10d %20.15f %20.15f\n',z(i,2),z(i,3),z(i,1))
+end
+##### SOURCE END #####
+--></body></html>

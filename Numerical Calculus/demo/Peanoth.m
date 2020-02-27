@@ -1,0 +1,10 @@
+M7R0
+I#ppf*6$%"zG%"nG6"6$%)operatorG%&arrowGF'-%*piecewiseG6%1""!9$)F09%F/F'F'F'F',
+I,PeanoKernelt+6%'%"LG%*procedureG'%"dGI*nonnegintG6$%*protectedG%(_syslibG'%"t
+G%%nameG6#%"KGF'F'C$>8$*&-%*factorialG6#F2!""-%%evalG6#-F06#f*6#%"xGF'F(F'-F"6$
+,&F0"""T$FKT&F'F'6&F@9&F:F2FWOFF6#Q5Compute~Peano~KernelF'F'F'6#""$F',
+I*PeanoCorrt+6$F6F9FBF'F'C%>FF-F06#f*FRF'F(F')F0,&FXFWFWFWF'F'6$F:F2>FF*(-FI6#,
+&F2FWFWFWFK-I'factorG6$F=F>6#-I)simplifyG6$F=F>6#FFFW--&%"DG6#-%"$G6$FWFjo6#%"f
+G6#%#xiGFWOFF6#Q1Peano~error~termF'F'F'6#""#F',
+I0PeanoEstimationt+6&F6F9%"aG%"bG6$FCF@F'F'C$>FF-F36%F0F28%*&&%"MGFioFW-I$intG6
+$F=F>6$-%$absGFbp/F^r;Fen9'FW6#Q1Peano~estimationF'F'F'6#""%F'

@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>mupadtaylor</title>
+<style type="text/css">
+/* <![CDATA[ */
+span.S0, a.S0 { font-family:sans-serif; font-size:11pt; font-style:normal; font-weight:normal; color:#000000; }
+span.S1, a.S1 { font-family:serif; font-size:12pt; font-style:normal; font-weight:normal; color:#000000; }
+span.S2, a.S2 { font-family:serif; font-size:12pt; font-style:normal; font-weight:normal; vertical-align:sub; color:#000000; }
+span.S3, a.S3 { font-family:monospace; font-size:11pt; font-style:normal; font-weight:normal; color:#ff0000; }
+span.S4, a.S4 { font-family:monospace; font-size:11pt; font-style:normal; font-weight:normal; color:#5500ff; }
+span.S5, a.S5 { font-family:sans-serif; font-size:11pt; font-style:normal; font-weight:normal; vertical-align:sub; color:#000000; }
+span.S6, a.S6 { font-family:Times New Roman; font-size:12pt; font-style:normal; font-weight:normal; color:#000000; }
+p.P0 { text-align:justify; margin-top:0pt; margin-left:0pt; margin-right:0pt; margin-bottom:0pt; text-indent:0pt; }
+p.P1 { text-align:left; white-space:pre; margin-top: 0; margin-left: 0; margin-right: 0; margin-bottom: 0; }
+div.C2 { padding-top:0pt; padding-bottom:0pt; padding-left:5.7pt; border-left-width:1pt; border-left-style: solid; border-color: #808080; border-right-width: 0; border-right-style: none; border-top-width: 0; border-top-style: none; border-bottom-width: 0; border-bottom-style: none; }
+div.Csep3in { padding: 0; height: 0; width: 5pt; border-bottom: 1px solid #808080; margin-top:2.85pt; margin-bottom: 0; }
+div.Csep3out { padding: 0; height: 0; width: 3pt; border-bottom: 1px solid #808080; margin-top: 0;  margin-bottom: 0; }
+div.Csep3end { padding: 0; height: 0; width: 5pt; border-bottom: 1px solid #808080; margin-bottom:2.85pt; margin-top: 0; }
+p.P4 { margin-top:0pt; margin-left:0pt; margin-right:0pt; margin-bottom:0pt; text-indent:0pt; }
+body { background-color:white; }
+@page { margin:56pt; size:612pt 792pt; background-color:white; }
+/* ]]> */
+</style>
+</head>
+<body>
+<p class="P0"><span class="S1">Reprezentati pe acelasi grafic functia f(x) = sin(x) si aproximantele T</span><span class="S2">1</span><span class="S1">f, T</span><span class="S2">3</span><span class="S1">f , ..., T</span><span class="S2">11</span><span class="S1">f pe intervalul [].</span></p>
+<p class="P0">&nbsp;</p>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">reset();</span></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">taylor(sin(x),x=0,11);</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="x - x^3/6 + x^5/120 - x^7/5040 + x^9/362880 - x^11/39916800 + O(x^13)" style="vertical-align:-17px" width="416" height="44" src="mupadtaylor_images/math0.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">Tn:=(n,x)-&gt;taylor(sin(x),x=0,n);</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="(n, x) -&gt; taylor(sin(x), x = 0, n)" style="vertical-align:-9px" width="250" height="30" src="mupadtaylor_images/math1.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">for i from 1 to 6 do<br />&nbsp; T[i]:=Tn(2*i-1,x):<br />end_for:<br /></span></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">plotfunc2d(sin(x), T[k]$k=1..6, <br />&nbsp; x=-2*PI..2*PI, YRange=-3..3,<br />&nbsp; LineWidth=0.3, <br />&nbsp; XGridVisible=TRUE, <br />&nbsp; YGridVisible=TRUE,<br />&nbsp; XSubgridVisible=TRUE, <br />&nbsp; YSubgridVisible=TRUE,<br />&nbsp; Header=&quot;Function sin(x) and its Taylor polynomials&quot;,<br />&nbsp; HeaderFont=[&quot;Arial&quot;,12, Bold],<br />&nbsp; LegendVisible=TRUE,<br />&nbsp; BackgroundColor=RGB::Gray80,<br />&nbsp; BorderColor=RGB::Black,<br />&nbsp; BorderWidth=0.2<br />);</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="MuPAD graphics" src="mupadtaylor_images/plt3.png" width="567pt" height="378pt"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1">&nbsp;</p>
+</div>
+<div class="Csep3end"></div>
+<p class="P4">&nbsp;</p>
+<p class="P4"><span class="S0">La fel pentru exp(x) si aproximantele T</span><span class="S5">1</span><span class="S0">, T</span><span class="S5">2</span><span class="S0">, ..., T</span><span class="S5">5</span><span class="S0">.</span></p>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">reset();</span></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">taylor(exp(x),x=0,7);</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="1 + x + x^2/2 + x^3/6 + x^4/24 + x^5/120 + x^6/720 + O(x^7)" style="vertical-align:-17px" width="336" height="44" src="mupadtaylor_images/math2.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">Te:=(n,x)-&gt;taylor(exp(x),x=0,n+1);</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="(n, x) -&gt; taylor(exp(x), x = 0, n + 1)" style="vertical-align:-9px" width="249" height="30" src="mupadtaylor_images/math3.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">for i from 1 to 5 do<br />&nbsp; T[i]:=Te(i,x):<br />end_for:</span></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">plotfunc2d(exp(x), T[k]$k=1..5, <br />&nbsp; x=-1..3, YRange=-1..21,<br />&nbsp; LineWidth=0.3, <br />&nbsp; XGridVisible=TRUE, <br />&nbsp; YGridVisible=TRUE,<br />&nbsp; XSubgridVisible=TRUE, <br />&nbsp; YSubgridVisible=TRUE,<br />&nbsp; Header=&quot;Function exp(x) and its Taylor polynomials&quot;,<br />&nbsp; HeaderFont=[&quot;Arial&quot;,12, Bold],<br />&nbsp; LegendVisible=TRUE,<br />&nbsp; BackgroundColor=RGB::Gray80,<br />&nbsp; BorderColor=RGB::Black,<br />&nbsp; BorderWidth=0.2<br />);</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="MuPAD graphics" src="mupadtaylor_images/plt4.png" width="567pt" height="378pt"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1">&nbsp;</p>
+</div>
+<div class="Csep3end"></div>
+<p class="P4"><span class="S6">Deduceti seria Taylor pentru </span><img alt="ln(x + 1)" style="vertical-align:-8px" width="74" height="29" src="mupadtaylor_images/math4.png"></img><span class="S6">si aproximati ln 2 folosind primii 8 termeni. Cati termeni sunt necesari pentru a obtine ln 2 cu 5 zecimale corecte? La fel pentru </span><img alt="ln(-(x + 1)/(x - 1))" style="vertical-align:-24px" width="108" height="54" src="mupadtaylor_images/math5.png"></img></p>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">taylor(ln(1+x),x=0,8);</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="x - x^2/2 + x^3/3 - x^4/4 + x^5/5 - x^6/6 + x^7/7 - x^8/8 + O(x^9)" style="vertical-align:-17px" width="361" height="44" src="mupadtaylor_images/math6.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">tln:=expr(%);</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="- x^8/8 + x^7/7 - x^6/6 + x^5/5 - x^4/4 + x^3/3 - x^2/2 + x" style="vertical-align:-17px" width="315" height="44" src="mupadtaylor_images/math7.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">(tln) | x=1</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="533/840" style="vertical-align:-17px" width="43" height="40" src="mupadtaylor_images/math8.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">float(%);</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="0.6345238095" style="vertical-align:-8px" width="114" height="29" src="mupadtaylor_images/math9.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">float(ln(2));</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="0.6931471806" style="vertical-align:-8px" width="114" height="29" src="mupadtaylor_images/math10.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">solve(1/(n+1)&lt;1e-5,n);</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="Dom::Interval(-infinity, -1) union Dom::Interval(99999.0, infinity)" style="vertical-align:-8px" width="206" height="29" src="mupadtaylor_images/math11.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1">&nbsp;</p>
+</div>
+<div class="Csep3end"></div>
+<p class="P4"><span class="S0">Totusi, in vecinatatea lui 0 lucrurile merg bine</span></p>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">(tln) | x=0.1</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="0.0953101797" style="vertical-align:-8px" width="114" height="29" src="mupadtaylor_images/math12.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">ln(1.1);</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="0.0953101798" style="vertical-align:-8px" width="114" height="29" src="mupadtaylor_images/math13.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<p class="P4"><span class="S0">Imbunatatire </span><img alt="ln(-(x + 1)/(x - 1))" style="vertical-align:-24px" width="108" height="54" src="mupadtaylor_images/math14.png"></img></p>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">taylor(ln((1+x)/(1-x)),x=0,15);</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="2*x + (2*x^3)/3 + (2*x^5)/5 + (2*x^7)/7 + (2*x^9)/9 + (2*x^11)/11 + (2*x^13)/13 + (2*x^15)/15 + O(x^16)" style="vertical-align:-17px" width="497" height="47" src="mupadtaylor_images/math15.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">tln2:=expr(%);</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="(2*x^15)/15 + (2*x^13)/13 + (2*x^11)/11 + (2*x^9)/9 + (2*x^7)/7 + (2*x^5)/5 + (2*x^3)/3 + 2*x" style="vertical-align:-17px" width="429" height="47" src="mupadtaylor_images/math16.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">solve((1+x)/(1-x)=2,x); //aflam punctul</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="{1/3}" style="vertical-align:-18px" width="49" height="41" src="mupadtaylor_images/math17.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">(tln2) | x=1/3;</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="149337754816/215448838605" style="vertical-align:-17px" width="124" height="40" src="mupadtaylor_images/math18.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">float(%);</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="0.6931471795" style="vertical-align:-8px" width="114" height="29" src="mupadtaylor_images/math19.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">float(ln(2));</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="0.6931471806" style="vertical-align:-8px" width="114" height="29" src="mupadtaylor_images/math20.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">float(((1/3)^(2*n-1)/(2*n-1))|n=5);</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="0.000005645029269" style="vertical-align:-8px" width="159" height="29" src="mupadtaylor_images/math21.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">expr(taylor(ln((1+x)/(1-x)),x=0,7))| x=1/3;</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="53056/76545" style="vertical-align:-17px" width="61" height="40" src="mupadtaylor_images/math22.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">float(%);</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="0.6931347573" style="vertical-align:-8px" width="114" height="29" src="mupadtaylor_images/math23.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<div class="Csep3in"></div>
+<div class="C2">
+<p class="P1"><span class="S3">float(ln(2));</span></p>
+</div>
+<div class="Csep3out"></div>
+<div class="C2">
+<p class="P1"><img alt="0.6931471806" style="vertical-align:-8px" width="114" height="29" src="mupadtaylor_images/math24.png"></img></p>
+</div>
+<div class="Csep3end"></div>
+<p class="P4">&nbsp;</p>
+</body>
+</html>

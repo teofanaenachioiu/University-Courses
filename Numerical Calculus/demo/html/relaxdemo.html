@@ -1,0 +1,198 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Demonstratie - metoda relaxarii (SOR)</title><meta name="generator" content="MATLAB 8.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2014-03-25"><meta name="DC.source" content="relaxdemo.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Demonstratie - metoda relaxarii (SOR)</h1><!--introduction--><p>Consideram sistemul cu matricea</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#2">Initializare</a></li><li><a href="#3">Pregatirea matricelor metodei</a></li><li><a href="#4">Prima iteratie</a></li><li><a href="#5">A doua iteratie</a></li><li><a href="#6">Dupa 25 de iteratii</a></li></ul></div><p><img src="relaxdemo_eq94676.png" alt="$$\left[ \begin{array} [c]{cc}&#xA;2 &amp; 1\\&#xA;5 &amp; 7&#xA;\end{array} \right]x = \left[&#xA;\begin{array}&#xA;[c]{c}&#xA;4\\&#xA;19&#xA;\end{array}&#xA;\right]&#xA;  $$"></p><h2>Initializare<a name="2"></a></h2><pre class="codeinput">A = [2,1;5,7];
+b = [4;19];
+xn = [2;1];
+</pre><h2>Pregatirea matricelor metodei<a name="3"></a></h2><p><img src="relaxdemo_eq45283.png" alt="$$M = diag(A)/\omega-L, N = M - A$$"></p><pre class="codeinput">omega = 1; <span class="comment">%optim 1.11</span>
+D = diag(diag(A)); L=-tril(A,-1);
+M = 1/omega*D-L
+N = M -A
+</pre><pre class="codeoutput">
+M =
+
+     2     0
+     5     7
+
+
+N =
+
+     0    -1
+     0     0
+
+</pre><h2>Prima iteratie<a name="4"></a></h2><pre class="codeinput">xv = xn;
+xn = M\(N*xv+b);
+ea = norm(xn-xv,inf);
+xn, ea
+</pre><pre class="codeoutput">
+xn =
+
+   1.5000e+00
+   1.6429e+00
+
+
+ea =
+
+   6.4286e-01
+
+</pre><h2>A doua iteratie<a name="5"></a></h2><pre class="codeinput">xv = xn;
+xn = M\(N*xv+b);
+ea = norm(xn-xv,inf);
+xn, ea
+</pre><pre class="codeoutput">
+xn =
+
+   1.1786e+00
+   1.8724e+00
+
+
+ea =
+
+   3.2143e-01
+
+</pre><h2>Dupa 25 de iteratii<a name="6"></a></h2><pre class="codeinput"><span class="keyword">for</span> k=1:23
+    xv = xn;
+    xn = M\(N*xv+b);
+    ea = norm(xn-xv,inf);
+<span class="keyword">end</span>
+xn
+ea
+er =ea/norm(xn,inf)
+</pre><pre class="codeoutput">
+xn =
+
+   1.0000e+00
+   2.0000e+00
+
+
+ea =
+
+   1.6690e-11
+
+
+er =
+
+   8.3448e-12
+
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2014a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Demonstratie - metoda relaxarii (SOR)
+% Consideram sistemul cu matricea
+%%
+% 
+% $$\left[ \begin{array} [c]{cc}
+% 2 & 1\\
+% 5 & 7
+% \end{array} \right]x = \left[
+% \begin{array}
+% [c]{c}
+% 4\\
+% 19
+% \end{array}
+% \right]
+%   $$
+% 
+%% Initializare
+
+A = [2,1;5,7];
+b = [4;19];
+xn = [2;1];
+
+%% Pregatirea matricelor metodei
+%
+% 
+% $$M = diag(A)/\omega-L, N = M - A$$
+% 
+omega = 1; %optim 1.11
+D = diag(diag(A)); L=-tril(A,-1);
+M = 1/omega*D-L
+N = M -A
+
+%% Prima iteratie
+xv = xn;
+xn = M\(N*xv+b);
+ea = norm(xn-xv,inf);
+xn, ea
+
+%% A doua iteratie
+xv = xn;
+xn = M\(N*xv+b);
+ea = norm(xn-xv,inf);
+xn, ea
+
+%% Dupa 25 de iteratii
+for k=1:23
+    xv = xn;
+    xn = M\(N*xv+b);
+    ea = norm(xn-xv,inf);
+end
+xn
+ea
+er =ea/norm(xn,inf)
+##### SOURCE END #####
+--></body></html>

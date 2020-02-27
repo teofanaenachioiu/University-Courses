@@ -1,0 +1,178 @@
+{VERSION 6 0 "Windows 8" "6.0" }
+{USTYLETAB {PSTYLE "Ordered List 1" -1 200 1 {CSTYLE "" -1 -1 "Times"
+ 1 12 0 0 0 1 2 2 2 2 2 2 1 0 0 1 }1 1 0 0 3 3 2 0 2 0 2 2 -1 1 }
+{PSTYLE "Ordered List 2" -1 201 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 
+1 2 2 2 2 2 2 1 0 0 1 }1 1 0 0 3 3 2 36 2 0 2 2 -1 1 }{PSTYLE "Ordered
+ List 3" -1 202 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 
+0 0 1 }1 1 0 0 3 3 2 72 2 0 2 2 -1 1 }{PSTYLE "Ordered List 4" -1 203 
+1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 0 0 1 }1 1 0 0 3
+ 3 2 108 2 0 2 2 -1 1 }{PSTYLE "Ordered List 5" -1 204 1 {CSTYLE "" -1
+ -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 0 0 1 }1 1 0 0 3 3 2 144 2 0 2 
+2 -1 1 }{PSTYLE "Author" -1 19 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1
+ 2 2 2 2 2 2 1 0 0 1 }3 1 0 0 8 8 2 0 2 0 2 2 -1 1 }{PSTYLE "Warning" 
+-1 7 1 {CSTYLE "" -1 -1 "Courier" 1 10 0 0 255 1 2 2 2 2 2 1 1 0 0 1 }
+1 1 0 0 0 0 2 0 2 0 2 2 -1 1 }{PSTYLE "Annotation Title" -1 205 1 
+{CSTYLE "" -1 -1 "Times" 1 18 0 0 0 1 2 1 2 2 2 2 1 0 0 1 }3 1 0 0 12 
+12 2 0 2 0 2 2 -1 1 }{PSTYLE "Fixed Width" -1 17 1 {CSTYLE "" -1 -1 "C
+ourier" 1 10 0 0 0 1 2 2 2 2 2 2 1 0 0 1 }3 1 0 0 0 0 2 0 2 0 2 2 -1 1
+ }{PSTYLE "Maple Plot" -1 13 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2
+ 2 2 2 2 2 1 0 0 1 }3 1 0 0 0 0 2 0 2 0 2 2 -1 1 }{PSTYLE "Line Printe
+d Output" -1 6 1 {CSTYLE "" -1 -1 "Courier" 1 10 0 0 255 1 2 2 2 2 2 1
+ 1 0 0 1 }1 1 0 0 0 0 2 0 2 0 2 2 -1 1 }{PSTYLE "Help" -1 10 1 {CSTYLE
+ "" -1 -1 "Courier" 1 9 0 0 255 1 2 2 2 2 2 1 1 0 0 1 }1 1 0 0 0 0 2 0
+ 2 0 2 2 -1 1 }{PSTYLE "Text Output" -1 2 1 {CSTYLE "" -1 -1 "Courier"
+ 1 10 0 0 255 1 2 2 2 2 2 1 1 0 0 1 }1 1 0 0 0 0 2 0 2 0 2 2 -1 1 }
+{PSTYLE "Diagnostic" -1 9 1 {CSTYLE "" -1 -1 "Courier" 1 10 64 128 64 
+1 2 2 2 2 2 1 1 0 0 1 }1 1 0 0 0 0 2 0 2 0 2 2 -1 1 }{PSTYLE "Normal" 
+-1 0 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 0 0 1 }1 1 
+0 0 0 0 2 0 2 0 2 2 -1 1 }{PSTYLE "Maple Output" -1 11 1 {CSTYLE "" -1
+ -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 0 0 1 }3 1 0 0 0 0 2 0 2 0 2 2 
+-1 1 }{PSTYLE "Dash Item" -1 16 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 
+1 2 2 2 2 2 2 1 0 0 1 }1 1 0 0 3 3 2 0 2 0 2 2 -1 1 }{PSTYLE "Hyperlin
+kError" -1 206 1 {CSTYLE "" -1 -1 "Courier New" 1 12 255 0 255 1 2 2 1
+ 2 2 1 1 0 0 1 }1 1 0 0 0 0 2 0 2 0 2 2 -1 1 }{PSTYLE "Error" -1 8 1 
+{CSTYLE "" -1 -1 "Courier" 1 10 255 0 255 1 2 2 2 2 2 1 1 0 0 1 }1 1 0
+ 0 0 0 2 0 2 0 2 2 -1 1 }{PSTYLE "Title" -1 18 1 {CSTYLE "" -1 -1 "Tim
+es" 1 18 0 0 0 1 2 1 1 2 2 2 1 0 0 1 }3 1 0 0 12 12 2 0 2 0 2 2 -1 1 }
+{PSTYLE "Heading 1" -1 3 1 {CSTYLE "" -1 -1 "Times" 1 18 0 0 0 1 2 1 2
+ 2 2 2 1 0 0 1 }1 1 0 0 8 4 2 0 2 0 2 2 -1 1 }{PSTYLE "Bullet Item" -1
+ 15 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 0 0 1 }1 1 0
+ 0 3 3 2 0 2 0 2 2 -1 1 }{PSTYLE "Heading 4" -1 20 1 {CSTYLE "" -1 -1 
+"Times" 1 10 0 0 0 1 1 1 2 2 2 2 1 0 0 1 }1 1 0 0 0 0 2 0 2 0 2 2 -1 1
+ }{PSTYLE "Heading 3" -1 5 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 1 1
+ 2 2 2 2 1 0 0 1 }1 1 0 0 0 0 2 0 2 0 2 2 -1 1 }{PSTYLE "Heading 2" -1
+ 4 1 {CSTYLE "" -1 -1 "Times" 1 14 0 0 0 1 2 1 2 2 2 2 1 0 0 1 }1 1 0 
+0 8 2 2 0 2 0 2 2 -1 1 }{PSTYLE "HyperlinkWarning" -1 207 1 {CSTYLE ""
+ -1 -1 "Courier New" 1 12 0 0 255 1 2 2 1 2 2 1 1 0 0 1 }1 1 0 0 0 0 2
+ 0 2 0 2 2 -1 1 }{PSTYLE "Left Justified Maple Output" -1 12 1 {CSTYLE
+ "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 0 0 1 }1 1 0 0 0 0 2 0 2 
+0 2 2 -1 1 }{PSTYLE "List Item" -1 14 1 {CSTYLE "" -1 -1 "Times" 1 12 
+0 0 0 1 2 2 2 2 2 2 1 0 0 1 }1 1 0 0 3 3 2 0 2 0 2 2 -1 1 }{CSTYLE "An
+notation Text" -1 200 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 0 0 0 1 }
+{CSTYLE "Help Maple Name" -1 35 "Times" 1 12 104 64 92 1 2 1 2 2 2 2 0
+ 0 0 1 }{CSTYLE "2D Math Bold" -1 5 "Times" 1 12 0 0 0 1 2 1 2 2 2 2 0
+ 0 0 1 }{CSTYLE "Help Menus" -1 36 "Times" 1 12 0 0 0 1 2 1 2 2 2 2 0 
+0 0 1 }{CSTYLE "2D Math Italic" -1 3 "Times" 1 12 0 0 0 1 1 2 2 2 2 2 
+0 0 0 1 }{CSTYLE "Help Normal" -1 30 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 
+0 0 0 1 }{CSTYLE "Plot Text" -1 28 "Times" 1 8 0 0 0 1 2 2 2 2 2 2 0 0
+ 0 1 }{CSTYLE "Help Nonterminal" -1 24 "Courier" 1 12 0 0 0 1 2 1 2 2 
+2 2 0 0 0 1 }{CSTYLE "Help Heading" -1 26 "Times" 1 14 0 0 0 1 2 1 2 2
+ 2 2 0 0 0 1 }{CSTYLE "Help Italic" -1 42 "Times" 1 12 0 0 0 1 1 2 2 2
+ 2 2 0 0 0 1 }{CSTYLE "Help Variable" -1 25 "Courier" 1 12 0 0 0 1 2 2
+ 2 2 2 2 0 0 0 1 }{CSTYLE "Help Italic Bold" -1 40 "Times" 1 12 0 0 0 
+1 1 2 2 2 2 2 0 0 0 1 }{CSTYLE "Default" -1 38 "Times" 1 12 0 0 0 1 2 
+2 2 2 2 2 0 0 0 1 }{CSTYLE "Help Underlined Italic" -1 43 "Times" 1 12
+ 0 0 0 1 1 2 1 2 2 2 0 0 0 1 }{CSTYLE "Maple Input" -1 0 "Courier" 1 
+12 255 0 0 1 2 1 2 2 1 2 0 0 0 1 }{CSTYLE "2D Output" -1 20 "Times" 1 
+12 0 0 255 1 2 2 2 2 2 2 0 0 0 1 }{CSTYLE "2D Math Bold Small" -1 10 "
+Times" 1 1 0 0 0 1 2 1 2 2 2 2 0 0 0 1 }{CSTYLE "2D Math Small" -1 7 "
+Times" 1 1 0 0 0 1 2 2 2 2 2 2 0 0 0 1 }{CSTYLE "Page Number" -1 33 "T
+imes" 1 12 0 0 0 1 2 2 2 2 2 2 0 0 0 1 }{CSTYLE "Output Labels" -1 29 
+"Times" 1 8 0 0 0 1 2 2 2 2 2 2 0 0 0 1 }{CSTYLE "Plot Title" -1 27 "T
+imes" 1 10 0 0 0 1 2 1 2 2 2 2 0 0 0 1 }{CSTYLE "Help Emphasized" -1 
+22 "Times" 1 12 0 0 0 1 1 2 2 2 2 2 0 0 0 1 }{CSTYLE "2D Math Symbol 2
+" -1 16 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 0 0 0 1 }{CSTYLE "Maple Comme
+nt" -1 21 "Courier" 1 12 0 0 0 1 2 1 2 2 2 2 0 0 0 1 }{CSTYLE "Caption
+ Reference" -1 201 "Times" 1 12 0 0 0 1 2 1 2 2 2 2 0 0 0 1 }{CSTYLE "
+Maple Input Placeholder" -1 202 "Courier New" 1 12 200 0 200 1 2 1 2 2
+ 1 2 0 0 0 1 }{CSTYLE "Code" -1 203 "Courier New" 1 12 255 0 0 1 2 2 2
+ 2 2 2 0 0 0 1 }{CSTYLE "2D Inert Output" -1 204 "Times" 1 12 144 144 
+144 1 2 2 2 2 1 2 0 0 0 1 }{CSTYLE "2D Math Italic Small" -1 205 "Time
+s" 1 1 0 0 0 1 1 2 2 2 2 2 0 0 0 1 }{CSTYLE "2D Comment" -1 18 "Times"
+ 1 12 0 0 0 1 2 2 2 2 2 2 0 0 0 1 }{CSTYLE "Help Underlined Bold" -1 
+41 "Times" 1 12 0 0 0 1 1 1 2 2 2 2 0 0 0 1 }{CSTYLE "Copyright" -1 34
+ "Times" 1 10 0 0 0 1 2 2 2 2 2 2 0 0 0 1 }{CSTYLE "Hyperlink" -1 17 "
+Times" 1 12 0 128 128 1 2 2 1 2 2 2 0 0 0 1 }{CSTYLE "Help Underlined"
+ -1 44 "Times" 1 12 0 0 0 1 2 2 1 2 2 2 0 0 0 1 }{CSTYLE "Prompt" -1 1
+ "Courier" 1 12 0 0 0 1 2 1 2 2 2 2 0 0 0 1 }{CSTYLE "2D Math" -1 2 "T
+imes" 1 12 0 0 0 1 2 2 2 2 2 2 0 0 0 1 }{CSTYLE "2D Input" -1 19 "Time
+s" 1 12 255 0 0 1 2 2 2 2 1 2 0 0 0 1 }{CSTYLE "Header and Footer" -1 
+206 "Times" 1 10 0 0 0 1 2 2 2 2 2 2 0 0 0 1 }{CSTYLE "Text" -1 207 "T
+imes" 1 12 0 0 0 1 2 2 2 2 2 2 0 0 0 1 }{CSTYLE "Help Notes" -1 37 "Ti
+mes" 1 12 0 0 0 1 2 1 2 2 2 2 0 0 0 1 }{CSTYLE "Help Bold" -1 39 "Time
+s" 1 12 0 0 0 1 2 1 2 2 2 2 0 0 0 1 }{CSTYLE "Equation Label" -1 208 "
+Times" 1 12 0 0 0 1 2 1 2 2 2 2 0 0 0 1 }{CSTYLE "LaTeX" -1 32 "Times"
+ 1 12 0 0 0 1 2 2 2 2 2 2 0 0 0 1 }{CSTYLE "Popup" -1 31 "Times" 1 12 
+0 128 128 1 1 2 1 2 2 2 0 0 0 1 }{CSTYLE "Atomic Variable" -1 209 "Tim
+es" 1 12 175 0 175 1 1 2 2 2 2 2 0 0 0 1 }{CSTYLE "Dictionary Hyperlin
+k" -1 45 "Times" 1 12 147 0 15 1 2 2 1 2 2 2 0 0 0 1 }{CSTYLE "Caption
+ Text" -1 210 "Times" 1 12 0 0 0 1 2 1 2 2 2 2 0 0 0 1 }{CSTYLE "Help \+
+Fixed" -1 23 "Courier" 1 10 0 0 0 1 2 2 2 2 2 2 0 0 0 1 }}
+{SECT 0 {EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 8 "restart;" }}}{EXCHG 
+{PARA 0 "" 0 "" {TEXT 211 22 "Define truncated power" }}{PARA 0 "" 0 "
+" {TEXT 211 0 "" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 33 "pp:=(z,n
+)->piecewise(z>=0,z^n,0);" }}{PARA 11 "" 1 "" {XPPMATH 20 "f*6$I\"zG6
+\"I\"nGF%F%6$I)operatorGF%I&arrowGF%F%-I*piecewiseG%*protectedG6%1\"\"
+!9$)F09%F/F%F%F%" }}}{EXCHG {PARA 0 "" 0 "" {TEXT 211 41 "Define Peano
+ Kernel (for Peano's Theorem)" }}{PARA 0 "" 0 "" {TEXT 211 0 "" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 53 "PeanoKernel:=proc(L::procedu
+re,d::nonnegint,t::name)\n" }{MPLTEXT 1 0 38 "  description \"Compute \+
+Peano Kernel\";\n" }{MPLTEXT 1 0 11 "  local K;\n" }{MPLTEXT 1 0 34 " \+
+ K:=1/d!*eval(L(x->pp(x-t,d))); \n" }{MPLTEXT 1 0 12 "  return K;\n" }
+{MPLTEXT 1 0 9 "end proc;" }}{PARA 11 "" 1 "" {XPPMATH 20 "f*6%'I\"LG6
+\"I*procedureG%*protectedG'I\"dGF&I*nonnegintGF('I\"tGF&I%nameGF(6#I\"
+KGF&F&F&C$>8$*&-I*factorialGF(6#9%!\"\"-I%evalGF(6#-9$6#f*6#I\"xGF&F&6
+$I)operatorGF&I&arrowGF&F&-I#ppGF&6$,&F>\"\"\"T$F9T&F&F&6&F-9&F*F8FJOF
+36#Q5Compute~Peano~KernelF&F&F&" }}}{EXCHG {PARA 0 "" 0 "" {TEXT 211 
+28 "Corrolary to Peano's theorem" }}{PARA 0 "" 0 "" {TEXT 211 0 "" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 43 "PeanoCorr:=proc(L::procedure
+,d::nonnegint)\n" }{MPLTEXT 1 0 35 "  description \"Peano error term\"
+; \n" }{MPLTEXT 1 0 11 "  local K;\n" }{MPLTEXT 1 0 21 "  K:=L(x->x^(d
++1)); \n" }{MPLTEXT 1 0 54 "  K:=1/(d+1)!*factor(simplify(K))*D[1$(d+1
+)](f)(xi); \n" }{MPLTEXT 1 0 12 "  return K;\n" }{MPLTEXT 1 0 9 "end p
+roc;" }}{PARA 11 "" 1 "" {XPPMATH 20 "f*6$'I\"LG6\"I*procedureG%*prote
+ctedG'I\"dGF&I*nonnegintGF(6#I\"KGF&F&F&C%>8$-9$6#f*6#I\"xGF&F&6$I)ope
+ratorGF&I&arrowGF&F&)F2,&T$\"\"\"F=F=F&F&6$F*9%>F0*(-I*factorialGF(6#,
+&F?F=F=F=!\"\"-I'factorGF&6#-I)simplifyGF&6#F0F=--&I\"DGF&6#-I\"$GF(6$
+F=FE6#I\"fGF&6#I#xiGF&F=OF06#Q1Peano~error~termF&F&F&" }}}{EXCHG 
+{PARA 0 "" 0 "" {TEXT 211 35 "Estimation based on Peano's theorem" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 53 "PeanoEstimation:=proc(L::pro
+cedure,d::nonnegint,a,b)\n" }{MPLTEXT 1 0 34 "  description \"Peano es
+timation\";\n" }{MPLTEXT 1 0 13 "  local K,t;\n" }{MPLTEXT 1 0 25 "  K
+:=PeanoKernel(L,d,t);\n" }{MPLTEXT 1 0 29 "  M[d+1]*int(abs(K),t=a..b)
+;\n" }{MPLTEXT 1 0 9 "end proc;" }}{PARA 11 "" 1 "" {XPPMATH 20 "f*6&'
+I\"LG6\"I*procedureG%*protectedG'I\"dGF&I*nonnegintGF(I\"aGF&I\"bGF&6$
+I\"KGF&I\"tGF&F&F&C$>8$-I,PeanoKernelGF&6%9$9%8%*&&I\"MGF&6#,&F8\"\"\"
+F?F?F?-I$intGF&6$-I$absGF(6#F3/F9;9&9'F?6#Q1Peano~estimationF&F&F&" }}
+}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}{EXCHG {PARA 0 "> " 0 "
+" {MPLTEXT 1 0 43 "RG:=f->int(f(x),x=a..b)-(b-a)*f((2*a+b)/3);" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "f*6#I\"fG6\"F%6$I)operatorGF%I&arrowGF%F
+%,&-I$intGF%6$-9$6#I\"xGF%/F0;I\"aGF%I\"bGF%\"\"\"*&,&F4F5F3!\"\"F5-F.
+6#,&F3#\"\"#\"\"$F4#F5F>F5F8F%F%F%" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 47 "KG:=simplify(PeanoKernel(RG,0,t) assuming a<b);" }}
+{PARA 11 "" 1 "" {XPPMATH 20 ",,*&-I*piecewiseG%*protectedG6&2,(I\"aG6
+\"#\"\"#\"\"$I\"bGF+#\"\"\"F.I\"tGF+!\"\"\"\"!F41F4F)F1F1F*F1F1*&F$F1F
+/F1F3*&-F%6&2,&F2F3F*F1F4F41F4F;F1F1F*F1F3*&F8F1F2F1F1-F%6&1F/F2F42F2F
+/,&F2F3F/F1F1" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 36 "convert(%,
+piecewise,t) assuming a<b;" }}{PARA 11 "" 1 "" {XPPMATH 20 "-I*piecewi
+seG%*protectedG6*1I\"tG6\"I\"aGF(\"\"!1F',&F)#\"\"#\"\"$I\"bGF(#\"\"\"
+F/,&F'!\"\"F)F22F'F0,&F'F4F0F21F0F'F*" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 0 "" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 30 "pe:=Pea
+noEstimation(RG,0,a,b);" }}{PARA 11 "" 1 "" {XPPMATH 20 "*&&I\"MG6\"6#
+\"\"\"F'-I$intG6$%*protectedGI(_syslibGF%6$-I$absGF+6#,**&-I*piecewise
+GF+6%2,&I\"tGF%!\"\"I\"aGF%F'\"\"!F;F'F'F8F'F'*&F3F'F:F'F9-F46&1I\"bGF
+%F8F;2F8F@,&F8F9F@F'F'*&,&F@F'F:F9F'-F46%1F;,(F:#\"\"#\"\"$F@#F'FKF8F9
+F'F;F'F9/F8;F:F@F'" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 22 "assum
+e(t>=a and t<=b);" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 13 "simpli
+fy(pe);" }}{PARA 11 "" 1 "" {XPPMATH 20 ",$*&&I\"MG6\"6#\"\"\"F(,(*$I#
+a|irGF&\"\"#F(*&F+F(I#b|irGF&F(!\"#*$F.F,F(F(#\"\"&\"#=" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 62 "save pp, PeanoKernel, PeanoCorr, Pe
+anoEstimation, \"Peanoth.m\";" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 
+0 8 "restart;" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 17 "read \"Pea
+noth.m\";" }}{PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}{EXCHG {PARA 0 "> 
+" 0 "" {MPLTEXT 1 0 19 "print(PeanoKernel);" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "f*6%'I\"LG6\"I*procedureG%*protectedG'I\"dGF&I*nonnegintG
+F('I\"tGF&I%nameGF(6#I\"KGF&F&F&C$>8$*&-I*factorialGF(6#9%!\"\"-I%eval
+GF(6#-9$6#f*6#I\"xGF&F&6$I)operatorGF&I&arrowGF&F&-I#ppGF&6$,&F>\"\"\"
+T$F9T&F&F&6&F-9&F*F8FJOF36#Q5Compute~Peano~KernelF&F&F&" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 17 "print(PeanoCorr);" }}{PARA 11 "" 1 
+"" {XPPMATH 20 "f*6$'I\"LG6\"I*procedureG%*protectedG'I\"dGF&I*nonnegi
+ntGF(6#I\"KGF&F&F&C%>8$-9$6#f*6#I\"xGF&F&6$I)operatorGF&I&arrowGF&F&)F
+2,&T$\"\"\"F=F=F&F&6$F*9%>F0*(-I*factorialGF(6#,&F?F=F=F=!\"\"-I'facto
+rGF&6#-I)simplifyGF&6#F0F=--&I\"DGF&6#-I\"$GF(6$F=FE6#I\"fGF&6#I#xiGF&
+F=OF06#Q1Peano~error~termF&F&F&" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 
+1 0 0 "" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 0 "" }}}}
+{MARK "0 0 0" 0 }{VIEWOPTS 1 1 0 1 1 1803 1 1 1 1 }{PAGENUMBERS 0 1 2
+ 33 1 1 }

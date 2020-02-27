@@ -1,0 +1,152 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Compute , naive version</title><meta name="generator" content="MATLAB 9.4"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-02-26"><meta name="DC.source" content="pinaive.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Compute <img src="pinaive_eq12719111378361454579.png" alt="$\pi$">, naive version</h1><!--introduction--><p>Compute area of the unit circle</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#3">Initialization</a></li></ul></div><p><img vspace="5" hspace="5" src="figpi.png" alt=""> </p><p>Area of the triangle is</p><p><img src="pinaive_eq10433126515988620114.png" alt="$$F_{n}=\cos\frac{\alpha_{n}}{2}\sin\frac{\alpha_{n}}{2}$$"></p><p>where <img src="pinaive_eq05696207333367665348.png" alt="$\alpha_{n}=\frac{2\pi}{n}$">. The total area is</p><p><img src="pinaive_eq02541132932500640193.png" alt="$$A_n=n F_n=\frac{n}{2}\sin \alpha_{n}=\frac{n}{2}\sin\frac{2\pi}{n}.$$"></p><p>Recurrence relation</p><p><img src="pinaive_eq07665238057547928752.png" alt="$$\sin\frac{\alpha_{n}}{2}=\sqrt{\frac{1-\cos \alpha_{n}}{2}}=\sqrt{\frac{1-\sqrt{1-\sin^2 \alpha_{n}}}{2}}$$"></p><h2 id="3">Initialization</h2><p><img src="pinaive_eq06971487245991217504.png" alt="$n=6$">, <img src="pinaive_eq01866440652456386270.png" alt="$\alpha_{6}=\frac{\pi}{3}$">, <img src="pinaive_eq10206222914380904548.png" alt="$A_{6}=3\frac{\sqrt{3}}{2}$">, <img src="pinaive_eq14873064122683342638.png" alt="$\sin\alpha_{6}=\frac{\sqrt{3}}{2}$">.</p><pre class="codeinput">s=sqrt(3)/2; A=3*s; n=6; <span class="comment">% initialization</span>
+z=[A-pi n A s]; <span class="comment">% store the results</span>
+<span class="keyword">while</span> s&gt;1e-10 <span class="comment">% termination if s=sin(alpha) small</span>
+    s=sqrt((1-sqrt(1-s*s))/2); <span class="comment">% new sin(alpha/2) value</span>
+    n=2*n; A=n/2*s; <span class="comment">% A=new polygon area</span>
+    z=[z; A-pi n A s];
+<span class="keyword">end</span>
+m=length(z);
+disp(<span class="string">"      n              A                     err                  sine"</span>)
+<span class="keyword">for</span> i=1:m
+    fprintf(<span class="string">'%10d %20.15f %20.15f %20.15f\n'</span>,z(i,2),z(i,3),z(i,1),z(i,4))
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">      n              A                     err                  sine
+         6    2.598076211353316   -0.543516442236477    0.866025403784439
+        12    3.000000000000000   -0.141592653589794    0.500000000000000
+        24    3.105828541230250   -0.035764112359543    0.258819045102521
+        48    3.132628613281237   -0.008964040308556    0.130526192220052
+        96    3.139350203046872   -0.002242450542921    0.065403129230143
+       192    3.141031950890530   -0.000560702699263    0.032719082821776
+       384    3.141452472285344   -0.000140181304449    0.016361731626486
+       768    3.141557607911622   -0.000035045678171    0.008181139603937
+      1536    3.141583892148936   -0.000008761440857    0.004090604026236
+      3072    3.141590463236762   -0.000002190353031    0.002045306291170
+      6144    3.141592106043048   -0.000000547546745    0.001022653680353
+     12288    3.141592516588155   -0.000000137001638    0.000511326906997
+     24576    3.141592618640789   -0.000000034949004    0.000255663461803
+     49152    3.141592645321216   -0.000000008268577    0.000127831731987
+     98304    3.141592645321216   -0.000000008268577    0.000063915865994
+    196608    3.141592645321216   -0.000000008268577    0.000031957932997
+    393216    3.141592645321216   -0.000000008268577    0.000015978966498
+    786432    3.141593669849427    0.000001016259634    0.000007989485855
+   1572864    3.141592303811738   -0.000000349778055    0.000003994741190
+   3145728    3.141608696224804    0.000016042635011    0.000001997381017
+   6291456    3.141586839655041   -0.000005813934752    0.000000998683561
+  12582912    3.141674265021758    0.000081611431964    0.000000499355676
+  25165824    3.141674265021758    0.000081611431964    0.000000249677838
+  50331648    3.143072740170040    0.001480086580246    0.000000124894489
+ 100663296    3.159806164941135    0.018213511351342    0.000000062779708
+ 201326592    3.181980515339464    0.040387861749671    0.000000031610136
+ 402653184    3.354101966249685    0.212509312659892    0.000000016660005
+ 805306368    4.242640687119286    1.101048033529493    0.000000010536712
+1610612736    6.000000000000000    2.858407346410207    0.000000007450581
+3221225472    0.000000000000000   -3.141592653589793    0.000000000000000
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Compute $\pi$, naive version
+% Compute area of the unit circle
+%%
+% 
+% <<figpi.png>>
+% 
+
+%%
+% Area of the triangle is
+%
+% $$F_{n}=\cos\frac{\alpha_{n}}{2}\sin\frac{\alpha_{n}}{2}$$
+% 
+% where $\alpha_{n}=\frac{2\pi}{n}$. 
+% The total area is
+%
+% $$A_n=n F_n=\frac{n}{2}\sin \alpha_{n}=\frac{n}{2}\sin\frac{2\pi}{n}.$$
+%
+% Recurrence relation
+%
+% $$\sin\frac{\alpha_{n}}{2}=\sqrt{\frac{1-\cos \alpha_{n}}{2}}=\sqrt{\frac{1-\sqrt{1-\sin^2 \alpha_{n}}}{2}}$$
+%
+%% Initialization
+% $n=6$, $\alpha_{6}=\frac{\pi}{3}$, $A_{6}=3\frac{\sqrt{3}}{2}$,
+% $\sin\alpha_{6}=\frac{\sqrt{3}}{2}$.
+
+s=sqrt(3)/2; A=3*s; n=6; % initialization
+z=[A-pi n A s]; % store the results
+while s>1e-10 % termination if s=sin(alpha) small
+    s=sqrt((1-sqrt(1-s*s))/2); % new sin(alpha/2) value
+    n=2*n; A=n/2*s; % A=new polygon area
+    z=[z; A-pi n A s];
+end
+m=length(z);
+disp("      n              A                     err                  sine")
+for i=1:m
+    fprintf('%10d %20.15f %20.15f %20.15f\n',z(i,2),z(i,3),z(i,1),z(i,4))
+end
+##### SOURCE END #####
+--></body></html>
