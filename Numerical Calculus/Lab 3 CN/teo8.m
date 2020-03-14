@@ -1,0 +1,17 @@
+% problema wilkinsen
+function nc = condpol(p,xi)
+    if nargin < 2
+        xi = roots(p);
+    end
+    
+    n = length (p) - 1;
+    dp = (n: -1: 1 ).*p(1:end-1); % derivata
+    nc = 1/(abs(xi.*polyval(dp, xi))).*(polyval(abs(p(2:end)), abs(xi)));\
+    
+    % p = poly(1:20)
+    % xi = 1:20;
+    % cc = condpol(p,xi);
+    % format short;
+    % [ccs, ii] = sort (cc)
+    % format short g;
+    % [xi(ii)', css']

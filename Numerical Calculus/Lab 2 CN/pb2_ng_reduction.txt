@@ -1,0 +1,16 @@
+function s = sinxSol(x)
+    s = 0;
+    termen = x;
+    n = 1;
+    while s + termen ~= s
+        s = s + termen;
+        termen = -termen * x^2 /((n+1)*(n+2));
+        n = n + 2;
+    end
+end
+
+function [r, n] = NgReduction(x)
+    n = mod(k,4);
+    
+
+end
