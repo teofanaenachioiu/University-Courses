@@ -1,29 +1,27 @@
-function x = Gauss_Seidel(A,b,precizia)
-% metoda Gauss_Seidel
+function [x, nri] = Gauss_Seidel(A,b,x0,nriter,err)
+% metoda lui Gauss Seidel
 % A - matricea sistemului
 % b - vectorul termenilor liberi
-% precizia - precizia calculului
+% x0 - solutia de pornire
+% nriter - numar maxim de iteratii
+% err - precizia calculului
 % x - solutia
+% nri - numar de iteratii necesar convergentei
 
 [m,n]=size(A);
-x0 = zeros(size(b));
 
-D = diag(diag(A));
-L = -tril(A,-1);
-U = -triu(A,1);
-
-%calculul lui T si c (pregatirea iteratiilor)
-M = D-L;
-N = U;
-T = M\N;
-c = M\b;
-toleranta = (1-norm(T,inf))/norm(T,inf)*precizia;
+% A=M-N si Ax=b => (M-N)x=b => Mx=Nx+b => x=inv(M)(N*x+b)
+% La metoda Gauss-Seidel M=D-L
+M=diag(diag(A))+tril(A,-1);
+N=M-A;
 x=x0(:);
 
-while 1 ==1
+for i=1:nriter
    x0 = x;
-   x = T*x0+c;
-   if norm(x-x0,inf)<= toleranta
-      break;
+   x = M\(N*x0+b); 
+   if norm(x-x0,inf)<err*norm(x,inf) % criteriul: https://amci.unimap.edu.my/images/Artikel/Vol_6_2017/amci_vol_6_2017_41-52.pdf
+      nri=i;
+      return;
    end
 end
+error('depasire numar maxim de iteratii')
