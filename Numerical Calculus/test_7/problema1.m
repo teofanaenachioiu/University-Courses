@@ -3,12 +3,11 @@
 % nodurilor xk, k = 0,...,m.
 
 close all
-syms t
-a=0;
+a=-10;
 b=10;
-m = 10;
+m = 500;
 x=linspace(a,b,m);
-P=Lagrange(x,t);
-fplot(P,[a,b])
-axis([a b 0 10])
+t=linspace(a,b,1000); 
+P=Lebesgue(x,t);
+plot(t, P, '.') 
 hold off

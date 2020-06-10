@@ -1,22 +1,20 @@
-function px = BaryLagrange(nodes, f, x, weights)
-% nodes - nodurile
-% f - functia
-% x - puncte pentru aproximam functia
-% weights - valorile weight-urilor
-% px - formula baricentrica
+function pxi=BaryLagrange(x,y,xi,c)
+%x -  nodurile
+%y - valorile functiei in noduri
+%xi - punctele de interpolare
+%pxi - valorile polinomului de interpolare
 
-n = length(nodes);
-
-numarator = zeros(size(x));
-numitor = zeros(size(x));
-
-for i=1:n
-    node = nodes(i);
-    tmp = weights(i)./(x-node);
-    numarator = numarator+tmp * f(node);
-    numitor = numitor+tmp;
+n = length(x);
+numarator = zeros(size(xi));
+numitor = zeros(size(xi));
+exact = zeros(size(xi));
+for j=1:n
+    xdiff = xi-x(j);
+    temp = c(j)./xdiff;
+    numarator = numarator+temp*y(j);
+    numitor = numitor+temp;
+    exact(xdiff==0) = j;
 end
-
-px = numarator ./ numitor;
-
-end
+pxi = numarator ./ numitor;
+jj = find(exact); 
+pxi(jj) = y(exact(jj));

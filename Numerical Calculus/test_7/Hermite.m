@@ -1,18 +1,18 @@
-function ff = Hermite(nodes, y, dy, x)
-% nodes - noduri de interpolare
+function pxi = Hermite(x, y, dy, xi)
+% x - nodurile
 % y - valoarea functiei in noduri
 % dy - valoarea derivatei functiei in noduri
-% x - puncte de aproximat
-% ff - approximarea functiei
+% xi - puncte de evaluat
+% pxi - aproximarea functiei
   
-[z, Q] = difdiv(nodes, y, dy);
+[z, Q] = difdiv(x, y, dy);
 
-nx = length(x);
-nX = length(z);
+lx = length(xi);
+lz = length(z);
   
-for i = 1:nx
-    x_diff = x(i) - z;
-    y(i) = [1, cumprod(x_diff(1:nX-1))]*Q';
+for i = 1:lx
+    x_diff = xi(i) - z;
+    y(i) = [1, cumprod(x_diff(1:lz-1))]*Q';
 end
-ff = y;
+pxi = y;
 end
