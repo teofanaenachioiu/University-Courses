@@ -49,3 +49,8 @@ Algorithms implementation, labs, courses, docs, additional exercises etc
 <p>📌 Computer Graphics (~ Grafica) </p>
 
 <h3> Sixth semester 👩🏻‍🎓</h3>
+<p>📌 Numerical Calculus <i> => Matlab, Maple </i> </p>
+<p>📌 Software Systems Verification and Validation (~VVSS) <i> => Java, JUnit, Mockito, Testlink, Jenkins</i> </p>
+<p>📌 Software Project Management </p>
+<p>📌 Network and System Administration </p>
+<p>📌 History of Computer Science </p>
